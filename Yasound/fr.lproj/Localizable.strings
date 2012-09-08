@@ -187,8 +187,6 @@
 "ProgrammingView_error_title" = "Synchronisation";
 "ProgrammingView_error_message" = "une erreur est survenue pendant la synchronisation.";
 "ProgrammingView_error_no_playlist_message" = "une erreur est survenue : aucune playlist n'a été détectée.";
-"ProgrammingView_segment_titles" = "Titres";
-"ProgrammingView_segment_artists" = "Artistes";
 "ProgrammingView_unknownArtist" = "Artiste inconnu";
 "ProgrammingView_unknownAlbum" = "Album inconnu";
 "ProgramminView_nb_albums_1" = "1 album";
@@ -198,6 +196,12 @@
 "ProgrammingView_subtitle_error" = "erreur";
 
 "Programming.del" = "Supprimer";
+
+"Programming.segment.titles" = "Titres";
+"Programming.segment.artists" = "Artistes";
+"Programming.segment.genres" = "Genres";
+"Programming.segment.playlists" = "Playlists";
+
 
 "SongView_title" = "Song";
 "SongView_name" = "titre";

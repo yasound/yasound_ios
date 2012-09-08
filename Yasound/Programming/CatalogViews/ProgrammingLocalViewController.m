@@ -7,6 +7,7 @@
 //
 
 #import "ProgrammingLocalViewController.h"
+#import "ProgrammingViewController.h"
 #import "Song.h"
 #import "SongLocal.h"
 #import "SongUploader.h"
@@ -46,9 +47,6 @@
 @synthesize artistVC;
 
 
-#define SEGMENT_INDEX_ALPHA 0
-#define SEGMENT_INDEX_ARTIST 1
-#define SEGMENT_INDEX_SERVER 2
 
 
 - (void)dealloc
@@ -74,7 +72,7 @@
     self = [super initWithStyle:style];
     if (self)
     {
-        self.selectedSegmentIndex = SEGMENT_INDEX_ALPHA;
+        self.selectedSegmentIndex = LOCALSEGMENT_INDEX_PLAYLISTS;
         
         self.radio = radio;
         
@@ -258,7 +256,7 @@
 {
     NSString* charIndex = [[SongLocalCatalog main].indexMap objectAtIndex:section];
     
-    if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA) {
+    if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_TITLES) {
         NSArray* songsForLetter = [[SongLocalCatalog main] songsForLetter:charIndex];
         assert(songsForLetter != nil);
         return songsForLetter.count;
@@ -284,7 +282,7 @@
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
 {    
-    if (self.selectedSegmentIndex == SEGMENT_INDEX_ARTIST)
+    if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES)
         return nil;
     
     if ([SongLocalCatalog main].songsDb == 0)
@@ -296,7 +294,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
 {
-    if (self.selectedSegmentIndex == SEGMENT_INDEX_ARTIST)
+    if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES)
         return 0;
     
     return index;
@@ -320,7 +318,7 @@
     NSString* charIndex = [[SongLocalCatalog main].indexMap objectAtIndex:indexPath.section];
 
     
-    if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_TITLES)
     {
         static NSString* CellAddIdentifier = @"CellAdd";
 
@@ -401,7 +399,7 @@
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
-    if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_TITLES)
     {
         NSString* charIndex = [[SongLocalCatalog main].indexMap objectAtIndex:indexPath.section];
         

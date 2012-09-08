@@ -220,8 +220,6 @@
 		40B409DC152EFC630050D334 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		40B409DD152EFC630050D334 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		40B409DE152EFC630050D334 /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
-		40B409E0152EFC630050D334 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */; };
-		40B409E1152EFC630050D334 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */; };
 		40B409E2152EFC630050D334 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
 		40B409E3152EFC630050D334 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
 		40B409E4152EFC630050D334 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
@@ -297,8 +295,6 @@
 		40B40A89152EFC630050D334 /* btnBuyUp.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1214EEC25A001B4FC5 /* btnBuyUp.png */; };
 		40B40A8A152EFC630050D334 /* btnBuyUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1414EEC25A001B4FC5 /* btnBuyUp@2x.png */; };
 		40B40AA4152EFC630050D334 /* SongInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD0CBCE14FE851900E75CEF /* SongInfoViewController.xib */; };
-		40B40AA5152EFC630050D334 /* ProgrammingArtistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF652215013CF1005FD75D /* ProgrammingArtistViewController.xib */; };
-		40B40AA6152EFC630050D334 /* ProgrammingAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */; };
 		40B40AAD152EFC630050D334 /* YasoundLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE0B15233A6300290383 /* YasoundLoginViewController.xib */; };
 		40B40AD2152EFC630050D334 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
 		40B40AD3152EFC630050D334 /* AccountFacebookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D261525FE45006CBA19 /* AccountFacebookViewController.xib */; };
@@ -454,8 +450,6 @@
 		40D53BDB1554280F001EB0C5 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		40D53BDC1554280F001EB0C5 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		40D53BDD1554280F001EB0C5 /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
-		40D53BDF1554280F001EB0C5 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */; };
-		40D53BE01554280F001EB0C5 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */; };
 		40D53BE11554280F001EB0C5 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
 		40D53BE21554280F001EB0C5 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
 		40D53BE31554280F001EB0C5 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
@@ -538,8 +532,6 @@
 		40D53C8A1554280F001EB0C5 /* btnBuyUp.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1214EEC25A001B4FC5 /* btnBuyUp.png */; };
 		40D53C8B1554280F001EB0C5 /* btnBuyUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1414EEC25A001B4FC5 /* btnBuyUp@2x.png */; };
 		40D53C951554280F001EB0C5 /* SongInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD0CBCE14FE851900E75CEF /* SongInfoViewController.xib */; };
-		40D53C961554280F001EB0C5 /* ProgrammingArtistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF652215013CF1005FD75D /* ProgrammingArtistViewController.xib */; };
-		40D53C971554280F001EB0C5 /* ProgrammingAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */; };
 		40D53C9E1554280F001EB0C5 /* YasoundLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE0B15233A6300290383 /* YasoundLoginViewController.xib */; };
 		40D53CC31554280F001EB0C5 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
 		40D53CC41554280F001EB0C5 /* AccountFacebookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D261525FE45006CBA19 /* AccountFacebookViewController.xib */; };
@@ -1018,6 +1010,78 @@
 		BC31F12E15FB87AB00A8E486 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F12715FB87AB00A8E486 /* DataBase.m */; };
 		BC31F12F15FB87AB00A8E486 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F12715FB87AB00A8E486 /* DataBase.m */; };
 		BC31F13015FB87AB00A8E486 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F12715FB87AB00A8E486 /* DataBase.m */; };
+		BC31F15D15FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15B15FBAD7B00A8E486 /* topBarNonRoundedBkg.png */; };
+		BC31F15E15FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15B15FBAD7B00A8E486 /* topBarNonRoundedBkg.png */; };
+		BC31F15F15FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15B15FBAD7B00A8E486 /* topBarNonRoundedBkg.png */; };
+		BC31F16015FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15B15FBAD7B00A8E486 /* topBarNonRoundedBkg.png */; };
+		BC31F16115FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15B15FBAD7B00A8E486 /* topBarNonRoundedBkg.png */; };
+		BC31F16215FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15B15FBAD7B00A8E486 /* topBarNonRoundedBkg.png */; };
+		BC31F16315FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15B15FBAD7B00A8E486 /* topBarNonRoundedBkg.png */; };
+		BC31F16415FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15B15FBAD7B00A8E486 /* topBarNonRoundedBkg.png */; };
+		BC31F16515FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15B15FBAD7B00A8E486 /* topBarNonRoundedBkg.png */; };
+		BC31F16615FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15C15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png */; };
+		BC31F16715FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15C15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png */; };
+		BC31F16815FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15C15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png */; };
+		BC31F16915FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15C15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png */; };
+		BC31F16A15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15C15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png */; };
+		BC31F16B15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15C15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png */; };
+		BC31F16C15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15C15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png */; };
+		BC31F16D15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15C15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png */; };
+		BC31F16E15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC31F15C15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png */; };
+		BC31F17C15FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17115FBB72300A8E486 /* ProgrammingAlbumViewController.m */; };
+		BC31F17D15FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17115FBB72300A8E486 /* ProgrammingAlbumViewController.m */; };
+		BC31F17E15FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17115FBB72300A8E486 /* ProgrammingAlbumViewController.m */; };
+		BC31F17F15FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17115FBB72300A8E486 /* ProgrammingAlbumViewController.m */; };
+		BC31F18015FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17115FBB72300A8E486 /* ProgrammingAlbumViewController.m */; };
+		BC31F18115FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17115FBB72300A8E486 /* ProgrammingAlbumViewController.m */; };
+		BC31F18215FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17115FBB72300A8E486 /* ProgrammingAlbumViewController.m */; };
+		BC31F18315FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17115FBB72300A8E486 /* ProgrammingAlbumViewController.m */; };
+		BC31F18415FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17115FBB72300A8E486 /* ProgrammingAlbumViewController.m */; };
+		BC31F18515FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */; };
+		BC31F18615FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */; };
+		BC31F18715FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */; };
+		BC31F18815FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */; };
+		BC31F18915FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */; };
+		BC31F18A15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */; };
+		BC31F18B15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */; };
+		BC31F18C15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */; };
+		BC31F18D15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */; };
+		BC31F18E15FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
+		BC31F18F15FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
+		BC31F19015FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
+		BC31F19115FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
+		BC31F19215FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
+		BC31F19315FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
+		BC31F19415FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
+		BC31F19515FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
+		BC31F19615FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
+		BC31F19715FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
+		BC31F19815FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
+		BC31F19915FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
+		BC31F19A15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
+		BC31F19B15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
+		BC31F19C15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
+		BC31F19D15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
+		BC31F19E15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
+		BC31F19F15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
+		BC31F1A015FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
+		BC31F1A115FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
+		BC31F1A215FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
+		BC31F1A315FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
+		BC31F1A415FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
+		BC31F1A515FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
+		BC31F1A615FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
+		BC31F1A715FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
+		BC31F1A815FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
+		BC31F1A915FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
+		BC31F1AA15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
+		BC31F1AB15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
+		BC31F1AC15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
+		BC31F1AD15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
+		BC31F1AE15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
+		BC31F1AF15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
+		BC31F1B015FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
+		BC31F1B115FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
 		BC355BD615BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
 		BC355BD715BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
 		BC355BD815BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
@@ -1812,8 +1876,6 @@
 		BC56F4FE152486AF005D1B40 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		BC56F4FF152486AF005D1B40 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		BC56F500152486AF005D1B40 /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
-		BC56F502152486AF005D1B40 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */; };
-		BC56F503152486AF005D1B40 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */; };
 		BC56F504152486AF005D1B40 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
 		BC56F505152486AF005D1B40 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
 		BC56F506152486AF005D1B40 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
@@ -1878,8 +1940,6 @@
 		BC56F598152486AF005D1B40 /* btnBuyUp.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1214EEC25A001B4FC5 /* btnBuyUp.png */; };
 		BC56F599152486AF005D1B40 /* btnBuyUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1414EEC25A001B4FC5 /* btnBuyUp@2x.png */; };
 		BC56F5B3152486AF005D1B40 /* SongInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD0CBCE14FE851900E75CEF /* SongInfoViewController.xib */; };
-		BC56F5B4152486AF005D1B40 /* ProgrammingArtistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF652215013CF1005FD75D /* ProgrammingArtistViewController.xib */; };
-		BC56F5B5152486AF005D1B40 /* ProgrammingAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */; };
 		BC56F5BC152486AF005D1B40 /* YasoundLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE0B15233A6300290383 /* YasoundLoginViewController.xib */; };
 		BC56F5E1152486AF005D1B40 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
 		BC598E6F15B8786C004D6DCB /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */; };
@@ -2619,8 +2679,6 @@
 		BCC7520115E689EF00CF7F7C /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		BCC7520215E689EF00CF7F7C /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		BCC7520315E689EF00CF7F7C /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
-		BCC7520515E689EF00CF7F7C /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */; };
-		BCC7520615E689EF00CF7F7C /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */; };
 		BCC7520715E689EF00CF7F7C /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
 		BCC7520815E689EF00CF7F7C /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
 		BCC7520915E689EF00CF7F7C /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
@@ -2685,8 +2743,6 @@
 		BCC7524815E689EF00CF7F7C /* SchedulingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C1515D66855008C26AC /* SchedulingViewController.m */; };
 		BCC7524915E689EF00CF7F7C /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C3A15D6BD57008C26AC /* ShowViewController.m */; };
 		BCC7524A15E689EF00CF7F7C /* TopBarBackAndTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C4D15D7013B008C26AC /* TopBarBackAndTitle.m */; };
-		BCC7524B15E689EF00CF7F7C /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */; };
-		BCC7524C15E689EF00CF7F7C /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
 		BCC7524D15E689EF00CF7F7C /* ProgrammingUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */; };
 		BCC7524E15E689EF00CF7F7C /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
 		BCC7524F15E689EF00CF7F7C /* ProgrammingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40972615DA837600F6E22A /* ProgrammingCell.m */; };
@@ -2757,8 +2813,6 @@
 		BCC7529215E689EF00CF7F7C /* btnBuyUp.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1214EEC25A001B4FC5 /* btnBuyUp.png */; };
 		BCC7529315E689EF00CF7F7C /* btnBuyUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1414EEC25A001B4FC5 /* btnBuyUp@2x.png */; };
 		BCC7529415E689EF00CF7F7C /* SongInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD0CBCE14FE851900E75CEF /* SongInfoViewController.xib */; };
-		BCC7529515E689EF00CF7F7C /* ProgrammingArtistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF652215013CF1005FD75D /* ProgrammingArtistViewController.xib */; };
-		BCC7529615E689EF00CF7F7C /* ProgrammingAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */; };
 		BCC7529715E689EF00CF7F7C /* YasoundLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE0B15233A6300290383 /* YasoundLoginViewController.xib */; };
 		BCC7529815E689EF00CF7F7C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
 		BCC7529915E689EF00CF7F7C /* AccountFacebookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D261525FE45006CBA19 /* AccountFacebookViewController.xib */; };
@@ -3653,26 +3707,6 @@
 		BCDC97DF14AB828B00D54631 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CC14AB818300D54631 /* libxml2.dylib */; };
 		BCDC97E014AB828B00D54631 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CE14AB81BF00D54631 /* Security.framework */; };
 		BCDC97E114AB828B00D54631 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CF14AB81BF00D54631 /* Twitter.framework */; };
-		BCDF652D15013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */; };
-		BCDF652E15013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */; };
-		BCDF652F15013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */; };
-		BCDF653015013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */; };
-		BCDF653115013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */; };
-		BCDF653215013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF652215013CF1005FD75D /* ProgrammingArtistViewController.xib */; };
-		BCDF653315013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF652215013CF1005FD75D /* ProgrammingArtistViewController.xib */; };
-		BCDF653415013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF652215013CF1005FD75D /* ProgrammingArtistViewController.xib */; };
-		BCDF653515013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF652215013CF1005FD75D /* ProgrammingArtistViewController.xib */; };
-		BCDF653615013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF652215013CF1005FD75D /* ProgrammingArtistViewController.xib */; };
-		BCDF653915013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */; };
-		BCDF653A15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */; };
-		BCDF653B15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */; };
-		BCDF653C15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */; };
-		BCDF653D15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */; };
-		BCDF653E15013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */; };
-		BCDF653F15013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */; };
-		BCDF654015013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */; };
-		BCDF654115013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */; };
-		BCDF654215013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */; };
 		BCE35C1715D66855008C26AC /* SchedulingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C1515D66855008C26AC /* SchedulingViewController.m */; };
 		BCE35C1815D66855008C26AC /* SchedulingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C1515D66855008C26AC /* SchedulingViewController.m */; };
 		BCE35C1915D66855008C26AC /* SchedulingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C1515D66855008C26AC /* SchedulingViewController.m */; };
@@ -3713,22 +3747,6 @@
 		BCE35C5315D7013B008C26AC /* TopBarBackAndTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C4D15D7013B008C26AC /* TopBarBackAndTitle.m */; };
 		BCE35C5415D7013B008C26AC /* TopBarBackAndTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C4D15D7013B008C26AC /* TopBarBackAndTitle.m */; };
 		BCE35C5515D7013B008C26AC /* TopBarBackAndTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C4D15D7013B008C26AC /* TopBarBackAndTitle.m */; };
-		BCE35E5515D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */; };
-		BCE35E5615D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */; };
-		BCE35E5715D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */; };
-		BCE35E5815D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */; };
-		BCE35E5915D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */; };
-		BCE35E5A15D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */; };
-		BCE35E5B15D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */; };
-		BCE35E5C15D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */; };
-		BCE35E6515D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
-		BCE35E6615D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
-		BCE35E6715D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
-		BCE35E6815D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
-		BCE35E6915D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
-		BCE35E6A15D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
-		BCE35E6B15D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
-		BCE35E6C15D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
 		BCE35E7815D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */; };
 		BCE35E7915D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */; };
 		BCE35E7A15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */; };
@@ -6745,6 +6763,20 @@
 		BC27F39314BE598700EF1C5F /* YasoundReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundReachability.m; sourceTree = "<group>"; };
 		BC31F12615FB87AA00A8E486 /* DataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBase.h; sourceTree = "<group>"; };
 		BC31F12715FB87AB00A8E486 /* DataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBase.m; sourceTree = "<group>"; };
+		BC31F15B15FBAD7B00A8E486 /* topBarNonRoundedBkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBarNonRoundedBkg.png; sourceTree = "<group>"; };
+		BC31F15C15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topBarNonRoundedBkg@2x.png"; sourceTree = "<group>"; };
+		BC31F17015FBB72300A8E486 /* ProgrammingAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingAlbumViewController.h; sourceTree = "<group>"; };
+		BC31F17115FBB72300A8E486 /* ProgrammingAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingAlbumViewController.m; sourceTree = "<group>"; };
+		BC31F17215FBB72300A8E486 /* ProgrammingArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingArtistViewController.h; sourceTree = "<group>"; };
+		BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingArtistViewController.m; sourceTree = "<group>"; };
+		BC31F17415FBB72300A8E486 /* ProgrammingGenreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingGenreViewController.h; sourceTree = "<group>"; };
+		BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingGenreViewController.m; sourceTree = "<group>"; };
+		BC31F17615FBB72300A8E486 /* ProgrammingLocalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingLocalViewController.h; sourceTree = "<group>"; };
+		BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingLocalViewController.m; sourceTree = "<group>"; };
+		BC31F17815FBB72300A8E486 /* ProgrammingPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingPlaylistViewController.h; sourceTree = "<group>"; };
+		BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingPlaylistViewController.m; sourceTree = "<group>"; };
+		BC31F17A15FBB72300A8E486 /* ProgrammingRadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingRadioViewController.h; sourceTree = "<group>"; };
+		BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingRadioViewController.m; sourceTree = "<group>"; };
 		BC355BCD15BD4F9100305C56 /* GiftsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiftsViewController.h; path = Yasound/Tabs/GiftsViewController.h; sourceTree = SOURCE_ROOT; };
 		BC355BCE15BD4F9100305C56 /* GiftsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GiftsViewController.m; path = Yasound/Tabs/GiftsViewController.m; sourceTree = SOURCE_ROOT; };
 		BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GiftsViewController.xib; path = Yasound/Tabs/GiftsViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -7174,12 +7206,6 @@
 		BCDC97D214AB81EA00D54631 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		BCDC97D514AB820500D54631 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		BCDC97D614AB820500D54631 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
-		BCDF651D15013CF0005FD75D /* ProgrammingAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingAlbumViewController.h; path = Programming/ProgrammingAlbumViewController.h; sourceTree = "<group>"; };
-		BCDF652015013CF1005FD75D /* ProgrammingArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingArtistViewController.h; path = Programming/ProgrammingArtistViewController.h; sourceTree = "<group>"; };
-		BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingArtistViewController.m; path = Programming/ProgrammingArtistViewController.m; sourceTree = "<group>"; };
-		BCDF652215013CF1005FD75D /* ProgrammingArtistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingArtistViewController.xib; path = Programming/ProgrammingArtistViewController.xib; sourceTree = "<group>"; };
-		BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingAlbumViewController.m; path = Programming/ProgrammingAlbumViewController.m; sourceTree = "<group>"; };
-		BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingAlbumViewController.xib; path = Programming/ProgrammingAlbumViewController.xib; sourceTree = "<group>"; };
 		BCE35C1415D66855008C26AC /* SchedulingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SchedulingViewController.h; path = Programming/SchedulingViewController.h; sourceTree = "<group>"; };
 		BCE35C1515D66855008C26AC /* SchedulingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SchedulingViewController.m; path = Programming/SchedulingViewController.m; sourceTree = "<group>"; };
 		BCE35C1615D66855008C26AC /* SchedulingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SchedulingViewController.xib; path = Programming/SchedulingViewController.xib; sourceTree = "<group>"; };
@@ -7189,10 +7215,6 @@
 		BCE35C4C15D7013B008C26AC /* TopBarBackAndTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarBackAndTitle.h; sourceTree = "<group>"; };
 		BCE35C4D15D7013B008C26AC /* TopBarBackAndTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarBackAndTitle.m; sourceTree = "<group>"; };
 		BCE35E4E15D79DB9008C26AC /* WheelRadiosSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheelRadiosSelector.h; path = RadioSelection/WheelRadiosSelector.h; sourceTree = "<group>"; };
-		BCE35E4F15D7A7EE008C26AC /* ProgrammingLocalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingLocalViewController.h; path = Programming/ProgrammingLocalViewController.h; sourceTree = "<group>"; };
-		BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingLocalViewController.m; path = Programming/ProgrammingLocalViewController.m; sourceTree = "<group>"; };
-		BCE35E5215D7A7EE008C26AC /* ProgrammingRadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingRadioViewController.h; path = Programming/ProgrammingRadioViewController.h; sourceTree = "<group>"; };
-		BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingRadioViewController.m; path = Programming/ProgrammingRadioViewController.m; sourceTree = "<group>"; };
 		BCE35E7515D7D5C7008C26AC /* ProgrammingUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingUploadViewController.h; path = Programming/ProgrammingUploadViewController.h; sourceTree = "<group>"; };
 		BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingUploadViewController.m; path = Programming/ProgrammingUploadViewController.m; sourceTree = "<group>"; };
 		BCE35E8915D7FD2E008C26AC /* barItemAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemAdd.png; sourceTree = "<group>"; };
@@ -8130,6 +8152,26 @@
 			path = LibTools/YasoundReachability;
 			sourceTree = SOURCE_ROOT;
 		};
+		BC31F16F15FBB72300A8E486 /* CatalogViews */ = {
+			isa = PBXGroup;
+			children = (
+				BC31F17015FBB72300A8E486 /* ProgrammingAlbumViewController.h */,
+				BC31F17115FBB72300A8E486 /* ProgrammingAlbumViewController.m */,
+				BC31F17215FBB72300A8E486 /* ProgrammingArtistViewController.h */,
+				BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */,
+				BC31F17415FBB72300A8E486 /* ProgrammingGenreViewController.h */,
+				BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */,
+				BC31F17615FBB72300A8E486 /* ProgrammingLocalViewController.h */,
+				BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */,
+				BC31F17815FBB72300A8E486 /* ProgrammingPlaylistViewController.h */,
+				BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */,
+				BC31F17A15FBB72300A8E486 /* ProgrammingRadioViewController.h */,
+				BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */,
+			);
+			name = CatalogViews;
+			path = Programming/CatalogViews;
+			sourceTree = "<group>";
+		};
 		BC355BA615BD426000305C56 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
@@ -8438,6 +8480,7 @@
 		BC82066E14F561C900FAE05E /* Programming */ = {
 			isa = PBXGroup;
 			children = (
+				BC31F16F15FBB72300A8E486 /* CatalogViews */,
 				BC89C34615E5256C00E0BEE3 /* ProgrammingObjectParameters.h */,
 				BC89C34715E5256D00E0BEE3 /* ProgrammingObjectParameters.m */,
 				BCE35C1415D66855008C26AC /* SchedulingViewController.h */,
@@ -8449,10 +8492,6 @@
 				BC071AB115D9070E001F38D7 /* ProgrammingViewController.h */,
 				BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */,
 				BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */,
-				BCE35E4F15D7A7EE008C26AC /* ProgrammingLocalViewController.h */,
-				BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */,
-				BCE35E5215D7A7EE008C26AC /* ProgrammingRadioViewController.h */,
-				BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */,
 				BCE35E7515D7D5C7008C26AC /* ProgrammingUploadViewController.h */,
 				BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */,
 				B19BF5EB14E420DA00BF8FCF /* SongsViewController.h */,
@@ -8462,12 +8501,6 @@
 				BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */,
 				BC40972515DA837500F6E22A /* ProgrammingCell.h */,
 				BC40972615DA837600F6E22A /* ProgrammingCell.m */,
-				BCDF652015013CF1005FD75D /* ProgrammingArtistViewController.h */,
-				BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */,
-				BCDF652215013CF1005FD75D /* ProgrammingArtistViewController.xib */,
-				BCDF651D15013CF0005FD75D /* ProgrammingAlbumViewController.h */,
-				BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */,
-				BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */,
 				BCD0CBCC14FE851800E75CEF /* SongInfoViewController.h */,
 				BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */,
 				BCD0CBCE14FE851900E75CEF /* SongInfoViewController.xib */,
@@ -9444,6 +9477,8 @@
 		BCE3604A15D7FD2F008C26AC /* TopBar */ = {
 			isa = PBXGroup;
 			children = (
+				BC31F15B15FBAD7B00A8E486 /* topBarNonRoundedBkg.png */,
+				BC31F15C15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png */,
 				BCE3604B15D7FD2F008C26AC /* topBarBkg.png */,
 				BCE3604C15D7FD2F008C26AC /* topBarBkg@2x.png */,
 			);
@@ -10028,8 +10063,6 @@
 				40B40A89152EFC630050D334 /* btnBuyUp.png in Resources */,
 				40B40A8A152EFC630050D334 /* btnBuyUp@2x.png in Resources */,
 				40B40AA4152EFC630050D334 /* SongInfoViewController.xib in Resources */,
-				40B40AA5152EFC630050D334 /* ProgrammingArtistViewController.xib in Resources */,
-				40B40AA6152EFC630050D334 /* ProgrammingAlbumViewController.xib in Resources */,
 				40B40AAD152EFC630050D334 /* YasoundLoginViewController.xib in Resources */,
 				40B40AD2152EFC630050D334 /* LoginViewController.xib in Resources */,
 				40B40AD3152EFC630050D334 /* AccountFacebookViewController.xib in Resources */,
@@ -10469,6 +10502,8 @@
 				BCDABBF515F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBFE15F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0715F74411002E8708 /* Icon@2x.png in Resources */,
+				BC31F16415FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */,
+				BC31F16D15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10506,8 +10541,6 @@
 				40D53C8A1554280F001EB0C5 /* btnBuyUp.png in Resources */,
 				40D53C8B1554280F001EB0C5 /* btnBuyUp@2x.png in Resources */,
 				40D53C951554280F001EB0C5 /* SongInfoViewController.xib in Resources */,
-				40D53C961554280F001EB0C5 /* ProgrammingArtistViewController.xib in Resources */,
-				40D53C971554280F001EB0C5 /* ProgrammingAlbumViewController.xib in Resources */,
 				40D53C9E1554280F001EB0C5 /* YasoundLoginViewController.xib in Resources */,
 				40D53CC31554280F001EB0C5 /* LoginViewController.xib in Resources */,
 				40D53CC41554280F001EB0C5 /* AccountFacebookViewController.xib in Resources */,
@@ -10949,6 +10982,8 @@
 				BCDABBF615F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBFF15F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0815F74411002E8708 /* Icon@2x.png in Resources */,
+				BC31F16515FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */,
+				BC31F16E15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10986,8 +11021,6 @@
 				BC524F2414EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2914EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
 				BCD0CBD814FE851900E75CEF /* SongInfoViewController.xib in Resources */,
-				BCDF653615013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
-				BCDF654215013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
 				BCB0EE1515233A6300290383 /* YasoundLoginViewController.xib in Resources */,
 				BCB0EF2B1524755F00290383 /* LoginViewController.xib in Resources */,
 				4028E7BE152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
@@ -11423,6 +11456,8 @@
 				BCDABBF415F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBFD15F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0615F74411002E8708 /* Icon@2x.png in Resources */,
+				BC31F16315FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */,
+				BC31F16C15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11460,8 +11495,6 @@
 				BC56F598152486AF005D1B40 /* btnBuyUp.png in Resources */,
 				BC56F599152486AF005D1B40 /* btnBuyUp@2x.png in Resources */,
 				BC56F5B3152486AF005D1B40 /* SongInfoViewController.xib in Resources */,
-				BC56F5B4152486AF005D1B40 /* ProgrammingArtistViewController.xib in Resources */,
-				BC56F5B5152486AF005D1B40 /* ProgrammingAlbumViewController.xib in Resources */,
 				BC56F5BC152486AF005D1B40 /* YasoundLoginViewController.xib in Resources */,
 				BC56F5E1152486AF005D1B40 /* LoginViewController.xib in Resources */,
 				BCFD4D2E1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
@@ -11902,6 +11935,8 @@
 				BCDABBF115F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBFA15F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0315F74411002E8708 /* Icon@2x.png in Resources */,
+				BC31F16015FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */,
+				BC31F16915FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11939,8 +11974,6 @@
 				BC524F2114EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2614EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
 				BCD0CBD514FE851900E75CEF /* SongInfoViewController.xib in Resources */,
-				BCDF653315013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
-				BCDF653F15013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
 				BCB0EE1215233A6300290383 /* YasoundLoginViewController.xib in Resources */,
 				BCB0EF281524755F00290383 /* LoginViewController.xib in Resources */,
 				BCFD4D2D1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
@@ -12381,6 +12414,8 @@
 				BCDABBEF15F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBF815F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0115F74411002E8708 /* Icon@2x.png in Resources */,
+				BC31F15E15FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */,
+				BC31F16715FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12418,8 +12453,6 @@
 				BC524F2314EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2814EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
 				BCD0CBD714FE851900E75CEF /* SongInfoViewController.xib in Resources */,
-				BCDF653515013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
-				BCDF654115013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
 				BCB0EE1415233A6300290383 /* YasoundLoginViewController.xib in Resources */,
 				BCB0EF2A1524755F00290383 /* LoginViewController.xib in Resources */,
 				BCFD4D301525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
@@ -12860,6 +12893,8 @@
 				BCDABBF315F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBFC15F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0515F74411002E8708 /* Icon@2x.png in Resources */,
+				BC31F16215FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */,
+				BC31F16B15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12897,8 +12932,6 @@
 				BCC7529215E689EF00CF7F7C /* btnBuyUp.png in Resources */,
 				BCC7529315E689EF00CF7F7C /* btnBuyUp@2x.png in Resources */,
 				BCC7529415E689EF00CF7F7C /* SongInfoViewController.xib in Resources */,
-				BCC7529515E689EF00CF7F7C /* ProgrammingArtistViewController.xib in Resources */,
-				BCC7529615E689EF00CF7F7C /* ProgrammingAlbumViewController.xib in Resources */,
 				BCC7529715E689EF00CF7F7C /* YasoundLoginViewController.xib in Resources */,
 				BCC7529815E689EF00CF7F7C /* LoginViewController.xib in Resources */,
 				BCC7529915E689EF00CF7F7C /* AccountFacebookViewController.xib in Resources */,
@@ -13340,6 +13373,8 @@
 				BCDABBF015F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBF915F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0215F74411002E8708 /* Icon@2x.png in Resources */,
+				BC31F15F15FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */,
+				BC31F16815FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13377,8 +13412,6 @@
 				BC524F2014EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2514EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
 				BCD0CBD414FE851900E75CEF /* SongInfoViewController.xib in Resources */,
-				BCDF653215013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
-				BCDF653E15013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
 				BCB0EE1115233A6300290383 /* YasoundLoginViewController.xib in Resources */,
 				BCB0EF271524755F00290383 /* LoginViewController.xib in Resources */,
 				BCFD4D2C1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
@@ -13819,6 +13852,8 @@
 				BCDABBEE15F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBF715F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0015F74411002E8708 /* Icon@2x.png in Resources */,
+				BC31F15D15FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */,
+				BC31F16615FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13856,8 +13891,6 @@
 				BC524F2214EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2714EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
 				BCD0CBD614FE851900E75CEF /* SongInfoViewController.xib in Resources */,
-				BCDF653415013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
-				BCDF654015013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
 				BCB0EE1315233A6300290383 /* YasoundLoginViewController.xib in Resources */,
 				BCB0EF291524755F00290383 /* LoginViewController.xib in Resources */,
 				BCFD4D2F1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
@@ -14298,6 +14331,8 @@
 				BCDABBF215F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBFB15F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0415F74411002E8708 /* Icon@2x.png in Resources */,
+				BC31F16115FBAD7B00A8E486 /* topBarNonRoundedBkg.png in Resources */,
+				BC31F16A15FBAD7B00A8E486 /* topBarNonRoundedBkg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14480,8 +14515,6 @@
 				40B409DC152EFC630050D334 /* TimeProfile.m in Sources */,
 				40B409DD152EFC630050D334 /* SongUploadCell.m in Sources */,
 				40B409DE152EFC630050D334 /* SongInfoViewController.m in Sources */,
-				40B409E0152EFC630050D334 /* ProgrammingArtistViewController.m in Sources */,
-				40B409E1152EFC630050D334 /* ProgrammingAlbumViewController.m in Sources */,
 				40B409E2152EFC630050D334 /* SongAddCell.m in Sources */,
 				40B409E3152EFC630050D334 /* LocalSongInfoViewController.m in Sources */,
 				40B409E4152EFC630050D334 /* SongLocal.m in Sources */,
@@ -14546,8 +14579,6 @@
 				BCE35C1D15D66855008C26AC /* SchedulingViewController.m in Sources */,
 				BCE35C4215D6BD58008C26AC /* ShowViewController.m in Sources */,
 				BCE35C5415D7013B008C26AC /* TopBarBackAndTitle.m in Sources */,
-				BCE35E5B15D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
-				BCE35E6B15D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7E15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071ABA15D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972D15DA837600F6E22A /* ProgrammingCell.m in Sources */,
@@ -14581,6 +14612,12 @@
 				BCDABC3615F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3F15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
 				BC31F12F15FB87AB00A8E486 /* DataBase.m in Sources */,
+				BC31F18315FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
+				BC31F18C15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
+				BC31F19515FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
+				BC31F19E15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
+				BC31F1A715FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
+				BC31F1B015FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14705,8 +14742,6 @@
 				40D53BDB1554280F001EB0C5 /* TimeProfile.m in Sources */,
 				40D53BDC1554280F001EB0C5 /* SongUploadCell.m in Sources */,
 				40D53BDD1554280F001EB0C5 /* SongInfoViewController.m in Sources */,
-				40D53BDF1554280F001EB0C5 /* ProgrammingArtistViewController.m in Sources */,
-				40D53BE01554280F001EB0C5 /* ProgrammingAlbumViewController.m in Sources */,
 				40D53BE11554280F001EB0C5 /* SongAddCell.m in Sources */,
 				40D53BE21554280F001EB0C5 /* LocalSongInfoViewController.m in Sources */,
 				40D53BE31554280F001EB0C5 /* SongLocal.m in Sources */,
@@ -14771,8 +14806,6 @@
 				BCE35C1E15D66855008C26AC /* SchedulingViewController.m in Sources */,
 				BCE35C4315D6BD58008C26AC /* ShowViewController.m in Sources */,
 				BCE35C5515D7013B008C26AC /* TopBarBackAndTitle.m in Sources */,
-				BCE35E5C15D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
-				BCE35E6C15D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7F15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071ABB15D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972E15DA837600F6E22A /* ProgrammingCell.m in Sources */,
@@ -14806,6 +14839,12 @@
 				BCDABC3715F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC4015F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
 				BC31F13015FB87AB00A8E486 /* DataBase.m in Sources */,
+				BC31F18415FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
+				BC31F18D15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
+				BC31F19615FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
+				BC31F19F15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
+				BC31F1A815FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
+				BC31F1B115FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14930,8 +14969,6 @@
 				BCAAE19314FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A614FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBD314FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BCDF653115013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
-				BCDF653D15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD8186C1504F74700B818D1 /* SongAddCell.m in Sources */,
 				BC188BD41507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BE01507647900E38692 /* SongLocal.m in Sources */,
@@ -14992,8 +15029,6 @@
 				BCE35C1C15D66855008C26AC /* SchedulingViewController.m in Sources */,
 				BCE35C4115D6BD58008C26AC /* ShowViewController.m in Sources */,
 				BCE35C5315D7013B008C26AC /* TopBarBackAndTitle.m in Sources */,
-				BCE35E5A15D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
-				BCE35E6A15D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7D15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071AB915D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972C15DA837600F6E22A /* ProgrammingCell.m in Sources */,
@@ -15027,6 +15062,12 @@
 				BCDABC3515F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3E15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
 				BC31F12E15FB87AB00A8E486 /* DataBase.m in Sources */,
+				BC31F18215FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
+				BC31F18B15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
+				BC31F19415FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
+				BC31F19D15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
+				BC31F1A615FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
+				BC31F1AF15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15151,8 +15192,6 @@
 				BC56F4FE152486AF005D1B40 /* TimeProfile.m in Sources */,
 				BC56F4FF152486AF005D1B40 /* SongUploadCell.m in Sources */,
 				BC56F500152486AF005D1B40 /* SongInfoViewController.m in Sources */,
-				BC56F502152486AF005D1B40 /* ProgrammingArtistViewController.m in Sources */,
-				BC56F503152486AF005D1B40 /* ProgrammingAlbumViewController.m in Sources */,
 				BC56F504152486AF005D1B40 /* SongAddCell.m in Sources */,
 				BC56F505152486AF005D1B40 /* LocalSongInfoViewController.m in Sources */,
 				BC56F506152486AF005D1B40 /* SongLocal.m in Sources */,
@@ -15217,8 +15256,6 @@
 				BCE35C1915D66855008C26AC /* SchedulingViewController.m in Sources */,
 				BCE35C3E15D6BD58008C26AC /* ShowViewController.m in Sources */,
 				BCE35C5015D7013B008C26AC /* TopBarBackAndTitle.m in Sources */,
-				BCE35E5715D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
-				BCE35E6715D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7A15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071AB615D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972915DA837600F6E22A /* ProgrammingCell.m in Sources */,
@@ -15252,6 +15289,12 @@
 				BCDABC3215F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3B15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
 				BC31F12B15FB87AB00A8E486 /* DataBase.m in Sources */,
+				BC31F17F15FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
+				BC31F18815FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
+				BC31F19115FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
+				BC31F19A15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
+				BC31F1A315FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
+				BC31F1AC15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15376,8 +15419,6 @@
 				BCAAE19014FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A314FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBD014FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BCDF652E15013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
-				BCDF653A15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD818691504F74700B818D1 /* SongAddCell.m in Sources */,
 				BC188BD11507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDD1507647900E38692 /* SongLocal.m in Sources */,
@@ -15442,8 +15483,6 @@
 				BCE35C1815D66855008C26AC /* SchedulingViewController.m in Sources */,
 				BCE35C3D15D6BD58008C26AC /* ShowViewController.m in Sources */,
 				BCE35C4F15D7013B008C26AC /* TopBarBackAndTitle.m in Sources */,
-				BCE35E5615D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
-				BCE35E6615D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7915D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071AB515D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972815DA837600F6E22A /* ProgrammingCell.m in Sources */,
@@ -15477,6 +15516,12 @@
 				BCDABC3015F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3915F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
 				BC31F12915FB87AB00A8E486 /* DataBase.m in Sources */,
+				BC31F17D15FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
+				BC31F18615FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
+				BC31F18F15FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
+				BC31F19815FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
+				BC31F1A115FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
+				BC31F1AA15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15602,8 +15647,6 @@
 				BCAAE19214FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A514FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBD214FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BCDF653015013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
-				BCDF653C15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD8186B1504F74700B818D1 /* SongAddCell.m in Sources */,
 				BC188BD31507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDF1507647900E38692 /* SongLocal.m in Sources */,
@@ -15668,8 +15711,6 @@
 				BCE35C1B15D66855008C26AC /* SchedulingViewController.m in Sources */,
 				BCE35C4015D6BD58008C26AC /* ShowViewController.m in Sources */,
 				BCE35C5215D7013B008C26AC /* TopBarBackAndTitle.m in Sources */,
-				BCE35E5915D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
-				BCE35E6915D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7C15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071AB815D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972B15DA837600F6E22A /* ProgrammingCell.m in Sources */,
@@ -15703,6 +15744,12 @@
 				BCDABC3415F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3D15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
 				BC31F12D15FB87AB00A8E486 /* DataBase.m in Sources */,
+				BC31F18115FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
+				BC31F18A15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
+				BC31F19315FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
+				BC31F19C15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
+				BC31F1A515FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
+				BC31F1AE15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15827,8 +15874,6 @@
 				BCC7520115E689EF00CF7F7C /* TimeProfile.m in Sources */,
 				BCC7520215E689EF00CF7F7C /* SongUploadCell.m in Sources */,
 				BCC7520315E689EF00CF7F7C /* SongInfoViewController.m in Sources */,
-				BCC7520515E689EF00CF7F7C /* ProgrammingArtistViewController.m in Sources */,
-				BCC7520615E689EF00CF7F7C /* ProgrammingAlbumViewController.m in Sources */,
 				BCC7520715E689EF00CF7F7C /* SongAddCell.m in Sources */,
 				BCC7520815E689EF00CF7F7C /* LocalSongInfoViewController.m in Sources */,
 				BCC7520915E689EF00CF7F7C /* SongLocal.m in Sources */,
@@ -15893,8 +15938,6 @@
 				BCC7524815E689EF00CF7F7C /* SchedulingViewController.m in Sources */,
 				BCC7524915E689EF00CF7F7C /* ShowViewController.m in Sources */,
 				BCC7524A15E689EF00CF7F7C /* TopBarBackAndTitle.m in Sources */,
-				BCC7524B15E689EF00CF7F7C /* ProgrammingLocalViewController.m in Sources */,
-				BCC7524C15E689EF00CF7F7C /* ProgrammingRadioViewController.m in Sources */,
 				BCC7524D15E689EF00CF7F7C /* ProgrammingUploadViewController.m in Sources */,
 				BCC7524E15E689EF00CF7F7C /* ProgrammingViewController.m in Sources */,
 				BCC7524F15E689EF00CF7F7C /* ProgrammingCell.m in Sources */,
@@ -15928,6 +15971,12 @@
 				BCDABC3115F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3A15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
 				BC31F12A15FB87AB00A8E486 /* DataBase.m in Sources */,
+				BC31F17E15FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
+				BC31F18715FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
+				BC31F19015FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
+				BC31F19915FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
+				BC31F1A215FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
+				BC31F1AB15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16052,8 +16101,6 @@
 				BCAAE18F14FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A214FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBCF14FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BCDF652D15013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
-				BCDF653915013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD818681504F74700B818D1 /* SongAddCell.m in Sources */,
 				BC188BD01507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDC1507647900E38692 /* SongLocal.m in Sources */,
@@ -16118,8 +16165,6 @@
 				BCE35C1715D66855008C26AC /* SchedulingViewController.m in Sources */,
 				BCE35C3C15D6BD58008C26AC /* ShowViewController.m in Sources */,
 				BCE35C4E15D7013B008C26AC /* TopBarBackAndTitle.m in Sources */,
-				BCE35E5515D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
-				BCE35E6515D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7815D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071AB415D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972715DA837600F6E22A /* ProgrammingCell.m in Sources */,
@@ -16153,6 +16198,12 @@
 				BCDABC2F15F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3815F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
 				BC31F12815FB87AB00A8E486 /* DataBase.m in Sources */,
+				BC31F17C15FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
+				BC31F18515FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
+				BC31F18E15FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
+				BC31F19715FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
+				BC31F1A015FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
+				BC31F1A915FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16278,8 +16329,6 @@
 				BCAAE19114FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A414FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBD114FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BCDF652F15013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
-				BCDF653B15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD8186A1504F74700B818D1 /* SongAddCell.m in Sources */,
 				BC188BD21507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDE1507647900E38692 /* SongLocal.m in Sources */,
@@ -16344,8 +16393,6 @@
 				BCE35C1A15D66855008C26AC /* SchedulingViewController.m in Sources */,
 				BCE35C3F15D6BD58008C26AC /* ShowViewController.m in Sources */,
 				BCE35C5115D7013B008C26AC /* TopBarBackAndTitle.m in Sources */,
-				BCE35E5815D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
-				BCE35E6815D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7B15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071AB715D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972A15DA837600F6E22A /* ProgrammingCell.m in Sources */,
@@ -16379,6 +16426,12 @@
 				BCDABC3315F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3C15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
 				BC31F12C15FB87AB00A8E486 /* DataBase.m in Sources */,
+				BC31F18015FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
+				BC31F18915FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
+				BC31F19215FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
+				BC31F19B15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
+				BC31F1A415FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
+				BC31F1AD15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

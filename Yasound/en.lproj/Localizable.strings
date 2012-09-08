@@ -190,8 +190,6 @@
 "ProgrammingView_error_title" = "Synchronization";
 "ProgrammingView_error_message" = "An error happened during the synchronization.";
 "ProgrammingView_error_no_playlist_message" = "An error happened: no playlist has been downloaded.";
-"ProgrammingView_segment_titles" = "titles";
-"ProgrammingView_segment_artists" = "artists";
 "ProgrammingView_unknownArtist" = "#Unknown artist";
 "ProgrammingView_unknownAlbum" = "Unknown album";
 "ProgramminView_nb_albums_1" = "1 album";
@@ -201,6 +199,13 @@
 "ProgrammingView_subtitle_error" = "erreur";
 
 "Programming.del" = "Remove";
+
+"Programming.segment.titles" = "Titles";
+"Programming.segment.artists" = "Artists";
+"Programming.segment.genres" = "Genres";
+"Programming.segment.playlists" = "Playlists";
+
+
 
 
 "SongView_title" = "Song";

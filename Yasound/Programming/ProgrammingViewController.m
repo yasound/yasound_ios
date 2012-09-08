@@ -93,9 +93,14 @@
 //    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
 //    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
-    [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_titles", nil) forSegmentAtIndex:0];  
-    [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_artists", nil) forSegmentAtIndex:1];  
-    [_segment addTarget:self action:@selector(onSegmentClicked:) forControlEvents:UIControlEventValueChanged];
+    [_radioSegment setTitle:NSLocalizedString(@"Programming.segment.titles", nil) forSegmentAtIndex:0];
+    [_radioSegment setTitle:NSLocalizedString(@"Programming.segment.artists", nil) forSegmentAtIndex:1];
+
+    [_localSegment setTitle:NSLocalizedString(@"Programming.segment.playlists", nil) forSegmentAtIndex:0];
+    [_localSegment setTitle:NSLocalizedString(@"Programming.segment.genres", nil) forSegmentAtIndex:1];
+    [_localSegment setTitle:NSLocalizedString(@"Programming.segment.titles", nil) forSegmentAtIndex:2];
+
+//    [_segment addTarget:self action:@selector(onSegmentClicked:) forControlEvents:UIControlEventValueChanged];
     
     
     // waiting for the synchronization to be done
@@ -555,9 +560,17 @@
 //}
 
 
-- (IBAction)onSegmentClicked:(id)sender
+- (IBAction)onRadioSegmentClicked:(id)sender
 {
-    NSInteger index = _segment.selectedSegmentIndex;
+    NSInteger index = _radioSegment.selectedSegmentIndex;
+    
+    [self.tableview setSegment:index];
+}
+
+
+- (IBAction)onLocalSegmentClicked:(id)sender
+{
+    NSInteger index = _localSegment.selectedSegmentIndex;
     
     [self.tableview setSegment:index];
 }
@@ -632,21 +645,24 @@
 
     if (itemIndex == PROGRAMMING_WHEEL_ITEM_LOCAL)
     {
-        _segment.enabled = YES;
+        _containerLocalSegment.hidden = NO;
+        _containerRadioSegment.hidden = YES;
         
         ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
         self.tableview = view;
     }
     else if (itemIndex == PROGRAMMING_WHEEL_ITEM_RADIO)
     {
-        _segment.enabled = YES;
+        _containerLocalSegment.hidden = YES;
+        _containerRadioSegment.hidden = NO;
         
         ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
         self.tableview = view;
     }
     else if (itemIndex == PROGRAMMING_WHEEL_ITEM_UPLOADS)
     {
-        _segment.enabled = NO;
+        _containerLocalSegment.hidden = YES;
+        _containerRadioSegment.hidden = YES;
         
         ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
         self.tableview = view;

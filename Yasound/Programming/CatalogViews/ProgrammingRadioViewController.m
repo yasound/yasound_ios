@@ -66,7 +66,7 @@
     if (self)
     {
         self.radio = radio;
-        self.selectedSegmentIndex = SEGMENT_INDEX_ALPHA;
+        self.selectedSegmentIndex = RADIOSEGMENT_INDEX_TITLES;
 //        self.deleteRunning = NO;
         
         self.tableView.delegate = self;
@@ -251,7 +251,7 @@
 {
     NSString* charIndex = [[SongRadioCatalog main].indexMap objectAtIndex:section];
     
-    if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA) {
+    if (self.selectedSegmentIndex == RADIOSEGMENT_INDEX_TITLES) {
         NSArray* songsForLetter = [[SongRadioCatalog main] songsForLetter:charIndex];
         assert(songsForLetter != nil);
         return songsForLetter.count;
@@ -337,7 +337,7 @@
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
 {
-    if (self.selectedSegmentIndex == SEGMENT_INDEX_ARTIST)
+    if (self.selectedSegmentIndex == RADIOSEGMENT_INDEX_ARTISTS)
         return nil;
     
     return [SongRadioCatalog main].indexMap;
@@ -346,7 +346,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
 {
-    if (self.selectedSegmentIndex == SEGMENT_INDEX_ARTIST)
+    if (self.selectedSegmentIndex == RADIOSEGMENT_INDEX_ARTISTS)
         return 0;
     
     return index;
@@ -367,7 +367,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    if (self.selectedSegmentIndex == RADIOSEGMENT_INDEX_TITLES)
         return [self cellAlphaForRowAtIndexPath:indexPath];
     else
         return [self cellFolderForRowAtIndexPath:indexPath];
@@ -503,7 +503,7 @@
     
     
     
-    if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    if (self.selectedSegmentIndex == RADIOSEGMENT_INDEX_TITLES)
     {
         NSString* charIndex = [[SongRadioCatalog main].indexMap objectAtIndex:indexPath.section];
         
