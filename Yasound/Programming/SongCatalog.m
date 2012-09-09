@@ -14,7 +14,7 @@
 
 #import "TimeProfile.h"
 #import "YasoundDataProvider.h"
-
+#import "PlaylistMoulinor.h"
 
 
 
@@ -119,7 +119,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     NSString* albumKey = [self catalogKeyOfAlbum:album];
     
     // build catalog key
-    NSString* catalogKey = [NSString stringWithFormat:@"%@|%@|%@", name, artistKey, albumKey];
+    NSString* catalogKey = [NSString stringWithFormat:@"%@|%@|%@", [name lowercaseString], [artistKey lowercaseString], [albumKey lowercaseString]];
     
     // register artist->artistKey and album->albumKey
     // we need those to request artist and album deletion from programming
@@ -455,12 +455,10 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     for (MPMediaItem* item in songsArray)
     {
         SongLocal* songLocal = [[SongLocal alloc] initWithMediaItem:item];
+
         
         Song* matchedSong = [synchronizedSource objectForKey:songLocal.catalogKey];
-        
-//        // don't include it if it's included in the matched songs already
-//        if (matchedSong != nil)
-//            continue;
+
         //
         // we don't do that anymore. We include all the songs, but a visual mark is displayed if the song is
         // in the radio's programming already
@@ -469,14 +467,6 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         
 
         //LBDEBUG TODO : CLEANING
-//        // before putting this song into the catalog,
-//        // check if it's not uploading already.
-//        Song* uploadingSong = [[SongUploadManager main] getUploadingSong:songLocal.name artist:songLocal.artist album:songLocal.album];
-//        if (uploadingSong != nil)
-//            [songLocal setUploading:YES];
-        
-        // REMEMBER THAT HERE, songLocal is SongLocal* 
-        
         [self catalogWithoutSorting:songLocal usingArtistKey:songLocal.artistKey andAlbumKey:songLocal.albumKey];
         
         

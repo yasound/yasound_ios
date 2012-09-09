@@ -35,7 +35,7 @@
 
 + (NSString*)catalogKeyOfSong:(NSString*)name artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey
 {
-    return [NSString stringWithFormat:@"%@|%@|%@", name, artistKey, albumKey];
+    return [NSString stringWithFormat:@"%@|%@|%@", [name lowercaseString], [artistKey lowercaseString], [albumKey lowercaseString]];
 }
 
 
@@ -89,7 +89,7 @@
         
         
         
-        self.catalogKey = [NSString stringWithString:[SongLocal catalogKeyOfSong:self.name artistKey:self.artistKey albumKey:self.albumKey]];
+        self.catalogKey = [SongLocal catalogKeyOfSong:self.name artistKey:self.artistKey albumKey:self.albumKey];
         
     }
     return self;
