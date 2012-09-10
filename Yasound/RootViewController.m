@@ -29,7 +29,7 @@
 #import "ProfilViewController.h"
 #import "AccountTwitterViewController.h"
 #import "AccountFacebookViewController.h"
-
+#import "WebPageViewController.h"
 
 //LBDEBUG
 //
@@ -174,6 +174,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoTwitterAssociation:) name:NOTIF_GOTO_TWITTER_ASSOCIATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoFacebookAssociation:) name:NOTIF_GOTO_FACEBOOK_ASSOCIATION object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoWebPageView:) name:NOTIF_GOTO_WEB_PAGE_VIEW object:nil];
+    
 
 
     
@@ -903,6 +906,15 @@
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
+
+- (void)onNotifGotoWebPageView:(NSNotification *)notification
+{
+    NSURL* url = notification.object;
+    WebPageViewController* view = [[WebPageViewController alloc] initWithNibName:@"WebPageViewController" bundle:nil withUrl:url andTitle:nil];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
 
 
 

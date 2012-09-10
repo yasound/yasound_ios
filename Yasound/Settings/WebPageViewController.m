@@ -14,12 +14,12 @@
 @synthesize url;
 
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil withUrl:(NSURL*)url andTitle:(NSString*)title
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil withUrl:(NSURL*)u andTitle:(NSString*)title
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.url = url;
+        self.url = u;
         self.title = title;
     }
     
@@ -58,8 +58,8 @@
     
     _webview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
 
-    NSURL* url = [NSURL URLWithString:[APPDELEGATE getServerUrlWith:@"legal/eula.html"]];
-    NSURLRequest* requestObj = [NSURLRequest requestWithURL:url];
+//    NSURL* url = [NSURL URLWithString:[APPDELEGATE getServerUrlWith:@"legal/eula.html"]];
+    NSURLRequest* requestObj = [NSURLRequest requestWithURL:self.url];
     [_webview loadRequest:requestObj];
     
 }

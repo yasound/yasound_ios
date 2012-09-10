@@ -367,8 +367,8 @@ enum MenuDescription
     
     else if (row == ROW_LEGAL)
     {
-        NSURL* url = [NSURL URLWithString:URL_LEGAL];
         NSString* title = NSLocalizedString(@"Menu.legal", nil);
+        NSURL* url = [NSURL URLWithString:[APPDELEGATE getServerUrlWith:URL_LEGAL]];
         
         WebPageViewController* view = [[WebPageViewController alloc] initWithNibName:@"WebPageViewController" bundle:nil withUrl:url andTitle:title];
         [APPDELEGATE.navigationController pushViewController:view animated:YES];

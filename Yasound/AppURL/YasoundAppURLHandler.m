@@ -13,6 +13,8 @@
 @interface YasoundAppURLHandler (internal)
 
 - (BOOL)handleNavigationURL:(NSURL*)url;
+- (BOOL)handleInAppWebURL:(NSURL*)yasoundUrl;
+
 - (BOOL)gotoSelection;
 - (BOOL)gotoFavorites;
 - (BOOL)gotoMyRadios;
@@ -52,8 +54,8 @@ static YasoundAppURLHandler* _main = nil;
         return [self handleNavigationURL:url];
     }
     
-    DLog(@"cannot handle yasound url %@", url);
-    return NO;
+    
+    return [self handleInAppWebURL:url];
 }
 
 - (BOOL)handleNavigationURL:(NSURL*)url
@@ -154,6 +156,19 @@ static YasoundAppURLHandler* _main = nil;
 {
     NSNumber* animated = [NSNumber numberWithBool:NO];
     [[NSNotificationCenter defaultCenter] postNotificationName:notifName object:animated];
+}
+
+
+
+
+- (BOOL)handleInAppWebURL:(NSURL*)yasoundUrl
+{
+    NSString* yasoundUrlStr = yasoundUrl.absoluteString;
+    NSString* httpUrlStr = [yasoundUrlStr stringByReplacingOccurrencesOfString:@"yasound://" withString:@"http://"];
+    NSURL* httpUrl = [NSURL URLWithString:httpUrlStr];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_WEB_PAGE_VIEW object:httpUrl];
+    [httpUrl release];
+    return YES;
 }
 
 @end
