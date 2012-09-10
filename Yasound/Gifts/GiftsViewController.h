@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TabBar.h"
-#import "TopBar.h"
+#import "FPPopoverController.h"
 
 
 @interface GiftsViewController : UIViewController
@@ -17,6 +16,8 @@
 @property (nonatomic, retain) IBOutlet UIImageView* iconHd;
 @property (nonatomic, retain) IBOutlet UILabel* labelHd;
 @property (nonatomic, retain) IBOutlet UISwitch* switchHd;
+
+@property(nonatomic, retain) FPPopoverController* popover;
 
 @property(nonatomic, retain) NSArray* gifts;
 

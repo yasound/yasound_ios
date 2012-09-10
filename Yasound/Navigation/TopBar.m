@@ -411,6 +411,7 @@
         FPPopoverController* popover = [[FPPopoverController alloc] initWithViewController:view];
         popover.contentSize = popoverSize;
         popover.arrowDirection = FPPopoverArrowDirectionAny;
+        view.popover = popover;
         [popover presentPopoverFromView:self.itemHdButton];
         [view release];
         [popover release];
