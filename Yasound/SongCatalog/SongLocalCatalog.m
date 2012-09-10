@@ -34,7 +34,9 @@ static SongLocalCatalog* _main = nil;
         _main = [[SongLocalCatalog alloc] init];
         
         _main.artistsForGenre = [NSMutableDictionary dictionary];
+        _main.songsForGenre = [NSMutableDictionary dictionary];
         _main.artistsForPlaylist = [NSMutableDictionary dictionary];
+        _main.songsForPlaylist = [NSMutableDictionary dictionary];
     }
     return _main;
 }

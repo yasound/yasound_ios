@@ -381,7 +381,7 @@
             subArtist = NSLocalizedString(@"Programmin.nbArtists.1", nil);
         else
             subArtist = NSLocalizedString(@"Programmin.nbArtists.n", nil);
-        subArtist = [subArtist stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", subArtist]];
+        subArtist = [subArtist stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbArtists]];
 
         NSString* subSongs = nil;
         if (nbSongs == 1)
@@ -421,7 +421,7 @@
             subArtist = NSLocalizedString(@"Programmin.nbArtists.1", nil);
         else
             subArtist = NSLocalizedString(@"Programmin.nbArtists.n", nil);
-        subArtist = [subArtist stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", subArtist]];
+        subArtist = [subArtist stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbArtists]];
         
         NSString* subSongs = nil;
         if (nbSongs == 1)
