@@ -17,6 +17,9 @@
 #import "AudioStreamManager.h"
 #import "YasoundDataProvider.h"
 #import "CustomSizedButtonView.h"
+#import "GiftsViewController.h"
+
+#import "FPPopoverController.h"
 
 @implementation TopBar
 
@@ -303,10 +306,7 @@
 
 
 - (void)onHd:(id)sender
-{
-    //LBDEBUG TEMPORARLY
-    return;
-    
+{    
     BOOL run = YES;
     
     if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
@@ -399,9 +399,21 @@
 
     else if (itemId == TopBarItemHd)
     {
-        PurchaseViewController* view = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
-        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+//        PurchaseViewController* view = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
+//        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+//        [view release];
+        
+        // show gifts
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Gift.popover" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        CGSize popoverSize = sheet.frame.size;
+        
+        GiftsViewController* view = [[GiftsViewController alloc] initWithNibName:@"GiftsViewController" bundle:nil];
+        FPPopoverController* popover = [[FPPopoverController alloc] initWithViewController:view];
+        popover.contentSize = popoverSize;
+        popover.arrowDirection = FPPopoverArrowDirectionAny;
+        [popover presentPopoverFromView:self.itemHdButton];
         [view release];
+        [popover release];
     }
 
     else if (itemId == TopBarItemNotif)

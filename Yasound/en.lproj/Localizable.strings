@@ -681,3 +681,13 @@
 
 "GiftDone" = "done";
 "GiftDisabled" = "not available";
+
+"day" = "day";
+"days" = "days";
+"hour" = "hour";
+"hours" = "hours";
+"minute" = "minute";
+"minutes" = "minutes";
+
+"HdTimeLeft" = "%@ left";
+

@@ -670,3 +670,13 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "GiftDone" = "reçu";
 "GiftDisabled" = "indisponible";
 
+"day" = "jour";
+"days" = "jours";
+"hour" = "heure";
+"hours" = "heures";
+"minute" = "minute";
+"minutes" = "minutes";
+
+"HdTimeLeft" = "plus que %@";
+
+

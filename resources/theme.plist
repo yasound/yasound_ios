@@ -3017,6 +3017,13 @@
 		</dict>
 		<key>Gift</key>
 		<dict>
+			<key>popover</key>
+			<dict>
+				<key>width</key>
+				<integer>300</integer>
+				<key>height</key>
+				<integer>380</integer>
+			</dict>
 			<key>name</key>
 			<dict>
 				<key>font</key>
@@ -3035,9 +3042,9 @@
 				<key>height</key>
 				<integer>17</integer>
 				<key>width</key>
-				<integer>200</integer>
+				<integer>160</integer>
 				<key>x</key>
-				<integer>48</integer>
+				<integer>44</integer>
 				<key>y</key>
 				<integer>8</integer>
 			</dict>
@@ -3046,9 +3053,9 @@
 				<key>height</key>
 				<integer>30</integer>
 				<key>width</key>
-				<integer>195</integer>
+				<integer>160</integer>
 				<key>x</key>
-				<integer>48</integer>
+				<integer>44</integer>
 				<key>y</key>
 				<integer>24</integer>
 				<key>font</key>
@@ -3072,7 +3079,7 @@
 				<key>width</key>
 				<integer>30</integer>
 				<key>x</key>
-				<integer>262</integer>
+				<integer>220</integer>
 				<key>y</key>
 				<integer>28</integer>
 				<key>font</key>
@@ -3096,7 +3103,7 @@
 				<key>width</key>
 				<integer>30</integer>
 				<key>x</key>
-				<integer>262</integer>
+				<integer>225</integer>
 				<key>y</key>
 				<integer>19</integer>
 				<key>font</key>
@@ -3120,7 +3127,7 @@
 				<key>width</key>
 				<integer>30</integer>
 				<key>x</key>
-				<integer>262</integer>
+				<integer>220</integer>
 				<key>y</key>
 				<integer>12</integer>
 				<key>font</key>
@@ -3144,7 +3151,7 @@
 				<key>width</key>
 				<integer>68</integer>
 				<key>x</key>
-				<integer>248</integer>
+				<integer>210</integer>
 				<key>y</key>
 				<integer>22</integer>
 				<key>font</key>

@@ -11,10 +11,15 @@
 #import "TopBar.h"
 
 
-@interface GiftsViewController : UIViewController<TopBarDelegate, TabBarDelegate>
+@interface GiftsViewController : UIViewController
 
-@property (nonatomic, retain) IBOutlet TabBar* tabBar;
 @property (nonatomic, retain) IBOutlet UITableView* tableView;
+@property (nonatomic, retain) IBOutlet UIImageView* iconHd;
+@property (nonatomic, retain) IBOutlet UILabel* labelHd;
+@property (nonatomic, retain) IBOutlet UISwitch* switchHd;
+
 @property(nonatomic, retain) NSArray* gifts;
+
+- (IBAction)hdSwitchChanged:(id)sender;
 
 @end

@@ -41,6 +41,8 @@
 #define USKEYcacheMenuDescription @"menuDescriptionV2"
 #define USKEYcacheImageRegisterSize @"imageRegisterSize"
 
+#define USKEYuserWantsHd @"userWantsHd"
+
 
 + (UserSettings*)main;
 

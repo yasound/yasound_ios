@@ -645,6 +645,33 @@
 		40F4C79114BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40F4C79214BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40F4C79314BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
+		40FE9F3715FE16FD00CE615B /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3215FE16FD00CE615B /* FPPopoverController.m */; };
+		40FE9F3815FE16FD00CE615B /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3215FE16FD00CE615B /* FPPopoverController.m */; };
+		40FE9F3915FE16FD00CE615B /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3215FE16FD00CE615B /* FPPopoverController.m */; };
+		40FE9F3A15FE16FD00CE615B /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3215FE16FD00CE615B /* FPPopoverController.m */; };
+		40FE9F3B15FE16FD00CE615B /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3215FE16FD00CE615B /* FPPopoverController.m */; };
+		40FE9F3C15FE16FD00CE615B /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3215FE16FD00CE615B /* FPPopoverController.m */; };
+		40FE9F3D15FE16FD00CE615B /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3215FE16FD00CE615B /* FPPopoverController.m */; };
+		40FE9F3E15FE16FD00CE615B /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3215FE16FD00CE615B /* FPPopoverController.m */; };
+		40FE9F3F15FE16FD00CE615B /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3215FE16FD00CE615B /* FPPopoverController.m */; };
+		40FE9F4015FE16FD00CE615B /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3415FE16FD00CE615B /* FPPopoverView.m */; };
+		40FE9F4115FE16FD00CE615B /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3415FE16FD00CE615B /* FPPopoverView.m */; };
+		40FE9F4215FE16FD00CE615B /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3415FE16FD00CE615B /* FPPopoverView.m */; };
+		40FE9F4315FE16FD00CE615B /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3415FE16FD00CE615B /* FPPopoverView.m */; };
+		40FE9F4415FE16FD00CE615B /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3415FE16FD00CE615B /* FPPopoverView.m */; };
+		40FE9F4515FE16FD00CE615B /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3415FE16FD00CE615B /* FPPopoverView.m */; };
+		40FE9F4615FE16FD00CE615B /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3415FE16FD00CE615B /* FPPopoverView.m */; };
+		40FE9F4715FE16FD00CE615B /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3415FE16FD00CE615B /* FPPopoverView.m */; };
+		40FE9F4815FE16FD00CE615B /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3415FE16FD00CE615B /* FPPopoverView.m */; };
+		40FE9F4915FE16FD00CE615B /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3615FE16FD00CE615B /* FPTouchView.m */; };
+		40FE9F4A15FE16FD00CE615B /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3615FE16FD00CE615B /* FPTouchView.m */; };
+		40FE9F4B15FE16FD00CE615B /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3615FE16FD00CE615B /* FPTouchView.m */; };
+		40FE9F4C15FE16FD00CE615B /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3615FE16FD00CE615B /* FPTouchView.m */; };
+		40FE9F4D15FE16FD00CE615B /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3615FE16FD00CE615B /* FPTouchView.m */; };
+		40FE9F4E15FE16FD00CE615B /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3615FE16FD00CE615B /* FPTouchView.m */; };
+		40FE9F4F15FE16FD00CE615B /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3615FE16FD00CE615B /* FPTouchView.m */; };
+		40FE9F5015FE16FD00CE615B /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3615FE16FD00CE615B /* FPTouchView.m */; };
+		40FE9F5115FE16FD00CE615B /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3615FE16FD00CE615B /* FPTouchView.m */; };
 		B138AA6814E2BAFC0069E08A /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B138AA6714E2BAFC0069E08A /* SongUploader.m */; };
 		B172043F14C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		B172044014C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
@@ -6661,6 +6688,13 @@
 		40F4C78A14BDF40F00A163F9 /* SongUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongUser.m; sourceTree = "<group>"; };
 		40F4C78F14BEEF6F00A163F9 /* NextSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextSong.h; sourceTree = "<group>"; };
 		40F4C79014BEEF6F00A163F9 /* NextSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextSong.m; sourceTree = "<group>"; };
+		40FE9F2215FDF4B600CE615B /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		40FE9F3115FE16FD00CE615B /* FPPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverController.h; sourceTree = "<group>"; };
+		40FE9F3215FE16FD00CE615B /* FPPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverController.m; sourceTree = "<group>"; };
+		40FE9F3315FE16FD00CE615B /* FPPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverView.h; sourceTree = "<group>"; };
+		40FE9F3415FE16FD00CE615B /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
+		40FE9F3515FE16FD00CE615B /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
+		40FE9F3615FE16FD00CE615B /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
 		B138AA6614E2BAFC0069E08A /* SongUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongUploader.h; sourceTree = "<group>"; };
 		B138AA6714E2BAFC0069E08A /* SongUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongUploader.m; sourceTree = "<group>"; };
 		B172043D14C54446007F3FB0 /* BuyLinkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyLinkManager.h; sourceTree = "<group>"; };
@@ -7946,6 +7980,20 @@
 			path = LibTools/ImageResize;
 			sourceTree = SOURCE_ROOT;
 		};
+		40FE9F3015FE16FD00CE615B /* FPPopover */ = {
+			isa = PBXGroup;
+			children = (
+				40FE9F3115FE16FD00CE615B /* FPPopoverController.h */,
+				40FE9F3215FE16FD00CE615B /* FPPopoverController.m */,
+				40FE9F3315FE16FD00CE615B /* FPPopoverView.h */,
+				40FE9F3415FE16FD00CE615B /* FPPopoverView.m */,
+				40FE9F3515FE16FD00CE615B /* FPTouchView.h */,
+				40FE9F3615FE16FD00CE615B /* FPTouchView.m */,
+			);
+			name = FPPopover;
+			path = ThirdParties/FPPopover;
+			sourceTree = SOURCE_ROOT;
+		};
 		B172043C14C54446007F3FB0 /* BuyLink */ = {
 			isa = PBXGroup;
 			children = (
@@ -8784,6 +8832,7 @@
 				BCDC96E814AB7D9000D54631 /* json-framework */,
 				BCDC967214AB7D8900D54631 /* Google Analytics SDK */,
 				BCDC963D14AB7D6E00D54631 /* ASIHTTPRequest */,
+				40FE9F3015FE16FD00CE615B /* FPPopover */,
 			);
 			name = "Third Parties";
 			sourceTree = "<group>";
@@ -9654,6 +9703,7 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
+				40FE9F2215FDF4B600CE615B /* AddressBook.framework */,
 				BCC7518015E686C400CF7F7C /* StoreKit.framework */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				BCDC963A14AB7D3500D54631 /* Third Parties */,
@@ -14589,6 +14639,9 @@
 				4029469F15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946AB15F8E9A900F73830 /* GiftCell.m in Sources */,
 				402946B715F910D900F73830 /* GiftsViewController.m in Sources */,
+				40FE9F3E15FE16FD00CE615B /* FPPopoverController.m in Sources */,
+				40FE9F4715FE16FD00CE615B /* FPPopoverView.m in Sources */,
+				40FE9F5015FE16FD00CE615B /* FPTouchView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14814,6 +14867,9 @@
 				402946A015F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946AC15F8E9A900F73830 /* GiftCell.m in Sources */,
 				402946B815F910D900F73830 /* GiftsViewController.m in Sources */,
+				40FE9F3F15FE16FD00CE615B /* FPPopoverController.m in Sources */,
+				40FE9F4815FE16FD00CE615B /* FPPopoverView.m in Sources */,
+				40FE9F5115FE16FD00CE615B /* FPTouchView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15035,6 +15091,9 @@
 				4029469E15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946AA15F8E9A900F73830 /* GiftCell.m in Sources */,
 				402946B615F910D900F73830 /* GiftsViewController.m in Sources */,
+				40FE9F3D15FE16FD00CE615B /* FPPopoverController.m in Sources */,
+				40FE9F4615FE16FD00CE615B /* FPPopoverView.m in Sources */,
+				40FE9F4F15FE16FD00CE615B /* FPTouchView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15260,6 +15319,9 @@
 				4029469B15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946A715F8E9A900F73830 /* GiftCell.m in Sources */,
 				402946B315F910D900F73830 /* GiftsViewController.m in Sources */,
+				40FE9F3A15FE16FD00CE615B /* FPPopoverController.m in Sources */,
+				40FE9F4315FE16FD00CE615B /* FPPopoverView.m in Sources */,
+				40FE9F4C15FE16FD00CE615B /* FPTouchView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15485,6 +15547,9 @@
 				4029469915F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946A515F8E9A900F73830 /* GiftCell.m in Sources */,
 				402946B115F910D900F73830 /* GiftsViewController.m in Sources */,
+				40FE9F3815FE16FD00CE615B /* FPPopoverController.m in Sources */,
+				40FE9F4115FE16FD00CE615B /* FPPopoverView.m in Sources */,
+				40FE9F4A15FE16FD00CE615B /* FPTouchView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15711,6 +15776,9 @@
 				4029469D15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946A915F8E9A900F73830 /* GiftCell.m in Sources */,
 				402946B515F910D900F73830 /* GiftsViewController.m in Sources */,
+				40FE9F3C15FE16FD00CE615B /* FPPopoverController.m in Sources */,
+				40FE9F4515FE16FD00CE615B /* FPPopoverView.m in Sources */,
+				40FE9F4E15FE16FD00CE615B /* FPTouchView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15936,6 +16004,9 @@
 				4029469A15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946A615F8E9A900F73830 /* GiftCell.m in Sources */,
 				402946B215F910D900F73830 /* GiftsViewController.m in Sources */,
+				40FE9F3915FE16FD00CE615B /* FPPopoverController.m in Sources */,
+				40FE9F4215FE16FD00CE615B /* FPPopoverView.m in Sources */,
+				40FE9F4B15FE16FD00CE615B /* FPTouchView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16161,6 +16232,9 @@
 				4029469815F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946A415F8E9A900F73830 /* GiftCell.m in Sources */,
 				402946B015F910D900F73830 /* GiftsViewController.m in Sources */,
+				40FE9F3715FE16FD00CE615B /* FPPopoverController.m in Sources */,
+				40FE9F4015FE16FD00CE615B /* FPPopoverView.m in Sources */,
+				40FE9F4915FE16FD00CE615B /* FPTouchView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16387,6 +16461,9 @@
 				4029469C15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946A815F8E9A900F73830 /* GiftCell.m in Sources */,
 				402946B415F910D900F73830 /* GiftsViewController.m in Sources */,
+				40FE9F3B15FE16FD00CE615B /* FPPopoverController.m in Sources */,
+				40FE9F4415FE16FD00CE615B /* FPPopoverView.m in Sources */,
+				40FE9F4D15FE16FD00CE615B /* FPTouchView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

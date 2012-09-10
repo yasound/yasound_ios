@@ -12,6 +12,7 @@
 @synthesize active;
 @synthesize expiration_date;
 @synthesize service;
+@synthesize service_type;
 
 - (BOOL)isActive
 {
@@ -30,6 +31,10 @@
     return str;
 }
 
+- (BOOL)isHd
+{
+    return [self.service_type isEqualToNumber:[NSNumber numberWithInt:0]];
+}
 
 //- (void)loadPropertiesFromDictionary:(NSDictionary*)dict
 //{

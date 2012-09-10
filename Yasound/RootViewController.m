@@ -25,7 +25,7 @@
 #import "RadioSelectionViewController.h"
 #import "TabBar.h"
 #import "MyRadiosViewController.h"
-#import "GiftsViewController.h"
+//#import "GiftsViewController.h"
 #import "ProfilViewController.h"
 #import "AccountTwitterViewController.h"
 #import "AccountFacebookViewController.h"
@@ -841,9 +841,9 @@
     
 //    [self gotoMenuAnimated:NO];
     
-    GiftsViewController* view = [[GiftsViewController alloc] initWithNibName:@"GiftsViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:animated];
-    [view release];
+//    GiftsViewController* view = [[GiftsViewController alloc] initWithNibName:@"GiftsViewController" bundle:nil];
+//    [self.navigationController pushViewController:view animated:animated];
+//    [view release];
 }
 
 
