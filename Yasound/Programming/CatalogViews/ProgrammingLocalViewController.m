@@ -24,6 +24,7 @@
 #import "RootViewController.h"
 #import "LocalSongInfoViewController.h"
 #import "SongAddCell.h"
+#import "CollectionAddCell.h"
 #import "ProgrammingRadioViewController.h"
 #import "ProgrammingUploadViewController.h"
 #import "YasoundAppDelegate.h"
@@ -170,14 +171,14 @@
 
     //YATEST
     //LBDEBUG TIMEPROFILE ALERTVIEW
-    {
-        CGFloat interval = [[TimeProfile main] interval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"local" message:[NSString stringWithFormat:@"%.2fs for %d songs", interval, count] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];
-        return;
-
-    }
+//    {
+//        CGFloat interval = [[TimeProfile main] interval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
+//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"local" message:[NSString stringWithFormat:@"%.2fs for %d songs", interval, count] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [av show];
+//        [av release];
+//        return;
+//
+//    }
     /////////
 
     if (count == 0) {
@@ -364,71 +365,130 @@
 
         return cell;
     }
-    else if ((self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES) || (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_PLAYLISTS))
-    {
-        static NSString* CellIdentifier = @"CellGenre";
+    
+    else if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES) {
+
+        static NSString* CellAddIdentifier = @"CellCollection";
+
+        NSArray* collections = [[SongLocalCatalog main] genresAll];
+        NSString* collection = [collections objectAtIndex:indexPath.row];
+        NSInteger nbItems = [[SongLocalCatalog main] artistsForGenre:collection].count;
+
+        NSString* subtitle;
+        if (nbItems == 1)
+            subtitle = NSLocalizedString(@"Programmin.nbArtists.1", nil);
+        else
+            subtitle = NSLocalizedString(@"Programmin.nbArtists.n", nil);
+
+        subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbItems]];
         
-        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        CollectionAddCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
         
-        if (cell == nil) 
+        if (cell == nil)
         {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-
-            cell.selectionStyle = UITableViewCellSelectionStyleGray;
-            
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            UIImageView* di = [sheet makeImage];
-            cell.accessoryView = di;
-            [di release];
-            
-            sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
-            cell.textLabel.textColor = [sheet fontTextColor];
-            cell.textLabel.font = [sheet makeFont];
-            
-            
-            sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            cell.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
-            cell.detailTextLabel.textColor = [sheet fontTextColor];
-            cell.detailTextLabel.font = [sheet makeFont];
+            cell = [[[CollectionAddCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier genre:collection subtitle:subtitle forRadio:self.radio] autorelease];
         }
-        
-        if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES) {
-            
-            NSArray* collections = [[SongLocalCatalog main] genresAll];
-            NSString* collection = [collections objectAtIndex:indexPath.row];
-            NSInteger nbItems = [[SongLocalCatalog main] artistsForGenre:collection].count;
-            
-            cell.textLabel.text = collection;
-            
-            if (nbItems == 1)
-                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.1", nil);
-            else
-                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.n", nil);
-            
-            cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbItems]];
-        }
-        else if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_PLAYLISTS) {
-            
-            NSArray* collections = [[SongLocalCatalog main] playlistsAll];
-            NSString* collection = [collections objectAtIndex:indexPath.row];
-            NSInteger nbItems = [[SongLocalCatalog main] artistsForPlaylist:collection].count;
-            
-            cell.textLabel.text = collection;
-            
-            if (nbItems == 1)
-                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.1", nil);
-            else
-                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.n", nil);
-            
-            cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbItems]];
-        }
-
+        else
+            [cell updateGenre:collection subtitle:subtitle];
         
         return cell;
+        
     }
     
+    else if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_PLAYLISTS) {
+
+        static NSString* CellAddIdentifier = @"CellCollection";
+
+        NSArray* collections = [[SongLocalCatalog main] playlistsAll];
+        NSString* collection = [collections objectAtIndex:indexPath.row];
+        NSInteger nbItems = [[SongLocalCatalog main] artistsForPlaylist:collection].count;
+
+        NSString* subtitle;
+        if (nbItems == 1)
+            subtitle = NSLocalizedString(@"Programmin.nbArtists.1", nil);
+        else
+            subtitle = NSLocalizedString(@"Programmin.nbArtists.n", nil);
+        
+        subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbItems]];
+        
+        CollectionAddCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
+        
+        if (cell == nil)
+        {
+            cell = [[[CollectionAddCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier playlist:collection subtitle:subtitle forRadio:self.radio] autorelease];
+        }
+        else
+            [cell updatePlaylist:collection subtitle:subtitle];
+        
+        return cell;
+        
+    }
+    
+
+         
+//    static NSString* CellAddIdentifier = @"CellGenre";
+//
+//    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//        
+//        if (cell == nil) 
+//        {
+//            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+//
+//            cell.selectionStyle = UITableViewCellSelectionStyleGray;
+//            
+//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            UIImageView* di = [sheet makeImage];
+//            cell.accessoryView = di;
+//            [di release];
+//            
+//            sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
+//            cell.textLabel.textColor = [sheet fontTextColor];
+//            cell.textLabel.font = [sheet makeFont];
+//            
+//            
+//            sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            cell.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
+//            cell.detailTextLabel.textColor = [sheet fontTextColor];
+//            cell.detailTextLabel.font = [sheet makeFont];
+//        }
+//        
+//        if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES) {
+//            
+//            NSArray* collections = [[SongLocalCatalog main] genresAll];
+//            NSString* collection = [collections objectAtIndex:indexPath.row];
+//            NSInteger nbItems = [[SongLocalCatalog main] artistsForGenre:collection].count;
+//            
+//            cell.textLabel.text = collection;
+//            
+//            if (nbItems == 1)
+//                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.1", nil);
+//            else
+//                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.n", nil);
+//            
+//            cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbItems]];
+//        }
+//        else if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_PLAYLISTS) {
+//            
+//            NSArray* collections = [[SongLocalCatalog main] playlistsAll];
+//            NSString* collection = [collections objectAtIndex:indexPath.row];
+//            NSInteger nbItems = [[SongLocalCatalog main] artistsForPlaylist:collection].count;
+//            
+//            cell.textLabel.text = collection;
+//            
+//            if (nbItems == 1)
+//                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.1", nil);
+//            else
+//                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.n", nil);
+//            
+//            cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbItems]];
+//        }
+//
+//        
+//        return cell;
+//    }
+//    
     
     
     return nil;

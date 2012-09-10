@@ -1073,6 +1073,15 @@
 		BC31F1BA15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
 		BC31F1BB15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
 		BC31F1BC15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
+		BC31F1E915FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
+		BC31F1EA15FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
+		BC31F1EB15FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
+		BC31F1EC15FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
+		BC31F1ED15FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
+		BC31F1EE15FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
+		BC31F1EF15FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
+		BC31F1F015FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
+		BC31F1F115FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
 		BC355BD615BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
 		BC355BD715BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
 		BC355BD815BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
@@ -6766,6 +6775,8 @@
 		BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingRadioViewController.m; sourceTree = "<group>"; };
 		BC31F1B215FBBE6F00A8E486 /* ProgrammingCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingCollectionViewController.h; sourceTree = "<group>"; };
 		BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingCollectionViewController.m; sourceTree = "<group>"; };
+		BC31F1E715FD5ED000A8E486 /* CollectionAddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionAddCell.h; path = Programming/CollectionAddCell.h; sourceTree = "<group>"; };
+		BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionAddCell.m; path = Programming/CollectionAddCell.m; sourceTree = "<group>"; };
 		BC355BCD15BD4F9100305C56 /* GiftsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiftsViewController.h; path = Yasound/Tabs/GiftsViewController.h; sourceTree = SOURCE_ROOT; };
 		BC355BCE15BD4F9100305C56 /* GiftsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GiftsViewController.m; path = Yasound/Tabs/GiftsViewController.m; sourceTree = SOURCE_ROOT; };
 		BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GiftsViewController.xib; path = Yasound/Tabs/GiftsViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -8496,6 +8507,8 @@
 				BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */,
 				BCD818661504F74700B818D1 /* SongAddCell.h */,
 				BCD818671504F74700B818D1 /* SongAddCell.m */,
+				BC31F1E715FD5ED000A8E486 /* CollectionAddCell.h */,
+				BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */,
 				BC1039AF14F7F8EA007C5496 /* SongUploadManager.h */,
 				BC1039B014F7F8EA007C5496 /* SongUploadManager.m */,
 				BCAAE1A014FBF10500B7F2B4 /* SongUploadCell.h */,
@@ -14604,6 +14617,7 @@
 				BC31F19E15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1B015FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1BB15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
+				BC31F1F015FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14830,6 +14844,7 @@
 				BC31F19F15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1B115FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1BC15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
+				BC31F1F115FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15052,6 +15067,7 @@
 				BC31F19D15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1AF15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1BA15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
+				BC31F1EF15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15278,6 +15294,7 @@
 				BC31F19A15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1AC15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B715FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
+				BC31F1EC15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15504,6 +15521,7 @@
 				BC31F19815FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1AA15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B515FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
+				BC31F1EA15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15731,6 +15749,7 @@
 				BC31F19C15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1AE15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B915FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
+				BC31F1EE15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15957,6 +15976,7 @@
 				BC31F19915FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1AB15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B615FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
+				BC31F1EB15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16183,6 +16203,7 @@
 				BC31F19715FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1A915FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B415FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
+				BC31F1E915FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16410,6 +16431,7 @@
 				BC31F19B15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1AD15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B815FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
+				BC31F1ED15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

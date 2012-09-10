@@ -170,14 +170,14 @@
 
     //YATEST
     //LBDEBUG TIMEPROFILE ALERTVIEW
-    {
-        CGFloat interval = [[TimeProfile main] interval:TIMEPROFILE_BUILD inMilliseconds:NO];
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"radio" message:[NSString stringWithFormat:@"%.2fs for %d songs", interval, count] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];
-        return;
-        
-    }
+//    {
+//        CGFloat interval = [[TimeProfile main] interval:TIMEPROFILE_BUILD inMilliseconds:NO];
+//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"radio" message:[NSString stringWithFormat:@"%.2fs for %d songs", interval, count] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [av show];
+//        [av release];
+//        return;
+//        
+//    }
     /////////
 
     
