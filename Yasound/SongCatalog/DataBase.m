@@ -35,7 +35,7 @@ static DataBase* _main = nil;
         [[NSFileManager defaultManager] removeItemAtPath:self.dbPath error:nil];
     }
     
-    [self dealloc];
+    [super dealloc];
 
 }
 

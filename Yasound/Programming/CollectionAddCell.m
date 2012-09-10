@@ -77,7 +77,7 @@
 - (void)commitInit {
 
         self.selectionStyle = UITableViewCellSelectionStyleGray;
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
     
     
@@ -101,6 +101,13 @@
         self.detailedLabel.frame = [self updateToRect:sheet.frame withOffset:offset withInset:(offset + 16)];
         [self addSubview:self.detailedLabel];
         
+    
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* di = [sheet makeImage];
+    self.accessoryView = di;
+    [di release];
+
         
 //        if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
 //        {
