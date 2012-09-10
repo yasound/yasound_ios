@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "YaViewController.h"
+#import "ProgrammingCatalogViewController.h"
 #import "SongCatalog.h"
 #import "ProgrammingAlbumViewController.h"
 
-@interface ProgrammingArtistViewController : UITableViewController <UIActionSheetDelegate>
+@interface ProgrammingArtistViewController : ProgrammingCatalogViewController <UIActionSheetDelegate>
 {
 //    IBOutlet UIBarButtonItem* _backBtn;
 //    IBOutlet UIBarButtonItem* _nowPlayingButton;

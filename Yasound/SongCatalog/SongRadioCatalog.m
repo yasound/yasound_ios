@@ -361,6 +361,10 @@ static SongRadioCatalog* _main = nil;
     self.artistsForLetter = nil;
     self.albumsForArtist = nil;
     self.songsForArtistAlbum = nil;
+    
+    // and call for a GUI refresh
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:song];
+
 }
 
 
@@ -393,6 +397,9 @@ static SongRadioCatalog* _main = nil;
     self.artistsForLetter = nil;
     self.albumsForArtist = nil;
     self.songsForArtistAlbum = nil;
+    
+    // and call for a GUI refresh
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:song];
 }
 
 

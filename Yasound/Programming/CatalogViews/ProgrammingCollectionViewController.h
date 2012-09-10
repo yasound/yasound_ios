@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "YaViewController.h"
+#import "ProgrammingCatalogViewController.h"
 #import "SongCatalog.h"
 #import "Radio.h"
 #import "ProgrammingArtistViewController.h"
 
 
-@interface ProgrammingCollectionViewController : UITableViewController <UIActionSheetDelegate>
+@interface ProgrammingCollectionViewController : ProgrammingCatalogViewController <UIActionSheetDelegate>
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, assign) SongCatalog* catalog;

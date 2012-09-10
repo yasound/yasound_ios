@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "YaViewController.h"
+#import "ProgrammingCatalogViewController.h"
 #import "Radio.h"
 #import "ProgrammingViewController.h"
 #import "ProgrammingArtistViewController.h"
 #import "ObjectButton.h"
 
-@interface ProgrammingRadioViewController : UITableViewController <UIActionSheetDelegate>
+@interface ProgrammingRadioViewController : ProgrammingCatalogViewController <UIActionSheetDelegate>
 {
 //    IBOutlet UIBarButtonItem* _synchroBtn;
     

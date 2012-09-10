@@ -434,10 +434,10 @@
     //LBDEBUG
     assert(0);
     
-    [[SongCatalog synchronizedCatalog] removeSynchronizedSong:song];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:self];
+    [[SongRadioCatalog main] updateSongRemovedFromProgramming:song];
+    [[SongLocalCatalog main] updateSongRemovedFromProgramming:song];
 
-    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 

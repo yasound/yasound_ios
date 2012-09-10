@@ -184,23 +184,22 @@
     {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongAddView_cant_add_title", nil) message:NSLocalizedString(@"SongAddView_cant_add_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
-        [av release];  
+        [av release];
         return;
     }
-
+    
     BOOL error;
-    BOOL warning = [[UserSettings main] boolForKey:USKEYuploadLegalWarning error:&error];                    
+    BOOL warning = [[UserSettings main] boolForKey:USKEYuploadLegalWarning error:&error];
     if (error || warning)
     {
         _legalUploadWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongUpload_warning_title", nil) message:NSLocalizedString(@"SongUpload_warning_message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:NSLocalizedString(@"Button_iAgree", nil),nil ];
         [_legalUploadWarning show];
-        [_legalUploadWarning release];  
+        [_legalUploadWarning release];
     }
     else
-    [self requestUpload];
+        [self requestUpload];
 
 }
-
 
 
 
@@ -214,7 +213,7 @@
         [self requestUpload];
         return;
     }
-
+    
     
     if ((alertView == _addedUploadWarning) && (buttonIndex == 1))
     {
@@ -227,22 +226,22 @@
 {
     BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
     
-        
+    
     BOOL startUploadNow = isWifi;
     
     SongUploading* songUploading = [SongUploading new];
     songUploading.songLocal = self.song;
     songUploading.radio_id = self.radio.id;
     
-   // add an upload job to the queue
+    // add an upload job to the queue
     [[SongUploadManager main] addSong:songUploading startUploadNow:startUploadNow];
     
     // refresh gui
     [self update:self.song];
     
-//    // and flag the current song as "uploading song"
-//    [song setProgrammed
-//    [self update:song];
+    //    // and flag the current song as "uploading song"
+    //    [song setProgrammed
+    //    [self update:song];
     
     if (!isWifi && ![SongUploadManager main].notified3G)
     {
@@ -250,8 +249,8 @@
         
         _wifiWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_add_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_add_WIFI_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [_wifiWarning show];
-        [_wifiWarning release];  
-        return; 
+        [_wifiWarning release];
+        return;
     }
     else
     {
@@ -261,13 +260,18 @@
         {
             _addedUploadWarning = [[UIAlertView alloc] initWithTitle:@"Yasound" message:NSLocalizedString(@"SongAddView_added", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_OK", nil) otherButtonTitles:NSLocalizedString(@"Button_dontShowAgain", nil),nil ];
             [_addedUploadWarning show];
-            [_addedUploadWarning release];  
+            [_addedUploadWarning release];
         }
-
+        
         // [ActivityAlertView showWithTitle:NSLocalizedString(@"", nil) closeAfterTimeInterval:1];
     }
     
 }
+
+
+
+
+
 
 
 

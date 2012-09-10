@@ -209,13 +209,13 @@
     UITableViewCell* cell = [info objectForKey:@"userData"];
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
 
-    //LBDEBUG
-    assert(0);
     
-    [[SongCatalog synchronizedCatalog] removeSynchronizedSong:song];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:self];
+    // clean catalogs and wait for the refresh notifs
+    [[SongRadioCatalog main] updateSongRemovedFromProgramming:song];
+    [[SongLocalCatalog main] updateSongRemovedFromProgramming:song];
 
-    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+//    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 
@@ -265,25 +265,18 @@
 
 - (void)onNotifSongAdded:(NSNotification*)notif
 {
-    
     [self.tableView reloadData];
 }
 
 
 - (void)onNotifSongRemoved:(NSNotification*)notif
 {    
-    UIViewController* sender = notif.object;
-    
-    if (sender != self)
-        [self.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 
 - (void)onNotifSongUpdated:(NSNotification*)notif
 {
-    UIViewController* sender = notif.object;
-    
-    if (sender != self)
         [self.tableView reloadData];
 }
 

@@ -15,6 +15,7 @@
     UIAlertView* _wifiWarning;
     UIAlertView* _legalUploadWarning;
     UIAlertView* _addedUploadWarning;
+    
 }
 
 @property (nonatomic, assign) SongLocal* song;

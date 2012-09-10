@@ -220,32 +220,6 @@
 }
 
 
-// server's callback
-- (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
-{
-    DLog(@"onSongDeleted for Song %@", song.name);  
-    DLog(@"info %@", info);
-    
-    BOOL success = NO;
-    NSNumber* nbsuccess = [info objectForKey:@"success"];
-    if (nbsuccess != nil)
-        success = [nbsuccess boolValue];
-    
-    DLog(@"success %d", success);
-    
-    UITableViewCell* cell = [info objectForKey:@"userData"];
-    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
-
-    //LBDEBUG
-    assert(0);
-    
-    [[SongCatalog synchronizedCatalog] removeSynchronizedSong:song];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:self];
-
-    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-}
-
-
 
 
 
@@ -335,42 +309,6 @@
 }
 
 
-
-
-#pragma mark - IBActions
-
-
-
-- (void)onNotifSongAdded:(NSNotification*)notif
-{
-    
-    [self.tableView reloadData];
-}
-
-
-- (void)onNotifSongRemoved:(NSNotification*)notif
-{    
-    UIViewController* sender = notif.object;
-    
-    if (sender != self)
-        [self.tableView reloadData];
-}
-
-
-- (void)onNotifSongUpdated:(NSNotification*)notif
-{
-    UIViewController* sender = notif.object;
-    
-    if (sender != self)
-        [self.tableView reloadData];
-}
-
-
-
-- (void)onNotificationUploadCanceled:(NSNotification*)notif
-{
-    [self.tableView reloadData];
-}
 
 
 

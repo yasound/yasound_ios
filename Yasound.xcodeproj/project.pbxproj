@@ -1159,6 +1159,15 @@
 		BC384A9D15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC384A9415F0D4F60086A9A1 /* ProfilCellRadio.m */; };
 		BC384A9E15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC384A9415F0D4F60086A9A1 /* ProfilCellRadio.m */; };
 		BC384A9F15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC384A9415F0D4F60086A9A1 /* ProfilCellRadio.m */; };
+		BC3A5D7315FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3A5D7215FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m */; };
+		BC3A5D7415FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3A5D7215FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m */; };
+		BC3A5D7515FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3A5D7215FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m */; };
+		BC3A5D7615FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3A5D7215FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m */; };
+		BC3A5D7715FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3A5D7215FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m */; };
+		BC3A5D7815FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3A5D7215FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m */; };
+		BC3A5D7915FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3A5D7215FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m */; };
+		BC3A5D7A15FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3A5D7215FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m */; };
+		BC3A5D7B15FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3A5D7215FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m */; };
 		BC3FA66314E93B660055AB4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
 		BC3FA66414E93B660055AB4A /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BC3FA66714E93B660055AB4A /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
@@ -6792,6 +6801,8 @@
 		BC384A8915F0BA4A0086A9A1 /* ProfilScrollviewRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilScrollviewRow.m; sourceTree = "<group>"; };
 		BC384A9315F0D4F60086A9A1 /* ProfilCellRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilCellRadio.h; sourceTree = "<group>"; };
 		BC384A9415F0D4F60086A9A1 /* ProfilCellRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilCellRadio.m; sourceTree = "<group>"; };
+		BC3A5D7115FE4F4A00E1DF65 /* ProgrammingCatalogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingCatalogViewController.h; sourceTree = "<group>"; };
+		BC3A5D7215FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingCatalogViewController.m; sourceTree = "<group>"; };
 		BC3FA77C14E93B660055AB4A /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC40971315DA7FB000F6E22A /* tableviewCellImageMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableviewCellImageMask.png; sourceTree = "<group>"; };
 		BC40971415DA7FB000F6E22A /* tableviewCellImageMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableviewCellImageMask@2x.png"; sourceTree = "<group>"; };
@@ -8155,6 +8166,8 @@
 		BC31F16F15FBB72300A8E486 /* CatalogViews */ = {
 			isa = PBXGroup;
 			children = (
+				BC3A5D7115FE4F4A00E1DF65 /* ProgrammingCatalogViewController.h */,
+				BC3A5D7215FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m */,
 				BC31F1B215FBBE6F00A8E486 /* ProgrammingCollectionViewController.h */,
 				BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */,
 				BC31F17015FBB72300A8E486 /* ProgrammingAlbumViewController.h */,
@@ -14618,6 +14631,7 @@
 				BC31F1B015FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1BB15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC31F1F015FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
+				BC3A5D7A15FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14845,6 +14859,7 @@
 				BC31F1B115FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1BC15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC31F1F115FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
+				BC3A5D7B15FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15068,6 +15083,7 @@
 				BC31F1AF15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1BA15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC31F1EF15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
+				BC3A5D7915FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15295,6 +15311,7 @@
 				BC31F1AC15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B715FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC31F1EC15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
+				BC3A5D7615FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15522,6 +15539,7 @@
 				BC31F1AA15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B515FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC31F1EA15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
+				BC3A5D7415FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15750,6 +15768,7 @@
 				BC31F1AE15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B915FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC31F1EE15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
+				BC3A5D7815FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15977,6 +15996,7 @@
 				BC31F1AB15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B615FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC31F1EB15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
+				BC3A5D7515FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16204,6 +16224,7 @@
 				BC31F1A915FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B415FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC31F1E915FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
+				BC3A5D7315FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16432,6 +16453,7 @@
 				BC31F1AD15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B815FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC31F1ED15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
+				BC3A5D7715FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

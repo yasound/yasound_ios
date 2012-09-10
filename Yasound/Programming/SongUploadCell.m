@@ -14,6 +14,8 @@
 #import "YasoundReachability.h"
 #import "SongUploading.h"
 #import "WebImageView.h"
+#import "SongRadioCatalog.h"
+#import "SongLocalCatalog.h"
 
 @implementation SongUploadCell
 
@@ -328,12 +330,9 @@
     // update the GUI, using the same item
     [self update:self.item];
 
-    
-    // add the song to the catalog of synchronized catalog (we dont want to re-generate it entirely)
-    [[SongCatalog synchronizedCatalog] insertAndEnableSong:song.songLocal];
-    
-    // and let the views know about it
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:song.songLocal];
+    // update the song catalogs
+    [[SongRadioCatalog main] updateSongAddedToProgramming:song.songLocal];
+    [[SongLocalCatalog main] updateSongAddedToProgramming:song.songLocal];
 }
 
 

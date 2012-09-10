@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "WheelSelector.h"
 #import "Radio.h"
+#import "ProgrammingCatalogViewController.h"
 #import "ProgrammingViewController.h"
 #import "ProgrammingCollectionViewController.h"
 //#import "ProgrammingGenreViewController.h"
 
-@interface ProgrammingLocalViewController : UITableViewController
+@interface ProgrammingLocalViewController : ProgrammingCatalogViewController
 
 @property (nonatomic, retain) Radio* radio;
 //@property (nonatomic, retain) NSMutableDictionary* sortedArtists;
