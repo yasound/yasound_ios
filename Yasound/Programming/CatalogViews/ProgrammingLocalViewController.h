@@ -25,7 +25,7 @@
 //@property (nonatomic, retain) ProgrammingGenreViewController* genreVC;
 
 
-- (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio;
+- (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio withSegmentIndex:(NSInteger)segmentIndex;
 
 - (void)setSegment:(NSInteger)index;
 

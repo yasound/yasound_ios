@@ -76,12 +76,13 @@
 
 
 
-- (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio
+- (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio withSegmentIndex:(NSInteger)segmentIndex
 {
     self = [super initWithStyle:style];
     if (self)
     {
-        self.selectedSegmentIndex = LOCALSEGMENT_INDEX_PLAYLISTS;
+        //self.selectedSegmentIndex = LOCALSEGMENT_INDEX_PLAYLISTS;
+        self.selectedSegmentIndex = segmentIndex;
         
         self.radio = radio;
         

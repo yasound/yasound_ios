@@ -648,7 +648,7 @@
         _containerLocalSegment.hidden = NO;
         _containerRadioSegment.hidden = YES;
         
-        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
+        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio withSegmentIndex:_localSegment.selectedSegmentIndex];
         self.tableview = view;
     }
     else if (itemIndex == PROGRAMMING_WHEEL_ITEM_RADIO)
