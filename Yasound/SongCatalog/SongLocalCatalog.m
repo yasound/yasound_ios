@@ -11,6 +11,8 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "SongLocal.h"
 #import "DataBase.h"
+#import "RootViewController.h"
+#import "SongRadioCatalog.h"
 //LBDEBUG TEMPORARLY
 //#import "PlaylistMoulinor.h"
 
@@ -32,11 +34,6 @@ static SongLocalCatalog* _main = nil;
     
     if (_main == nil) {
         _main = [[SongLocalCatalog alloc] init];
-        
-        _main.artistsForGenre = [NSMutableDictionary dictionary];
-        _main.songsForGenre = [NSMutableDictionary dictionary];
-        _main.artistsForPlaylist = [NSMutableDictionary dictionary];
-        _main.songsForPlaylist = [NSMutableDictionary dictionary];
     }
     return _main;
 }
@@ -51,6 +48,28 @@ static SongLocalCatalog* _main = nil;
     _main = nil;
 }
 
+- (void)dealloc {
+    
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
+}
+
+
+- (id)init {
+    
+    if (self = [super init]) {
+     
+        self.artistsForGenre = [NSMutableDictionary dictionary];
+        self.songsForGenre = [NSMutableDictionary dictionary];
+        self.artistsForPlaylist = [NSMutableDictionary dictionary];
+        self.songsForPlaylist = [NSMutableDictionary dictionary];
+
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAddToProgramming:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoveFromProgramming:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongUpdated:) name:NOTIF_PROGAMMING_SONG_UPDATED object:nil];
+    }
+    return self;
+}
 
 
 - (void)dump
@@ -433,6 +452,56 @@ static SongLocalCatalog* _main = nil;
 
 
 
+
+
+
+
+
+
+
+
+
+#pragma mark - Notifications
+
+
+
+- (void)updateSongAddedToProgramming:(Song*)song {
+    
+    assert(song);
+    assert([song isKindOfClass:[SongLocal class]]);
+    
+    [song setIsProgrammed:YES];
+}
+
+
+- (void)updateSongRemovedFromProgramming:(Song*)song {
+    
+    assert(song);
+    assert([song isKindOfClass:[Song class]]);
+
+    [song setIsProgrammed:NO];
+}
+
+
+- (void)updateSongUpdated:(SongLocal*)song {
+    
+    assert(song);
+    assert([song isKindOfClass:[SongLocal class]]);
+
+    Song* matchedSong = [[SongRadioCatalog main].matchedSongs objectForKey:song.catalogKey];
+    
+    if (matchedSong != nil)
+        [song setIsProgrammed:YES];
+    else
+        [song setIsProgrammed:NO];
+}
+
+
+
+//- (BOOL)removeSong:(NSString*)songKey {
+//    
+//    [self removeSong:songKey forTable:LOCALCATALOG_TABLE];
+//}
 
 
 

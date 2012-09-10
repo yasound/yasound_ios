@@ -9,7 +9,7 @@
 #import "SongRadioCatalog.h"
 #import "YasoundDataProvider.h"
 #import "DataBase.h"
-
+#import "RootViewController.h"
 
 
 @implementation SongRadioCatalog
@@ -44,6 +44,24 @@ static SongRadioCatalog* _main = nil;
 }
 
 
+
+- (void)dealloc {
+    
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
+}
+
+
+- (id)init {
+    
+    if (self = [super init]) {
+        
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAddToProgramming:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoveFromProgramming:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongUpdated:) name:NOTIF_PROGAMMING_SONG_UPDATED object:nil];
+    }
+    return self;
+}
 
 - (void)dump
 {
@@ -283,6 +301,105 @@ static SongRadioCatalog* _main = nil;
  - (BOOL)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey {
     
     return [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark - Notifications
+
+
+//@property (nonatomic, retain) NSMutableDictionary* songsForLetter;
+//
+//@property (nonatomic, retain) NSMutableDictionary* artistsForLetter;
+//
+//@property (nonatomic, retain) NSMutableDictionary* albumsForArtist;
+//
+//@property (nonatomic, retain) NSMutableDictionary* songsForArtistAlbum;
+//
+
+
+
+- (void)updateSongAddedToProgramming:(Song*)song
+{
+    assert(song);
+
+    // be aware of empty artist names, and empty album names
+    NSString* artistKey = song.artist;
+    if ((artistKey == nil) || (artistKey.length == 0))
+    {
+        artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
+        DLog(@"buildSynchronizedWithSource: empty artist found!");
+    }
+    NSString* albumKey = song.album;
+    if ((albumKey == nil) || (albumKey.length == 0))
+    {
+        albumKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
+        DLog(@"buildSynchronizedWithSource: empty album found!");
+    }
+    
+    NSString* songKey = [SongCatalog catalogKeyOfSong:song.name artistKey:artistKey albumKey:albumKey];
+    
+    // add song to radio DB
+    [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
+    
+    // clear related cache
+    self.songsForLetter = nil;
+    self.artistsForLetter = nil;
+    self.albumsForArtist = nil;
+    self.songsForArtistAlbum = nil;
+}
+
+
+
+- (void)updateSongRemovedFromProgramming:(Song*)song
+{
+    assert(song);
+
+    // be aware of empty artist names, and empty album names
+    NSString* artistKey = song.artist;
+    if ((artistKey == nil) || (artistKey.length == 0))
+    {
+        artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
+        DLog(@"buildSynchronizedWithSource: empty artist found!");
+    }
+    NSString* albumKey = song.album;
+    if ((albumKey == nil) || (albumKey.length == 0))
+    {
+        albumKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
+        DLog(@"buildSynchronizedWithSource: empty album found!");
+    }
+    
+    NSString* songKey = [SongCatalog catalogKeyOfSong:song.name artistKey:artistKey albumKey:albumKey];
+
+    // remove song from radio DB
+    [self removeSong:songKey forTable:RADIOCATALOG_TABLE];
+
+    // clear related cache
+    self.songsForLetter = nil;
+    self.artistsForLetter = nil;
+    self.albumsForArtist = nil;
+    self.songsForArtistAlbum = nil;
+}
+
+
+
+
+- (void)updateSongUpdated:(Song*)song
+{
 }
 
 

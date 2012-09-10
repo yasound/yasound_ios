@@ -39,4 +39,10 @@
 - (BOOL)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
 
 
+- (void)updateSongAddedToProgramming:(Song*)song;
+- (void)updateSongRemovedFromProgramming:(Song*)song;
+- (void)updateSongUpdated:(Song*)song;
+
+
+
 @end

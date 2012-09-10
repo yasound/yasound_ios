@@ -35,19 +35,29 @@ typedef enum {
 
 
 
-//@property (nonatomic, retain) FMDatabase* db;
-@property (nonatomic, retain) NSMutableDictionary* songsDb;
-//@property (nonatomic, retain) NSString* dbPath;
 
 @property (nonatomic) BOOL isInCache;
 
 @property (nonatomic, retain) NSMutableArray* indexMap; // "-", "A", "B", ...
 
+
 // cache
-@property (nonatomic, retain) NSMutableDictionary* songs;
+
+// NSString* songKey -> Song* song
+@property (nonatomic, retain) NSMutableDictionary* songsDb;
+
+//@property (nonatomic, retain) NSMutableDictionary* songs;
+
+// NSString* letter -> NSArray[NSString* songKey]
 @property (nonatomic, retain) NSMutableDictionary* songsForLetter;
+
+// NSString* letter -> NSArray[NSString* artistKey]
 @property (nonatomic, retain) NSMutableDictionary* artistsForLetter;
+
+// NSString* artistKey -> NSArray[NSString* albumKey]
 @property (nonatomic, retain) NSMutableDictionary* albumsForArtist;
+
+// NSString* artistKey -> NSDictionary [ NSString* albumKey -> NSArray[NSString* songKey]]
 @property (nonatomic, retain) NSMutableDictionary* songsForArtistAlbum;
 
 @property (nonatomic, retain) NSString* selectedArtist;
@@ -73,6 +83,8 @@ typedef enum {
 
 - (BOOL)selectArtist:(NSString*)artistKey withCharIndex:(NSString*)charIndex;
 - (BOOL)selectAlbum:(NSString*)albumKey;
+
+- (BOOL)removeSong:(NSString*)songKey forTable:(NSString*)table;
 
 
 @end

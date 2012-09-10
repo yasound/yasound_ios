@@ -20,7 +20,7 @@
 @synthesize indexMap;
 
 // cache
-@synthesize songs;
+//@synthesize songs;
 @synthesize songsForLetter;
 @synthesize artistsForLetter;
 @synthesize albumsForArtist;
@@ -385,6 +385,8 @@
 
 - (void)insertAndEnableSong:(Song*)song;
 {
+    assert(0);
+    return;
 //    // be aware of empty artist names, and empty album names
 //    NSString* artistKey = song.artist;
 //    if ((artistKey == nil) || (artistKey.length == 0))
@@ -410,6 +412,8 @@
 
 - (void)removeSynchronizedSong:(Song*)song
 {
+    assert(0);
+    return;
 //    //
 //    // process alphaeticRepo
 //    //
@@ -513,6 +517,8 @@
 
 - (BOOL)doesContainSong:(Song*)song
 {
+    assert(0);
+    return NO;
 //    //
 //    // process alphaeticRepo
 //    //
@@ -559,6 +565,8 @@
 
 - (void)removeSynchronizedArtist:(NSString*)artistNameFromClient
 {
+    assert(0);
+    return;
     // TODO
     //    NSString* artistKey = [self catalogKeyOfArtist:artistNameFromClient];
     //
@@ -659,6 +667,8 @@
 
 - (void)removeSynchronizedAlbum:(NSString*)albumNameFromClient
 {
+    assert(0);
+    return;
     // TODO
 }
 
@@ -820,6 +830,47 @@
 }
 
 
+
+
+
+
+
+
+- (BOOL)removeSong:(NSString*)songKey forTable:(NSString*)table {
+    
+    assert(songKey);
+    
+    BOOL res = [[DataBase main].db executeUpdate:[NSString stringWithFormat:@"DELETE FROM %@ WHERE songKey=?", table], songKey];
+    
+    if (!res)
+        DLog(@"removeSong, %d:%@", [[DataBase main].db lastErrorCode], [[DataBase main].db lastErrorMessage]);
+    else
+        [self.songsDb removeObjectForKey:songKey];
+    
+    
+    return res;
+
+    
+}
+
+
+//
+//@property (nonatomic, retain) NSMutableDictionary* songsDb;
+//
+////@property (nonatomic, retain) NSMutableDictionary* songs;
+//
+//// NSString* letter -> NSArray[NSString* songKey]
+//@property (nonatomic, retain) NSMutableDictionary* songsForLetter;
+//
+//// NSString* letter -> NSArray[NSString* artistKey]
+//@property (nonatomic, retain) NSMutableDictionary* artistsForLetter;
+//
+//// NSString* artistKey -> NSArray[NSString* albumKey]
+//@property (nonatomic, retain) NSMutableDictionary* albumsForArtist;
+//
+//// NSString* artistKey -> NSDictionary [ NSString* albumKey -> NSArray[NSString* songKey]]
+//@property (nonatomic, retain) NSMutableDictionary* songsForArtistAlbum;
+//
 
 
 

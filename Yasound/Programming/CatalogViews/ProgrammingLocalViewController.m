@@ -139,7 +139,7 @@
 
 - (void)afterBreathing:(NSTimer*)timer {
     
-    [[SongLocalCatalog main] initFromMatchedSongs:[SongRadioCatalog main].songs  target:self action:@selector(localProgrammingBuilt:)];
+    [[SongLocalCatalog main] initFromMatchedSongs:[SongRadioCatalog main].matchedSongs  target:self action:@selector(localProgrammingBuilt:)];
 }
 
 
