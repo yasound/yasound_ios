@@ -371,6 +371,9 @@
     BOOL res = [[DataBase main].db executeUpdate:[NSString stringWithFormat:@"INSERT INTO %@ VALUES (?,?,?,?,?,?,?)", table], songKey, song.name, nameChar, song.artist, artistChar, song.album, song.genre];
     
     
+    // waiting for better a way to do that
+    [song setEnabled:[NSNumber numberWithBool:YES]];
+    
 
     if (!res)
         DLog(@"addSong, %d:%@", [[DataBase main].db lastErrorCode], [[DataBase main].db lastErrorMessage]);
