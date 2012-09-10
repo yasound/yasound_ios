@@ -204,6 +204,8 @@
 "Programmin.nbAlbums.n" = "%d albums";
 "Programmin.nbArtists.1" = "1 artiste";
 "Programmin.nbArtists.n" = "%d artistes";
+"Programmin.nbSongs.1" = "1 morceau";
+"Programmin.nbSongs.n" = "%d morceaux";
 
 
 "SongView_title" = "Song";

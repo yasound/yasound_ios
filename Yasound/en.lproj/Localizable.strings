@@ -207,6 +207,8 @@
 "Programmin.nbAlbums.n" = "%d albums";
 "Programmin.nbArtists.1" = "1 artist";
 "Programmin.nbArtists.n" = "%d artists";
+"Programmin.nbSongs.1" = "1 song";
+"Programmin.nbSongs.n" = "%d songs";
 
 
 

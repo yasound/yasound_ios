@@ -19,7 +19,9 @@
 @property (nonatomic, retain) NSArray* genres;
 @property (nonatomic, retain) NSArray* playlists;
 @property (nonatomic, retain) NSMutableDictionary* artistsForGenre;
+@property (nonatomic, retain) NSMutableDictionary* songsForGenre;
 @property (nonatomic, retain) NSMutableDictionary* artistsForPlaylist;
+@property (nonatomic, retain) NSMutableDictionary* songsForPlaylist;
 
 
 + (SongLocalCatalog*)main;
@@ -35,8 +37,10 @@
 
 - (NSArray*)genresAll;
 - (NSArray*)artistsForGenre:(NSString*)genre;
+- (NSArray*)songsForGenre:(NSString*)genre;
 - (NSArray*)playlistsAll;
 - (NSArray*)artistsForPlaylist:(NSString*)playlist;
+- (NSArray*)songsForPlaylist:(NSString*)playlist;
 
 
 - (NSDictionary*)songsAll;

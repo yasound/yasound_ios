@@ -372,15 +372,27 @@
 
         NSArray* collections = [[SongLocalCatalog main] genresAll];
         NSString* collection = [collections objectAtIndex:indexPath.row];
-        NSInteger nbItems = [[SongLocalCatalog main] artistsForGenre:collection].count;
+        
+        NSInteger nbArtists = [[SongLocalCatalog main] artistsForGenre:collection].count;
+        NSInteger nbSongs = [[SongLocalCatalog main] songsForGenre:collection].count;
 
-        NSString* subtitle;
-        if (nbItems == 1)
-            subtitle = NSLocalizedString(@"Programmin.nbArtists.1", nil);
+        NSString* subArtist = nil;
+        if (nbArtists == 1)
+            subArtist = NSLocalizedString(@"Programmin.nbArtists.1", nil);
         else
-            subtitle = NSLocalizedString(@"Programmin.nbArtists.n", nil);
+            subArtist = NSLocalizedString(@"Programmin.nbArtists.n", nil);
+        subArtist = [subArtist stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", subArtist]];
 
-        subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbItems]];
+        NSString* subSongs = nil;
+        if (nbSongs == 1)
+            subSongs = NSLocalizedString(@"Programmin.nbSongs.1", nil);
+        else
+            subSongs = NSLocalizedString(@"Programmin.nbSongs.n", nil);
+        subSongs = [subSongs stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];
+        
+        
+        NSString* subtitle = [NSString stringWithFormat:@"%@ - %@", subArtist, subSongs];
+
         
         CollectionAddCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
         
@@ -401,15 +413,25 @@
 
         NSArray* collections = [[SongLocalCatalog main] playlistsAll];
         NSString* collection = [collections objectAtIndex:indexPath.row];
-        NSInteger nbItems = [[SongLocalCatalog main] artistsForPlaylist:collection].count;
+        NSInteger nbArtists = [[SongLocalCatalog main] artistsForPlaylist:collection].count;
+        NSInteger nbSongs = [[SongLocalCatalog main] songsForPlaylist:collection].count;
 
-        NSString* subtitle;
-        if (nbItems == 1)
-            subtitle = NSLocalizedString(@"Programmin.nbArtists.1", nil);
+        NSString* subArtist = nil;
+        if (nbArtists == 1)
+            subArtist = NSLocalizedString(@"Programmin.nbArtists.1", nil);
         else
-            subtitle = NSLocalizedString(@"Programmin.nbArtists.n", nil);
+            subArtist = NSLocalizedString(@"Programmin.nbArtists.n", nil);
+        subArtist = [subArtist stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", subArtist]];
         
-        subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbItems]];
+        NSString* subSongs = nil;
+        if (nbSongs == 1)
+            subSongs = NSLocalizedString(@"Programmin.nbSongs.1", nil);
+        else
+            subSongs = NSLocalizedString(@"Programmin.nbSongs.n", nil);
+        subSongs = [subSongs stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];
+        
+        
+        NSString* subtitle = [NSString stringWithFormat:@"%@ - %@", subArtist, subSongs];
         
         CollectionAddCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
         

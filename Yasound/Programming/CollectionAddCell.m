@@ -77,6 +77,7 @@
 - (void)commitInit {
 
         self.selectionStyle = UITableViewCellSelectionStyleGray;
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
     
     

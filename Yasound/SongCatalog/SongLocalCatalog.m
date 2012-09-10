@@ -20,7 +20,9 @@
 @synthesize genres;
 @synthesize playlists;
 @synthesize artistsForGenre;
+@synthesize songsForGenre;
 @synthesize artistsForPlaylist;
+@synthesize songsForPlaylist;
 
 
 static SongLocalCatalog* _main = nil;
@@ -325,6 +327,33 @@ static SongLocalCatalog* _main = nil;
 }
 
 
+- (NSArray*)songsForGenre:(NSString*)genre {
+    
+    NSMutableArray* results = [self.songsForGenre objectForKey:genre];
+    
+    if (results != nil)
+        return results;
+    
+    results = [NSMutableArray array];
+    
+    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT name FROM localCatalog WHERE genre=? ORDER BY name", genre];
+    
+    while ([s next])
+    {
+        NSString* name = [s stringForColumnIndex:0];
+        assert(name);
+        [results addObject:name];
+    }
+    
+    // set cache
+    [self.songsForGenre setObject:results forKey:genre];
+    
+    return results;
+}
+
+
+
+
 - (NSArray*)playlistsAll {
     
     if (self.playlists != nil)
@@ -351,7 +380,7 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)artistsForPlaylist:(NSString*)playlist {
 
-    NSMutableArray* results = [self.artistsForGenre objectForKey:playlist];
+    NSMutableArray* results = [self.artistsForPlaylist objectForKey:playlist];
     
     if (results != nil)
         return results;
@@ -368,11 +397,38 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-    [self.artistsForGenre setObject:results forKey:playlist];
+    [self.artistsForPlaylist setObject:results forKey:playlist];
     
     return results;
 
 }
+
+
+- (NSArray*)songsForPlaylist:(NSString*)playlist {
+    
+    NSMutableArray* results = [self.songsForPlaylist objectForKey:playlist];
+    
+    if (results != nil)
+        return results;
+    
+    results = [NSMutableArray array];
+    
+    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT localCatalog.name FROM localCatalog JOIN playlistCatalog WHERE localCatalog.songKey = playlistCatalog.songKey  AND playlistCatalog.playlist = ? ORDER BY localCatalog.name", playlist];
+    
+    while ([s next])
+    {
+        NSString* name = [s stringForColumnIndex:0];
+        assert(name);
+        [results addObject:name];
+    }
+    
+    // set cache
+    [self.songsForPlaylist setObject:results forKey:playlist];
+    
+    return results;
+    
+}
+
 
 
 
