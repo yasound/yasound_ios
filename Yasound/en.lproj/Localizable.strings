@@ -193,8 +193,6 @@
 "ProgrammingView_unknownArtist" = "#Unknown artist";
 "ProgrammingView_unknownAlbum" = "Unknown album";
 "ProgrammingView_unknownGenre" = "Unknown genre";
-"ProgramminView_nb_songs_1" = "1 song";
-"ProgramminView_nb_songs_n" = "%d songs";
 "ProgrammingView_subtitle_error" = "erreur";
 
 "Programming.del" = "Remove";

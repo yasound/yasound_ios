@@ -183,9 +183,9 @@
 //    NSInteger nbSongs = songs.count;
 //    
 //    if (nbSongs == 1)
-//        cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_songs_1", nil);
+//        cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbSongs.1", nil);
 //    else
-//        cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_songs_n", nil);
+//        cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbSongs.n", nil);
 //    
 //    cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];    
 //
@@ -227,9 +227,9 @@
     
     NSString* detailText;
     if (nbSongs == 1)
-        detailText = NSLocalizedString(@"ProgramminView_nb_songs_1", nil);
+        detailText = NSLocalizedString(@"Programmin.nbSongs.1", nil);
     else
-        detailText = NSLocalizedString(@"ProgramminView_nb_songs_n", nil);
+        detailText = NSLocalizedString(@"Programmin.nbSongs.n", nil);
     
     detailText = [detailText stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];
     
