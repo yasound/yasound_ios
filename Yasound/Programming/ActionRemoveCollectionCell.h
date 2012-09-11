@@ -21,8 +21,8 @@
 
 typedef enum {
     
-    eGenreAdd,
-    ePlaylistAdd,
+//    eGenreAdd,
+//    ePlaylistAdd,
     eArtistAdd,
     eAlbumAdd
     

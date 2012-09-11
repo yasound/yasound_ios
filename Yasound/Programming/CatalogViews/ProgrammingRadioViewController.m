@@ -26,6 +26,7 @@
 #import "SongLocalCatalog.h"
 #import "DataBase.h"
 #import "ActionRemoveSongCell.h"
+#import "ActionRemoveCollectionCell.h"
 
 
 
@@ -283,7 +284,7 @@
     if (nbRows == 0)
         return 0;
     
-    if (self.selectedSegmentIndex == RADIOSEGMENT_INDEX_TITLES)
+    if ((self.selectedSegmentIndex == RADIOSEGMENT_INDEX_TITLES) || (self.selectedSegmentIndex == RADIOSEGMENT_INDEX_ARTISTS))
         return 22;
     
     return 32;
@@ -307,7 +308,7 @@
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIImageView* view = [sheet makeImage];
 
-    if (self.selectedSegmentIndex == RADIOSEGMENT_INDEX_TITLES)
+    if ((self.selectedSegmentIndex == RADIOSEGMENT_INDEX_TITLES) || (self.selectedSegmentIndex == RADIOSEGMENT_INDEX_ARTISTS))
         sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.labelTitles" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     else
         sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -421,6 +422,71 @@
 //
 //        return cell;
     }
+    
+    else {
+        
+        static NSString* CellArtistIdentifier = @"CellArtist";
+
+        assert([SongRadioCatalog main].indexMap.count > indexPath.section);
+
+        NSString* charIndex = [[SongRadioCatalog main].indexMap objectAtIndex:indexPath.section];
+        NSArray* artists = [[SongRadioCatalog main] artistsForLetter:charIndex];
+
+        NSString* artist = [artists objectAtIndex:indexPath.row];
+
+        NSInteger nbAlbums = [[SongRadioCatalog main] albumsForArtist:artist].count;
+
+
+//        UITableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellArtistIdentifier];
+//
+//        if (cell == nil)
+//        {
+//            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellArtistIdentifier] autorelease];
+//            
+//            cell.selectionStyle = UITableViewCellSelectionStyleGray;
+//            
+//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            UIImageView* di = [sheet makeImage];
+//            cell.accessoryView = di;
+//            [di release];
+//            
+//            sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
+//            cell.textLabel.textColor = [sheet fontTextColor];
+//            cell.textLabel.font = [sheet makeFont];
+//            
+//            
+//            sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            cell.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
+//            cell.detailTextLabel.textColor = [sheet fontTextColor];
+//            cell.detailTextLabel.font = [sheet makeFont];
+//        }
+
+
+        NSString* subtitle = nil;
+        if (nbAlbums == 1)
+            subtitle = NSLocalizedString(@"Programming.nbSongs.1", nil);
+        else
+            subtitle = NSLocalizedString(@"Programming.nbSongs.n", nil);
+
+        subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
+
+//        return cell;
+        
+        ActionRemoveCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellArtistIdentifier];
+        
+        if (cell == nil)
+        {
+            cell = [[[ActionRemoveCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellArtistIdentifier artist:artist subtitle:subtitle forRadio:self.radio usingCatalog:[SongRadioCatalog main]] autorelease];
+        }
+        else
+            [cell updateArtist:artist subtitle:subtitle];
+        
+        return cell;
+
+    }
+    
 }
 
 
@@ -460,59 +526,6 @@
 //}
 
 
-
-- (UITableViewCell*)cellFolderForRowAtIndexPath:(NSIndexPath*)indexPath
-{
-    static NSString* CellArtistIdentifier = @"CellArtist";
-
-    assert([SongRadioCatalog main].indexMap.count > indexPath.section);
-    
-    NSString* charIndex = [[SongRadioCatalog main].indexMap objectAtIndex:indexPath.section];
-    NSArray* artists = [[SongRadioCatalog main] artistsForLetter:charIndex];
-
-    NSString* artist = [artists objectAtIndex:indexPath.row];
-    
-    NSInteger nbAlbums = [[SongRadioCatalog main] albumsForArtist:artist].count;
-
-    
-        UITableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellArtistIdentifier];
-        
-        if (cell == nil) 
-        {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellArtistIdentifier] autorelease];
-
-            cell.selectionStyle = UITableViewCellSelectionStyleGray;
-
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            UIImageView* di = [sheet makeImage];
-            cell.accessoryView = di;
-            [di release];
-
-            sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
-            cell.textLabel.textColor = [sheet fontTextColor];
-            cell.textLabel.font = [sheet makeFont];
-            
-            
-            sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            cell.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
-            cell.detailTextLabel.textColor = [sheet fontTextColor];
-            cell.detailTextLabel.font = [sheet makeFont];
-        }
-        
-    
-        cell.textLabel.text = artist;
-
-        if (nbAlbums == 1)
-            cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbSongs.1", nil);
-        else
-            cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbSongs.n", nil);
-
-         cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
-
-    return cell;
-}
 
 
 

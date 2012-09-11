@@ -13,7 +13,7 @@
 #import "SongCatalog.h"
 #import "ActivityAlertView.h"
 #import "YasoundReachability.h"
-#import "SongLocalCatalog.h"
+//#import "SongLocalCatalog.h"
 #import "SongRadioCatalog.h"
 
 
@@ -40,42 +40,42 @@
 //
 
 
+//
+//
+//- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier genre:(NSString*)genre subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog {
+//
+//    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+//    
+//    if (self)
+//    {
+//        self.mode = eGenreAdd;
+//        self.radio = radio;
+//        self.catalog = catalog;
+//        self.collection = genre;
+//        
+//        [self commonInit];
+//        [self updateGenre:genre subtitle:subtitle];
+//    }
+//    return self;
+//}
 
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier genre:(NSString*)genre subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog {
-
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    
-    if (self)
-    {
-        self.mode = eGenreAdd;
-        self.radio = radio;
-        self.catalog = catalog;
-        self.collection = genre;
-        
-        [self commonInit];
-        [self updateGenre:genre subtitle:subtitle];
-    }
-    return self;
-}
-
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier playlist:(NSString*)playlist subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog {
-    
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    
-    if (self)
-    {
-        self.mode = ePlaylistAdd;
-        self.radio = radio;
-        self.catalog = catalog;
-        self.collection = playlist;
-        
-        [self commonInit];
-        [self updatePlaylist:playlist subtitle:subtitle];
-    }
-    return self;
-}
+//
+//- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier playlist:(NSString*)playlist subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog {
+//    
+//    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+//    
+//    if (self)
+//    {
+//        self.mode = ePlaylistAdd;
+//        self.radio = radio;
+//        self.catalog = catalog;
+//        self.collection = playlist;
+//        
+//        [self commonInit];
+//        [self updatePlaylist:playlist subtitle:subtitle];
+//    }
+//    return self;
+//}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier artist:(NSString*)artist subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog {
     
@@ -188,33 +188,33 @@
 //}
 
 
-- (void)updateGenre:(NSString*)genre subtitle:(NSString*)subtitle
-{
-    self.mode = eGenreAdd;
-    self.collection = genre;
-    
-    self.label.text = genre;
-    self.detailedLabel.text = subtitle;
-    
-    NSArray* songs = [[SongLocalCatalog main] songsForGenre:self.collection];
-    
-    [self updateItemsWithSongs:songs];
-}
-
-
-- (void)updatePlaylist:(NSString*)playlist subtitle:(NSString*)subtitle
-{
-    self.mode = ePlaylistAdd;
-    self.collection = playlist;
-    
-    self.label.text = playlist;
-    self.detailedLabel.text = subtitle;
-    
-    NSArray* songs = [[SongLocalCatalog main] songsForPlaylist:self.collection];
-    
-    [self updateItemsWithSongs:songs];
-}
-
+//- (void)updateGenre:(NSString*)genre subtitle:(NSString*)subtitle
+//{
+//    self.mode = eGenreAdd;
+//    self.collection = genre;
+//    
+//    self.label.text = genre;
+//    self.detailedLabel.text = subtitle;
+//    
+//    NSArray* songs = [self.catalog songsForGenre:self.collection];
+//    
+//    [self updateItemsWithSongs:songs];
+//}
+//
+//
+//- (void)updatePlaylist:(NSString*)playlist subtitle:(NSString*)subtitle
+//{
+//    self.mode = ePlaylistAdd;
+//    self.collection = playlist;
+//    
+//    self.label.text = playlist;
+//    self.detailedLabel.text = subtitle;
+//    
+//    NSArray* songs = [self.catalog songsForPlaylist:self.collection];
+//    
+//    [self updateItemsWithSongs:songs];
+//}
+//
 
 
 - (void)updateArtist:(NSString*)artist subtitle:(NSString*)subtitle
@@ -229,11 +229,11 @@
     NSArray* songs = nil;
     
     if (self.catalog.selectedGenre)
-        songs = [[SongLocalCatalog main] songsForArtist:self.collection withGenre:self.catalog.selectedGenre];
+        songs = [self.catalog songsForArtist:self.collection withGenre:self.catalog.selectedGenre];
     else if (self.catalog.selectedPlaylist)
-        songs = [[SongLocalCatalog main] songsForArtist:self.collection withPlaylist:self.catalog.selectedPlaylist];
+        songs = [self.catalog songsForArtist:self.collection withPlaylist:self.catalog.selectedPlaylist];
     else
-        songs = [[SongLocalCatalog main] songsForArtist:self.collection];
+        songs = [self.catalog songsForArtist:self.collection];
  
     [self updateItemsWithSongs:songs];
 }
@@ -251,11 +251,11 @@
     NSArray* songs = nil;
     
     if (self.catalog.selectedGenre)
-        songs = [[SongLocalCatalog main] songsForAlbum:self.collection fromArtist:(NSString*)self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+        songs = [self.catalog songsForAlbum:self.collection fromArtist:(NSString*)self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
     else if (self.catalog.selectedPlaylist)
-        songs = [[SongLocalCatalog main] songsForAlbum:self.collection  fromArtist:(NSString*)self.catalog.selectedArtist withPlaylist:self.catalog.selectedPlaylist];
+        songs = [self.catalog songsForAlbum:self.collection  fromArtist:(NSString*)self.catalog.selectedArtist withPlaylist:self.catalog.selectedPlaylist];
     else
-        songs = [[SongLocalCatalog main] songsForAlbum:self.collection fromArtist:(NSString*)self.catalog.selectedArtist];
+        songs = [self.catalog songsForAlbum:self.collection fromArtist:(NSString*)self.catalog.selectedArtist];
     
     [self updateItemsWithSongs:songs];
 }
@@ -268,9 +268,9 @@
 
     for (NSString* songKey in songs) {
         
-        SongLocal* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
+        Song* song = [self.catalog.songsDb objectForKey:songKey];
         assert(song);
-        assert([song isKindOfClass:[SongLocal class]]);
+        assert([song isKindOfClass:[Song class]]);
         
         Song* matchedSong = [[SongRadioCatalog main].matchedSongs objectForKey:songKey];
         
@@ -318,51 +318,51 @@
     self.songsToUpload = nil;
     self.songsToUpload = [NSMutableArray array];
     
-    if (self.mode == eGenreAdd)
-        [self genreAddClicked];
-    else if (self.mode == ePlaylistAdd)
-        [self playlistAddClicked];
-    else if (self.mode == eArtistAdd)
+//    if (self.mode == eGenreAdd)
+//        [self genreAddClicked];
+//    else if (self.mode == ePlaylistAdd)
+//        [self playlistAddClicked];
+//    else
+        
+    if (self.mode == eArtistAdd)
         [self artistAddClicked];
     else if (self.mode == eAlbumAdd)
         [self albumAddClicked];
 }
 
 
-- (void)genreAddClicked {
- 
-    NSInteger nbProgrammed = 0;
-    NSInteger nbCantProgram = 0;
-    
-    NSArray* songs = [[SongLocalCatalog main] songsForGenre:self.collection];
-    for (NSString* songKey in songs) {
-        
-        Song* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
-        assert(song);
-        
-        // don't upload if the song is programmed already
-        if (song.isProgrammed) {
-            nbProgrammed++;
-            continue;
-        }
-        
-        // can it be upload?
-        BOOL can = [[SongUploader main] canUploadSong:song];
-        if (!can) {
-            nbCantProgram++;
-            continue;
-        }
-        
-        // ok, add it to the group of songs to upload
-        [self.songsToUpload addObject:song];
-    }
-
-    
-    [self requestUploadsFrom:songs nbProgrammed:nbProgrammed];
-    
-}
-
-
+//- (void)genreAddClicked {
+// 
+//    NSInteger nbProgrammed = 0;
+//    NSInteger nbCantProgram = 0;
+//    
+//    NSArray* songs = [self.catalog songsForGenre:self.collection];
+//    for (NSString* songKey in songs) {
+//        
+//        Song* song = [self.catalog.songsDb objectForKey:songKey];
+//        assert(song);
+//        
+//        // don't upload if the song is programmed already
+//        if (song.isProgrammed) {
+//            nbProgrammed++;
+//            continue;
+//        }
+//        
+//        // can it be upload?
+//        BOOL can = [[SongUploader main] canUploadSong:song];
+//        if (!can) {
+//            nbCantProgram++;
+//            continue;
+//        }
+//        
+//        // ok, add it to the group of songs to upload
+//        [self.songsToUpload addObject:song];
+//    }
+//
+//    
+//    [self requestUploadsFrom:songs nbProgrammed:nbProgrammed];
+//    
+//}
 
 
 
@@ -370,39 +370,41 @@
 
 
 
-- (void)playlistAddClicked {
- 
-    NSInteger nbProgrammed = 0;
-    NSInteger nbCantProgram = 0;
-    
-    NSArray* songs = [[SongLocalCatalog main] songsForPlaylist:self.collection];
-    for (NSString* songKey in songs) {
-        
-        Song* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
-        assert(song);
-        
-        // don't upload if the song is programmed already
-        if (song.isProgrammed) {
-            nbProgrammed++;
-            continue;
-        }
-        
-        // can it be upload?
-        BOOL can = [[SongUploader main] canUploadSong:song];
-        if (!can) {
-            nbCantProgram++;
-            continue;
-        }
-        
-        // ok, add it to the group of songs to upload
-        [self.songsToUpload addObject:song];
-    }
-    
-    
-    [self requestUploadsFrom:songs nbProgrammed:nbProgrammed];
 
-}
 
+//- (void)playlistAddClicked {
+// 
+//    NSInteger nbProgrammed = 0;
+//    NSInteger nbCantProgram = 0;
+//    
+//    NSArray* songs = [self.catalog songsForPlaylist:self.collection];
+//    for (NSString* songKey in songs) {
+//        
+//        Song* song = [self.catalog.songsDb objectForKey:songKey];
+//        assert(song);
+//        
+//        // don't upload if the song is programmed already
+//        if (song.isProgrammed) {
+//            nbProgrammed++;
+//            continue;
+//        }
+//        
+//        // can it be upload?
+//        BOOL can = [[SongUploader main] canUploadSong:song];
+//        if (!can) {
+//            nbCantProgram++;
+//            continue;
+//        }
+//        
+//        // ok, add it to the group of songs to upload
+//        [self.songsToUpload addObject:song];
+//    }
+//    
+//    
+//    [self requestUploadsFrom:songs nbProgrammed:nbProgrammed];
+//
+//}
+//
 
 
 
@@ -420,15 +422,15 @@
     NSArray* songs;
     
     if (self.catalog.selectedGenre)
-        songs = [[SongLocalCatalog main] songsForArtist:self.collection withGenre:self.catalog.selectedGenre];
+        songs = [self.catalog songsForArtist:self.collection withGenre:self.catalog.selectedGenre];
     else if (self.catalog.selectedPlaylist)
-        songs = [[SongLocalCatalog main] songsForArtist:self.collection withPlaylist:self.catalog.selectedPlaylist];
+        songs = [self.catalog songsForArtist:self.collection withPlaylist:self.catalog.selectedPlaylist];
     else
-        songs = [[SongLocalCatalog main] songsForArtist:self.collection];
+        songs = [self.catalog songsForArtist:self.collection];
 
     for (NSString* songKey in songs) {
         
-        Song* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
+        Song* song = [self.catalog.songsDb objectForKey:songKey];
         assert(song);
         
         // don't upload if the song is programmed already
@@ -473,7 +475,7 @@
     
     for (NSString* songKey in songs) {
         
-        Song* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
+        Song* song = [self.catalog.songsDb objectForKey:songKey];
         assert(song);
         
         // don't upload if the song is programmed already
@@ -501,64 +503,62 @@
 
 
 
-
-
-- (void)requestUploadsFrom:(NSArray*)songs nbProgrammed:(NSInteger)nbProgrammed {
-    
-//    "Programming.collection.add.message.programmed.1" = "1 song is in your radio already.";
-//    "Programming.collection.add.message.programmed.n" = "%d songs are in your radio already.";
-//    "Programming.collection.add.message.toUpload.1" = "1 of %d songs may be uploaded to your radio.\nWould you like to upload it?";
-//    "Programming.collection.add.message.toUpload.n" = "%d of %d songs may be uploaded to your radio.\nWould you like to upload them?";
-
-    if (self.songsToUpload.count == 0) {
-        
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:NSLocalizedString(@"Programming.collection.add.message.empty", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles: nil];
-        [alert show];
-        [alert release];
-        
-        return;
-    }
-    
-    // ask confirm
-    NSString* message = nil;
-    NSString* message1 = nil;
-    NSString* message2 = nil;
-    
-    if (nbProgrammed == 0) {
-        message1 = @"";
-    }
-    else if (nbProgrammed == 1) {
-        message1 = NSLocalizedString(@"Programming.collection.add.message.programmed.1", nil);
-    }
-    else {
-        message1 = NSLocalizedString(@"Programming.collection.add.message.programmed.n", nil);
-        message1 = [NSString stringWithFormat:message1, nbProgrammed];
-    }
-
-    if (self.songsToUpload.count == 1) {
-        message2 = NSLocalizedString(@"Programming.collection.add.message.toUpload.1", nil);
-        message2 = [NSString stringWithFormat:message2, songs.count];
-    }
-    else {
-        message2 = NSLocalizedString(@"Programming.collection.add.message.toUpload.n", nil);
-        message2 = [NSString stringWithFormat:message2, self.songsToUpload.count, songs.count];
-    }
-
-    
-    message = message1;
-    message = [message stringByAppendingString:message2];
-    
-    
-    message = [NSString stringWithFormat:message, nbProgrammed, self.songsToUpload.count, songs.count];
-    _addedGenreUpload = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.ok", nil), nil];
-    [_addedGenreUpload show];
-    [_addedGenreUpload release];
-    
-}
-
-
-
-
+//
+//
+//- (void)requestUploadsFrom:(NSArray*)songs nbProgrammed:(NSInteger)nbProgrammed {
+//    
+////    "Programming.collection.add.message.programmed.1" = "1 song is in your radio already.";
+////    "Programming.collection.add.message.programmed.n" = "%d songs are in your radio already.";
+////    "Programming.collection.add.message.toUpload.1" = "1 of %d songs may be uploaded to your radio.\nWould you like to upload it?";
+////    "Programming.collection.add.message.toUpload.n" = "%d of %d songs may be uploaded to your radio.\nWould you like to upload them?";
+//
+//    if (self.songsToUpload.count == 0) {
+//        
+//        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:NSLocalizedString(@"Programming.collection.add.message.empty", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles: nil];
+//        [alert show];
+//        [alert release];
+//        
+//        return;
+//    }
+//    
+//    // ask confirm
+//    NSString* message = nil;
+//    NSString* message1 = nil;
+//    NSString* message2 = nil;
+//    
+//    if (nbProgrammed == 0) {
+//        message1 = @"";
+//    }
+//    else if (nbProgrammed == 1) {
+//        message1 = NSLocalizedString(@"Programming.collection.add.message.programmed.1", nil);
+//    }
+//    else {
+//        message1 = NSLocalizedString(@"Programming.collection.add.message.programmed.n", nil);
+//        message1 = [NSString stringWithFormat:message1, nbProgrammed];
+//    }
+//
+//    if (self.songsToUpload.count == 1) {
+//        message2 = NSLocalizedString(@"Programming.collection.add.message.toUpload.1", nil);
+//        message2 = [NSString stringWithFormat:message2, songs.count];
+//    }
+//    else {
+//        message2 = NSLocalizedString(@"Programming.collection.add.message.toUpload.n", nil);
+//        message2 = [NSString stringWithFormat:message2, self.songsToUpload.count, songs.count];
+//    }
+//
+//    
+//    message = message1;
+//    message = [message stringByAppendingString:message2];
+//    
+//    
+//    message = [NSString stringWithFormat:message, nbProgrammed, self.songsToUpload.count, songs.count];
+//    _addedGenreUpload = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.ok", nil), nil];
+//    [_addedGenreUpload show];
+//    [_addedGenreUpload release];
+//    
+//}
+//
+//
 
 
 
@@ -567,65 +567,67 @@
 
 
 
-#pragma mark - UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if ((alertView == _legalUploadWarning) && (buttonIndex == 1))
-    {
-        [[UserSettings main] setBool:NO forKey:USKEYuploadLegalWarning];
-        [self requestUpload];
-        return;
-    }
-
-    
-    if ((alertView == _addedGenreUpload) && (buttonIndex == 1))
-    {
-        
-        BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
-        BOOL startUploadNow = isWifi;
-
-        for (SongLocal* song in self.songsToUpload) {
-            
-            SongUploading* songUploading = [SongUploading new];
-            songUploading.songLocal = song;
-            songUploading.radio_id = self.radio.id;
-
-           // add an upload job to the queue
-            [[SongUploadManager main] addSong:songUploading startUploadNow:startUploadNow];
-
-            // refresh gui
-            [self updateGenre:self.collection subtitle:self.detailedLabel.text];
-        }
-        
-        return;
-    }
-
-
-    if ((alertView == _addedPlaylistUpload) && (buttonIndex == 1))
-    {
-        
-        BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
-        BOOL startUploadNow = isWifi;
-        
-        for (SongLocal* song in self.songsToUpload) {
-            
-            SongUploading* songUploading = [SongUploading new];
-            songUploading.songLocal = song;
-            songUploading.radio_id = self.radio.id;
-            
-            // add an upload job to the queue
-            [[SongUploadManager main] addSong:songUploading startUploadNow:startUploadNow];
-            
-            // refresh gui
-            [self updatePlaylist:self.collection subtitle:self.detailedLabel.text];
-        }
-        
-        return;
-    }
-
-}
-
-
+//
+//
+//#pragma mark - UIAlertViewDelegate
+//
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if ((alertView == _legalUploadWarning) && (buttonIndex == 1))
+//    {
+//        [[UserSettings main] setBool:NO forKey:USKEYuploadLegalWarning];
+//        [self requestUpload];
+//        return;
+//    }
+//
+//    
+//    if ((alertView == _addedGenreUpload) && (buttonIndex == 1))
+//    {
+//        
+//        BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
+//        BOOL startUploadNow = isWifi;
+//
+//        for (SongLocal* song in self.songsToUpload) {
+//            
+//            SongUploading* songUploading = [SongUploading new];
+//            songUploading.songLocal = song;
+//            songUploading.radio_id = self.radio.id;
+//
+//           // add an upload job to the queue
+//            [[SongUploadManager main] addSong:songUploading startUploadNow:startUploadNow];
+//
+//            // refresh gui
+//            [self updateGenre:self.collection subtitle:self.detailedLabel.text];
+//        }
+//        
+//        return;
+//    }
+//
+//
+//    if ((alertView == _addedPlaylistUpload) && (buttonIndex == 1))
+//    {
+//        
+//        BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
+//        BOOL startUploadNow = isWifi;
+//        
+//        for (SongLocal* song in self.songsToUpload) {
+//            
+//            SongUploading* songUploading = [SongUploading new];
+//            songUploading.songLocal = song;
+//            songUploading.radio_id = self.radio.id;
+//            
+//            // add an upload job to the queue
+//            [[SongUploadManager main] addSong:songUploading startUploadNow:startUploadNow];
+//            
+//            // refresh gui
+//            [self updatePlaylist:self.collection subtitle:self.detailedLabel.text];
+//        }
+//        
+//        return;
+//    }
+//
+//}
+//
+//
 
 @end

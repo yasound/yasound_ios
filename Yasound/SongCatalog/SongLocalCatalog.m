@@ -277,6 +277,10 @@ static SongLocalCatalog* _main = nil;
 
 
 
+- (NSArray*)songsForArtist:(NSString*)artist {
+    
+    return [self songsForArtist:artist fromTable:LOCALCATALOG_TABLE];
+}
 
 - (NSArray*)songsForArtist:(NSString*)artist withGenre:(NSString*)genre {
     

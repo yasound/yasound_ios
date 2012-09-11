@@ -369,6 +369,29 @@
 
 
 
+- (NSArray*)songsForArtist:(NSString*)artist fromTable:(NSString*)table {
+    
+    NSString* cacheKey = [NSString stringWithFormat:@"songsForArtist|%@", artist];
+    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+    if (cache != nil)
+        return cache;
+    
+    NSMutableArray* results = [NSMutableArray array];
+    
+    FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT songKey FROM %@ WHERE artistKey=? ORDER BY name", table], artist];
+    while ([s next])
+    {
+        NSString* songKey = [s stringForColumnIndex:0];
+        assert(songKey);
+        [results addObject:songKey];
+    }
+    
+    // set cache
+    [self.catalogCache setObject:results forKey:cacheKey];
+    return results;
+}
+
+
 
 - (NSArray*)songsForArtist:(NSString*)artist withGenre:(NSString*)genre fromTable:(NSString*)table {
     
