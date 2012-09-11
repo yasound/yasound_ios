@@ -192,7 +192,14 @@
     }
     
     NSString* artist = [self.artists objectAtIndex:indexPath.row];
-    NSInteger nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist].count;
+    
+    NSInteger nbAlbums = 0;
+    if (self.catalog.selectedGenre)
+        nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist withGenre:self.catalog.selectedGenre fromTable:LOCALCATALOG_TABLE].count;
+    else if (self.catalog.selectedPlaylist)
+        nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist withGenre:self.catalog.selectedPlaylist fromTable:LOCALCATALOG_TABLE].count;
+    else
+        nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist].count;
     
     cell.textLabel.text = artist;
     
@@ -294,6 +301,9 @@
             return NO;
         }
     }
+    
+    self.catalog.selectedGenre = nil;
+    self.catalog.selectedPlaylist = nil;
     
     return goBack;
 }
