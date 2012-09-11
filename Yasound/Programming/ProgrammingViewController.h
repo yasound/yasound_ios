@@ -9,10 +9,15 @@
 #import "YaViewController.h"
 #import "WheelSelector.h"
 #import "Radio.h"
-#import "TopBar.h"
+#import "TopBarBackAndTitle.h"
 
-#define SEGMENT_INDEX_ALPHA 0
-#define SEGMENT_INDEX_ARTIST 1
+#define RADIOSEGMENT_INDEX_TITLES 0
+#define RADIOSEGMENT_INDEX_ARTISTS 1
+
+#define LOCALSEGMENT_INDEX_PLAYLISTS 0
+#define LOCALSEGMENT_INDEX_GENRES 1
+#define LOCALSEGMENT_INDEX_TITLES 2
+
 
 #define PROGRAMMING_WHEEL_NB_ITEMS 3
 #define PROGRAMMING_WHEEL_ITEM_LOCAL 0
@@ -20,20 +25,26 @@
 #define PROGRAMMING_WHEEL_ITEM_UPLOADS 2
 //#define WHEEL_ITEM_SERVER 3
 
-@interface ProgrammingViewController : YaViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate, TopBarDelegate>
+@interface ProgrammingViewController : YaViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate, TopBarBackAndTitleDelegate>
 {
 //    IBOutlet UIBarButtonItem* _synchroBtn;
     
     IBOutlet UILabel* _titleLabel;
     IBOutlet UILabel* _subtitleLabel;
-    IBOutlet UIToolbar* _toolbar;
-    IBOutlet UISegmentedControl* _segment;
+//    IBOutlet UIToolbar* _toolbar;
+    
+    IBOutlet UIView* _containerRadioSegment;
+    IBOutlet UIView* _containerLocalSegment;
+    IBOutlet UIView* _containerUploadSegment;
+    IBOutlet UISegmentedControl* _radioSegment;
+    IBOutlet UISegmentedControl* _localSegment;
     
 //    IBOutlet UITableView* _tableView;
 }
 
 @property (nonatomic, retain) IBOutlet UIView* container;
 @property (nonatomic, retain) IBOutlet WheelSelector* wheelSelector;
+@property (nonatomic, retain) IBOutlet TopBarBackAndTitle* topbar;
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, retain) UITableViewController* tableview;

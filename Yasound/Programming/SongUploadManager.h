@@ -122,7 +122,8 @@ typedef enum SongUploadItemStatus
 - (void)interruptUploads;
 - (void)resumeUploads;
 
-- (SongUploading*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album forRadio:(Radio*)radio;
+//- (SongUploading*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album forRadio:(Radio*)radio;
+- (SongUploading*)getUploadingSong:(NSString*)songKey forRadio:(Radio*)radio;
 
 
 @end

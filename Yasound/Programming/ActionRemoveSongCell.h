@@ -1,5 +1,5 @@
 //
-//  SongAddCell.h
+//  ActionRemoveSongCell.h
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 27/02/12.
@@ -7,26 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SongLocal.h"
+#import "Song.h"
 #import "Radio.h"
-
-@interface SongAddCell : UITableViewCell
+#import "WebImageView.h"
+@interface ActionRemoveSongCell : UITableViewCell
 {
     UIAlertView* _wifiWarning;
     UIAlertView* _legalUploadWarning;
     UIAlertView* _addedUploadWarning;
+    
 }
 
-@property (nonatomic, assign) SongLocal* song;
+@property (nonatomic, assign) Song* song;
 @property (nonatomic, assign) Radio* radio;
 
-@property (nonatomic, retain) UIImageView* image;
+@property (nonatomic, retain) WebImageView* image;
 @property (nonatomic, retain) UILabel* label;
 @property (nonatomic, retain) UILabel* detailedLabel;
 @property (nonatomic, retain) UIButton* button;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(SongLocal*)song forRadio:(Radio*)radio;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(Song*)song forRadio:(Radio*)radio;
 
-- (void)update:(SongLocal*)song;
+- (void)update:(Song*)song;
 
 @end

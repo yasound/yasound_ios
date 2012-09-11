@@ -190,17 +190,38 @@
 "ProgrammingView_error_title" = "Synchronization";
 "ProgrammingView_error_message" = "An error happened during the synchronization.";
 "ProgrammingView_error_no_playlist_message" = "An error happened: no playlist has been downloaded.";
-"ProgrammingView_segment_titles" = "titles";
-"ProgrammingView_segment_artists" = "artists";
 "ProgrammingView_unknownArtist" = "#Unknown artist";
 "ProgrammingView_unknownAlbum" = "Unknown album";
-"ProgramminView_nb_albums_1" = "1 album";
-"ProgramminView_nb_albums_n" = "%d albums";
-"ProgramminView_nb_songs_1" = "1 song";
-"ProgramminView_nb_songs_n" = "%d songs";
+"ProgrammingView_unknownGenre" = "Unknown genre";
 "ProgrammingView_subtitle_error" = "erreur";
 
 "Programming.del" = "Remove";
+
+"Programming.segment.titles" = "Titles";
+"Programming.segment.artists" = "Artists";
+"Programming.segment.genres" = "Genres";
+"Programming.segment.genre" = "Genre";
+"Programming.segment.playlists" = "Playlists";
+"Programming.segment.playlist" = "Playlist";
+"Programming.nbAlbums.1" = "1 album";
+"Programming.nbAlbums.n" = "%d albums";
+"Programming.nbArtists.1" = "1 artist";
+"Programming.nbArtists.n" = "%d artists";
+"Programming.nbSongs.1" = "1 song";
+"Programming.nbSongs.n" = "%d songs";
+
+"Programming.collection.add.title" = "Programming";
+"Programming.collection.add.message.empty" = "None of the songs can be uploaded to the server.";
+"Programming.collection.add.message.programmed.1" = "1 song is in your radio already.";
+"Programming.collection.add.message.programmed.n" = "%d songs are in your radio already.";
+"Programming.collection.add.message.toUpload.1" = "1 of %d songs may be uploaded to your radio.\nWould you like to upload it?";
+"Programming.collection.add.message.toUpload.n" = "%d of %d songs may be uploaded to your radio.\nWould you like to upload them?";
+
+"Programming.collection.del.title" = "Programming";
+"Programming.collection.del.message.empty" = "None of the songs can be removed from your radio.";
+"Programming.collection.del.message.toRemove.1" = "1 of %d songs may be removed from your radio.\nWould you like to remove it?";
+"Programming.collection.del.message.toRemove.n" = "%d of %d songs may be removed from your radio.\nWould you like to remove them?";
+
 
 
 "SongView_title" = "Song";
@@ -633,6 +654,9 @@
 "Programming.delete.artist" = "Do you really want to delete all the songs from this artist?";
 "Programming.delete.artist.error.title" = "Oops...";
 "Programming.delete.artist.error" = "The artist could not have been deleted";
+
+"Programming.Radio.error.title" = "Oops...";
+"Programming.Radio.error.message" = "The radio's programming could not have been properly downloaded.";
 
 "Stats.section.month" = "Last 30 days audience";
 "Stats.section.leaderboard" = "Leaderboard";

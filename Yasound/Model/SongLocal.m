@@ -8,14 +8,14 @@
 
 
 #import "SongLocal.h"
-
+#import "SongCatalog.h"
 
 #define PM_FIELD_UNKNOWN @""
 
 
 @implementation SongLocal
 
-@synthesize catalogKey;
+//@synthesize catalogKey;
 @synthesize mediaItem;
 
 //@synthesize radio_id;
@@ -32,14 +32,6 @@
 
 
 
-
-+ (NSString*)catalogKeyOfSong:(NSString*)name artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey
-{
-    return [NSString stringWithFormat:@"%@|%@|%@", [name lowercaseString], [artistKey lowercaseString], [albumKey lowercaseString]];
-}
-
-
-
 - (id)initWithMediaItem:(MPMediaItem*)item
 {
     if (self = [super init])
@@ -51,6 +43,8 @@
         
         self.artistKey = [item valueForProperty:MPMediaItemPropertyArtist];
         self.albumKey = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
+        
+        self.genre = [self.mediaItem valueForProperty:MPMediaItemPropertyGenre]; 
 
         
 //        self.cover = [[self.mediaItem valueForProperty:MPMediaItemPropertyArtwork] imageWithSize:CGSizeMake(128,128)];
@@ -86,10 +80,16 @@
             self.album_client = [NSString stringWithString:self.albumKey];
         }
         
+        if ((self.genre == nil) || (self.genre.length == 0))
+        {
+            self.genre =  NSLocalizedString(@"ProgrammingView_unknownGenre", nil);
+        }
         
         
         
-        self.catalogKey = [SongLocal catalogKeyOfSong:self.name artistKey:self.artistKey albumKey:self.albumKey];
+        
+        
+        self.catalogKey = [SongCatalog catalogKeyOfSong:self.name artistKey:self.artistKey albumKey:self.albumKey];
         
     }
     return self;
@@ -99,10 +99,10 @@
 
 // overloading getters
 
-- (NSString*)genre
-{
-    return [self.mediaItem valueForProperty:MPMediaItemPropertyGenre]; 
-}
+//- (NSString*)genre
+//{
+//    return [self.mediaItem valueForProperty:MPMediaItemPropertyGenre];
+//}
 
 
 - (NSTimeInterval)playbackDuration

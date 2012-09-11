@@ -17,11 +17,13 @@
 #import "TimeProfile.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-#import "SongCatalog.h"
+#import "SongRadioCatalog.h"
+#import "SongLocalCatalog.h"
 #import "ProgrammingArtistViewController.h"
 #import "RootViewController.h"
 #import "AudioStreamManager.h"
 #import "ProgrammingCell.h"
+#import "DataBase.h"
 
 @implementation ProgrammingViewController
 
@@ -30,6 +32,7 @@
 //@synthesize sortedSongs;
 @synthesize container;
 @synthesize tableview;
+@synthesize topbar;
 
 #define SEGMENT_INDEX_ALPHA 0
 #define SEGMENT_INDEX_ARTIST 1
@@ -50,14 +53,15 @@
 //        self.sortedSongs = [[NSMutableDictionary alloc] init];
 
         // anti-bug
-        NSString* catalogId = [NSString stringWithFormat:@"%@", [SongCatalog synchronizedCatalog].radio.id];
+        NSString* catalogId = [NSString stringWithFormat:@"%@", [SongRadioCatalog main].radio.id];
         NSString* newId = [NSString stringWithFormat:@"%@", self.radio.id];
         
         // clean catalog
-        if (([SongCatalog synchronizedCatalog].radio.id != nil) && ![catalogId isEqualToString:newId])
+        if (([SongRadioCatalog main].radio.id != nil) && ![catalogId isEqualToString:newId])
         {
-            [SongCatalog releaseSynchronizedCatalog];
-            [SongCatalog releaseAvailableCatalog];
+            [SongRadioCatalog releaseCatalog];
+            [SongLocalCatalog releaseCatalog];
+            [DataBase releaseDataBase];
         }
     }
     return self;
@@ -89,9 +93,14 @@
 //    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
 //    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
-    [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_titles", nil) forSegmentAtIndex:0];  
-    [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_artists", nil) forSegmentAtIndex:1];  
-    [_segment addTarget:self action:@selector(onSegmentClicked:) forControlEvents:UIControlEventValueChanged];
+    [_radioSegment setTitle:NSLocalizedString(@"Programming.segment.titles", nil) forSegmentAtIndex:0];
+    [_radioSegment setTitle:NSLocalizedString(@"Programming.segment.artists", nil) forSegmentAtIndex:1];
+
+    [_localSegment setTitle:NSLocalizedString(@"Programming.segment.playlists", nil) forSegmentAtIndex:0];
+    [_localSegment setTitle:NSLocalizedString(@"Programming.segment.genres", nil) forSegmentAtIndex:1];
+    [_localSegment setTitle:NSLocalizedString(@"Programming.segment.titles", nil) forSegmentAtIndex:2];
+
+//    [_segment addTarget:self action:@selector(onSegmentClicked:) forControlEvents:UIControlEventValueChanged];
     
     
     // waiting for the synchronization to be done
@@ -106,6 +115,10 @@
 //    [[TimeProfile main] begin:TIMEPROFILE_BUILD];
 //    
 //    [[SongCatalog synchronizedCatalog] downloadMatchedSongsForRadio:self.radio target:self action:@selector(matchedSongsDownloaded:success:)];
+    
+#ifdef DEBUG
+    [self.topbar showEditItemWithTarget:self action:@selector(onDebugItem:)];
+#endif
 }
 
 
@@ -456,9 +469,9 @@
 //        cell.textLabel.text = artist;
 //
 //        if (nbAlbums == 1)
-//            cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_albums_1", nil);
+//            cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbSongs.1", nil);
 //        else
-//            cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_albums_n", nil);
+//            cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbSongs.n", nil);
 //
 //         cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
 //
@@ -547,9 +560,17 @@
 //}
 
 
-- (IBAction)onSegmentClicked:(id)sender
+- (IBAction)onRadioSegmentClicked:(id)sender
 {
-    NSInteger index = _segment.selectedSegmentIndex;
+    NSInteger index = _radioSegment.selectedSegmentIndex;
+    
+    [self.tableview setSegment:index];
+}
+
+
+- (IBAction)onLocalSegmentClicked:(id)sender
+{
+    NSInteger index = _localSegment.selectedSegmentIndex;
     
     [self.tableview setSegment:index];
 }
@@ -624,22 +645,28 @@
 
     if (itemIndex == PROGRAMMING_WHEEL_ITEM_LOCAL)
     {
-        _segment.enabled = YES;
+        _containerLocalSegment.hidden = NO;
+        _containerRadioSegment.hidden = YES;
+        _containerUploadSegment.hidden = YES;
         
-        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
+        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio withSegmentIndex:_localSegment.selectedSegmentIndex];
         self.tableview = view;
     }
     else if (itemIndex == PROGRAMMING_WHEEL_ITEM_RADIO)
     {
-        _segment.enabled = YES;
-        
+        _containerLocalSegment.hidden = YES;
+        _containerRadioSegment.hidden = NO;
+        _containerUploadSegment.hidden = YES;
+
         ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
         self.tableview = view;
     }
     else if (itemIndex == PROGRAMMING_WHEEL_ITEM_UPLOADS)
     {
-        _segment.enabled = NO;
-        
+        _containerLocalSegment.hidden = YES;
+        _containerRadioSegment.hidden = YES;
+        _containerUploadSegment.hidden = NO;
+
         ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
         self.tableview = view;
     }
@@ -660,13 +687,24 @@
 
 
 
-#pragma mark - TopBarDelegate
+#pragma mark - TopBarBackAndTitleDelegate
 
 - (BOOL)topBarBackClicked
 {
     BOOL goBack = [self.tableview onBackClicked];
     return goBack;
 }
+
+
+
+#ifdef DEBUG
+
+- (void)onDebugItem:(id)sender {
+
+    [self.tableview.tableView reloadData];
+}
+
+#endif
 
 
 

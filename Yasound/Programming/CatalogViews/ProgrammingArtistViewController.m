@@ -16,20 +16,23 @@
 #import "TimeProfile.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-#import "SongCatalog.h"
+#import "SongRadioCatalog.h"
+#import "SongLocalCatalog.h"
 #import "RootViewController.h"
 #import "AudioStreamManager.h"
 #import "SongLocal.h"
 #import "ProgrammingCell.h"
 //#import "ProgrammingLocalViewController.h"
 //#import "ProgrammingRadioViewController.h"
+#import "ActionAddCollectionCell.h"
+#import "ActionRemoveCollectionCell.h"
 
 @implementation ProgrammingArtistViewController
 
 
 @synthesize radio;
 @synthesize catalog;
-@synthesize sortedAlbums;
+//@synthesize sortedAlbums;
 @synthesize albumVC;
 
 - (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio
@@ -46,8 +49,8 @@
         self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
 
         
-        NSArray* array = [self.catalog.selectedArtistRepo allKeys];
-         self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
+//        NSArray* array = [self.catalog.selectedArtistRepo allKeys];
+//         self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
     }
     return self;
 }
@@ -67,18 +70,11 @@
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+    if (self.catalog == [SongLocalCatalog main])
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
     
-
-//    if (self.catalog == [SongCatalog synchronizedCatalog])
-//        _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
-//    else if (self.catalog == [SongCatalog availableCatalog])
-//        _titleLabel.text = NSLocalizedString(@"SongAddView_title", nil);
-//
-//    _subtitleLabel.text = self.catalog.selectedArtist;
-//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-//    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
-
+    if (self.catalog == [SongRadioCatalog main])
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongDeleted:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
 }
 
 
@@ -129,9 +125,56 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    NSInteger count = self.sortedAlbums.count;
+    NSArray* albums = nil;
+    NSInteger count = 0;
+    
+    if (self.catalog.selectedGenre) {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+    }
+    else if (self.catalog.selectedPlaylist) {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist withPlaylist:self.catalog.selectedPlaylist];
+    }
+    else
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
+    
+    count = albums.count;
     return count;
 }
+
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 32;
+}
+
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString* title = nil;
+    if (self.catalog.selectedGenre) {
+        title = [NSString stringWithFormat:@"%@: %@", self.catalog.selectedGenre, self.catalog.selectedArtist];
+    }
+    else if (self.catalog.selectedPlaylist) {
+        title = [NSString stringWithFormat:@"%@: %@", self.catalog.selectedPlaylist, self.catalog.selectedArtist];
+    }
+    else
+        title = [NSString stringWithFormat:@"%@", self.catalog.selectedArtist];
+    
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* view = [sheet makeImage];
+    
+    sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+}
+
+
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -192,9 +235,9 @@
 //    NSInteger nbSongs = songs.count;
 //    
 //    if (nbSongs == 1)
-//        cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_songs_1", nil);
+//        cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbSongs.1", nil);
 //    else
-//        cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_songs_n", nil);
+//        cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbSongs.n", nil);
 //    
 //    cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];    
 //
@@ -218,30 +261,48 @@
 
 
 
-
-
-
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString* CellIdentifier = @"Cell";
     
-    ProgrammingCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    ProgrammingCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
+    NSArray* albums = nil;
+    NSString* album = nil;
+    NSArray* songs = nil;
+    NSInteger nbSongs = 0;
     
-    NSArray* songs = [self.catalog.selectedArtistRepo objectForKey:albumKey];
+    // sort with a selected genre
+    if (self.catalog.selectedGenre) {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+        album = [albums objectAtIndex:indexPath.row];
+        songs = [self.catalog songsForAlbum:album fromArtist:self.catalog.selectedArtist  withGenre:self.catalog.selectedGenre];
+        nbSongs = songs.count;
+    }
+
+    // sort with a selected playlist
+    else if (self.catalog.selectedPlaylist) {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist  withPlaylist:self.catalog.selectedPlaylist];
+        album = [albums objectAtIndex:indexPath.row];
+        songs = [self.catalog songsForAlbum:album fromArtist:self.catalog.selectedArtist  withPlaylist:self.catalog.selectedPlaylist];
+        nbSongs = songs.count;
+    }
     
-    NSInteger nbSongs = songs.count;
+    // no sort
+    else {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
+        album = [albums objectAtIndex:indexPath.row];
+        songs = [self.catalog songsForAlbum:album fromArtist:self.catalog.selectedArtist];
+        nbSongs = songs.count;
+    }
     
-    NSString* detailText;
+    NSString* subtitle;
     if (nbSongs == 1)
-        detailText = NSLocalizedString(@"ProgramminView_nb_songs_1", nil);
+        subtitle = NSLocalizedString(@"Programming.nbSongs.1", nil);
     else
-        detailText = NSLocalizedString(@"ProgramminView_nb_songs_n", nil);
+        subtitle = NSLocalizedString(@"Programming.nbSongs.n", nil);
     
-    detailText = [detailText stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];
+    subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];
     
     id firstSong = [songs objectAtIndex:0];
     UIImage* customImage = nil;
@@ -261,19 +322,47 @@
     // else customImage will be replaced by refSong's image
 
     
-    if (cell == nil)
-    {
-        cell = [[[ProgrammingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier text:albumKey detailText:detailText customImage:customImage refSong:firstSong] autorelease];
+//    if (cell == nil)
+//    {
+//        cell = [[[ProgrammingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier text:albumKey detailText:detailText customImage:customImage refSong:firstSong] autorelease];
+//    }
+//    else
+//        [cell updateWithText:albumKey detailText:detailText customImage:customImage refSong:firstSong];
+
+    if (self.catalog == [SongLocalCatalog main]) {
+
+        ActionAddCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil)
+        {
+            cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier album:album subtitle:subtitle forRadio:self.radio usingCatalog:self.catalog] autorelease];
+        }
+        else
+            [cell updateAlbum:album subtitle:subtitle];
+        
+        return cell;
     }
-    else
-        [cell updateWithText:albumKey detailText:detailText customImage:customImage refSong:firstSong];
+
+
+    if (self.catalog == [SongRadioCatalog main]) {
+        
+        ActionRemoveCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil)
+        {
+            cell = [[[ActionRemoveCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier album:album subtitle:subtitle forRadio:self.radio usingCatalog:self.catalog] autorelease];
+        }
+        else
+            [cell updateAlbum:album subtitle:subtitle];
+        
+        return cell;
+    }
     
     
     
     
     
-    
-    return cell;
+    return nil;
 }
 
 
@@ -283,8 +372,25 @@
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
+    NSArray* albums = nil;
     
-    NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
+    if (self.catalog.selectedGenre) {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+    }
+    
+    // sort with a selected playlist
+    else if (self.catalog.selectedPlaylist) {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist  withPlaylist:self.catalog.selectedPlaylist];
+    }
+    
+    // no sort
+    else {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
+    }
+
+    
+    NSString* albumKey = [albums objectAtIndex:indexPath.row];
+
     [self.catalog selectAlbum:albumKey];
     
     self.albumVC = [[ProgrammingAlbumViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:self.catalog forRadio:self.radio];
@@ -340,12 +446,27 @@
 
 - (void)onNotifSongAdded:(NSNotification*)notif
 {
-    //[self.sortedAlbums release];
-    self.sortedAlbums = nil;
-    NSArray* array = [self.catalog.selectedArtistRepo allKeys];
-    self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
-    
+//    //[self.sortedAlbums release];
+//    self.sortedAlbums = nil;
+//    //LBDEBUG
+////    NSArray* array = [self.catalog.selectedArtistRepo allKeys];
+//    NSArray* array = nil;
+//    self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
+//    
     [self.tableView reloadData];
+}
+
+
+- (void)onNotifSongDeleted:(NSNotification*)notif
+{
+    //    //[self.sortedAlbums release];
+    //    self.sortedAlbums = nil;
+    //    //LBDEBUG
+    ////    NSArray* array = [self.catalog.selectedArtistRepo allKeys];
+    //    NSArray* array = nil;
+    //    self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
+    //
+        [self.tableView reloadData];
 }
 
 

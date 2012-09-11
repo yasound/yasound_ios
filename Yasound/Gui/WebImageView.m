@@ -77,6 +77,9 @@
     if (image == nil)
         return;
     
+    //LBDEBUG
+    //NSLog(@"onImageUpdated size %.2f x %.2f", image.size.width, image.size.height);
+    
     [self setImage:image];
 }
 

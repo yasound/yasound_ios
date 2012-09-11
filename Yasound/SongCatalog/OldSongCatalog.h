@@ -6,7 +6,8 @@
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "DataBase.h"
 #import "Song.h"
 #import "Radio.h"
 
@@ -26,11 +27,12 @@
 }
 
 
+
 @property (nonatomic) NSInteger nbSongs;
 
-@property (nonatomic, retain) Radio* radio;
-@property (nonatomic, retain) id target;
-@property (nonatomic) SEL action; // - (void)matchedSongsDownloaded:(NSDictionary*)info success:(NSNumber* BOOL)success;
+//@property (nonatomic, retain) Radio* radio;
+//@property (nonatomic, retain) id target;
+//@property (nonatomic) SEL action; // - (void)matchedSongsDownloaded:(NSDictionary*)info success:(NSNumber* BOOL)success;
                                     // info : (NSInteger)nbMatchedSongs infoMessage:(NSString*)infoMessage
 
 @property (nonatomic) BOOL cached;
@@ -43,7 +45,7 @@
 
 @property (nonatomic, retain) NSMutableDictionary* matchedSongs;
 
-@property (nonatomic, retain) NSMutableArray* indexMap; // "-", "A", "B", ...
+//@property (nonatomic, retain) NSMutableArray* indexMap; // "-", "A", "B", ...
 @property (nonatomic, retain) NSMutableDictionary* alphabeticRepo;  // "A" => [song1, song2, ...], "B" ... }
 @property (nonatomic, retain) NSMutableDictionary* alphaArtistsRepo; // "A" => {artist1 => {album1 => [song1, ...], ... }, ...}, ...
 
@@ -55,11 +57,11 @@
 @property (nonatomic, assign) NSArray* selectedAlbumRepo;
 
 
-+ (SongCatalog*)synchronizedCatalog; // for the server's synchronized songs
-+ (void)releaseSynchronizedCatalog; // for the device's local iTunes songs
-
-+ (SongCatalog*)availableCatalog;
-+ (void)releaseAvailableCatalog;
+//+ (SongCatalog*)synchronizedCatalog; // for the server's synchronized songs
+//+ (void)releaseSynchronizedCatalog; // for the device's local iTunes songs
+//
+//+ (SongCatalog*)availableCatalog;
+//+ (void)releaseAvailableCatalog;
 
 
 - (NSString*)catalogKeyOfSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album;

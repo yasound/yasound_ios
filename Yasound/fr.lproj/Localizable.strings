@@ -187,17 +187,39 @@
 "ProgrammingView_error_title" = "Synchronisation";
 "ProgrammingView_error_message" = "une erreur est survenue pendant la synchronisation.";
 "ProgrammingView_error_no_playlist_message" = "une erreur est survenue : aucune playlist n'a été détectée.";
-"ProgrammingView_segment_titles" = "Titres";
-"ProgrammingView_segment_artists" = "Artistes";
 "ProgrammingView_unknownArtist" = "Artiste inconnu";
 "ProgrammingView_unknownAlbum" = "Album inconnu";
-"ProgramminView_nb_albums_1" = "1 album";
-"ProgramminView_nb_albums_n" = "%d albums";
-"ProgramminView_nb_songs_1" = "1 morceau";
-"ProgramminView_nb_songs_n" = "%d morceaux";
+"ProgrammingView_unknownGenre" = "Genre inconnu";
 "ProgrammingView_subtitle_error" = "erreur";
 
 "Programming.del" = "Supprimer";
+
+"Programming.segment.titles" = "Titres";
+"Programming.segment.artists" = "Artistes";
+"Programming.segment.genres" = "Genres";
+"Programming.segment.genre" = "Genre";
+"Programming.segment.playlists" = "Playlists";
+"Programming.segment.playlist" = "Playlist";
+"Programming.nbAlbums.1" = "1 album";
+"Programming.nbAlbums.n" = "%d albums";
+"Programming.nbArtists.1" = "1 artiste";
+"Programming.nbArtists.n" = "%d artistes";
+"Programming.nbSongs.1" = "1 morceau";
+"Programming.nbSongs.n" = "%d morceaux";
+
+"Programming.collection.add.title" = "Programmation";
+"Programming.collection.add.message.empty" = "Aucun morceau ne peut être téléchargé sur le serveur.";
+"Programming.collection.add.message.programmed.1" = "1 morceau est déjà sur votre radio.";
+"Programming.collection.add.message.programmed.n" = "%d morceaux sont déjà sur votre radio.";
+"Programming.collection.add.message.toUpload.1" = "1 morceau sur %d peut être téléchargé sur votre radio.\nVoulez-vous le télécharger?";
+"Programming.collection.add.message.toUpload.n" = "%d morceaux sur %d peuvent être téléchargés sur votre radio.\nVoulez-vous les télécharger?";
+
+"Programming.collection.del.title" = "Programmation";
+"Programming.collection.del.message.empty" = "Aucun morceau ne peut supprimé de votre radio.";
+"Programming.collection.del.message.toRemove.1" = "1 morceau sur %d peut être supprimé de votre radio.\nVoulez-vous le supprimer?";
+"Programming.collection.del.message.toRemove.n" = "%d morceaux sur %d peuvent être supprimés de votre radio.\nVoulez-vous les supprimer?";
+
+
 
 "SongView_title" = "Song";
 "SongView_name" = "titre";
@@ -619,6 +641,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Programming.delete.artist" = "Voulez-vous vraiment supprimer tous les morceaux de cet artiste?";
 "Programming.delete.artist.error.title" = "Oups...";
 "Programming.delete.artist.error" = "L'artiste n'a pas pu être supprimé de la radio.";
+
+"Programming.Radio.error.title" = "Oups...";
+"Programming.Radio.error.message" = "La programmation de la radio n'a pas pu être téléchargée.";
 
 "Stats.section.month" = "Audience des 30 derniers jours";
 "Stats.section.leaderboard" = "Classement";

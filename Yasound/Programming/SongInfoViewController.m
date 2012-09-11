@@ -13,7 +13,8 @@
 #import "AudioStreamManager.h"
 #import "RootViewController.h"
 #import "ActivityAlertView.h"
-#import "SongCatalog.h"
+#import "SongRadioCatalog.h"
+#import "SongLocalCatalog.h"
 #import "YasoundReachability.h"
 #import "SongUploadManager.h"
 #import "ProgrammingUploadViewController.h"
@@ -693,9 +694,9 @@
     
     [self.song removeSong:YES];
     
-    [[SongCatalog synchronizedCatalog] removeSynchronizedSong:self.song];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
+
+    [[SongRadioCatalog main] updateSongRemovedFromProgramming:self.song];
+    [[SongLocalCatalog main] updateSongRemovedFromProgramming:self.song];
     
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_delete_confirm_message", nil) closeAfterTimeInterval:2];
     

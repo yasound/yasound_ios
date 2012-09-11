@@ -10,7 +10,8 @@
 
 @implementation Song
 
-//@synthesize name;
+@synthesize catalogKey;
+@synthesize name;
 @synthesize artist;
 @synthesize album;
 @synthesize cover;
@@ -24,6 +25,7 @@
 @synthesize frequency;
 @synthesize enabled;
 @synthesize order;
+@synthesize genre;
 
 
 - (id)init
