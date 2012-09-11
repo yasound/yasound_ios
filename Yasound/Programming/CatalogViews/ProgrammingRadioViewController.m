@@ -27,6 +27,8 @@
 #import "DataBase.h"
 #import "ActionRemoveSongCell.h"
 
+
+
 @implementation ProgrammingRadioViewController
 
 @synthesize radio;
@@ -37,6 +39,7 @@
 //@synthesize artistToIndexPath;
 //@synthesize deleteArtistNameFromClient;
 //@synthesize deleteRunning;
+@synthesize songToIndexPath;
 
 
 #define TIMEPROFILE_BUILD @"Programming build catalog"
@@ -67,6 +70,8 @@
     if (self)
     {
         self.radio = radio;
+        self.songToIndexPath = [NSMutableDictionary dictionary];
+        
         self.selectedSegmentIndex = RADIOSEGMENT_INDEX_TITLES;
 //        self.deleteRunning = NO;
         
@@ -399,6 +404,9 @@
         else
             [cell update:song];
         
+        // store
+        [self.songToIndexPath setObject:indexPath forKey:song.catalogKey];
+        
         return cell;
 
 
@@ -552,76 +560,76 @@
 
 }
 
-- (void)onArtistDeleteClicked:(id)sender
-{
-//    // one in a time
-//    if (self.deleteRunning)
-//        return;
-//    
-//    ObjectButton* button = sender;
-//    
-//    _alertDeleteArtist = [[ObjectAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.radio", nil) message:NSLocalizedString(@"Programming.delete.artist", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.delete", nil),nil];
-//
-//    _alertDeleteArtist.userObject = button.userObject;
-//    [_alertDeleteArtist show];
-//    [_alertDeleteArtist release];
-}
+//- (void)onArtistDeleteClicked:(id)sender
+//{
+////    // one in a time
+////    if (self.deleteRunning)
+////        return;
+////    
+////    ObjectButton* button = sender;
+////    
+////    _alertDeleteArtist = [[ObjectAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.radio", nil) message:NSLocalizedString(@"Programming.delete.artist", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.delete", nil),nil];
+////
+////    _alertDeleteArtist.userObject = button.userObject;
+////    [_alertDeleteArtist show];
+////    [_alertDeleteArtist release];
+//}
 
 
 
 #pragma mark - UIAlertViewDelegate
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    //LBDEBUG TODO : pour plus tard
-//    if ((alertView == _alertDeleteArtist) && (buttonIndex == 1))
-//    {
-//        [ActivityAlertView showWithTitle:nil];
-//        NSString* artistNameFromClient = _alertDeleteArtist.userObject;
-//        
-//        self.deleteArtistNameFromClient = artistNameFromClient;
-//        self.deleteRunning = YES;
-//
-//        DLog(@"ProgrammingRadioViewController request delete artist '%@'", artistNameFromClient);
-//        
-//        // delete artist request
-//        [[YasoundDataProvider main] deleteArtist:artistNameFromClient fromRadio:self.radio target:self action:@selector(onArtistDeleted:success:)];
-//        return;
-//    }
-}
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    //LBDEBUG TODO : pour plus tard
+////    if ((alertView == _alertDeleteArtist) && (buttonIndex == 1))
+////    {
+////        [ActivityAlertView showWithTitle:nil];
+////        NSString* artistNameFromClient = _alertDeleteArtist.userObject;
+////        
+////        self.deleteArtistNameFromClient = artistNameFromClient;
+////        self.deleteRunning = YES;
+////
+////        DLog(@"ProgrammingRadioViewController request delete artist '%@'", artistNameFromClient);
+////        
+////        // delete artist request
+////        [[YasoundDataProvider main] deleteArtist:artistNameFromClient fromRadio:self.radio target:self action:@selector(onArtistDeleted:success:)];
+////        return;
+////    }
+//}
 
 
-- (void)onArtistDeleted:(ASIHTTPRequest*)req success:(BOOL)success
-{
-//    [ActivityAlertView close];
-//    self.deleteRunning = NO;
+//- (void)onArtistDeleted:(ASIHTTPRequest*)req success:(BOOL)success
+//{
+////    [ActivityAlertView close];
+////    self.deleteRunning = NO;
+////
+////
+////    if (!success)
+////    {
+////        DLog(@"ProgrammingRadioViewController::onArtistDeleted failed!");
+////
+////        UIAlertView* av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.delete.artist.error.title", nil) message:NSLocalizedString(@"Programming.delete.artist.error", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:nil];
+////        [av show];
+////        [av release];
+////        
+////        self.deleteArtistNameFromClient = nil;
+////
+////        return;
+////    }
+////    
+////    // refresh catalog
+////    [[SongCatalog synchronizedCatalog] deleteArtist:self.deleteArtistNameFromClient];
+////    
+////    NSIndexPath* indexPath = [self.artistToIndexPath objectForKey:self.deleteArtistNameFromClient];
+////    
+////    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+////    
+////    self.deleteArtistNameFromClient = nil;
 //
+//    
+//}
 //
-//    if (!success)
-//    {
-//        DLog(@"ProgrammingRadioViewController::onArtistDeleted failed!");
-//
-//        UIAlertView* av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.delete.artist.error.title", nil) message:NSLocalizedString(@"Programming.delete.artist.error", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:nil];
-//        [av show];
-//        [av release];
-//        
-//        self.deleteArtistNameFromClient = nil;
-//
-//        return;
-//    }
-//    
-//    // refresh catalog
-//    [[SongCatalog synchronizedCatalog] deleteArtist:self.deleteArtistNameFromClient];
-//    
-//    NSIndexPath* indexPath = [self.artistToIndexPath objectForKey:self.deleteArtistNameFromClient];
-//    
-//    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationBottom];
-//    
-//    self.deleteArtistNameFromClient = nil;
-
-    
-}
-
 
 
 
@@ -716,7 +724,7 @@
 //    self.sortedArtists = [[NSMutableDictionary alloc] init];
 //    self.sortedSongs = [[NSMutableDictionary alloc] init];    
 //    
-//    [self.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 
@@ -727,7 +735,18 @@
 //    //LBDEBUG : ICI : release objects?
 //    
 //    if (sender != self)
-//        [self.tableView reloadData];    
+//        [self.tableView reloadData];
+    DLog(@"onNotifSongRemoved");
+
+    Song* song = notif.object;
+    assert(song);
+    
+//    NSIndexPath* indexPath = [self.songToIndexPath objectForKey:song.catalogKey];
+//    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self.songToIndexPath removeObjectForKey:song];
+    
+    [self.tableView reloadData];
 }
 
 

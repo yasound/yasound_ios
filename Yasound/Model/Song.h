@@ -27,6 +27,7 @@ typedef enum
     
 }
 
+
 @property (retain, nonatomic) NSString* name;
 @property (retain, nonatomic) NSString* artist;
 @property (retain, nonatomic) NSString* album;
@@ -41,6 +42,11 @@ typedef enum
 @property (retain, nonatomic) NSNumber* frequency;
 @property (retain, nonatomic) NSNumber* enabled;
 @property (retain, nonatomic) NSNumber* order;
+
+
+// does not work with the JSON automatic parser
+@property (nonatomic, retain) NSString* catalogKey;
+
 
 // temporarly empty
 @property (retain, nonatomic) NSString* genre;

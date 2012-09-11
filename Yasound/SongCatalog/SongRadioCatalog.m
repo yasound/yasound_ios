@@ -199,7 +199,6 @@ static SongRadioCatalog* _main = nil;
             // LBDEBUG NSString* key = [SongCatalog catalogKeyOfSong:song.name artist:song.artist album:song.album];
             NSString* localKey = [SongCatalog catalogKeyOfSong:song.name_client artistKey:song.artist_client albumKey:song.album_client];
             
-            
             // and store the song in the dictionnary, for later convenient use
             [self.matchedSongs setObject:song forKey:localKey];
         }
@@ -252,6 +251,9 @@ static SongRadioCatalog* _main = nil;
         }
         
         NSString* songKey = [SongCatalog catalogKeyOfSong:song.name artistKey:artistKey albumKey:albumKey];
+        
+        // store the song key into the song
+        song.catalogKey = songKey;
         
         [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
     }
@@ -373,6 +375,9 @@ static SongRadioCatalog* _main = nil;
     
     NSString* songKey = [SongCatalog catalogKeyOfSong:song.name artistKey:artistKey albumKey:albumKey];
     
+    // store the song key into the song
+    song.catalogKey = songKey;
+    
     // add song to radio DB
     [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
     
@@ -395,6 +400,8 @@ static SongRadioCatalog* _main = nil;
 - (void)updateSongRemovedFromProgramming:(Song*)song
 {
     assert(song);
+    
+    DLog(@"updateSongRemovedFromProgramming");
 
     // be aware of empty artist names, and empty album names
     NSString* artistKey = song.artist;
@@ -410,8 +417,10 @@ static SongRadioCatalog* _main = nil;
         DLog(@"buildSynchronizedWithSource: empty album found!");
     }
     
-    NSString* songKey = [SongCatalog catalogKeyOfSong:song.name artistKey:artistKey albumKey:albumKey];
-
+//    NSString* songKey = [SongCatalog catalogKeyOfSong:song.name artistKey:artistKey albumKey:albumKey];
+    NSString* songKey = song.catalogKey;
+    assert(songKey);
+    
     // remove song from radio DB
     [self removeSong:songKey forTable:RADIOCATALOG_TABLE];
 
@@ -424,6 +433,8 @@ static SongRadioCatalog* _main = nil;
     //    self.albumsForArtist = nil;
     //    self.songsForArtistAlbum = nil;
     
+    DLog(@"send delete update notification");
+
     // and call for a GUI refresh
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:song];
 }

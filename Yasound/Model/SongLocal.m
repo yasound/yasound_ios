@@ -15,7 +15,7 @@
 
 @implementation SongLocal
 
-@synthesize catalogKey;
+//@synthesize catalogKey;
 @synthesize mediaItem;
 
 //@synthesize radio_id;

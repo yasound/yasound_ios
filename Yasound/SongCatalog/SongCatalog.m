@@ -29,7 +29,7 @@
 
 + (NSString*)catalogKeyOfSong:(NSString*)name artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey
 {
-    return [NSString stringWithFormat:@"%@|%@|%@", name, artistKey, albumKey];
+    return [NSString stringWithFormat:@"%@|%@|%@", [name lowercaseString], [artistKey lowercaseString], [albumKey lowercaseString]];
 }
 
 

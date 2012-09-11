@@ -16,7 +16,7 @@
 //@property (nonatomic, retain) NSNumber* radio_id;
 
 @property (nonatomic, retain) MPMediaItem* mediaItem;
-@property (nonatomic, retain) NSString* catalogKey;
+//@property (nonatomic, retain) NSString* catalogKey;
 
 @property (nonatomic, retain) NSString* artistKey;
 @property (nonatomic, retain) NSString* albumKey;

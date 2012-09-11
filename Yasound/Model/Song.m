@@ -10,7 +10,8 @@
 
 @implementation Song
 
-//@synthesize name;
+@synthesize catalogKey;
+@synthesize name;
 @synthesize artist;
 @synthesize album;
 @synthesize cover;
