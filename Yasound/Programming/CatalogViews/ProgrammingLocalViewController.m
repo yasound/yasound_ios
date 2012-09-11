@@ -539,6 +539,8 @@
         NSArray* collections = [[SongLocalCatalog main] genresAll];
         NSString* collection = [collections objectAtIndex:indexPath.row];
         NSArray* artists = [[SongLocalCatalog main] artistsForGenre:collection];
+        
+        [[SongLocalCatalog main] selectGenre:collection];
 
         self.collectionVC = [[ProgrammingCollectionViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:[SongLocalCatalog main] withArtists:artists forRadio:self.radio];
         CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
@@ -559,6 +561,8 @@
         NSArray* collections = [[SongLocalCatalog main] playlistsAll];
         NSString* collection = [collections objectAtIndex:indexPath.row];
         NSArray* artists = [[SongLocalCatalog main] artistsForPlaylist:collection];
+        
+        [[SongLocalCatalog main] selectPlaylist:collection];
         
         self.collectionVC = [[ProgrammingCollectionViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:[SongLocalCatalog main] withArtists:artists forRadio:self.radio];
         CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);

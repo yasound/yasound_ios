@@ -56,6 +56,7 @@ static SongRadioCatalog* _main = nil;
     
     if (self = [super init]) {
         
+        self.catalogCache = [NSMutableDictionary dictionary];
 //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAddToProgramming:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
 //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoveFromProgramming:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
 //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongUpdated:) name:NOTIF_PROGAMMING_SONG_UPDATED object:nil];
@@ -357,10 +358,13 @@ static SongRadioCatalog* _main = nil;
     [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
     
     // clear related cache
-    self.songsForLetter = nil;
-    self.artistsForLetter = nil;
-    self.albumsForArtist = nil;
-    self.songsForArtistAlbum = nil;
+    self.catalogCache = nil;
+    self.catalogCache = [NSMutableDictionary dictionary];
+    
+//    self.songsForLetter = nil;
+//    self.artistsForLetter = nil;
+//    self.albumsForArtist = nil;
+//    self.songsForArtistAlbum = nil;
     
     // and call for a GUI refresh
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:song];
@@ -393,10 +397,13 @@ static SongRadioCatalog* _main = nil;
     [self removeSong:songKey forTable:RADIOCATALOG_TABLE];
 
     // clear related cache
-    self.songsForLetter = nil;
-    self.artistsForLetter = nil;
-    self.albumsForArtist = nil;
-    self.songsForArtistAlbum = nil;
+    self.catalogCache = nil;
+    self.catalogCache = [NSMutableDictionary dictionary];
+    
+    //    self.songsForLetter = nil;
+    //    self.artistsForLetter = nil;
+    //    self.albumsForArtist = nil;
+    //    self.songsForArtistAlbum = nil;
     
     // and call for a GUI refresh
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:song];

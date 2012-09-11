@@ -207,7 +207,7 @@
 
 "Programming.collection.add.title" = "Programmation";
 "Programming.collection.add.message.empty" = "Aucun morceau ne peut être téléchargé sur le serveur.";
-"Programming.collection.add.message" = "%d morceaux sur %d peuvent être téléchargés sur votre radio. Voulez-vous les télécharger?";
+"Programming.collection.add.message" = "%d morceaux sont déjà sur votre radio.\n%d morceaux sur %d peuvent être téléchargés sur votre radio. Voulez-vous les télécharger?";
 
 
 "SongView_title" = "Song";

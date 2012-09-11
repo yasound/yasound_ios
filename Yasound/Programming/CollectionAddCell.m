@@ -260,6 +260,9 @@
 
 - (void)genreAddClicked {
  
+    NSInteger nbProgrammed = 0;
+    NSInteger nbCantProgram = 0;
+    
     NSArray* songs = [[SongLocalCatalog main] songsForGenre:self.collection];
     for (NSString* songKey in songs) {
         
@@ -267,13 +270,17 @@
         assert(song);
         
         // don't upload if the song is programmed already
-        if (song.isProgrammed)
+        if (song.isProgrammed) {
+            nbProgrammed++;
             continue;
+        }
         
         // can it be upload?
         BOOL can = [[SongUploader main] canUploadSong:song];
-        if (!can)
+        if (!can) {
+            nbCantProgram++;
             continue;
+        }
         
         // ok, add it to the group of songs to upload
         [self.songsToUpload addObject:song];
@@ -291,7 +298,7 @@
     
     // ask confirm
     NSString* message = NSLocalizedString(@"Programming.collection.add.message", nil);
-    message = [NSString stringWithFormat:message, self.songsToUpload.count, songs.count];
+    message = [NSString stringWithFormat:message, nbProgrammed, self.songsToUpload.count, songs.count];
     _addedGenreUpload = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.ok", nil), nil];
         [_addedGenreUpload show];
         [_addedGenreUpload release];
@@ -308,6 +315,9 @@
 
 - (void)playlistAddClicked {
  
+    NSInteger nbProgrammed = 0;
+    NSInteger nbCantProgram = 0;
+    
     NSArray* songs = [[SongLocalCatalog main] songsForPlaylist:self.collection];
     for (NSString* songKey in songs) {
         
@@ -315,13 +325,17 @@
         assert(song);
         
         // don't upload if the song is programmed already
-        if (song.isProgrammed)
+        if (song.isProgrammed) {
+            nbProgrammed++;
             continue;
+        }
         
         // can it be upload?
         BOOL can = [[SongUploader main] canUploadSong:song];
-        if (!can)
+        if (!can) {
+            nbCantProgram++;
             continue;
+        }
         
         // ok, add it to the group of songs to upload
         [self.songsToUpload addObject:song];
@@ -339,7 +353,7 @@
     
     // ask confirm
     NSString* message = NSLocalizedString(@"Programming.collection.add.message", nil);
-    message = [NSString stringWithFormat:message, self.songsToUpload.count, songs.count];
+    message = [NSString stringWithFormat:message, nbProgrammed, self.songsToUpload.count, songs.count];
     _addedPlaylistUpload = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.ok", nil), nil];
     [_addedPlaylistUpload show];
     [_addedPlaylistUpload release];
