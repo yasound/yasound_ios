@@ -120,7 +120,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
     NSArray* albums = nil;
-    NSInteger count = 9;
+    NSInteger count = 0;
     
     if (self.catalog.selectedGenre) {
         albums = [self.catalog albumsForArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
@@ -338,8 +338,23 @@
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
+    NSArray* albums = nil;
     
-    NSArray* albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
+    if (self.catalog.selectedGenre) {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+    }
+    
+    // sort with a selected playlist
+    else if (self.catalog.selectedPlaylist) {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist  withPlaylist:self.catalog.selectedPlaylist];
+    }
+    
+    // no sort
+    else {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
+    }
+
+    
     NSString* albumKey = [albums objectAtIndex:indexPath.row];
 
     [self.catalog selectAlbum:albumKey];

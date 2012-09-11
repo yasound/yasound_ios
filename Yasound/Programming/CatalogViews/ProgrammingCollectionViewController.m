@@ -323,12 +323,12 @@
             
             [UIView commitAnimations];
             
+
+            
             return NO;
         }
     }
     
-    self.catalog.selectedGenre = nil;
-    self.catalog.selectedPlaylist = nil;
     
     return goBack;
 }

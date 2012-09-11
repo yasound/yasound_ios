@@ -113,6 +113,15 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    // reset sorting selectors
+    [SongLocalCatalog main].selectedGenre = nil;
+    [SongLocalCatalog main].selectedPlaylist = nil;
+
+}
 
 
 
@@ -626,6 +635,11 @@
             self.collectionVC.tableView.frame = frame;
             
             [UIView commitAnimations];
+            
+            // reset sorting selectors
+            [SongLocalCatalog main].selectedGenre = nil;
+            [SongLocalCatalog main].selectedPlaylist = nil;
+
             
             return NO;
         }

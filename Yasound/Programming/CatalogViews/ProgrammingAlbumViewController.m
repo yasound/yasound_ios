@@ -115,10 +115,59 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    NSArray* songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist];
+    NSArray* songs = nil;
+    
+    //LBDEBUG
+    NSLog(@"selected Album '%@'", self.catalog.selectedAlbum);
+    
+    if (self.catalog.selectedGenre) {
+        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+    }
+    else if (self.catalog.selectedPlaylist) {
+        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist withPlaylist:self.catalog.selectedPlaylist];
+    }
+    else
+        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist];
+    
     return songs.count;
 }
 
+
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 32;
+}
+
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    //LBDEBUG
+    NSLog(@"selected Album '%@'", self.catalog.selectedAlbum);
+
+    NSString* title = nil;
+    if (self.catalog.selectedGenre) {
+        title = [NSString stringWithFormat:@"%@: %@: %@", self.catalog.selectedGenre, self.catalog.selectedArtist, self.catalog.selectedAlbum];
+    }
+    else if (self.catalog.selectedPlaylist) {
+        title = [NSString stringWithFormat:@"%@: %@: %@", self.catalog.selectedPlaylist, self.catalog.selectedArtist, self.catalog.selectedAlbum];
+    }
+    else
+        title = [NSString stringWithFormat:@"%@", self.catalog.selectedAlbum];
+    
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* view = [sheet makeImage];
+    
+    sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+}
 
 
 
@@ -140,7 +189,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    NSArray* songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist];
+    NSArray* songs = nil;
+    
+    if (self.catalog.selectedGenre) {
+        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+    }
+    else if (self.catalog.selectedPlaylist) {
+        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist withPlaylist:self.catalog.selectedPlaylist];
+    }
+    else
+        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist];
+
     Song* song = [songs objectAtIndex:indexPath.row];
 
     
@@ -228,7 +287,17 @@
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
-    NSArray* songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist];
+    NSArray* songs = nil;
+    
+    if (self.catalog.selectedGenre) {
+        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+    }
+    else if (self.catalog.selectedPlaylist) {
+        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist withPlaylist:self.catalog.selectedPlaylist];
+    }
+    else
+        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist];
+
     Song* song = [songs objectAtIndex:indexPath.row];
     
     if (self.catalog == [SongRadioCatalog main])
