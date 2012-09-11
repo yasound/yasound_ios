@@ -82,10 +82,14 @@ typedef enum {
 
 - (NSArray*)songsForLetter:(NSString*)charIndex fromTable:(NSString*)table;
 - (NSArray*)artistsForLetter:(NSString*)charIndex fromTable:(NSString*)table;
+
 - (NSArray*)albumsForArtist:(NSString*)artist fromTable:(NSString*)table;
 - (NSArray*)albumsForArtist:(NSString*)artist withGenre:genre fromTable:(NSString*)table;
 - (NSArray*)albumsForArtist:(NSString*)artist withPlaylist:playlist fromTable:(NSString*)table;
+
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist fromTable:(NSString*)table;
+- (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist withGenre:(NSString*)genre fromTable:(NSString*)table;
+- (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist withPlaylist:(NSString*)playlist fromTable:(NSString*)table;
 
 - (NSDictionary*)songsAllFromTable:(NSString*)table;
 

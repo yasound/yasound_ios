@@ -286,6 +286,17 @@ static SongRadioCatalog* _main = nil;
     return [self albumsForArtist:artist fromTable:RADIOCATALOG_TABLE];
 }
 
+- (NSArray*)albumsForArtist:(NSString*)artist withGenre:(NSString*)genre {
+    
+    return [self albumsForArtist:artist withGenre:genre fromTable:RADIOCATALOG_TABLE];
+}
+
+- (NSArray*)albumsForArtist:(NSString*)artist withPlaylist:(NSString*)playlist {
+    
+    return [self albumsForArtist:artist withPlaylist:playlist fromTable:RADIOCATALOG_TABLE];
+}
+
+
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist {
     
     return [self songsForAlbum:album fromArtist:artist fromTable:RADIOCATALOG_TABLE];

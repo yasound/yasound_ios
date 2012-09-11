@@ -197,7 +197,9 @@
 "Programming.segment.titles" = "Titres";
 "Programming.segment.artists" = "Artistes";
 "Programming.segment.genres" = "Genres";
+"Programming.segment.genre" = "Genre";
 "Programming.segment.playlists" = "Playlists";
+"Programming.segment.playlist" = "Playlist";
 "Programming.nbAlbums.1" = "1 album";
 "Programming.nbAlbums.n" = "%d albums";
 "Programming.nbArtists.1" = "1 artiste";

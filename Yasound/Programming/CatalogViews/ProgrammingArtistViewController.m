@@ -125,6 +125,41 @@
 }
 
 
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 32;
+}
+
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString* title = nil;
+    if (self.catalog.selectedGenre) {
+        title = [NSString stringWithFormat:@"%@: %@: %@", NSLocalizedString(@"Programming.segment.genre", nil), self.catalog.selectedGenre, self.catalog.selectedArtist];
+    }
+    else if (self.catalog.selectedPlaylist) {
+        title = [NSString stringWithFormat:@"%@: %@: %@", NSLocalizedString(@"Programming.segment.playlist", nil), self.catalog.selectedPlaylist, self.catalog.selectedArtist];
+    }
+    else
+        title = [NSString stringWithFormat:@"%@", self.catalog.selectedArtist];
+    
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* view = [sheet makeImage];
+    
+    sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+}
+
+
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 46;
@@ -215,15 +250,34 @@
     
     ProgrammingCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    NSArray* albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
-
-    NSString* albumKey = [albums objectAtIndex:indexPath.row];
+    NSArray* albums = nil;
+    NSString* albumKey = nil;
+    NSArray* songs = nil;
+    NSInteger nbSongs = 0;
     
-    //LBDEBUG
-//    NSArray* songs = [self.catalog.selectedArtistRepo objectForKey:albumKey];
-    NSArray* songs = [self.catalog songsForAlbum:albumKey fromArtist:self.catalog.selectedArtist];
-                                                                      
-    NSInteger nbSongs = songs.count;
+    // sort with a selected genre
+    if (self.catalog.selectedGenre) {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+        albumKey = [albums objectAtIndex:indexPath.row];
+        songs = [self.catalog songsForAlbum:albumKey fromArtist:self.catalog.selectedArtist  withGenre:self.catalog.selectedGenre];
+        nbSongs = songs.count;
+    }
+
+    // sort with a selected playlist
+    else if (self.catalog.selectedPlaylist) {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist  withPlaylist:self.catalog.selectedPlaylist];
+        albumKey = [albums objectAtIndex:indexPath.row];
+        songs = [self.catalog songsForAlbum:albumKey fromArtist:self.catalog.selectedArtist  withPlaylist:self.catalog.selectedPlaylist];
+        nbSongs = songs.count;
+    }
+    
+    // no sort
+    else {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
+        albumKey = [albums objectAtIndex:indexPath.row];
+        songs = [self.catalog songsForAlbum:albumKey fromArtist:self.catalog.selectedArtist];
+        nbSongs = songs.count;
+    }
     
     NSString* detailText;
     if (nbSongs == 1)

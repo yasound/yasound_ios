@@ -149,9 +149,9 @@
 {
     NSString* title = nil;
     if (self.catalog.selectedGenre)
-        title = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Programming.segment.genres", nil), self.catalog.selectedGenre];
+        title = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Programming.segment.genre", nil), self.catalog.selectedGenre];
     else
-        title = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Programming.segment.playlists", nil), self.catalog.selectedPlaylist];
+        title = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Programming.segment.playlist", nil), self.catalog.selectedPlaylist];
     
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];

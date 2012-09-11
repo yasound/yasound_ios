@@ -44,8 +44,14 @@
 - (void)initFromMatchedSongs:(NSDictionary*)songs target:(id)aTarget action:(SEL)anAction;
 - (NSArray*)songsForLetter:(NSString*)charIndex;
 - (NSArray*)artistsForLetter:(NSString*)charIndex;
+
 - (NSArray*)albumsForArtist:(NSString*)artist;
+- (NSArray*)albumsForArtist:(NSString*)artist withGenre:(NSString*)genre;
+- (NSArray*)albumsForArtist:(NSString*)artist withPlaylist:(NSString*)playlist;
+
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist;
+- (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist withGenre:(NSString*)genre;
+- (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist withPlaylist:(NSString*)playlist;
 
 - (NSArray*)genresAll;
 - (NSArray*)artistsForGenre:(NSString*)genre;
