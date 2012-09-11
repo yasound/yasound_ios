@@ -640,10 +640,6 @@
     
     self.radio = [req responseObjectWithClass:[Radio class]];
     
-    //LBDEBUG
-    DLog(@"radio created : %p", self.radio);
-    DLog(@"radio name : %@", self.radio.name);
-
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:@"..."];
     

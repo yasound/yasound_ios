@@ -377,9 +377,6 @@
 
         for (SongLocal* song in self.songsToUpload) {
             
-            //LBDEBUG
-            DLog(@"test catalogKey '%@'", song.catalogKey);
-            
             SongUploading* songUploading = [SongUploading new];
             songUploading.songLocal = song;
             songUploading.radio_id = self.radio.id;
