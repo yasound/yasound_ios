@@ -23,8 +23,8 @@
 #import "YasoundDataProvider.h"
 #import "RootViewController.h"
 #import "LocalSongInfoViewController.h"
-#import "ActionSongCell.h"
-#import "ActionCollectionCell.h"
+#import "ActionAddSongCell.h"
+#import "ActionAddCollectionCell.h"
 #import "ProgrammingRadioViewController.h"
 #import "ProgrammingUploadViewController.h"
 #import "YasoundAppDelegate.h"
@@ -370,11 +370,11 @@
         SongLocal* song = [songs objectAtIndex:indexPath.row];
         assert([song isKindOfClass:[SongLocal class]]);
 
-        ActionSongCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
+        ActionAddSongCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
         
         if (cell == nil) 
         {
-            cell = [[[ActionSongCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier song:song forRadio:self.radio] autorelease];
+            cell = [[[ActionAddSongCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier song:song forRadio:self.radio] autorelease];
         }
         else
             [cell update:song];        
@@ -410,11 +410,11 @@
         NSString* subtitle = [NSString stringWithFormat:@"%@ - %@", subArtist, subSongs];
 
         
-        ActionCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
+        ActionAddCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
         
         if (cell == nil)
         {
-            cell = [[[ActionCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier genre:collection subtitle:subtitle forRadio:self.radio usingCatalog:LOCALCATALOG_TABLE] autorelease];
+            cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier genre:collection subtitle:subtitle forRadio:self.radio usingCatalog:LOCALCATALOG_TABLE] autorelease];
         }
         else
             [cell updateGenre:collection subtitle:subtitle];
@@ -449,11 +449,11 @@
         
         NSString* subtitle = [NSString stringWithFormat:@"%@ - %@", subArtist, subSongs];
         
-        ActionCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
+        ActionAddCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
         
         if (cell == nil)
         {
-            cell = [[[ActionCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier playlist:collection subtitle:subtitle forRadio:self.radio usingCatalog:LOCALCATALOG_TABLE] autorelease];
+            cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier playlist:collection subtitle:subtitle forRadio:self.radio usingCatalog:LOCALCATALOG_TABLE] autorelease];
         }
         else
             [cell updatePlaylist:collection subtitle:subtitle];

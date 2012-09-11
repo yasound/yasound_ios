@@ -2213,6 +2213,17 @@
 			<key>del</key>
 			<dict>
 				<key>x</key>
+				<integer>8</integer>
+				<key>y</key>
+				<integer>7</integer>
+				<key>normal</key>
+				<string>programmingIconDel</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>delUpload</key>
+			<dict>
+				<key>x</key>
 				<integer>280</integer>
 				<key>y</key>
 				<integer>7</integer>

@@ -24,7 +24,7 @@
 #import "ProgrammingCell.h"
 //#import "ProgrammingLocalViewController.h"
 //#import "ProgrammingRadioViewController.h"
-#import "ActionCollectionCell.h"
+#import "ActionAddCollectionCell.h"
 
 
 @implementation ProgrammingArtistViewController
@@ -325,11 +325,11 @@
 //    else
 //        [cell updateWithText:albumKey detailText:detailText customImage:customImage refSong:firstSong];
 
-    ActionCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ActionAddCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil)
     {
-        cell = [[[ActionCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier album:album subtitle:subtitle forRadio:self.radio usingCatalog:self.catalog] autorelease];
+        cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier album:album subtitle:subtitle forRadio:self.radio usingCatalog:self.catalog] autorelease];
     }
     else
         [cell updateAlbum:album subtitle:subtitle];

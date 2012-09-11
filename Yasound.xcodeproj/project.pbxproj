@@ -933,24 +933,42 @@
 		BC1DD4D015FF6D64008051C9 /* programmingTableViewSection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1DD4C015FF6D64008051C9 /* programmingTableViewSection@2x.png */; };
 		BC1DD4D115FF6D64008051C9 /* programmingTableViewSection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1DD4C015FF6D64008051C9 /* programmingTableViewSection@2x.png */; };
 		BC1DD4D215FF6D64008051C9 /* programmingTableViewSection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1DD4C015FF6D64008051C9 /* programmingTableViewSection@2x.png */; };
-		BC1DD50115FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
-		BC1DD50215FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
-		BC1DD50315FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
-		BC1DD50415FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
-		BC1DD50515FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
-		BC1DD50615FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
-		BC1DD50715FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
-		BC1DD50815FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
-		BC1DD50915FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
-		BC1DD50A15FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
-		BC1DD50B15FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
-		BC1DD50C15FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
-		BC1DD50D15FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
-		BC1DD50E15FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
-		BC1DD50F15FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
-		BC1DD51015FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
-		BC1DD51115FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
-		BC1DD51215FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
+		BC1DD51B15FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51415FFC39E008051C9 /* ActionAddCollectionCell.m */; };
+		BC1DD51C15FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51415FFC39E008051C9 /* ActionAddCollectionCell.m */; };
+		BC1DD51D15FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51415FFC39E008051C9 /* ActionAddCollectionCell.m */; };
+		BC1DD51E15FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51415FFC39E008051C9 /* ActionAddCollectionCell.m */; };
+		BC1DD51F15FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51415FFC39E008051C9 /* ActionAddCollectionCell.m */; };
+		BC1DD52015FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51415FFC39E008051C9 /* ActionAddCollectionCell.m */; };
+		BC1DD52115FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51415FFC39E008051C9 /* ActionAddCollectionCell.m */; };
+		BC1DD52215FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51415FFC39E008051C9 /* ActionAddCollectionCell.m */; };
+		BC1DD52315FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51415FFC39E008051C9 /* ActionAddCollectionCell.m */; };
+		BC1DD52415FFC3AE008051C9 /* ActionAddSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51615FFC3A0008051C9 /* ActionAddSongCell.m */; };
+		BC1DD52515FFC3AE008051C9 /* ActionAddSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51615FFC3A0008051C9 /* ActionAddSongCell.m */; };
+		BC1DD52615FFC3AE008051C9 /* ActionAddSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51615FFC3A0008051C9 /* ActionAddSongCell.m */; };
+		BC1DD52715FFC3AE008051C9 /* ActionAddSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51615FFC3A0008051C9 /* ActionAddSongCell.m */; };
+		BC1DD52815FFC3AE008051C9 /* ActionAddSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51615FFC3A0008051C9 /* ActionAddSongCell.m */; };
+		BC1DD52915FFC3AE008051C9 /* ActionAddSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51615FFC3A0008051C9 /* ActionAddSongCell.m */; };
+		BC1DD52A15FFC3AE008051C9 /* ActionAddSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51615FFC3A0008051C9 /* ActionAddSongCell.m */; };
+		BC1DD52B15FFC3AE008051C9 /* ActionAddSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51615FFC3A0008051C9 /* ActionAddSongCell.m */; };
+		BC1DD52C15FFC3AE008051C9 /* ActionAddSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51615FFC3A0008051C9 /* ActionAddSongCell.m */; };
+		BC1DD52D15FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51815FFC3A4008051C9 /* ActionRemoveCollectionCell.m */; };
+		BC1DD52E15FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51815FFC3A4008051C9 /* ActionRemoveCollectionCell.m */; };
+		BC1DD52F15FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51815FFC3A4008051C9 /* ActionRemoveCollectionCell.m */; };
+		BC1DD53015FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51815FFC3A4008051C9 /* ActionRemoveCollectionCell.m */; };
+		BC1DD53115FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51815FFC3A4008051C9 /* ActionRemoveCollectionCell.m */; };
+		BC1DD53215FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51815FFC3A4008051C9 /* ActionRemoveCollectionCell.m */; };
+		BC1DD53315FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51815FFC3A4008051C9 /* ActionRemoveCollectionCell.m */; };
+		BC1DD53415FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51815FFC3A4008051C9 /* ActionRemoveCollectionCell.m */; };
+		BC1DD53515FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51815FFC3A4008051C9 /* ActionRemoveCollectionCell.m */; };
+		BC1DD53615FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */; };
+		BC1DD53715FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */; };
+		BC1DD53815FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */; };
+		BC1DD53915FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */; };
+		BC1DD53A15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */; };
+		BC1DD53B15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */; };
+		BC1DD53C15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */; };
+		BC1DD53D15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */; };
+		BC1DD53E15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */; };
 		BC209EE815EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
 		BC209EE915EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
 		BC209EEA15EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
@@ -6770,10 +6788,14 @@
 		BC188BDB1507647900E38692 /* SongLocal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongLocal.m; sourceTree = "<group>"; };
 		BC1DD4BF15FF6D64008051C9 /* programmingTableViewSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = programmingTableViewSection.png; sourceTree = "<group>"; };
 		BC1DD4C015FF6D64008051C9 /* programmingTableViewSection@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "programmingTableViewSection@2x.png"; sourceTree = "<group>"; };
-		BC1DD4FD15FFBA05008051C9 /* ActionCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionCollectionCell.h; path = Programming/ActionCollectionCell.h; sourceTree = "<group>"; };
-		BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionCollectionCell.m; path = Programming/ActionCollectionCell.m; sourceTree = "<group>"; };
-		BC1DD4FF15FFBA05008051C9 /* ActionSongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionSongCell.h; path = Programming/ActionSongCell.h; sourceTree = "<group>"; };
-		BC1DD50015FFBA05008051C9 /* ActionSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionSongCell.m; path = Programming/ActionSongCell.m; sourceTree = "<group>"; };
+		BC1DD51315FFC39D008051C9 /* ActionAddCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionAddCollectionCell.h; path = Programming/ActionAddCollectionCell.h; sourceTree = "<group>"; };
+		BC1DD51415FFC39E008051C9 /* ActionAddCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionAddCollectionCell.m; path = Programming/ActionAddCollectionCell.m; sourceTree = "<group>"; };
+		BC1DD51515FFC39E008051C9 /* ActionAddSongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionAddSongCell.h; path = Programming/ActionAddSongCell.h; sourceTree = "<group>"; };
+		BC1DD51615FFC3A0008051C9 /* ActionAddSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionAddSongCell.m; path = Programming/ActionAddSongCell.m; sourceTree = "<group>"; };
+		BC1DD51715FFC3A2008051C9 /* ActionRemoveCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionRemoveCollectionCell.h; path = Programming/ActionRemoveCollectionCell.h; sourceTree = "<group>"; };
+		BC1DD51815FFC3A4008051C9 /* ActionRemoveCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionRemoveCollectionCell.m; path = Programming/ActionRemoveCollectionCell.m; sourceTree = "<group>"; };
+		BC1DD51915FFC3A7008051C9 /* ActionRemoveSongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionRemoveSongCell.h; path = Programming/ActionRemoveSongCell.h; sourceTree = "<group>"; };
+		BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionRemoveSongCell.m; path = Programming/ActionRemoveSongCell.m; sourceTree = "<group>"; };
 		BC209EE615EBABFF00A0E7DB /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		BC209EE715EBABFF00A0E7DB /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JsonProxy.m"; sourceTree = "<group>"; };
@@ -8512,10 +8534,14 @@
 			isa = PBXGroup;
 			children = (
 				BC31F16F15FBB72300A8E486 /* CatalogViews */,
-				BC1DD4FD15FFBA05008051C9 /* ActionCollectionCell.h */,
-				BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */,
-				BC1DD4FF15FFBA05008051C9 /* ActionSongCell.h */,
-				BC1DD50015FFBA05008051C9 /* ActionSongCell.m */,
+				BC1DD51315FFC39D008051C9 /* ActionAddCollectionCell.h */,
+				BC1DD51415FFC39E008051C9 /* ActionAddCollectionCell.m */,
+				BC1DD51515FFC39E008051C9 /* ActionAddSongCell.h */,
+				BC1DD51615FFC3A0008051C9 /* ActionAddSongCell.m */,
+				BC1DD51715FFC3A2008051C9 /* ActionRemoveCollectionCell.h */,
+				BC1DD51815FFC3A4008051C9 /* ActionRemoveCollectionCell.m */,
+				BC1DD51915FFC3A7008051C9 /* ActionRemoveSongCell.h */,
+				BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */,
 				BC89C34615E5256C00E0BEE3 /* ProgrammingObjectParameters.h */,
 				BC89C34715E5256D00E0BEE3 /* ProgrammingObjectParameters.m */,
 				BCE35C1415D66855008C26AC /* SchedulingViewController.h */,
@@ -14670,8 +14696,10 @@
 				BC31F1B015FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1BB15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC3A5D7A15FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
-				BC1DD50815FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
-				BC1DD51115FFBA05008051C9 /* ActionSongCell.m in Sources */,
+				BC1DD52215FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */,
+				BC1DD52B15FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
+				BC1DD53415FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
+				BC1DD53D15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14898,8 +14926,10 @@
 				BC31F1B115FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1BC15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC3A5D7B15FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
-				BC1DD50915FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
-				BC1DD51215FFBA05008051C9 /* ActionSongCell.m in Sources */,
+				BC1DD52315FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */,
+				BC1DD52C15FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
+				BC1DD53515FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
+				BC1DD53E15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15122,8 +15152,10 @@
 				BC31F1AF15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1BA15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC3A5D7915FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
-				BC1DD50715FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
-				BC1DD51015FFBA05008051C9 /* ActionSongCell.m in Sources */,
+				BC1DD52115FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */,
+				BC1DD52A15FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
+				BC1DD53315FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
+				BC1DD53C15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15350,8 +15382,10 @@
 				BC31F1AC15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B715FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC3A5D7615FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
-				BC1DD50415FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
-				BC1DD50D15FFBA05008051C9 /* ActionSongCell.m in Sources */,
+				BC1DD51E15FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */,
+				BC1DD52715FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
+				BC1DD53015FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
+				BC1DD53915FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15578,8 +15612,10 @@
 				BC31F1AA15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B515FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC3A5D7415FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
-				BC1DD50215FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
-				BC1DD50B15FFBA05008051C9 /* ActionSongCell.m in Sources */,
+				BC1DD51C15FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */,
+				BC1DD52515FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
+				BC1DD52E15FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
+				BC1DD53715FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15807,8 +15843,10 @@
 				BC31F1AE15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B915FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC3A5D7815FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
-				BC1DD50615FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
-				BC1DD50F15FFBA05008051C9 /* ActionSongCell.m in Sources */,
+				BC1DD52015FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */,
+				BC1DD52915FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
+				BC1DD53215FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
+				BC1DD53B15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16035,8 +16073,10 @@
 				BC31F1AB15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B615FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC3A5D7515FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
-				BC1DD50315FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
-				BC1DD50C15FFBA05008051C9 /* ActionSongCell.m in Sources */,
+				BC1DD51D15FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */,
+				BC1DD52615FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
+				BC1DD52F15FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
+				BC1DD53815FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16263,8 +16303,10 @@
 				BC31F1A915FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B415FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC3A5D7315FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
-				BC1DD50115FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
-				BC1DD50A15FFBA05008051C9 /* ActionSongCell.m in Sources */,
+				BC1DD51B15FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */,
+				BC1DD52415FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
+				BC1DD52D15FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
+				BC1DD53615FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16492,8 +16534,10 @@
 				BC31F1AD15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B815FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 				BC3A5D7715FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
-				BC1DD50515FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
-				BC1DD50E15FFBA05008051C9 /* ActionSongCell.m in Sources */,
+				BC1DD51F15FFC3AE008051C9 /* ActionAddCollectionCell.m in Sources */,
+				BC1DD52815FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
+				BC1DD53115FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
+				BC1DD53A15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,12 +19,13 @@
 //#import "SongCatalog.h"
 #import "RootViewController.h"
 #import "AudioStreamManager.h"
-#import "ProgrammingCell.h"
+//#import "ProgrammingCell.h"
 #import "YasoundAppDelegate.h"
 #import "ObjectButton.h"
 #import "SongRadioCatalog.h"
 #import "SongLocalCatalog.h"
 #import "DataBase.h"
+#import "ActionRemoveSongCell.h"
 
 @implementation ProgrammingRadioViewController
 
@@ -272,12 +273,15 @@
 {
     if (![SongRadioCatalog main].isInCache)
         return 0;
-
+    
     NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
     if (nbRows == 0)
         return 0;
-
-    return 22;
+    
+    if (self.selectedSegmentIndex == RADIOSEGMENT_INDEX_TITLES)
+        return 22;
+    
+    return 32;
 }
 
 
@@ -295,10 +299,13 @@
 
     NSString* title = [[SongRadioCatalog main].indexMap objectAtIndex:section];
 
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.Section.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIImageView* view = [sheet makeImage];
 
-    sheet = [[Theme theme] stylesheetForKey:@"TableView.Section.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    if (self.selectedSegmentIndex == RADIOSEGMENT_INDEX_TITLES)
+        sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.labelTitles" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    else
+        sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UILabel* label = [sheet makeLabel];
     label.text = title;
     [view addSubview:label];
@@ -368,77 +375,81 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if (self.selectedSegmentIndex == RADIOSEGMENT_INDEX_TITLES)
-        return [self cellAlphaForRowAtIndexPath:indexPath];
-    else
-        return [self cellFolderForRowAtIndexPath:indexPath];
-}
+    if (self.selectedSegmentIndex == RADIOSEGMENT_INDEX_TITLES) {
+
+        static NSString* CellIdentifier = @"CellAlpha";
+
+        //LBDEBUG
+        assert([SongRadioCatalog main].indexMap.count > indexPath.section);
+
+        NSString* charIndex = [[SongRadioCatalog main].indexMap objectAtIndex:indexPath.section];
+        NSArray* songs = [[SongRadioCatalog main] songsForLetter:charIndex];
+
+        assert(songs.count > indexPath.row);
+
+        Song* song = [songs objectAtIndex:indexPath.row];
+
+        
+        ActionRemoveSongCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil)
+        {
+            cell = [[[ActionRemoveSongCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier song:song forRadio:self.radio] autorelease];
+        }
+        else
+            [cell update:song];
+        
+        return cell;
 
 
-
-
-- (UITableViewCell*)cellAlphaForRowAtIndexPath:(NSIndexPath*)indexPath
-{
-    static NSString* CellIdentifier = @"CellAlpha";
-
-    //LBDEBUG
-    assert([SongRadioCatalog main].indexMap.count > indexPath.section);
-
-    NSString* charIndex = [[SongRadioCatalog main].indexMap objectAtIndex:indexPath.section];
-    NSArray* songs = [[SongRadioCatalog main] songsForLetter:charIndex];
-    
-    assert(songs.count > indexPath.row);
-
-    Song* song = [songs objectAtIndex:indexPath.row];
-    
-    
-    ProgrammingCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) 
-    {
-        cell = [[[ProgrammingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song atRow:0 deletingTarget:self deletingAction:@selector(onSongDeleteRequested:song:)] autorelease];
+//        ProgrammingCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//
+//        if (cell == nil) 
+//        {
+//        cell = [[[ProgrammingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song atRow:0 deletingTarget:self deletingAction:@selector(onSongDeleteRequested:song:)] autorelease];
+//        }
+//        else
+//        [cell updateWithSong:song atRow:0];
+//
+//        return cell;
     }
-    else
-        [cell updateWithSong:song atRow:0];
-    
-    return cell;
 }
 
 
-- (void)onSongDeleteRequested:(UITableViewCell*)cell song:(Song*)song
-{
-    DLog(@"onSongDeleteRequested for Song %@", song.name);   
-    
-    // request to server
-    [[YasoundDataProvider main] deleteSong:song target:self action:@selector(onSongDeleted:info:) userData:cell];
-
-}
-
-
-// server's callback
-- (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
-{
-    DLog(@"onSongDeleted for Song %@", song.name);  
-    DLog(@"info %@", info);
-    
-    BOOL success = NO;
-    NSNumber* nbsuccess = [info objectForKey:@"success"];
-    if (nbsuccess != nil)
-        success = [nbsuccess boolValue];
-    
-    DLog(@"success %d", success);
-    
-    UITableViewCell* cell = [info objectForKey:@"userData"];
-    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
-
-    //LBDEBUG
-    assert(0);
-    
-    [[SongRadioCatalog main] updateSongRemovedFromProgramming:song];
-    [[SongLocalCatalog main] updateSongRemovedFromProgramming:song];
-
-//    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-}
+//- (void)onSongDeleteRequested:(UITableViewCell*)cell song:(Song*)song
+//{
+//    DLog(@"onSongDeleteRequested for Song %@", song.name);   
+//    
+//    // request to server
+//    [[YasoundDataProvider main] deleteSong:song target:self action:@selector(onSongDeleted:info:) userData:cell];
+//
+//}
+//
+//
+//// server's callback
+//- (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
+//{
+//    DLog(@"onSongDeleted for Song %@", song.name);  
+//    DLog(@"info %@", info);
+//    
+//    BOOL success = NO;
+//    NSNumber* nbsuccess = [info objectForKey:@"success"];
+//    if (nbsuccess != nil)
+//        success = [nbsuccess boolValue];
+//    
+//    DLog(@"success %d", success);
+//    
+//    UITableViewCell* cell = [info objectForKey:@"userData"];
+//    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+//
+//    //LBDEBUG
+//    assert(0);
+//    
+//    [[SongRadioCatalog main] updateSongRemovedFromProgramming:song];
+//    [[SongLocalCatalog main] updateSongRemovedFromProgramming:song];
+//
+////    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//}
 
 
 

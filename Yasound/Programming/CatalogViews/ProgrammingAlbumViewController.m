@@ -21,7 +21,7 @@
 #import "SongUploader.h"
 #import "SongUploadManager.h"
 #import "RootViewController.h"
-#import "ActionSongCell.h"
+#import "ActionAddSongCell.h"
 #import "AudioStreamManager.h"
 #import "LocalSongInfoViewController.h"
 #import "ProgrammingCell.h"
@@ -208,11 +208,11 @@
     {
         static NSString* CellAddIdentifier = @"CellAdd";
         
-        ActionSongCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
+        ActionAddSongCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
         
         if (cell == nil) 
         {
-            cell = [[[ActionSongCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier song:song forRadio:self.radio] autorelease];
+            cell = [[[ActionAddSongCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier song:song forRadio:self.radio] autorelease];
         }
         else
             [cell update:song];        

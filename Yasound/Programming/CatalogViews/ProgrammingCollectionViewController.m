@@ -21,7 +21,7 @@
 #import "SongUploader.h"
 #import "SongUploadManager.h"
 #import "RootViewController.h"
-#import "ActionSongCell.h"
+#import "ActionAddSongCell.h"
 #import "AudioStreamManager.h"
 #import "LocalSongInfoViewController.h"
 #import "ProgrammingCell.h"
@@ -30,7 +30,7 @@
 #import "YasoundAppDelegate.h"
 #import "DataBase.h"
 #import "PlaylistMoulinor.h"
-#import "ActionCollectionCell.h"
+#import "ActionAddCollectionCell.h"
 
 
 @implementation ProgrammingCollectionViewController
@@ -220,11 +220,11 @@
     subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
 
         
-        ActionCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        ActionAddCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil)
         {
-            cell = [[[ActionCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier artist:artist subtitle:subtitle forRadio:self.radio usingCatalog:self.catalog] autorelease];
+            cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier artist:artist subtitle:subtitle forRadio:self.radio usingCatalog:self.catalog] autorelease];
         }
         else
             [cell updateArtist:artist subtitle:subtitle];
