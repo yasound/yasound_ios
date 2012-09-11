@@ -97,7 +97,8 @@
         [self addSubview:self.detailedLabel];
         
         
-        if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
+//        if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
+        if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.catalogKey forRadio:self.radio] != nil))
         {
             self.button.enabled = NO;
             self.image.alpha = 0.5;
@@ -137,7 +138,8 @@
 {
     self.song = aSong;
     
-    if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
+//    if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
+    if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.catalogKey forRadio:self.radio] != nil))
     {
         self.button.enabled = NO;
         self.image.alpha = 0.5;

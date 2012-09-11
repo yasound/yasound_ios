@@ -198,12 +198,16 @@
 "Programming.segment.artists" = "Artistes";
 "Programming.segment.genres" = "Genres";
 "Programming.segment.playlists" = "Playlists";
-"Programmin.nbAlbums.1" = "1 album";
-"Programmin.nbAlbums.n" = "%d albums";
-"Programmin.nbArtists.1" = "1 artiste";
-"Programmin.nbArtists.n" = "%d artistes";
-"Programmin.nbSongs.1" = "1 morceau";
-"Programmin.nbSongs.n" = "%d morceaux";
+"Programming.nbAlbums.1" = "1 album";
+"Programming.nbAlbums.n" = "%d albums";
+"Programming.nbArtists.1" = "1 artiste";
+"Programming.nbArtists.n" = "%d artistes";
+"Programming.nbSongs.1" = "1 morceau";
+"Programming.nbSongs.n" = "%d morceaux";
+
+"Programming.collection.add.title" = "Programmation";
+"Programming.collection.add.message.empty" = "Aucun morceau ne peut être téléchargé sur le serveur.";
+"Programming.collection.add.message" = "%d morceaux sur %d peuvent être téléchargés sur votre radio. Voulez-vous les télécharger?";
 
 
 "SongView_title" = "Song";

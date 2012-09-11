@@ -86,7 +86,11 @@ static TimeProfile* _main;
     assert(profiles != nil);
 
     TimeProfileItem* item = [profiles objectAtIndex:(profiles.count -1)];
-    assert(item.dateEnd == nil); // if fails here, means you called "end" twice for the same item
+    if (item.dateEnd != nil)
+    {
+      // if fails here, means you called "end" twice for the same item
+        return;
+    }
     
     item.dateEnd = [NSDate date];
 }

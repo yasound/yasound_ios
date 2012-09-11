@@ -240,7 +240,8 @@ static SongUploadManager* _main;
     NSString* storedName = [songInfo valueForKey:@"name"];
       NSNumber* storedRadioId = [songInfo valueForKey:@"radio_id"];
     NSString* storedArtist = [songInfo valueForKey:@"artist"];
-    NSString* storedAlbum = [songInfo valueForKey:@"album"];
+      NSString* storedAlbum = [songInfo valueForKey:@"album"];
+      NSString* storedCatalogKey = [songInfo valueForKey:@"catalogKey"];
       
       if (storedRadioId == nil)
       {
@@ -257,6 +258,7 @@ static SongUploadManager* _main;
       songUploading.songLocal.name_client = storedName;
       songUploading.songLocal.artist_client = storedArtist;
       songUploading.songLocal.album_client = storedAlbum;
+      songUploading.songLocal.catalogKey = storedCatalogKey;
       
 //    [songUploading.songLocal setUploading:YES];
     
@@ -283,7 +285,8 @@ static SongUploadManager* _main;
       [songInfo setValue:song.songLocal.name forKey:@"name"];
         [songInfo setValue:song.radio_id forKey:@"radio_id"];
       [songInfo setValue:song.songLocal.artist forKey:@"artist"];
-      [songInfo setValue:song.songLocal.album forKey:@"album"];
+        [songInfo setValue:song.songLocal.album forKey:@"album"];
+        [songInfo setValue:song.songLocal.catalogKey forKey:@"catalogKey"];
       [newUploads addObject:songInfo];
     }
   }
@@ -341,30 +344,58 @@ static SongUploadManager* _main;
 }
 
 
-- (SongUploading*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album forRadio:(Radio*)radio
+- (SongUploading*)getUploadingSong:(NSString*)songKey forRadio:(Radio*)radio
 {
+    //LBDEBUG
+    DLog(@"");
+    DLog(@"getUploadingSong : '%@'", songKey);
+    
     for (SongUploadItem* item in self.items)
     {
+        //LBDEBUG
+        DLog(@"compares to : '%@'", item.song.songLocal.catalogKey);
+
         if (![item.song.radio_id isEqualToNumber:radio.id])
             continue;
         
-        NSString* verif = item.song.songLocal.name;
-        if (![verif isEqualToString:name])
+        NSString* verif = item.song.songLocal.catalogKey;
+        if (![verif isEqualToString:songKey])
             continue;
         
-        verif = item.song.songLocal.album;
-        if (![verif isEqualToString:album])
-            continue;
+        //LBDEBUG
+        DLog(@"we have a match!");
 
-        verif = item.song.songLocal.artist;
-        if (![verif isEqualToString:artist])
-            continue;
-        
         return item.song;
-}
+    }
     
     return nil;
 }
+
+
+//- (SongUploading*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album forRadio:(Radio*)radio
+//{
+//    for (SongUploadItem* item in self.items)
+//    {
+//        if (![item.song.radio_id isEqualToNumber:radio.id])
+//            continue;
+//        
+//        NSString* verif = item.song.songLocal.name;
+//        if (![verif isEqualToString:name])
+//            continue;
+//        
+//        verif = item.song.songLocal.album;
+//        if (![verif isEqualToString:album])
+//            continue;
+//
+//        verif = item.song.songLocal.artist;
+//        if (![verif isEqualToString:artist])
+//            continue;
+//        
+//        return item.song;
+//}
+//    
+//    return nil;
+//}
 
 
 

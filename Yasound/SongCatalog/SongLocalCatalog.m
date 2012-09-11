@@ -357,13 +357,13 @@ static SongLocalCatalog* _main = nil;
     
     results = [NSMutableArray array];
     
-    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT name FROM localCatalog WHERE genre=? ORDER BY name", genre];
+    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT songKey FROM localCatalog WHERE genre=? ORDER BY name", genre];
     
     while ([s next])
     {
-        NSString* name = [s stringForColumnIndex:0];
-        assert(name);
-        [results addObject:name];
+        NSString* songKey = [s stringForColumnIndex:0];
+        assert(songKey);
+        [results addObject:songKey];
     }
     
     // set cache
@@ -434,13 +434,13 @@ static SongLocalCatalog* _main = nil;
     
     results = [NSMutableArray array];
     
-    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT localCatalog.name FROM localCatalog JOIN playlistCatalog WHERE localCatalog.songKey = playlistCatalog.songKey  AND playlistCatalog.playlist = ? ORDER BY localCatalog.name", playlist];
+    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT localCatalog.songKey FROM localCatalog JOIN playlistCatalog WHERE localCatalog.songKey = playlistCatalog.songKey  AND playlistCatalog.playlist = ? ORDER BY localCatalog.name", playlist];
     
     while ([s next])
     {
-        NSString* name = [s stringForColumnIndex:0];
-        assert(name);
-        [results addObject:name];
+        NSString* songKey = [s stringForColumnIndex:0];
+        assert(songKey);
+        [results addObject:songKey];
     }
     
     // set cache

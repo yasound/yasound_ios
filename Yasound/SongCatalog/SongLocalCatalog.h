@@ -26,7 +26,7 @@
 // list of NSString* genre -> NSArray* [NSString* artists]
 @property (nonatomic, retain) NSMutableDictionary* artistsForGenre;
 
-// list of NSString* genre -> NSArray* [NSString* songs name] // take care : songs name is not songKey
+// list of NSString* genre -> NSArray* [NSString* songs songKey] 
 @property (nonatomic, retain) NSMutableDictionary* songsForGenre;
 
 // list of NSString* playlist -> NSArray* [NSString* artists]

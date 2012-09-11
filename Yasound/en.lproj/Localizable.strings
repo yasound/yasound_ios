@@ -201,13 +201,16 @@
 "Programming.segment.artists" = "Artists";
 "Programming.segment.genres" = "Genres";
 "Programming.segment.playlists" = "Playlists";
-"Programmin.nbAlbums.1" = "1 album";
-"Programmin.nbAlbums.n" = "%d albums";
-"Programmin.nbArtists.1" = "1 artist";
-"Programmin.nbArtists.n" = "%d artists";
-"Programmin.nbSongs.1" = "1 song";
-"Programmin.nbSongs.n" = "%d songs";
+"Programming.nbAlbums.1" = "1 album";
+"Programming.nbAlbums.n" = "%d albums";
+"Programming.nbArtists.1" = "1 artist";
+"Programming.nbArtists.n" = "%d artists";
+"Programming.nbSongs.1" = "1 song";
+"Programming.nbSongs.n" = "%d songs";
 
+"Programming.collection.add.title" = "Programming";
+"Programming.collection.add.message.empty" = "None of the songs can be uploaded to the server.";
+"Programming.collection.add.message" = "%d songs of %d can be uploaded to your radio. Do you want to upload them?";
 
 
 

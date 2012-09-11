@@ -13,6 +13,8 @@
 #import "SongCatalog.h"
 #import "ActivityAlertView.h"
 #import "YasoundReachability.h"
+#import "SongLocalCatalog.h"
+#import "SongRadioCatalog.h"
 
 
 @implementation CollectionAddCell
@@ -23,7 +25,7 @@
 @synthesize label;
 @synthesize detailedLabel;
 @synthesize button;
-
+@synthesize songsToUpload;
 
 //
 //- (void)willMoveToSuperview:(UIView *)newSuperview
@@ -153,21 +155,36 @@
     self.label.text = genre;
     self.detailedLabel.text = subtitle;
     
+    BOOL areAllDisabled = YES;
     
-//    if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
-//    {
-//        self.button.enabled = NO;
-//        self.image.alpha = 0.5;
-//        self.label.alpha = 0.5;
-//        self.detailedLabel.alpha = 0.5;
-//    }
-//    else
-//    {
-//        self.button.enabled = YES;
-//        self.image.alpha = 1;
-//        self.label.alpha = 1;
-//        self.detailedLabel.alpha = 1;
-//    }
+    NSArray* songs = [[SongLocalCatalog main] songsForGenre:self.collection];
+    for (NSString* songKey in songs) {
+        
+        SongLocal* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
+        assert(song);
+        assert([song isKindOfClass:[SongLocal class]]);
+        
+        Song* matchedSong = [[SongRadioCatalog main].matchedSongs objectForKey:songKey];
+        
+        // don't upload if the song is programmed already
+        BOOL isProgrammed = (matchedSong != nil);
+        
+//        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio];
+        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.catalogKey forRadio:self.radio];
+        
+        areAllDisabled &= (isProgrammed || isUploading);
+    }
+    
+    if (areAllDisabled) {
+        self.button.enabled = NO;
+        self.label.alpha = 0.5;
+        self.detailedLabel.alpha = 0.5;
+    } else {
+        self.button.enabled = YES;
+        self.label.alpha = 1;
+        self.detailedLabel.alpha = 1;
+    }
+
 }
 
 
@@ -179,21 +196,35 @@
     self.label.text = playlist;
     self.detailedLabel.text = subtitle;
     
+    BOOL areAllDisabled = YES;
     
-    //    if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
-    //    {
-    //        self.button.enabled = NO;
-    //        self.image.alpha = 0.5;
-    //        self.label.alpha = 0.5;
-    //        self.detailedLabel.alpha = 0.5;
-    //    }
-    //    else
-    //    {
-    //        self.button.enabled = YES;
-    //        self.image.alpha = 1;
-    //        self.label.alpha = 1;
-    //        self.detailedLabel.alpha = 1;
-    //    }
+    NSArray* songs = [[SongLocalCatalog main] songsForPlaylist:self.collection];
+    for (NSString* songKey in songs) {
+        
+        SongLocal* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
+        assert(song);
+        assert([song isKindOfClass:[SongLocal class]]);
+        
+        Song* matchedSong = [[SongRadioCatalog main].matchedSongs objectForKey:songKey];
+        
+        // don't upload if the song is programmed already
+        BOOL isProgrammed = (matchedSong != nil);
+
+//        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio];
+        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.catalogKey forRadio:self.radio];
+        
+        areAllDisabled &= (isProgrammed || isUploading);
+    }
+    
+    if (areAllDisabled) {
+        self.button.enabled = NO;
+        self.label.alpha = 0.5;
+        self.detailedLabel.alpha = 0.5;
+    } else {
+        self.button.enabled = YES;
+        self.label.alpha = 1;
+        self.detailedLabel.alpha = 1;
+    }
 }
 
 
@@ -217,27 +248,111 @@
 
 - (void)onButtonClicked:(id)sender
 {
-//    BOOL can = [[SongUploader main] canUploadSong:song];
-//    if (!can)
-//    {
-//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongAddView_cant_add_title", nil) message:NSLocalizedString(@"SongAddView_cant_add_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [av show];
-//        [av release];  
-//        return;
-//    }
-//
-//    BOOL error;
-//    BOOL warning = [[UserSettings main] boolForKey:USKEYuploadLegalWarning error:&error];                    
-//    if (error || warning)
-//    {
-//        _legalUploadWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongUpload_warning_title", nil) message:NSLocalizedString(@"SongUpload_warning_message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:NSLocalizedString(@"Button_iAgree", nil),nil ];
-//        [_legalUploadWarning show];
-//        [_legalUploadWarning release];  
-//    }
-//    else
-//    [self requestUpload];
+    self.songsToUpload = nil;
+    self.songsToUpload = [NSMutableArray array];
+    
+    if (self.mode == eGenreAdd)
+        [self genreAddClicked];
+    else if (self.mode == ePlaylistAdd)
+        [self playlistAddClicked];
+}
+
+
+- (void)genreAddClicked {
+ 
+    NSArray* songs = [[SongLocalCatalog main] songsForGenre:self.collection];
+    for (NSString* songKey in songs) {
+        
+        Song* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
+        assert(song);
+        
+        // don't upload if the song is programmed already
+        if (song.isProgrammed)
+            continue;
+        
+        // can it be upload?
+        BOOL can = [[SongUploader main] canUploadSong:song];
+        if (!can)
+            continue;
+        
+        // ok, add it to the group of songs to upload
+        [self.songsToUpload addObject:song];
+    }
+
+    
+    if (self.songsToUpload.count == 0) {
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:NSLocalizedString(@"Programming.collection.add.message.empty", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+        
+        return;
+    }
+    
+    // ask confirm
+    NSString* message = NSLocalizedString(@"Programming.collection.add.message", nil);
+    message = [NSString stringWithFormat:message, self.songsToUpload.count, songs.count];
+    _addedGenreUpload = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.ok", nil), nil];
+        [_addedGenreUpload show];
+        [_addedGenreUpload release];
+    
+}
+
+
+
+
+
+
+
+
+
+- (void)playlistAddClicked {
+ 
+    NSArray* songs = [[SongLocalCatalog main] songsForPlaylist:self.collection];
+    for (NSString* songKey in songs) {
+        
+        Song* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
+        assert(song);
+        
+        // don't upload if the song is programmed already
+        if (song.isProgrammed)
+            continue;
+        
+        // can it be upload?
+        BOOL can = [[SongUploader main] canUploadSong:song];
+        if (!can)
+            continue;
+        
+        // ok, add it to the group of songs to upload
+        [self.songsToUpload addObject:song];
+    }
+    
+    
+    if (self.songsToUpload.count == 0) {
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:NSLocalizedString(@"Programming.collection.add.message.empty", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+        
+        return;
+    }
+    
+    // ask confirm
+    NSString* message = NSLocalizedString(@"Programming.collection.add.message", nil);
+    message = [NSString stringWithFormat:message, self.songsToUpload.count, songs.count];
+    _addedPlaylistUpload = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.ok", nil), nil];
+    [_addedPlaylistUpload show];
+    [_addedPlaylistUpload release];
 
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -254,59 +369,55 @@
     }
 
     
-    if ((alertView == _addedUploadWarning) && (buttonIndex == 1))
+    if ((alertView == _addedGenreUpload) && (buttonIndex == 1))
     {
-        [[UserSettings main] setBool:NO forKey:USKEYuploadAddedWarning];
+        
+        BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
+        BOOL startUploadNow = isWifi;
+
+        for (SongLocal* song in self.songsToUpload) {
+            
+            //LBDEBUG
+            DLog(@"test catalogKey '%@'", song.catalogKey);
+            
+            SongUploading* songUploading = [SongUploading new];
+            songUploading.songLocal = song;
+            songUploading.radio_id = self.radio.id;
+
+           // add an upload job to the queue
+            [[SongUploadManager main] addSong:songUploading startUploadNow:startUploadNow];
+
+            // refresh gui
+            [self updateGenre:self.collection subtitle:self.detailedLabel.text];
+        }
+        
         return;
     }
-}
 
-- (void)requestUpload
-{
-//    BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
-//    
-//        
-//    BOOL startUploadNow = isWifi;
-//    
-//    SongUploading* songUploading = [SongUploading new];
-//    songUploading.songLocal = self.song;
-//    songUploading.radio_id = self.radio.id;
-//    
-//   // add an upload job to the queue
-//    [[SongUploadManager main] addSong:songUploading startUploadNow:startUploadNow];
-//    
-//    // refresh gui
-//    [self update:self.song];
-//    
-////    // and flag the current song as "uploading song"
-////    [song setProgrammed
-////    [self update:song];
-//    
-//    if (!isWifi && ![SongUploadManager main].notified3G)
-//    {
-//        [SongUploadManager main].notified3G = YES;
-//        
-//        _wifiWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_add_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_add_WIFI_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [_wifiWarning show];
-//        [_wifiWarning release];  
-//        return; 
-//    }
-//    else
-//    {
-//        BOOL error;
-//        BOOL warning = [[UserSettings main] boolForKey:USKEYuploadAddedWarning error:&error];
-//        if (error || warning)
-//        {
-//            _addedUploadWarning = [[UIAlertView alloc] initWithTitle:@"Yasound" message:NSLocalizedString(@"SongAddView_added", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_OK", nil) otherButtonTitles:NSLocalizedString(@"Button_dontShowAgain", nil),nil ];
-//            [_addedUploadWarning show];
-//            [_addedUploadWarning release];  
-//        }
-//
-//        // [ActivityAlertView showWithTitle:NSLocalizedString(@"", nil) closeAfterTimeInterval:1];
-//    }
-    
-}
 
+    if ((alertView == _addedPlaylistUpload) && (buttonIndex == 1))
+    {
+        
+        BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
+        BOOL startUploadNow = isWifi;
+        
+        for (SongLocal* song in self.songsToUpload) {
+            
+            SongUploading* songUploading = [SongUploading new];
+            songUploading.songLocal = song;
+            songUploading.radio_id = self.radio.id;
+            
+            // add an upload job to the queue
+            [[SongUploadManager main] addSong:songUploading startUploadNow:startUploadNow];
+            
+            // refresh gui
+            [self updatePlaylist:self.collection subtitle:self.detailedLabel.text];
+        }
+        
+        return;
+    }
+
+}
 
 
 

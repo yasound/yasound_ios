@@ -379,16 +379,16 @@
 
         NSString* subArtist = nil;
         if (nbArtists == 1)
-            subArtist = NSLocalizedString(@"Programmin.nbArtists.1", nil);
+            subArtist = NSLocalizedString(@"Programming.nbArtists.1", nil);
         else
-            subArtist = NSLocalizedString(@"Programmin.nbArtists.n", nil);
+            subArtist = NSLocalizedString(@"Programming.nbArtists.n", nil);
         subArtist = [subArtist stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbArtists]];
 
         NSString* subSongs = nil;
         if (nbSongs == 1)
-            subSongs = NSLocalizedString(@"Programmin.nbSongs.1", nil);
+            subSongs = NSLocalizedString(@"Programming.nbSongs.1", nil);
         else
-            subSongs = NSLocalizedString(@"Programmin.nbSongs.n", nil);
+            subSongs = NSLocalizedString(@"Programming.nbSongs.n", nil);
         subSongs = [subSongs stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];
         
         
@@ -419,16 +419,16 @@
 
         NSString* subArtist = nil;
         if (nbArtists == 1)
-            subArtist = NSLocalizedString(@"Programmin.nbArtists.1", nil);
+            subArtist = NSLocalizedString(@"Programming.nbArtists.1", nil);
         else
-            subArtist = NSLocalizedString(@"Programmin.nbArtists.n", nil);
+            subArtist = NSLocalizedString(@"Programming.nbArtists.n", nil);
         subArtist = [subArtist stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbArtists]];
         
         NSString* subSongs = nil;
         if (nbSongs == 1)
-            subSongs = NSLocalizedString(@"Programmin.nbSongs.1", nil);
+            subSongs = NSLocalizedString(@"Programming.nbSongs.1", nil);
         else
-            subSongs = NSLocalizedString(@"Programmin.nbSongs.n", nil);
+            subSongs = NSLocalizedString(@"Programming.nbSongs.n", nil);
         subSongs = [subSongs stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];
         
         
@@ -486,9 +486,9 @@
 //            cell.textLabel.text = collection;
 //            
 //            if (nbItems == 1)
-//                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.1", nil);
+//                cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbArtists.1", nil);
 //            else
-//                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.n", nil);
+//                cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbArtists.n", nil);
 //            
 //            cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbItems]];
 //        }
@@ -501,9 +501,9 @@
 //            cell.textLabel.text = collection;
 //            
 //            if (nbItems == 1)
-//                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.1", nil);
+//                cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbArtists.1", nil);
 //            else
-//                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.n", nil);
+//                cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbArtists.n", nil);
 //            
 //            cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbItems]];
 //        }

@@ -469,9 +469,9 @@
 //        cell.textLabel.text = artist;
 //
 //        if (nbAlbums == 1)
-//            cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbSongs.1", nil);
+//            cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbSongs.1", nil);
 //        else
-//            cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbSongs.n", nil);
+//            cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbSongs.n", nil);
 //
 //         cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
 //

@@ -14,7 +14,8 @@
 {
     UIAlertView* _wifiWarning;
     UIAlertView* _legalUploadWarning;
-    UIAlertView* _addedUploadWarning;
+    UIAlertView* _addedGenreUpload;
+    UIAlertView* _addedPlaylistUpload;
 }
 
 typedef enum {
@@ -32,6 +33,8 @@ typedef enum {
 @property (nonatomic, retain) UILabel* label;
 @property (nonatomic, retain) UILabel* detailedLabel;
 @property (nonatomic, retain) UIButton* button;
+
+@property (nonatomic, retain) NSMutableArray* songsToUpload;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier genre:(NSString*)genre subtitle:(NSString*)subtitle forRadio:(Radio*)radio;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier playlist:(NSString*)playlist subtitle:(NSString*)subtitle forRadio:(Radio*)radio;
