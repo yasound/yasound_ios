@@ -1,5 +1,5 @@
 //
-//  SongAddCell.h
+//  ActionSongCell.h
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 27/02/12.
@@ -10,7 +10,7 @@
 #import "SongLocal.h"
 #import "Radio.h"
 
-@interface SongAddCell : UITableViewCell
+@interface ActionSongCell : UITableViewCell
 {
     UIAlertView* _wifiWarning;
     UIAlertView* _legalUploadWarning;

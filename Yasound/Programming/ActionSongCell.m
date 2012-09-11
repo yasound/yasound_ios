@@ -1,12 +1,12 @@
 //
-//  SongAddCell.m
+//  ActionSongCell.m
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 27/02/12.
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "SongAddCell.h"
+#import "ActionSongCell.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "SongUploadManager.h"
@@ -15,7 +15,7 @@
 #import "YasoundReachability.h"
 
 
-@implementation SongAddCell
+@implementation ActionSongCell
 
 @synthesize song;
 @synthesize radio;

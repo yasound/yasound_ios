@@ -220,7 +220,6 @@
 		40B409DC152EFC630050D334 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		40B409DD152EFC630050D334 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		40B409DE152EFC630050D334 /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
-		40B409E2152EFC630050D334 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
 		40B409E3152EFC630050D334 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
 		40B409E4152EFC630050D334 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
 		40B409E5152EFC630050D334 /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
@@ -450,7 +449,6 @@
 		40D53BDB1554280F001EB0C5 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		40D53BDC1554280F001EB0C5 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		40D53BDD1554280F001EB0C5 /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
-		40D53BE11554280F001EB0C5 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
 		40D53BE21554280F001EB0C5 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
 		40D53BE31554280F001EB0C5 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
 		40D53BE41554280F001EB0C5 /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
@@ -935,6 +933,24 @@
 		BC1DD4D015FF6D64008051C9 /* programmingTableViewSection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1DD4C015FF6D64008051C9 /* programmingTableViewSection@2x.png */; };
 		BC1DD4D115FF6D64008051C9 /* programmingTableViewSection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1DD4C015FF6D64008051C9 /* programmingTableViewSection@2x.png */; };
 		BC1DD4D215FF6D64008051C9 /* programmingTableViewSection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1DD4C015FF6D64008051C9 /* programmingTableViewSection@2x.png */; };
+		BC1DD50115FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
+		BC1DD50215FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
+		BC1DD50315FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
+		BC1DD50415FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
+		BC1DD50515FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
+		BC1DD50615FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
+		BC1DD50715FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
+		BC1DD50815FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
+		BC1DD50915FFBA05008051C9 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */; };
+		BC1DD50A15FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
+		BC1DD50B15FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
+		BC1DD50C15FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
+		BC1DD50D15FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
+		BC1DD50E15FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
+		BC1DD50F15FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
+		BC1DD51015FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
+		BC1DD51115FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
+		BC1DD51215FFBA05008051C9 /* ActionSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD50015FFBA05008051C9 /* ActionSongCell.m */; };
 		BC209EE815EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
 		BC209EE915EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
 		BC209EEA15EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
@@ -1091,15 +1107,6 @@
 		BC31F1BA15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
 		BC31F1BB15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
 		BC31F1BC15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
-		BC31F1E915FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
-		BC31F1EA15FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
-		BC31F1EB15FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
-		BC31F1EC15FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
-		BC31F1ED15FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
-		BC31F1EE15FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
-		BC31F1EF15FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
-		BC31F1F015FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
-		BC31F1F115FD5ED000A8E486 /* CollectionAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */; };
 		BC355BD615BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
 		BC355BD715BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
 		BC355BD815BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
@@ -1903,7 +1910,6 @@
 		BC56F4FE152486AF005D1B40 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		BC56F4FF152486AF005D1B40 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		BC56F500152486AF005D1B40 /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
-		BC56F504152486AF005D1B40 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
 		BC56F505152486AF005D1B40 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
 		BC56F506152486AF005D1B40 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
 		BC56F507152486AF005D1B40 /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
@@ -2706,7 +2712,6 @@
 		BCC7520115E689EF00CF7F7C /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		BCC7520215E689EF00CF7F7C /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		BCC7520315E689EF00CF7F7C /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
-		BCC7520715E689EF00CF7F7C /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
 		BCC7520815E689EF00CF7F7C /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
 		BCC7520915E689EF00CF7F7C /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
 		BCC7520A15E689EF00CF7F7C /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
@@ -3381,11 +3386,6 @@
 		BCD29A8615DBAEE200291220 /* programmingDummyTrack256@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD29A6715DBAEE200291220 /* programmingDummyTrack256@2x.png */; };
 		BCD29A8715DBAEE200291220 /* programmingDummyTrack256@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD29A6715DBAEE200291220 /* programmingDummyTrack256@2x.png */; };
 		BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
-		BCD818681504F74700B818D1 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
-		BCD818691504F74700B818D1 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
-		BCD8186A1504F74700B818D1 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
-		BCD8186B1504F74700B818D1 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
-		BCD8186C1504F74700B818D1 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
 		BCD8C7A214B4B59F009EAF61 /* YasoundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */; };
 		BCD8C7A314B4B59F009EAF61 /* YasoundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */; };
 		BCD8C7A414B4B59F009EAF61 /* YasoundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */; };
@@ -6770,6 +6770,10 @@
 		BC188BDB1507647900E38692 /* SongLocal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongLocal.m; sourceTree = "<group>"; };
 		BC1DD4BF15FF6D64008051C9 /* programmingTableViewSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = programmingTableViewSection.png; sourceTree = "<group>"; };
 		BC1DD4C015FF6D64008051C9 /* programmingTableViewSection@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "programmingTableViewSection@2x.png"; sourceTree = "<group>"; };
+		BC1DD4FD15FFBA05008051C9 /* ActionCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionCollectionCell.h; path = Programming/ActionCollectionCell.h; sourceTree = "<group>"; };
+		BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionCollectionCell.m; path = Programming/ActionCollectionCell.m; sourceTree = "<group>"; };
+		BC1DD4FF15FFBA05008051C9 /* ActionSongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionSongCell.h; path = Programming/ActionSongCell.h; sourceTree = "<group>"; };
+		BC1DD50015FFBA05008051C9 /* ActionSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionSongCell.m; path = Programming/ActionSongCell.m; sourceTree = "<group>"; };
 		BC209EE615EBABFF00A0E7DB /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		BC209EE715EBABFF00A0E7DB /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JsonProxy.m"; sourceTree = "<group>"; };
@@ -6804,8 +6808,6 @@
 		BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingRadioViewController.m; sourceTree = "<group>"; };
 		BC31F1B215FBBE6F00A8E486 /* ProgrammingCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingCollectionViewController.h; sourceTree = "<group>"; };
 		BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingCollectionViewController.m; sourceTree = "<group>"; };
-		BC31F1E715FD5ED000A8E486 /* CollectionAddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionAddCell.h; path = Programming/CollectionAddCell.h; sourceTree = "<group>"; };
-		BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionAddCell.m; path = Programming/CollectionAddCell.m; sourceTree = "<group>"; };
 		BC355BCD15BD4F9100305C56 /* GiftsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiftsViewController.h; path = Yasound/Tabs/GiftsViewController.h; sourceTree = SOURCE_ROOT; };
 		BC355BCE15BD4F9100305C56 /* GiftsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GiftsViewController.m; path = Yasound/Tabs/GiftsViewController.m; sourceTree = SOURCE_ROOT; };
 		BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GiftsViewController.xib; path = Yasound/Tabs/GiftsViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -7123,8 +7125,6 @@
 		BCD29A6715DBAEE200291220 /* programmingDummyTrack256@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "programmingDummyTrack256@2x.png"; sourceTree = "<group>"; };
 		BCD4C2C414695FCD000A236A /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlertView.h; sourceTree = "<group>"; };
 		BCD4C2C514695FCD000A236A /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlertView.m; sourceTree = "<group>"; };
-		BCD818661504F74700B818D1 /* SongAddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongAddCell.h; path = Programming/SongAddCell.h; sourceTree = "<group>"; };
-		BCD818671504F74700B818D1 /* SongAddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongAddCell.m; path = Programming/SongAddCell.m; sourceTree = "<group>"; };
 		BCD8C7A014B4B59F009EAF61 /* YasoundSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundSessionManager.h; sourceTree = "<group>"; };
 		BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundSessionManager.m; sourceTree = "<group>"; };
 		BCDABABD15F4EFBC002E8708 /* CustomSizedButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSizedButtonView.h; sourceTree = "<group>"; };
@@ -8512,6 +8512,10 @@
 			isa = PBXGroup;
 			children = (
 				BC31F16F15FBB72300A8E486 /* CatalogViews */,
+				BC1DD4FD15FFBA05008051C9 /* ActionCollectionCell.h */,
+				BC1DD4FE15FFBA05008051C9 /* ActionCollectionCell.m */,
+				BC1DD4FF15FFBA05008051C9 /* ActionSongCell.h */,
+				BC1DD50015FFBA05008051C9 /* ActionSongCell.m */,
 				BC89C34615E5256C00E0BEE3 /* ProgrammingObjectParameters.h */,
 				BC89C34715E5256D00E0BEE3 /* ProgrammingObjectParameters.m */,
 				BCE35C1415D66855008C26AC /* SchedulingViewController.h */,
@@ -8538,10 +8542,6 @@
 				BC436923156FE36C0059BC22 /* SongPublicInfoViewController.h */,
 				BC436924156FE36C0059BC22 /* SongPublicInfoViewController.m */,
 				BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */,
-				BCD818661504F74700B818D1 /* SongAddCell.h */,
-				BCD818671504F74700B818D1 /* SongAddCell.m */,
-				BC31F1E715FD5ED000A8E486 /* CollectionAddCell.h */,
-				BC31F1E815FD5ED000A8E486 /* CollectionAddCell.m */,
 				BC1039AF14F7F8EA007C5496 /* SongUploadManager.h */,
 				BC1039B014F7F8EA007C5496 /* SongUploadManager.m */,
 				BCAAE1A014FBF10500B7F2B4 /* SongUploadCell.h */,
@@ -14568,7 +14568,6 @@
 				40B409DC152EFC630050D334 /* TimeProfile.m in Sources */,
 				40B409DD152EFC630050D334 /* SongUploadCell.m in Sources */,
 				40B409DE152EFC630050D334 /* SongInfoViewController.m in Sources */,
-				40B409E2152EFC630050D334 /* SongAddCell.m in Sources */,
 				40B409E3152EFC630050D334 /* LocalSongInfoViewController.m in Sources */,
 				40B409E4152EFC630050D334 /* SongLocal.m in Sources */,
 				40B409E5152EFC630050D334 /* YasoundDataCacheImage.m in Sources */,
@@ -14670,8 +14669,9 @@
 				BC31F19E15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1B015FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1BB15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
-				BC31F1F015FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 				BC3A5D7A15FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
+				BC1DD50815FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
+				BC1DD51115FFBA05008051C9 /* ActionSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14796,7 +14796,6 @@
 				40D53BDB1554280F001EB0C5 /* TimeProfile.m in Sources */,
 				40D53BDC1554280F001EB0C5 /* SongUploadCell.m in Sources */,
 				40D53BDD1554280F001EB0C5 /* SongInfoViewController.m in Sources */,
-				40D53BE11554280F001EB0C5 /* SongAddCell.m in Sources */,
 				40D53BE21554280F001EB0C5 /* LocalSongInfoViewController.m in Sources */,
 				40D53BE31554280F001EB0C5 /* SongLocal.m in Sources */,
 				40D53BE41554280F001EB0C5 /* YasoundDataCacheImage.m in Sources */,
@@ -14898,8 +14897,9 @@
 				BC31F19F15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1B115FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1BC15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
-				BC31F1F115FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 				BC3A5D7B15FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
+				BC1DD50915FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
+				BC1DD51215FFBA05008051C9 /* ActionSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15024,7 +15024,6 @@
 				BCAAE19314FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A614FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBD314FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BCD8186C1504F74700B818D1 /* SongAddCell.m in Sources */,
 				BC188BD41507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BE01507647900E38692 /* SongLocal.m in Sources */,
 				BCC4141D150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
@@ -15122,8 +15121,9 @@
 				BC31F19D15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1AF15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1BA15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
-				BC31F1EF15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 				BC3A5D7915FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
+				BC1DD50715FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
+				BC1DD51015FFBA05008051C9 /* ActionSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15248,7 +15248,6 @@
 				BC56F4FE152486AF005D1B40 /* TimeProfile.m in Sources */,
 				BC56F4FF152486AF005D1B40 /* SongUploadCell.m in Sources */,
 				BC56F500152486AF005D1B40 /* SongInfoViewController.m in Sources */,
-				BC56F504152486AF005D1B40 /* SongAddCell.m in Sources */,
 				BC56F505152486AF005D1B40 /* LocalSongInfoViewController.m in Sources */,
 				BC56F506152486AF005D1B40 /* SongLocal.m in Sources */,
 				BC56F507152486AF005D1B40 /* YasoundDataCacheImage.m in Sources */,
@@ -15350,8 +15349,9 @@
 				BC31F19A15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1AC15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B715FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
-				BC31F1EC15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 				BC3A5D7615FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
+				BC1DD50415FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
+				BC1DD50D15FFBA05008051C9 /* ActionSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15476,7 +15476,6 @@
 				BCAAE19014FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A314FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBD014FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BCD818691504F74700B818D1 /* SongAddCell.m in Sources */,
 				BC188BD11507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDD1507647900E38692 /* SongLocal.m in Sources */,
 				BCC4141A150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
@@ -15578,8 +15577,9 @@
 				BC31F19815FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1AA15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B515FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
-				BC31F1EA15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 				BC3A5D7415FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
+				BC1DD50215FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
+				BC1DD50B15FFBA05008051C9 /* ActionSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15705,7 +15705,6 @@
 				BCAAE19214FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A514FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBD214FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BCD8186B1504F74700B818D1 /* SongAddCell.m in Sources */,
 				BC188BD31507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDF1507647900E38692 /* SongLocal.m in Sources */,
 				BCC4141C150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
@@ -15807,8 +15806,9 @@
 				BC31F19C15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1AE15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B915FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
-				BC31F1EE15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 				BC3A5D7815FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
+				BC1DD50615FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
+				BC1DD50F15FFBA05008051C9 /* ActionSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15933,7 +15933,6 @@
 				BCC7520115E689EF00CF7F7C /* TimeProfile.m in Sources */,
 				BCC7520215E689EF00CF7F7C /* SongUploadCell.m in Sources */,
 				BCC7520315E689EF00CF7F7C /* SongInfoViewController.m in Sources */,
-				BCC7520715E689EF00CF7F7C /* SongAddCell.m in Sources */,
 				BCC7520815E689EF00CF7F7C /* LocalSongInfoViewController.m in Sources */,
 				BCC7520915E689EF00CF7F7C /* SongLocal.m in Sources */,
 				BCC7520A15E689EF00CF7F7C /* YasoundDataCacheImage.m in Sources */,
@@ -16035,8 +16034,9 @@
 				BC31F19915FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1AB15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B615FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
-				BC31F1EB15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 				BC3A5D7515FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
+				BC1DD50315FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
+				BC1DD50C15FFBA05008051C9 /* ActionSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16161,7 +16161,6 @@
 				BCAAE18F14FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A214FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBCF14FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BCD818681504F74700B818D1 /* SongAddCell.m in Sources */,
 				BC188BD01507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDC1507647900E38692 /* SongLocal.m in Sources */,
 				BCC41419150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
@@ -16263,8 +16262,9 @@
 				BC31F19715FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1A915FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B415FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
-				BC31F1E915FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 				BC3A5D7315FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
+				BC1DD50115FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
+				BC1DD50A15FFBA05008051C9 /* ActionSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16390,7 +16390,6 @@
 				BCAAE19114FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A414FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBD114FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BCD8186A1504F74700B818D1 /* SongAddCell.m in Sources */,
 				BC188BD21507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDE1507647900E38692 /* SongLocal.m in Sources */,
 				BCC4141B150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
@@ -16492,8 +16491,9 @@
 				BC31F19B15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
 				BC31F1AD15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
 				BC31F1B815FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
-				BC31F1ED15FD5ED000A8E486 /* CollectionAddCell.m in Sources */,
 				BC3A5D7715FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */,
+				BC1DD50515FFBA05008051C9 /* ActionCollectionCell.m in Sources */,
+				BC1DD50E15FFBA05008051C9 /* ActionSongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

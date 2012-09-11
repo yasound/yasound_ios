@@ -1,5 +1,5 @@
 //
-//  CollectionAddCell.h
+//  ActionCollectionCell.h
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 27/02/12.
@@ -11,7 +11,7 @@
 #import "Radio.h"
 #import "SongCatalog.h"
 
-@interface CollectionAddCell : UITableViewCell
+@interface ActionCollectionCell : UITableViewCell
 {
     UIAlertView* _wifiWarning;
     UIAlertView* _legalUploadWarning;

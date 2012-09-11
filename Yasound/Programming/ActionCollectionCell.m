@@ -1,12 +1,12 @@
 //
-//  CollectionAddCell.m
+//  ActionCollectionCell.m
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 27/02/12.
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "CollectionAddCell.h"
+#import "ActionCollectionCell.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "SongUploadManager.h"
@@ -17,7 +17,7 @@
 #import "SongRadioCatalog.h"
 
 
-@implementation CollectionAddCell
+@implementation ActionCollectionCell
 
 @synthesize mode;
 @synthesize radio;
