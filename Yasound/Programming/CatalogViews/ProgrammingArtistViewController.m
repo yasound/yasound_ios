@@ -24,6 +24,8 @@
 #import "ProgrammingCell.h"
 //#import "ProgrammingLocalViewController.h"
 //#import "ProgrammingRadioViewController.h"
+#import "CollectionAddCell.h"
+
 
 @implementation ProgrammingArtistViewController
 
@@ -259,44 +261,44 @@
 {
     static NSString* CellIdentifier = @"Cell";
     
-    ProgrammingCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    ProgrammingCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     NSArray* albums = nil;
-    NSString* albumKey = nil;
+    NSString* album = nil;
     NSArray* songs = nil;
     NSInteger nbSongs = 0;
     
     // sort with a selected genre
     if (self.catalog.selectedGenre) {
         albums = [self.catalog albumsForArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
-        albumKey = [albums objectAtIndex:indexPath.row];
-        songs = [self.catalog songsForAlbum:albumKey fromArtist:self.catalog.selectedArtist  withGenre:self.catalog.selectedGenre];
+        album = [albums objectAtIndex:indexPath.row];
+        songs = [self.catalog songsForAlbum:album fromArtist:self.catalog.selectedArtist  withGenre:self.catalog.selectedGenre];
         nbSongs = songs.count;
     }
 
     // sort with a selected playlist
     else if (self.catalog.selectedPlaylist) {
         albums = [self.catalog albumsForArtist:self.catalog.selectedArtist  withPlaylist:self.catalog.selectedPlaylist];
-        albumKey = [albums objectAtIndex:indexPath.row];
-        songs = [self.catalog songsForAlbum:albumKey fromArtist:self.catalog.selectedArtist  withPlaylist:self.catalog.selectedPlaylist];
+        album = [albums objectAtIndex:indexPath.row];
+        songs = [self.catalog songsForAlbum:album fromArtist:self.catalog.selectedArtist  withPlaylist:self.catalog.selectedPlaylist];
         nbSongs = songs.count;
     }
     
     // no sort
     else {
         albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
-        albumKey = [albums objectAtIndex:indexPath.row];
-        songs = [self.catalog songsForAlbum:albumKey fromArtist:self.catalog.selectedArtist];
+        album = [albums objectAtIndex:indexPath.row];
+        songs = [self.catalog songsForAlbum:album fromArtist:self.catalog.selectedArtist];
         nbSongs = songs.count;
     }
     
-    NSString* detailText;
+    NSString* subtitle;
     if (nbSongs == 1)
-        detailText = NSLocalizedString(@"Programming.nbSongs.1", nil);
+        subtitle = NSLocalizedString(@"Programming.nbSongs.1", nil);
     else
-        detailText = NSLocalizedString(@"Programming.nbSongs.n", nil);
+        subtitle = NSLocalizedString(@"Programming.nbSongs.n", nil);
     
-    detailText = [detailText stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];
+    subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];
     
     id firstSong = [songs objectAtIndex:0];
     UIImage* customImage = nil;
@@ -316,13 +318,22 @@
     // else customImage will be replaced by refSong's image
 
     
+//    if (cell == nil)
+//    {
+//        cell = [[[ProgrammingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier text:albumKey detailText:detailText customImage:customImage refSong:firstSong] autorelease];
+//    }
+//    else
+//        [cell updateWithText:albumKey detailText:detailText customImage:customImage refSong:firstSong];
+
+    CollectionAddCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if (cell == nil)
     {
-        cell = [[[ProgrammingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier text:albumKey detailText:detailText customImage:customImage refSong:firstSong] autorelease];
+        cell = [[[CollectionAddCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier album:album subtitle:subtitle forRadio:self.radio usingCatalog:self.catalog] autorelease];
     }
     else
-        [cell updateWithText:albumKey detailText:detailText customImage:customImage refSong:firstSong];
-    
+        [cell updateAlbum:album subtitle:subtitle];
+
     
     
     

@@ -200,7 +200,8 @@
     else
         songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist];
 
-    Song* song = [songs objectAtIndex:indexPath.row];
+    NSString* songKey = [songs objectAtIndex:indexPath.row];
+    Song* song = [self.catalog.songsDb objectForKey:songKey];
 
     
     if (self.catalog == [SongLocalCatalog main])
@@ -298,7 +299,8 @@
     else
         songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist];
 
-    Song* song = [songs objectAtIndex:indexPath.row];
+    NSString* songKey = [songs objectAtIndex:indexPath.row];
+    Song* song = [self.catalog.songsDb objectForKey:songKey];
     
     if (self.catalog == [SongRadioCatalog main])
     {

@@ -94,6 +94,28 @@
     return self;
 }
 
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier album:(NSString*)album subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog {
+    
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
+    if (self)
+    {
+        self.mode = eAlbumAdd;
+        self.radio = radio;
+        self.catalog = catalog;
+        self.collection = album;
+        
+        [self commonInit];
+        [self updateAlbum:album subtitle:subtitle];
+    }
+    return self;
+}
+
+
+
+
+
+
 
 - (void)commonInit {
 
@@ -174,36 +196,9 @@
     self.label.text = genre;
     self.detailedLabel.text = subtitle;
     
-    BOOL areAllDisabled = YES;
-    
     NSArray* songs = [[SongLocalCatalog main] songsForGenre:self.collection];
-    for (NSString* songKey in songs) {
-        
-        SongLocal* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
-        assert(song);
-        assert([song isKindOfClass:[SongLocal class]]);
-        
-        Song* matchedSong = [[SongRadioCatalog main].matchedSongs objectForKey:songKey];
-        
-        // don't upload if the song is programmed already
-        BOOL isProgrammed = (matchedSong != nil);
-        
-//        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio];
-        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.catalogKey forRadio:self.radio];
-        
-        areAllDisabled &= (isProgrammed || isUploading);
-    }
     
-    if (areAllDisabled) {
-        self.button.enabled = NO;
-        self.label.alpha = 0.5;
-        self.detailedLabel.alpha = 0.5;
-    } else {
-        self.button.enabled = YES;
-        self.label.alpha = 1;
-        self.detailedLabel.alpha = 1;
-    }
-
+    [self updateItemsWithSongs:songs];
 }
 
 
@@ -215,35 +210,9 @@
     self.label.text = playlist;
     self.detailedLabel.text = subtitle;
     
-    BOOL areAllDisabled = YES;
-    
     NSArray* songs = [[SongLocalCatalog main] songsForPlaylist:self.collection];
-    for (NSString* songKey in songs) {
-        
-        SongLocal* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
-        assert(song);
-        assert([song isKindOfClass:[SongLocal class]]);
-        
-        Song* matchedSong = [[SongRadioCatalog main].matchedSongs objectForKey:songKey];
-        
-        // don't upload if the song is programmed already
-        BOOL isProgrammed = (matchedSong != nil);
-
-//        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio];
-        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.catalogKey forRadio:self.radio];
-        
-        areAllDisabled &= (isProgrammed || isUploading);
-    }
     
-    if (areAllDisabled) {
-        self.button.enabled = NO;
-        self.label.alpha = 0.5;
-        self.detailedLabel.alpha = 0.5;
-    } else {
-        self.button.enabled = YES;
-        self.label.alpha = 1;
-        self.detailedLabel.alpha = 1;
-    }
+    [self updateItemsWithSongs:songs];
 }
 
 
@@ -256,7 +225,6 @@
     self.label.text = artist;
     self.detailedLabel.text = subtitle;
     
-    BOOL areAllDisabled = YES;
     
     NSArray* songs = nil;
     
@@ -266,8 +234,38 @@
         songs = [[SongLocalCatalog main] songsForArtist:self.collection withPlaylist:self.catalog.selectedPlaylist];
     else
         songs = [[SongLocalCatalog main] songsForArtist:self.collection];
+ 
+    [self updateItemsWithSongs:songs];
+}
+
+
+- (void)updateAlbum:(NSString*)album subtitle:(NSString*)subtitle
+{
+    self.mode = eAlbumAdd;
+    self.collection = album;
+    
+    self.label.text = album;
+    self.detailedLabel.text = subtitle;
     
     
+    NSArray* songs = nil;
+    
+    if (self.catalog.selectedGenre)
+        songs = [[SongLocalCatalog main] songsForAlbum:self.collection fromArtist:(NSString*)self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+    else if (self.catalog.selectedPlaylist)
+        songs = [[SongLocalCatalog main] songsForAlbum:self.collection  fromArtist:(NSString*)self.catalog.selectedArtist withPlaylist:self.catalog.selectedPlaylist];
+    else
+        songs = [[SongLocalCatalog main] songsForAlbum:self.collection fromArtist:(NSString*)self.catalog.selectedArtist];
+    
+    [self updateItemsWithSongs:songs];
+}
+
+
+
+- (void)updateItemsWithSongs:(NSArray*)songs {
+
+    BOOL areAllDisabled = YES;
+
     for (NSString* songKey in songs) {
         
         SongLocal* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
@@ -326,6 +324,8 @@
         [self playlistAddClicked];
     else if (self.mode == eArtistAdd)
         [self artistAddClicked];
+    else if (self.mode == eAlbumAdd)
+        [self albumAddClicked];
 }
 
 
@@ -452,6 +452,57 @@
 }
 
 
+
+
+
+
+
+- (void)albumAddClicked {
+    
+    NSInteger nbProgrammed = 0;
+    NSInteger nbCantProgram = 0;
+    
+    NSArray* songs;
+    
+    if (self.catalog.selectedGenre)
+        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+    else if (self.catalog.selectedPlaylist)
+        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedPlaylist];
+    else
+        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist];
+    
+    for (NSString* songKey in songs) {
+        
+        Song* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
+        assert(song);
+        
+        // don't upload if the song is programmed already
+        if (song.isProgrammed) {
+            nbProgrammed++;
+            continue;
+        }
+        
+        // can it be upload?
+        BOOL can = [[SongUploader main] canUploadSong:song];
+        if (!can) {
+            nbCantProgram++;
+            continue;
+        }
+        
+        // ok, add it to the group of songs to upload
+        [self.songsToUpload addObject:song];
+    }
+    
+    [self requestUploadsFrom:songs nbProgrammed:nbProgrammed];
+}
+
+
+
+
+
+
+
+
 - (void)requestUploadsFrom:(NSArray*)songs nbProgrammed:(NSInteger)nbProgrammed {
     
 //    "Programming.collection.add.message.programmed.1" = "1 song is in your radio already.";
@@ -473,7 +524,10 @@
     NSString* message1 = nil;
     NSString* message2 = nil;
     
-    if (nbProgrammed == 1) {
+    if (nbProgrammed == 0) {
+        message1 = @"";
+    }
+    else if (nbProgrammed == 1) {
         message1 = NSLocalizedString(@"Programming.collection.add.message.programmed.1", nil);
     }
     else {

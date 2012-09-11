@@ -434,10 +434,7 @@
     {
         NSString* songKey = [s stringForColumnIndex:0];
         assert(songKey);
-        
-        Song* song = [self.songsDb objectForKey:songKey];
-        assert(song);
-        [results addObject:song];
+        [results addObject:songKey];
     }
     
     // set cache
@@ -460,10 +457,7 @@
     {
         NSString* songKey = [s stringForColumnIndex:0];
         assert(songKey);
-        
-        Song* song = [self.songsDb objectForKey:songKey];
-        assert(song);
-        [results addObject:song];
+        [results addObject:songKey];
     }
     
     // set cache
@@ -486,10 +480,7 @@
     {
         NSString* songKey = [s stringForColumnIndex:0];
         assert(songKey);
-        
-        Song* song = [self.songsDb objectForKey:songKey];
-        assert(song);
-        [results addObject:song];
+        [results addObject:songKey];
     }
     
     // set cache
