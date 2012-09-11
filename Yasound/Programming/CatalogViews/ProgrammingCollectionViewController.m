@@ -222,7 +222,7 @@
     if (self.catalog.selectedGenre)
         nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist withGenre:self.catalog.selectedGenre fromTable:LOCALCATALOG_TABLE].count;
     else if (self.catalog.selectedPlaylist)
-        nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist withGenre:self.catalog.selectedPlaylist fromTable:LOCALCATALOG_TABLE].count;
+        nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist withPlaylist:self.catalog.selectedPlaylist fromTable:LOCALCATALOG_TABLE].count;
     else
         nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist].count;
     
