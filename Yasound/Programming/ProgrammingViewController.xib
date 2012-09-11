@@ -204,7 +204,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<string key="NSFrame">{{0, 90}, {320, 326}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="98568420"/>
+						<reference key="NSNextKeyView" ref="102279078"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="460252717"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -342,6 +342,35 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="125937701"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MQA</bytes>
+							<reference key="NSCustomColorSpace" ref="935161164"/>
+						</object>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<object class="IBUIView" id="102279078">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<array class="NSMutableArray" key="NSSubviews">
+							<object class="IBUIImageView" id="828895441">
+								<reference key="NSNextResponder" ref="102279078"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrameSize">{320, 44}</string>
+								<reference key="NSSuperview" ref="102279078"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="98568420"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<reference key="IBUIImage" ref="310652280"/>
+							</object>
+						</array>
+						<string key="NSFrame">{{0, 416}, {320, 44}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="828895441"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -488,6 +517,14 @@ AAgACAAIAAEAAQABAAE</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_containerUploadSegment</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="102279078"/>
+					</object>
+					<int key="connectionID">95</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="891618492"/>
 						<reference key="destination" ref="372490531"/>
@@ -541,6 +578,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 							<reference ref="380658076"/>
 							<reference ref="98568420"/>
 							<reference ref="21500177"/>
+							<reference ref="102279078"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -667,6 +705,21 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<reference key="parent" ref="21500177"/>
 						<string key="objectName">segment bar</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">91</int>
+						<reference key="object" ref="102279078"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="828895441"/>
+						</array>
+						<reference key="parent" ref="191373211"/>
+						<string key="objectName">containerUploadSegment</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">92</int>
+						<reference key="object" ref="828895441"/>
+						<reference key="parent" ref="102279078"/>
+						<string key="objectName">segment bar</string>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -696,12 +749,14 @@ AAgACAAIAAEAAQABAAE</bytes>
 				<string key="83.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<integer value="2" key="83.IUISegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="84.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="91.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="92.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">90</int>
+			<int key="maxID">95</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -711,6 +766,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="_containerLocalSegment">UIView</string>
 						<string key="_containerRadioSegment">UIView</string>
+						<string key="_containerUploadSegment">UIView</string>
 						<string key="_localSegment">UISegmentedControl</string>
 						<string key="_radioSegment">UISegmentedControl</string>
 						<string key="_subtitleLabel">UILabel</string>
@@ -726,6 +782,10 @@ AAgACAAIAAEAAQABAAE</bytes>
 						</object>
 						<object class="IBToOneOutletInfo" key="_containerRadioSegment">
 							<string key="name">_containerRadioSegment</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_containerUploadSegment">
+							<string key="name">_containerUploadSegment</string>
 							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_localSegment">

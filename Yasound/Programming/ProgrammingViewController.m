@@ -647,6 +647,7 @@
     {
         _containerLocalSegment.hidden = NO;
         _containerRadioSegment.hidden = YES;
+        _containerUploadSegment.hidden = YES;
         
         ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio withSegmentIndex:_localSegment.selectedSegmentIndex];
         self.tableview = view;
@@ -655,7 +656,8 @@
     {
         _containerLocalSegment.hidden = YES;
         _containerRadioSegment.hidden = NO;
-        
+        _containerUploadSegment.hidden = YES;
+
         ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
         self.tableview = view;
     }
@@ -663,7 +665,8 @@
     {
         _containerLocalSegment.hidden = YES;
         _containerRadioSegment.hidden = YES;
-        
+        _containerUploadSegment.hidden = NO;
+
         ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
         self.tableview = view;
     }

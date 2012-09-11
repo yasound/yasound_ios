@@ -35,6 +35,7 @@
     
     IBOutlet UIView* _containerRadioSegment;
     IBOutlet UIView* _containerLocalSegment;
+    IBOutlet UIView* _containerUploadSegment;
     IBOutlet UISegmentedControl* _radioSegment;
     IBOutlet UISegmentedControl* _localSegment;
     
