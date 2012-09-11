@@ -214,6 +214,12 @@
 "Programming.collection.add.message.toUpload.1" = "1 morceau sur %d peut être téléchargé sur votre radio.\nVoulez-vous le télécharger?";
 "Programming.collection.add.message.toUpload.n" = "%d morceaux sur %d peuvent être téléchargés sur votre radio.\nVoulez-vous les télécharger?";
 
+"Programming.collection.del.title" = "Programmation";
+"Programming.collection.del.message.empty" = "Aucun morceau ne peut supprimé de votre radio.";
+"Programming.collection.del.message.toRemove.1" = "1 morceau sur %d peut être supprimé de votre radio.\nVoulez-vous le supprimer?";
+"Programming.collection.del.message.toRemove.n" = "%d morceaux sur %d peuvent être supprimés de votre radio.\nVoulez-vous les supprimer?";
+
+
 
 "SongView_title" = "Song";
 "SongView_name" = "titre";

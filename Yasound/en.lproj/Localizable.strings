@@ -217,6 +217,11 @@
 "Programming.collection.add.message.toUpload.1" = "1 of %d songs may be uploaded to your radio.\nWould you like to upload it?";
 "Programming.collection.add.message.toUpload.n" = "%d of %d songs may be uploaded to your radio.\nWould you like to upload them?";
 
+"Programming.collection.del.title" = "Programming";
+"Programming.collection.del.message.empty" = "None of the songs can be removed from your radio.";
+"Programming.collection.del.message.toRemove.1" = "1 of %d songs may be removed from your radio.\nWould you like to remove it?";
+"Programming.collection.del.message.toRemove.n" = "%d of %d songs may be removed from your radio.\nWould you like to remove them?";
+
 
 
 "SongView_title" = "Song";

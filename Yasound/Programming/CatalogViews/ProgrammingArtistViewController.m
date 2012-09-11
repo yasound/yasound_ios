@@ -25,7 +25,7 @@
 //#import "ProgrammingLocalViewController.h"
 //#import "ProgrammingRadioViewController.h"
 #import "ActionAddCollectionCell.h"
-
+#import "ActionRemoveCollectionCell.h"
 
 @implementation ProgrammingArtistViewController
 
@@ -70,7 +70,11 @@
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+    if (self.catalog == [SongLocalCatalog main])
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+    
+    if (self.catalog == [SongRadioCatalog main])
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongDeleted:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
 }
 
 
@@ -325,21 +329,40 @@
 //    else
 //        [cell updateWithText:albumKey detailText:detailText customImage:customImage refSong:firstSong];
 
-    ActionAddCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil)
-    {
-        cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier album:album subtitle:subtitle forRadio:self.radio usingCatalog:self.catalog] autorelease];
-    }
-    else
-        [cell updateAlbum:album subtitle:subtitle];
+    if (self.catalog == [SongLocalCatalog main]) {
 
+        ActionAddCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil)
+        {
+            cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier album:album subtitle:subtitle forRadio:self.radio usingCatalog:self.catalog] autorelease];
+        }
+        else
+            [cell updateAlbum:album subtitle:subtitle];
+        
+        return cell;
+    }
+
+
+    if (self.catalog == [SongRadioCatalog main]) {
+        
+        ActionRemoveCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil)
+        {
+            cell = [[[ActionRemoveCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier album:album subtitle:subtitle forRadio:self.radio usingCatalog:self.catalog] autorelease];
+        }
+        else
+            [cell updateAlbum:album subtitle:subtitle];
+        
+        return cell;
+    }
     
     
     
     
     
-    return cell;
+    return nil;
 }
 
 
@@ -430,7 +453,20 @@
 //    NSArray* array = nil;
 //    self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
 //    
-//    [self.tableView reloadData];
+    [self.tableView reloadData];
+}
+
+
+- (void)onNotifSongDeleted:(NSNotification*)notif
+{
+    //    //[self.sortedAlbums release];
+    //    self.sortedAlbums = nil;
+    //    //LBDEBUG
+    ////    NSArray* array = [self.catalog.selectedArtistRepo allKeys];
+    //    NSArray* array = nil;
+    //    self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
+    //
+        [self.tableView reloadData];
 }
 
 

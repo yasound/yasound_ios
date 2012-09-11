@@ -206,24 +206,24 @@
 
 
 
-#pragma mark - UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if ((alertView == _legalUploadWarning) && (buttonIndex == 1))
-    {
-        [[UserSettings main] setBool:NO forKey:USKEYuploadLegalWarning];
-        [self requestUpload];
-        return;
-    }
-    
-    
-    if ((alertView == _addedUploadWarning) && (buttonIndex == 1))
-    {
-        [[UserSettings main] setBool:NO forKey:USKEYuploadAddedWarning];
-        return;
-    }
-}
+//#pragma mark - UIAlertViewDelegate
+//
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if ((alertView == _legalUploadWarning) && (buttonIndex == 1))
+//    {
+//        [[UserSettings main] setBool:NO forKey:USKEYuploadLegalWarning];
+//        [self requestUpload];
+//        return;
+//    }
+//    
+//    
+//    if ((alertView == _addedUploadWarning) && (buttonIndex == 1))
+//    {
+//        [[UserSettings main] setBool:NO forKey:USKEYuploadAddedWarning];
+//        return;
+//    }
+//}
 
 
 

@@ -15,6 +15,8 @@
 #import "YasoundReachability.h"
 //#import "SongLocalCatalog.h"
 #import "SongRadioCatalog.h"
+#import "SongLocalCatalog.h"
+
 
 
 @implementation ActionRemoveCollectionCell
@@ -25,7 +27,7 @@
 @synthesize label;
 @synthesize detailedLabel;
 @synthesize button;
-@synthesize songsToUpload;
+@synthesize songsToRemove;
 
 //
 //- (void)willMoveToSuperview:(UIView *)newSuperview
@@ -83,7 +85,7 @@
     
     if (self)
     {
-        self.mode = eArtistAdd;
+        self.mode = eArtistRemove;
         self.radio = radio;
         self.catalog = catalog;
         self.collection = artist;
@@ -100,7 +102,7 @@
     
     if (self)
     {
-        self.mode = eAlbumAdd;
+        self.mode = eAlbumRemove;
         self.radio = radio;
         self.catalog = catalog;
         self.collection = album;
@@ -124,8 +126,8 @@
         
     
     
-        // button "add to upload list"
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.add" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        // button "del from programming"
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.del" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.button = [sheet makeButton];
         [self.button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
@@ -219,7 +221,7 @@
 
 - (void)updateArtist:(NSString*)artist subtitle:(NSString*)subtitle
 {
-    self.mode = eArtistAdd;
+    self.mode = eArtistRemove;
     self.collection = artist;
     
     self.label.text = artist;
@@ -241,7 +243,7 @@
 
 - (void)updateAlbum:(NSString*)album subtitle:(NSString*)subtitle
 {
-    self.mode = eAlbumAdd;
+    self.mode = eAlbumRemove;
     self.collection = album;
     
     self.label.text = album;
@@ -264,7 +266,7 @@
 
 - (void)updateItemsWithSongs:(NSArray*)songs {
 
-    BOOL areAllDisabled = YES;
+    BOOL atLeastOneEnabled = NO;
 
     for (NSString* songKey in songs) {
         
@@ -272,25 +274,18 @@
         assert(song);
         assert([song isKindOfClass:[Song class]]);
         
-        Song* matchedSong = [[SongRadioCatalog main].matchedSongs objectForKey:songKey];
-        
-        // don't upload if the song is programmed already
-        BOOL isProgrammed = (matchedSong != nil);
-        
-        //        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio];
-        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.catalogKey forRadio:self.radio];
-        
-        areAllDisabled &= (isProgrammed || isUploading);
+        atLeastOneEnabled |= [song isSongEnabled];
     }
     
-    if (areAllDisabled) {
-        self.button.enabled = NO;
-        self.label.alpha = 0.5;
-        self.detailedLabel.alpha = 0.5;
-    } else {
+    if (atLeastOneEnabled) {
+        
         self.button.enabled = YES;
         self.label.alpha = 1;
         self.detailedLabel.alpha = 1;
+    } else {
+        self.button.enabled = NO;
+        self.label.alpha = 0.5;
+        self.detailedLabel.alpha = 0.5;
     }
 }
 
@@ -315,8 +310,8 @@
 
 - (void)onButtonClicked:(id)sender
 {
-    self.songsToUpload = nil;
-    self.songsToUpload = [NSMutableArray array];
+    self.songsToRemove = nil;
+    self.songsToRemove = [NSMutableArray array];
     
 //    if (self.mode == eGenreAdd)
 //        [self genreAddClicked];
@@ -324,10 +319,10 @@
 //        [self playlistAddClicked];
 //    else
         
-    if (self.mode == eArtistAdd)
-        [self artistAddClicked];
-    else if (self.mode == eAlbumAdd)
-        [self albumAddClicked];
+    if (self.mode == eArtistRemove)
+        [self artistRemoveClicked];
+    else if (self.mode == eAlbumRemove)
+        [self albumRemoveClicked];
 }
 
 
@@ -414,10 +409,7 @@
 
 
 
-- (void)artistAddClicked {
-    
-    NSInteger nbProgrammed = 0;
-    NSInteger nbCantProgram = 0;
+- (void)artistRemoveClicked {
     
     NSArray* songs;
     
@@ -433,24 +425,11 @@
         Song* song = [self.catalog.songsDb objectForKey:songKey];
         assert(song);
         
-        // don't upload if the song is programmed already
-        if (song.isProgrammed) {
-            nbProgrammed++;
-            continue;
-        }
-        
-        // can it be upload?
-        BOOL can = [[SongUploader main] canUploadSong:song];
-        if (!can) {
-            nbCantProgram++;
-            continue;
-        }
-        
-        // ok, add it to the group of songs to upload
-        [self.songsToUpload addObject:song];
+        // ok, add it to the group of songs to remove
+        [self.songsToRemove addObject:song];
     }
     
-    [self requestUploadsFrom:songs nbProgrammed:nbProgrammed];
+    [self requestRemoveFrom:songs];
 }
 
 
@@ -459,10 +438,7 @@
 
 
 
-- (void)albumAddClicked {
-    
-    NSInteger nbProgrammed = 0;
-    NSInteger nbCantProgram = 0;
+- (void)albumRemoveClicked {
     
     NSArray* songs;
     
@@ -478,24 +454,11 @@
         Song* song = [self.catalog.songsDb objectForKey:songKey];
         assert(song);
         
-        // don't upload if the song is programmed already
-        if (song.isProgrammed) {
-            nbProgrammed++;
-            continue;
-        }
-        
-        // can it be upload?
-        BOOL can = [[SongUploader main] canUploadSong:song];
-        if (!can) {
-            nbCantProgram++;
-            continue;
-        }
-        
-        // ok, add it to the group of songs to upload
-        [self.songsToUpload addObject:song];
+        // ok, add it to the group of songs to remove
+        [self.songsToRemove addObject:song];
     }
     
-    [self requestUploadsFrom:songs nbProgrammed:nbProgrammed];
+    [self requestRemoveFrom:songs];
 }
 
 
@@ -503,62 +466,42 @@
 
 
 
-//
-//
-//- (void)requestUploadsFrom:(NSArray*)songs nbProgrammed:(NSInteger)nbProgrammed {
-//    
-////    "Programming.collection.add.message.programmed.1" = "1 song is in your radio already.";
-////    "Programming.collection.add.message.programmed.n" = "%d songs are in your radio already.";
-////    "Programming.collection.add.message.toUpload.1" = "1 of %d songs may be uploaded to your radio.\nWould you like to upload it?";
-////    "Programming.collection.add.message.toUpload.n" = "%d of %d songs may be uploaded to your radio.\nWould you like to upload them?";
-//
-//    if (self.songsToUpload.count == 0) {
-//        
-//        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:NSLocalizedString(@"Programming.collection.add.message.empty", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles: nil];
-//        [alert show];
-//        [alert release];
-//        
-//        return;
-//    }
-//    
-//    // ask confirm
-//    NSString* message = nil;
-//    NSString* message1 = nil;
-//    NSString* message2 = nil;
-//    
-//    if (nbProgrammed == 0) {
-//        message1 = @"";
-//    }
-//    else if (nbProgrammed == 1) {
-//        message1 = NSLocalizedString(@"Programming.collection.add.message.programmed.1", nil);
-//    }
-//    else {
-//        message1 = NSLocalizedString(@"Programming.collection.add.message.programmed.n", nil);
-//        message1 = [NSString stringWithFormat:message1, nbProgrammed];
-//    }
-//
-//    if (self.songsToUpload.count == 1) {
-//        message2 = NSLocalizedString(@"Programming.collection.add.message.toUpload.1", nil);
-//        message2 = [NSString stringWithFormat:message2, songs.count];
-//    }
-//    else {
-//        message2 = NSLocalizedString(@"Programming.collection.add.message.toUpload.n", nil);
-//        message2 = [NSString stringWithFormat:message2, self.songsToUpload.count, songs.count];
-//    }
-//
-//    
-//    message = message1;
-//    message = [message stringByAppendingString:message2];
-//    
-//    
-//    message = [NSString stringWithFormat:message, nbProgrammed, self.songsToUpload.count, songs.count];
-//    _addedGenreUpload = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.ok", nil), nil];
-//    [_addedGenreUpload show];
-//    [_addedGenreUpload release];
-//    
-//}
-//
-//
+
+
+- (void)requestRemoveFrom:(NSArray*)songs {
+    
+//    "Programming.collection.add.message.programmed.1" = "1 song is in your radio already.";
+//    "Programming.collection.add.message.programmed.n" = "%d songs are in your radio already.";
+//    "Programming.collection.add.message.toUpload.1" = "1 of %d songs may be uploaded to your radio.\nWould you like to upload it?";
+//    "Programming.collection.add.message.toUpload.n" = "%d of %d songs may be uploaded to your radio.\nWould you like to upload them?";
+
+    if (self.songsToRemove.count == 0) {
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.del.title", nil) message:NSLocalizedString(@"Programming.collection.del.message.empty", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+        
+        return;
+    }
+    
+    // ask confirm
+    NSString* message = nil;
+    
+    if (self.songsToRemove.count == 1) {
+        message = NSLocalizedString(@"Programming.collection.del.message.toRemove.1", nil);
+        message = [NSString stringWithFormat:message, songs.count];
+    }
+    else {
+        message = NSLocalizedString(@"Programming.collection.del.message.toRemove.n", nil);
+        message = [NSString stringWithFormat:message, self.songsToRemove.count, songs.count];
+    }
+
+    message = [NSString stringWithFormat:message, self.songsToRemove.count, songs.count];
+    _alertRemove = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.del.title", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.ok", nil), nil];
+    [_alertRemove show];
+    [_alertRemove release];
+    
+}
 
 
 
@@ -567,67 +510,61 @@
 
 
 
-//
-//
-//#pragma mark - UIAlertViewDelegate
-//
-//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//    if ((alertView == _legalUploadWarning) && (buttonIndex == 1))
-//    {
-//        [[UserSettings main] setBool:NO forKey:USKEYuploadLegalWarning];
-//        [self requestUpload];
-//        return;
-//    }
-//
-//    
-//    if ((alertView == _addedGenreUpload) && (buttonIndex == 1))
-//    {
-//        
-//        BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
-//        BOOL startUploadNow = isWifi;
-//
-//        for (SongLocal* song in self.songsToUpload) {
-//            
-//            SongUploading* songUploading = [SongUploading new];
-//            songUploading.songLocal = song;
-//            songUploading.radio_id = self.radio.id;
-//
-//           // add an upload job to the queue
-//            [[SongUploadManager main] addSong:songUploading startUploadNow:startUploadNow];
-//
-//            // refresh gui
-//            [self updateGenre:self.collection subtitle:self.detailedLabel.text];
-//        }
-//        
-//        return;
-//    }
-//
-//
-//    if ((alertView == _addedPlaylistUpload) && (buttonIndex == 1))
-//    {
-//        
-//        BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
-//        BOOL startUploadNow = isWifi;
-//        
-//        for (SongLocal* song in self.songsToUpload) {
-//            
-//            SongUploading* songUploading = [SongUploading new];
-//            songUploading.songLocal = song;
-//            songUploading.radio_id = self.radio.id;
-//            
-//            // add an upload job to the queue
-//            [[SongUploadManager main] addSong:songUploading startUploadNow:startUploadNow];
-//            
-//            // refresh gui
-//            [self updatePlaylist:self.collection subtitle:self.detailedLabel.text];
-//        }
-//        
-//        return;
-//    }
-//
-//}
-//
-//
+
+
+
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if ((alertView == _alertRemove) && (buttonIndex == 1))
+    {
+        for (Song* song in self.songsToRemove) {
+            
+            [[YasoundDataProvider main] deleteSong:song target:self action:@selector(onSongDeleted:info:) userData:nil];
+            
+            // refresh gui
+            [self updateArtist:self.collection subtitle:self.detailedLabel.text];
+        }
+        
+        return;
+    }
+
+}
+
+
+
+
+
+// server's callback
+- (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
+{
+    DLog(@"onSongDeleted for Song %@", song.name);
+    DLog(@"info %@", info);
+    
+    BOOL success = NO;
+    NSNumber* nbsuccess = [info objectForKey:@"success"];
+    if (nbsuccess != nil)
+        success = [nbsuccess boolValue];
+    
+    DLog(@"success %d", success);
+    
+    if (!success) {
+        return;
+    }
+    
+    //    UITableViewCell* cell = [info objectForKey:@"userData"];
+    //    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+    
+    [[SongRadioCatalog main] updateSongRemovedFromProgramming:song];
+    [[SongLocalCatalog main] updateSongRemovedFromProgramming:song];
+    
+    //    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+
+
+
 
 @end

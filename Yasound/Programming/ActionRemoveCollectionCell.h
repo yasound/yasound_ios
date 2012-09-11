@@ -15,20 +15,19 @@
 {
     UIAlertView* _wifiWarning;
     UIAlertView* _legalUploadWarning;
-    UIAlertView* _addedGenreUpload;
-    UIAlertView* _addedPlaylistUpload;
+    UIAlertView* _alertRemove;
 }
 
 typedef enum {
     
 //    eGenreAdd,
 //    ePlaylistAdd,
-    eArtistAdd,
-    eAlbumAdd
+    eArtistRemove,
+    eAlbumRemove
     
-} SongAddMode;
+} SongRemoveMode;
 
-@property (nonatomic) SongAddMode mode;
+@property (nonatomic) SongRemoveMode mode;
 
 @property (nonatomic, assign) Radio* radio;
 @property (nonatomic, assign) SongCatalog* catalog;
@@ -38,7 +37,7 @@ typedef enum {
 @property (nonatomic, retain) UILabel* detailedLabel;
 @property (nonatomic, retain) UIButton* button;
 
-@property (nonatomic, retain) NSMutableArray* songsToUpload;
+@property (nonatomic, retain) NSMutableArray* songsToRemove;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier genre:(NSString*)genre subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier playlist:(NSString*)playlist subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog;
