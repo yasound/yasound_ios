@@ -2630,6 +2630,22 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
+#pragma mark - promo code
+- (void)activatePromoCode:(NSString*)code withTarget:(id)target action:(SEL)action
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"api/v1/premium/activate_promocode/";
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"POST";
+    conf.callbackTarget = target;
+    conf.callbackAction = action;
+    
+    ASIFormDataRequest* req = [_communicator buildFormDataRequestWithConfig:conf];
+    [req addPostValue:code forKey:@"code"];
+    [req startAsynchronous];
+}
+
 
 
 

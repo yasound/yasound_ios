@@ -183,25 +183,14 @@
 
 - (void)updateHd
 {
-    if (![YasoundSessionManager main].registered)
-    {
-        self.itemHd.enabled = NO;
-        self.itemHdButton.selected = NO;
-        self.itemHdButton.enabled = NO;
-        
-        [self.itemHdButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-    }
+    self.itemHd.enabled = YES;
+    self.itemHdButton.enabled = YES;
+    [self.itemHdButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
+    
+    if ([[YasoundDataProvider main].user permission:PERM_HD])
+        self.itemHdButton.selected = YES;
     else
-    {
-        self.itemHd.enabled = YES;
-        self.itemHdButton.enabled = YES;
-        [self.itemHdButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
-        
-        if ([[YasoundDataProvider main].user permission:PERM_HD])
-            self.itemHdButton.selected = YES;
-        else
-            self.itemHdButton.selected = NO;
-    }
+        self.itemHdButton.selected = NO;
 }
 
 

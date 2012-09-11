@@ -691,3 +691,5 @@
 
 "HdTimeLeft" = "%@ left";
 
+"HdPromoCodePrompt" = "Enter promo code";
+

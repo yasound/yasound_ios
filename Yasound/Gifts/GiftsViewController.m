@@ -21,9 +21,15 @@
 
 @interface GiftsViewController (internal)
 
-- (void)disableHdBar;
-- (void)updateWithHdExpirationDate:(NSDate*)expirationDate;
+- (void)resetWithUserRegistered:(BOOL)registered;
 
+- (void)enableHdBar:(BOOL)enabled;
+- (void)updateHdBarWithExpirationDate:(NSDate*)expirationDate;
+
+- (void)enablePromoBar:(BOOL)enabled;
+
+- (void)reloadHdExpirationDate;
+- (void)reloadGifts;
 
 @end
 
@@ -44,21 +50,38 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
-    [self disableHdBar];
     
-    if (![YasoundSessionManager main].registered)
+    BOOL registered = [YasoundSessionManager main].registered;
+    if (registered)
     {
-        assert(0);
-        return;
+        // reload user to have permissions up to date
+        [[YasoundDataProvider main] reloadUserWithUserData:nil withTarget:self action:@selector(onUserReloaded:info:)];
     }
+    else
+    {
+        [self resetWithUserRegistered:NO];
+    }
+}
+
+- (void) onUserReloaded:(User*)u info:(NSDictionary*)info
+{
+    [self resetWithUserRegistered:YES];
+}
+
+- (void)resetWithUserRegistered:(BOOL)registered
+{
+    BOOL hdPermission = NO;
     User* user = [YasoundDataProvider main].user;
-    if ([user permission:PERM_HD])
-    {
-        // ask for HD expiration date
-        [[YasoundDataProvider main] servicesWithTarget:self action:@selector(onServicesReceived:success:)];
-    }
-    // ask for gifts
-    [[YasoundDataProvider main] giftsWithTarget:self action:@selector(onGiftsReceived:success:)];
+    if (user)
+        hdPermission = [user permission:PERM_HD];
+    BOOL hdBarEnabled = registered && hdPermission;
+    [self enableHdBar:hdBarEnabled];
+    
+    [self enablePromoBar:registered];
+    
+    [self reloadHdExpirationDate];
+    [self reloadGifts];
+    self.promoLabel.text = NSLocalizedString(@"HdPromoCodePrompt", nil);
 }
 
 - (void)viewDidUnload
@@ -73,7 +96,46 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)enableHdBar:(BOOL)enabled
+{
+    if (!enabled)
+    {
+        self.iconHd.image = [UIImage imageNamed:@"commonIconHDGrey.png"];
+        self.switchHd.enabled = NO;
+        self.switchHd.on = NO;
+        
+        NSString* timeLeft = [NSString stringWithFormat:@"0 %@", NSLocalizedString(@"day", nil)];
+        NSString* hdLeft = [NSString stringWithFormat:NSLocalizedString(@"HdTimeLeft", nil), timeLeft];
+        self.labelHd.text = hdLeft;
+    }
+    else
+    {
+        self.iconHd.image = [UIImage imageNamed:@"commonIconHDBlue.png"];
+        
+        BOOL error = NO;
+        BOOL userWantsHd = [[UserSettings main] boolForKey:USKEYuserWantsHd error:&error];
+        if (error)
+            userWantsHd = YES;
+        self.switchHd.on = userWantsHd;
+        self.switchHd.enabled = YES;
+        
+        self.labelHd.text = @"?";
+    }
+}
 
+- (void)enablePromoBar:(BOOL)enabled
+{
+    self.promoText.enabled = enabled;
+}
+
+
+
+
+- (void)reloadGifts
+{
+    // ask for gifts
+    [[YasoundDataProvider main] giftsWithTarget:self action:@selector(onGiftsReceived:success:)];
+}
 
 - (void)onGiftsReceived:(ASIHTTPRequest*)request success:(BOOL)succeeded
 {
@@ -84,15 +146,13 @@
     [self.tableView reloadData];
 }
 
-- (void)disableHdBar
+- (void)reloadHdExpirationDate
 {
-    self.iconHd.image = [UIImage imageNamed:@"commonIconHDGrey.png"];
-    self.switchHd.enabled = NO;
-    self.switchHd.on = NO;
+    if (![YasoundSessionManager main].registered)
+        return;
     
-    NSString* timeLeft = [NSString stringWithFormat:@"0 %@", NSLocalizedString(@"day", nil)];
-    NSString* hdLeft = [NSString stringWithFormat:NSLocalizedString(@"HdTimeLeft", nil), timeLeft];
-    self.labelHd.text = hdLeft;
+    // ask for services to get HD service expiration date
+    [[YasoundDataProvider main] servicesWithTarget:self action:@selector(onServicesReceived:success:)];
 }
 
 - (void)onServicesReceived:(ASIHTTPRequest*)req success:(BOOL)success
@@ -102,20 +162,21 @@
     {
         if ([serv isHd])
         {
-            [self updateWithHdExpirationDate:serv.expiration_date];
+            [self updateHdBarWithExpirationDate:serv.expiration_date];
             break;
         }
     }
 }
 
-- (void)updateWithHdExpirationDate:(NSDate*)expirationDate
+- (void)updateHdBarWithExpirationDate:(NSDate*)expirationDate
 {
     NSTimeInterval interval = [expirationDate timeIntervalSinceNow];
     if (interval <= 0)
     {
-        [self disableHdBar];
+        [self enableHdBar:NO];
         return;
     }
+    [self enableHdBar:YES];
     
     double secondsPerMinute = 60.0;
     double secondsPerHour = 60.0 * secondsPerMinute;
@@ -156,19 +217,38 @@
     NSString* hdLeft = [NSString stringWithFormat:NSLocalizedString(@"HdTimeLeft", nil), timeLeft];
     
     self.labelHd.text = hdLeft;
-    self.iconHd.image = [UIImage imageNamed:@"commonIconHDBlue.png"];
-
-    BOOL error = NO;
-    BOOL userWantsHd = [[UserSettings main] boolForKey:USKEYuserWantsHd error:&error];
-    if (error)
-        userWantsHd = YES;
-    self.switchHd.on = userWantsHd;
-    self.switchHd.enabled = YES;
 }
 
 - (IBAction)hdSwitchChanged:(id)sender
 {
     [[UserSettings main] setBool:self.switchHd.on forKey:USKEYuserWantsHd];
+}
+
+- (IBAction)promoCodeEntered:(id)sender
+{
+    [[YasoundDataProvider main] activatePromoCode:self.promoText.text withTarget:self action:@selector(promoCodeActivated:success:)];
+}
+
+- (void)promoCodeActivated:(ASIFormDataRequest*)req success:(BOOL)success
+{
+    NSDictionary* dict = [req responseDict];
+    NSNumber* ok  = [dict valueForKey:@"success"];
+    if ([ok boolValue])
+    {
+        [self reloadHdExpirationDate];
+        [[YasoundDataProvider main] reloadUserWithUserData:nil withTarget:nil action:nil];
+    }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField != self.promoText)
+        return NO;
+    
+    [textField resignFirstResponder]; 
+    return YES;
 }
 
 

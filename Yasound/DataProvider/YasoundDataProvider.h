@@ -315,6 +315,9 @@ taskStatus stringToStatus(NSString* str);
 // gifts
 - (void)giftsWithTarget:(id)target action:(SEL)action;
 
+// promo code
+- (void)activatePromoCode:(NSString*)code withTarget:(id)target action:(SEL)action;
+
 
 - (void)testV2;
 
