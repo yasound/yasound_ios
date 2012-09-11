@@ -139,6 +139,31 @@
 
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 32;
+}
+
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString* title = nil;
+    if (self.catalog.selectedGenre)
+        title = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Programming.segment.genres", nil), self.catalog.selectedGenre];
+    else
+        title = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Programming.segment.playlists", nil), self.catalog.selectedPlaylist];
+    
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* view = [sheet makeImage];
+    
+    sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+}
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -228,7 +228,10 @@
     if (nbRows == 0)
         return 0;
     
-    return 22;
+    if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_TITLES)
+        return 22;
+    
+    return 32;
 }
 
 
@@ -251,10 +254,13 @@
         title = [[SongLocalCatalog main].indexMap objectAtIndex:section];
 
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.Section.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIImageView* view = [sheet makeImage];
     
-    sheet = [[Theme theme] stylesheetForKey:@"TableView.Section.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_TITLES)
+        sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.labelTitles" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    else
+        sheet = [[Theme theme] stylesheetForKey:@"Programming.Section.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UILabel* label = [sheet makeLabel];
     label.text = title;
     [view addSubview:label];

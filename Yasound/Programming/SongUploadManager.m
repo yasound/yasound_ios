@@ -347,7 +347,7 @@ static SongUploadManager* _main;
 - (SongUploading*)getUploadingSong:(NSString*)songKey forRadio:(Radio*)radio
 {
     //LBDEBUG
-    NSLog(@"getUploadingSong '%@'", songKey);
+//    NSLog(@"getUploadingSong '%@'", songKey);
     
     for (SongUploadItem* item in self.items)
     {
@@ -355,7 +355,7 @@ static SongUploadManager* _main;
             continue;
         
         //LBDEBUG
-        NSLog(@"compares to '%@'", item.song.songLocal.catalogKey);
+//        NSLog(@"compares to '%@'", item.song.songLocal.catalogKey);
 
         
         NSString* verif = item.song.songLocal.catalogKey;
@@ -363,7 +363,7 @@ static SongUploadManager* _main;
             continue;
         
         //LBDEBUG
-        NSLog(@"we have a match!");
+//        NSLog(@"we have a match!");
         
         return item.song;
     }

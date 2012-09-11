@@ -2109,6 +2109,62 @@
 		</dict>
 		<key>Programming</key>
 		<dict>
+			<key>Section</key>
+			<dict>
+				<key>label</key>
+				<dict>
+					<key>font</key>
+					<dict>
+						<key>size</key>
+						<integer>15</integer>
+						<key>textColor</key>
+						<string>white</string>
+						<key>weight</key>
+						<string>bold</string>
+						<key>shadowOffset</key>
+						<string>0,-1</string>
+						<key>shadowRadius</key>
+						<real>0.5</real>
+						<key>shadowOpacity</key>
+						<real>0.75</real>
+					</dict>
+					<key>height</key>
+					<integer>32</integer>
+					<key>width</key>
+					<integer>288</integer>
+					<key>x</key>
+					<integer>16</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+				<key>labelTitles</key>
+				<dict>
+					<key>font</key>
+					<dict>
+						<key>size</key>
+						<integer>13</integer>
+						<key>textColor</key>
+						<string>rgb(242,242,242)</string>
+						<key>weight</key>
+						<string>bold</string>
+					</dict>
+					<key>height</key>
+					<integer>22</integer>
+					<key>width</key>
+					<integer>288</integer>
+					<key>x</key>
+					<integer>16</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+				<key>background</key>
+				<dict>
+					<key>name</key>
+					<string>programmingTableViewSection</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+			</dict>
 			<key>cellImageDummy30</key>
 			<dict>
 				<key>x</key>
