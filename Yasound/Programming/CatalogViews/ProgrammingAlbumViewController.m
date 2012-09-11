@@ -28,7 +28,7 @@
 #import "ProgrammingLocalViewController.h"
 #import "ProgrammingRadioViewController.h"
 #import "YasoundAppDelegate.h"
-
+#import "ActionRemoveSongCell.h"
 
 @implementation ProgrammingAlbumViewController
 
@@ -224,14 +224,14 @@
     {
         static NSString* CellIdentifier = @"CellAlbumSong";
 
-        ProgrammingCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        ActionRemoveSongCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if (cell == nil) 
+        if (cell == nil)
         {
-            cell = [[[ProgrammingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song atRow:(indexPath.row+1) deletingTarget:self deletingAction:@selector(onSongDeleteRequested:song:)] autorelease];
+            cell = [[[ActionRemoveSongCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier song:song forRadio:self.radio] autorelease];
         }
         else
-            [cell updateWithSong:song atRow:(indexPath.row+1)];
+            [cell update:song];
         
         return cell;
     }

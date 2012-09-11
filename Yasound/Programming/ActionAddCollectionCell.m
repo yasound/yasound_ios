@@ -465,11 +465,11 @@
     NSArray* songs;
     
     if (self.catalog.selectedGenre)
-        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+        songs = [self.catalog songsForAlbum:self.collection fromArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
     else if (self.catalog.selectedPlaylist)
-        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedPlaylist];
+        songs = [self.catalog songsForAlbum:self.collection fromArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedPlaylist];
     else
-        songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist];
+        songs = [self.catalog songsForAlbum:self.collection fromArtist:self.catalog.selectedArtist];
     
     for (NSString* songKey in songs) {
         
