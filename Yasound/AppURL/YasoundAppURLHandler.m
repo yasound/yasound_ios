@@ -9,6 +9,7 @@
 #import "YasoundAppURLHandler.h"
 #import "RootViewController.h"
 #import "YasoundSessionManager.h"
+#import "AudioStreamManager.h"
 
 @interface YasoundAppURLHandler (internal)
 
@@ -21,6 +22,7 @@
 - (BOOL)gotoLogin;
 - (BOOL)gotoTwitterAssociation;
 - (BOOL)gotoFacebookAssociation;
+- (BOOL)gotoCurrentRadio;
 
 - (void)postNotification:(NSString*)notifName;
 
@@ -86,6 +88,12 @@ static YasoundAppURLHandler* _main = nil;
         if (res)
             return YES;
     }
+    else if (componentCount == 2 && [[components objectAtIndex:1] isEqualToString:@"current_radio"]) // '/' + 'current_radio'
+    {
+        BOOL res = [self gotoCurrentRadio];
+        if (res)
+            return YES;
+    }
     else if (componentCount == 2 && [[components objectAtIndex:1] isEqualToString:@"twitter_association"]) // '/' + 'twitter_association'
     {
         BOOL res = [self gotoTwitterAssociation];
@@ -148,6 +156,16 @@ static YasoundAppURLHandler* _main = nil;
         return [self gotoLogin];
     [self postNotification:NOTIF_GOTO_FACEBOOK_ASSOCIATION];
     return YES;
+}
+
+- (BOOL)gotoCurrentRadio
+{
+    if ([AudioStreamManager main].currentRadio)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:[AudioStreamManager main].currentRadio];
+        return YES;
+    }
+    return [self gotoSelection];
 }
 
 
