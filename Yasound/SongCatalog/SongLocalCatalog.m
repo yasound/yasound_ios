@@ -19,12 +19,12 @@
 @implementation SongLocalCatalog
 
 
-@synthesize genres;
-@synthesize playlists;
-@synthesize artistsForGenre;
-@synthesize songsForGenre;
-@synthesize artistsForPlaylist;
-@synthesize songsForPlaylist;
+//@synthesize genres;
+//@synthesize playlists;
+//@synthesize artistsForGenre;
+//@synthesize songsForGenre;
+//@synthesize artistsForPlaylist;
+//@synthesize songsForPlaylist;
 
 
 static SongLocalCatalog* _main = nil;
@@ -59,10 +59,10 @@ static SongLocalCatalog* _main = nil;
     
     if (self = [super init]) {
      
-        self.artistsForGenre = [NSMutableDictionary dictionary];
-        self.songsForGenre = [NSMutableDictionary dictionary];
-        self.artistsForPlaylist = [NSMutableDictionary dictionary];
-        self.songsForPlaylist = [NSMutableDictionary dictionary];
+//        self.artistsForGenre = [NSMutableDictionary dictionary];
+//        self.songsForGenre = [NSMutableDictionary dictionary];
+//        self.artistsForPlaylist = [NSMutableDictionary dictionary];
+//        self.songsForPlaylist = [NSMutableDictionary dictionary];
 
 //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAddToProgramming:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
 //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoveFromProgramming:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
@@ -310,8 +310,13 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)genresAll {
     
-    if (self.genres != nil)
-        return self.genres;
+//    if (self.genres != nil)
+//        return self.genres;
+    NSString* cacheKey = [NSString stringWithFormat:@"genres"];
+    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+    if (cache != nil)
+        return cache;
+
     
     NSMutableArray* results = [NSMutableArray array];
     
@@ -325,7 +330,8 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-    self.genres = results;
+//    self.genres = results;
+    [self.catalogCache setObject:results forKey:cacheKey];
     
     return results;    
 }
@@ -334,12 +340,13 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)artistsForGenre:(NSString*)genre {
     
-    NSMutableArray* results = [self.artistsForGenre objectForKey:genre];
+//    NSMutableArray* results = [self.artistsForGenre objectForKey:genre];
+    NSString* cacheKey = [NSString stringWithFormat:@"artistsForGenre|%@", genre];
+    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+    if (cache != nil)
+        return cache;
     
-    if (results != nil)
-        return results;
-    
-    results = [NSMutableArray array];
+    NSMutableArray* results = [NSMutableArray array];
     
     FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT DISTINCT artistKey FROM localCatalog WHERE genre=? ORDER BY artistKey", genre];
     
@@ -351,7 +358,8 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-    [self.artistsForGenre setObject:results forKey:genre];
+//    [self.artistsForGenre setObject:results forKey:genre];
+    [self.catalogCache setObject:results forKey:cacheKey];
     
     return results;
 }
@@ -359,12 +367,13 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)songsForGenre:(NSString*)genre {
     
-    NSMutableArray* results = [self.songsForGenre objectForKey:genre];
+//    NSMutableArray* results = [self.songsForGenre objectForKey:genre];
+    NSString* cacheKey = [NSString stringWithFormat:@"songsForGenre|%@", genre];
+    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+    if (cache != nil)
+        return cache;
     
-    if (results != nil)
-        return results;
-    
-    results = [NSMutableArray array];
+    NSMutableArray* results = [NSMutableArray array];
     
     FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT songKey FROM localCatalog WHERE genre=? ORDER BY name", genre];
     
@@ -376,7 +385,8 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-    [self.songsForGenre setObject:results forKey:genre];
+//    [self.songsForGenre setObject:results forKey:genre];
+    [self.catalogCache setObject:results forKey:cacheKey];
     
     return results;
 }
@@ -386,8 +396,12 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)playlistsAll {
     
-    if (self.playlists != nil)
-        return self.playlists;
+//    if (self.playlists != nil)
+//        return self.playlists;
+    NSString* cacheKey = [NSString stringWithFormat:@"playlists"];
+    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+    if (cache != nil)
+        return cache;
     
     NSMutableArray* results = [NSMutableArray array];
     
@@ -401,7 +415,8 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-    self.playlists = results;
+//    self.playlists = results;
+    [self.catalogCache setObject:results forKey:cacheKey];
 
     return results;
     
@@ -410,12 +425,16 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)artistsForPlaylist:(NSString*)playlist {
 
-    NSMutableArray* results = [self.artistsForPlaylist objectForKey:playlist];
+//    NSMutableArray* results = [self.artistsForPlaylist objectForKey:playlist];
+//    
+//    if (results != nil)
+//        return results;
+    NSString* cacheKey = [NSString stringWithFormat:@"artistsForPlaylist|%@", playlist];
+    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+    if (cache != nil)
+        return cache;
     
-    if (results != nil)
-        return results;
-    
-    results = [NSMutableArray array];
+    NSMutableArray* results = [NSMutableArray array];
     
     FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT DISTINCT localCatalog.artistKey FROM localCatalog JOIN playlistCatalog WHERE localCatalog.songKey = playlistCatalog.songKey  AND playlistCatalog.playlist = ? ORDER BY localCatalog.artistKey", playlist];
     
@@ -427,7 +446,8 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-    [self.artistsForPlaylist setObject:results forKey:playlist];
+//    [self.artistsForPlaylist setObject:results forKey:playlist];
+    [self.catalogCache setObject:results forKey:cacheKey];
     
     return results;
 
@@ -436,12 +456,16 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)songsForPlaylist:(NSString*)playlist {
     
-    NSMutableArray* results = [self.songsForPlaylist objectForKey:playlist];
+//    NSMutableArray* results = [self.songsForPlaylist objectForKey:playlist];
+//    
+//    if (results != nil)
+//        return results;
+    NSString* cacheKey = [NSString stringWithFormat:@"songsForPlaylist|%@", playlist];
+    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+    if (cache != nil)
+        return cache;
     
-    if (results != nil)
-        return results;
-    
-    results = [NSMutableArray array];
+    NSMutableArray* results = [NSMutableArray array];
     
     FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT localCatalog.songKey FROM localCatalog JOIN playlistCatalog WHERE localCatalog.songKey = playlistCatalog.songKey  AND playlistCatalog.playlist = ? ORDER BY localCatalog.name", playlist];
     
@@ -453,7 +477,8 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-    [self.songsForPlaylist setObject:results forKey:playlist];
+//    [self.songsForPlaylist setObject:results forKey:playlist];
+    [self.catalogCache setObject:results forKey:cacheKey];
     
     return results;
     

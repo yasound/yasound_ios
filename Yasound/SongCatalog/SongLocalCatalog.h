@@ -18,22 +18,22 @@
 // cache
 
 // list of NSString* genre
-@property (nonatomic, retain) NSArray* genres;
-
-// list of NSString* playlist
-@property (nonatomic, retain) NSArray* playlists;
-
-// list of NSString* genre -> NSArray* [NSString* artists]
-@property (nonatomic, retain) NSMutableDictionary* artistsForGenre;
-
-// list of NSString* genre -> NSArray* [NSString* songs songKey] 
-@property (nonatomic, retain) NSMutableDictionary* songsForGenre;
-
-// list of NSString* playlist -> NSArray* [NSString* artists]
-@property (nonatomic, retain) NSMutableDictionary* artistsForPlaylist;
-
-// list of NSString* playlist -> NSArray* [NSString* songs name]  // take care : songs name is not songKey
-@property (nonatomic, retain) NSMutableDictionary* songsForPlaylist;
+//@property (nonatomic, retain) NSArray* genres;
+//
+//// list of NSString* playlist
+//@property (nonatomic, retain) NSArray* playlists;
+//
+//// list of NSString* genre -> NSArray* [NSString* artists]
+//@property (nonatomic, retain) NSMutableDictionary* artistsForGenre;
+//
+//// list of NSString* genre -> NSArray* [NSString* songs songKey] 
+//@property (nonatomic, retain) NSMutableDictionary* songsForGenre;
+//
+//// list of NSString* playlist -> NSArray* [NSString* artists]
+//@property (nonatomic, retain) NSMutableDictionary* artistsForPlaylist;
+//
+//// list of NSString* playlist -> NSArray* [NSString* songs name]  // take care : songs name is not songKey
+//@property (nonatomic, retain) NSMutableDictionary* songsForPlaylist;
 
 
 + (SongLocalCatalog*)main;
