@@ -13,6 +13,7 @@
 @property (retain, nonatomic) NSString* name;
 @property (retain, nonatomic) NSString* description;
 @property (retain, nonatomic) NSString* action_url_ios;
+@property (retain, nonatomic) NSString* completed_url;
 @property (retain, nonatomic) NSString* picture_url;
 @property (retain, nonatomic) NSNumber* enabled;
 @property (retain, nonatomic) NSDate* last_achievement_date;

@@ -32,6 +32,7 @@
 #import "WebPageViewController.h"
 
 @class CreateRadioViewController;
+@class MyAccountViewController;
 
 //LBDEBUG
 //
@@ -166,6 +167,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadios:) name:NOTIF_GOTO_MYRADIOS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoGifts:) name:NOTIF_GOTO_GIFTS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoProfil:) name:NOTIF_GOTO_PROFIL object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoEditProfile:) name:NOTIF_GOTO_EDIT_PROFIL object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushRadio:) name:NOTIF_PUSH_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoRadio:) name:NOTIF_GOTO_RADIO object:nil];
@@ -935,6 +937,13 @@
     [view release];
 }
 
+
+- (void)onNotifGotoEditProfile:(NSNotification*)notification
+{
+    MyAccountViewController* view = [[MyAccountViewController alloc] initWithNibName:@"MyAccountViewController" bundle:nil];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
+    [view release];
+}
 
 
 

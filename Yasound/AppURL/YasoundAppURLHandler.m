@@ -25,6 +25,7 @@
 - (BOOL)gotoCurrentRadio;
 - (BOOL)gotoCreateRadio;
 - (BOOL)gotoRadioProgramming;
+- (BOOL)gotoProfile;
 
 - (void)postNotification:(NSString*)notifName;
 
@@ -120,6 +121,13 @@ static YasoundAppURLHandler* _main = nil;
         if (res)
             return YES;
     }
+    else if (componentCount == 2 && [[components objectAtIndex:1] isEqualToString:@"profile"]) // '/' + 'profile'
+    {
+        BOOL res = [self gotoProfile];
+        if (res)
+            return YES;
+    }
+    
     
     
     DLog(@"cannot handle yasound navigation url %@", url);
@@ -210,6 +218,14 @@ static YasoundAppURLHandler* _main = nil;
         Radio* radio = [radios objectAtIndex:0];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO_PROGRAMMING object:radio];
     }
+}
+
+- (BOOL)gotoProfile
+{
+    if (![YasoundSessionManager main].registered)
+        return [self gotoLogin];
+    [self postNotification:NOTIF_GOTO_EDIT_PROFIL];
+    return YES;
 }
 
 

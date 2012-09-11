@@ -2758,6 +2758,16 @@ static YasoundDataProvider* _main = nil;
     [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/favorite_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 
+- (void)sendGetRequestWithURL:(NSString*)url
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = url;
+    conf.urlIsAbsolute = NO;
+    conf.method = @"GET";
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
 
 //
 // DEPRECATED

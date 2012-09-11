@@ -7,6 +7,7 @@
 //
 
 #import "Gift.h"
+#import "YasoundDataProvider.h"
 
 @implementation Gift
 
@@ -67,6 +68,9 @@
     
     NSURL* url = [NSURL URLWithString:self.action_url_ios];
     [[UIApplication sharedApplication] openURL:url];
+    
+    if (self.completed_url)
+        [[YasoundDataProvider main] sendGetRequestWithURL:self.completed_url];
 }
 
 @end
