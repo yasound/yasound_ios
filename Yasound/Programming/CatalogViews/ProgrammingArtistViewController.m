@@ -119,8 +119,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    NSArray* albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
-    NSInteger count = albums.count;
+    NSArray* albums = nil;
+    NSInteger count = 9;
+    
+    if (self.catalog.selectedGenre) {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+    }
+    else if (self.catalog.selectedPlaylist) {
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist withPlaylist:self.catalog.selectedPlaylist];
+    }
+    else
+        albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
+    
+    count = albums.count;
     return count;
 }
 
@@ -137,10 +148,10 @@
 {
     NSString* title = nil;
     if (self.catalog.selectedGenre) {
-        title = [NSString stringWithFormat:@"%@: %@: %@", NSLocalizedString(@"Programming.segment.genre", nil), self.catalog.selectedGenre, self.catalog.selectedArtist];
+        title = [NSString stringWithFormat:@"%@: %@", self.catalog.selectedGenre, self.catalog.selectedArtist];
     }
     else if (self.catalog.selectedPlaylist) {
-        title = [NSString stringWithFormat:@"%@: %@: %@", NSLocalizedString(@"Programming.segment.playlist", nil), self.catalog.selectedPlaylist, self.catalog.selectedArtist];
+        title = [NSString stringWithFormat:@"%@: %@", self.catalog.selectedPlaylist, self.catalog.selectedArtist];
     }
     else
         title = [NSString stringWithFormat:@"%@", self.catalog.selectedArtist];
