@@ -81,7 +81,7 @@
         
         
         // button "delete"
-        sheet = [[Theme theme] stylesheetForKey:@"Programming.del" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Programming.delUpload" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UIButton* button = [sheet makeButton];
         [button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
