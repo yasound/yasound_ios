@@ -31,6 +31,8 @@
 #import "AccountFacebookViewController.h"
 #import "WebPageViewController.h"
 
+@class CreateRadioViewController;
+
 //LBDEBUG
 //
 //
@@ -176,6 +178,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoFacebookAssociation:) name:NOTIF_GOTO_FACEBOOK_ASSOCIATION object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoWebPageView:) name:NOTIF_GOTO_WEB_PAGE_VIEW object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoRadioProgramming:) name:NOTIF_GOTO_RADIO_PROGRAMMING object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoCreateRadio:) name:NOTIF_GOTO_CREATE_RADIO object:nil];
     
 
 
@@ -911,6 +916,21 @@
 {
     NSURL* url = notification.object;
     WebPageViewController* view = [[WebPageViewController alloc] initWithNibName:@"WebPageViewController" bundle:nil withUrl:url andTitle:nil];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
+- (void)onNotifGotoRadioProgramming:(NSNotification *)notification
+{
+    Radio* radio = notification.object;
+    ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:radio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
+- (void)onNotifGotoCreateRadio:(NSNotification *)notification
+{
+    CreateRadioViewController* view = [[CreateRadioViewController alloc] initWithNibName:@"CreateRadioViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }

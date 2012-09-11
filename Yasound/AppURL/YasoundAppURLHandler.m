@@ -23,6 +23,8 @@
 - (BOOL)gotoTwitterAssociation;
 - (BOOL)gotoFacebookAssociation;
 - (BOOL)gotoCurrentRadio;
+- (BOOL)gotoCreateRadio;
+- (BOOL)gotoRadioProgramming;
 
 - (void)postNotification:(NSString*)notifName;
 
@@ -91,6 +93,18 @@ static YasoundAppURLHandler* _main = nil;
     else if (componentCount == 2 && [[components objectAtIndex:1] isEqualToString:@"current_radio"]) // '/' + 'current_radio'
     {
         BOOL res = [self gotoCurrentRadio];
+        if (res)
+            return YES;
+    }
+    else if (componentCount == 2 && [[components objectAtIndex:1] isEqualToString:@"create_radio"]) // '/' + 'create_radio'
+    {
+        BOOL res = [self gotoCreateRadio];
+        if (res)
+            return YES;
+    }
+    else if (componentCount == 2 && [[components objectAtIndex:1] isEqualToString:@"programming"]) // '/' + 'current_radio'
+    {
+        BOOL res = [self gotoRadioProgramming];
         if (res)
             return YES;
     }
@@ -167,6 +181,37 @@ static YasoundAppURLHandler* _main = nil;
     }
     return [self gotoSelection];
 }
+
+- (BOOL)gotoCreateRadio
+{
+    if (![YasoundSessionManager main].registered)
+        return [self gotoLogin];
+    [self postNotification:NOTIF_GOTO_CREATE_RADIO];
+    return YES;
+}
+
+- (BOOL)gotoRadioProgramming
+{
+    if (![YasoundSessionManager main].registered)
+        return [self gotoLogin];
+    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withTarget:self action:@selector(radiosReceivedForProgramming:success:)];
+    return YES;
+}
+
+- (void)radiosReceivedForProgramming:(ASIHTTPRequest*)req success:(BOOL)success
+{    
+    if (!success)
+        return;
+    
+    Container* container = [req responseObjectsWithClass:[Radio class]];
+    NSArray* radios = container.objects;
+    if (radios.count > 0)
+    {
+        Radio* radio = [radios objectAtIndex:0];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO_PROGRAMMING object:radio];
+    }
+}
+
 
 
 
