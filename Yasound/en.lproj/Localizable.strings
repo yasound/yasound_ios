@@ -212,7 +212,10 @@
 
 "Programming.collection.add.title" = "Programming";
 "Programming.collection.add.message.empty" = "None of the songs can be uploaded to the server.";
-"Programming.collection.add.message" = "%d songs are programmed already on your radio.\n%d songs of %d can be uploaded to your radio. Do you want to upload them?";
+"Programming.collection.add.message.programmed.1" = "1 song is in your radio already.";
+"Programming.collection.add.message.programmed.n" = "%d songs are in your radio already.";
+"Programming.collection.add.message.toUpload.1" = "1 of %d songs may be uploaded to your radio.\nWould you like to upload it?";
+"Programming.collection.add.message.toUpload.n" = "%d of %d songs may be uploaded to your radio.\nWould you like to upload them?";
 
 
 

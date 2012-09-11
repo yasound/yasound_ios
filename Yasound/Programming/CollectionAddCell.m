@@ -324,6 +324,8 @@
         [self genreAddClicked];
     else if (self.mode == ePlaylistAdd)
         [self playlistAddClicked];
+    else if (self.mode == eArtistAdd)
+        [self artistAddClicked];
 }
 
 
@@ -356,21 +358,7 @@
     }
 
     
-    if (self.songsToUpload.count == 0) {
-        
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:NSLocalizedString(@"Programming.collection.add.message.empty", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles: nil];
-        [alert show];
-        [alert release];
-        
-        return;
-    }
-    
-    // ask confirm
-    NSString* message = NSLocalizedString(@"Programming.collection.add.message", nil);
-    message = [NSString stringWithFormat:message, nbProgrammed, self.songsToUpload.count, songs.count];
-    _addedGenreUpload = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.ok", nil), nil];
-        [_addedGenreUpload show];
-        [_addedGenreUpload release];
+    [self requestUploadsFrom:songs nbProgrammed:nbProgrammed];
     
 }
 
@@ -411,6 +399,66 @@
     }
     
     
+    [self requestUploadsFrom:songs nbProgrammed:nbProgrammed];
+
+}
+
+
+
+
+
+
+
+
+
+
+- (void)artistAddClicked {
+    
+    NSInteger nbProgrammed = 0;
+    NSInteger nbCantProgram = 0;
+    
+    NSArray* songs;
+    
+    if (self.catalog.selectedGenre)
+        songs = [[SongLocalCatalog main] songsForArtist:self.collection withGenre:self.catalog.selectedGenre];
+    else if (self.catalog.selectedPlaylist)
+        songs = [[SongLocalCatalog main] songsForArtist:self.collection withPlaylist:self.catalog.selectedPlaylist];
+    else
+        songs = [[SongLocalCatalog main] songsForArtist:self.collection];
+
+    for (NSString* songKey in songs) {
+        
+        Song* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
+        assert(song);
+        
+        // don't upload if the song is programmed already
+        if (song.isProgrammed) {
+            nbProgrammed++;
+            continue;
+        }
+        
+        // can it be upload?
+        BOOL can = [[SongUploader main] canUploadSong:song];
+        if (!can) {
+            nbCantProgram++;
+            continue;
+        }
+        
+        // ok, add it to the group of songs to upload
+        [self.songsToUpload addObject:song];
+    }
+    
+    [self requestUploadsFrom:songs nbProgrammed:nbProgrammed];
+}
+
+
+- (void)requestUploadsFrom:(NSArray*)songs nbProgrammed:(NSInteger)nbProgrammed {
+    
+//    "Programming.collection.add.message.programmed.1" = "1 song is in your radio already.";
+//    "Programming.collection.add.message.programmed.n" = "%d songs are in your radio already.";
+//    "Programming.collection.add.message.toUpload.1" = "1 of %d songs may be uploaded to your radio.\nWould you like to upload it?";
+//    "Programming.collection.add.message.toUpload.n" = "%d of %d songs may be uploaded to your radio.\nWould you like to upload them?";
+
     if (self.songsToUpload.count == 0) {
         
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:NSLocalizedString(@"Programming.collection.add.message.empty", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles: nil];
@@ -421,12 +469,37 @@
     }
     
     // ask confirm
-    NSString* message = NSLocalizedString(@"Programming.collection.add.message", nil);
-    message = [NSString stringWithFormat:message, nbProgrammed, self.songsToUpload.count, songs.count];
-    _addedPlaylistUpload = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.ok", nil), nil];
-    [_addedPlaylistUpload show];
-    [_addedPlaylistUpload release];
+    NSString* message = nil;
+    NSString* message1 = nil;
+    NSString* message2 = nil;
+    
+    if (nbProgrammed == 1) {
+        message1 = NSLocalizedString(@"Programming.collection.add.message.programmed.1", nil);
+    }
+    else {
+        message1 = NSLocalizedString(@"Programming.collection.add.message.programmed.n", nil);
+        message1 = [NSString stringWithFormat:message1, nbProgrammed];
+    }
 
+    if (self.songsToUpload.count == 1) {
+        message2 = NSLocalizedString(@"Programming.collection.add.message.toUpload.1", nil);
+        message2 = [NSString stringWithFormat:message2, songs.count];
+    }
+    else {
+        message2 = NSLocalizedString(@"Programming.collection.add.message.toUpload.n", nil);
+        message2 = [NSString stringWithFormat:message2, self.songsToUpload.count, songs.count];
+    }
+
+    
+    message = message1;
+    message = [message stringByAppendingString:message2];
+    
+    
+    message = [NSString stringWithFormat:message, nbProgrammed, self.songsToUpload.count, songs.count];
+    _addedGenreUpload = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.add.title", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.ok", nil), nil];
+    [_addedGenreUpload show];
+    [_addedGenreUpload release];
+    
 }
 
 
