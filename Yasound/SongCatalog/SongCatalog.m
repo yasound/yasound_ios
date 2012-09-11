@@ -12,22 +12,11 @@
 
 @implementation SongCatalog
 
-//@synthesize db;
 @synthesize songsDb;
-//@synthesize dbPath;
-
 @synthesize isInCache;
 @synthesize indexMap;
 
 // cache
-//@synthesize songs;
-//@synthesize songsForLetter;
-//@synthesize artistsForLetter;
-//@synthesize albumsForArtist;
-//@synthesize albumsForArtistWithGenre;
-//@synthesize albumsForArtistWithPlaylist;
-//@synthesize songsForArtistAlbum;
-
 @synthesize catalogCache;
 
 @synthesize selectedArtist;
@@ -380,6 +369,52 @@
 
 
 
+
+- (NSArray*)songsForArtist:(NSString*)artist withGenre:(NSString*)genre fromTable:(NSString*)table {
+    
+    NSString* cacheKey = [NSString stringWithFormat:@"songsForArtist|%@|withGenre|%@", artist, genre];
+    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+    if (cache != nil)
+        return cache;
+    
+    NSMutableArray* results = [NSMutableArray array];
+    
+    FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT songKey FROM %@ WHERE artistKey=? AND genre=? ORDER BY name", table], artist, genre];
+    while ([s next])
+    {
+        NSString* songKey = [s stringForColumnIndex:0];
+        assert(songKey);
+        [results addObject:songKey];
+    }
+    
+    // set cache
+    [self.catalogCache setObject:results forKey:cacheKey];
+    return results;
+}
+
+
+
+- (NSArray*)songsForArtist:(NSString*)artist withPlaylist:(NSString*)playlist fromTable:(NSString*)table {
+    
+    NSString* cacheKey = [NSString stringWithFormat:@"songsForArtist|%@|withPlaylist|%@", artist, playlist];
+    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+    if (cache != nil)
+        return cache;
+    
+    NSMutableArray* results = [NSMutableArray array];
+    
+    FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT localCatalog.songKey FROM %@ JOIN playlistCatalog WHERE localCatalog.artistKey=? AND localCatalog.songKey=playlistCatalog.songKey AND playlistCatalog.playlist=? ORDER BY name", table], artist, playlist];
+    while ([s next])
+    {
+        NSString* songKey = [s stringForColumnIndex:0];
+        assert(songKey);
+        [results addObject:songKey];
+    }
+    
+    // set cache
+    [self.catalogCache setObject:results forKey:cacheKey];
+    return results;
+}
 
 
 

@@ -275,6 +275,21 @@ static SongLocalCatalog* _main = nil;
 }
 
 
+
+
+
+- (NSArray*)songsForArtist:(NSString*)artist withGenre:(NSString*)genre {
+    
+    return [self songsForArtist:artist withGenre:genre fromTable:LOCALCATALOG_TABLE];
+}
+
+- (NSArray*)songsForArtist:(NSString*)artist withPlaylist:(NSString*)playlist {
+    
+    return [self songsForArtist:artist withPlaylist:playlist fromTable:LOCALCATALOG_TABLE];
+}
+
+
+
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist {
     
     return [self songsForAlbum:album fromArtist:artist fromTable:LOCALCATALOG_TABLE];

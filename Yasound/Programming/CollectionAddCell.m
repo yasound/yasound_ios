@@ -42,7 +42,7 @@
 
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier genre:(NSString*)genre subtitle:(NSString*)subtitle forRadio:(Radio*)radio {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier genre:(NSString*)genre subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog {
 
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
@@ -50,16 +50,17 @@
     {
         self.mode = eGenreAdd;
         self.radio = radio;
+        self.catalog = catalog;
         self.collection = genre;
         
-        [self commitInit];
+        [self commonInit];
         [self updateGenre:genre subtitle:subtitle];
     }
     return self;
 }
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier playlist:(NSString*)playlist subtitle:(NSString*)subtitle forRadio:(Radio*)radio {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier playlist:(NSString*)playlist subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog {
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
@@ -67,16 +68,34 @@
     {
         self.mode = ePlaylistAdd;
         self.radio = radio;
+        self.catalog = catalog;
         self.collection = playlist;
         
-        [self commitInit];
+        [self commonInit];
         [self updatePlaylist:playlist subtitle:subtitle];
     }
     return self;
 }
 
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier artist:(NSString*)artist subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog {
+    
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
+    if (self)
+    {
+        self.mode = eArtistAdd;
+        self.radio = radio;
+        self.catalog = catalog;
+        self.collection = artist;
+        
+        [self commonInit];
+        [self updateArtist:artist subtitle:subtitle];
+    }
+    return self;
+}
 
-- (void)commitInit {
+
+- (void)commonInit {
 
         self.selectionStyle = UITableViewCellSelectionStyleGray;
 //    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -211,6 +230,56 @@
         BOOL isProgrammed = (matchedSong != nil);
 
 //        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio];
+        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.catalogKey forRadio:self.radio];
+        
+        areAllDisabled &= (isProgrammed || isUploading);
+    }
+    
+    if (areAllDisabled) {
+        self.button.enabled = NO;
+        self.label.alpha = 0.5;
+        self.detailedLabel.alpha = 0.5;
+    } else {
+        self.button.enabled = YES;
+        self.label.alpha = 1;
+        self.detailedLabel.alpha = 1;
+    }
+}
+
+
+
+- (void)updateArtist:(NSString*)artist subtitle:(NSString*)subtitle
+{
+    self.mode = eArtistAdd;
+    self.collection = artist;
+    
+    self.label.text = artist;
+    self.detailedLabel.text = subtitle;
+    
+    BOOL areAllDisabled = YES;
+    
+    NSArray* songs = nil;
+    
+    if (self.catalog.selectedGenre)
+        songs = [[SongLocalCatalog main] songsForArtist:self.collection withGenre:self.catalog.selectedGenre];
+    else if (self.catalog.selectedPlaylist)
+        songs = [[SongLocalCatalog main] songsForArtist:self.collection withPlaylist:self.catalog.selectedPlaylist];
+    else
+        songs = [[SongLocalCatalog main] songsForArtist:self.collection];
+    
+    
+    for (NSString* songKey in songs) {
+        
+        SongLocal* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
+        assert(song);
+        assert([song isKindOfClass:[SongLocal class]]);
+        
+        Song* matchedSong = [[SongRadioCatalog main].matchedSongs objectForKey:songKey];
+        
+        // don't upload if the song is programmed already
+        BOOL isProgrammed = (matchedSong != nil);
+        
+        //        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio];
         BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.catalogKey forRadio:self.radio];
         
         areAllDisabled &= (isProgrammed || isUploading);

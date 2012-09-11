@@ -43,28 +43,8 @@ typedef enum {
 
 // cache
 
-// NSString* songKey -> Song* song
 @property (nonatomic, retain) NSMutableDictionary* songsDb;
-
-//@property (nonatomic, retain) NSMutableDictionary* songs;
-
-
 @property (nonatomic, retain) NSMutableDictionary* catalogCache;
-
-//// NSString* letter -> NSArray[NSString* songKey]
-//@property (nonatomic, retain) NSMutableDictionary* songsForLetter;
-//
-//// NSString* letter -> NSArray[NSString* artistKey]
-//@property (nonatomic, retain) NSMutableDictionary* artistsForLetter;
-//
-//// NSString* artistKey -> NSArray[NSString* albumKey]
-//@property (nonatomic, retain) NSMutableDictionary* albumsForArtist;
-//@property (nonatomic, retain) NSMutableDictionary* albumsForArtistWithGenre;
-//@property (nonatomic, retain) NSMutableDictionary* albumsForArtistWithPlaylist;
-//
-//// NSString* artistKey -> NSDictionary [ NSString* albumKey -> NSArray[NSString* songKey]]
-//@property (nonatomic, retain) NSMutableDictionary* songsForArtistAlbum;
-
 
 
 
@@ -87,6 +67,8 @@ typedef enum {
 - (NSArray*)albumsForArtist:(NSString*)artist withGenre:genre fromTable:(NSString*)table;
 - (NSArray*)albumsForArtist:(NSString*)artist withPlaylist:playlist fromTable:(NSString*)table;
 
+- (NSArray*)songsForArtist:(NSString*)artist withGenre:(NSString*)genre fromTable:(NSString*)table;
+- (NSArray*)songsForArtist:(NSString*)artist withPlaylist:(NSString*)playlist fromTable:(NSString*)table;
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist fromTable:(NSString*)table;
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist withGenre:(NSString*)genre fromTable:(NSString*)table;
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist withPlaylist:(NSString*)playlist fromTable:(NSString*)table;

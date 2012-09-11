@@ -30,6 +30,7 @@
 #import "YasoundAppDelegate.h"
 #import "DataBase.h"
 #import "PlaylistMoulinor.h"
+#import "CollectionAddCell.h"
 
 
 @implementation ProgrammingCollectionViewController
@@ -185,36 +186,19 @@
 {
     static NSString* CellIdentifier = @"CellArtist";
     
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (cell == nil)
-    {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+//    if (cell == nil)
+//    {
+//        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         
         //            cell.textLabel.backgroundColor = [UIColor clearColor];
         //            cell.detailTextLabel.backgroundColor = [UIColor clearColor];
         //            cell.textLabel.textColor = [UIColor whiteColor];
         //            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
-        cell.selectionStyle = UITableViewCellSelectionStyleGray;
-        
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        UIImageView* di = [sheet makeImage];
-        cell.accessoryView = di;
-        [di release];
-        
-        sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
-        cell.textLabel.textColor = [sheet fontTextColor];
-        cell.textLabel.font = [sheet makeFont];
-        
-        
-        sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        cell.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
-        cell.detailTextLabel.textColor = [sheet fontTextColor];
-        cell.detailTextLabel.font = [sheet makeFont];
-    }
+//        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    
     
     NSString* artist = [self.artists objectAtIndex:indexPath.row];
     
@@ -226,16 +210,55 @@
     else
         nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist].count;
     
-    cell.textLabel.text = artist;
+    NSString* subtitle = nil;
     
     if (nbAlbums == 1)
-        cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbAlbums.1", nil);
+        subtitle = NSLocalizedString(@"Programming.nbAlbums.1", nil);
     else
-        cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbAlbums.n", nil);
+        subtitle = NSLocalizedString(@"Programming.nbAlbums.n", nil);
     
-    cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
+    subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
 
-    return cell;
+        
+        CollectionAddCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil)
+        {
+            cell = [[[CollectionAddCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier artist:artist subtitle:subtitle forRadio:self.radio usingCatalog:self.catalog] autorelease];
+        }
+        else
+            [cell updateArtist:artist subtitle:subtitle];
+        
+        return cell;
+
+        
+//        // button "add to upload list"
+//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.add" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        UIButton* button = [sheet makeButton];
+//        [button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+//        //[self addSubview];
+//        
+//        
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        UIImageView* di = [sheet makeImage];
+//        cell.accessoryView = di;
+//        [di release];
+//        
+//        sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
+//        cell.textLabel.textColor = [sheet fontTextColor];
+//        cell.textLabel.font = [sheet makeFont];
+//        
+//        
+//        sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        cell.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
+//        cell.detailTextLabel.textColor = [sheet fontTextColor];
+//        cell.detailTextLabel.font = [sheet makeFont];
+//    }
+//    
+//
+//    return cell;
 }
 
 
