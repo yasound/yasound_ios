@@ -81,8 +81,6 @@
         return;
     
     self.gifts = [request responseObjectsWithClass:[Gift class]].objects;
-    Gift* g = [self.gifts objectAtIndex:0];
-    g.action_url_ios = @"yasound://navigation/profile";
     [self.tableView reloadData];
 }
 
