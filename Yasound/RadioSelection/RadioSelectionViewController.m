@@ -290,6 +290,14 @@
             [[YasoundDataProvider main] friendsForUser:[YasoundDataProvider main].user withTarget:self action:@selector(friendsReceived:success:)];
         return;
     }
+    
+    // request selection radios
+    if (itemIndex == WheelIdSelection)
+    {
+        [tabBar setTabSelected:TabIndexSelection];
+        [[YasoundDataCache main] requestRadioRecommendationWithTarget:self action:@selector(receiveRadios:info:)];
+        return;
+    }
 
     // request favorites radios
     if (itemIndex == WheelIdFavorites)
@@ -303,14 +311,6 @@
         url = URL_RADIOS_FAVORITES;
         [tabBar setTabSelected:TabIndexFavorites];
     }
-
-    // request selection radios
-    else if (itemIndex == WheelIdSelection)
-    {
-        url = URL_RADIOS_SELECTION;
-        [tabBar setTabSelected:TabIndexSelection];
-    }
-
     // request top radios
     else if (itemIndex == WheelIdTop)
     {

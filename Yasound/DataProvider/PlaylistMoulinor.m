@@ -108,7 +108,7 @@ static PlaylistMoulinor* _main = nil;
     return YES;
 }
 
-- (BOOL)buildArtistDataBinary:(BOOL)binary compressed:(BOOL)compressed target:(id)target action:(SEL)action
+- (BOOL)buildArtistDataBinary:(BOOL)binary compressed:(BOOL)compressed target:(id)target action:(SEL)action userInfo:(id)info
 {
     if ((target == nil) || (action == nil))
     {
@@ -123,7 +123,7 @@ static PlaylistMoulinor* _main = nil;
     _action = action;
     
     // use an asynchronous operation
-    NSInvocationOperation* operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(thProcessForArtists:) object:nil];
+    NSInvocationOperation* operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(thProcessForArtists:) object:info];
     [_queue addOperation:operation];
     [operation release];
     
@@ -322,7 +322,8 @@ static PlaylistMoulinor* _main = nil;
     DLog(@"PlaylistMoulinor artists  building data in : %.2f ms    compressing data in : %.2f ms", timePassedForBuilding_ms, timePassedForCompressing_ms);
     
     // send results
-    [_target performSelectorOnMainThread:_action withObject:compressedData waitUntilDone:NO];
+    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:compressedData, @"result", userInfo, @"userInfo", nil];
+    [_target performSelectorOnMainThread:_action withObject:dict waitUntilDone:NO];
 }
 
 

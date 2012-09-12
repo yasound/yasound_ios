@@ -9,7 +9,7 @@
 #import "DateAdditions.h"
 #import "YasoundDataProvider.h"
 #import "NSObject+SBJSON.h"
-
+#import "PlaylistMoulinor.h"
 
 
 
@@ -17,6 +17,7 @@
 #define TIMEOUT_RADIOS 60
 #define TIMEOUT_CURRENTSONGS 60
 #define TIMEOUT_FRIENDS 60
+#define TIMEOUT_RECOMMENDATION 3 * 60 * 60
 
 // 1 hour
 #define TIMEOUT_IMAGE (10*60)
@@ -81,6 +82,9 @@ static YasoundDataCache* _main = nil;
       [_cacheSongs retain];
       _cacheFriends = [[NSMutableDictionary alloc] init];
       [_cacheFriends retain];
+      if (_cacheRecommendation)
+          [_cacheRecommendation release];
+      _cacheRecommendation = nil;
   }
   
   return self;
@@ -271,11 +275,67 @@ static YasoundDataCache* _main = nil;
 
 
 
+#pragma mark - recommendation
+- (NSArray*)cacheRecommendationRadios
+{
+    if (!_cacheRecommendation)
+        return nil;
+    
+    NSDate* timeout = [_cacheRecommendation objectForKey:@"timeout"];
+    NSDate* date = [NSDate date];
+    if ([date isLaterThanOrEqualTo:timeout])
+        return nil; // yes, it's expired
+    
+    // everything's ok, return cached data
+    NSArray* radios = [_cacheRecommendation objectForKey:@"data"];
+    return radios;
+}
 
+- (void)requestRadioRecommendationWithTarget:(id)target action:(SEL)selector
+{
+    NSArray* radios = [self cacheRecommendationRadios];
+    if (!radios)
+    {
+        // do not exist or it's expired
+        YasoundDataCachePendingOp* op = [[YasoundDataCachePendingOp alloc] init];
+        [op retain];
+        op.target = target;
+        op.action = selector;
+        [[PlaylistMoulinor main] buildArtistDataBinary:YES compressed:YES target:self action:@selector(didBuildArtistData:) userInfo:op];
+        
+        return;
+    }
+    
+    [target performSelector:selector withObject:radios withObject:nil];
+}
 
+- (void)didBuildArtistData:(NSDictionary*)info
+{
+    NSData* data = [info valueForKey:@"result"];
+    NSDictionary* userInfo = [info valueForKey:@"userInfo"];
+    
+    [[YasoundDataProvider main] radioRecommendationsWithArtistList:data target:self action:@selector(receivedRecomandation:success:) userData:userInfo];
+}
 
-
-
+- (void)receivedRecomandation:(ASIHTTPRequest*)req success:(NSNumber*)success
+{
+    YasoundDataCachePendingOp* op = [req userData];
+    id target = op.target;
+    SEL selector = op.action;
+    [op release];
+    NSLog(@"response: %@", [req responseString]);
+    NSArray* radios = [req responseObjectsWithClass:[Radio class]].objects;
+    NSDate* date = [NSDate date];
+    NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_RECOMMENDATION];
+    
+    NSDictionary* cache = [NSDictionary dictionaryWithObjectsAndKeys:radios, @"data", timeout, @"timeout", nil];
+    if (_cacheRecommendation)
+        [_cacheRecommendation release];
+    _cacheRecommendation = cache;
+    [_cacheRecommendation retain];
+    
+    [target performSelector:selector withObject:radios withObject:nil];
+}
 
 
 
