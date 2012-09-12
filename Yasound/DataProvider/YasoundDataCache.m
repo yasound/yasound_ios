@@ -323,7 +323,6 @@ static YasoundDataCache* _main = nil;
     id target = op.target;
     SEL selector = op.action;
     [op release];
-    NSLog(@"response: %@", [req responseString]);
     NSArray* radios = [req responseObjectsWithClass:[Radio class]].objects;
     NSDate* date = [NSDate date];
     NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_RECOMMENDATION];

@@ -96,7 +96,7 @@
 
 #define URL_RADIOS_FAVORITES @"/api/v1/favorite_radio"
 #define URL_RADIOS_SELECTION @"/api/v1/selected_radio"
-#define URL_RADIOS_TOP @"/api/v1/top_radio"
+#define URL_RADIOS_TOP @"/api/v1/most_active_radio"
 #define URL_LEGAL @"legal/eula.html"
 
 
