@@ -9845,8 +9845,6 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
-				40FE9F2215FDF4B600CE615B /* AddressBook.framework */,
-				BCC7518015E686C400CF7F7C /* StoreKit.framework */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				BCDC963A14AB7D3500D54631 /* Third Parties */,
 				BCA2CCD6149A95460000637E /* LibTools */,
@@ -9877,6 +9875,8 @@
 		E5A9A3AC1454DC0500EA374C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				40FE9F2215FDF4B600CE615B /* AddressBook.framework */,
+				BCC7518015E686C400CF7F7C /* StoreKit.framework */,
 				BCC7518015E686C400CF7F7C /* StoreKit.framework */,
 				E519073B1582250A0094C0DF /* Crashlytics.framework */,
 				BC40CC8314D010BD00DF0950 /* QuartzCore.framework */,
@@ -17449,7 +17449,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "6013B6CF-3211-4637-9467-51DC62147AA0";
+				PROVISIONING_PROFILE = "CB02EF76-E2AF-4D2F-854E-33D7BA3268C7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -17479,7 +17479,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "6013B6CF-3211-4637-9467-51DC62147AA0";
+				PROVISIONING_PROFILE = "CB02EF76-E2AF-4D2F-854E-33D7BA3268C7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

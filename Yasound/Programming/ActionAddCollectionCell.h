@@ -17,6 +17,8 @@
     UIAlertView* _legalUploadWarning;
     UIAlertView* _addedGenreUpload;
     UIAlertView* _addedPlaylistUpload;
+    
+    NSThread* _thread;
 }
 
 typedef enum {
@@ -35,6 +37,8 @@ typedef enum {
 @property (nonatomic, retain) NSString* collection;
 
 @property (nonatomic, retain) UILabel* label;
+
+@property (atomic, retain) NSString* subtitle;
 @property (nonatomic, retain) UILabel* detailedLabel;
 @property (nonatomic, retain) UIButton* button;
 

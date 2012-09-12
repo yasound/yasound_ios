@@ -202,32 +202,32 @@
     
     NSString* artist = [self.artists objectAtIndex:indexPath.row];
     
-    NSInteger nbAlbums = 0;
-    if (self.catalog.selectedGenre)
-        nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist withGenre:self.catalog.selectedGenre fromTable:LOCALCATALOG_TABLE].count;
-    else if (self.catalog.selectedPlaylist)
-        nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist withPlaylist:self.catalog.selectedPlaylist fromTable:LOCALCATALOG_TABLE].count;
-    else
-        nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist].count;
+//    NSInteger nbAlbums = 0;
+//    if (self.catalog.selectedGenre)
+//        nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist withGenre:self.catalog.selectedGenre fromTable:LOCALCATALOG_TABLE].count;
+//    else if (self.catalog.selectedPlaylist)
+//        nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist withPlaylist:self.catalog.selectedPlaylist fromTable:LOCALCATALOG_TABLE].count;
+//    else
+//        nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist].count;
     
-    NSString* subtitle = nil;
-    
-    if (nbAlbums == 1)
-        subtitle = NSLocalizedString(@"Programming.nbAlbums.1", nil);
-    else
-        subtitle = NSLocalizedString(@"Programming.nbAlbums.n", nil);
-    
-    subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
+//    NSString* subtitle = nil;
+//    
+//    if (nbAlbums == 1)
+//        subtitle = NSLocalizedString(@"Programming.nbAlbums.1", nil);
+//    else
+//        subtitle = NSLocalizedString(@"Programming.nbAlbums.n", nil);
+//    
+//    subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
 
         
         ActionAddCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil)
         {
-            cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier artist:artist subtitle:subtitle forRadio:self.radio usingCatalog:self.catalog] autorelease];
+            cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier artist:artist subtitle:nil forRadio:self.radio usingCatalog:self.catalog] autorelease];
         }
         else
-            [cell updateArtist:artist subtitle:subtitle];
+            [cell updateArtist:artist subtitle:nil];
         
         return cell;
 
