@@ -15,6 +15,7 @@
 #import "YasoundReachability.h"
 #import "SongLocalCatalog.h"
 #import "SongRadioCatalog.h"
+#import "DataBase.h"
 
 
 @implementation ActionAddCollectionCell
@@ -27,17 +28,19 @@
 @synthesize button;
 @synthesize songsToUpload;
 
-//
-//- (void)willMoveToSuperview:(UIView *)newSuperview
-//{
-//    [super willMoveToSuperview:newSuperview];
-//    if(!newSuperview)
-//    {
-//        if (self.image)
-//            [self.image releaseCache];
-//    }
-//}
-//
+
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+    [super willMoveToSuperview:newSuperview];
+    if(!newSuperview)
+    {
+        if (_thread) {
+            [_thread cancel];
+            _thread = nil;
+        }
+    }
+}
+
 
 
 
@@ -223,8 +226,6 @@
     self.collection = artist;
     
     self.label.text = artist;
-    self.detailedLabel.text = subtitle;
-    
     
     NSArray* songs = nil;
     
@@ -236,6 +237,45 @@
         songs = [[SongLocalCatalog main] songsForArtist:self.collection];
  
     [self updateItemsWithSongs:songs];
+
+    if (subtitle != nil)
+        self.detailedLabel.text = subtitle;
+    else {
+        self.detailedLabel.text = @"-";
+        _thread = [[NSThread alloc] initWithTarget:self selector:@selector(threadGetInfo) object:nil];
+        [_thread start];
+    }
+}
+
+
+- (void)threadGetInfo {
+    
+    NSInteger nbItems = 0;
+
+    if (self.catalog.selectedGenre)
+        nbItems = [[SongLocalCatalog main] albumsForArtist:self.collection withGenre:self.catalog.selectedGenre fromTable:LOCALCATALOG_TABLE].count;
+    else if (self.catalog.selectedPlaylist)
+        nbItems = [[SongLocalCatalog main] albumsForArtist:self.collection withPlaylist:self.catalog.selectedPlaylist fromTable:LOCALCATALOG_TABLE].count;
+    else
+        nbItems = [[SongLocalCatalog main] albumsForArtist:self.collection].count;
+    
+    if (nbItems == 1)
+        self.subtitle = NSLocalizedString(@"Programming.nbAlbums.1", nil);
+    else
+        self.subtitle = NSLocalizedString(@"Programming.nbAlbums.n", nil);
+    
+    self.subtitle = [self.subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbItems]];
+    
+    [self performSelectorOnMainThread:@selector(gotInfo) withObject:nil waitUntilDone:NO];
+}
+
+- (void)gotInfo {
+    
+    _thread = nil;
+    
+    
+    self.detailedLabel.text = self.subtitle;
+
 }
 
 
