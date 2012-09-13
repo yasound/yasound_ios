@@ -717,3 +717,9 @@
 
 "HdPromoCodePrompt" = "Enter promo code";
 
+"SelectionWaitingText" = "getting your personal selection";
+"TopWaitingText" = "in progress...";
+"FavoritesWaitingText" = "in progress...";
+"FriendsWaitingText" = "in progress...";
+"SearchWaitingText" = "searching...";
+

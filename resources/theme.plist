@@ -3236,6 +3236,57 @@
 				</dict>
 			</dict>
 		</dict>
+		<key>WaitingView</key>
+		<dict>
+			<key>container</key>
+			<dict>
+				<key>x</key>
+				<integer>45</integer>
+				<key>y</key>
+				<integer>160</integer>
+				<key>width</key>
+				<integer>230</integer>
+				<key>height</key>
+				<integer>100</integer>
+				<key>color</key>
+				<string>rgb(225,225,225)</string>
+			</dict>
+			<key>activityIndicator</key>
+			<dict>
+				<key>x</key>
+				<integer>90</integer>
+				<key>y</key>
+				<integer>45</integer>
+				<key>width</key>
+				<integer>50</integer>
+				<key>height</key>
+				<integer>50</integer>
+			</dict>
+			<key>title</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>weight</key>
+					<string>bold</string>
+					<key>textAlignment</key>
+					<string>center</string>
+					<key>size</key>
+					<integer>15</integer>
+					<key>textColor</key>
+					<string>rgb(113,113,113)</string>
+					<key>backgroundColor</key>
+					<string>clear</string>
+				</dict>
+				<key>height</key>
+				<integer>50</integer>
+				<key>width</key>
+				<integer>220</integer>
+				<key>x</key>
+				<integer>5</integer>
+				<key>y</key>
+				<integer>5</integer>
+			</dict>
+		</dict>
 	</dict>
 </dict>
 </plist>

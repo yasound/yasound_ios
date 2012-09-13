@@ -706,5 +706,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "HdPromoCodePrompt" = "Entrez un code promo";
 
-
+"SelectionWaitingText" = "Calcul de votre sélection personnalisée";
+"TopWaitingText" = "en cours...";
+"FavoritesWaitingText" = "en cours...";
+"FriendsWaitingText" = "en cours...";
+"SearchWaitingText" = "recherche en cours...";
 
