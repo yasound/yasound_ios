@@ -14,9 +14,16 @@
 #import "GiftCell.h"
 #import "YasoundSessionManager.h"
 #import "Service.h"
+#import "Theme.h"
+#import "RootViewController.h"
+#import "PromoCodeCell.h"
 
-#define SECTION_COUNT 1
+#define SECTION_COUNT 2
 #define SECTION_GIFTS 0
+#define SECTION_PROMO 1
+
+#define NB_ROWS_PROMO 1
+
 
 
 @interface GiftsViewController (internal)
@@ -25,8 +32,6 @@
 
 - (void)enableHdBar:(BOOL)enabled;
 - (void)updateHdBarWithExpirationDate:(NSDate*)expirationDate;
-
-- (void)enablePromoBar:(BOOL)enabled;
 
 - (void)reloadHdExpirationDate;
 - (void)reloadGifts;
@@ -77,11 +82,8 @@
     BOOL hdBarEnabled = registered && hdPermission;
     [self enableHdBar:hdBarEnabled];
     
-    [self enablePromoBar:registered];
-    
     [self reloadHdExpirationDate];
     [self reloadGifts];
-    self.promoLabel.text = NSLocalizedString(@"HdPromoCodePrompt", nil);
 }
 
 - (void)viewDidUnload
@@ -122,12 +124,6 @@
         self.labelHd.text = @"?";
     }
 }
-
-- (void)enablePromoBar:(BOOL)enabled
-{
-    self.promoText.enabled = enabled;
-}
-
 
 
 
@@ -224,9 +220,11 @@
     [[UserSettings main] setBool:self.switchHd.on forKey:USKEYuserWantsHd];
 }
 
-- (IBAction)promoCodeEntered:(id)sender
+#pragma mark - promoCodeDelegate
+
+- (void)promoCodeEntered:(NSString*)promoCode
 {
-    [[YasoundDataProvider main] activatePromoCode:self.promoText.text withTarget:self action:@selector(promoCodeActivated:success:)];
+    [[YasoundDataProvider main] activatePromoCode:promoCode withTarget:self action:@selector(promoCodeActivated:success:)];
 }
 
 - (void)promoCodeActivated:(ASIFormDataRequest*)req success:(BOOL)success
@@ -240,17 +238,6 @@
     }
 }
 
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if (textField != self.promoText)
-        return NO;
-    
-    [textField resignFirstResponder]; 
-    return YES;
-}
-
 
 #pragma mark - Table view data source
 
@@ -262,9 +249,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == SECTION_GIFTS)
+    {
         if (!self.gifts)
             return 0;
         return [self.gifts count];
+    }
+    else if (section == SECTION_PROMO)
+        return NB_ROWS_PROMO;
+        
     
     return 0;
 }
@@ -278,16 +270,28 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Gift* gift = [self.gifts objectAtIndex:indexPath.row];
-    static NSString* cellIdentifier = @"GiftTableViewCell";
+    static NSString* giftCellIdentifier = @"GiftTableViewCell";
+    static NSString* promoCellIdentifier = @"PromoTableViewCell";
     
     if (indexPath.section == SECTION_GIFTS)
     {
-        GiftCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        GiftCell* cell = [tableView dequeueReusableCellWithIdentifier:giftCellIdentifier];
         if (cell == nil)
         {
-            cell = [[[GiftCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
+            cell = [[[GiftCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:giftCellIdentifier] autorelease];
         }
         cell.gift = gift;
+        return cell;
+    }
+    else if (indexPath.section == SECTION_PROMO)
+    {
+        PromoCodeCell* cell = [tableView dequeueReusableCellWithIdentifier:promoCellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[PromoCodeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:promoCellIdentifier];
+            cell.promoCodeDelegate = self;
+        }
+        [cell reset];
         return cell;
     }
     
@@ -297,11 +301,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Gift* gift = [self.gifts objectAtIndex:indexPath.row];
-    if (![gift canBeWon])
-        return;
-    [self.popover dismissPopoverAnimated:NO];
-    [gift doAction];
+    if (indexPath.section == SECTION_GIFTS)
+    {
+        Gift* gift = [self.gifts objectAtIndex:indexPath.row];
+        if (![gift canBeWon])
+            return;
+        [self.popover dismissPopoverAnimated:NO];
+        [gift doAction];
+    }
+    else if (indexPath.section == SECTION_PROMO)
+    {
+        if (![YasoundSessionManager main].registered)
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:nil];
+            [self.popover dismissPopoverAnimated:NO];
+        }
+    }
+    
 }
 
 

@@ -297,7 +297,7 @@
 - (void)onHd:(id)sender
 {
     //LBDEBUG TEMPORARLY
-    return;
+//    return;
     
     BOOL run = YES;
     

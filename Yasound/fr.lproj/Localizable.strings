@@ -705,6 +705,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "HdTimeLeft" = "plus que %@";
 
 "HdPromoCodePrompt" = "Entrez un code promo";
+"HdPromoCodePromptNotLoggued" = "Connectez vous pour utiliser un code promo";
 
 "SelectionWaitingText" = "Calcul de votre sélection personnalisée";
 "TopWaitingText" = "en cours...";

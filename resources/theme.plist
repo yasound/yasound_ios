@@ -3084,6 +3084,65 @@
 		</dict>
 		<key>Gift</key>
 		<dict>
+			<key>promptPromoNotLoggued</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>weight</key>
+					<string>bold</string>
+					<key>textAlignment</key>
+					<string>center</string>
+					<key>size</key>
+					<integer>15</integer>
+					<key>textColor</key>
+					<string>rgb(252,252,252)</string>
+					<key>backgroundColor</key>
+					<string>clear</string>
+				</dict>
+				<key>height</key>
+				<integer>44</integer>
+				<key>width</key>
+				<integer>200</integer>
+				<key>x</key>
+				<integer>10</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
+			<key>promptPromo</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>weight</key>
+					<string>bold</string>
+					<key>textAlignment</key>
+					<string>left</string>
+					<key>size</key>
+					<integer>15</integer>
+					<key>textColor</key>
+					<string>rgb(252,252,252)</string>
+					<key>backgroundColor</key>
+					<string>clear</string>
+				</dict>
+				<key>height</key>
+				<integer>17</integer>
+				<key>width</key>
+				<integer>160</integer>
+				<key>x</key>
+				<integer>5</integer>
+				<key>y</key>
+				<integer>12</integer>
+			</dict>
+			<key>textFieldPromo</key>
+			<dict>
+				<key>height</key>
+				<integer>25</integer>
+				<key>width</key>
+				<integer>95</integer>
+				<key>x</key>
+				<integer>180</integer>
+				<key>y</key>
+				<integer>8</integer>
+			</dict>
 			<key>popover</key>
 			<dict>
 				<key>width</key>
