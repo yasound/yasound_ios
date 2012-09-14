@@ -466,9 +466,9 @@
 
         NSString* subtitle = nil;
         if (nbAlbums == 1)
-            subtitle = NSLocalizedString(@"Programming.nbSongs.1", nil);
+            subtitle = NSLocalizedString(@"Programming.nbAlbums.1", nil);
         else
-            subtitle = NSLocalizedString(@"Programming.nbSongs.n", nil);
+            subtitle = NSLocalizedString(@"Programming.nbAlbums.n", nil);
 
         subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
 
