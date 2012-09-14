@@ -203,21 +203,36 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButtonBlue.button" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            UIButton* button = [sheet makeButton];
-            CGFloat height = ROW_CREATE_HEIGHT;
-            CGRect rect = CGRectMake(cell.frame.size.width/2.f - button.frame.size.width/2.f, height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
-            button.frame = rect;
-            [button addTarget:self action:@selector(onCreateButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-            [cell addSubview:button];
+            BOOL perm_geo_create_radio = [[YasoundDataProvider main].user permission:PERM_GEOCREATERADIO];
+            if (perm_geo_create_radio)
+            {
+                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButtonBlue.button" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                UIButton* button = [sheet makeButton];
+                CGFloat height = ROW_CREATE_HEIGHT;
+                CGRect rect = CGRectMake(cell.frame.size.width/2.f - button.frame.size.width/2.f, height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
+                button.frame = rect;
+                [button addTarget:self action:@selector(onCreateButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+                [cell addSubview:button];
+                
+                sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButtonBlue.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                UILabel* label = [sheet makeLabel];
+                label.text = NSLocalizedString(@"MyRadios.create", nil);
+                [button addSubview:label];
+                
+                // handle create permission
+                BOOL perm_create_radio = [[YasoundDataProvider main].user permission:PERM_CREATERADIO];
+                button.enabled = perm_create_radio;
+            }
+                
+            else
+            {
+                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MyRadios.geolocRestriction" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                UILabel* label = [sheet makeLabel];
+                label.text = NSLocalizedString(@"MyRadios.geolocRestriction", nil);
+                label.numberOfLines = 2;
+                [cell addSubview:label];
+            }
             
-            sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButtonBlue.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            UILabel* label = [sheet makeLabel];
-            label.text = NSLocalizedString(@"MyRadios.create", nil);
-            [button addSubview:label];
-            
-            // handle create permission
-            button.enabled = [[YasoundDataProvider main].user permission:PERM_CREATERADIO];
         }
         
         return cell;

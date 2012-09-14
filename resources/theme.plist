@@ -92,6 +92,30 @@
 		</dict>
 		<key>MyRadios</key>
 		<dict>
+			<key>geolocRestriction</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>weight</key>
+					<string>bold</string>
+					<key>textAlignment</key>
+					<string>center</string>
+					<key>size</key>
+					<integer>15</integer>
+					<key>textColor</key>
+					<string>rgb(113,113,113)</string>
+					<key>backgroundColor</key>
+					<string>clear</string>
+				</dict>
+				<key>height</key>
+				<integer>40</integer>
+				<key>width</key>
+				<integer>260</integer>
+				<key>x</key>
+				<integer>30</integer>
+				<key>y</key>
+				<integer>2</integer>
+			</dict>
 			<key>delete</key>
 			<dict>
 				<key>name</key>

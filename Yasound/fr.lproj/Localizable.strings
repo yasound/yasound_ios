@@ -650,6 +650,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Stats.section.leaderboard" = "Classement";
 
 "MyRadios.create" = "Créer une radio";
+"MyRadios.geolocRestriction" = "La création de radio n'est pas disponible depuis votre pays";
 "MyRadios.create.howto" = "Sélectionnez les playlists qui fourniront le contenu de votre radio. Aucun titre ne sera téléchargé. Seule la liste des titres sera envoyée vers nos serveurs et analysée quotidiennement afin d'améliorer la programmation de votre radio.";
 "MyRadios.metric1.sublabel" = "minutes de musique écoutées";
 "MyRadios.metric2.sublabel" = "nouveaux messages";

@@ -234,7 +234,7 @@
     if ([ok boolValue])
     {
         [self reloadHdExpirationDate];
-        [[YasoundDataProvider main] reloadUserWithUserData:nil withTarget:nil action:nil];
+        [[YasoundDataProvider main] reloadUserWithUserData:nil withTarget:nil action:nil]; // reload user to have permissions up to date
     }
 }
 
