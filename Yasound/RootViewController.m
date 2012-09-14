@@ -154,6 +154,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifLaunchRadio:) name:NOTIF_LAUNCH_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onPopAndGotoUploads:) name:NOTIF_POP_AND_GOTO_UPLOADS object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDismissModal:) name:NOTIF_DISMISS_MODAL object:nil];
+    
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifCancelWizard:) name:NOTIF_CANCEL_WIZARD object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifWizard:) name:NOTIF_WIZARD object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPopToMenu:) name:NOTIF_POP_TO_MENU object:nil];
@@ -436,6 +438,10 @@
 
 
 
+- (void)onDismissModal:(NSNotification*)notif {
+    
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+}
 
 
 
@@ -732,15 +738,17 @@
 //    [self gotoMenuAnimated:NO];
     
     LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];
+//    [self.navigationController pushViewController:view animated:YES];
+    [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
     [view release];
 }
 
 - (void)onNotifPushLogin:(NSNotification *)notification
 {
     LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
+//    [self.navigationController pushViewController:view animated:YES];
+    [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
+  [view release];
 }
 
 

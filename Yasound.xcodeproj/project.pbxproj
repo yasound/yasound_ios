@@ -1885,6 +1885,15 @@
 		BC524F2714EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1414EEC25A001B4FC5 /* btnBuyUp@2x.png */; };
 		BC524F2814EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1414EEC25A001B4FC5 /* btnBuyUp@2x.png */; };
 		BC524F2914EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1414EEC25A001B4FC5 /* btnBuyUp@2x.png */; };
+		BC5509F3160385C00027AABF /* TopBarModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5509F2160385C00027AABF /* TopBarModal.m */; };
+		BC5509F4160385C00027AABF /* TopBarModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5509F2160385C00027AABF /* TopBarModal.m */; };
+		BC5509F5160385C00027AABF /* TopBarModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5509F2160385C00027AABF /* TopBarModal.m */; };
+		BC5509F6160385C00027AABF /* TopBarModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5509F2160385C00027AABF /* TopBarModal.m */; };
+		BC5509F7160385C00027AABF /* TopBarModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5509F2160385C00027AABF /* TopBarModal.m */; };
+		BC5509F8160385C00027AABF /* TopBarModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5509F2160385C00027AABF /* TopBarModal.m */; };
+		BC5509F9160385C00027AABF /* TopBarModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5509F2160385C00027AABF /* TopBarModal.m */; };
+		BC5509FA160385C00027AABF /* TopBarModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5509F2160385C00027AABF /* TopBarModal.m */; };
+		BC5509FB160385C00027AABF /* TopBarModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5509F2160385C00027AABF /* TopBarModal.m */; };
 		BC56F473152486AF005D1B40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
 		BC56F474152486AF005D1B40 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BC56F475152486AF005D1B40 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
@@ -6862,6 +6871,8 @@
 		BC524F1114EEC25A001B4FC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/btnBuyDown@2x.png"; sourceTree = "<group>"; };
 		BC524F1314EEC25A001B4FC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/btnBuyUp.png; sourceTree = "<group>"; };
 		BC524F1514EEC25A001B4FC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/btnBuyUp@2x.png"; sourceTree = "<group>"; };
+		BC5509F1160385C00027AABF /* TopBarModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarModal.h; sourceTree = "<group>"; };
+		BC5509F2160385C00027AABF /* TopBarModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarModal.m; sourceTree = "<group>"; };
 		BC56F5E5152486AF005D1B40 /* YasoundD DEV SERVER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD DEV SERVER.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC598E6D15B8786C004D6DCB /* RadioListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioListTableViewController.h; path = RadioSelection/RadioListTableViewController.h; sourceTree = "<group>"; };
 		BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioListTableViewController.m; path = RadioSelection/RadioListTableViewController.m; sourceTree = "<group>"; };
@@ -8311,6 +8322,8 @@
 				BCC7546615E69BBF00CF7F7C /* MenuTopBar.m */,
 				BC598EFB15B9AA98004D6DCB /* TopBar.h */,
 				BC598EFC15B9AA98004D6DCB /* TopBar.m */,
+				BC5509F1160385C00027AABF /* TopBarModal.h */,
+				BC5509F2160385C00027AABF /* TopBarModal.m */,
 				BC784E8615D575A400C09FE0 /* TopBarSaveOrCancel.h */,
 				BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */,
 				BCE35C4C15D7013B008C26AC /* TopBarBackAndTitle.h */,
@@ -14378,6 +14391,7 @@
 				BC1DD53D15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 				408507E31601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507EE160231C9009DC246 /* PromoCodeCell.m in Sources */,
+				BC5509FA160385C00027AABF /* TopBarModal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14615,6 +14629,7 @@
 				BC1DD53E15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 				408507E41601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507EF160231C9009DC246 /* PromoCodeCell.m in Sources */,
+				BC5509FB160385C00027AABF /* TopBarModal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14848,6 +14863,7 @@
 				BC1DD53C15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 				408507E21601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507ED160231C9009DC246 /* PromoCodeCell.m in Sources */,
+				BC5509F9160385C00027AABF /* TopBarModal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15085,6 +15101,7 @@
 				BC1DD53915FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 				408507DF1601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507EA160231C9009DC246 /* PromoCodeCell.m in Sources */,
+				BC5509F6160385C00027AABF /* TopBarModal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15322,6 +15339,7 @@
 				BC1DD53715FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 				408507DD1601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507E8160231C9009DC246 /* PromoCodeCell.m in Sources */,
+				BC5509F4160385C00027AABF /* TopBarModal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15560,6 +15578,7 @@
 				BC1DD53B15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 				408507E11601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507EC160231C9009DC246 /* PromoCodeCell.m in Sources */,
+				BC5509F8160385C00027AABF /* TopBarModal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15797,6 +15816,7 @@
 				BC1DD53815FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 				408507DE1601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507E9160231C9009DC246 /* PromoCodeCell.m in Sources */,
+				BC5509F5160385C00027AABF /* TopBarModal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16034,6 +16054,7 @@
 				BC1DD53615FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 				408507DC1601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507E7160231C9009DC246 /* PromoCodeCell.m in Sources */,
+				BC5509F3160385C00027AABF /* TopBarModal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16272,6 +16293,7 @@
 				BC1DD53A15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
 				408507E01601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507EB160231C9009DC246 /* PromoCodeCell.m in Sources */,
+				BC5509F7160385C00027AABF /* TopBarModal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

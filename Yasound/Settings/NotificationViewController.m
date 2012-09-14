@@ -11,6 +11,7 @@
 #import "NotificationViewCell.h"
 #import "YasoundDataProvider.h"
 #import "Theme.h"
+#import "YasoundAppDelegate.h"
 
 #define SECTION_COUNT 2
 #define SECTION_GENERAL 0
@@ -252,9 +253,20 @@
 
 #pragma mark - TopBarDelegate
 
-- (BOOL)topBarItemClicked:(TopBarItemId)itemId
-{
-    self.itemId = itemId;
+#pragma mark - TopBarModalDelegate
+
+
+
+- (BOOL)topBarCancel {
+    
+    return YES;
+}
+
+
+    
+
+- (BOOL)topBarSave {
+//    self.itemId = itemId;
     
     APNsPreferences* prefs = [[NotificationManager main] APNsPreferences];
     [[YasoundDataProvider main] setApnsPreferences:prefs target:self action:@selector(onAcknowledge:obj:)];
@@ -268,7 +280,8 @@
 - (void)onAcknowledge:(id)obj1 obj2:(id)obj2
 {
     DLog(@"ok");
-    [self.topbar runItem:self.itemId];
+//    [self.topbar runItem:self.itemId];
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 

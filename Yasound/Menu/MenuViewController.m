@@ -279,7 +279,8 @@ enum MenuDescription
         [[YasoundDataCache main] clearRadiosAll];
         return;
     }
-
+    
+    
     if (![YasoundSessionManager main].registered &&
         ((row == ROW_ACCOUNT)
         || (row == ROW_NOTIFS)
@@ -305,10 +306,15 @@ enum MenuDescription
 //        [APPDELEGATE.slideController resetTopView];
 //    }
     
+    
     else
     {
+        
         self.programmedCommand = indexPath;
-        [APPDELEGATE.slideController resetTopView];
+        [self runProgrammedCommand];
+        
+//        if (row == ROW_LOGIN)
+//            [APPDELEGATE.slideController resetTopView];
     }
     
 }
@@ -335,33 +341,38 @@ enum MenuDescription
     else if (row == ROW_ACCOUNT)
     {
         MyAccountViewController* view = [[MyAccountViewController alloc] initWithNibName:@"MyAccountViewController" bundle:nil];
-        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
+//        [APPDELEGATE.menuNavigationController pushViewController:view animated:YES];
         [view release];
     }
     
     else if (row == ROW_NOTIFS)
     {
         NotificationViewController* view = [[NotificationViewController alloc] initWithNibName:@"NotificationViewController" bundle:nil];
-        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
+//        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     
     else if (row == ROW_FACEBOOK)
     {
         AccountFacebookViewController* view = [[AccountFacebookViewController alloc] initWithNibName:@"AccountFacebookViewController" bundle:nil];
-        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
+//        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     else if (row == ROW_TWITTER)
     {
         AccountTwitterViewController* view = [[AccountTwitterViewController alloc] initWithNibName:@"AccountTwitterViewController" bundle:nil];
-        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
+//        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     else if (row == ROW_YASOUND)
     {
         AccountYasoundViewController* view = [[AccountYasoundViewController alloc] initWithNibName:@"AccountYasoundViewController" bundle:nil];
-        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
+//        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     
@@ -371,7 +382,8 @@ enum MenuDescription
         NSURL* url = [NSURL URLWithString:[APPDELEGATE getServerUrlWith:URL_LEGAL]];
         
         WebPageViewController* view = [[WebPageViewController alloc] initWithNibName:@"WebPageViewController" bundle:nil withUrl:url andTitle:title];
-        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
+//        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     

@@ -13,6 +13,8 @@
 @interface MyRadiosViewController : UIViewController<TopBarDelegate, UITableViewDelegate>
 {
     UIActionSheet* _sheetTools;
+    NSInteger _tokens;
+    BOOL _firstTime;
 }
 
 @property (nonatomic, retain) Radio* radioToBroadcast;

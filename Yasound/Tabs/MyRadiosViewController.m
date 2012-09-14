@@ -21,6 +21,7 @@
 #import "MessageBroadcastModalViewController.h"
 
 
+#define NB_TOKENS 4
 
 
 @interface MyRadiosViewController ()
@@ -44,6 +45,8 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     {
         self.cellLoader = [UINib nibWithNibName:CellIdentifier bundle:[NSBundle mainBundle]];
         self.editing = [[NSMutableDictionary alloc] init];
+        _tokens = 0;
+        _firstTime = YES;
     }
     return self;
 }
@@ -89,6 +92,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     {
         [self.editing setObject:[NSNumber numberWithBool:NO] forKey:radio.id];
     }
+    
     
     [self.tableview reloadData];
 }
@@ -179,6 +183,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
         MyRadiosTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) 
         {
+            NSLog(@"CREATE RADIO");
             NSArray *topLevelItems = [self.cellLoader instantiateWithOwner:self options:nil];
             cell = [topLevelItems objectAtIndex:0];
             cell.delegate = self;
@@ -188,8 +193,23 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
         assert(nb);
         BOOL editing = [nb boolValue];
 
-            
+
+        cell.alpha = 0;
+
         [cell updateWithRadio:radio target:self editing:editing];
+        
+//        if (_tokens < NB_TOKENS) {
+//            _tokens++;
+
+//        if (_firstTime)
+//            cell.alpha = 0;
+//            [UIView beginAnimations:nil context:NULL];
+//            [UIView setAnimationDelay:_tokens * 0.2];
+//            [UIView setAnimationDelay:0.33];
+//            cell.alpha = 1;
+//            [UIView commitAnimations];
+//            
+//        }
         
         return cell;
     }
@@ -219,6 +239,19 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
             // handle create permission
             button.enabled = [[YasoundDataProvider main].user permission:PERM_CREATERADIO];
         }
+        
+//        if ((self.radios.count < 3) && (_tokens < NB_TOKENS)) {
+//            _tokens++;
+//            
+//            cell.alpha = 0;
+//            [UIView beginAnimations:nil context:NULL];
+//            [UIView setAnimationDelay:_tokens * 0.2];
+//            [UIView setAnimationDelay:0.33];
+//            cell.alpha = 1;
+//            [UIView commitAnimations];
+//            
+//        }
+
         
         return cell;
     }

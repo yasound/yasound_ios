@@ -7,21 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TopBar.h"
+#import "TopBarModal.h"
 #import "User.h"
 #import "DateViewController.h"
 #import "GenderPickerViewController.h"
 #import "WebImageView.h"
 #import "BioViewController.h"
 
-@interface MyAccountViewController : UIViewController<TopBarDelegate,UITextFieldDelegate,DateViewDelegate,GenderPickerDelegate,BioDelegate>
+@interface MyAccountViewController : UIViewController<TopBarModalDelegate,UITextFieldDelegate,DateViewDelegate,GenderPickerDelegate,BioDelegate>
 {
     BOOL _changed;
     BOOL _imageChanged;
     UIActionSheet* _pickImageQuery;
 }
 
-@property (nonatomic, retain) IBOutlet TopBar* topbar;
+@property (nonatomic, retain) IBOutlet TopBarModal* topbar;
 
 
 @property (nonatomic, retain) User* user;
@@ -31,7 +31,7 @@
 @property (nonatomic, retain) UITextField* city;
 @property (nonatomic, retain) UILabel* age;
 
-@property (nonatomic) TopBarItemId itemId;
+//@property (nonatomic) TopBarItemId itemId;
 
 
 @end

@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TopBar.h"
+#import "TopBarModal.h"
 
-@interface NotificationViewController : UIViewController<TopBarDelegate>
+@interface NotificationViewController : UIViewController<TopBarModalDelegate>
 {
     IBOutlet UITableView* _tableView;
 }
 
-@property (nonatomic, retain) IBOutlet TopBar* topbar;
-@property (nonatomic) TopBarItemId itemId;
+@property (nonatomic, retain) IBOutlet TopBarModal* topbar;
+//@property (nonatomic) TopBarItemId itemId;
 
 
 

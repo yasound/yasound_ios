@@ -17,6 +17,7 @@
 #import "SignupViewController.h"
 #import "YasoundDataCache.h"
 
+
 @implementation LoginViewController
 
 @synthesize user;
@@ -377,7 +378,8 @@
     // account just being create, go to configuration screen
     [[UserSettings main] setBool:YES forKey:USKEYskipRadioCreation];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
+    //    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_DISMISS_MODAL object:nil];
 }
 
 
@@ -385,10 +387,33 @@
 
 #pragma mark - IBActions
 
-- (IBAction)onBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
+//- (IBAction)onBack:(id)sender
+//{
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
+
+
+
+
+#pragma mark - TopBarModalDelegate
+
+- (BOOL)shouldShowActionButton {
+    return NO;
 }
+
+- (NSString*)topBarTitle
+{
+    NSString* str = NSLocalizedString(@"LoginView_title", nil);
+    return str;
+}
+
+- (NSString*)titleForCancelButton {
+    
+    return NSLocalizedString(@"Navigation.close", nil);
+}
+
+
+
 
 
 @end

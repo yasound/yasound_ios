@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TopBarBackAndTitle.h"
+#import "TopBarModal.h"
 
 @interface AccountYasoundViewController : UIViewController
 {
-    IBOutlet TopBarBackAndTitle* _topbar;
+    IBOutlet TopBarModal* _topbar;
     IBOutlet UITextField* _email;
     IBOutlet UITextField* _pword;
     IBOutlet UITextField* _pwordConfirm;
