@@ -528,6 +528,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "ProfileMyRadio_subscribers_button_label"= "Envoyer un message à mes abonnés";
 
 
+"WheelSelector_MyRadios" = "Mes radios";
 "WheelSelector_Favorites" = "Favoris";
 "WheelSelector_Genre" = "Genres";
 "WheelSelector_Selection" = "Sélection";

@@ -11,6 +11,7 @@ typedef enum WheelRadiosItemId
 {
     WheelIdSelection = 0,
     WheelIdTop,
+    WheelIdMyRadios,
     WheelIdFavorites,
     WheelIdFriends,
     WheelIdSearch,
@@ -18,6 +19,7 @@ typedef enum WheelRadiosItemId
 } WheelItemId;
 
 
+#define WheelIdMyRadiosTitle NSLocalizedString(@"WheelSelector_MyRadios", nil)
 #define WheelIdFavoritesTitle NSLocalizedString(@"WheelSelector_Favorites", nil)
 #define WheelIdSelectionTitle NSLocalizedString(@"WheelSelector_Selection", nil)
 #define WheelIdFriendsTitle NSLocalizedString(@"WheelSelector_Friends", nil)

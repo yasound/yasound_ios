@@ -217,6 +217,8 @@
         return WheelIdSelectionTitle;
     if (itemIndex == WheelIdTop)
         return WheelIdTopTitle;
+    if (itemIndex == WheelIdMyRadios)
+        return WheelIdMyRadiosTitle;
     if (itemIndex == WheelIdFavorites)
         return WheelIdFavoritesTitle;
     if (itemIndex == WheelIdFriends)
@@ -262,6 +264,21 @@
 //        [self.searchview release];
         return;
     }
+    
+    
+    // request my radios radios
+    if (itemIndex == WheelIdMyRadios)
+    {
+        if (![YasoundSessionManager main].registered)
+        {
+            [self inviteToLogin:@"myRadios"];
+            return;
+        }
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MYRADIOS object:nil userInfo:nil];
+        return;
+    }
+
     
     RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithStyle:UITableViewStylePlain radios:nil];
     newTableview.listDelegate = self;
