@@ -306,7 +306,7 @@
     if (user_id == nil)
         return;
     
-    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil withUserId:user_id andModelUsername:nil showTabs:NO];
+    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil withUserId:user_id andModelUsername:nil];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }

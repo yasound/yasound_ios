@@ -31,21 +31,20 @@
 @synthesize wheelSelector;
 @synthesize listContainer;
 @synthesize tableview;
-@synthesize tabBar;
 @synthesize menu;
 
 #define TIMEPROFILE_CELL_BUILD @"TimeProfileCellBuild"
 
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withTabIndex:(TabIndex)tabIndex
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withWheelIndex:(NSInteger)wheelIndex
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
         self.locked = NO;
         self.url = nil;
-        _tabIndex = tabIndex;
+        _wheelIndex = wheelIndex;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSlidingOut:) name:ECSlidingViewUnderLeftWillAppear object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSlidingIn:) name:ECSlidingViewTopDidReset object:nil];
@@ -107,8 +106,6 @@
     [super viewDidLoad];
     listContainer.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
     
-    [tabBar setTabSelected:TabIndexSelection];
-
     //LBDEBUG TEMPORARLY
     UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight)] autorelease];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
@@ -231,10 +228,6 @@
 
 - (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
 {
-    if (_tabIndex == TabIndexSelection)
-        return WheelIdSelection;
-    if (_tabIndex == TabIndexFavorites)
-        return WheelIdFavorites;
     return 0;
 }
 
@@ -282,8 +275,6 @@
     
     if (itemIndex == WheelIdFriends)
     {
-        [tabBar setTabSelected:TabIndexSelection];
-
         if (![YasoundSessionManager main].registered)
             [self inviteToLogin:@"friends"];
         else
@@ -301,26 +292,23 @@
         }
         
         url = URL_RADIOS_FAVORITES;
-        [tabBar setTabSelected:TabIndexFavorites];
     }
 
     // request selection radios
     else if (itemIndex == WheelIdSelection)
     {
         url = URL_RADIOS_SELECTION;
-        [tabBar setTabSelected:TabIndexSelection];
     }
 
     // request top radios
     else if (itemIndex == WheelIdTop)
     {
         url = URL_RADIOS_TOP;
-        [tabBar setTabSelected:TabIndexSelection];
     }
     
     else
     {
-        [tabBar setTabSelected:TabIndexSelection];
+
     }
     
     
@@ -446,46 +434,20 @@
 
 - (void)friendListDidSelect:(User*)user
 {
-    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:user showTabs:NO];
+    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:user];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
 
 
-#pragma mark - TabBarDelegate
 
-- (void)tabBarDidSelect:(NSInteger)tabIndex
-{
-    if (self.locked)
-        return;
-    
-    if (tabIndex == TabIndexSelection)
-    {
-        [self.wheelSelector stickToItem:WheelIdSelection silent:NO];
-    }
-    else if (tabIndex == TabIndexFavorites)
-    {
-        if (![YasoundSessionManager main].registered)
-            [self inviteToLogin:@"favorites"];
-        else
-            [self.wheelSelector stickToItem:WheelIdFavorites silent:NO];
-    }
-    
-    
-    else if ((tabIndex == TabIndexMyRadios) && ![YasoundSessionManager main].registered)
-    {
-        [self inviteToLogin:@"myRadios"];
-    }
-    else if ((tabIndex == TabIndexGifts) && ![YasoundSessionManager main].registered)
-    {
-        [self inviteToLogin:@"gifts"];
-    }
-    else if ((tabIndex == TabIndexProfil) && ![YasoundSessionManager main].registered)
-    {
-        [self inviteToLogin:@"profil"];
-    }
-    
-}
+
+
+
+
+
+
+
 
 
 - (void)inviteToLogin:(NSString*)messageId

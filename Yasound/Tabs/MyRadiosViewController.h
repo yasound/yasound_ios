@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TabBar.h"
 #import "TopBar.h"
 #import "Radio.h"
 
-@interface MyRadiosViewController : UIViewController<TopBarDelegate, TabBarDelegate, UITableViewDelegate>
+@interface MyRadiosViewController : UIViewController<TopBarDelegate, UITableViewDelegate>
 {
     UIActionSheet* _sheetTools;
 }
@@ -24,6 +23,5 @@
 @property (nonatomic, retain) NSMutableDictionary* editing;
 
 @property (nonatomic, retain) IBOutlet UITableView* tableview;
-@property (nonatomic, retain) IBOutlet TabBar* tabBar;
 
 @end

@@ -23,7 +23,6 @@
 #import "YasoundDataCache.h"
 #import "ProgrammingViewController.h"
 #import "RadioSelectionViewController.h"
-#import "TabBar.h"
 #import "MyRadiosViewController.h"
 //#import "GiftsViewController.h"
 #import "ProfilViewController.h"
@@ -724,7 +723,7 @@
     }
     
     [self.navigationController popToRootViewControllerAnimated:NO];
-    self.radioSelectionViewController = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withTabIndex:TabIndexSelection];
+    self.radioSelectionViewController = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:0];
     [self.navigationController pushViewController:self.radioSelectionViewController animated:animated];
 }
 
@@ -805,7 +804,7 @@
 
 //    [self gotoMenuAnimated:NO];
     
-    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withTabIndex:TabIndexSelection];
+    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:0];
     [self.navigationController pushViewController:view animated:animated];
     [view release];
 }
@@ -821,7 +820,7 @@
     
 //    [self gotoMenuAnimated:NO];
     
-    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withTabIndex:TabIndexFavorites];
+    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:0];
     [self.navigationController pushViewController:view animated:animated];
     [view release];
 }
@@ -870,7 +869,7 @@
     
 //    [self gotoMenuAnimated:NO];
     
-    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:[YasoundDataProvider main].user showTabs:YES];
+    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:[YasoundDataProvider main].user];
     [self.navigationController pushViewController:view animated:animated];
     [view release];
 }

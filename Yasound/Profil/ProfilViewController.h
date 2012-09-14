@@ -7,28 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TabBar.h"
 #import "TopBar.h"
 #import "WebImageView.h"
 #import "User.h"
 #import "ProfilScrollview.h"
 #import "ProfilScrollviewRow.h"
 
-@interface ProfilViewController : UIViewController<TopBarDelegate, TabBarDelegate>
+@interface ProfilViewController : UIViewController<TopBarDelegate>
 
 @property (nonatomic, retain) NSArray* radios;
 @property (nonatomic, retain) NSArray* favorites;
 @property (nonatomic, retain) NSArray* friends;
 
 @property (nonatomic, retain) IBOutlet ProfilScrollview* scrollview;
-@property (nonatomic, retain) IBOutlet TabBar* tabBar;
 
 
 @property (nonatomic, retain) User* user;
 @property (nonatomic, retain) NSNumber* userId;
 @property (nonatomic, retain) NSString* modelUsername;
 @property (nonatomic) BOOL followed;
-@property (nonatomic) BOOL showTabs;
 
 
 @property (nonatomic, retain) IBOutlet UIView* viewProfil;
@@ -57,7 +54,7 @@
 - (IBAction)onButtonGrayClicked:(id)sender;
 - (IBAction)onButtonBlueClicked:(id)sender;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user showTabs:(BOOL)showTabs;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)userId andModelUsername:(NSString*)modelUsername showTabs:(BOOL)showTabs;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)userId andModelUsername:(NSString*)modelUsername;
 
 @end

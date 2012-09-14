@@ -53,9 +53,8 @@
 @synthesize buttonBlueLabel;
 @synthesize followed;
 
-@synthesize tabBar;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user showTabs:(BOOL)showTabs
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
@@ -63,13 +62,12 @@
         self.user = user;
         self.userId = nil;
         self.modelUsername = nil;
-        self.showTabs = showTabs;
     }
     return self;
 }
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)userId andModelUsername:(NSString*)modelUsername showTabs:(BOOL)showTabs
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)userId andModelUsername:(NSString*)modelUsername
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
@@ -77,7 +75,6 @@
         self.user = nil;
         self.userId = userId;
         self.modelUsername = modelUsername;
-        self.showTabs = showTabs;
     }
     return self;
 }
@@ -97,13 +94,6 @@
     self.buttonBlue.hidden = YES;
     self.buttonBlueLabel.hidden = YES;
     
-    // update layout
-    if (!self.showTabs)
-    {
-        CGRect frame = self.tabBar.frame;
-        [self.tabBar removeFromSuperview];
-        self.scrollview.frame = CGRectMake(self.scrollview.frame.origin.x, self.scrollview.frame.origin.y, self.scrollview.frame.size.width, self.scrollview.frame.size.height + frame.size.height);
-    }
     
     // build scrollview
     CGFloat posY = 0;
@@ -216,9 +206,6 @@
 
 - (void)update
 {
-    if (self.showTabs)
-        [self.tabBar setTabSelected:TabIndexProfil];
-    
     self.name.text = self.user.name;
     NSURL* url = [[YasoundDataProvider main] urlForPicture:self.user.picture];
     [self.userImage setUrl:url];

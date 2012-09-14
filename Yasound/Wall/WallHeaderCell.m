@@ -123,7 +123,7 @@
     self.headerImageHighlight.hidden = YES;
     [self setNeedsDisplay];
     
-    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:self.radio.creator showTabs:NO];
+    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:self.radio.creator];
     [APPDELEGATE.navigationController pushViewController:view animated:YES];
     [view release];    
 }

@@ -34,7 +34,6 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 @synthesize cellLoader;
 @synthesize radios;
 @synthesize tableview;
-@synthesize tabBar;
 @synthesize editing;
 @synthesize radioToBroadcast;
 
@@ -61,7 +60,6 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tabBar setTabSelected:TabIndexMyRadios];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifMyRadioDeleted:) name:NOTIF_MYRADIO_DELETED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifMyRadioEdited:) name:NOTIF_MYRADIO_EDIT object:nil];

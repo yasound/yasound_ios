@@ -12,14 +12,13 @@
 #import "WheelSelector.h"
 #import "WheelRadiosSelector.h"
 #import "RadioListTableViewController.h"
-#import "TabBar.h"
 #import "TopBar.h"
 #import "MenuViewController.h"
 #import "RadioSearchViewController.h"
 
-@interface RadioSelectionViewController : YaViewController<TopBarDelegate, RadioListDelegate, TabBarDelegate>
-{
-    TabIndex _tabIndex;
+@interface RadioSelectionViewController : YaViewController<TopBarDelegate, RadioListDelegate> {
+    
+    NSInteger _wheelIndex;
 }
 
 @property (nonatomic) BOOL locked;
@@ -35,12 +34,11 @@
 @property (nonatomic, retain) IBOutlet UIView* listContainer;
 @property (nonatomic, retain) UITableViewController* tableview;
 @property (nonatomic, retain) RadioSearchViewController* searchview;
-@property (nonatomic, retain) IBOutlet TabBar* tabBar;
 
 @property (nonatomic, retain) MenuViewController* menu;
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withTabIndex:(TabIndex)tabIndex;
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withWheelIndex:(NSInteger)wheelIndex;
 
 
 @end

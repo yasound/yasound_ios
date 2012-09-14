@@ -59,7 +59,7 @@
 
 - (IBAction)onClicked:(id)sender {
     
-    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:self.user showTabs:NO];
+    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:self.user];
     [APPDELEGATE.navigationController pushViewController:view animated:YES];
     [view release];
 }
