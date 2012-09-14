@@ -20,6 +20,7 @@
 #import "YasoundAppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Version.h"
+#import "MyRadiosViewController.h"
 
 @implementation RadioSelectionViewController
 
@@ -295,7 +296,14 @@
             return;
         }
 
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MYRADIOS object:nil userInfo:nil];
+        //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MYRADIOS object:nil userInfo:nil];
+        
+        MyRadiosViewController* view = [[MyRadiosViewController alloc] initWithNibName:@"MyRadiosViewController" bundle:nil];
+        view.view.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
+        [self.listContainer addSubview:view.view];
+        self.tableview = view;
+        
+        
         return;
     }
 
