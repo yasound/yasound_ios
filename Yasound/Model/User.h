@@ -20,13 +20,14 @@ typedef enum
 
 
 #define PERM_CREATERADIO @"create_radio"
-#define PERM_GEOCREATERADIO @"geo_create_radio"
+#define PERM_GEOCREATERADIO @"create_radio_limited_geo"
 #define PERM_HD @"hd"
 #define PERM_PRIVATEMESSAGE @"private_message"
 
 typedef enum
 {
     ePermCreateRadio = 0,
+    ePermCreateRadioLimitedGeo,
     ePermHd,
     ePermPrivateMessage
 } UserPermission;

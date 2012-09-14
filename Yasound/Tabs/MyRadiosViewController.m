@@ -222,8 +222,10 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
             cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellCreateIdentifier];
 
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-            BOOL perm_geo_create_radio = [[YasoundDataProvider main].user permission:PERM_GEOCREATERADIO];
+
+            //LBDEBUG TEMPORARLY
+//            BOOL perm_geo_create_radio = [[YasoundDataProvider main].user permission:PERM_GEOCREATERADIO];
+            BOOL perm_geo_create_radio = YES;
             if (perm_geo_create_radio)
             {
                 BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButtonBlue.button" retainStylesheet:YES overwriteStylesheet:NO error:nil];
