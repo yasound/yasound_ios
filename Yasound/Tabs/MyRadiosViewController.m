@@ -19,7 +19,7 @@
 #import "ActivityAlertView.h"
 #import "ProgrammingViewController.h"
 #import "MessageBroadcastModalViewController.h"
-
+#import "YasoundAppDelegate.h"
 
 #define NB_TOKENS 4
 
@@ -41,8 +41,9 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) 
+    if (self)
     {
+        
         self.cellLoader = [UINib nibWithNibName:CellIdentifier bundle:[NSBundle mainBundle]];
         self.editing = [[NSMutableDictionary alloc] init];
         _tokens = 0;
@@ -335,14 +336,14 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 - (void)myRadioRequestedStats:(Radio*)radio
 {
     StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil forRadio:radio];
-    [self.navigationController pushViewController:view animated:YES];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
     [view release];
 }
 
 - (void)myRadioRequestedSettings:(Radio*)radio
 {
     SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:radio createMode:NO];
-    [self.navigationController pushViewController:view animated:YES];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
     [view release];
 }
 
@@ -365,13 +366,13 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     self.radioToBroadcast = nil;
     
     MessageBroadcastModalViewController* view = [[MessageBroadcastModalViewController alloc] initWithNibName:@"MessageBroadcastModalViewController" bundle:nil forRadio:radio subscribers:subscribers target:self action:@selector(onModalReturned)];
-    [self.navigationController presentModalViewController:view animated:YES];
+    [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
     [view release];
 }
 
 - (void)onModalReturned
 {
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -379,7 +380,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 - (void)myRadioRequestedProgramming:(Radio*)radio
 {
     ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:radio];
-    [self.navigationController pushViewController:view animated:YES];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
     [view release];
 }
 
@@ -400,11 +401,11 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 - (void)onCreateButtonClicked:(id)sender
 {
 //    SettingsViewController* view = [[SettingsViewController alloc] createWithNibName:@"SettingsViewController" bundle:nil];
-//    [self.navigationController pushViewController:view animated:YES];
+//    [APPDELEGATE.navigationController pushViewController:view animated:YES];
 //    [view release];
     
     CreateRadioViewController* view = [[CreateRadioViewController alloc] initWithNibName:@"CreateRadioViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
     [view release];
 }
 

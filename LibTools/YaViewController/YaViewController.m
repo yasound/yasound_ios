@@ -52,6 +52,14 @@
 //}
 
 
+//- (UINavigationController*)navigationController {
+//    
+//    UINavigationController* cont = super.navigationController;
+//    if (cont != nil)
+//        return cont;
+//    return APPDELEGATE.navigationController;
+//}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
