@@ -31,8 +31,10 @@
 @synthesize url;
 @synthesize wheelSelector;
 @synthesize listContainer;
-@synthesize tableview;
 @synthesize menu;
+@synthesize contentsController;
+@synthesize contentsView;
+
 
 #define TIMEPROFILE_CELL_BUILD @"TimeProfileCellBuild"
 
@@ -258,8 +260,8 @@
 
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
 {    
-    if (self.tableview != nil)
-        [self.tableview.tableView removeFromSuperview];
+    if (self.contentsView != nil)
+        [self.contentsView removeFromSuperview];
     
     if (self.searchview != nil)
     {
@@ -269,8 +271,8 @@
     }
     else
     {
-        [self.tableview release];
-        self.tableview = nil;
+        [self.contentsController release];
+        self.contentsController = nil;
     }
     
     NSString* url = nil;
@@ -301,7 +303,8 @@
         MyRadiosViewController* view = [[MyRadiosViewController alloc] initWithNibName:@"MyRadiosViewController" bundle:nil];
         view.view.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
         [self.listContainer addSubview:view.view];
-        self.tableview = view;
+        self.contentsController = view;
+        self.contentsView = view.view;
         
         
         return;
@@ -313,7 +316,8 @@
     newTableview.tableView.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
     [self.listContainer addSubview:newTableview.view];
     
-    self.tableview = newTableview;
+    self.contentsController = newTableview;
+    self.contentsView = newTableview.view;
 
     
     
@@ -401,7 +405,7 @@
     
     DLog(@"received %d friends", self.friends.count);
     
-    [self.tableview setFriends:self.friends];
+    [self.contentsController setFriends:self.friends];
 
 
 //    for (User* friend in friends)
@@ -471,7 +475,7 @@
     
     
     
-    [self.tableview setRadios:radios];
+    [self.contentsController setRadios:radios];
     
 //    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithStyle:UITableViewStylePlain radios:radios];
 //    newTableview.listDelegate = self;
@@ -514,10 +518,10 @@
 
 - (void)inviteToLogin:(NSString*)messageId
 {
-    if (self.tableview != nil)
-        [self.tableview.tableView removeFromSuperview];
-    [self.tableview release];
-    self.tableview = nil;
+    if (self.contentsController != nil)
+        [self.contentsView removeFromSuperview];
+    [self.contentsController release];
+    self.contentsController = nil;
 
     BigMessageView* view = [[BigMessageView alloc] initWithFrame:self.listContainer.frame messageId:messageId target:self action:@selector(onLoginRequested:)];
     [self.listContainer addSubview:view];

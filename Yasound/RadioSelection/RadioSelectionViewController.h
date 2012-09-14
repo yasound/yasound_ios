@@ -34,7 +34,8 @@
 
 @property (nonatomic, retain) IBOutlet WheelSelector* wheelSelector;
 @property (nonatomic, retain) IBOutlet UIView* listContainer;
-@property (nonatomic, retain) UITableViewController* tableview;
+@property (nonatomic, retain) UIViewController* contentsController;
+@property (nonatomic, retain) UIView* contentsView;
 @property (nonatomic, retain) RadioSearchViewController* searchview;
 
 @property (nonatomic, retain) MenuViewController* menu;
