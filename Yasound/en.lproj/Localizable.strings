@@ -664,6 +664,7 @@
 "Stats.section.leaderboard" = "Leaderboard";
 
 "MyRadios.create" = "Create a radio";
+"MyRadios.geolocRestriction" = "Radio creation is not available from your country";
 "MyRadios.create.howto" = "Select the playlists you would like to use as your radio content. None of the tracks will be uploaded. We will only send the listing to our servers where there will be analyzed everyday in order to play the integrity of the tracks you have selected.";
 "MyRadios.metric1.sublabel" = "minutes of listening";
 "MyRadios.metric2.sublabel" = "new messages";

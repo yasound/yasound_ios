@@ -20,6 +20,7 @@ typedef enum
 
 
 #define PERM_CREATERADIO @"create_radio"
+#define PERM_GEOCREATERADIO @"geo_create_radio"
 #define PERM_HD @"hd"
 #define PERM_PRIVATEMESSAGE @"private_message"
 
