@@ -85,7 +85,14 @@
 - (void)anchorTopViewTo:(ECSide)side
 {
     self.menuHidden = NO;
-    [self popToViewController:APPDELEGATE.menuViewController animated:YES];
+    
+    for (UIViewController* view in self.viewControllers) {
+ 
+        NSLog(@"view '%@'", [view class]);
+    }
+    
+//    UIViewController* view = APPDELEGATE.menuViewController;
+//    [self popToViewController:view animated:YES];
 }
 
 
