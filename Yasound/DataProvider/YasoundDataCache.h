@@ -29,6 +29,7 @@
     NSMutableDictionary* _cacheRadios;
     NSMutableDictionary* _cacheSongs;
     NSMutableDictionary* _cacheFriends;
+    NSDictionary* _cacheRecommendation;
 }
 
 
@@ -60,6 +61,13 @@
 //
 - (void)requestRadiosWithUrl:(NSURL*)url withGenre:(NSString*)genre target:(id)target action:(SEL)selector;
 
+//
+// return local cache , if it's available
+// request for an update to server if local cache is not available or expired
+//
+// - (void)selector:(NSArray*)radios withInfo:(NSDictionnary*)info
+//
+- (void)requestRadioRecommendationWithTarget:(id)target action:(SEL)selector;
 
 //
 // return local cache , if it's available, using the radio ID
@@ -88,7 +96,7 @@
 
 #define URL_RADIOS_FAVORITES @"/api/v1/favorite_radio"
 #define URL_RADIOS_SELECTION @"/api/v1/selected_radio"
-#define URL_RADIOS_TOP @"/api/v1/top_radio"
+#define URL_RADIOS_TOP @"/api/v1/most_active_radio"
 #define URL_LEGAL @"legal/eula.html"
 
 

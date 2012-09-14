@@ -147,6 +147,7 @@ static UserSettings* _main;
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYuploadList];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYtutorials];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYcacheMenuDescription];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYuserWantsHd];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self dump];

@@ -15,10 +15,12 @@
 #import "TopBar.h"
 #import "MenuViewController.h"
 #import "RadioSearchViewController.h"
+#import "WaitingView.h"
 
 @interface RadioSelectionViewController : YaViewController<TopBarDelegate, RadioListDelegate> {
     
     NSInteger _wheelIndex;
+    WaitingView* _waitingView;
 }
 
 @property (nonatomic) BOOL locked;

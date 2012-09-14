@@ -146,6 +146,24 @@
 		407D9F1A1563E89000BFCF1F /* UserNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 407D9F141563E89000BFCF1F /* UserNotification.m */; };
 		407D9F1B1563E89000BFCF1F /* UserNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 407D9F141563E89000BFCF1F /* UserNotification.m */; };
 		407D9F1C1563E89000BFCF1F /* UserNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 407D9F141563E89000BFCF1F /* UserNotification.m */; };
+		408507DC1601DEBB009DC246 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507DB1601DEBB009DC246 /* WaitingView.m */; };
+		408507DD1601DEBB009DC246 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507DB1601DEBB009DC246 /* WaitingView.m */; };
+		408507DE1601DEBB009DC246 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507DB1601DEBB009DC246 /* WaitingView.m */; };
+		408507DF1601DEBB009DC246 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507DB1601DEBB009DC246 /* WaitingView.m */; };
+		408507E01601DEBB009DC246 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507DB1601DEBB009DC246 /* WaitingView.m */; };
+		408507E11601DEBB009DC246 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507DB1601DEBB009DC246 /* WaitingView.m */; };
+		408507E21601DEBB009DC246 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507DB1601DEBB009DC246 /* WaitingView.m */; };
+		408507E31601DEBB009DC246 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507DB1601DEBB009DC246 /* WaitingView.m */; };
+		408507E41601DEBB009DC246 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507DB1601DEBB009DC246 /* WaitingView.m */; };
+		408507E7160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
+		408507E8160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
+		408507E9160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
+		408507EA160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
+		408507EB160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
+		408507EC160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
+		408507ED160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
+		408507EE160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
+		408507EF160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
 		40AAEC4B14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40AAEC4C14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40B40951152EFC630050D334 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
@@ -6537,6 +6555,10 @@
 		405ACE1A14F5551000DCB97A /* YasoundSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundSong.m; sourceTree = "<group>"; };
 		407D9F131563E89000BFCF1F /* UserNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNotification.h; sourceTree = "<group>"; };
 		407D9F141563E89000BFCF1F /* UserNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNotification.m; sourceTree = "<group>"; };
+		408507DA1601DEBB009DC246 /* WaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaitingView.h; path = RadioSelection/WaitingView.h; sourceTree = "<group>"; };
+		408507DB1601DEBB009DC246 /* WaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaitingView.m; path = RadioSelection/WaitingView.m; sourceTree = "<group>"; };
+		408507E5160231C9009DC246 /* PromoCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PromoCodeCell.h; path = Gifts/PromoCodeCell.h; sourceTree = "<group>"; };
+		408507E6160231C9009DC246 /* PromoCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PromoCodeCell.m; path = Gifts/PromoCodeCell.m; sourceTree = "<group>"; };
 		40AAEC4914921AE70031B39D /* YasoundDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataProvider.h; sourceTree = "<group>"; };
 		40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataProvider.m; sourceTree = "<group>"; };
 		40B40AEB152EFC630050D334 /* YasoundD LOCAL SERVER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD LOCAL SERVER.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -7822,6 +7844,8 @@
 				402946AF15F910D900F73830 /* GiftsViewController.xib */,
 				402946A215F8E9A900F73830 /* GiftCell.h */,
 				402946A315F8E9A900F73830 /* GiftCell.m */,
+				408507E5160231C9009DC246 /* PromoCodeCell.h */,
+				408507E6160231C9009DC246 /* PromoCodeCell.m */,
 			);
 			name = Gifts;
 			sourceTree = "<group>";
@@ -8313,6 +8337,8 @@
 				BC48937C15EFCD980061C24D /* RadioSearchViewController.h */,
 				BC48937D15EFCD980061C24D /* RadioSearchViewController.m */,
 				BC48937E15EFCD980061C24D /* RadioSearchViewController.xib */,
+				408507DA1601DEBB009DC246 /* WaitingView.h */,
+				408507DB1601DEBB009DC246 /* WaitingView.m */,
 			);
 			name = RadioSelection;
 			sourceTree = "<group>";
@@ -14350,6 +14376,8 @@
 				BC1DD52B15FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
 				BC1DD53415FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
 				BC1DD53D15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
+				408507E31601DEBB009DC246 /* WaitingView.m in Sources */,
+				408507EE160231C9009DC246 /* PromoCodeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14585,6 +14613,8 @@
 				BC1DD52C15FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
 				BC1DD53515FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
 				BC1DD53E15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
+				408507E41601DEBB009DC246 /* WaitingView.m in Sources */,
+				408507EF160231C9009DC246 /* PromoCodeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14816,6 +14846,8 @@
 				BC1DD52A15FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
 				BC1DD53315FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
 				BC1DD53C15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
+				408507E21601DEBB009DC246 /* WaitingView.m in Sources */,
+				408507ED160231C9009DC246 /* PromoCodeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15051,6 +15083,8 @@
 				BC1DD52715FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
 				BC1DD53015FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
 				BC1DD53915FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
+				408507DF1601DEBB009DC246 /* WaitingView.m in Sources */,
+				408507EA160231C9009DC246 /* PromoCodeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15286,6 +15320,8 @@
 				BC1DD52515FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
 				BC1DD52E15FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
 				BC1DD53715FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
+				408507DD1601DEBB009DC246 /* WaitingView.m in Sources */,
+				408507E8160231C9009DC246 /* PromoCodeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15522,6 +15558,8 @@
 				BC1DD52915FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
 				BC1DD53215FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
 				BC1DD53B15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
+				408507E11601DEBB009DC246 /* WaitingView.m in Sources */,
+				408507EC160231C9009DC246 /* PromoCodeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15757,6 +15795,8 @@
 				BC1DD52615FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
 				BC1DD52F15FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
 				BC1DD53815FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
+				408507DE1601DEBB009DC246 /* WaitingView.m in Sources */,
+				408507E9160231C9009DC246 /* PromoCodeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15992,6 +16032,8 @@
 				BC1DD52415FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
 				BC1DD52D15FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
 				BC1DD53615FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
+				408507DC1601DEBB009DC246 /* WaitingView.m in Sources */,
+				408507E7160231C9009DC246 /* PromoCodeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16228,6 +16270,8 @@
 				BC1DD52815FFC3AE008051C9 /* ActionAddSongCell.m in Sources */,
 				BC1DD53115FFC3AE008051C9 /* ActionRemoveCollectionCell.m in Sources */,
 				BC1DD53A15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */,
+				408507E01601DEBB009DC246 /* WaitingView.m in Sources */,
+				408507EB160231C9009DC246 /* PromoCodeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

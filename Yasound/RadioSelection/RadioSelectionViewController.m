@@ -46,6 +46,8 @@
         self.url = nil;
         _wheelIndex = wheelIndex;
         
+        _waitingView = nil;
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSlidingOut:) name:ECSlidingViewUnderLeftWillAppear object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSlidingIn:) name:ECSlidingViewTopDidReset object:nil];
     }
@@ -164,7 +166,26 @@
 
 
 
+- (void)showWaitingViewWithText:(NSString*)text
+{
+    if (_waitingView)
+    {
+        [_waitingView removeFromSuperview];
+        [_waitingView release];
+    }
+    _waitingView = [[WaitingView alloc] initWithText:text];
+    [self.view addSubview:_waitingView];
+}
 
+- (void)hideWaitingView
+{
+    if (_waitingView)
+    {
+        [_waitingView removeFromSuperview];
+        [_waitingView release];
+        _waitingView = nil;
+    }
+}
 
 
 
@@ -235,7 +256,7 @@
 
 
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
-{
+{    
     if (self.tableview != nil)
         [self.tableview.tableView removeFromSuperview];
     
@@ -250,7 +271,6 @@
         [self.tableview release];
         self.tableview = nil;
     }
-    
     
     NSString* url = nil;
     NSString* genre = nil;
@@ -295,12 +315,23 @@
         if (![YasoundSessionManager main].registered)
             [self inviteToLogin:@"friends"];
         else
+        {
             [[YasoundDataProvider main] friendsForUser:[YasoundDataProvider main].user withTarget:self action:@selector(friendsReceived:success:)];
+            [self showWaitingViewWithText:NSLocalizedString(@"FriendsWaitingText", nil)];
+        }
+        return;
+    }
+    
+    // request selection radios
+    if (itemIndex == WheelIdSelection)
+    {
+        [self showWaitingViewWithText:NSLocalizedString(@"SelectionWaitingText", nil)];
+        [[YasoundDataCache main] requestRadioRecommendationWithTarget:self action:@selector(receiveRadios:info:)];
         return;
     }
 
     // request favorites radios
-    if (itemIndex == WheelIdFavorites)
+    else if (itemIndex == WheelIdFavorites)
     {
         if (![YasoundSessionManager main].registered)
         {
@@ -308,6 +339,7 @@
             return;
         }
         
+        [self showWaitingViewWithText:NSLocalizedString(@"FavoritesWaitingText", nil)];
         url = URL_RADIOS_FAVORITES;
     }
 
@@ -317,10 +349,12 @@
         url = URL_RADIOS_SELECTION;
     }
 
+
     // request top radios
     else if (itemIndex == WheelIdTop)
     {
         url = URL_RADIOS_TOP;
+        [self showWaitingViewWithText:NSLocalizedString(@"TopWaitingText", nil)];
     }
     
     else
@@ -341,6 +375,8 @@
 
 - (void)friendsReceived:(ASIHTTPRequest*)req success:(BOOL)success
 {
+    [self hideWaitingView];
+    
     if (!success)
     {
         //LBDEBUG TODO : error screen
@@ -406,6 +442,7 @@
 
 - (void)receiveRadios:(NSArray*)radios info:(NSDictionary*)info
 {
+    [self hideWaitingView];
 #ifdef TEST_FAKE
     return;
 #endif

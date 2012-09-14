@@ -1791,15 +1791,16 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)similarRadiosWithArtistList:(NSData*)data target:(id)target action:(SEL)selector
+- (void)radioRecommendationsWithArtistList:(NSData*)data target:(id)target action:(SEL)selector userData:(id)userData
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/similar_radios_from_artist_list/"];
+    conf.url = [NSString stringWithFormat:@"api/v1/radio_recommendations/"];
     conf.urlIsAbsolute = NO;
     conf.auth = self.apiKeyAuth;
     conf.method = @"POST";
     conf.callbackTarget = target;
     conf.callbackAction = selector;
+    conf.userData = userData;
     
     ASIFormDataRequest* req = [_communicator buildFormDataRequestWithConfig:conf];
     [req addData:data forKey:@"artists_data"];
