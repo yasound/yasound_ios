@@ -553,17 +553,17 @@
     // ask confirm
     NSString* message = nil;
     NSString* message1 = NSLocalizedString(@"Programming.collection.add.message.readyToUpload", nil);
-    message1 = [NSString stringWithFormat:message1, self.songsToUpload.count];
+    message1 = [NSString stringWithFormat:message1, self.songsToUpload.count, self.nbSongsSelected];
     NSString* message2 = NSLocalizedString(@"Programming.collection.add.message.programmed", nil);
-    message2 = [NSString stringWithFormat:message2, self.nbSongsProgrammed];
+    message2 = [NSString stringWithFormat:message2, self.nbSongsProgrammed, self.nbSongsSelected];
     NSString* message3 = NSLocalizedString(@"Programming.collection.add.message.cantUpload", nil);
-    message3 = [NSString stringWithFormat:message3, self.nbSongsCantUpload];
+    message3 = [NSString stringWithFormat:message3, self.nbSongsCantUpload, self.nbSongsSelected];
     NSString* message4 = nil;
     
     if (self.songsToUpload.count == 0) {
 
         message4 = NSLocalizedString(@"Programming.collection.add.message.empty", nil);
-        message = [NSString stringWithFormat:@"%@/n%@/n%@/n%@", message1, message2, message3, message4];
+        message = [NSString stringWithFormat:@"%@\n%@\n%@\n\n%@", message1, message2, message3, message4];
         
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles: nil];
         [alert show];
@@ -574,14 +574,13 @@
 
     if (self.songsToUpload.count == 1) {
         message4 = NSLocalizedString(@"Programming.collection.add.message.toUpload.1", nil);
-        message4 = [NSString stringWithFormat:message2, songs.count];
     }
     else {
         message4 = NSLocalizedString(@"Programming.collection.add.message.toUpload.n", nil);
-        message4 = [NSString stringWithFormat:message2, self.songsToUpload.count, songs.count];
+        message4 = [NSString stringWithFormat:message4, self.songsToUpload.count];
     }
 
-    message = [NSString stringWithFormat:@"%@/n%@/n%@/n%@", message1, message2, message3, message4];
+    message = [NSString stringWithFormat:@"%@\n%@\n%@\n\n%@", message1, message2, message3, message4];
 
     _addedGenreUpload = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.ok", nil), nil];
     [_addedGenreUpload show];

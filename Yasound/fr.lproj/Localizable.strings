@@ -210,7 +210,7 @@
 
 
 "Programming.collection.add.title" = "Sélection de %d morceaux";
-"Programming.collection.add.message.readyToUpload" = "prêt au téléchargement: %d / %d";
+"Programming.collection.add.message.readyToUpload" = "prêts au téléchargement: %d / %d";
 "Programming.collection.add.message.programmed" = "déjà sur la radio: %d / %d";
 "Programming.collection.add.message.cantUpload" = "non exportables: %d / %d";
 "Programming.collection.add.message.empty" = "Aucun morceau ne peut être téléchargé sur le serveur.";
