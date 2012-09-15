@@ -7,6 +7,8 @@
 //
 
 #import "Song.h"
+#import "SongRadioCatalog.h"
+
 
 @implementation Song
 
@@ -32,7 +34,7 @@
 {
     if (self = [super init])
     {
-        _isProgrammed = NO;
+//        _isProgrammed = NO;
         _removed = NO;
 //        _uploading = NO;
         
@@ -280,13 +282,17 @@
 
 - (BOOL)isProgrammed
 {
-    return _isProgrammed;
+    NSString* key = self.catalogKey;
+    
+    Song* matchedSong = [[SongRadioCatalog main].matchedSongs objectForKey:key];
+    return (matchedSong != nil);
+//    return _isProgrammed;
 }
 
-- (void)setIsProgrammed:(BOOL)set
-{
-    _isProgrammed = set;
-}
+//- (void)setIsProgrammed:(BOOL)set
+//{
+//    _isProgrammed = set;
+//}
 
 
 

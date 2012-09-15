@@ -113,11 +113,13 @@ static SongLocalCatalog* _main = nil;
     }
 
     //[NSThread detachNewThreadSelector:@selector(threadMatchedSongs:) toTarget:self withObject:songs];
-    [self threadMatchedSongs:songs];
+//    [self threadMatchedSongs:songs];
+    [self threadMatchedSongs];
 }
 
 
-- (void)threadMatchedSongs:(NSDictionary*)songs {
+//- (void)threadMatchedSongs:(NSDictionary*)songs {
+- (void)threadMatchedSongs {
     
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
@@ -140,7 +142,7 @@ static SongLocalCatalog* _main = nil;
     {
         SongLocal* songLocal = [[SongLocal alloc] initWithMediaItem:item];
         
-        Song* matchedSong = [songs objectForKey:songLocal.catalogKey];
+//        Song* matchedSong = [songs objectForKey:songLocal.catalogKey];
         
         //        // don't include it if it's included in the matched songs already
         //        if (matchedSong != nil)
@@ -148,8 +150,8 @@ static SongLocalCatalog* _main = nil;
         //
         // we don't do that anymore. We include all the songs, but a visual mark is displayed if the song is
         // in the radio's programming already
-        if (matchedSong != nil)
-            [songLocal setIsProgrammed:YES];
+//        if (matchedSong != nil)
+//            [songLocal setIsProgrammed:YES];
         
         
         // REMEMBER THAT HERE, songLocal is SongLocal*
@@ -534,7 +536,7 @@ static SongLocalCatalog* _main = nil;
     assert(song);
     assert([song isKindOfClass:[SongLocal class]]);
     
-    [song setIsProgrammed:YES];
+//    [song setIsProgrammed:YES];
 }
 
 
@@ -543,7 +545,7 @@ static SongLocalCatalog* _main = nil;
     assert(song);
     assert([song isKindOfClass:[Song class]]);
 
-    [song setIsProgrammed:NO];
+//    [song setIsProgrammed:NO];
 }
 
 
@@ -554,10 +556,10 @@ static SongLocalCatalog* _main = nil;
 
     Song* matchedSong = [[SongRadioCatalog main].matchedSongs objectForKey:song.catalogKey];
     
-    if (matchedSong != nil)
-        [song setIsProgrammed:YES];
-    else
-        [song setIsProgrammed:NO];
+//    if (matchedSong != nil)
+//        [song setIsProgrammed:YES];
+//    else
+//        [song setIsProgrammed:NO];
 }
 
 

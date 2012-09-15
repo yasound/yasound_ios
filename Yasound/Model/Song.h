@@ -20,7 +20,7 @@ typedef enum
     NSString* _name;
     NSString* _nameWithoutArticle;
     NSString* _firstRelevantWord;
-    BOOL _isProgrammed;
+//    BOOL _isProgrammed;
     BOOL _removed;
     
 //    BOOL _uploading;
@@ -61,7 +61,7 @@ typedef enum
 - (void)removeSong:(BOOL)set;
 
 - (BOOL)isProgrammed;
-- (void)setIsProgrammed:(BOOL)set;
+//- (void)setIsProgrammed:(BOOL)set;
 
 //- (BOOL)isUploading;
 //- (void)setUploading:(BOOL)set;
