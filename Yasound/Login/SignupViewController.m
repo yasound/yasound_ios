@@ -19,6 +19,9 @@
 
 @implementation SignupViewController
 
+@synthesize container;
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -71,7 +74,7 @@
     _label.text =  NSLocalizedString(@"SignupView_label", nil);
     
     _username.placeholder = NSLocalizedString(@"SignupView_username", nil);
-    _posMin = _container.frame.origin.y;
+    _posMin = self.container.frame.origin.y;
     _posRef = _username.frame.origin.y;
     
     
@@ -88,11 +91,11 @@
     
     
     
-    UITapGestureRecognizer* gest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapGestureRecognized)];
-    gest.delegate = self; // we need this to exclude the other controls from the gesture catching system
-    gest.numberOfTapsRequired = 1;
-    gest.numberOfTouchesRequired = 1;
-    [self.view addGestureRecognizer:gest];
+//    UITapGestureRecognizer* gest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapGestureRecognized)];
+//    gest.delegate = self; // we need this to exclude the other controls from the gesture catching system
+//    gest.numberOfTapsRequired = 1;
+//    gest.numberOfTouchesRequired = 1;
+//    [self.view addGestureRecognizer:gest];
     
     
 }
@@ -124,15 +127,15 @@
 
 
 
-- (void)onTapGestureRecognized
-{
-    [self.view endEditing:YES];
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    _container.frame = CGRectMake(_container.frame.origin.x, _posMin, _container.frame.size.width, _container.frame.size.height);
-    [UIView commitAnimations];    
-}
+//- (void)onTapGestureRecognized
+//{
+//    [self.view endEditing:YES];
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.3];
+//    self.container.frame = CGRectMake(self.container.frame.origin.x, _posMin, self.container.frame.size.width, self.container.frame.size.height);
+//    [UIView commitAnimations];    
+//}
 
 
 #pragma mark - TextField Delegate
@@ -154,7 +157,7 @@
         
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.3];
-        _container.frame = CGRectMake(_container.frame.origin.x, _posMin, _container.frame.size.width, _container.frame.size.height);
+        self.container.frame = CGRectMake(self.container.frame.origin.x, _posMin, self.container.frame.size.width, self.container.frame.size.height);
         [UIView commitAnimations];
         
         // activate "submit" button
@@ -174,7 +177,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    CGRect frame = _container.frame;
+    CGRect frame = self.container.frame;
     
     if (textField == _username)
         frame = CGRectMake(frame.origin.x, _posMin, frame.size.width, frame.size.height);
@@ -190,7 +193,7 @@
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
-    _container.frame = frame;
+    self.container.frame = frame;
     [UIView commitAnimations];
 }
 
@@ -353,6 +356,18 @@
 
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
 }
+
+
+#pragma mark - TopBarBackAndTitleDelegate
+
+- (BOOL)topBarBackClicked {
+    
+    [self.view removeFromSuperview];
+//    [self autorelease];
+    return NO;
+}
+
+
 
 
 

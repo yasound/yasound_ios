@@ -464,6 +464,8 @@
 
 - (void)onNotifLaunchRadio:(NSNotification *)notification
 {
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+
     // my radio
     [self launchRadio:nil];
 }
@@ -655,6 +657,8 @@
 //    [self gotoMenuAnimated:NO];
     
     [self gotoRadioSelectionAnimated:NO];
+    
+    [APPDELEGATE.slideController resetTopView];
 
     WallViewController* view = [[WallViewController alloc] initWithRadio:r];
     [self.navigationController pushViewController:view animated:YES];

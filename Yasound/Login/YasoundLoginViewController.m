@@ -315,5 +315,16 @@
 }
 
 
+#pragma mark - TopBarBackAndTitleDelegate
+
+- (BOOL)topBarBackClicked {
+
+    [self.view removeFromSuperview];
+    [self autorelease];
+    return NO;
+}
+
+
+
 
 @end
