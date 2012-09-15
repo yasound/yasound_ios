@@ -81,12 +81,15 @@
         //LBDEBUG ICI
 //        [_parent presentModalViewController:_controller animated: YES];  
 
-        YasoundAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-        NSArray* viewControllers = appDelegate.navigationController.viewControllers;
-        UIViewController* viewController = [viewControllers objectAtIndex:(viewControllers.count-1)];
-
-        [viewController presentModalViewController:_controller animated: YES];  
-    }  
+//        YasoundAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+//        NSArray* viewControllers = appDelegate.navigationController.viewControllers;
+//        UIViewController* viewController = [viewControllers objectAtIndex:(viewControllers.count-1)];
+//
+//        [viewController presentModalViewController:_controller animated: YES];
+        
+        [APPDELEGATE.navigationController presentModalViewController:_controller animated:YES];
+        
+    }
 }
 
 

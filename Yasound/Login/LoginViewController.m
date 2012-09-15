@@ -16,7 +16,7 @@
 #import "YasoundLoginViewController.h"
 #import "SignupViewController.h"
 #import "YasoundDataCache.h"
-
+#import "YasoundAppDelegate.h"
 
 @implementation LoginViewController
 
@@ -28,7 +28,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        //self.title =  NSLocalizedString(@"LoginView_title", nil);        
+        //self.title =  NSLocalizedString(@"LoginView_title", nil);
+        _dismissed = NO;
     }
     return self;
 }
@@ -165,6 +166,10 @@
         assert(0);
         [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
     }
+    
+    // close the current modal first
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+    _dismissed = YES;
     
     [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(socialLoginReturned:info:)];
     
@@ -379,7 +384,14 @@
     [[UserSettings main] setBool:YES forKey:USKEYskipRadioCreation];
 
     //    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_DISMISS_MODAL object:nil];
+    if (!_dismissed) {
+        _dismissed = YES;
+        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_DISMISS_MODAL object:nil];
+    }
+    
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
+    [APPDELEGATE.slideController resetTopView];
 }
 
 

@@ -29,6 +29,8 @@
     IBOutlet UILabel* _yasoundLabel;
 
     IBOutlet UnderlinedButton* _signupButton;
+    
+    BOOL _dismissed;
 }
 
 @property (nonatomic, retain) User* user;
