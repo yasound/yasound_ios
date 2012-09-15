@@ -576,6 +576,20 @@
 }
 
 
+- (IBAction)onReloadClicked:(id)sender {
+    
+    // reset catalogs
+    [SongLocalCatalog releaseCatalog];
+    [SongRadioCatalog releaseCatalog];
+    [DataBase releaseDataBase];
+    
+    // refresh catalog and gui
+    if ([self.tableview respondsToSelector:@selector(load)])
+        [self.tableview load];
+    
+    
+}
+
 
 - (void)onNotifSongAdded:(NSNotification*)notif
 {
