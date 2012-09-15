@@ -209,8 +209,10 @@
         self.itemNotifs.enabled = NO;
         self.itemNotifsButton.enabled = NO;
         self.itemNotifsButton.selected = NO;
-        if (self.itemNotifsLabel)
+        if (self.itemNotifsLabel) {
+            [self.itemNotifsLabel removeFromSuperview];
             [self.itemNotifsLabel release];
+        }
         
 //        [self.itemNotifsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
         [self.itemNotifsButton removeTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
