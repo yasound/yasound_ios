@@ -41,6 +41,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogout:) name:NOTIF_DID_LOGOUT object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogin:) name:NOTIF_DID_LOGIN object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifsChanged:) name:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
+    
     
     // set background
     if ([self respondsToSelector:@selector(setBackgroundImage:forToolbarPosition:barMetrics:)]) 
@@ -101,6 +103,10 @@
     self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace, self.itemHd, flexibleSpace, self.itemNotifs, flexibleSpace, itemNowPlaying, nil];
     
     [self setItems:self.customItems];
+    
+    
+    // check notifs
+    [self updateNotifs];
 
 }
 
@@ -194,23 +200,84 @@
 }
 
 
+
+
 - (void)updateNotifs
 {
     if (![YasoundSessionManager main].registered)
     {
         self.itemNotifs.enabled = NO;
         self.itemNotifsButton.enabled = NO;
+        self.itemNotifsButton.selected = NO;
+        if (self.itemNotifsLabel)
+            [self.itemNotifsLabel release];
         
 //        [self.itemNotifsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-        [self.itemNotifsButton removeTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
+        [self.itemNotifsButton removeTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
     }
     else
     {
         self.itemNotifs.enabled = YES;
         self.itemNotifsButton.enabled = YES;
-        [self.itemNotifsButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
+        [self.itemNotifsButton addTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
+
+        // request number of notifs
+        [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:) limit:0 offset:0];
+
     }
 }
+
+
+- (void)onNotificationsReceived:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    if (!success)
+    {
+        DLog(@"get user notifications FAILED");
+        return;
+    }
+    
+    Container* container = [req responseObjectsWithClass:[UserNotification class]];
+    NSArray* newNotifications = container.objects;
+    
+    if ((newNotifications == nil) || (newNotifications.count == 0)) {
+        self.itemNotifsButton.selected = NO;
+        if (self.itemNotifsLabel) {
+            [self.itemNotifsLabel removeFromSuperview];
+            [self.itemNotifsLabel release];
+        }
+
+        return;
+    }
+
+
+    NSInteger counter = 0;
+    for (UserNotification* notif in newNotifications)
+    {
+        if (![notif isReadBool])
+            counter++;
+    }
+
+    if (counter == 0) {
+        self.itemNotifsButton.selected = NO;
+        if (self.itemNotifsLabel) {
+            [self.itemNotifsLabel removeFromSuperview];
+            [self.itemNotifsLabel release];
+        }
+        
+        return;
+    }
+
+
+    self.itemNotifsButton.selected = YES;
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemNotifLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.itemNotifsLabel = [sheet makeLabel];
+    self.itemNotifsLabel.text = [NSString stringWithFormat:@"%d", counter];
+    [self.itemNotifsButton addSubview:self.itemNotifsLabel];
+    self.itemNotifsLabel.adjustsFontSizeToFitWidth = YES;
+    
+}
+
 
 
 
@@ -451,6 +518,11 @@
     [self updateHd];
     [self updateNotifs];
     [self updateSettings];
+}
+
+
+- (void)onNotifsChanged:(NSNotification*)notif {
+    [self updateNotifs];
 }
 
 //- (id)initWithFrame:(CGRect)frame

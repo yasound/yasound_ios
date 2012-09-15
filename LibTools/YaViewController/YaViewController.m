@@ -9,6 +9,7 @@
 #import "YaViewController.h"
 #import "TestFlight.h"
 #import "YasoundAppDelegate.h"
+#import "RootViewController.h"
 
 @implementation YaViewController
 
@@ -67,6 +68,9 @@
 #ifdef TESTFLIGHT_SDK
     [TestFlight passCheckpoint:self.didAppearCheckpoint];
 #endif
+    
+    // refresh notifs gui
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
     
 }
 
