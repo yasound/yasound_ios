@@ -47,9 +47,10 @@
 @synthesize profil;
 @synthesize hd;
 
-@synthesize buttonGray;
+//@synthesize buttonGray;
 @synthesize buttonBlue;
-@synthesize buttonGrayLabel;
+//@synthesize buttonGrayLabel;
+@synthesize buttonFollow;
 @synthesize buttonBlueLabel;
 @synthesize followed;
 
@@ -123,6 +124,9 @@
     
     self.scrollview.contentSize = CGSizeMake(self.scrollview.contentSize.width, posY);
     
+    self.buttonFollow.target = self;
+    self.buttonFollow.action = @selector(onButtonGrayClicked:);
+
     
     // define sections
     self.viewMyRadios.title.text = NSLocalizedString(@"Profil.section.myRadios", nil);
@@ -225,7 +229,9 @@
     
     self.profil.text = [self.user formatedProfil];
     
-    self.buttonGrayLabel.text = NSLocalizedString(@"Profil.follow", nil);
+    // custom follow button
+    [self.buttonFollow setThemeRef:@"darkGray" title:NSLocalizedString(@"Profil.follow", nil)];
+    
     self.buttonBlueLabel.text = NSLocalizedString(@"Profil.message", nil);
 
     // not registered
@@ -263,12 +269,12 @@
 
 - (void)enableFollow:(BOOL)enable
 {
-    [self.buttonGray setEnabled:enable];
+    [self.buttonFollow setEnabled:enable];
     CGFloat alpha = 1;
     if (!enable)
         alpha = 0.5;
-    self.buttonGray.alpha = alpha;
-    self.buttonGrayLabel.alpha = alpha;
+    self.buttonFollow.alpha = alpha;
+//    self.buttonGrayLabel.alpha = alpha;
 }
 
 - (void)enableSendMessage:(BOOL)enable
@@ -283,12 +289,15 @@
 
 - (void)setFollowButtonToFollow
 {
-    self.buttonGrayLabel.text = NSLocalizedString(@"Profil.follow", nil);
+    [self.buttonFollow setThemeRef:@"darkGray" title:NSLocalizedString(@"Profil.follow", nil)];
+//    self.buttonFollowLabel.text = NSLocalizedString(@"Profil.follow", nil);
 }
 
 - (void)setFollowButtonToUnfollow
 {
-    self.buttonGrayLabel.text = NSLocalizedString(@"Profil.unfollow", nil);
+    [self.buttonFollow setThemeRef:@"darkGray" title:NSLocalizedString(@"Profil.unfollow", nil)];
+
+//    self.buttonGrayLabel.text = NSLocalizedString(@"Profil.unfollow", nil);
 }
 
 
@@ -549,7 +558,7 @@
 
 - (IBAction)onButtonGrayClicked:(id)sender
 {
-    self.buttonGray.enabled = NO;
+    [self.buttonFollow setEnabled:NO];
     
     if (self.followed)
     {
