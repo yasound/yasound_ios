@@ -1445,6 +1445,12 @@
         assert(0);
     }
     
+    NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    NSString* cleanText = [msg stringByTrimmingCharactersInSet:space];
+    if (cleanText.length == 0)
+        return;
+    
+    
     [self sendMessage:msg];
     self.cellPostBar.textfield.text = nil;
     self.fixedCellPostBar.textfield.text = nil;
