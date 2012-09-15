@@ -301,10 +301,10 @@ enum MenuDescription
             return;
         }
 
-//    else if (row == ROW_RADIOS)
-//    {
-//        [APPDELEGATE.slideController resetTopView];
-//    }
+    else if (row == ROW_RADIOS)
+    {
+        [APPDELEGATE.slideController resetTopView];
+    }
     
     
     else
