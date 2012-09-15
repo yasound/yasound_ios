@@ -2997,8 +2997,6 @@
 		BCC752E515E689EF00CF7F7C /* barRedItemMediumBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EBC15D7FD2E008C26AC /* barRedItemMediumBkg@2x.png */; };
 		BCC752E615E689EF00CF7F7C /* barRedItemMediumBkgHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EBD15D7FD2E008C26AC /* barRedItemMediumBkgHighlighted.png */; };
 		BCC752E715E689EF00CF7F7C /* barRedItemMediumBkgHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EBE15D7FD2E008C26AC /* barRedItemMediumBkgHighlighted@2x.png */; };
-		BCC752E815E689EF00CF7F7C /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECC15D7FD2E008C26AC /* bullets.png */; };
-		BCC752E915E689EF00CF7F7C /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECD15D7FD2E008C26AC /* bullets@2x.png */; };
 		BCC752EA15E689EF00CF7F7C /* commonBarItemSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECF15D7FD2E008C26AC /* commonBarItemSettings.png */; };
 		BCC752EB15E689EF00CF7F7C /* commonBarItemSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ED015D7FD2E008C26AC /* commonBarItemSettings@2x.png */; };
 		BCC752EC15E689EF00CF7F7C /* commonBarItemSettingsDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ED115D7FD2E008C26AC /* commonBarItemSettingsDisabled.png */; };
@@ -3025,8 +3023,6 @@
 		BCC7530115E689EF00CF7F7C /* commonTableViewCell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE615D7FD2E008C26AC /* commonTableViewCell@2x.png */; };
 		BCC7530215E689EF00CF7F7C /* commonTextfield.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE715D7FD2E008C26AC /* commonTextfield.png */; };
 		BCC7530315E689EF00CF7F7C /* commonTextfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE815D7FD2E008C26AC /* commonTextfield@2x.png */; };
-		BCC7530415E689EF00CF7F7C /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE915D7FD2E008C26AC /* CreateMyRadioBackground.png */; };
-		BCC7530515E689EF00CF7F7C /* CreateMyRadioBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEA15D7FD2E008C26AC /* CreateMyRadioBackground@2x.png */; };
 		BCC7530615E689EF00CF7F7C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEB15D7FD2E008C26AC /* Default.png */; };
 		BCC7530715E689EF00CF7F7C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEC15D7FD2E008C26AC /* Default@2x.png */; };
 		BCC7530815E689EF00CF7F7C /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EED15D7FD2E008C26AC /* EasyTracker.plist */; };
@@ -3057,8 +3053,6 @@
 		BCC7532715E689EF00CF7F7C /* loginBtnYasound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3415D7FD2E008C26AC /* loginBtnYasound@2x.png */; };
 		BCC7532815E689EF00CF7F7C /* loginLogoYasoundLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3515D7FD2E008C26AC /* loginLogoYasoundLarge.png */; };
 		BCC7532915E689EF00CF7F7C /* loginLogoYasoundLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3615D7FD2E008C26AC /* loginLogoYasoundLarge@2x.png */; };
-		BCC7532A15E689EF00CF7F7C /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3715D7FD2E008C26AC /* logo.png */; };
-		BCC7532B15E689EF00CF7F7C /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3815D7FD2E008C26AC /* logo@2x.png */; };
 		BCC7532C15E689EF00CF7F7C /* menuBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3A15D7FD2E008C26AC /* menuBkg.png */; };
 		BCC7532D15E689EF00CF7F7C /* menuBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3B15D7FD2E008C26AC /* menuBkg@2x.png */; };
 		BCC7532E15E689EF00CF7F7C /* menuIconAccount.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3C15D7FD2E008C26AC /* menuIconAccount.png */; };
@@ -4154,22 +4148,6 @@
 		BCE3622D15D7FD2F008C26AC /* barRedItemMediumBkgHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EBE15D7FD2E008C26AC /* barRedItemMediumBkgHighlighted@2x.png */; };
 		BCE3622E15D7FD2F008C26AC /* barRedItemMediumBkgHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EBE15D7FD2E008C26AC /* barRedItemMediumBkgHighlighted@2x.png */; };
 		BCE3622F15D7FD2F008C26AC /* barRedItemMediumBkgHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EBE15D7FD2E008C26AC /* barRedItemMediumBkgHighlighted@2x.png */; };
-		BCE3629015D7FD30008C26AC /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECC15D7FD2E008C26AC /* bullets.png */; };
-		BCE3629115D7FD30008C26AC /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECC15D7FD2E008C26AC /* bullets.png */; };
-		BCE3629215D7FD30008C26AC /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECC15D7FD2E008C26AC /* bullets.png */; };
-		BCE3629315D7FD30008C26AC /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECC15D7FD2E008C26AC /* bullets.png */; };
-		BCE3629415D7FD30008C26AC /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECC15D7FD2E008C26AC /* bullets.png */; };
-		BCE3629515D7FD30008C26AC /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECC15D7FD2E008C26AC /* bullets.png */; };
-		BCE3629615D7FD30008C26AC /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECC15D7FD2E008C26AC /* bullets.png */; };
-		BCE3629715D7FD30008C26AC /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECC15D7FD2E008C26AC /* bullets.png */; };
-		BCE3629815D7FD30008C26AC /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECD15D7FD2E008C26AC /* bullets@2x.png */; };
-		BCE3629915D7FD30008C26AC /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECD15D7FD2E008C26AC /* bullets@2x.png */; };
-		BCE3629A15D7FD30008C26AC /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECD15D7FD2E008C26AC /* bullets@2x.png */; };
-		BCE3629B15D7FD30008C26AC /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECD15D7FD2E008C26AC /* bullets@2x.png */; };
-		BCE3629C15D7FD30008C26AC /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECD15D7FD2E008C26AC /* bullets@2x.png */; };
-		BCE3629D15D7FD30008C26AC /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECD15D7FD2E008C26AC /* bullets@2x.png */; };
-		BCE3629E15D7FD30008C26AC /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECD15D7FD2E008C26AC /* bullets@2x.png */; };
-		BCE3629F15D7FD30008C26AC /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECD15D7FD2E008C26AC /* bullets@2x.png */; };
 		BCE362A015D7FD30008C26AC /* commonBarItemSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECF15D7FD2E008C26AC /* commonBarItemSettings.png */; };
 		BCE362A115D7FD30008C26AC /* commonBarItemSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECF15D7FD2E008C26AC /* commonBarItemSettings.png */; };
 		BCE362A215D7FD30008C26AC /* commonBarItemSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35ECF15D7FD2E008C26AC /* commonBarItemSettings.png */; };
@@ -4378,22 +4356,6 @@
 		BCE3636D15D7FD30008C26AC /* commonTextfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE815D7FD2E008C26AC /* commonTextfield@2x.png */; };
 		BCE3636E15D7FD30008C26AC /* commonTextfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE815D7FD2E008C26AC /* commonTextfield@2x.png */; };
 		BCE3636F15D7FD30008C26AC /* commonTextfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE815D7FD2E008C26AC /* commonTextfield@2x.png */; };
-		BCE3637015D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE915D7FD2E008C26AC /* CreateMyRadioBackground.png */; };
-		BCE3637115D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE915D7FD2E008C26AC /* CreateMyRadioBackground.png */; };
-		BCE3637215D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE915D7FD2E008C26AC /* CreateMyRadioBackground.png */; };
-		BCE3637315D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE915D7FD2E008C26AC /* CreateMyRadioBackground.png */; };
-		BCE3637415D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE915D7FD2E008C26AC /* CreateMyRadioBackground.png */; };
-		BCE3637515D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE915D7FD2E008C26AC /* CreateMyRadioBackground.png */; };
-		BCE3637615D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE915D7FD2E008C26AC /* CreateMyRadioBackground.png */; };
-		BCE3637715D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EE915D7FD2E008C26AC /* CreateMyRadioBackground.png */; };
-		BCE3637815D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEA15D7FD2E008C26AC /* CreateMyRadioBackground@2x.png */; };
-		BCE3637915D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEA15D7FD2E008C26AC /* CreateMyRadioBackground@2x.png */; };
-		BCE3637A15D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEA15D7FD2E008C26AC /* CreateMyRadioBackground@2x.png */; };
-		BCE3637B15D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEA15D7FD2E008C26AC /* CreateMyRadioBackground@2x.png */; };
-		BCE3637C15D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEA15D7FD2E008C26AC /* CreateMyRadioBackground@2x.png */; };
-		BCE3637D15D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEA15D7FD2E008C26AC /* CreateMyRadioBackground@2x.png */; };
-		BCE3637E15D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEA15D7FD2E008C26AC /* CreateMyRadioBackground@2x.png */; };
-		BCE3637F15D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEA15D7FD2E008C26AC /* CreateMyRadioBackground@2x.png */; };
 		BCE3638015D7FD30008C26AC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEB15D7FD2E008C26AC /* Default.png */; };
 		BCE3638115D7FD30008C26AC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEB15D7FD2E008C26AC /* Default.png */; };
 		BCE3638215D7FD30008C26AC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEB15D7FD2E008C26AC /* Default.png */; };
@@ -4634,22 +4596,6 @@
 		BCE365BD15D7FD30008C26AC /* loginLogoYasoundLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3615D7FD2E008C26AC /* loginLogoYasoundLarge@2x.png */; };
 		BCE365BE15D7FD30008C26AC /* loginLogoYasoundLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3615D7FD2E008C26AC /* loginLogoYasoundLarge@2x.png */; };
 		BCE365BF15D7FD30008C26AC /* loginLogoYasoundLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3615D7FD2E008C26AC /* loginLogoYasoundLarge@2x.png */; };
-		BCE365C015D7FD30008C26AC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3715D7FD2E008C26AC /* logo.png */; };
-		BCE365C115D7FD30008C26AC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3715D7FD2E008C26AC /* logo.png */; };
-		BCE365C215D7FD30008C26AC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3715D7FD2E008C26AC /* logo.png */; };
-		BCE365C315D7FD30008C26AC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3715D7FD2E008C26AC /* logo.png */; };
-		BCE365C415D7FD30008C26AC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3715D7FD2E008C26AC /* logo.png */; };
-		BCE365C515D7FD30008C26AC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3715D7FD2E008C26AC /* logo.png */; };
-		BCE365C615D7FD30008C26AC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3715D7FD2E008C26AC /* logo.png */; };
-		BCE365C715D7FD30008C26AC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3715D7FD2E008C26AC /* logo.png */; };
-		BCE365C815D7FD30008C26AC /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3815D7FD2E008C26AC /* logo@2x.png */; };
-		BCE365C915D7FD30008C26AC /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3815D7FD2E008C26AC /* logo@2x.png */; };
-		BCE365CA15D7FD30008C26AC /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3815D7FD2E008C26AC /* logo@2x.png */; };
-		BCE365CB15D7FD30008C26AC /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3815D7FD2E008C26AC /* logo@2x.png */; };
-		BCE365CC15D7FD30008C26AC /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3815D7FD2E008C26AC /* logo@2x.png */; };
-		BCE365CD15D7FD30008C26AC /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3815D7FD2E008C26AC /* logo@2x.png */; };
-		BCE365CE15D7FD30008C26AC /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3815D7FD2E008C26AC /* logo@2x.png */; };
-		BCE365CF15D7FD30008C26AC /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3815D7FD2E008C26AC /* logo@2x.png */; };
 		BCE365D015D7FD30008C26AC /* menuBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3A15D7FD2E008C26AC /* menuBkg.png */; };
 		BCE365D115D7FD30008C26AC /* menuBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3A15D7FD2E008C26AC /* menuBkg.png */; };
 		BCE365D215D7FD30008C26AC /* menuBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F3A15D7FD2E008C26AC /* menuBkg.png */; };
@@ -7199,8 +7145,6 @@
 		BCE35EBC15D7FD2E008C26AC /* barRedItemMediumBkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barRedItemMediumBkg@2x.png"; sourceTree = "<group>"; };
 		BCE35EBD15D7FD2E008C26AC /* barRedItemMediumBkgHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barRedItemMediumBkgHighlighted.png; sourceTree = "<group>"; };
 		BCE35EBE15D7FD2E008C26AC /* barRedItemMediumBkgHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barRedItemMediumBkgHighlighted@2x.png"; sourceTree = "<group>"; };
-		BCE35ECC15D7FD2E008C26AC /* bullets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullets.png; sourceTree = "<group>"; };
-		BCE35ECD15D7FD2E008C26AC /* bullets@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bullets@2x.png"; sourceTree = "<group>"; };
 		BCE35ECF15D7FD2E008C26AC /* commonBarItemSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonBarItemSettings.png; sourceTree = "<group>"; };
 		BCE35ED015D7FD2E008C26AC /* commonBarItemSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonBarItemSettings@2x.png"; sourceTree = "<group>"; };
 		BCE35ED115D7FD2E008C26AC /* commonBarItemSettingsDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonBarItemSettingsDisabled.png; sourceTree = "<group>"; };
@@ -7227,8 +7171,6 @@
 		BCE35EE615D7FD2E008C26AC /* commonTableViewCell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonTableViewCell@2x.png"; sourceTree = "<group>"; };
 		BCE35EE715D7FD2E008C26AC /* commonTextfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonTextfield.png; sourceTree = "<group>"; };
 		BCE35EE815D7FD2E008C26AC /* commonTextfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonTextfield@2x.png"; sourceTree = "<group>"; };
-		BCE35EE915D7FD2E008C26AC /* CreateMyRadioBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CreateMyRadioBackground.png; sourceTree = "<group>"; };
-		BCE35EEA15D7FD2E008C26AC /* CreateMyRadioBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadioBackground@2x.png"; sourceTree = "<group>"; };
 		BCE35EEB15D7FD2E008C26AC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BCE35EEC15D7FD2E008C26AC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BCE35EED15D7FD2E008C26AC /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
@@ -7259,8 +7201,6 @@
 		BCE35F3415D7FD2E008C26AC /* loginBtnYasound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginBtnYasound@2x.png"; sourceTree = "<group>"; };
 		BCE35F3515D7FD2E008C26AC /* loginLogoYasoundLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginLogoYasoundLarge.png; sourceTree = "<group>"; };
 		BCE35F3615D7FD2E008C26AC /* loginLogoYasoundLarge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginLogoYasoundLarge@2x.png"; sourceTree = "<group>"; };
-		BCE35F3715D7FD2E008C26AC /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		BCE35F3815D7FD2E008C26AC /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		BCE35F3A15D7FD2E008C26AC /* menuBkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBkg.png; sourceTree = "<group>"; };
 		BCE35F3B15D7FD2E008C26AC /* menuBkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuBkg@2x.png"; sourceTree = "<group>"; };
 		BCE35F3C15D7FD2E008C26AC /* menuIconAccount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuIconAccount.png; sourceTree = "<group>"; };
@@ -9519,11 +9459,7 @@
 				BC03C32015E12F8B0017388D /* Bio */,
 				BCBF98C815DE817B00BC3D64 /* BigMessage */,
 				BCE35E8815D7FD2E008C26AC /* BarItems */,
-				BCE35ECC15D7FD2E008C26AC /* bullets.png */,
-				BCE35ECD15D7FD2E008C26AC /* bullets@2x.png */,
 				BCE35ECE15D7FD2E008C26AC /* Common */,
-				BCE35EE915D7FD2E008C26AC /* CreateMyRadioBackground.png */,
-				BCE35EEA15D7FD2E008C26AC /* CreateMyRadioBackground@2x.png */,
 				BCE35EEB15D7FD2E008C26AC /* Default.png */,
 				BCE35EEC15D7FD2E008C26AC /* Default@2x.png */,
 				BCE35EED15D7FD2E008C26AC /* EasyTracker.plist */,
@@ -9540,8 +9476,6 @@
 				BCDABBC015F74411002E8708 /* Icon@2x.png */,
 				BCE35F2915D7FD2E008C26AC /* LocalSongInfo */,
 				BCE35F2E15D7FD2E008C26AC /* Login */,
-				BCE35F3715D7FD2E008C26AC /* logo.png */,
-				BCE35F3815D7FD2E008C26AC /* logo@2x.png */,
 				BCE35F3915D7FD2E008C26AC /* Menu */,
 				BCE35F5015D7FD2E008C26AC /* MyAccount */,
 				BCE35F5315D7FD2E008C26AC /* MyRadios */,
@@ -10066,8 +10000,6 @@
 				BCE3621E15D7FD2F008C26AC /* barRedItemMediumBkg@2x.png in Resources */,
 				BCE3622615D7FD2F008C26AC /* barRedItemMediumBkgHighlighted.png in Resources */,
 				BCE3622E15D7FD2F008C26AC /* barRedItemMediumBkgHighlighted@2x.png in Resources */,
-				BCE3629615D7FD30008C26AC /* bullets.png in Resources */,
-				BCE3629E15D7FD30008C26AC /* bullets@2x.png in Resources */,
 				BCE362A615D7FD30008C26AC /* commonBarItemSettings.png in Resources */,
 				BCE362AE15D7FD30008C26AC /* commonBarItemSettings@2x.png in Resources */,
 				BCE362B615D7FD30008C26AC /* commonBarItemSettingsDisabled.png in Resources */,
@@ -10094,8 +10026,6 @@
 				BCE3635E15D7FD30008C26AC /* commonTableViewCell@2x.png in Resources */,
 				BCE3636615D7FD30008C26AC /* commonTextfield.png in Resources */,
 				BCE3636E15D7FD30008C26AC /* commonTextfield@2x.png in Resources */,
-				BCE3637615D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */,
-				BCE3637E15D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */,
 				BCE3638615D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638E15D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639615D7FD30008C26AC /* EasyTracker.plist in Resources */,
@@ -10126,8 +10056,6 @@
 				BCE365AE15D7FD30008C26AC /* loginBtnYasound@2x.png in Resources */,
 				BCE365B615D7FD30008C26AC /* loginLogoYasoundLarge.png in Resources */,
 				BCE365BE15D7FD30008C26AC /* loginLogoYasoundLarge@2x.png in Resources */,
-				BCE365C615D7FD30008C26AC /* logo.png in Resources */,
-				BCE365CE15D7FD30008C26AC /* logo@2x.png in Resources */,
 				BCE365D615D7FD30008C26AC /* menuBkg.png in Resources */,
 				BCE365DE15D7FD30008C26AC /* menuBkg@2x.png in Resources */,
 				BCE365E615D7FD30008C26AC /* menuIconAccount.png in Resources */,
@@ -10526,8 +10454,6 @@
 				BCE3621F15D7FD2F008C26AC /* barRedItemMediumBkg@2x.png in Resources */,
 				BCE3622715D7FD2F008C26AC /* barRedItemMediumBkgHighlighted.png in Resources */,
 				BCE3622F15D7FD2F008C26AC /* barRedItemMediumBkgHighlighted@2x.png in Resources */,
-				BCE3629715D7FD30008C26AC /* bullets.png in Resources */,
-				BCE3629F15D7FD30008C26AC /* bullets@2x.png in Resources */,
 				BCE362A715D7FD30008C26AC /* commonBarItemSettings.png in Resources */,
 				BCE362AF15D7FD30008C26AC /* commonBarItemSettings@2x.png in Resources */,
 				BCE362B715D7FD30008C26AC /* commonBarItemSettingsDisabled.png in Resources */,
@@ -10554,8 +10480,6 @@
 				BCE3635F15D7FD30008C26AC /* commonTableViewCell@2x.png in Resources */,
 				BCE3636715D7FD30008C26AC /* commonTextfield.png in Resources */,
 				BCE3636F15D7FD30008C26AC /* commonTextfield@2x.png in Resources */,
-				BCE3637715D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */,
-				BCE3637F15D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */,
 				BCE3638715D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638F15D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639715D7FD30008C26AC /* EasyTracker.plist in Resources */,
@@ -10586,8 +10510,6 @@
 				BCE365AF15D7FD30008C26AC /* loginBtnYasound@2x.png in Resources */,
 				BCE365B715D7FD30008C26AC /* loginLogoYasoundLarge.png in Resources */,
 				BCE365BF15D7FD30008C26AC /* loginLogoYasoundLarge@2x.png in Resources */,
-				BCE365C715D7FD30008C26AC /* logo.png in Resources */,
-				BCE365CF15D7FD30008C26AC /* logo@2x.png in Resources */,
 				BCE365D715D7FD30008C26AC /* menuBkg.png in Resources */,
 				BCE365DF15D7FD30008C26AC /* menuBkg@2x.png in Resources */,
 				BCE365E715D7FD30008C26AC /* menuIconAccount.png in Resources */,
@@ -10980,8 +10902,6 @@
 				BCE3621D15D7FD2F008C26AC /* barRedItemMediumBkg@2x.png in Resources */,
 				BCE3622515D7FD2F008C26AC /* barRedItemMediumBkgHighlighted.png in Resources */,
 				BCE3622D15D7FD2F008C26AC /* barRedItemMediumBkgHighlighted@2x.png in Resources */,
-				BCE3629515D7FD30008C26AC /* bullets.png in Resources */,
-				BCE3629D15D7FD30008C26AC /* bullets@2x.png in Resources */,
 				BCE362A515D7FD30008C26AC /* commonBarItemSettings.png in Resources */,
 				BCE362AD15D7FD30008C26AC /* commonBarItemSettings@2x.png in Resources */,
 				BCE362B515D7FD30008C26AC /* commonBarItemSettingsDisabled.png in Resources */,
@@ -11008,8 +10928,6 @@
 				BCE3635D15D7FD30008C26AC /* commonTableViewCell@2x.png in Resources */,
 				BCE3636515D7FD30008C26AC /* commonTextfield.png in Resources */,
 				BCE3636D15D7FD30008C26AC /* commonTextfield@2x.png in Resources */,
-				BCE3637515D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */,
-				BCE3637D15D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */,
 				BCE3638515D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638D15D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639515D7FD30008C26AC /* EasyTracker.plist in Resources */,
@@ -11040,8 +10958,6 @@
 				BCE365AD15D7FD30008C26AC /* loginBtnYasound@2x.png in Resources */,
 				BCE365B515D7FD30008C26AC /* loginLogoYasoundLarge.png in Resources */,
 				BCE365BD15D7FD30008C26AC /* loginLogoYasoundLarge@2x.png in Resources */,
-				BCE365C515D7FD30008C26AC /* logo.png in Resources */,
-				BCE365CD15D7FD30008C26AC /* logo@2x.png in Resources */,
 				BCE365D515D7FD30008C26AC /* menuBkg.png in Resources */,
 				BCE365DD15D7FD30008C26AC /* menuBkg@2x.png in Resources */,
 				BCE365E515D7FD30008C26AC /* menuIconAccount.png in Resources */,
@@ -11439,8 +11355,6 @@
 				BCE3621A15D7FD2F008C26AC /* barRedItemMediumBkg@2x.png in Resources */,
 				BCE3622215D7FD2F008C26AC /* barRedItemMediumBkgHighlighted.png in Resources */,
 				BCE3622A15D7FD2F008C26AC /* barRedItemMediumBkgHighlighted@2x.png in Resources */,
-				BCE3629215D7FD30008C26AC /* bullets.png in Resources */,
-				BCE3629A15D7FD30008C26AC /* bullets@2x.png in Resources */,
 				BCE362A215D7FD30008C26AC /* commonBarItemSettings.png in Resources */,
 				BCE362AA15D7FD30008C26AC /* commonBarItemSettings@2x.png in Resources */,
 				BCE362B215D7FD30008C26AC /* commonBarItemSettingsDisabled.png in Resources */,
@@ -11467,8 +11381,6 @@
 				BCE3635A15D7FD30008C26AC /* commonTableViewCell@2x.png in Resources */,
 				BCE3636215D7FD30008C26AC /* commonTextfield.png in Resources */,
 				BCE3636A15D7FD30008C26AC /* commonTextfield@2x.png in Resources */,
-				BCE3637215D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */,
-				BCE3637A15D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */,
 				BCE3638215D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638A15D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639215D7FD30008C26AC /* EasyTracker.plist in Resources */,
@@ -11499,8 +11411,6 @@
 				BCE365AA15D7FD30008C26AC /* loginBtnYasound@2x.png in Resources */,
 				BCE365B215D7FD30008C26AC /* loginLogoYasoundLarge.png in Resources */,
 				BCE365BA15D7FD30008C26AC /* loginLogoYasoundLarge@2x.png in Resources */,
-				BCE365C215D7FD30008C26AC /* logo.png in Resources */,
-				BCE365CA15D7FD30008C26AC /* logo@2x.png in Resources */,
 				BCE365D215D7FD30008C26AC /* menuBkg.png in Resources */,
 				BCE365DA15D7FD30008C26AC /* menuBkg@2x.png in Resources */,
 				BCE365E215D7FD30008C26AC /* menuIconAccount.png in Resources */,
@@ -11898,8 +11808,6 @@
 				BCE3621915D7FD2F008C26AC /* barRedItemMediumBkg@2x.png in Resources */,
 				BCE3622115D7FD2F008C26AC /* barRedItemMediumBkgHighlighted.png in Resources */,
 				BCE3622915D7FD2F008C26AC /* barRedItemMediumBkgHighlighted@2x.png in Resources */,
-				BCE3629115D7FD30008C26AC /* bullets.png in Resources */,
-				BCE3629915D7FD30008C26AC /* bullets@2x.png in Resources */,
 				BCE362A115D7FD30008C26AC /* commonBarItemSettings.png in Resources */,
 				BCE362A915D7FD30008C26AC /* commonBarItemSettings@2x.png in Resources */,
 				BCE362B115D7FD30008C26AC /* commonBarItemSettingsDisabled.png in Resources */,
@@ -11926,8 +11834,6 @@
 				BCE3635915D7FD30008C26AC /* commonTableViewCell@2x.png in Resources */,
 				BCE3636115D7FD30008C26AC /* commonTextfield.png in Resources */,
 				BCE3636915D7FD30008C26AC /* commonTextfield@2x.png in Resources */,
-				BCE3637115D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */,
-				BCE3637915D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */,
 				BCE3638115D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638915D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639115D7FD30008C26AC /* EasyTracker.plist in Resources */,
@@ -11958,8 +11864,6 @@
 				BCE365A915D7FD30008C26AC /* loginBtnYasound@2x.png in Resources */,
 				BCE365B115D7FD30008C26AC /* loginLogoYasoundLarge.png in Resources */,
 				BCE365B915D7FD30008C26AC /* loginLogoYasoundLarge@2x.png in Resources */,
-				BCE365C115D7FD30008C26AC /* logo.png in Resources */,
-				BCE365C915D7FD30008C26AC /* logo@2x.png in Resources */,
 				BCE365D115D7FD30008C26AC /* menuBkg.png in Resources */,
 				BCE365D915D7FD30008C26AC /* menuBkg@2x.png in Resources */,
 				BCE365E115D7FD30008C26AC /* menuIconAccount.png in Resources */,
@@ -12357,8 +12261,6 @@
 				BCE3621C15D7FD2F008C26AC /* barRedItemMediumBkg@2x.png in Resources */,
 				BCE3622415D7FD2F008C26AC /* barRedItemMediumBkgHighlighted.png in Resources */,
 				BCE3622C15D7FD2F008C26AC /* barRedItemMediumBkgHighlighted@2x.png in Resources */,
-				BCE3629415D7FD30008C26AC /* bullets.png in Resources */,
-				BCE3629C15D7FD30008C26AC /* bullets@2x.png in Resources */,
 				BCE362A415D7FD30008C26AC /* commonBarItemSettings.png in Resources */,
 				BCE362AC15D7FD30008C26AC /* commonBarItemSettings@2x.png in Resources */,
 				BCE362B415D7FD30008C26AC /* commonBarItemSettingsDisabled.png in Resources */,
@@ -12385,8 +12287,6 @@
 				BCE3635C15D7FD30008C26AC /* commonTableViewCell@2x.png in Resources */,
 				BCE3636415D7FD30008C26AC /* commonTextfield.png in Resources */,
 				BCE3636C15D7FD30008C26AC /* commonTextfield@2x.png in Resources */,
-				BCE3637415D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */,
-				BCE3637C15D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */,
 				BCE3638415D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638C15D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639415D7FD30008C26AC /* EasyTracker.plist in Resources */,
@@ -12417,8 +12317,6 @@
 				BCE365AC15D7FD30008C26AC /* loginBtnYasound@2x.png in Resources */,
 				BCE365B415D7FD30008C26AC /* loginLogoYasoundLarge.png in Resources */,
 				BCE365BC15D7FD30008C26AC /* loginLogoYasoundLarge@2x.png in Resources */,
-				BCE365C415D7FD30008C26AC /* logo.png in Resources */,
-				BCE365CC15D7FD30008C26AC /* logo@2x.png in Resources */,
 				BCE365D415D7FD30008C26AC /* menuBkg.png in Resources */,
 				BCE365DC15D7FD30008C26AC /* menuBkg@2x.png in Resources */,
 				BCE365E415D7FD30008C26AC /* menuIconAccount.png in Resources */,
@@ -12816,8 +12714,6 @@
 				BCC752E515E689EF00CF7F7C /* barRedItemMediumBkg@2x.png in Resources */,
 				BCC752E615E689EF00CF7F7C /* barRedItemMediumBkgHighlighted.png in Resources */,
 				BCC752E715E689EF00CF7F7C /* barRedItemMediumBkgHighlighted@2x.png in Resources */,
-				BCC752E815E689EF00CF7F7C /* bullets.png in Resources */,
-				BCC752E915E689EF00CF7F7C /* bullets@2x.png in Resources */,
 				BCC752EA15E689EF00CF7F7C /* commonBarItemSettings.png in Resources */,
 				BCC752EB15E689EF00CF7F7C /* commonBarItemSettings@2x.png in Resources */,
 				BCC752EC15E689EF00CF7F7C /* commonBarItemSettingsDisabled.png in Resources */,
@@ -12844,8 +12740,6 @@
 				BCC7530115E689EF00CF7F7C /* commonTableViewCell@2x.png in Resources */,
 				BCC7530215E689EF00CF7F7C /* commonTextfield.png in Resources */,
 				BCC7530315E689EF00CF7F7C /* commonTextfield@2x.png in Resources */,
-				BCC7530415E689EF00CF7F7C /* CreateMyRadioBackground.png in Resources */,
-				BCC7530515E689EF00CF7F7C /* CreateMyRadioBackground@2x.png in Resources */,
 				BCC7530615E689EF00CF7F7C /* Default.png in Resources */,
 				BCC7530715E689EF00CF7F7C /* Default@2x.png in Resources */,
 				BCC7530815E689EF00CF7F7C /* EasyTracker.plist in Resources */,
@@ -12876,8 +12770,6 @@
 				BCC7532715E689EF00CF7F7C /* loginBtnYasound@2x.png in Resources */,
 				BCC7532815E689EF00CF7F7C /* loginLogoYasoundLarge.png in Resources */,
 				BCC7532915E689EF00CF7F7C /* loginLogoYasoundLarge@2x.png in Resources */,
-				BCC7532A15E689EF00CF7F7C /* logo.png in Resources */,
-				BCC7532B15E689EF00CF7F7C /* logo@2x.png in Resources */,
 				BCC7532C15E689EF00CF7F7C /* menuBkg.png in Resources */,
 				BCC7532D15E689EF00CF7F7C /* menuBkg@2x.png in Resources */,
 				BCC7532E15E689EF00CF7F7C /* menuIconAccount.png in Resources */,
@@ -13276,8 +13168,6 @@
 				BCE3621815D7FD2F008C26AC /* barRedItemMediumBkg@2x.png in Resources */,
 				BCE3622015D7FD2F008C26AC /* barRedItemMediumBkgHighlighted.png in Resources */,
 				BCE3622815D7FD2F008C26AC /* barRedItemMediumBkgHighlighted@2x.png in Resources */,
-				BCE3629015D7FD30008C26AC /* bullets.png in Resources */,
-				BCE3629815D7FD30008C26AC /* bullets@2x.png in Resources */,
 				BCE362A015D7FD30008C26AC /* commonBarItemSettings.png in Resources */,
 				BCE362A815D7FD30008C26AC /* commonBarItemSettings@2x.png in Resources */,
 				BCE362B015D7FD30008C26AC /* commonBarItemSettingsDisabled.png in Resources */,
@@ -13304,8 +13194,6 @@
 				BCE3635815D7FD30008C26AC /* commonTableViewCell@2x.png in Resources */,
 				BCE3636015D7FD30008C26AC /* commonTextfield.png in Resources */,
 				BCE3636815D7FD30008C26AC /* commonTextfield@2x.png in Resources */,
-				BCE3637015D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */,
-				BCE3637815D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */,
 				BCE3638015D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638815D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639015D7FD30008C26AC /* EasyTracker.plist in Resources */,
@@ -13336,8 +13224,6 @@
 				BCE365A815D7FD30008C26AC /* loginBtnYasound@2x.png in Resources */,
 				BCE365B015D7FD30008C26AC /* loginLogoYasoundLarge.png in Resources */,
 				BCE365B815D7FD30008C26AC /* loginLogoYasoundLarge@2x.png in Resources */,
-				BCE365C015D7FD30008C26AC /* logo.png in Resources */,
-				BCE365C815D7FD30008C26AC /* logo@2x.png in Resources */,
 				BCE365D015D7FD30008C26AC /* menuBkg.png in Resources */,
 				BCE365D815D7FD30008C26AC /* menuBkg@2x.png in Resources */,
 				BCE365E015D7FD30008C26AC /* menuIconAccount.png in Resources */,
@@ -13735,8 +13621,6 @@
 				BCE3621B15D7FD2F008C26AC /* barRedItemMediumBkg@2x.png in Resources */,
 				BCE3622315D7FD2F008C26AC /* barRedItemMediumBkgHighlighted.png in Resources */,
 				BCE3622B15D7FD2F008C26AC /* barRedItemMediumBkgHighlighted@2x.png in Resources */,
-				BCE3629315D7FD30008C26AC /* bullets.png in Resources */,
-				BCE3629B15D7FD30008C26AC /* bullets@2x.png in Resources */,
 				BCE362A315D7FD30008C26AC /* commonBarItemSettings.png in Resources */,
 				BCE362AB15D7FD30008C26AC /* commonBarItemSettings@2x.png in Resources */,
 				BCE362B315D7FD30008C26AC /* commonBarItemSettingsDisabled.png in Resources */,
@@ -13763,8 +13647,6 @@
 				BCE3635B15D7FD30008C26AC /* commonTableViewCell@2x.png in Resources */,
 				BCE3636315D7FD30008C26AC /* commonTextfield.png in Resources */,
 				BCE3636B15D7FD30008C26AC /* commonTextfield@2x.png in Resources */,
-				BCE3637315D7FD30008C26AC /* CreateMyRadioBackground.png in Resources */,
-				BCE3637B15D7FD30008C26AC /* CreateMyRadioBackground@2x.png in Resources */,
 				BCE3638315D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638B15D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639315D7FD30008C26AC /* EasyTracker.plist in Resources */,
@@ -13795,8 +13677,6 @@
 				BCE365AB15D7FD30008C26AC /* loginBtnYasound@2x.png in Resources */,
 				BCE365B315D7FD30008C26AC /* loginLogoYasoundLarge.png in Resources */,
 				BCE365BB15D7FD30008C26AC /* loginLogoYasoundLarge@2x.png in Resources */,
-				BCE365C315D7FD30008C26AC /* logo.png in Resources */,
-				BCE365CB15D7FD30008C26AC /* logo@2x.png in Resources */,
 				BCE365D315D7FD30008C26AC /* menuBkg.png in Resources */,
 				BCE365DB15D7FD30008C26AC /* menuBkg@2x.png in Resources */,
 				BCE365E315D7FD30008C26AC /* menuIconAccount.png in Resources */,
