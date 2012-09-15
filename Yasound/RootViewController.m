@@ -29,6 +29,7 @@
 #import "AccountTwitterViewController.h"
 #import "AccountFacebookViewController.h"
 #import "WebPageViewController.h"
+#import "Version.h"
 
 @class CreateRadioViewController;
 @class MyAccountViewController;
@@ -590,16 +591,20 @@
 
 - (void)gotoRadioSelectionAnimated:(BOOL)animated
 {
-    if (self.radioSelectionViewController != nil)
-    {
+    if (self.radioSelectionViewController != nil) {
         [self.navigationController popToViewController:self.radioSelectionViewController animated:animated];
         return;
     }
     
-    //[self.navigationController popToRootViewControllerAnimated:NO];
-    self.radioSelectionViewController = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:0];
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0")) {
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
+    else {
+        [self.navigationController popToViewController:APPDELEGATE.menuViewController animated:NO];
+    }
     
-    ICI
+    
+    self.radioSelectionViewController = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:0];
     [self.navigationController pushViewController:self.radioSelectionViewController animated:animated];
 }
 
@@ -649,7 +654,6 @@
 
 //    [self gotoMenuAnimated:NO];
     
-    ICI
     [self gotoRadioSelectionAnimated:NO];
 
     WallViewController* view = [[WallViewController alloc] initWithRadio:r];

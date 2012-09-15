@@ -86,13 +86,13 @@
 {
     self.menuHidden = NO;
     
-    for (UIViewController* view in self.viewControllers) {
- 
-        NSLog(@"view '%@'", [view class]);
-    }
+//    for (UIViewController* view in self.viewControllers) {
+// 
+//        NSLog(@"view '%@'", [view class]);
+//    }
     
-//    UIViewController* view = APPDELEGATE.menuViewController;
-//    [self popToViewController:view animated:YES];
+    UIViewController* view = APPDELEGATE.menuViewController;
+    [self popToViewController:view animated:YES];
 }
 
 
