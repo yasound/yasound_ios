@@ -212,6 +212,7 @@
         if (self.itemNotifsLabel) {
             [self.itemNotifsLabel removeFromSuperview];
             [self.itemNotifsLabel release];
+            self.itemNotifsLabel = nil;
         }
         
 //        [self.itemNotifsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
@@ -241,6 +242,8 @@
     if (self.itemNotifsLabel) {
         [self.itemNotifsLabel removeFromSuperview];
         [self.itemNotifsLabel release];
+        self.itemNotifsLabel = nil;
+        
     }
 
     Container* container = [req responseObjectsWithClass:[UserNotification class]];
