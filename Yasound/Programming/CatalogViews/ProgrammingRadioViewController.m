@@ -94,7 +94,7 @@
         if (([SongRadioCatalog main].radio.id != nil) && ![catalogId isEqualToString:newId])
         {
             [SongRadioCatalog releaseCatalog];
-            [SongLocalCatalog releaseCatalog];
+//            [SongLocalCatalog releaseCatalog];
             [DataBase releaseDatabase];
         }
         

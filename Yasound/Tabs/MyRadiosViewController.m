@@ -191,8 +191,9 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
         }
  
         NSNumber* nb = [self.editing objectForKey:radio.id];
-        assert(nb);
-        BOOL editing = [nb boolValue];
+        BOOL editing = NO;
+        if (!nb)
+            editing = [nb boolValue];
 
 
         cell.alpha = 0;
