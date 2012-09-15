@@ -11,7 +11,7 @@
 #import "PromoCodeCell.h"
 
 
-@interface GiftsViewController : UIViewController <UITextFieldDelegate, PromoCodeDelegate>
+@interface GiftsViewController : YaViewController <UITextFieldDelegate, PromoCodeDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView* tableView;
 @property (nonatomic, retain) IBOutlet UIImageView* iconHd;

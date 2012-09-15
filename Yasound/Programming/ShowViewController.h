@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ShowViewController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDataSource, UITableViewDelegate>
+@interface ShowViewController : YaViewController<UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UIPickerView* pickerview;
 @property (nonatomic, retain) NSMutableArray* days;

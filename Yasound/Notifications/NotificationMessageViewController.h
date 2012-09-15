@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "UserNotification.h"
 
-@interface NotificationMessageViewController : UIViewController
+@interface NotificationMessageViewController : YaViewController
 {
   IBOutlet UITextView* _textView;
 }

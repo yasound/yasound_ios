@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TopBarModal.h"
 
-@interface AccountYasoundViewController : UIViewController
+@interface AccountYasoundViewController : YaViewController
 {
     IBOutlet TopBarModal* _topbar;
     IBOutlet UITextField* _email;

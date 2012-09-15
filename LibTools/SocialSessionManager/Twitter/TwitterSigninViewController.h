@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TwitterSigninViewController : UIViewController
+@interface TwitterSigninViewController : YaViewController
 {
   IBOutlet UITableView* _tableView;
   IBOutlet UITableViewCell* _login;

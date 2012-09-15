@@ -1086,7 +1086,7 @@
 					<key>shadowRadius</key>
 					<real>0.5</real>
 					<key>shadowColor</key>
-					<string>white</string>
+					<string>black</string>
 					<key>shadowOpacity</key>
 					<real>0.75</real>
 					<key>weight</key>

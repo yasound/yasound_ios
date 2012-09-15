@@ -18,7 +18,7 @@
 
 
 
-@interface TwitterAccountsViewController : UIViewController
+@interface TwitterAccountsViewController : YaViewController
 {
   IBOutlet UITableView* _tableView;
 //  NSArray* _accounts;

@@ -236,15 +236,16 @@
         return;
     }
     
+    if (self.itemNotifsLabel) {
+        [self.itemNotifsLabel removeFromSuperview];
+        [self.itemNotifsLabel release];
+    }
+
     Container* container = [req responseObjectsWithClass:[UserNotification class]];
     NSArray* newNotifications = container.objects;
     
     if ((newNotifications == nil) || (newNotifications.count == 0)) {
         self.itemNotifsButton.selected = NO;
-        if (self.itemNotifsLabel) {
-            [self.itemNotifsLabel removeFromSuperview];
-            [self.itemNotifsLabel release];
-        }
 
         return;
     }
@@ -259,10 +260,6 @@
 
     if (counter == 0) {
         self.itemNotifsButton.selected = NO;
-        if (self.itemNotifsLabel) {
-            [self.itemNotifsLabel removeFromSuperview];
-            [self.itemNotifsLabel release];
-        }
         
         return;
     }

@@ -18,7 +18,7 @@
 - (void)bioDidReturn:(NSString*)bio;
 @end
 
-@interface BioViewController : UIViewController<UITextFieldDelegate>
+@interface BioViewController : YaViewController<UITextFieldDelegate>
 {
     IBOutlet WebImageView* _image;
     IBOutlet UIImageView* _mask;

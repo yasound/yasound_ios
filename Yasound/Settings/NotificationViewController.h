@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TopBarModal.h"
 
-@interface NotificationViewController : UIViewController<TopBarModalDelegate>
+@interface NotificationViewController : YaViewController<TopBarModalDelegate>
 {
     IBOutlet UITableView* _tableView;
 }

@@ -11,7 +11,7 @@
 
 
 
-@interface LocalSongInfoViewController : UIViewController
+@interface LocalSongInfoViewController : YaViewController
 {
 //    IBOutlet UIBarButtonItem* _backBtn;
 //    IBOutlet UILabel* _titleLabel;

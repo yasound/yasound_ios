@@ -11,7 +11,7 @@
 #import "WebImageView.h"
 #import "Radio.h"
 
-@interface ShareTwitterModalViewController : UIViewController<UITextFieldDelegate>
+@interface ShareTwitterModalViewController : YaViewController<UITextFieldDelegate>
 {
     IBOutlet WebImageView* _image;
     IBOutlet UIImageView* _mask;

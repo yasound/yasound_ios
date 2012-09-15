@@ -12,7 +12,7 @@
 #import "Radio.h"
 
 
-@interface SongInfoViewController : UIViewController
+@interface SongInfoViewController : YaViewController
 {
 //    IBOutlet UIBarButtonItem* _backBtn;
 //    IBOutlet UILabel* _titleLabel;

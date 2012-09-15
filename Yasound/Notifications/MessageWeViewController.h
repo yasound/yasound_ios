@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MessageWeViewController : UIViewController
+@interface MessageWeViewController : YaViewController
 {
   NSString* _url;
   

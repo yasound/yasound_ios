@@ -13,7 +13,7 @@
 #import "ProfilScrollview.h"
 #import "ProfilScrollviewRow.h"
 
-@interface ProfilViewController : UIViewController<TopBarDelegate>
+@interface ProfilViewController : YaViewController<TopBarDelegate>
 
 @property (nonatomic, retain) NSArray* radios;
 @property (nonatomic, retain) NSArray* favorites;

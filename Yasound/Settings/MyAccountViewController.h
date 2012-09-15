@@ -14,7 +14,7 @@
 #import "WebImageView.h"
 #import "BioViewController.h"
 
-@interface MyAccountViewController : UIViewController<TopBarModalDelegate,UITextFieldDelegate,DateViewDelegate,GenderPickerDelegate,BioDelegate>
+@interface MyAccountViewController : YaViewController<TopBarModalDelegate,UITextFieldDelegate,DateViewDelegate,GenderPickerDelegate,BioDelegate>
 {
     BOOL _changed;
     BOOL _imageChanged;
