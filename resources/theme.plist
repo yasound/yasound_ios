@@ -783,6 +783,17 @@
 					<key>type</key>
 					<string>png</string>
 				</dict>
+				<key>search</key>
+				<dict>
+					<key>x</key>
+					<string>120</string>
+					<key>y</key>
+					<string>60</string>
+					<key>name</key>
+					<string>bigMessageIconSearch</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
 				<key>gifts</key>
 				<dict>
 					<key>x</key>

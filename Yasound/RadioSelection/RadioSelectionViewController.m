@@ -285,6 +285,12 @@
         //viewC.view.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
         [self.listContainer addSubview:self.searchview.view];
 //        [self.searchview release];
+
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"BigMessage.Icons.search" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+       UIImageView* icon = [sheet makeImage];
+        
+        [self.searchview.view addSubview:icon];
+
         return;
     }
     
