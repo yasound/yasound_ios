@@ -96,6 +96,9 @@ typedef enum
   _searchController.searchResultsTableView.rowHeight = ROW_HEIGHT;
 
   _searchController.searchBar.placeholder = NSLocalizedString(@"SearchBar_Placeholder", nil);
+    
+    _searchController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
+
 }
 
 - (void)viewDidUnload
