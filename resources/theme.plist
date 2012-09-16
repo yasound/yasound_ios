@@ -3108,7 +3108,18 @@
 					<key>size</key>
 					<integer>13</integer>
 					<key>textColor</key>
+					<string>rgb(232,232,232)</string>
+					<key>weight</key>
+					<string>normal</string>
+				</dict>
+				<key>font.highlighted</key>
+				<dict>
+					<key>size</key>
+					<integer>13</integer>
+					<key>textColor</key>
 					<string>white</string>
+					<key>weight</key>
+					<string>bold</string>
 				</dict>
 				<key>height</key>
 				<integer>34</integer>
@@ -3213,7 +3224,7 @@
 			<key>readIcon</key>
 			<dict>
 				<key>name</key>
-				<string>IconNotifRead</string>
+				<string>notificationsIconRead</string>
 				<key>type</key>
 				<string>png</string>
 				<key>x</key>
@@ -3224,7 +3235,7 @@
 			<key>unreadIcon</key>
 			<dict>
 				<key>name</key>
-				<string>IconNotifUnread</string>
+				<string>notificationsIconUnread</string>
 				<key>type</key>
 				<string>png</string>
 				<key>x</key>
