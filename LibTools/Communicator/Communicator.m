@@ -984,7 +984,9 @@
         if ([self isTarget:config.callbackTarget connectedToRequest:req]) // call callback function only if it is stored in requests dictionary
         {
             [self removeRequest:req forTarget:config.callbackTarget];
-            [config.callbackTarget performSelector:config.callbackAction withObject:req withObject:[NSNumber numberWithBool:success]];
+            
+            if ([config.callbackTarget respondsToSelector:config.callbackAction])
+                [config.callbackTarget performSelector:config.callbackAction withObject:req withObject:[NSNumber numberWithBool:success]];
         }
     }
     
