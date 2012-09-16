@@ -116,9 +116,9 @@
 //    
 //    [[SongCatalog synchronizedCatalog] downloadMatchedSongsForRadio:self.radio target:self action:@selector(matchedSongsDownloaded:success:)];
     
-#ifdef DEBUG
-    [self.topbar showEditItemWithTarget:self action:@selector(onDebugItem:)];
-#endif
+//#ifdef DEBUG
+//    [self.topbar showEditItemWithTarget:self action:@selector(onDebugItem:)];
+//#endif
 }
 
 
@@ -632,6 +632,8 @@
 
 - (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
 {
+    if (itemIndex == PROGRAMMING_WHEEL_ITEM_YASOUND)
+        return NSLocalizedString(@"Programming.Catalog.yasound", nil);
     if (itemIndex == PROGRAMMING_WHEEL_ITEM_LOCAL)
         return NSLocalizedString(@"Programming.Catalog.local", nil);
     if (itemIndex == PROGRAMMING_WHEEL_ITEM_RADIO)
@@ -711,14 +713,14 @@
 
 
 
-#ifdef DEBUG
-
-- (void)onDebugItem:(id)sender {
-
-    [self.tableview.tableView reloadData];
-}
-
-#endif
+//#ifdef DEBUG
+//
+//- (void)onDebugItem:(id)sender {
+//
+//    [self.tableview.tableView reloadData];
+//}
+//
+//#endif
 
 
 
