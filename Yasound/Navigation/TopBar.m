@@ -107,6 +107,7 @@
     
     // check notifs
     [self updateNotifs];
+    
 
 }
 
@@ -146,6 +147,10 @@
     
     [self.customItems replaceObjectAtIndex:6 withObject:self.itemSettings];
     [self setItems:self.customItems];
+    
+    // check settings button
+    [self updateSettings:enabled];
+
 }
 
 
@@ -209,6 +214,7 @@
         self.itemNotifs.enabled = NO;
         self.itemNotifsButton.enabled = NO;
         self.itemNotifsButton.selected = NO;
+        
         if (self.itemNotifsLabel) {
             [self.itemNotifsLabel removeFromSuperview];
             [self.itemNotifsLabel release];
@@ -283,24 +289,14 @@
 
 
 
-- (void)updateSettings
+- (void)updateSettings:(BOOL)enabled
 {
-    BOOL enabled = NO;
-    
-    if ([YasoundSessionManager main].registered)
-    {
-        if ([AudioStreamManager main].currentRadio != nil)
-        {
-            enabled = ([[YasoundDataProvider main].user.id intValue] == [[AudioStreamManager main].currentRadio.creator.id intValue]);
-        }
-    }
-    
-    
     if (!enabled)
     {
         self.itemSettings.enabled = NO;
         self.itemSettingsButton.selected = NO;
         self.itemSettingsButton.enabled = NO;
+        self.itemSettingsButton.alpha = 0.5;
         
         [self.itemSettingsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
     }
@@ -308,6 +304,7 @@
     {
         self.itemSettings.enabled = YES;
         self.itemSettingsButton.enabled = YES;
+        self.itemSettingsButton.alpha = 1;
         [self.itemSettingsButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
         
         if ([[YasoundDataProvider main].user permission:PERM_HD])
@@ -512,14 +509,36 @@
 {
     [self updateHd];
     [self updateNotifs];
-    [self updateSettings];
+    
+    BOOL enabled = NO;
+    
+    if ([YasoundSessionManager main].registered)
+    {
+        if ([AudioStreamManager main].currentRadio != nil)
+        {
+            enabled = ([[YasoundDataProvider main].user.id intValue] == [[AudioStreamManager main].currentRadio.creator.id intValue]);
+        }
+    }
+
+    [self updateSettings:enabled];
 }
 
 - (void)onNotifDidLogin:(NSNotification*)notif
 {
     [self updateHd];
     [self updateNotifs];
-    [self updateSettings];
+    
+    BOOL enabled = NO;
+    
+    if ([YasoundSessionManager main].registered)
+    {
+        if ([AudioStreamManager main].currentRadio != nil)
+        {
+            enabled = ([[YasoundDataProvider main].user.id intValue] == [[AudioStreamManager main].currentRadio.creator.id intValue]);
+        }
+    }
+
+    [self updateSettings:enabled];
 }
 
 
