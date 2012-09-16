@@ -852,22 +852,6 @@
 		BC03C3C615E227B00017388D /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */; };
 		BC03C3C715E227B00017388D /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */; };
 		BC03C3C815E227B00017388D /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */; };
-		BC03C3CB15E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
-		BC03C3CC15E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
-		BC03C3CD15E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
-		BC03C3CE15E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
-		BC03C3CF15E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
-		BC03C3D015E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
-		BC03C3D115E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
-		BC03C3D215E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
-		BC03C3D315E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
-		BC03C3D415E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
-		BC03C3D515E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
-		BC03C3D615E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
-		BC03C3D715E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
-		BC03C3D815E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
-		BC03C3D915E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
-		BC03C3DA15E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
 		BC03C3DF15E241480017388D /* commonBigButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */; };
 		BC03C3E015E241480017388D /* commonBigButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */; };
 		BC03C3E115E241480017388D /* commonBigButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */; };
@@ -3174,10 +3158,6 @@
 		BCC7530615E689EF00CF7F7C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEB15D7FD2E008C26AC /* Default.png */; };
 		BCC7530715E689EF00CF7F7C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEC15D7FD2E008C26AC /* Default@2x.png */; };
 		BCC7530815E689EF00CF7F7C /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EED15D7FD2E008C26AC /* EasyTracker.plist */; };
-		BCC7530915E689EF00CF7F7C /* UserCellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEF15D7FD2E008C26AC /* UserCellRadioDark.png */; };
-		BCC7530A15E689EF00CF7F7C /* UserCellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF015D7FD2E008C26AC /* UserCellRadioDark@2x.png */; };
-		BCC7530B15E689EF00CF7F7C /* UserCellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF115D7FD2E008C26AC /* UserCellRadioLight.png */; };
-		BCC7530C15E689EF00CF7F7C /* UserCellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF215D7FD2E008C26AC /* UserCellRadioLight@2x.png */; };
 		BCC7531315E689EF00CF7F7C /* IconNotifRead.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F1215D7FD2E008C26AC /* IconNotifRead.png */; };
 		BCC7531415E689EF00CF7F7C /* IconNotifRead@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F1315D7FD2E008C26AC /* IconNotifRead@2x.png */; };
 		BCC7531515E689EF00CF7F7C /* IconNotifUnread.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F1415D7FD2E008C26AC /* IconNotifUnread.png */; };
@@ -3293,10 +3273,6 @@
 		BCC7539115E689EF00CF7F7C /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB615D7FD2F008C26AC /* radioListUserMask@2x.png */; };
 		BCC7539215E689EF00CF7F7C /* schedulingIconClock.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCD15D7FD2F008C26AC /* schedulingIconClock.png */; };
 		BCC7539315E689EF00CF7F7C /* schedulingIconClock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCE15D7FD2F008C26AC /* schedulingIconClock@2x.png */; };
-		BCC7539415E689EF00CF7F7C /* searchBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD015D7FD2F008C26AC /* searchBarBackground.png */; };
-		BCC7539515E689EF00CF7F7C /* searchBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */; };
-		BCC7539615E689EF00CF7F7C /* ShareBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE415D7FD2F008C26AC /* ShareBackground.png */; };
-		BCC7539715E689EF00CF7F7C /* ShareBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE515D7FD2F008C26AC /* ShareBackground@2x.png */; };
 		BCC7539815E689EF00CF7F7C /* notificationsIconHeart.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE715D7FD2F008C26AC /* notificationsIconHeart.png */; };
 		BCC7539915E689EF00CF7F7C /* notificationsIconHeart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE815D7FD2F008C26AC /* notificationsIconHeart@2x.png */; };
 		BCC7539A15E689EF00CF7F7C /* signinIconLocker.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE915D7FD2F008C26AC /* signinIconLocker.png */; };
@@ -3424,8 +3400,6 @@
 		BCC7543415E689EF00CF7F7C /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C39A15E2274C0017388D /* BioViewController.xib */; };
 		BCC7543515E689EF00CF7F7C /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A515E227AF0017388D /* ShareModalViewController.xib */; };
 		BCC7543615E689EF00CF7F7C /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */; };
-		BCC7543715E689EF00CF7F7C /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
-		BCC7543815E689EF00CF7F7C /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
 		BCC7543915E689EF00CF7F7C /* commonBigButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */; };
 		BCC7543A15E689EF00CF7F7C /* commonBigButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */; };
 		BCC7543B15E689EF00CF7F7C /* commonBigButtonRed.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DD15E241480017388D /* commonBigButtonRed.png */; };
@@ -4584,38 +4558,6 @@
 		BCE3639515D7FD30008C26AC /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EED15D7FD2E008C26AC /* EasyTracker.plist */; };
 		BCE3639615D7FD30008C26AC /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EED15D7FD2E008C26AC /* EasyTracker.plist */; };
 		BCE3639715D7FD30008C26AC /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EED15D7FD2E008C26AC /* EasyTracker.plist */; };
-		BCE3639815D7FD30008C26AC /* UserCellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEF15D7FD2E008C26AC /* UserCellRadioDark.png */; };
-		BCE3639915D7FD30008C26AC /* UserCellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEF15D7FD2E008C26AC /* UserCellRadioDark.png */; };
-		BCE3639A15D7FD30008C26AC /* UserCellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEF15D7FD2E008C26AC /* UserCellRadioDark.png */; };
-		BCE3639B15D7FD30008C26AC /* UserCellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEF15D7FD2E008C26AC /* UserCellRadioDark.png */; };
-		BCE3639C15D7FD30008C26AC /* UserCellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEF15D7FD2E008C26AC /* UserCellRadioDark.png */; };
-		BCE3639D15D7FD30008C26AC /* UserCellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEF15D7FD2E008C26AC /* UserCellRadioDark.png */; };
-		BCE3639E15D7FD30008C26AC /* UserCellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEF15D7FD2E008C26AC /* UserCellRadioDark.png */; };
-		BCE3639F15D7FD30008C26AC /* UserCellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EEF15D7FD2E008C26AC /* UserCellRadioDark.png */; };
-		BCE363A015D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF015D7FD2E008C26AC /* UserCellRadioDark@2x.png */; };
-		BCE363A115D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF015D7FD2E008C26AC /* UserCellRadioDark@2x.png */; };
-		BCE363A215D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF015D7FD2E008C26AC /* UserCellRadioDark@2x.png */; };
-		BCE363A315D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF015D7FD2E008C26AC /* UserCellRadioDark@2x.png */; };
-		BCE363A415D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF015D7FD2E008C26AC /* UserCellRadioDark@2x.png */; };
-		BCE363A515D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF015D7FD2E008C26AC /* UserCellRadioDark@2x.png */; };
-		BCE363A615D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF015D7FD2E008C26AC /* UserCellRadioDark@2x.png */; };
-		BCE363A715D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF015D7FD2E008C26AC /* UserCellRadioDark@2x.png */; };
-		BCE363A815D7FD30008C26AC /* UserCellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF115D7FD2E008C26AC /* UserCellRadioLight.png */; };
-		BCE363A915D7FD30008C26AC /* UserCellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF115D7FD2E008C26AC /* UserCellRadioLight.png */; };
-		BCE363AA15D7FD30008C26AC /* UserCellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF115D7FD2E008C26AC /* UserCellRadioLight.png */; };
-		BCE363AB15D7FD30008C26AC /* UserCellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF115D7FD2E008C26AC /* UserCellRadioLight.png */; };
-		BCE363AC15D7FD30008C26AC /* UserCellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF115D7FD2E008C26AC /* UserCellRadioLight.png */; };
-		BCE363AD15D7FD30008C26AC /* UserCellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF115D7FD2E008C26AC /* UserCellRadioLight.png */; };
-		BCE363AE15D7FD30008C26AC /* UserCellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF115D7FD2E008C26AC /* UserCellRadioLight.png */; };
-		BCE363AF15D7FD30008C26AC /* UserCellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF115D7FD2E008C26AC /* UserCellRadioLight.png */; };
-		BCE363B015D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF215D7FD2E008C26AC /* UserCellRadioLight@2x.png */; };
-		BCE363B115D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF215D7FD2E008C26AC /* UserCellRadioLight@2x.png */; };
-		BCE363B215D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF215D7FD2E008C26AC /* UserCellRadioLight@2x.png */; };
-		BCE363B315D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF215D7FD2E008C26AC /* UserCellRadioLight@2x.png */; };
-		BCE363B415D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF215D7FD2E008C26AC /* UserCellRadioLight@2x.png */; };
-		BCE363B515D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF215D7FD2E008C26AC /* UserCellRadioLight@2x.png */; };
-		BCE363B615D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF215D7FD2E008C26AC /* UserCellRadioLight@2x.png */; };
-		BCE363B715D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35EF215D7FD2E008C26AC /* UserCellRadioLight@2x.png */; };
 		BCE364A815D7FD30008C26AC /* IconNotifRead.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F1215D7FD2E008C26AC /* IconNotifRead.png */; };
 		BCE364A915D7FD30008C26AC /* IconNotifRead.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F1215D7FD2E008C26AC /* IconNotifRead.png */; };
 		BCE364AA15D7FD30008C26AC /* IconNotifRead.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F1215D7FD2E008C26AC /* IconNotifRead.png */; };
@@ -5536,38 +5478,6 @@
 		BCE36A1D15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCE15D7FD2F008C26AC /* schedulingIconClock@2x.png */; };
 		BCE36A1E15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCE15D7FD2F008C26AC /* schedulingIconClock@2x.png */; };
 		BCE36A1F15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCE15D7FD2F008C26AC /* schedulingIconClock@2x.png */; };
-		BCE36A2015D7FD30008C26AC /* searchBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD015D7FD2F008C26AC /* searchBarBackground.png */; };
-		BCE36A2115D7FD30008C26AC /* searchBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD015D7FD2F008C26AC /* searchBarBackground.png */; };
-		BCE36A2215D7FD30008C26AC /* searchBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD015D7FD2F008C26AC /* searchBarBackground.png */; };
-		BCE36A2315D7FD30008C26AC /* searchBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD015D7FD2F008C26AC /* searchBarBackground.png */; };
-		BCE36A2415D7FD30008C26AC /* searchBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD015D7FD2F008C26AC /* searchBarBackground.png */; };
-		BCE36A2515D7FD30008C26AC /* searchBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD015D7FD2F008C26AC /* searchBarBackground.png */; };
-		BCE36A2615D7FD30008C26AC /* searchBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD015D7FD2F008C26AC /* searchBarBackground.png */; };
-		BCE36A2715D7FD30008C26AC /* searchBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD015D7FD2F008C26AC /* searchBarBackground.png */; };
-		BCE36A2815D7FD30008C26AC /* searchBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */; };
-		BCE36A2915D7FD30008C26AC /* searchBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */; };
-		BCE36A2A15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */; };
-		BCE36A2B15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */; };
-		BCE36A2C15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */; };
-		BCE36A2D15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */; };
-		BCE36A2E15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */; };
-		BCE36A2F15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */; };
-		BCE36AB015D7FD30008C26AC /* ShareBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE415D7FD2F008C26AC /* ShareBackground.png */; };
-		BCE36AB115D7FD30008C26AC /* ShareBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE415D7FD2F008C26AC /* ShareBackground.png */; };
-		BCE36AB215D7FD30008C26AC /* ShareBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE415D7FD2F008C26AC /* ShareBackground.png */; };
-		BCE36AB315D7FD30008C26AC /* ShareBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE415D7FD2F008C26AC /* ShareBackground.png */; };
-		BCE36AB415D7FD30008C26AC /* ShareBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE415D7FD2F008C26AC /* ShareBackground.png */; };
-		BCE36AB515D7FD30008C26AC /* ShareBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE415D7FD2F008C26AC /* ShareBackground.png */; };
-		BCE36AB615D7FD30008C26AC /* ShareBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE415D7FD2F008C26AC /* ShareBackground.png */; };
-		BCE36AB715D7FD30008C26AC /* ShareBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE415D7FD2F008C26AC /* ShareBackground.png */; };
-		BCE36AB815D7FD30008C26AC /* ShareBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE515D7FD2F008C26AC /* ShareBackground@2x.png */; };
-		BCE36AB915D7FD30008C26AC /* ShareBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE515D7FD2F008C26AC /* ShareBackground@2x.png */; };
-		BCE36ABA15D7FD30008C26AC /* ShareBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE515D7FD2F008C26AC /* ShareBackground@2x.png */; };
-		BCE36ABB15D7FD30008C26AC /* ShareBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE515D7FD2F008C26AC /* ShareBackground@2x.png */; };
-		BCE36ABC15D7FD30008C26AC /* ShareBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE515D7FD2F008C26AC /* ShareBackground@2x.png */; };
-		BCE36ABD15D7FD30008C26AC /* ShareBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE515D7FD2F008C26AC /* ShareBackground@2x.png */; };
-		BCE36ABE15D7FD30008C26AC /* ShareBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE515D7FD2F008C26AC /* ShareBackground@2x.png */; };
-		BCE36ABF15D7FD30008C26AC /* ShareBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE515D7FD2F008C26AC /* ShareBackground@2x.png */; };
 		BCE36AC015D7FD30008C26AC /* notificationsIconHeart.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE715D7FD2F008C26AC /* notificationsIconHeart.png */; };
 		BCE36AC115D7FD30008C26AC /* notificationsIconHeart.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE715D7FD2F008C26AC /* notificationsIconHeart.png */; };
 		BCE36AC215D7FD30008C26AC /* notificationsIconHeart.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE715D7FD2F008C26AC /* notificationsIconHeart.png */; };
@@ -6707,8 +6617,6 @@
 		BC03C3A615E227AF0017388D /* ShareTwitterModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTwitterModalViewController.h; sourceTree = "<group>"; };
 		BC03C3A715E227AF0017388D /* ShareTwitterModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTwitterModalViewController.m; sourceTree = "<group>"; };
 		BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareTwitterModalViewController.xib; sourceTree = "<group>"; };
-		BC03C3C915E2285D0017388D /* shareShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareShadow.png; sourceTree = "<group>"; };
-		BC03C3CA15E2285D0017388D /* shareShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareShadow@2x.png"; sourceTree = "<group>"; };
 		BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonBigButtonDisabled.png; sourceTree = "<group>"; };
 		BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonBigButtonDisabled@2x.png"; sourceTree = "<group>"; };
 		BC03C3DD15E241480017388D /* commonBigButtonRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonBigButtonRed.png; sourceTree = "<group>"; };
@@ -7306,10 +7214,6 @@
 		BCE35EEB15D7FD2E008C26AC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BCE35EEC15D7FD2E008C26AC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BCE35EED15D7FD2E008C26AC /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
-		BCE35EEF15D7FD2E008C26AC /* UserCellRadioDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserCellRadioDark.png; sourceTree = "<group>"; };
-		BCE35EF015D7FD2E008C26AC /* UserCellRadioDark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserCellRadioDark@2x.png"; sourceTree = "<group>"; };
-		BCE35EF115D7FD2E008C26AC /* UserCellRadioLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserCellRadioLight.png; sourceTree = "<group>"; };
-		BCE35EF215D7FD2E008C26AC /* UserCellRadioLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserCellRadioLight@2x.png"; sourceTree = "<group>"; };
 		BCE35F1215D7FD2E008C26AC /* IconNotifRead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconNotifRead.png; sourceTree = "<group>"; };
 		BCE35F1315D7FD2E008C26AC /* IconNotifRead@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconNotifRead@2x.png"; sourceTree = "<group>"; };
 		BCE35F1415D7FD2E008C26AC /* IconNotifUnread.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconNotifUnread.png; sourceTree = "<group>"; };
@@ -7425,10 +7329,6 @@
 		BCE35FB615D7FD2F008C26AC /* radioListUserMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListUserMask@2x.png"; sourceTree = "<group>"; };
 		BCE35FCD15D7FD2F008C26AC /* schedulingIconClock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedulingIconClock.png; sourceTree = "<group>"; };
 		BCE35FCE15D7FD2F008C26AC /* schedulingIconClock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedulingIconClock@2x.png"; sourceTree = "<group>"; };
-		BCE35FD015D7FD2F008C26AC /* searchBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchBarBackground.png; sourceTree = "<group>"; };
-		BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarBackground@2x.png"; sourceTree = "<group>"; };
-		BCE35FE415D7FD2F008C26AC /* ShareBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareBackground.png; sourceTree = "<group>"; };
-		BCE35FE515D7FD2F008C26AC /* ShareBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShareBackground@2x.png"; sourceTree = "<group>"; };
 		BCE35FE715D7FD2F008C26AC /* notificationsIconHeart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationsIconHeart.png; sourceTree = "<group>"; };
 		BCE35FE815D7FD2F008C26AC /* notificationsIconHeart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notificationsIconHeart@2x.png"; sourceTree = "<group>"; };
 		BCE35FE915D7FD2F008C26AC /* signinIconLocker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signinIconLocker.png; sourceTree = "<group>"; };
@@ -9147,17 +9047,6 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		BCE35EEE15D7FD2E008C26AC /* Friends */ = {
-			isa = PBXGroup;
-			children = (
-				BCE35EEF15D7FD2E008C26AC /* UserCellRadioDark.png */,
-				BCE35EF015D7FD2E008C26AC /* UserCellRadioDark@2x.png */,
-				BCE35EF115D7FD2E008C26AC /* UserCellRadioLight.png */,
-				BCE35EF215D7FD2E008C26AC /* UserCellRadioLight@2x.png */,
-			);
-			path = Friends;
-			sourceTree = "<group>";
-		};
 		BCE35EF915D7FD2E008C26AC /* Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -9392,26 +9281,6 @@
 			path = Scheduling;
 			sourceTree = "<group>";
 		};
-		BCE35FCF15D7FD2F008C26AC /* SearchBar */ = {
-			isa = PBXGroup;
-			children = (
-				BCE35FD015D7FD2F008C26AC /* searchBarBackground.png */,
-				BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */,
-			);
-			path = SearchBar;
-			sourceTree = "<group>";
-		};
-		BCE35FE315D7FD2F008C26AC /* Share */ = {
-			isa = PBXGroup;
-			children = (
-				BC03C3C915E2285D0017388D /* shareShadow.png */,
-				BC03C3CA15E2285D0017388D /* shareShadow@2x.png */,
-				BCE35FE415D7FD2F008C26AC /* ShareBackground.png */,
-				BCE35FE515D7FD2F008C26AC /* ShareBackground@2x.png */,
-			);
-			path = Share;
-			sourceTree = "<group>";
-		};
 		BCE35FE615D7FD2F008C26AC /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -9595,7 +9464,6 @@
 				BCE35EEB15D7FD2E008C26AC /* Default.png */,
 				BCE35EEC15D7FD2E008C26AC /* Default@2x.png */,
 				BCE35EED15D7FD2E008C26AC /* EasyTracker.plist */,
-				BCE35EEE15D7FD2E008C26AC /* Friends */,
 				BCE35EF915D7FD2E008C26AC /* Icons */,
 				BCE35F2815D7FD2E008C26AC /* iTunesArtwork */,
 				BCDABBB915F74410002E8708 /* Icon-72.png */,
@@ -9617,9 +9485,7 @@
 				BCE35FA315D7FD2F008C26AC /* Programming */,
 				BCE35FAA15D7FD2F008C26AC /* RadioList */,
 				BCE35FCC15D7FD2F008C26AC /* Scheduling */,
-				BCE35FCF15D7FD2F008C26AC /* SearchBar */,
 				BC03C33315E1418F0017388D /* Stats */,
-				BCE35FE315D7FD2F008C26AC /* Share */,
 				BCE35FE615D7FD2F008C26AC /* SignIn */,
 				BCE3602215D7FD2F008C26AC /* TableView */,
 				BCE3604515D7FD2F008C26AC /* TableViewPlain */,
@@ -10161,10 +10027,6 @@
 				BCE3638615D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638E15D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639615D7FD30008C26AC /* EasyTracker.plist in Resources */,
-				BCE3639E15D7FD30008C26AC /* UserCellRadioDark.png in Resources */,
-				BCE363A615D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */,
-				BCE363AE15D7FD30008C26AC /* UserCellRadioLight.png in Resources */,
-				BCE363B615D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */,
 				BCE364AE15D7FD30008C26AC /* IconNotifRead.png in Resources */,
 				BCE364B615D7FD30008C26AC /* IconNotifRead@2x.png in Resources */,
 				BCE364BE15D7FD30008C26AC /* IconNotifUnread.png in Resources */,
@@ -10280,10 +10142,6 @@
 				BCE3696E15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
 				BCE36A1615D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1E15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
-				BCE36A2615D7FD30008C26AC /* searchBarBackground.png in Resources */,
-				BCE36A2E15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36AB615D7FD30008C26AC /* ShareBackground.png in Resources */,
-				BCE36ABE15D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC615D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
 				BCE36ACE15D7FD30008C26AC /* notificationsIconHeart@2x.png in Resources */,
 				BCE36AD615D7FD30008C26AC /* signinIconLocker.png in Resources */,
@@ -10411,8 +10269,6 @@
 				BC03C3A115E2274C0017388D /* BioViewController.xib in Resources */,
 				BC03C3B715E227B00017388D /* ShareModalViewController.xib in Resources */,
 				BC03C3C715E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
-				BC03C3D115E2285D0017388D /* shareShadow.png in Resources */,
-				BC03C3D915E2285D0017388D /* shareShadow@2x.png in Resources */,
 				BC03C3E515E241480017388D /* commonBigButtonDisabled.png in Resources */,
 				BC03C3ED15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F515E241480017388D /* commonBigButtonRed.png in Resources */,
@@ -10627,10 +10483,6 @@
 				BCE3638715D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638F15D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639715D7FD30008C26AC /* EasyTracker.plist in Resources */,
-				BCE3639F15D7FD30008C26AC /* UserCellRadioDark.png in Resources */,
-				BCE363A715D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */,
-				BCE363AF15D7FD30008C26AC /* UserCellRadioLight.png in Resources */,
-				BCE363B715D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */,
 				BCE364AF15D7FD30008C26AC /* IconNotifRead.png in Resources */,
 				BCE364B715D7FD30008C26AC /* IconNotifRead@2x.png in Resources */,
 				BCE364BF15D7FD30008C26AC /* IconNotifUnread.png in Resources */,
@@ -10746,10 +10598,6 @@
 				BCE3696F15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
 				BCE36A1715D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1F15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
-				BCE36A2715D7FD30008C26AC /* searchBarBackground.png in Resources */,
-				BCE36A2F15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36AB715D7FD30008C26AC /* ShareBackground.png in Resources */,
-				BCE36ABF15D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC715D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
 				BCE36ACF15D7FD30008C26AC /* notificationsIconHeart@2x.png in Resources */,
 				BCE36AD715D7FD30008C26AC /* signinIconLocker.png in Resources */,
@@ -10877,8 +10725,6 @@
 				BC03C3A215E2274C0017388D /* BioViewController.xib in Resources */,
 				BC03C3B815E227B00017388D /* ShareModalViewController.xib in Resources */,
 				BC03C3C815E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
-				BC03C3D215E2285D0017388D /* shareShadow.png in Resources */,
-				BC03C3DA15E2285D0017388D /* shareShadow@2x.png in Resources */,
 				BC03C3E615E241480017388D /* commonBigButtonDisabled.png in Resources */,
 				BC03C3EE15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F615E241480017388D /* commonBigButtonRed.png in Resources */,
@@ -11087,10 +10933,6 @@
 				BCE3638515D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638D15D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639515D7FD30008C26AC /* EasyTracker.plist in Resources */,
-				BCE3639D15D7FD30008C26AC /* UserCellRadioDark.png in Resources */,
-				BCE363A515D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */,
-				BCE363AD15D7FD30008C26AC /* UserCellRadioLight.png in Resources */,
-				BCE363B515D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */,
 				BCE364AD15D7FD30008C26AC /* IconNotifRead.png in Resources */,
 				BCE364B515D7FD30008C26AC /* IconNotifRead@2x.png in Resources */,
 				BCE364BD15D7FD30008C26AC /* IconNotifUnread.png in Resources */,
@@ -11206,10 +11048,6 @@
 				BCE3696D15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
 				BCE36A1515D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1D15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
-				BCE36A2515D7FD30008C26AC /* searchBarBackground.png in Resources */,
-				BCE36A2D15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36AB515D7FD30008C26AC /* ShareBackground.png in Resources */,
-				BCE36ABD15D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC515D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
 				BCE36ACD15D7FD30008C26AC /* notificationsIconHeart@2x.png in Resources */,
 				BCE36AD515D7FD30008C26AC /* signinIconLocker.png in Resources */,
@@ -11337,8 +11175,6 @@
 				BC03C3A015E2274C0017388D /* BioViewController.xib in Resources */,
 				BC03C3B615E227B00017388D /* ShareModalViewController.xib in Resources */,
 				BC03C3C615E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
-				BC03C3D015E2285D0017388D /* shareShadow.png in Resources */,
-				BC03C3D815E2285D0017388D /* shareShadow@2x.png in Resources */,
 				BC03C3E415E241480017388D /* commonBigButtonDisabled.png in Resources */,
 				BC03C3EC15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F415E241480017388D /* commonBigButtonRed.png in Resources */,
@@ -11552,10 +11388,6 @@
 				BCE3638215D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638A15D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639215D7FD30008C26AC /* EasyTracker.plist in Resources */,
-				BCE3639A15D7FD30008C26AC /* UserCellRadioDark.png in Resources */,
-				BCE363A215D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */,
-				BCE363AA15D7FD30008C26AC /* UserCellRadioLight.png in Resources */,
-				BCE363B215D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */,
 				BCE364AA15D7FD30008C26AC /* IconNotifRead.png in Resources */,
 				BCE364B215D7FD30008C26AC /* IconNotifRead@2x.png in Resources */,
 				BCE364BA15D7FD30008C26AC /* IconNotifUnread.png in Resources */,
@@ -11671,10 +11503,6 @@
 				BCE3696A15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
 				BCE36A1215D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1A15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
-				BCE36A2215D7FD30008C26AC /* searchBarBackground.png in Resources */,
-				BCE36A2A15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36AB215D7FD30008C26AC /* ShareBackground.png in Resources */,
-				BCE36ABA15D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC215D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
 				BCE36ACA15D7FD30008C26AC /* notificationsIconHeart@2x.png in Resources */,
 				BCE36AD215D7FD30008C26AC /* signinIconLocker.png in Resources */,
@@ -11802,8 +11630,6 @@
 				BC03C39D15E2274C0017388D /* BioViewController.xib in Resources */,
 				BC03C3B315E227B00017388D /* ShareModalViewController.xib in Resources */,
 				BC03C3C315E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
-				BC03C3CD15E2285D0017388D /* shareShadow.png in Resources */,
-				BC03C3D515E2285D0017388D /* shareShadow@2x.png in Resources */,
 				BC03C3E115E241480017388D /* commonBigButtonDisabled.png in Resources */,
 				BC03C3E915E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F115E241480017388D /* commonBigButtonRed.png in Resources */,
@@ -12017,10 +11843,6 @@
 				BCE3638115D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638915D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639115D7FD30008C26AC /* EasyTracker.plist in Resources */,
-				BCE3639915D7FD30008C26AC /* UserCellRadioDark.png in Resources */,
-				BCE363A115D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */,
-				BCE363A915D7FD30008C26AC /* UserCellRadioLight.png in Resources */,
-				BCE363B115D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */,
 				BCE364A915D7FD30008C26AC /* IconNotifRead.png in Resources */,
 				BCE364B115D7FD30008C26AC /* IconNotifRead@2x.png in Resources */,
 				BCE364B915D7FD30008C26AC /* IconNotifUnread.png in Resources */,
@@ -12136,10 +11958,6 @@
 				BCE3696915D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
 				BCE36A1115D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1915D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
-				BCE36A2115D7FD30008C26AC /* searchBarBackground.png in Resources */,
-				BCE36A2915D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36AB115D7FD30008C26AC /* ShareBackground.png in Resources */,
-				BCE36AB915D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC115D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
 				BCE36AC915D7FD30008C26AC /* notificationsIconHeart@2x.png in Resources */,
 				BCE36AD115D7FD30008C26AC /* signinIconLocker.png in Resources */,
@@ -12267,8 +12085,6 @@
 				BC03C39C15E2274C0017388D /* BioViewController.xib in Resources */,
 				BC03C3B215E227B00017388D /* ShareModalViewController.xib in Resources */,
 				BC03C3C215E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
-				BC03C3CC15E2285D0017388D /* shareShadow.png in Resources */,
-				BC03C3D415E2285D0017388D /* shareShadow@2x.png in Resources */,
 				BC03C3E015E241480017388D /* commonBigButtonDisabled.png in Resources */,
 				BC03C3E815E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F015E241480017388D /* commonBigButtonRed.png in Resources */,
@@ -12482,10 +12298,6 @@
 				BCE3638415D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638C15D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639415D7FD30008C26AC /* EasyTracker.plist in Resources */,
-				BCE3639C15D7FD30008C26AC /* UserCellRadioDark.png in Resources */,
-				BCE363A415D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */,
-				BCE363AC15D7FD30008C26AC /* UserCellRadioLight.png in Resources */,
-				BCE363B415D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */,
 				BCE364AC15D7FD30008C26AC /* IconNotifRead.png in Resources */,
 				BCE364B415D7FD30008C26AC /* IconNotifRead@2x.png in Resources */,
 				BCE364BC15D7FD30008C26AC /* IconNotifUnread.png in Resources */,
@@ -12601,10 +12413,6 @@
 				BCE3696C15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
 				BCE36A1415D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1C15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
-				BCE36A2415D7FD30008C26AC /* searchBarBackground.png in Resources */,
-				BCE36A2C15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36AB415D7FD30008C26AC /* ShareBackground.png in Resources */,
-				BCE36ABC15D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC415D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
 				BCE36ACC15D7FD30008C26AC /* notificationsIconHeart@2x.png in Resources */,
 				BCE36AD415D7FD30008C26AC /* signinIconLocker.png in Resources */,
@@ -12732,8 +12540,6 @@
 				BC03C39F15E2274C0017388D /* BioViewController.xib in Resources */,
 				BC03C3B515E227B00017388D /* ShareModalViewController.xib in Resources */,
 				BC03C3C515E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
-				BC03C3CF15E2285D0017388D /* shareShadow.png in Resources */,
-				BC03C3D715E2285D0017388D /* shareShadow@2x.png in Resources */,
 				BC03C3E315E241480017388D /* commonBigButtonDisabled.png in Resources */,
 				BC03C3EB15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F315E241480017388D /* commonBigButtonRed.png in Resources */,
@@ -12947,10 +12753,6 @@
 				BCC7530615E689EF00CF7F7C /* Default.png in Resources */,
 				BCC7530715E689EF00CF7F7C /* Default@2x.png in Resources */,
 				BCC7530815E689EF00CF7F7C /* EasyTracker.plist in Resources */,
-				BCC7530915E689EF00CF7F7C /* UserCellRadioDark.png in Resources */,
-				BCC7530A15E689EF00CF7F7C /* UserCellRadioDark@2x.png in Resources */,
-				BCC7530B15E689EF00CF7F7C /* UserCellRadioLight.png in Resources */,
-				BCC7530C15E689EF00CF7F7C /* UserCellRadioLight@2x.png in Resources */,
 				BCC7531315E689EF00CF7F7C /* IconNotifRead.png in Resources */,
 				BCC7531415E689EF00CF7F7C /* IconNotifRead@2x.png in Resources */,
 				BCC7531515E689EF00CF7F7C /* IconNotifUnread.png in Resources */,
@@ -13066,10 +12868,6 @@
 				BCC7539115E689EF00CF7F7C /* radioListUserMask@2x.png in Resources */,
 				BCC7539215E689EF00CF7F7C /* schedulingIconClock.png in Resources */,
 				BCC7539315E689EF00CF7F7C /* schedulingIconClock@2x.png in Resources */,
-				BCC7539415E689EF00CF7F7C /* searchBarBackground.png in Resources */,
-				BCC7539515E689EF00CF7F7C /* searchBarBackground@2x.png in Resources */,
-				BCC7539615E689EF00CF7F7C /* ShareBackground.png in Resources */,
-				BCC7539715E689EF00CF7F7C /* ShareBackground@2x.png in Resources */,
 				BCC7539815E689EF00CF7F7C /* notificationsIconHeart.png in Resources */,
 				BCC7539915E689EF00CF7F7C /* notificationsIconHeart@2x.png in Resources */,
 				BCC7539A15E689EF00CF7F7C /* signinIconLocker.png in Resources */,
@@ -13197,8 +12995,6 @@
 				BCC7543415E689EF00CF7F7C /* BioViewController.xib in Resources */,
 				BCC7543515E689EF00CF7F7C /* ShareModalViewController.xib in Resources */,
 				BCC7543615E689EF00CF7F7C /* ShareTwitterModalViewController.xib in Resources */,
-				BCC7543715E689EF00CF7F7C /* shareShadow.png in Resources */,
-				BCC7543815E689EF00CF7F7C /* shareShadow@2x.png in Resources */,
 				BCC7543915E689EF00CF7F7C /* commonBigButtonDisabled.png in Resources */,
 				BCC7543A15E689EF00CF7F7C /* commonBigButtonDisabled@2x.png in Resources */,
 				BCC7543B15E689EF00CF7F7C /* commonBigButtonRed.png in Resources */,
@@ -13413,10 +13209,6 @@
 				BCE3638015D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638815D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639015D7FD30008C26AC /* EasyTracker.plist in Resources */,
-				BCE3639815D7FD30008C26AC /* UserCellRadioDark.png in Resources */,
-				BCE363A015D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */,
-				BCE363A815D7FD30008C26AC /* UserCellRadioLight.png in Resources */,
-				BCE363B015D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */,
 				BCE364A815D7FD30008C26AC /* IconNotifRead.png in Resources */,
 				BCE364B015D7FD30008C26AC /* IconNotifRead@2x.png in Resources */,
 				BCE364B815D7FD30008C26AC /* IconNotifUnread.png in Resources */,
@@ -13532,10 +13324,6 @@
 				BCE3696815D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
 				BCE36A1015D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1815D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
-				BCE36A2015D7FD30008C26AC /* searchBarBackground.png in Resources */,
-				BCE36A2815D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36AB015D7FD30008C26AC /* ShareBackground.png in Resources */,
-				BCE36AB815D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC015D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
 				BCE36AC815D7FD30008C26AC /* notificationsIconHeart@2x.png in Resources */,
 				BCE36AD015D7FD30008C26AC /* signinIconLocker.png in Resources */,
@@ -13663,8 +13451,6 @@
 				BC03C39B15E2274C0017388D /* BioViewController.xib in Resources */,
 				BC03C3B115E227B00017388D /* ShareModalViewController.xib in Resources */,
 				BC03C3C115E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
-				BC03C3CB15E2285D0017388D /* shareShadow.png in Resources */,
-				BC03C3D315E2285D0017388D /* shareShadow@2x.png in Resources */,
 				BC03C3DF15E241480017388D /* commonBigButtonDisabled.png in Resources */,
 				BC03C3E715E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3EF15E241480017388D /* commonBigButtonRed.png in Resources */,
@@ -13878,10 +13664,6 @@
 				BCE3638315D7FD30008C26AC /* Default.png in Resources */,
 				BCE3638B15D7FD30008C26AC /* Default@2x.png in Resources */,
 				BCE3639315D7FD30008C26AC /* EasyTracker.plist in Resources */,
-				BCE3639B15D7FD30008C26AC /* UserCellRadioDark.png in Resources */,
-				BCE363A315D7FD30008C26AC /* UserCellRadioDark@2x.png in Resources */,
-				BCE363AB15D7FD30008C26AC /* UserCellRadioLight.png in Resources */,
-				BCE363B315D7FD30008C26AC /* UserCellRadioLight@2x.png in Resources */,
 				BCE364AB15D7FD30008C26AC /* IconNotifRead.png in Resources */,
 				BCE364B315D7FD30008C26AC /* IconNotifRead@2x.png in Resources */,
 				BCE364BB15D7FD30008C26AC /* IconNotifUnread.png in Resources */,
@@ -13997,10 +13779,6 @@
 				BCE3696B15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
 				BCE36A1315D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1B15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
-				BCE36A2315D7FD30008C26AC /* searchBarBackground.png in Resources */,
-				BCE36A2B15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36AB315D7FD30008C26AC /* ShareBackground.png in Resources */,
-				BCE36ABB15D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC315D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
 				BCE36ACB15D7FD30008C26AC /* notificationsIconHeart@2x.png in Resources */,
 				BCE36AD315D7FD30008C26AC /* signinIconLocker.png in Resources */,
@@ -14128,8 +13906,6 @@
 				BC03C39E15E2274C0017388D /* BioViewController.xib in Resources */,
 				BC03C3B415E227B00017388D /* ShareModalViewController.xib in Resources */,
 				BC03C3C415E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
-				BC03C3CE15E2285D0017388D /* shareShadow.png in Resources */,
-				BC03C3D615E2285D0017388D /* shareShadow@2x.png in Resources */,
 				BC03C3E215E241480017388D /* commonBigButtonDisabled.png in Resources */,
 				BC03C3EA15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F215E241480017388D /* commonBigButtonRed.png in Resources */,
