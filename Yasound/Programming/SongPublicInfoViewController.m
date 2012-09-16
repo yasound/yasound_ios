@@ -177,9 +177,9 @@
             cell.backgroundColor = [UIColor blackColor];
             
             
-            if (self.song.cover)
+            if (self.song.large_cover)
             {
-                NSURL* url = [[YasoundDataProvider main] urlForPicture:self.song.cover];
+                NSURL* url = [[YasoundDataProvider main] urlForPicture:self.song.large_cover];
                 _imageView = [[WebImageView alloc] initWithImageAtURL:url];
             }
             else
