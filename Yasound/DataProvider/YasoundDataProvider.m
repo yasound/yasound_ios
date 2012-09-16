@@ -1211,6 +1211,12 @@ static YasoundDataProvider* _main = nil;
       return nil;
   Auth* auth = self.apiKeyAuth;
   NSNumber* radioID = radio.id;
+    
+    // it happens once in a crash lytics report, let's to find out why
+    if (radioID == nil) {
+        assert(0);
+        return nil;
+    }
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
     
     NSMutableArray* params = [[NSMutableArray alloc] init];
