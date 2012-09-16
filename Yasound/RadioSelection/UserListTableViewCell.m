@@ -31,7 +31,7 @@
 @synthesize target;
 @synthesize action;
 
-#define USER_IMAGE_SIZE 117.f
+#define USER_IMAGE_SIZE 65.f
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier users:(NSArray*)users delay:(CGFloat)delay target:(id)target action:(SEL)action
 {
@@ -52,7 +52,7 @@
         {
             [self addItemGui:user itemIndex:itemIndex xOffset:xOffset];
             itemIndex++;
-            xOffset += (self.frame.size.width / 2.f);
+            xOffset += (self.frame.size.width / 3.f);
         }
         
         if (delay)
@@ -100,6 +100,7 @@
     // name
     sheet = [[Theme theme] stylesheetForKey:@"Users.name"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UILabel* name = [sheet makeLabel];
+    name.adjustsFontSizeToFitWidth = YES;
     name.text = user.name;
     [container addSubview:name];
 
@@ -165,7 +166,7 @@
         {
             [self addItemGui:user itemIndex:itemIndex xOffset:xOffset];
             itemIndex++;
-            xOffset += (self.frame.size.width / 2.f);
+            xOffset += (self.frame.size.width / 3.f);
             continue;
         }
 
@@ -188,7 +189,7 @@
 
 
         itemIndex++;
-        xOffset += (self.frame.size.width / 2.f);
+        xOffset += (self.frame.size.width / 3.f);
 
     }
 

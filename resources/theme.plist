@@ -301,6 +301,13 @@
 					<key>type</key>
 					<string>png</string>
 				</dict>
+				<key>rowSingleBig</key>
+				<dict>
+					<key>name</key>
+					<string>CellRowSingleBig</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
 				<key>rowFirst</key>
 				<dict>
 					<key>name</key>
@@ -1412,13 +1419,13 @@
 			<key>name</key>
 			<dict>
 				<key>height</key>
-				<integer>30</integer>
+				<integer>22</integer>
 				<key>x</key>
-				<integer>2</integer>
+				<integer>4</integer>
 				<key>y</key>
-				<integer>132</integer>
+				<integer>78</integer>
 				<key>width</key>
-				<integer>156</integer>
+				<integer>98</integer>
 				<key>font</key>
 				<dict>
 					<key>weight</key>
@@ -1426,43 +1433,43 @@
 					<key>textAlignment</key>
 					<string>center</string>
 					<key>size</key>
-					<integer>13</integer>
+					<integer>11</integer>
 					<key>textColor</key>
-					<string>rgb(51,51,51)</string>
+					<string>rgb(72,72,72)</string>
 				</dict>
 			</dict>
 			<key>mask</key>
 			<dict>
 				<key>x</key>
-				<integer>2</integer>
+				<integer>9</integer>
 				<key>y</key>
-				<integer>8</integer>
+				<integer>10</integer>
 				<key>type</key>
 				<string>png</string>
 				<key>name</key>
-				<string>radioListFriendMask</string>
+				<string>radioListFriendMask65</string>
 			</dict>
 			<key>maskHighlighted</key>
 			<dict>
 				<key>x</key>
-				<integer>2</integer>
+				<integer>9</integer>
 				<key>y</key>
-				<integer>8</integer>
+				<integer>10</integer>
 				<key>type</key>
 				<string>png</string>
 				<key>name</key>
-				<string>radioListFriendMaskHighlighted</string>
+				<string>radioListFriendMask65Highlighted</string>
 			</dict>
 			<key>image</key>
 			<dict>
 				<key>height</key>
-				<integer>117</integer>
+				<integer>65</integer>
 				<key>x</key>
 				<integer>20</integer>
 				<key>y</key>
 				<integer>14</integer>
 				<key>width</key>
-				<integer>117</integer>
+				<integer>65</integer>
 			</dict>
 		</dict>
 		<key>TableViews</key>

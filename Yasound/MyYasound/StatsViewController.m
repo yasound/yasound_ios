@@ -361,42 +361,6 @@
         cell.backgroundView = [sheet makeImage];
     }
 
-//    if (nbRows == 1)
-//    {
-//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//    else if (indexPath.row == 0)
-//    {
-//        UIImageView* view = nil;
-//        if (isUserRadio)
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldFirst.png"]];
-//        else
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//    else if (indexPath.row == (nbRows -1))
-//    {
-//        UIImageView* view = nil;
-//        if (isUserRadio)
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldLast.png"]];
-//        else
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//    else
-//    {
-//        UIImageView* view = nil;
-//        if (isUserRadio)
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldInter.png"]];
-//        else
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
     
 }
 
