@@ -1448,6 +1448,8 @@
 				<string>png</string>
 				<key>name</key>
 				<string>radioListFriendMask65</string>
+				<key>highlighted</key>
+				<string>radioListFriendMask65Highlighted</string>
 			</dict>
 			<key>maskHighlighted</key>
 			<dict>
