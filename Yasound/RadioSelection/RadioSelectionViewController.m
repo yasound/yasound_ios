@@ -165,6 +165,15 @@
 }
 
 
+-(void)viewDidDisappear:(BOOL)animated {
+    
+    [super viewDidDisappear:animated];
+    
+    // optimized DB access
+    [[YasoundDataCacheImageManager main].db commit];    
+}
+
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -264,6 +273,7 @@
 
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
 {    
+
     if (self.contentsView != nil)
         [self.contentsView removeFromSuperview];
     
@@ -319,6 +329,12 @@
         
         return;
     }
+
+    
+    // optimized DB access
+    [[YasoundDataCacheImageManager main].db commit];
+    // optimized DB access
+    [[YasoundDataCacheImageManager main].db beginTransaction];
 
     
     RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithStyle:UITableViewStylePlain radios:nil];

@@ -20,6 +20,7 @@
 #import "ProgrammingViewController.h"
 #import "MessageBroadcastModalViewController.h"
 #import "YasoundAppDelegate.h"
+#import "YasoundDataCacheImage.h"
 
 #define NB_TOKENS 4
 
@@ -100,8 +101,18 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+
     [self.tableview reloadData];
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    
+}
+
+
 
 - (void)viewDidUnload
 {
