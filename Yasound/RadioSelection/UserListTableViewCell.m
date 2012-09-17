@@ -45,10 +45,9 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.objects = [[NSMutableArray alloc] init];
 
-        
         CGFloat xOffset = 0;
         NSInteger itemIndex = 0;
-        
+                
         for (User* user in users)
         {
             [self addItemGui:user itemIndex:itemIndex xOffset:xOffset];
@@ -198,17 +197,17 @@
     }
 
     // we had two radios in this row, but we only need one for this update
-    if (self.objects.count > users.count)
+    while (self.objects.count > users.count)
     {
-        NSMutableArray* objects = [self.objects objectAtIndex:1];
-
+        NSInteger lastIndex = self.objects.count - 1;
+        NSMutableArray* objects = [self.objects objectAtIndex:lastIndex];
+        
         UIView* container = [objects objectAtIndex:OBJECT_CONTAINER];
         [container removeFromSuperview];
         [container release];
         
-        [self.objects removeObjectAtIndex:1];
+        [self.objects removeObjectAtIndex:lastIndex];
     }
-    
 }
 
 
