@@ -56,6 +56,7 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogout:) name:NOTIF_DID_LOGOUT object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogin:) name:NOTIF_DID_LOGIN object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifRefreshGui:) name:NOTIF_REFRESH_GUI object:nil];
         
     }
     return self;
@@ -596,6 +597,13 @@
     [self.wheelSelector stickToItem:self.wheelSelector.currentIndex silent:NO];
     
 }
+
+
+- (void)onNotifRefreshGui:(NSNotification*)notif {
+    // refresh GUI
+    [self.wheelSelector stickToItem:self.wheelSelector.currentIndex silent:NO];    
+}
+
 
 
 

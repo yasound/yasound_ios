@@ -717,6 +717,8 @@
         return;
     }
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REFRESH_GUI object:nil];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

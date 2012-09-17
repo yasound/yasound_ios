@@ -38,7 +38,7 @@
 @property (nonatomic) NSInteger currentIndex;
 
 
-- (void)stickToItem:(NSString*)itemId silent:(BOOL)silent;
+- (void)stickToItem:(NSInteger)itemId silent:(BOOL)silent;
 
 
 @end
