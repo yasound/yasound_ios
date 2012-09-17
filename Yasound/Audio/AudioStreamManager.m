@@ -9,6 +9,7 @@
 #import "AudioStreamManager.h"
 #import "AudioStreamer.h"
 #import "YasoundDataProvider.h"
+#import "YasoundSessionManager.h"
 
 //#define USE_FAKE_RADIO_URL 1
 
@@ -106,13 +107,56 @@ static AudioStreamer* _gAudioStreamer = nil;
     ASLog(@"radio url: %@\n", url);
 #endif
     
-    
-    
-  NSString* cookie = [NSString stringWithFormat:@"username=%@; api_key=%@", [YasoundDataProvider username], [YasoundDataProvider user_apikey]];
-    _gAudioStreamer = [[AudioStreamer alloc] initWithURL:radiourl andCookie:cookie];
-    [_gAudioStreamer start];
+    if ([YasoundSessionManager main].registered)
+    {
+        [[YasoundDataProvider main] streamingAuthenticationTokenWithTarget:self action:@selector(receivedStreamingAuthToken:success:) userData:radiourl];
+    }
+    else
+    {
+        [self startStreamerWithURL:radiourl];
+    }
+}
 
+- (void)startStreamerWithURL:(NSURL*)radioUrl
+{
+    NSString* cookie = [NSString stringWithFormat:@"username=%@; api_key=%@", [YasoundDataProvider username], [YasoundDataProvider user_apikey]];
+    _gAudioStreamer = [[AudioStreamer alloc] initWithURL:radioUrl andCookie:cookie];
+    [_gAudioStreamer start];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_PLAY object:nil];
+}
+
+- (void)receivedStreamingAuthToken:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    NSURL* radioUrl = (NSURL*)req.userData;
+    NSDictionary* responseDict = [req responseDict];
+    NSString* token = [responseDict valueForKey:@"token"];
+    if (!token)
+        return;
+    
+    NSString* paramStr = radioUrl.parameterString;
+    NSString* urlStr = radioUrl.absoluteString;
+    NSString* finalUrlStr;
+    if (paramStr)
+    {
+        finalUrlStr = [urlStr stringByAppendingFormat:@"&token=%@", token];
+    }
+    else
+    {
+        finalUrlStr = [urlStr stringByAppendingFormat:@"/?token=%@", token];
+    }
+    
+    BOOL error;
+    BOOL wantHd = [[UserSettings main] boolForKey:USKEYuserWantsHd error:&error];
+    if (error)
+        wantHd = NO;
+    if (wantHd)
+    {
+        finalUrlStr = [urlStr stringByAppendingString:@"&hd=1"];
+    }
+    
+    NSURL* finalRadioUrl = [NSURL URLWithString:finalUrlStr];
+    [self startStreamerWithURL:finalRadioUrl];
 }
 
 - (void)stopRadio

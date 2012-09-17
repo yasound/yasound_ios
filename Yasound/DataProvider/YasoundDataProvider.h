@@ -319,6 +319,9 @@ taskStatus stringToStatus(NSString* str);
 // promo code
 - (void)activatePromoCode:(NSString*)code withTarget:(id)target action:(SEL)action;
 
+// streamer authentication
+- (void)streamingAuthenticationTokenWithTarget:(id)target action:(SEL)action userData:(id)userData;
+
 
 - (void)testV2;
 
