@@ -230,12 +230,47 @@
         self.itemNotifsButton.enabled = YES;
         [self.itemNotifsButton addTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
 
-        // request number of notifs
-        [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:) limit:0 offset:0];
+//        // request number of notifs
+//        [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:) limit:0 offset:0];
+        // request number of unread notifs
+        [[YasoundDataProvider main] unreadNotificationCountWithTarget:self action:@selector(onUnreadNotificationCountReceived:success:)];
 
     }
 }
 
+- (void)onUnreadNotificationCountReceived:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    if (!success)
+    {
+        DLog(@"get user notifications FAILED");
+        return;
+    }
+    
+    if (self.itemNotifsLabel) {
+        [self.itemNotifsLabel removeFromSuperview];
+        [self.itemNotifsLabel release];
+        self.itemNotifsLabel = nil;
+        
+    }
+    
+    NSDictionary* responseDict = req.responseDict;
+    NSNumber* unreadCountNumber = [responseDict valueForKey:@"unread_count"];
+    int unreadCount = [unreadCountNumber integerValue];
+    
+    if (unreadCount == 0)
+    {
+        self.itemNotifsButton.selected = NO;
+        return;
+    }
+    
+    self.itemNotifsButton.selected = YES;
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemNotifLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.itemNotifsLabel = [sheet makeLabel];
+    self.itemNotifsLabel.text = [NSString stringWithFormat:@"%d", unreadCount];
+    [self.itemNotifsButton addSubview:self.itemNotifsLabel];
+    self.itemNotifsLabel.adjustsFontSizeToFitWidth = YES;
+}
 
 - (void)onNotificationsReceived:(ASIHTTPRequest*)req success:(BOOL)success
 {
@@ -252,8 +287,14 @@
         
     }
 
+    NSDate* d1 = [NSDate date];
+    DLog(@"notifications received (original url = %@)", req.url);
     Container* container = [req responseObjectsWithClass:[UserNotification class]];
+    NSTimeInterval elapsed = -[d1 timeIntervalSinceNow];
+    
+    
     NSArray* newNotifications = container.objects;
+    DLog(@"notifications compute elapsed %lf for %d elements", elapsed, newNotifications.count);
     
     if ((newNotifications == nil) || (newNotifications.count == 0)) {
         self.itemNotifsButton.selected = NO;

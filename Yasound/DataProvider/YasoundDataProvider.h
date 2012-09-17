@@ -289,6 +289,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)updateUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector;
 - (void)deleteUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector;
 - (void)deleteAllUserNotificationsWithTarget:(id)target action:(SEL)selector;
+- (void)unreadNotificationCountWithTarget:(id)target action:(SEL)selector;
 
 
 // Shows

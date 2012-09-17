@@ -2356,6 +2356,20 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
+- (void)unreadNotificationCountWithTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"api/v1/notifications/unread_count";
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
 
 #pragma mark - shows
 
