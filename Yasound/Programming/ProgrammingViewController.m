@@ -632,8 +632,8 @@
 
 - (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
 {
-    if (itemIndex == PROGRAMMING_WHEEL_ITEM_YASOUND)
-        return NSLocalizedString(@"Programming.Catalog.yasound", nil);
+//    if (itemIndex == PROGRAMMING_WHEEL_ITEM_YASOUND)
+//        return NSLocalizedString(@"Programming.Catalog.yasound", nil);
     if (itemIndex == PROGRAMMING_WHEEL_ITEM_LOCAL)
         return NSLocalizedString(@"Programming.Catalog.local", nil);
     if (itemIndex == PROGRAMMING_WHEEL_ITEM_RADIO)
