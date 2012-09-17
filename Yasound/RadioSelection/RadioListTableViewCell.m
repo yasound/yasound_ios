@@ -13,7 +13,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "InteractiveView.h"
-
+#import "YasoundDataCacheImage.h"
 
 //@interface RadioListTableViewCell (internal_update)
 //
@@ -189,6 +189,15 @@
     if ((self.radioObjects == nil) || (self.radioObjects.count == 0))
         return;
     
+    // optimized DB access
+    [[YasoundDataCacheImageManager main].db beginTransaction];
+    
+    
+    //LBDEBUG ICI
+#ifdef DEBUG_PROFILE
+    [[TimeProfile main] begin:@"updateRadios"];
+#endif
+    
     NSInteger radioIndex = 0;
     CGFloat xOffset = 0;
     
@@ -202,6 +211,7 @@
             xOffset += (self.frame.size.width / 2.f);
             continue;
         }
+
         
         NSMutableArray* objects = [self.radioObjects objectAtIndex:radioIndex];
         
@@ -211,15 +221,38 @@
         // may not be needed, since "objects" is a reference. Check and go back later...
         //[self.radioObjects replaceObjectAtIndex:radioIndex withObject:objects];
         
+
+
+        
         // and update infos and images
         NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
+        
+        
         WebImageView* view = [objects objectAtIndex:RADIO_OBJECT_IMAGE];
+        
+        
+#ifdef DEBUG_PROFILE
+        //LBDEBUG ICI
+        [[TimeProfile main] begin:@"updateRadios3c"];
+#endif
+
+        
         [view setUrl:imageURL];
 
+        
+#ifdef DEBUG_PROFILE
+        //LBDEBUG ICI
+        [[TimeProfile main] end:@"updateRadios3c"];
+        [[TimeProfile main] logAverageInterval:@"updateRadios3c" inMilliseconds:YES];
+#endif
+
+        
         imageURL = [[YasoundDataProvider main] urlForPicture:radio.creator.picture];
         view = [objects objectAtIndex:RADIO_OBJECT_USER_IMAGE];
         [view setUrl:imageURL];
 
+        
+        
         UILabel* label = [objects objectAtIndex:RADIO_OBJECT_TITLE];
         label.text = radio.name;
 
@@ -229,10 +262,11 @@
         label = [objects objectAtIndex:RADIO_OBJECT_LISTENERS];
         label.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
         
+        
         radioIndex++;
         xOffset += (self.frame.size.width / 2.f);
-        
     }
+    
     
     // we had two radios in this row, but we only need one for this update
     if (self.radioObjects.count > radios.count)
@@ -248,6 +282,17 @@
         
         [self.radioObjects removeObjectAtIndex:1];
     }
+    
+#ifdef DEBUG_PROFILE
+    //LBDEBUG ICI
+    [[TimeProfile main] end:@"updateRadios"];
+    [[TimeProfile main] logAverageInterval:@"updateRadios" inMilliseconds:YES];
+#endif
+
+
+    // optimized DB access
+    [[YasoundDataCacheImageManager main].db commit];
+
 }
 
 

@@ -10,6 +10,8 @@
 #import "WebImageView.h"
 #import "BundleFileManager.h"
 #import "YasoundDataCache.h"
+#import "TimeProfile.h"
+
 
 #define IMAGE_THUMB_SIZE 100.f
 
@@ -60,14 +62,23 @@
     if (aUrl == nil)
         return;
     
+    
+#ifdef DEBUG_PROFILE
+    //LBDEBUG ICI
+    [[TimeProfile main] begin:@"setUrl1"];
+#endif
+    
     UIImage* image = [[YasoundDataCache main] requestImage:aUrl target:self action:@selector(onImageUpdated:)];
     
-    //LBDEBUG 
-   // [UIImagePNGRepresentation(image) writeToFile:@"/Users/neywen/tmp/tmp.png" atomically:YES];
-    
+#ifdef DEBUG_PROFILE
+    //LBDEBUG ICI
+    [[TimeProfile main] end:@"setUrl1"];
+    [[TimeProfile main] logAverageInterval:@"setUrl1" inMilliseconds:YES];
+#endif
+
     [self setImage:image];
     
-    url = aUrl;    
+    url = aUrl;
     [url retain];
 }
 

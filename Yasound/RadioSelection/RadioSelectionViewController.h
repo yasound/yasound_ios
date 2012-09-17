@@ -16,6 +16,7 @@
 #import "MenuViewController.h"
 #import "RadioSearchViewController.h"
 #import "WaitingView.h"
+#import "YasoundDataProvider.h"
 
 @interface RadioSelectionViewController : YaViewController<TopBarDelegate, RadioListDelegate> {
     
@@ -39,6 +40,8 @@
 @property (nonatomic, retain) RadioSearchViewController* searchview;
 
 @property (nonatomic, retain) MenuViewController* menu;
+
+//@property (nonatomic, retain) ASIHTTPRequest* currentRequest;
 
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withWheelIndex:(NSInteger)wheelIndex;

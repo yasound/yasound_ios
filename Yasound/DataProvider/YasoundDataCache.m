@@ -10,7 +10,7 @@
 #import "YasoundDataProvider.h"
 #import "NSObject+SBJSON.h"
 #import "PlaylistMoulinor.h"
-
+#import "TimeProfile.h"
 
 
 // 300 seconds = 5 min
@@ -599,9 +599,11 @@ static UIImage* gDummyImage = nil;
 {
     NSString* key = [url absoluteString];
     
+    
     // is there a cache for this image?
     YasoundDataCacheImage* cache = [[YasoundDataCacheImageManager main].memoryCacheImages objectForKey:key];
 
+    
     UIImage* image = nil;
     BOOL imageNeedsUpdate = NO;
     
@@ -613,9 +615,20 @@ static UIImage* gDummyImage = nil;
         [[YasoundDataCacheImageManager main].memoryCacheImages setObject:cache forKey:key];        
     }
 
+#ifdef DEBUG_PROFILE
+    //LBDEBUG ICI
+    [[TimeProfile main] begin:@"requestImage2"];
+#endif
+
     // set the last_access date
     [cache updateTimestamp];
     
+#ifdef DEBUG_PROFILE
+    //LBDEBUG ICI
+    [[TimeProfile main] end:@"requestImage2"];
+    [[TimeProfile main] logAverageInterval:@"requestImage2" inMilliseconds:YES];
+#endif
+
     
     // cache image is not downloaded yet (or was not store on disk)
     if (cache.image == nil) 
@@ -633,8 +646,9 @@ static UIImage* gDummyImage = nil;
     }
     
     // it's downloaded already, give it to the target
-    else
+    else {
         image = cache.image;
+    }
     
     
     // request the image to the server

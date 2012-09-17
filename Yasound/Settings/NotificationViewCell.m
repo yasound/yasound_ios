@@ -32,6 +32,7 @@
         
         self.textLabel.text = NSLocalizedString(self.notifIdentifier, nil);
         self.textLabel.backgroundColor = [UIColor clearColor];
+        self.textLabel.adjustsFontSizeToFitWidth = YES;
         
         self.notifSwitch = [[UISwitch alloc] init];
         self.accessoryView = self.notifSwitch;

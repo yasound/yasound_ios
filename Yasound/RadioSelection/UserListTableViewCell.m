@@ -184,6 +184,12 @@
 
         // and update infos and images
         NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:user.picture];
+        
+        
+        
+//        BundleStylesheet* sheet = [sheet ]
+//        [view setImage:[UIImage image]]
+        
         WebImageView* view = [objects objectAtIndex:OBJECT_IMAGE];
         [view setUrl:imageURL];
 
