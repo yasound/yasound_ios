@@ -60,7 +60,7 @@
         if (([SongRadioCatalog main].radio.id != nil) && ![catalogId isEqualToString:newId])
         {
             [SongRadioCatalog releaseCatalog];
-            [SongLocalCatalog releaseCatalog];
+//            [SongLocalCatalog releaseCatalog];
             [DataBase releaseDataBase];
         }
     }
@@ -70,7 +70,7 @@
 
 - (void)dealloc
 {
-    [SongCatalog releaseSynchronizedCatalog];
+//    [SongCatalog releaseSynchronizedCatalog];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 //    [_tableView release];
     [super dealloc];
@@ -116,9 +116,9 @@
 //    
 //    [[SongCatalog synchronizedCatalog] downloadMatchedSongsForRadio:self.radio target:self action:@selector(matchedSongsDownloaded:success:)];
     
-#ifdef DEBUG
-    [self.topbar showEditItemWithTarget:self action:@selector(onDebugItem:)];
-#endif
+//#ifdef DEBUG
+//    [self.topbar showEditItemWithTarget:self action:@selector(onDebugItem:)];
+//#endif
 }
 
 
@@ -576,6 +576,20 @@
 }
 
 
+- (IBAction)onReloadClicked:(id)sender {
+    
+    // reset catalogs
+    [SongLocalCatalog releaseCatalog];
+    [SongRadioCatalog releaseCatalog];
+    [DataBase releaseDataBase];
+    
+    // refresh catalog and gui
+    if ([self.tableview respondsToSelector:@selector(load)])
+        [self.tableview load];
+    
+    
+}
+
 
 - (void)onNotifSongAdded:(NSNotification*)notif
 {
@@ -618,6 +632,8 @@
 
 - (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
 {
+    if (itemIndex == PROGRAMMING_WHEEL_ITEM_YASOUND)
+        return NSLocalizedString(@"Programming.Catalog.yasound", nil);
     if (itemIndex == PROGRAMMING_WHEEL_ITEM_LOCAL)
         return NSLocalizedString(@"Programming.Catalog.local", nil);
     if (itemIndex == PROGRAMMING_WHEEL_ITEM_RADIO)
@@ -697,14 +713,14 @@
 
 
 
-#ifdef DEBUG
-
-- (void)onDebugItem:(id)sender {
-
-    [self.tableview.tableView reloadData];
-}
-
-#endif
+//#ifdef DEBUG
+//
+//- (void)onDebugItem:(id)sender {
+//
+//    [self.tableview.tableView reloadData];
+//}
+//
+//#endif
 
 
 

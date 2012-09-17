@@ -10,7 +10,7 @@
 #import "Radio.h"
 #import "TopBarBackAndTitle.h"
 
-@interface SchedulingViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,TopBarBackAndTitleDelegate>
+@interface SchedulingViewController : YaViewController<UITableViewDataSource, UITableViewDelegate,TopBarBackAndTitleDelegate>
 
 @property (nonatomic, retain) IBOutlet TopBarBackAndTitle* topBar;
 @property (nonatomic, retain) IBOutlet UITableView* tableview;

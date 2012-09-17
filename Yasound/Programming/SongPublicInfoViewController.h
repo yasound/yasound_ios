@@ -13,7 +13,7 @@
 
 
 
-@interface SongPublicInfoViewController : UIViewController
+@interface SongPublicInfoViewController : YaViewController
 {
 //    IBOutlet UIBarButtonItem* _backBtn;
 //    IBOutlet UILabel* _titleLabel;

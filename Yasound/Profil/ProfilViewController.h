@@ -12,8 +12,9 @@
 #import "User.h"
 #import "ProfilScrollview.h"
 #import "ProfilScrollviewRow.h"
+#import "CustomSizedButtonView.h"
 
-@interface ProfilViewController : UIViewController<TopBarDelegate>
+@interface ProfilViewController : YaViewController<TopBarDelegate>
 
 @property (nonatomic, retain) NSArray* radios;
 @property (nonatomic, retain) NSArray* favorites;
@@ -41,8 +42,9 @@
 @property (nonatomic, retain) IBOutlet UILabel* profil;
 @property (nonatomic, retain) IBOutlet UIImageView* hd;
 
-@property (nonatomic, retain) IBOutlet UIButton* buttonGray;
-@property (nonatomic, retain) IBOutlet UILabel* buttonGrayLabel;
+//@property (nonatomic, retain) IBOutlet UIButton* buttonGray;
+//@property (nonatomic, retain) IBOutlet UILabel* buttonGrayLabel;
+@property (nonatomic, retain) IBOutlet CustomSizedButtonView* buttonFollow;
 @property (nonatomic, retain) IBOutlet UIButton* buttonBlue;
 @property (nonatomic, retain) IBOutlet UILabel* buttonBlueLabel;
 

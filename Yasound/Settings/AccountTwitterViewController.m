@@ -217,7 +217,18 @@
 
 
 
-#pragma mark - TopBarBackAndTitleDelegate
+#pragma mark - TopBarModalDelegate
+
+- (BOOL)shouldShowActionButton {
+    return NO;
+}
+
+
+- (NSString*)titleForCancelButton {
+    
+    return NSLocalizedString(@"Navigation.close", nil);
+}
+
 
 - (NSString*)topBarTitle
 {

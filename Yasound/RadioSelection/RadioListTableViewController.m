@@ -98,8 +98,8 @@
     {
         if (self.friends == nil)
             return 0;
-        NSInteger nbRows = self.friends.count / 2;
-        if ((self.friends.count % 2) != 0)
+        NSInteger nbRows = self.friends.count / 3;
+        if ((self.friends.count % 3) != 0)
             nbRows++;
         return nbRows;
     }
@@ -117,7 +117,7 @@
 {
     if (self.friendsMode)
     {
-        return 164.f;
+        return 100.f;
     }
     
     return 156.f;
@@ -178,14 +178,17 @@
     
     UserListTableViewCell* cell = (UserListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellUserIdentifier];
     
-    NSInteger userIndex = indexPath.row * 2;
+    NSInteger userIndex = indexPath.row * 3;
     
     User* user1 = [self.friends objectAtIndex:userIndex];
     User* user2 = nil;
+    User* user3 = nil;
     if (userIndex+1 < self.friends.count)
         user2 = [self.friends objectAtIndex:userIndex+1];
+    if (userIndex+2 < self.friends.count)
+        user3 = [self.friends objectAtIndex:userIndex+2];
     
-    NSArray* usersForRow = [NSArray arrayWithObjects:user1, user2, nil];
+    NSArray* usersForRow = [NSArray arrayWithObjects:user1, user2, user3, nil];
     
     if (cell == nil)
     {

@@ -86,12 +86,21 @@
 
 
 
-- (IBAction)onBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
+#pragma mark - TopBarModalDelegate
+
+- (BOOL)shouldShowActionButton {
+    return NO;
 }
 
+- (NSString*)topBarTitle
+{
+    return self.title ;
+}
 
+- (NSString*)titleForCancelButton {
+    
+    return NSLocalizedString(@"Navigation.close", nil);
+}
 
 
 

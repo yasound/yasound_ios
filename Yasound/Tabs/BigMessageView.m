@@ -47,7 +47,8 @@
         // button
         sheet = [[Theme theme] stylesheetForKey:@"BigMessage.button" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.button = [sheet makeButton];
-        [self.button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        if ((target != nil) && (action != nil))
+            [self.button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.button];
         
         // button label

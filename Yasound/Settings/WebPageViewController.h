@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "YaViewController.h"
-
+#import "TopBarModal.h"
 
 @interface WebPageViewController : YaViewController
 {
-    IBOutlet UIToolbar* _toolbar;
+    IBOutlet TopBarModal* _toolbar;
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;
     IBOutlet UIWebView* _webview;

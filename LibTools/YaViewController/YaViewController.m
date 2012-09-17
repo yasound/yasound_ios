@@ -9,6 +9,7 @@
 #import "YaViewController.h"
 #import "TestFlight.h"
 #import "YasoundAppDelegate.h"
+#import "RootViewController.h"
 
 @implementation YaViewController
 
@@ -52,6 +53,14 @@
 //}
 
 
+//- (UINavigationController*)navigationController {
+//    
+//    UINavigationController* cont = super.navigationController;
+//    if (cont != nil)
+//        return cont;
+//    return APPDELEGATE.navigationController;
+//}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -59,6 +68,9 @@
 #ifdef TESTFLIGHT_SDK
     [TestFlight passCheckpoint:self.didAppearCheckpoint];
 #endif
+    
+    // refresh notifs gui
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
     
 }
 

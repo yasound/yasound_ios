@@ -470,11 +470,6 @@
 
 - (void)requestRemoveFrom:(NSArray*)songs {
     
-//    "Programming.collection.add.message.programmed.1" = "1 song is in your radio already.";
-//    "Programming.collection.add.message.programmed.n" = "%d songs are in your radio already.";
-//    "Programming.collection.add.message.toUpload.1" = "1 of %d songs may be uploaded to your radio.\nWould you like to upload it?";
-//    "Programming.collection.add.message.toUpload.n" = "%d of %d songs may be uploaded to your radio.\nWould you like to upload them?";
-
     if (self.songsToRemove.count == 0) {
         
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.collection.del.title", nil) message:NSLocalizedString(@"Programming.collection.del.message.empty", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles: nil];

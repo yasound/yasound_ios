@@ -7,6 +7,7 @@
 "Navigation.back" = "Back";
 "Navigation.create" = "Create";
 "Navigation.delete" = "Delete";
+"Navigation.close" = "Close";
 
 "Navigation_back" = "Back";
 "Navigation_next" = "Next";
@@ -210,12 +211,16 @@
 "Programming.nbSongs.1" = "1 song";
 "Programming.nbSongs.n" = "%d songs";
 
-"Programming.collection.add.title" = "Programming";
+
+
+"Programming.collection.add.title" = "Selection of %d songs";
+"Programming.collection.add.message.readyToUpload" = "ready to upload: %d / %d";
+"Programming.collection.add.message.programmed" = "already in radio: %d / %d";
+"Programming.collection.add.message.cantUpload" = "unable to export: %d / %d";
 "Programming.collection.add.message.empty" = "None of the songs can be uploaded to the server.";
-"Programming.collection.add.message.programmed.1" = "1 song is in your radio already.";
-"Programming.collection.add.message.programmed.n" = "%d songs are in your radio already.";
-"Programming.collection.add.message.toUpload.1" = "1 of %d songs may be uploaded to your radio.\nWould you like to upload it?";
-"Programming.collection.add.message.toUpload.n" = "%d of %d songs may be uploaded to your radio.\nWould you like to upload them?";
+"Programming.collection.add.message.toUpload.1" = "1 song may be uploaded to your radio.\nWould you like to upload it?";
+"Programming.collection.add.message.toUpload.n" = "%d songs may be uploaded to your radio.\nWould you like to upload them?";
+
 
 "Programming.collection.del.title" = "Programming";
 "Programming.collection.del.message.empty" = "None of the songs can be removed from your radio.";
@@ -647,6 +652,7 @@
 "Show.switch.label" = "Enable this schedule";
 "Show.prog.label" = "Programming";
 
+"Programming.Catalog.yasound" = "Yasound";
 "Programming.Catalog.local" = "My iPhone";
 "Programming.Catalog.radio" = "My radio";
 "Programming.Catalog.server" = "Yasound's music";

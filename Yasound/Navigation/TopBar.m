@@ -41,6 +41,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogout:) name:NOTIF_DID_LOGOUT object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogin:) name:NOTIF_DID_LOGIN object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifsChanged:) name:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
+    
     
     // set background
     if ([self respondsToSelector:@selector(setBackgroundImage:forToolbarPosition:barMetrics:)]) 
@@ -101,6 +103,11 @@
     self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace, self.itemHd, flexibleSpace, self.itemNotifs, flexibleSpace, itemNowPlaying, nil];
     
     [self setItems:self.customItems];
+    
+    
+    // check notifs
+    [self updateNotifs];
+    
 
 }
 
@@ -140,6 +147,10 @@
     
     [self.customItems replaceObjectAtIndex:6 withObject:self.itemSettings];
     [self setItems:self.customItems];
+    
+    // check settings button
+    [self updateSettings:enabled];
+
 }
 
 
@@ -194,44 +205,98 @@
 }
 
 
+
+
 - (void)updateNotifs
 {
     if (![YasoundSessionManager main].registered)
     {
         self.itemNotifs.enabled = NO;
         self.itemNotifsButton.enabled = NO;
+        self.itemNotifsButton.selected = NO;
+        
+        if (self.itemNotifsLabel) {
+            [self.itemNotifsLabel removeFromSuperview];
+            [self.itemNotifsLabel release];
+            self.itemNotifsLabel = nil;
+        }
         
 //        [self.itemNotifsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-        [self.itemNotifsButton removeTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
+        [self.itemNotifsButton removeTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
     }
     else
     {
         self.itemNotifs.enabled = YES;
         self.itemNotifsButton.enabled = YES;
-        [self.itemNotifsButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
+        [self.itemNotifsButton addTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
+
+        // request number of notifs
+        [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:) limit:0 offset:0];
+
     }
 }
 
 
-
-- (void)updateSettings
+- (void)onNotificationsReceived:(ASIHTTPRequest*)req success:(BOOL)success
 {
-    BOOL enabled = NO;
-    
-    if ([YasoundSessionManager main].registered)
+    if (!success)
     {
-        if ([AudioStreamManager main].currentRadio != nil)
-        {
-            enabled = ([[YasoundDataProvider main].user.id intValue] == [[AudioStreamManager main].currentRadio.creator.id intValue]);
-        }
+        DLog(@"get user notifications FAILED");
+        return;
     }
     
+    if (self.itemNotifsLabel) {
+        [self.itemNotifsLabel removeFromSuperview];
+        [self.itemNotifsLabel release];
+        self.itemNotifsLabel = nil;
+        
+    }
+
+    Container* container = [req responseObjectsWithClass:[UserNotification class]];
+    NSArray* newNotifications = container.objects;
     
+    if ((newNotifications == nil) || (newNotifications.count == 0)) {
+        self.itemNotifsButton.selected = NO;
+
+        return;
+    }
+
+
+    NSInteger counter = 0;
+    for (UserNotification* notif in newNotifications)
+    {
+        if (![notif isReadBool])
+            counter++;
+    }
+
+    if (counter == 0) {
+        self.itemNotifsButton.selected = NO;
+        
+        return;
+    }
+
+
+    self.itemNotifsButton.selected = YES;
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemNotifLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.itemNotifsLabel = [sheet makeLabel];
+    self.itemNotifsLabel.text = [NSString stringWithFormat:@"%d", counter];
+    [self.itemNotifsButton addSubview:self.itemNotifsLabel];
+    self.itemNotifsLabel.adjustsFontSizeToFitWidth = YES;
+    
+}
+
+
+
+
+- (void)updateSettings:(BOOL)enabled
+{
     if (!enabled)
     {
         self.itemSettings.enabled = NO;
         self.itemSettingsButton.selected = NO;
         self.itemSettingsButton.enabled = NO;
+        self.itemSettingsButton.alpha = 0.5;
         
         [self.itemSettingsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
     }
@@ -239,6 +304,7 @@
     {
         self.itemSettings.enabled = YES;
         self.itemSettingsButton.enabled = YES;
+        self.itemSettingsButton.alpha = 1;
         [self.itemSettingsButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
         
         if ([[YasoundDataProvider main].user permission:PERM_HD])
@@ -443,14 +509,41 @@
 {
     [self updateHd];
     [self updateNotifs];
-    [self updateSettings];
+    
+    BOOL enabled = NO;
+    
+    if ([YasoundSessionManager main].registered)
+    {
+        if ([AudioStreamManager main].currentRadio != nil)
+        {
+            enabled = ([[YasoundDataProvider main].user.id intValue] == [[AudioStreamManager main].currentRadio.creator.id intValue]);
+        }
+    }
+
+    [self updateSettings:enabled];
 }
 
 - (void)onNotifDidLogin:(NSNotification*)notif
 {
     [self updateHd];
     [self updateNotifs];
-    [self updateSettings];
+    
+    BOOL enabled = NO;
+    
+    if ([YasoundSessionManager main].registered)
+    {
+        if ([AudioStreamManager main].currentRadio != nil)
+        {
+            enabled = ([[YasoundDataProvider main].user.id intValue] == [[AudioStreamManager main].currentRadio.creator.id intValue]);
+        }
+    }
+
+    [self updateSettings:enabled];
+}
+
+
+- (void)onNotifsChanged:(NSNotification*)notif {
+    [self updateNotifs];
 }
 
 //- (id)initWithFrame:(CGRect)frame

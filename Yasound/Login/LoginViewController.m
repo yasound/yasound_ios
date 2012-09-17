@@ -16,6 +16,7 @@
 #import "YasoundLoginViewController.h"
 #import "SignupViewController.h"
 #import "YasoundDataCache.h"
+#import "YasoundAppDelegate.h"
 
 @implementation LoginViewController
 
@@ -27,7 +28,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        //self.title =  NSLocalizedString(@"LoginView_title", nil);        
+        //self.title =  NSLocalizedString(@"LoginView_title", nil);
+        _dismissed = NO;
     }
     return self;
 }
@@ -164,6 +166,10 @@
         assert(0);
         [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
     }
+    
+    // close the current modal first
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+    _dismissed = YES;
     
     [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(socialLoginReturned:info:)];
     
@@ -318,17 +324,33 @@
 
 - (IBAction)onYasound:(id)sender
 {
-    YasoundLoginViewController* view = [[YasoundLoginViewController alloc] initWithNibName:@"YasoundLoginViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:NO];
-    [view release];
+    YasoundLoginViewController* viewC = [[YasoundLoginViewController alloc] initWithNibName:@"YasoundLoginViewController" bundle:nil];
+    
+//    _dismissed = YES;
+//    [self retain];
+//    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+//    
+//    [self.navigationController presentModalViewController:view animated:NO];
+    
+    [self.view addSubview:viewC.view];
+    
+    [viewC release];
 }
 
 
 - (IBAction)onYasoundSignup:(id)sender
 {
-    SignupViewController* view = [[SignupViewController alloc] initWithNibName:@"SignupViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:NO];
-    [view release];    
+    SignupViewController* viewC = [[SignupViewController alloc] initWithNibName:@"SignupViewController" bundle:nil];
+
+//    _dismissed = YES;
+//    [self retain];
+//    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+//
+//    [self.navigationController presentModalViewController:view animated:NO];
+    
+    [self.view addSubview:viewC.view];
+
+    [viewC release];
 }
 
 
@@ -377,7 +399,15 @@
     // account just being create, go to configuration screen
     [[UserSettings main] setBool:YES forKey:USKEYskipRadioCreation];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
+    //    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
+    if (!_dismissed) {
+        _dismissed = YES;
+        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_DISMISS_MODAL object:nil];
+    }
+    
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
+    [APPDELEGATE.slideController resetTopView];
 }
 
 
@@ -385,10 +415,33 @@
 
 #pragma mark - IBActions
 
-- (IBAction)onBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
+//- (IBAction)onBack:(id)sender
+//{
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
+
+
+
+
+#pragma mark - TopBarModalDelegate
+
+- (BOOL)shouldShowActionButton {
+    return NO;
 }
+
+- (NSString*)topBarTitle
+{
+    NSString* str = NSLocalizedString(@"LoginView_title", nil);
+    return str;
+}
+
+- (NSString*)titleForCancelButton {
+    
+    return NSLocalizedString(@"Navigation.close", nil);
+}
+
+
+
 
 
 @end

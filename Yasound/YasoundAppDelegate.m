@@ -26,6 +26,7 @@
 
 
 @synthesize window;
+//@synthesize menuNavigationController;
 @synthesize navigationController;
 @synthesize rootViewController;
 @synthesize menuViewController;
@@ -127,7 +128,7 @@ void SignalHandler(int sig) {
     
     
     self.menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-    
+
     [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
     self.navigationController.navigationBarHidden = YES;
 

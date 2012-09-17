@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">12A269</string>
+		<string key="IBDocument.SystemVersion">12B19</string>
 		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
 		<string key="IBDocument.AppKitVersion">1187</string>
 		<string key="IBDocument.HIToolboxVersion">624.00</string>
@@ -511,7 +511,7 @@
 				<string key="146.CustomClassName">UnderlinedButton</string>
 				<string key="146.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="0.0" key="146.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
-				<string key="196.CustomClassName">TopBar</string>
+				<string key="196.CustomClassName">TopBarModal</string>
 				<string key="196.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="197.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
@@ -525,7 +525,7 @@
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">LoginViewController</string>
-					<string key="superclassName">TestflightViewController</string>
+					<string key="superclassName">YaViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="onBack:">id</string>
 						<string key="onFacebook:">id</string>
@@ -610,15 +610,7 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">TestflightViewController</string>
-					<string key="superclassName">TrackedUIViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TestflightViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TopBar</string>
+					<string key="className">TopBarModal</string>
 					<string key="superclassName">UIToolbar</string>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">delegate</string>
@@ -633,7 +625,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TopBar.h</string>
+						<string key="minorKey">./Classes/TopBarModal.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -650,6 +642,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/UnderlinedButton.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">YaViewController</string>
+					<string key="superclassName">TrackedUIViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/YaViewController.h</string>
 					</object>
 				</object>
 			</array>

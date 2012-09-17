@@ -103,12 +103,13 @@
 @property (nonatomic) BOOL keyboardShown;
 @property (nonatomic, retain) IBOutlet TopBar* topBar;
 
+@property (nonatomic, retain) IBOutlet UIScrollView* nowPlayingScrollview;
 @property (nonatomic, retain) IBOutlet WebImageView* nowPlayingTrackImage;
 @property (nonatomic, retain) IBOutlet UIButton* nowPlayingMask;
 @property (nonatomic, retain) IBOutlet UIButton* nowPlayingButton;
 @property (nonatomic, retain) IBOutlet UILabel* nowPlayingLabel1;
 @property (nonatomic, retain) IBOutlet UILabel* nowPlayingLabel2;
-@property (nonatomic, retain) IBOutlet InteractiveView* nowPlayingInteractiveView;
+//@property (nonatomic, retain) IBOutlet InteractiveView* nowPlayingInteractiveView;
 @property (nonatomic, retain) IBOutlet UIButton* nowPlayingShare;
 @property (nonatomic, retain) IBOutlet UIButton* nowPlayingLike;
 @property (nonatomic, retain) IBOutlet UIButton* nowPlayingBuy;

@@ -86,12 +86,13 @@
 @synthesize requests;
 @synthesize keyboardShown;
 
+@synthesize nowPlayingScrollview;
 @synthesize nowPlayingTrackImage;
 @synthesize nowPlayingMask;
 @synthesize nowPlayingButton;
 @synthesize nowPlayingLabel1;
 @synthesize nowPlayingLabel2;
-@synthesize nowPlayingInteractiveView;
+//@synthesize nowPlayingInteractiveView;
 @synthesize nowPlayingShare;
 @synthesize nowPlayingLike;
 @synthesize nowPlayingBuy;
@@ -184,6 +185,9 @@
     // table view
     self.tableview.actionTouched = @selector(tableViewTouched:withEvent:);
     
+    // now playing bar
+    self.nowPlayingScrollview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"nowPlayingBkg.png"]];
+    self.nowPlayingScrollview.contentSize = CGSizeMake(500,  self.nowPlayingScrollview.contentSize.height);
     
 
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.minHeight" error:nil];
@@ -197,7 +201,7 @@
     [self updatePreviousWall];
     
     // we want the song info to be displayed when a touch occurs on the labels, the same way the track image is clicked
-    [self.nowPlayingInteractiveView setTarget:self action:@selector(onTrackImageClicked:)];
+//    [self.nowPlayingInteractiveView setTarget:self action:@selector(onTrackImageClicked:)];
 
     
     
@@ -1440,6 +1444,12 @@
     {
         assert(0);
     }
+    
+    NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    NSString* cleanText = [msg stringByTrimmingCharactersInSet:space];
+    if (cleanText.length == 0)
+        return;
+    
     
     [self sendMessage:msg];
     self.cellPostBar.textfield.text = nil;

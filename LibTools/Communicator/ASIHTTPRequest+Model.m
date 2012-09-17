@@ -23,6 +23,7 @@
 - (NSArray*)responseArray
 {
     NSString* respString = self.responseString;
+
     NSArray* array = [respString JSONValue];
     return array;
 }
@@ -30,6 +31,8 @@
 - (Model*)responseObjectWithClass:(Class)ModelClass
 {
     NSString* respString = self.responseString;
+    
+    
     Model* obj = [[ModelClass alloc] init];
     [obj loadPropertiesFromJsonString:respString];
     return obj;
@@ -55,8 +58,9 @@
 - (NSArray*)responseNSObjectsWithClass:(Class)ModelClass
 {
     NSMutableArray* result = [NSMutableArray array];
+
     NSArray* raw = [self responseArray];
-    for (NSDictionary* d in raw) 
+    for (NSDictionary* d in raw)
     {
         NSObject* obj = [[ModelClass alloc] init];
         [obj loadPropertiesFromDictionary:d];

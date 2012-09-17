@@ -43,6 +43,10 @@ typedef enum {
 @property (nonatomic, retain) UIButton* button;
 
 @property (nonatomic, retain) NSMutableArray* songsToUpload;
+@property (nonatomic) NSInteger nbSongsSelected;
+@property (nonatomic) NSInteger nbSongsProgrammed;
+@property (nonatomic) NSInteger nbSongsCantUpload;
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier genre:(NSString*)genre subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier playlist:(NSString*)playlist subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog;

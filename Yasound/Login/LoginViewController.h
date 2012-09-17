@@ -10,7 +10,7 @@
 #import "YaViewController.h"
 #import "UnderlinedButton.h"
 #import "User.h"
-
+#import "TopBarModal.h"
 
 
 @interface LoginViewController : YaViewController
@@ -29,6 +29,8 @@
     IBOutlet UILabel* _yasoundLabel;
 
     IBOutlet UnderlinedButton* _signupButton;
+    
+    BOOL _dismissed;
 }
 
 @property (nonatomic, retain) User* user;

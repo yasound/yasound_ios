@@ -12,6 +12,7 @@
 #import "YasoundDataProvider.h"
 #import "YasoundDataCache.h"
 #import "ActivityAlertView.h"
+#import "YasoundAppDelegate.h"
 
 @interface MyAccountViewController ()
 
@@ -26,7 +27,7 @@
 @synthesize city;
 @synthesize age;
 
-@synthesize itemId;
+//@synthesize itemId;
 
 
 enum MyAccountDescription
@@ -70,7 +71,7 @@ enum SectionBio
         _imageChanged = NO;
         _changed = NO;
         
-        self.itemId = TopBarItemNone;
+//        self.itemId = TopBarItemNone;
     }
     return self;
 }
@@ -399,17 +400,41 @@ enum SectionBio
 
 #pragma mark - TopBarDelegate
 
-- (BOOL)topBarItemClicked:(TopBarItemId)itemId
-{
+//- (BOOL)topBarItemClicked:(TopBarItemId)itemId
+//{
+//    if (_changed || _imageChanged)
+//    {
+//        self.itemId = itemId;
+//        [self save];
+//        return NO;
+//    }
+//   
+//    return YES;
+//}
+
+#pragma mark - TopBarModalDelegate
+
+- (BOOL)topBarSave {
+    
     if (_changed || _imageChanged)
     {
-        self.itemId = itemId;
+//        self.itemId = itemId;
         [self save];
         return NO;
     }
-   
     return YES;
 }
+
+
+- (BOOL)topBarCancel {
+
+    return YES;
+}
+
+
+//- (NSString*)titleForActionButton;
+//- (UIColor*)tintForActionButton;
+
 
 
 
@@ -619,8 +644,12 @@ enum SectionBio
     
     [ActivityAlertView close];
     
-    if (self.itemId != TopBarItemNone)
-        [self.topbar runItem:self.itemId];
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+
+//    if (self.itemId != TopBarItemNone)
+//        [self.topbar runItem:self.itemId];
+    
+    
 }
 
 

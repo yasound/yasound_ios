@@ -17,7 +17,7 @@
 //    IBOutlet UIBarButtonItem* _titleItem;
     
     //...............................................
-    IBOutlet UIView* _container;
+//    IBOutlet UIView* _container;
     
     IBOutlet UILabel* _label;
     IBOutlet MyUITextField* _username;
@@ -33,6 +33,9 @@
     
     UIAlertView* _confirmAlert;
 }
+
+
+@property (nonatomic, retain) IBOutlet UIView* container;
 
 
 //- (IBAction) onSubmit:(id)sender;

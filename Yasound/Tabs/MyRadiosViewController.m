@@ -19,8 +19,9 @@
 #import "ActivityAlertView.h"
 #import "ProgrammingViewController.h"
 #import "MessageBroadcastModalViewController.h"
+#import "YasoundAppDelegate.h"
 
-
+#define NB_TOKENS 4
 
 
 @interface MyRadiosViewController ()
@@ -40,10 +41,13 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) 
+    if (self)
     {
+        
         self.cellLoader = [UINib nibWithNibName:CellIdentifier bundle:[NSBundle mainBundle]];
         self.editing = [[NSMutableDictionary alloc] init];
+        _tokens = 0;
+        _firstTime = YES;
     }
     return self;
 }
@@ -89,6 +93,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     {
         [self.editing setObject:[NSNumber numberWithBool:NO] forKey:radio.id];
     }
+    
     
     [self.tableview reloadData];
 }
@@ -179,17 +184,34 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
         MyRadiosTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) 
         {
+            NSLog(@"CREATE RADIO");
             NSArray *topLevelItems = [self.cellLoader instantiateWithOwner:self options:nil];
             cell = [topLevelItems objectAtIndex:0];
             cell.delegate = self;
         }
  
         NSNumber* nb = [self.editing objectForKey:radio.id];
-        assert(nb);
-        BOOL editing = [nb boolValue];
+        BOOL editing = NO;
+        if (!nb)
+            editing = [nb boolValue];
 
-            
+
+        cell.alpha = 0;
+
         [cell updateWithRadio:radio target:self editing:editing];
+        
+//        if (_tokens < NB_TOKENS) {
+//            _tokens++;
+
+//        if (_firstTime)
+//            cell.alpha = 0;
+//            [UIView beginAnimations:nil context:NULL];
+//            [UIView setAnimationDelay:_tokens * 0.2];
+//            [UIView setAnimationDelay:0.33];
+//            cell.alpha = 1;
+//            [UIView commitAnimations];
+//            
+//        }
         
         return cell;
     }
@@ -202,8 +224,10 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
             cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellCreateIdentifier];
 
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-            BOOL perm_geo_create_radio = [[YasoundDataProvider main].user permission:PERM_GEOCREATERADIO];
+
+            //LBDEBUG TEMPORARLY
+//            BOOL perm_geo_create_radio = [[YasoundDataProvider main].user permission:PERM_GEOCREATERADIO];
+            BOOL perm_geo_create_radio = YES;
             if (perm_geo_create_radio)
             {
                 BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButtonBlue.button" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -234,6 +258,19 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
             }
             
         }
+        
+//        if ((self.radios.count < 3) && (_tokens < NB_TOKENS)) {
+//            _tokens++;
+//            
+//            cell.alpha = 0;
+//            [UIView beginAnimations:nil context:NULL];
+//            [UIView setAnimationDelay:_tokens * 0.2];
+//            [UIView setAnimationDelay:0.33];
+//            cell.alpha = 1;
+//            [UIView commitAnimations];
+//            
+//        }
+
         
         return cell;
     }
@@ -300,14 +337,14 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 - (void)myRadioRequestedStats:(Radio*)radio
 {
     StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil forRadio:radio];
-    [self.navigationController pushViewController:view animated:YES];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
     [view release];
 }
 
 - (void)myRadioRequestedSettings:(Radio*)radio
 {
     SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:radio createMode:NO];
-    [self.navigationController pushViewController:view animated:YES];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
     [view release];
 }
 
@@ -330,13 +367,13 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     self.radioToBroadcast = nil;
     
     MessageBroadcastModalViewController* view = [[MessageBroadcastModalViewController alloc] initWithNibName:@"MessageBroadcastModalViewController" bundle:nil forRadio:radio subscribers:subscribers target:self action:@selector(onModalReturned)];
-    [self.navigationController presentModalViewController:view animated:YES];
+    [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
     [view release];
 }
 
 - (void)onModalReturned
 {
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -344,7 +381,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 - (void)myRadioRequestedProgramming:(Radio*)radio
 {
     ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:radio];
-    [self.navigationController pushViewController:view animated:YES];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
     [view release];
 }
 
@@ -365,11 +402,11 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 - (void)onCreateButtonClicked:(id)sender
 {
 //    SettingsViewController* view = [[SettingsViewController alloc] createWithNibName:@"SettingsViewController" bundle:nil];
-//    [self.navigationController pushViewController:view animated:YES];
+//    [APPDELEGATE.navigationController pushViewController:view animated:YES];
 //    [view release];
     
     CreateRadioViewController* view = [[CreateRadioViewController alloc] initWithNibName:@"CreateRadioViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
     [view release];
 }
 

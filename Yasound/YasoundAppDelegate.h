@@ -11,6 +11,7 @@
 #import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 
+
 #define APPDELEGATE ((YasoundAppDelegate*)[UIApplication sharedApplication].delegate)
 
 
@@ -27,7 +28,8 @@
 
 @property (nonatomic, retain)  IBOutlet UIWindow *window;
 
-@property (nonatomic, retain)  UINavigationController *navigationController;
+//@property (nonatomic, retain)  UINavigationController* menuNavigationController;
+@property (nonatomic, retain)  UINavigationController* navigationController;
 
 
 // slideController is ECSlidingViewController* with iOS >= 5

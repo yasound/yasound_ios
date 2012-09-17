@@ -53,6 +53,10 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSlidingOut:) name:ECSlidingViewUnderLeftWillAppear object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSlidingIn:) name:ECSlidingViewTopDidReset object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogout:) name:NOTIF_DID_LOGOUT object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogin:) name:NOTIF_DID_LOGIN object:nil];
+        
     }
     return self;
 }
@@ -285,6 +289,12 @@
         //viewC.view.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
         [self.listContainer addSubview:self.searchview.view];
 //        [self.searchview release];
+
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"BigMessage.Icons.search" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+       UIImageView* icon = [sheet makeImage];
+        
+        [self.searchview.view addSubview:icon];
+
         return;
     }
     
@@ -558,6 +568,18 @@
 
 
 
+- (void)onNotifDidLogout:(NSNotification*)notif {
+
+    // refresh GUI
+    [self.wheelSelector stickToItem:self.wheelSelector.currentIndex silent:NO];
+}
+
+
+- (void)onNotifDidLogin:(NSNotification*)notif {
+    // refresh GUI
+    [self.wheelSelector stickToItem:self.wheelSelector.currentIndex silent:NO];
+    
+}
 
 
 

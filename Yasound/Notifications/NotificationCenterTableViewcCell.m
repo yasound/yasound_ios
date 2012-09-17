@@ -56,17 +56,21 @@
       
       
     
-    BundleFontsheet* fontSheet = [sheet.fontsheets objectForKey:@"default"];
-    CGFloat fontSize = fontSheet.size;
+//    BundleFontsheet* fontSheet = [sheet.fontsheets objectForKey:@"default"];
+//    CGFloat fontSize = fontSheet.size;
     if ([_notification isReadBool])
     {
-        _notifTextLabel.alpha = 0.5;
-        _notifDateLabel.alpha = 0.5;
+        [sheet applyToLabel:_notifTextLabel class:@"default"];
+        [sheet applyToLabel:_notifDateLabel class:@"default"];
+//        _notifTextLabel.alpha = 0.5;
+//        _notifDateLabel.alpha = 0.5;
     }
     else
     {
-        _notifTextLabel.alpha = 1;
-        _notifDateLabel.alpha = 1;
+        [sheet applyToLabel:_notifTextLabel class:@"highlighted"];
+        [sheet applyToLabel:_notifDateLabel class:@"highlighted"];
+//        _notifTextLabel.alpha = 1;
+//        _notifDateLabel.alpha = 1;
     }
     
     [self addSubview:_notifTextLabel];
@@ -116,18 +120,22 @@
     
   NSError* error;
   BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Notifications.text"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
-  BundleFontsheet* fontSheet = [sheet.fontsheets objectForKey:@"default"];
-  CGFloat fontSize = fontSheet.size;
+//  BundleFontsheet* fontSheet = [sheet.fontsheets objectForKey:@"default"];
+//  CGFloat fontSize = fontSheet.size;
 
    if ([_notification isReadBool])
    {
-       _notifTextLabel.alpha = 0.5;
-       _notifDateLabel.alpha = 0.5;
+//       _notifTextLabel.alpha = 0.5;
+//       _notifDateLabel.alpha = 0.5;
+       [sheet applyToLabel:_notifTextLabel class:@"default"];
+       [sheet applyToLabel:_notifDateLabel class:@"default"];
    }
   else
   {
-      _notifTextLabel.alpha = 1;
-      _notifDateLabel.alpha = 1;
+//      _notifTextLabel.alpha = 1;
+//      _notifDateLabel.alpha = 1;
+      [sheet applyToLabel:_notifTextLabel class:@"highlighted"];
+      [sheet applyToLabel:_notifDateLabel class:@"highlighted"];
   }
   
   NSString* s = [self dateToString:_notification.date];

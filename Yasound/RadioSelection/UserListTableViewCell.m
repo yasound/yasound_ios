@@ -20,8 +20,9 @@
 #define OBJECT_IMAGE 1
 #define OBJECT_MASK 2
 #define OBJECT_NAME 3
-#define OBJECT_INTERACTIVE_VIEW 4
-#define OBJECT_CONTAINER 5
+//#define OBJECT_INTERACTIVE_VIEW 4
+//#define OBJECT_CONTAINER 5
+#define OBJECT_CONTAINER 4
 
 
 
@@ -31,7 +32,7 @@
 @synthesize target;
 @synthesize action;
 
-#define USER_IMAGE_SIZE 117.f
+#define USER_IMAGE_SIZE 65.f
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier users:(NSArray*)users delay:(CGFloat)delay target:(id)target action:(SEL)action
 {
@@ -52,7 +53,7 @@
         {
             [self addItemGui:user itemIndex:itemIndex xOffset:xOffset];
             itemIndex++;
-            xOffset += (self.frame.size.width / 2.f);
+            xOffset += (self.frame.size.width / 3.f);
         }
         
         if (delay)
@@ -94,12 +95,16 @@
 
     // user mask
     sheet = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UIImageView* userMask = [sheet makeImage];
-    [container addSubview:userMask];
+//    UIImageView* userMask = [sheet makeImage];
+    UIButton* userButton = [sheet makeButton];
+    [userButton addTarget:self action:@selector(onInteractivePressedUp:) forControlEvents:UIControlEventTouchUpInside];
+    userButton.tag = itemIndex;
+    [container addSubview:userButton];
 
     // name
     sheet = [[Theme theme] stylesheetForKey:@"Users.name"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UILabel* name = [sheet makeLabel];
+    name.adjustsFontSizeToFitWidth = YES;
     name.text = user.name;
     [container addSubview:name];
 
@@ -107,15 +112,15 @@
     sheet = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 
     // interactive view : catch the "press down" and "press up" actions
-    InteractiveView* interactiveView0 = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:itemIndex]];
+//    InteractiveView* interactiveView0 = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:itemIndex]];
 
-    [interactiveView0 setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:itemIndex]];
-    [container addSubview:interactiveView0];
+//    [interactiveView0 setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:itemIndex]];
+//    [container addSubview:interactiveView0];
 
     // store objects
-    NSMutableArray* objects = [NSMutableArray arrayWithObjects:user, userImage, userMask, name, interactiveView0,container, nil];
+    NSMutableArray* objects = [NSMutableArray arrayWithObjects:user, userImage, userButton, name,container, nil];
 
-    assert(objects.count == 6);
+    assert(objects.count == 5);
 
     [self.objects addObject:objects];
             
@@ -165,7 +170,7 @@
         {
             [self addItemGui:user itemIndex:itemIndex xOffset:xOffset];
             itemIndex++;
-            xOffset += (self.frame.size.width / 2.f);
+            xOffset += (self.frame.size.width / 3.f);
             continue;
         }
 
@@ -188,7 +193,7 @@
 
 
         itemIndex++;
-        xOffset += (self.frame.size.width / 2.f);
+        xOffset += (self.frame.size.width / 3.f);
 
     }
 
@@ -218,26 +223,29 @@
 
 
 
-- (void)onInteractivePressedDown:(NSNumber*)indexNb
-{
-    // set the "highlighted" image for the user mask
-    NSInteger userIndex = [indexNb integerValue];
-    NSArray* objects = [self.objects objectAtIndex:userIndex];
-    UIImageView* userMask = [objects objectAtIndex:OBJECT_MASK];
-    
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Users.maskHighlighted" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    [userMask setImage:[sheet image]];
-}
+//- (void)onInteractivePressedDown:(NSNumber*)indexNb
+//{
+//    // set the "highlighted" image for the user mask
+//    NSInteger userIndex = [indexNb integerValue];
+//    NSArray* objects = [self.objects objectAtIndex:userIndex];
+//    UIImageView* userMask = [objects objectAtIndex:OBJECT_MASK];
+//    
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Users.maskHighlighted" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    [userMask setImage:[sheet image]];
+//}
 
-- (void)onInteractivePressedUp:(NSNumber*)indexNb
+//- (void)onInteractivePressedUp:(NSNumber*)indexNb
+- (void)onInteractivePressedUp:(id)sender
 {
-    // set back the "normal" image for the user mask
-    NSInteger userIndex = [indexNb integerValue];
-    NSArray* objects = [self.objects objectAtIndex:userIndex];
-    UIImageView* userMask = [objects objectAtIndex:OBJECT_MASK];
+    UIButton* button = sender;
+    NSInteger userIndex = button.tag;
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    [userMask setImage:[sheet image]];
+    // set back the "normal" image for the user mask
+    NSArray* objects = [self.objects objectAtIndex:userIndex];
+//    UIImageView* userMask = [objects objectAtIndex:OBJECT_MASK];
+    
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    [userMask setImage:[sheet image]];
     
     User* user = [objects objectAtIndex:OBJECT_USER];
 

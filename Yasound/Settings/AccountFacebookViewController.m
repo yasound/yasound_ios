@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 
     _usernameLabel.text = NSLocalizedString(@"AccountsView_username_label", nil);
     
@@ -216,11 +217,21 @@
 
 
 
-#pragma mark - TopBarBackAndTitleDelegate
+#pragma mark - TopBarModalDelegate
+
+- (BOOL)shouldShowActionButton {
+    return NO;
+}
 
 - (NSString*)topBarTitle
 {
-    return NSLocalizedString(@"Account.facebook", nil);
+    NSString* str = NSLocalizedString(@"Account.facebook", nil);
+    return str;
+}
+
+- (NSString*)titleForCancelButton {
+    
+    return NSLocalizedString(@"Navigation.close", nil);
 }
 
 

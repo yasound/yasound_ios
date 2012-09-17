@@ -10,9 +10,11 @@
 #import "TopBar.h"
 #import "Radio.h"
 
-@interface MyRadiosViewController : UIViewController<TopBarDelegate, UITableViewDelegate>
+@interface MyRadiosViewController : YaViewController<TopBarDelegate, UITableViewDelegate>
 {
     UIActionSheet* _sheetTools;
+    NSInteger _tokens;
+    BOOL _firstTime;
 }
 
 @property (nonatomic, retain) Radio* radioToBroadcast;

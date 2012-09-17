@@ -20,7 +20,7 @@ typedef enum
     NSString* _name;
     NSString* _nameWithoutArticle;
     NSString* _firstRelevantWord;
-    BOOL _isProgrammed;
+//    BOOL _isProgrammed;
     BOOL _removed;
     
 //    BOOL _uploading;
@@ -34,6 +34,7 @@ typedef enum
 @property (retain, nonatomic) NSString* name_client;
 @property (retain, nonatomic) NSString* artist_client;
 @property (retain, nonatomic) NSString* album_client;
+@property (retain, nonatomic) NSString* large_cover;
 @property (retain, nonatomic) NSString* cover;
 @property (retain, nonatomic) NSNumber* song;
 @property (retain, nonatomic) NSNumber* need_sync;
@@ -61,7 +62,7 @@ typedef enum
 - (void)removeSong:(BOOL)set;
 
 - (BOOL)isProgrammed;
-- (void)setIsProgrammed:(BOOL)set;
+//- (void)setIsProgrammed:(BOOL)set;
 
 //- (BOOL)isUploading;
 //- (void)setUploading:(BOOL)set;

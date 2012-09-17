@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TopBarBackAndTitle.h"
+#import "TopBarModal.h"
 
-@interface AccountTwitterViewController : UIViewController
+@interface AccountTwitterViewController : YaViewController
 {
-    IBOutlet TopBarBackAndTitle* _topbar;
+    IBOutlet TopBarModal* _topbar;
     IBOutlet UILabel* _usernameLabel;
     IBOutlet UILabel* _usernameValue;
 

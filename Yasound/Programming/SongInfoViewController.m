@@ -413,7 +413,7 @@
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
     // first, check if the user has the targeted song in his local catalog
-    _ownSong = [[SongCatalog availableCatalog]doesDeviceContainSong:self.song];
+    _ownSong = [[SongLocalCatalog main]doesDeviceContainSong:self.song];
     
     if (_ownSong)
     {
