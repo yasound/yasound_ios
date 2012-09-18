@@ -48,9 +48,9 @@
         _songsViewController = nil;
         _changed = NO;
         
-        _checkmarkImage = [UIImage imageNamed:@"WhiteCheckmark.png"];
+        _checkmarkImage = [UIImage imageNamed:@"GrayCheckmark.png"];
         [_checkmarkImage retain];
-        _checkmarkDisabledImage = [UIImage imageNamed:@"GrayCheckmark.png"];
+        _checkmarkDisabledImage = [UIImage imageNamed:@"WhiteCheckmark.png"];
         [_checkmarkDisabledImage retain];
     }
     
@@ -464,19 +464,26 @@
     MPMediaPlaylist* mediaPlaylist = [selectedItem objectForKey:@"mediaPlaylist"];
 
     
-    [self checkmark:cell with:NO];
-    if (_displayMode == eDisplayModeNormal) 
+    if (_switchAllMyMusic.on) // when 'all music' switch is on, checkmark all playlists, even if they are not in _selectedPlaylists
     {
-        if ([_unselectedPlaylists containsObject:dico]) 
-            [self checkmark:cell with:NO];
-        else
-            [self checkmark:cell with:YES];
+        [self checkmark:cell with:YES];
+    }
+    else
+    {
+        [self checkmark:cell with:NO];
+        if (_displayMode == eDisplayModeNormal) 
+        {
+            if ([_unselectedPlaylists containsObject:dico]) 
+                [self checkmark:cell with:NO];
+            else
+                [self checkmark:cell with:YES];
 
-    } 
-    else if (_displayMode == eDisplayModeEdit) 
-    {
-        if (mediaPlaylist != NULL && neverSynchronized == FALSE) 
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        } 
+        else if (_displayMode == eDisplayModeEdit) 
+        {
+            if (mediaPlaylist != NULL && neverSynchronized == FALSE) 
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
     }
     
     NSNumber* matched = [dico objectForKey:@"matched"];
@@ -503,6 +510,9 @@
     if (indexPath.section == 0)
         return;
     _changed = YES;
+    
+    if (_switchAllMyMusic.on) // cannot select playlists when all music is chosen
+        return;
     
     NSMutableArray* source = NULL;
     if (indexPath.section == 1) 
