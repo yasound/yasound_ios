@@ -14,6 +14,7 @@
 #import "ProgrammingRadioViewController.h"
 #import "ProgrammingUploadViewController.h"
 #import "ProgrammingLocalViewController.h"
+#import "ProgrammingSearchYasoundViewController.h"
 #import "TimeProfile.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
@@ -31,7 +32,7 @@
 //@synthesize sortedArtists;
 //@synthesize sortedSongs;
 @synthesize container;
-@synthesize tableview;
+@synthesize viewController;
 @synthesize topbar;
 
 #define SEGMENT_INDEX_ALPHA 0
@@ -564,7 +565,7 @@
 {
     NSInteger index = _radioSegment.selectedSegmentIndex;
     
-    [self.tableview setSegment:index];
+    [self.viewController setSegment:index];
 }
 
 
@@ -572,7 +573,7 @@
 {
     NSInteger index = _localSegment.selectedSegmentIndex;
     
-    [self.tableview setSegment:index];
+    [self.viewController setSegment:index];
 }
 
 
@@ -584,8 +585,8 @@
     [DataBase releaseDataBase];
     
     // refresh catalog and gui
-    if ([self.tableview respondsToSelector:@selector(load)])
-        [self.tableview load];
+    if ([self.viewController respondsToSelector:@selector(load)])
+        [self.viewController load];
     
     
 }
@@ -632,14 +633,12 @@
 
 - (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
 {
-//    if (itemIndex == PROGRAMMING_WHEEL_ITEM_YASOUND)
-//        return NSLocalizedString(@"Programming.Catalog.yasound", nil);
+    if (itemIndex == PROGRAMMING_WHEEL_ITEM_YASOUND_SERVER)
+        return NSLocalizedString(@"Programming.Catalog.yasound", nil);
     if (itemIndex == PROGRAMMING_WHEEL_ITEM_LOCAL)
         return NSLocalizedString(@"Programming.Catalog.local", nil);
     if (itemIndex == PROGRAMMING_WHEEL_ITEM_RADIO)
         return NSLocalizedString(@"Programming.Catalog.radio", nil);
-//    if (itemIndex == PROGRAMMING_WHEEL_ITEM_SERVER)
-//        return NSLocalizedString(@"Programming.Catalog.server", nil);
     if (itemIndex == PROGRAMMING_WHEEL_ITEM_UPLOADS)
         return NSLocalizedString(@"Programming.Catalog.uploads", nil);
     return nil;
@@ -652,45 +651,75 @@
 
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
 {
-    if (self.tableview != nil)
+    if (self.viewController != nil)
     {
-        [self.tableview.tableView removeFromSuperview];
-        [self.tableview release];
-        self.tableview = nil;
+        if ([self.viewController isKindOfClass:[UITableViewController class]])
+        {
+            UITableViewController* tableViewController = (UITableViewController*)self.viewController;
+            [tableViewController.tableView removeFromSuperview];
+        }
+        else if ([self.viewController isKindOfClass:[ProgrammingSearchYasoundViewController class]])
+        {
+            ProgrammingSearchYasoundViewController* searchController = (ProgrammingSearchYasoundViewController*)self.viewController;
+            [searchController.view removeFromSuperview];
+        }
+        [self.viewController release];
+        self.viewController = nil;
     }
 
     if (itemIndex == PROGRAMMING_WHEEL_ITEM_LOCAL)
     {
         _containerLocalSegment.hidden = NO;
         _containerRadioSegment.hidden = YES;
-        _containerUploadSegment.hidden = YES;
+        _containerEmptySegment.hidden = YES;
         
         ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio withSegmentIndex:_localSegment.selectedSegmentIndex];
-        self.tableview = view;
+        self.viewController = view;
     }
     else if (itemIndex == PROGRAMMING_WHEEL_ITEM_RADIO)
     {
         _containerLocalSegment.hidden = YES;
         _containerRadioSegment.hidden = NO;
-        _containerUploadSegment.hidden = YES;
+        _containerEmptySegment.hidden = YES;
 
         ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
-        self.tableview = view;
+        self.viewController = view;
     }
     else if (itemIndex == PROGRAMMING_WHEEL_ITEM_UPLOADS)
     {
         _containerLocalSegment.hidden = YES;
         _containerRadioSegment.hidden = YES;
-        _containerUploadSegment.hidden = NO;
+        _containerEmptySegment.hidden = NO;
 
         ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
-        self.tableview = view;
+        self.viewController = view;
+    }
+    else if (itemIndex == PROGRAMMING_WHEEL_ITEM_YASOUND_SERVER)
+    {
+        _containerLocalSegment.hidden = YES;
+        _containerRadioSegment.hidden = YES;
+        _containerEmptySegment.hidden = NO;
+        
+        ProgrammingSearchYasoundViewController* view = [[ProgrammingSearchYasoundViewController alloc] initWithNibName:@"ProgrammingSearchYasoundViewController" bundle:nil andRadio:self.radio];
+        self.viewController = view;
     }
     
-    self.tableview.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    CGRect frame = CGRectMake(0, 0, self.container.frame.size.width, self.container.frame.size.height);
-    self.tableview.tableView.frame = frame;
-    [self.container addSubview:self.tableview.tableView];
+    
+    if ([self.viewController isKindOfClass:[UITableViewController class]])
+    {
+        UITableViewController* tableViewController = (UITableViewController*)self.viewController;
+        tableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        CGRect frame = CGRectMake(0, 0, self.container.frame.size.width, self.container.frame.size.height);
+        tableViewController.tableView.frame = frame;
+        [self.container addSubview:tableViewController.tableView];
+    }
+    else if ([self.viewController isKindOfClass:[ProgrammingSearchYasoundViewController class]])
+    {
+        ProgrammingSearchYasoundViewController* searchViewController = (ProgrammingSearchYasoundViewController*)self.viewController;
+        CGRect frame = CGRectMake(0, 0, self.container.frame.size.width, self.container.frame.size.height);
+        searchViewController.view.frame = frame;
+        [self.container addSubview:searchViewController.view];
+    }
     
     //[view release];
     
@@ -707,7 +736,7 @@
 
 - (BOOL)topBarBackClicked
 {
-    BOOL goBack = [self.tableview onBackClicked];
+    BOOL goBack = [self.viewController onBackClicked];
     return goBack;
 }
 

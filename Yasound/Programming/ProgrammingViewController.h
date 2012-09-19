@@ -19,17 +19,16 @@
 #define LOCALSEGMENT_INDEX_TITLES 2
 
 
-#define PROGRAMMING_WHEEL_NB_ITEMS 3
-#define PROGRAMMING_WHEEL_ITEM_LOCAL 0
-#define PROGRAMMING_WHEEL_ITEM_RADIO 1
-#define PROGRAMMING_WHEEL_ITEM_UPLOADS 2
+//#define PROGRAMMING_WHEEL_NB_ITEMS 3
+//#define PROGRAMMING_WHEEL_ITEM_LOCAL 0
+//#define PROGRAMMING_WHEEL_ITEM_RADIO 1
+//#define PROGRAMMING_WHEEL_ITEM_UPLOADS 2
 
-//#define PROGRAMMING_WHEEL_NB_ITEMS 4
-//#define PROGRAMMING_WHEEL_ITEM_YASOUND 0
-//#define PROGRAMMING_WHEEL_ITEM_LOCAL 1
-//#define PROGRAMMING_WHEEL_ITEM_RADIO 2
-//#define PROGRAMMING_WHEEL_ITEM_UPLOADS 3
-//#define WHEEL_ITEM_SERVER 3
+#define PROGRAMMING_WHEEL_NB_ITEMS 4
+#define PROGRAMMING_WHEEL_ITEM_YASOUND_SERVER 0
+#define PROGRAMMING_WHEEL_ITEM_LOCAL 1
+#define PROGRAMMING_WHEEL_ITEM_RADIO 2
+#define PROGRAMMING_WHEEL_ITEM_UPLOADS 3
 
 @interface ProgrammingViewController : YaViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate, TopBarBackAndTitleDelegate>
 {
@@ -41,7 +40,7 @@
     
     IBOutlet UIView* _containerRadioSegment;
     IBOutlet UIView* _containerLocalSegment;
-    IBOutlet UIView* _containerUploadSegment;
+    IBOutlet UIView* _containerEmptySegment;
     IBOutlet UISegmentedControl* _radioSegment;
     IBOutlet UISegmentedControl* _localSegment;
     
@@ -53,7 +52,7 @@
 @property (nonatomic, retain) IBOutlet TopBarBackAndTitle* topbar;
 
 @property (nonatomic, retain) Radio* radio;
-@property (nonatomic, retain) UITableViewController* tableview;
+@property (nonatomic, retain) UIViewController* viewController;
 
 //@property (nonatomic, retain) NSMutableDictionary* sortedSongs;
 //@property (nonatomic, retain) NSMutableDictionary* sortedArtists;
