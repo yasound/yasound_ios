@@ -34,6 +34,7 @@
 @synthesize target;
 @synthesize action;
 
+#define OFFSET 98
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios target:(id)target action:(SEL)action
 {
@@ -54,7 +55,7 @@
         {
             [self addRadioGui:radio radioIndex:radioIndex xOffset:xOffset];
             radioIndex++;
-            xOffset += (self.frame.size.width / 3.f);
+            xOffset += OFFSET;
         }
         
   }
@@ -70,6 +71,10 @@
     ProfilCellRadio* cell = [[ProfilCellRadio alloc] initWithRadio:radio];
     cell.frame = CGRectMake(xOffset, 0, cell.frame.size.width, cell.frame.size.height);
     [self addSubview:cell];
+    
+    //LBDEBUG
+    NSLog(@"DEBUG addRadioGui %.2f", xOffset);
+
 
     // store objects
     NSMutableArray* objects = [NSMutableArray arrayWithObjects:radio, cell, nil];
@@ -121,10 +126,12 @@
         {
             [self addRadioGui:radio radioIndex:radioIndex xOffset:xOffset];
             radioIndex++;
-            xOffset += (self.frame.size.width / 3.f);
+            xOffset += OFFSET;
             continue;
         }
 
+        //LBDEBUG
+        assert(radioIndex < self.radioObjects.count);
         
         NSMutableArray* objects = [self.radioObjects objectAtIndex:radioIndex];
         
@@ -139,18 +146,26 @@
         
         ProfilCellRadio* view = [objects objectAtIndex:RADIO_OBJECT_VIEW];
         view.radio = radio;
+        
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Search.avatarDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        view.image.image = [sheet image];
+        
         view.image.url = imageURL;
         view.text.text = radio.name;
 
         radioIndex++;
-        xOffset += (self.frame.size.width / 3.f);
+        xOffset += OFFSET;
+//        NSLog(@"xOffset %.2f", xOffset);
     }
     
     
     // we had two radios in this row, but we only need one for this update
-    for (NSInteger index = self.radioObjects.count; index > radios.count; index--)
     if (self.radioObjects.count > radios.count)
+    for (NSInteger index = self.radioObjects.count -1; index >= radios.count; index--)
     {
+//        //LBDEBUG
+        //assert(index < self.radioObjects.count);
+        
         NSMutableArray* objects = [self.radioObjects objectAtIndex:index];
         
         UIView* container = [objects objectAtIndex:RADIO_OBJECT_VIEW];
@@ -192,23 +207,23 @@
 //    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.maskHighlighted" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //    [radioMask setImage:[sheet image]];
 //}
-//
+
 //- (void)onInteractivePressedUp:(NSNumber*)indexNb
 //{
 //    // set back the "normal" image for the radio mask
 //    NSInteger radioIndex = [indexNb integerValue];
 //    NSArray* objects = [self.radioObjects objectAtIndex:radioIndex];
-//    UIImageView* radioMask = [objects objectAtIndex:RADIO_OBJECT_MASK];
+////    UIImageView* radioMask = [objects objectAtIndex:RADIO_OBJECT_MASK];
 //    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    [radioMask setImage:[sheet image]];
+////    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+////    [radioMask setImage:[sheet image]];
 //    
 //    Radio* radio = [objects objectAtIndex:RADIO_OBJECT_RADIO];
 //
 //    // and call external action to delegate the radio selection
 //    [self.target performSelector:self.action withObject:radio];
 //}
-
+//
 
 
 

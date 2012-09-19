@@ -78,6 +78,8 @@ typedef enum
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSearchRadioClicked:) name:NOTIF_SEARCH_RADIO_SELECTED object:nil];
   
   _radios = nil;
   _radiosByCreator = nil;
@@ -138,6 +140,17 @@ typedef enum
 
 
 
+
+- (void)onSearchRadioClicked:(NSNotification*)notif {
+    
+    Radio* radio = notif.object;
+    assert(radio);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio userInfo:nil];
+
+    [self.popover dismissPopoverAnimated:YES];
+    
+}
 
 
 
@@ -218,8 +231,8 @@ typedef enum
   if (!radios)
     return 0;
   
-    NSInteger nbRows = radios.count / 2;
-    if ((radios.count % 2) != 0)
+    NSInteger nbRows = radios.count / 3;
+    if ((radios.count % 3) != 0)
         nbRows++;
     return nbRows;
 }
@@ -307,6 +320,9 @@ typedef enum
     
     
     NSInteger radioIndex = indexPath.row * 3;
+    
+    //LBDEBUG
+//    NSLog(@"radioIndex %d    count %d", radioIndex, radios.count);
     
     Radio* radio1 = [radios objectAtIndex:radioIndex];
     Radio* radio2 = nil;

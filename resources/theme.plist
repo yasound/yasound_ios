@@ -3466,6 +3466,13 @@
 		</dict>
 		<key>Search</key>
 		<dict>
+			<key>avatarDummy</key>
+			<dict>
+				<key>name</key>
+				<string>commonAvatarDummy</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
 			<key>popover</key>
 			<dict>
 				<key>width</key>

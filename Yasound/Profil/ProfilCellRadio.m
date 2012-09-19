@@ -61,7 +61,7 @@
 
 - (IBAction)onClicked:(id)sender {
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:self.radio];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_SEARCH_RADIO_SELECTED object:self.radio];
 }
 
 
