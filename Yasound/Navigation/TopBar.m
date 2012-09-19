@@ -26,7 +26,15 @@
 @synthesize delegate;
 @synthesize customItems;
 @synthesize itemHdButton;
+@synthesize itemSearch;
+@synthesize itemSearchButton;
 
+
+#define INDEX_BACK 0
+#define INDEX_HD 3
+#define INDEX_NOTIFS 4
+#define INDEX_SEARCH 5
+#define INDEX_NOWPLAYING 8
 
 - (void)dealloc
 {
@@ -73,6 +81,12 @@
     [self updateHd];
     self.itemHd = [[UIBarButtonItem alloc] initWithCustomView:self.itemHdButton];
 
+    // hd
+    sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemSearch" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.itemSearchButton = [sheet makeButton];
+    [self.itemSearchButton addTarget:self action:@selector(onSearch:) forControlEvents:UIControlEventTouchUpInside];
+    self.itemSearch = [[UIBarButtonItem alloc] initWithCustomView:self.itemSearchButton];
+
     //  "notif"  item
     sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemNotif" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.itemNotifsButton = [sheet makeButton];
@@ -100,7 +114,7 @@
     // flexible space
     UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
-    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace, self.itemHd, flexibleSpace, self.itemNotifs, flexibleSpace, itemNowPlaying, nil];
+    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace,flexibleSpace, self.itemHd,  self.itemNotifs, self.itemSearch, flexibleSpace,flexibleSpace, itemNowPlaying, nil];
     
     [self setItems:self.customItems];
     
@@ -124,7 +138,7 @@
     if (hide)
     {
         UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        [self.customItems replaceObjectAtIndex:0 withObject:flexibleSpace];
+        [self.customItems replaceObjectAtIndex:INDEX_BACK withObject:flexibleSpace];
         [self setItems:self.customItems];
     }
 }
@@ -145,7 +159,7 @@
 
     self.itemSettings = [[UIBarButtonItem alloc] initWithCustomView:self.itemSettingsButton];
     
-    [self.customItems replaceObjectAtIndex:6 withObject:self.itemSettings];
+    [self.customItems replaceObjectAtIndex:INDEX_NOWPLAYING withObject:self.itemSettings];
     [self setItems:self.customItems];
     
     // check settings button
@@ -162,7 +176,7 @@
     [btn addTarget:self action:@selector(onTrash:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
-    [self.customItems replaceObjectAtIndex:6 withObject:item];
+    [self.customItems replaceObjectAtIndex:INDEX_NOWPLAYING withObject:item];
     [self setItems:self.customItems];
 }
 
@@ -178,7 +192,7 @@
     [btn addTarget:self action:@selector(onMenu:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
-    [self.customItems replaceObjectAtIndex:0 withObject:item];
+    [self.customItems replaceObjectAtIndex:INDEX_BACK withObject:item];
     [self setItems:self.customItems];
 }
 
@@ -203,6 +217,7 @@
     else
         self.itemHdButton.selected = NO;
 }
+
 
 
 
@@ -415,6 +430,25 @@
         [self runItem:TopBarItemHd];
 }
 
+
+
+
+- (void)onSearch:(id)sender
+{
+    BOOL run = YES;
+    
+    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
+        run = [self.delegate topBarItemClicked:TopBarItemSearch];
+    
+    if (run)
+        [self runItem:TopBarItemSearch];
+}
+
+
+
+
+
+
 - (void)onNotif:(id)sender
 {
     BOOL run = YES;
@@ -516,6 +550,23 @@
         [popover release];
     }
 
+    else if (itemId == TopBarItemSearch)
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Search.popover" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        CGSize popoverSize = sheet.frame.size;
+        
+        RadioSearchViewController* view = [[RadioSearchViewController alloc] initWithNibName:@"RadioSearchViewController" bundle:nil];
+        FPPopoverController* popover = [[FPPopoverController alloc] initWithViewController:view];
+        popover.contentSize = popoverSize;
+        popover.arrowDirection = FPPopoverArrowDirectionAny;
+        view.popover = popover;
+        [popover presentPopoverFromView:self.itemSearchButton];
+        [view release];
+        [popover release];
+    }
+    
+    
+    
     else if (itemId == TopBarItemNotif)
     {
         NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];

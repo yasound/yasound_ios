@@ -15,7 +15,8 @@
 @interface ProfilCellRadio : UIView
 
 @property (nonatomic, assign) Radio* radio;
-
+@property (nonatomic, assign) WebImageView* image;
+@property (nonatomic, assign) UILabel* text;
 
 - (id)initWithRadio:(Radio*)radio;
 

@@ -29,6 +29,8 @@
 @implementation MenuViewController
 
 
+@synthesize searchbar;
+
 
 enum MenuDescription
 {
@@ -81,8 +83,18 @@ enum MenuDescription
     [super viewDidLoad];
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"menuBkg.png"]];
+    
+    // set background
+    if ([self.searchbar respondsToSelector:@selector(setBackgroundImage:forToolbarPosition:barMetrics:)])
+        [self.searchbar setBackgroundImage:[UIImage imageNamed:@"topBarBkg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    else
+        [self.searchbar insertSubview:[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topBarBkg.png"]] autorelease] atIndex:0];
+
 }
 
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
+    
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {

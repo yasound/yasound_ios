@@ -7,12 +7,13 @@
 //
 
 #import "RadioSearchViewController.h"
-#import "RadioListTableViewCell.h"
+#import "RadioSearchTableViewCell.h"
 //#import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "RootViewController.h"
+#import "ProfilCellRadio.h"
 
 #define ROW_HEIGHT 66.0
 
@@ -32,7 +33,7 @@ typedef enum
 @synthesize delay;
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) 
@@ -98,6 +99,7 @@ typedef enum
   _searchController.searchBar.placeholder = NSLocalizedString(@"SearchBar_Placeholder", nil);
     
     _searchController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
+    
 
 }
 
@@ -225,7 +227,7 @@ typedef enum
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 156.f;
+    return 102.f;
 }
 
 
@@ -273,31 +275,59 @@ typedef enum
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    static NSString* cellRadioIdentifier = @"RadioListTableViewCell";
+    static NSString* cellRadioIdentifier = @"RadioSearchTableViewCell";
 
     NSArray* radios = [self radiosForSection:indexPath.section];
     
-    RadioListTableViewCell* cell = (RadioListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellRadioIdentifier];
+    RadioSearchTableViewCell* cell = (RadioSearchTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellRadioIdentifier];
     
-    NSInteger radioIndex = indexPath.row * 2;
+    
+    
+//    for (Radio* radio in _items) {
+//        
+//        ProfilCellRadio* cell = [[ProfilCellRadio alloc] initWithRadio:radio];
+//        cell.frame = CGRectMake(posX, 0, cell.frame.size.width, cell.frame.size.height);
+//
+//        [self.scrollview addSubview:cell];
+//        
+//        posX += cell.frame.size.width;
+//        posX += 4;
+//        
+//        // animation to delay the display
+//        [UIView beginAnimations:nil context:NULL];
+//        [UIView setAnimationDelay:delay];
+//        [UIView setAnimationDuration:0.3];
+//        cell.alpha = 1;
+//        [UIView commitAnimations];
+//        
+//        delay += 0.1;
+//    }
+
+    
+    
+    
+    NSInteger radioIndex = indexPath.row * 3;
     
     Radio* radio1 = [radios objectAtIndex:radioIndex];
     Radio* radio2 = nil;
+    Radio* radio3 = nil;
     if (radioIndex+1 < radios.count)
         radio2 = [radios objectAtIndex:radioIndex+1];
+    if (radioIndex+2 < radios.count)
+        radio3 = [radios objectAtIndex:radioIndex+2];
     
-    NSArray* radiosForRow = [NSArray arrayWithObjects:radio1, radio2, nil];
+    NSArray* radiosForRow = [NSArray arrayWithObjects:radio1, radio2, radio3, nil];
     
     if (cell == nil)
     {
-        CGFloat delay = 0;
-        if (self.delayTokens > 0)
-            delay = self.delay;
-        
-        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellRadioIdentifier radios:radiosForRow delay:delay target:self action:@selector(onRadioClicked:)];
-        
-        self.delayTokens--;
-        self.delay += 0.3;
+//        CGFloat delay = 0;
+//        if (self.delayTokens > 0)
+//            delay = self.delay;
+//        
+        cell = [[RadioSearchTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellRadioIdentifier radios:radiosForRow target:self action:@selector(onRadioClicked:)];
+//        
+//        self.delayTokens--;
+//        self.delay += 0.3;
     }
     else
     {

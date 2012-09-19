@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "YaViewController.h"
+#import "FPPopoverController.h"
+
 
 
 @interface RadioSearchViewController : YaViewController <UISearchBarDelegate, UISearchDisplayDelegate>
@@ -22,9 +24,12 @@
   BOOL _viewVisible;
 }
 
+@property(nonatomic, retain) FPPopoverController* popover;
+
 @property (nonatomic) NSInteger delayTokens;
 @property (nonatomic) CGFloat delay;
 
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 
 
 @end

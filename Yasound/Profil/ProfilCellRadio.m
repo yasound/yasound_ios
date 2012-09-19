@@ -35,9 +35,9 @@
     // radio image
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.image" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
-    WebImageView* radioImage = [[WebImageView alloc] initWithImageAtURL:imageURL];
-    radioImage.frame = [sheet frame];
-    [self addSubview:radioImage];
+    self.image = [[WebImageView alloc] initWithImageAtURL:imageURL];
+    self.image.frame = [sheet frame];
+    [self addSubview:self.image];
 
     // radio mask
     sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -54,6 +54,9 @@
     title.text = self.radio.name;
     [self addSubview:title];
 }
+
+
+
 
 
 - (IBAction)onClicked:(id)sender {

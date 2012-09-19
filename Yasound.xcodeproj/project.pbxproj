@@ -974,6 +974,24 @@
 		BC071AC315D9070E001F38D7 /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */; };
 		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
+		BC0F32CB1609BCFD00970E2F /* barItemSearch.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32C91609BCFD00970E2F /* barItemSearch.png */; };
+		BC0F32CC1609BCFD00970E2F /* barItemSearch.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32C91609BCFD00970E2F /* barItemSearch.png */; };
+		BC0F32CD1609BCFD00970E2F /* barItemSearch.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32C91609BCFD00970E2F /* barItemSearch.png */; };
+		BC0F32CE1609BCFD00970E2F /* barItemSearch.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32C91609BCFD00970E2F /* barItemSearch.png */; };
+		BC0F32CF1609BCFD00970E2F /* barItemSearch.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32C91609BCFD00970E2F /* barItemSearch.png */; };
+		BC0F32D01609BCFD00970E2F /* barItemSearch.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32C91609BCFD00970E2F /* barItemSearch.png */; };
+		BC0F32D11609BCFD00970E2F /* barItemSearch.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32C91609BCFD00970E2F /* barItemSearch.png */; };
+		BC0F32D21609BCFD00970E2F /* barItemSearch.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32C91609BCFD00970E2F /* barItemSearch.png */; };
+		BC0F32D31609BCFD00970E2F /* barItemSearch.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32C91609BCFD00970E2F /* barItemSearch.png */; };
+		BC0F32D41609BCFD00970E2F /* barItemSearch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32CA1609BCFD00970E2F /* barItemSearch@2x.png */; };
+		BC0F32D51609BCFD00970E2F /* barItemSearch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32CA1609BCFD00970E2F /* barItemSearch@2x.png */; };
+		BC0F32D61609BCFD00970E2F /* barItemSearch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32CA1609BCFD00970E2F /* barItemSearch@2x.png */; };
+		BC0F32D71609BCFD00970E2F /* barItemSearch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32CA1609BCFD00970E2F /* barItemSearch@2x.png */; };
+		BC0F32D81609BCFD00970E2F /* barItemSearch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32CA1609BCFD00970E2F /* barItemSearch@2x.png */; };
+		BC0F32D91609BCFD00970E2F /* barItemSearch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32CA1609BCFD00970E2F /* barItemSearch@2x.png */; };
+		BC0F32DA1609BCFD00970E2F /* barItemSearch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32CA1609BCFD00970E2F /* barItemSearch@2x.png */; };
+		BC0F32DB1609BCFD00970E2F /* barItemSearch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32CA1609BCFD00970E2F /* barItemSearch@2x.png */; };
+		BC0F32DC1609BCFD00970E2F /* barItemSearch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0F32CA1609BCFD00970E2F /* barItemSearch@2x.png */; };
 		BC1039B114F7F8EA007C5496 /* SongUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1039B014F7F8EA007C5496 /* SongUploadManager.m */; };
 		BC1039B214F7F8EA007C5496 /* SongUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1039B014F7F8EA007C5496 /* SongUploadManager.m */; };
 		BC1039B314F7F8EA007C5496 /* SongUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1039B014F7F8EA007C5496 /* SongUploadManager.m */; };
@@ -1395,6 +1413,15 @@
 		BC355BF315BD4F9200305C56 /* MyRadiosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BD215BD4F9200305C56 /* MyRadiosViewController.xib */; };
 		BC355BF415BD4F9200305C56 /* MyRadiosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BD215BD4F9200305C56 /* MyRadiosViewController.xib */; };
 		BC355BF515BD4F9200305C56 /* MyRadiosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BD215BD4F9200305C56 /* MyRadiosViewController.xib */; };
+		BC37C841160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37C840160A06BE00BCD289 /* RadioSearchTableViewCell.m */; };
+		BC37C842160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37C840160A06BE00BCD289 /* RadioSearchTableViewCell.m */; };
+		BC37C843160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37C840160A06BE00BCD289 /* RadioSearchTableViewCell.m */; };
+		BC37C844160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37C840160A06BE00BCD289 /* RadioSearchTableViewCell.m */; };
+		BC37C845160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37C840160A06BE00BCD289 /* RadioSearchTableViewCell.m */; };
+		BC37C846160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37C840160A06BE00BCD289 /* RadioSearchTableViewCell.m */; };
+		BC37C847160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37C840160A06BE00BCD289 /* RadioSearchTableViewCell.m */; };
+		BC37C848160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37C840160A06BE00BCD289 /* RadioSearchTableViewCell.m */; };
+		BC37C849160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37C840160A06BE00BCD289 /* RadioSearchTableViewCell.m */; };
 		BC384A6415F0B9FB0086A9A1 /* ProfilScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = BC384A4C15F0B9FB0086A9A1 /* ProfilScrollview.m */; };
 		BC384A6515F0B9FB0086A9A1 /* ProfilScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = BC384A4C15F0B9FB0086A9A1 /* ProfilScrollview.m */; };
 		BC384A6615F0B9FB0086A9A1 /* ProfilScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = BC384A4C15F0B9FB0086A9A1 /* ProfilScrollview.m */; };
@@ -6600,6 +6627,8 @@
 		BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingViewController.xib; path = Programming/ProgrammingViewController.xib; sourceTree = "<group>"; };
 		BC0DD8461487EAE900DCD550 /* RadioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewCell.h; sourceTree = "<group>"; };
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
+		BC0F32C91609BCFD00970E2F /* barItemSearch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemSearch.png; sourceTree = "<group>"; };
+		BC0F32CA1609BCFD00970E2F /* barItemSearch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemSearch@2x.png"; sourceTree = "<group>"; };
 		BC1039AF14F7F8EA007C5496 /* SongUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongUploadManager.h; path = Programming/SongUploadManager.h; sourceTree = "<group>"; };
 		BC1039B014F7F8EA007C5496 /* SongUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongUploadManager.m; path = Programming/SongUploadManager.m; sourceTree = "<group>"; };
 		BC188BCD1507638100E38692 /* LocalSongInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalSongInfoViewController.h; path = Programming/LocalSongInfoViewController.h; sourceTree = "<group>"; };
@@ -6673,6 +6702,8 @@
 		BC355BD015BD4F9200305C56 /* MyRadiosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyRadiosViewController.h; path = Yasound/Tabs/MyRadiosViewController.h; sourceTree = SOURCE_ROOT; };
 		BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyRadiosViewController.m; path = Yasound/Tabs/MyRadiosViewController.m; sourceTree = SOURCE_ROOT; };
 		BC355BD215BD4F9200305C56 /* MyRadiosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyRadiosViewController.xib; path = Yasound/Tabs/MyRadiosViewController.xib; sourceTree = SOURCE_ROOT; };
+		BC37C83F160A06BE00BCD289 /* RadioSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSearchTableViewCell.h; path = RadioSelection/RadioSearchTableViewCell.h; sourceTree = "<group>"; };
+		BC37C840160A06BE00BCD289 /* RadioSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSearchTableViewCell.m; path = RadioSelection/RadioSearchTableViewCell.m; sourceTree = "<group>"; };
 		BC384A4B15F0B9FB0086A9A1 /* ProfilScrollview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilScrollview.h; sourceTree = "<group>"; };
 		BC384A4C15F0B9FB0086A9A1 /* ProfilScrollview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilScrollview.m; sourceTree = "<group>"; };
 		BC384A4F15F0B9FB0086A9A1 /* ProfilViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilViewController.h; sourceTree = "<group>"; };
@@ -8270,6 +8301,8 @@
 				BC48937C15EFCD980061C24D /* RadioSearchViewController.h */,
 				BC48937D15EFCD980061C24D /* RadioSearchViewController.m */,
 				BC48937E15EFCD980061C24D /* RadioSearchViewController.xib */,
+				BC37C83F160A06BE00BCD289 /* RadioSearchTableViewCell.h */,
+				BC37C840160A06BE00BCD289 /* RadioSearchTableViewCell.m */,
 				408507DA1601DEBB009DC246 /* WaitingView.h */,
 				408507DB1601DEBB009DC246 /* WaitingView.m */,
 			);
@@ -8914,6 +8947,8 @@
 		BCE35E8815D7FD2E008C26AC /* BarItems */ = {
 			isa = PBXGroup;
 			children = (
+				BC0F32C91609BCFD00970E2F /* barItemSearch.png */,
+				BC0F32CA1609BCFD00970E2F /* barItemSearch@2x.png */,
 				BC28868116051D4900AEEAD7 /* barItemReload.png */,
 				BC28868216051D4900AEEAD7 /* barItemReload@2x.png */,
 				BCE35E8915D7FD2E008C26AC /* barItemAdd.png */,
@@ -10299,6 +10334,8 @@
 				BCDF56821605D7D400CAF6FA /* notificationsIconUnread@2x.png in Resources */,
 				BC641E03160771DA00E1C3A2 /* radioListFriendsDummy.png in Resources */,
 				BC641E0C160771DA00E1C3A2 /* radioListFriendsDummy@2x.png in Resources */,
+				BC0F32D21609BCFD00970E2F /* barItemSearch.png in Resources */,
+				BC0F32DB1609BCFD00970E2F /* barItemSearch@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10751,6 +10788,8 @@
 				BCDF56831605D7D400CAF6FA /* notificationsIconUnread@2x.png in Resources */,
 				BC641E04160771DA00E1C3A2 /* radioListFriendsDummy.png in Resources */,
 				BC641E0D160771DA00E1C3A2 /* radioListFriendsDummy@2x.png in Resources */,
+				BC0F32D31609BCFD00970E2F /* barItemSearch.png in Resources */,
+				BC0F32DC1609BCFD00970E2F /* barItemSearch@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11197,6 +11236,8 @@
 				BCDF56811605D7D400CAF6FA /* notificationsIconUnread@2x.png in Resources */,
 				BC641E02160771DA00E1C3A2 /* radioListFriendsDummy.png in Resources */,
 				BC641E0B160771DA00E1C3A2 /* radioListFriendsDummy@2x.png in Resources */,
+				BC0F32D11609BCFD00970E2F /* barItemSearch.png in Resources */,
+				BC0F32DA1609BCFD00970E2F /* barItemSearch@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11648,6 +11689,8 @@
 				BCDF567E1605D7D400CAF6FA /* notificationsIconUnread@2x.png in Resources */,
 				BC641DFF160771DA00E1C3A2 /* radioListFriendsDummy.png in Resources */,
 				BC641E08160771DA00E1C3A2 /* radioListFriendsDummy@2x.png in Resources */,
+				BC0F32CE1609BCFD00970E2F /* barItemSearch.png in Resources */,
+				BC0F32D71609BCFD00970E2F /* barItemSearch@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12099,6 +12142,8 @@
 				BCDF567C1605D7D400CAF6FA /* notificationsIconUnread@2x.png in Resources */,
 				BC641DFD160771DA00E1C3A2 /* radioListFriendsDummy.png in Resources */,
 				BC641E06160771DA00E1C3A2 /* radioListFriendsDummy@2x.png in Resources */,
+				BC0F32CC1609BCFD00970E2F /* barItemSearch.png in Resources */,
+				BC0F32D51609BCFD00970E2F /* barItemSearch@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12550,6 +12595,8 @@
 				BCDF56801605D7D400CAF6FA /* notificationsIconUnread@2x.png in Resources */,
 				BC641E01160771DA00E1C3A2 /* radioListFriendsDummy.png in Resources */,
 				BC641E0A160771DA00E1C3A2 /* radioListFriendsDummy@2x.png in Resources */,
+				BC0F32D01609BCFD00970E2F /* barItemSearch.png in Resources */,
+				BC0F32D91609BCFD00970E2F /* barItemSearch@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13002,6 +13049,8 @@
 				BCDF567D1605D7D400CAF6FA /* notificationsIconUnread@2x.png in Resources */,
 				BC641DFE160771DA00E1C3A2 /* radioListFriendsDummy.png in Resources */,
 				BC641E07160771DA00E1C3A2 /* radioListFriendsDummy@2x.png in Resources */,
+				BC0F32CD1609BCFD00970E2F /* barItemSearch.png in Resources */,
+				BC0F32D61609BCFD00970E2F /* barItemSearch@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13453,6 +13502,8 @@
 				BCDF567B1605D7D400CAF6FA /* notificationsIconUnread@2x.png in Resources */,
 				BC641DFC160771DA00E1C3A2 /* radioListFriendsDummy.png in Resources */,
 				BC641E05160771DA00E1C3A2 /* radioListFriendsDummy@2x.png in Resources */,
+				BC0F32CB1609BCFD00970E2F /* barItemSearch.png in Resources */,
+				BC0F32D41609BCFD00970E2F /* barItemSearch@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13904,6 +13955,8 @@
 				BCDF567F1605D7D400CAF6FA /* notificationsIconUnread@2x.png in Resources */,
 				BC641E00160771DA00E1C3A2 /* radioListFriendsDummy.png in Resources */,
 				BC641E09160771DA00E1C3A2 /* radioListFriendsDummy@2x.png in Resources */,
+				BC0F32CF1609BCFD00970E2F /* barItemSearch.png in Resources */,
+				BC0F32D81609BCFD00970E2F /* barItemSearch@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14200,6 +14253,7 @@
 				408507E31601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507EE160231C9009DC246 /* PromoCodeCell.m in Sources */,
 				BC5509FA160385C00027AABF /* TopBarModal.m in Sources */,
+				BC37C848160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14438,6 +14492,7 @@
 				408507E41601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507EF160231C9009DC246 /* PromoCodeCell.m in Sources */,
 				BC5509FB160385C00027AABF /* TopBarModal.m in Sources */,
+				BC37C849160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14672,6 +14727,7 @@
 				408507E21601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507ED160231C9009DC246 /* PromoCodeCell.m in Sources */,
 				BC5509F9160385C00027AABF /* TopBarModal.m in Sources */,
+				BC37C847160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14910,6 +14966,7 @@
 				408507DF1601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507EA160231C9009DC246 /* PromoCodeCell.m in Sources */,
 				BC5509F6160385C00027AABF /* TopBarModal.m in Sources */,
+				BC37C844160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15148,6 +15205,7 @@
 				408507DD1601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507E8160231C9009DC246 /* PromoCodeCell.m in Sources */,
 				BC5509F4160385C00027AABF /* TopBarModal.m in Sources */,
+				BC37C842160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15387,6 +15445,7 @@
 				408507E11601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507EC160231C9009DC246 /* PromoCodeCell.m in Sources */,
 				BC5509F8160385C00027AABF /* TopBarModal.m in Sources */,
+				BC37C846160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15625,6 +15684,7 @@
 				408507DE1601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507E9160231C9009DC246 /* PromoCodeCell.m in Sources */,
 				BC5509F5160385C00027AABF /* TopBarModal.m in Sources */,
+				BC37C843160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15863,6 +15923,7 @@
 				408507DC1601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507E7160231C9009DC246 /* PromoCodeCell.m in Sources */,
 				BC5509F3160385C00027AABF /* TopBarModal.m in Sources */,
+				BC37C841160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16102,6 +16163,7 @@
 				408507E01601DEBB009DC246 /* WaitingView.m in Sources */,
 				408507EB160231C9009DC246 /* PromoCodeCell.m in Sources */,
 				BC5509F7160385C00027AABF /* TopBarModal.m in Sources */,
+				BC37C845160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

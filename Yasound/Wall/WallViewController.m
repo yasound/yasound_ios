@@ -336,6 +336,7 @@
 
 - (void)showWaitingEventRow
 {
+    //LBDEBUG TRY
     if (_waitingForPreviousEvents)
         return;
     
@@ -346,6 +347,7 @@
 
 - (void)removeWaitingEventRow
 {
+    //LBDEBUG TRY
     if (!_waitingForPreviousEvents)
         return;
     

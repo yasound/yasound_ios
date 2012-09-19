@@ -13,6 +13,7 @@ typedef enum TopBarItemId
     TopBarItemMenu = 0,
     TopBarItemBack,
     TopBarItemHd,
+    TopBarItemSearch,
     TopBarItemNotif,
     TopBarItemSettings,
     TopBarItemTrash,
@@ -33,6 +34,9 @@ typedef enum TopBarItemId
 
 @property (nonatomic, assign) UIButton* itemHdButton;
 @property (nonatomic, retain) UIBarButtonItem* itemHd;
+
+@property (nonatomic, assign) UIButton* itemSearchButton;
+@property (nonatomic, retain) UIBarButtonItem* itemSearch;
 
 @property (nonatomic, assign) UIButton* itemNotifsButton;
 @property (nonatomic, retain) UIBarButtonItem* itemNotifs;

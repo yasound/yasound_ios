@@ -17,6 +17,7 @@
 
 @property (nonatomic, retain) IBOutlet TopBar* topBar;
 @property (nonatomic, retain) NSIndexPath* programmedCommand;
+@property (nonatomic, assign) IBOutlet UISearchBar* searchbar;
 
 - (void)runProgrammedCommand;
 
