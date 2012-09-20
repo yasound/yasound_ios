@@ -9986,7 +9986,7 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -9994,7 +9994,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "74893304-E263-44F7-A0F1-B2D7013948D2";
+				PROVISIONING_PROFILE = "068E7843-CE69-437F-849D-6DA148664D1C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -10017,7 +10017,7 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -10025,7 +10025,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "74893304-E263-44F7-A0F1-B2D7013948D2";
+				PROVISIONING_PROFILE = "068E7843-CE69-437F-849D-6DA148664D1C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
