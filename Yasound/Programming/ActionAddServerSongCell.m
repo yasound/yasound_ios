@@ -10,6 +10,9 @@
 #import "Theme.h"
 #import "YasoundDataProvider.h"
 #import "Song.h"
+#import "SongRadioCatalog.h"
+
+
 @implementation ActionAddServerSongCell
 
 @synthesize song;
@@ -143,11 +146,11 @@
     [self.activityView startAnimating];
 }
 
-- (void)addedSong:(Song*)s info:(NSDictionary*)info
+- (void)addedSong:(Song*)songUpdated info:(NSDictionary*)info
 {
     [self.activityView stopAnimating];
     self.activityView.hidden = YES;
-    if (!s)
+    if (!songUpdated)
         return;
     
     [self setEnabled:NO];
@@ -163,8 +166,14 @@
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles: nil];
         [alert show];
         [alert release];
+        return;
     }
+    
     DLog(@"success %d  created %d", success, created);
+    
+    // update the song catalogs
+    [[SongRadioCatalog main] updateSongAddedToProgramming:songUpdated];
+
 }
 
 

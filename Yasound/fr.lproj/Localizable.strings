@@ -637,7 +637,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Show.switch.label" = "Activer cette playlist";
 "Show.prog.label" = "Programmation";
 
-"Programming.Catalog.yasound" = "Serveur";
+"Programming.Catalog.yasound" = "Yasound's music";
 "Programming.Catalog.local" = "Mon iPhone";
 "Programming.Catalog.radio" = "Ma radio";
 "Programming.Catalog.server" = "Yasound's music";
