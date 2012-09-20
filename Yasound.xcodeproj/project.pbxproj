@@ -159,7 +159,6 @@
 		40B40977152EFC630050D334 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964F14AB7D6E00D54631 /* ASIInputStream.m */; };
 		40B40978152EFC630050D334 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965114AB7D6E00D54631 /* ASINetworkQueue.m */; };
 		40B40979152EFC630050D334 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
-		40B4097A152EFC630050D334 /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
 		40B4097B152EFC630050D334 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
 		40B4097C152EFC630050D334 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
 		40B4097D152EFC630050D334 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
@@ -299,8 +298,6 @@
 		40B40A12152EFC630050D334 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AD1454DC0500EA374C /* UIKit.framework */; };
 		40B40A13152EFC630050D334 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		40B40A14152EFC630050D334 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
-		40B40A15152EFC630050D334 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		40B40A16152EFC630050D334 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		40B40A17152EFC630050D334 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		40B40A1A152EFC630050D334 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		40B40A1B152EFC630050D334 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
@@ -323,10 +320,6 @@
 		40B40A2C152EFC630050D334 /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
 		40B40A2D152EFC630050D334 /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BA14A3920600CF922A /* iTunesConnect.png */; };
 		40B40A2E152EFC630050D334 /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
-		40B40A2F152EFC630050D334 /* Changelog.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967314AB7D8900D54631 /* Changelog.txt */; };
-		40B40A30152EFC630050D334 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967514AB7D8900D54631 /* COPYING */; };
-		40B40A31152EFC630050D334 /* README in Resources */ = {isa = PBXBuildFile; fileRef = BCDC968C14AB7D8900D54631 /* README */; };
-		40B40A32152EFC630050D334 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
 		40B40A33152EFC630050D334 /* TwitterAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC979F14AB7DD100D54631 /* TwitterAccountsViewController.xib */; };
 		40B40A34152EFC630050D334 /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
 		40B40A37152EFC630050D334 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
@@ -557,7 +550,6 @@
 		40D53B7C1554280F001EB0C5 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964F14AB7D6E00D54631 /* ASIInputStream.m */; };
 		40D53B7D1554280F001EB0C5 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965114AB7D6E00D54631 /* ASINetworkQueue.m */; };
 		40D53B7E1554280F001EB0C5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
-		40D53B7F1554280F001EB0C5 /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
 		40D53B801554280F001EB0C5 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
 		40D53B811554280F001EB0C5 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
 		40D53B821554280F001EB0C5 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
@@ -710,8 +702,6 @@
 		40D53C181554280F001EB0C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AD1454DC0500EA374C /* UIKit.framework */; };
 		40D53C191554280F001EB0C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		40D53C1A1554280F001EB0C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
-		40D53C1B1554280F001EB0C5 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		40D53C1C1554280F001EB0C5 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		40D53C1D1554280F001EB0C5 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		40D53C1E1554280F001EB0C5 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
 		40D53C201554280F001EB0C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
@@ -735,10 +725,6 @@
 		40D53C321554280F001EB0C5 /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
 		40D53C331554280F001EB0C5 /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BA14A3920600CF922A /* iTunesConnect.png */; };
 		40D53C341554280F001EB0C5 /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
-		40D53C351554280F001EB0C5 /* Changelog.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967314AB7D8900D54631 /* Changelog.txt */; };
-		40D53C361554280F001EB0C5 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967514AB7D8900D54631 /* COPYING */; };
-		40D53C371554280F001EB0C5 /* README in Resources */ = {isa = PBXBuildFile; fileRef = BCDC968C14AB7D8900D54631 /* README */; };
-		40D53C381554280F001EB0C5 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
 		40D53C391554280F001EB0C5 /* TwitterAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC979F14AB7DD100D54631 /* TwitterAccountsViewController.xib */; };
 		40D53C3A1554280F001EB0C5 /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
 		40D53C3B1554280F001EB0C5 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
@@ -1200,7 +1186,6 @@
 		BC3FA68B14E93B660055AB4A /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964F14AB7D6E00D54631 /* ASIInputStream.m */; };
 		BC3FA68C14E93B660055AB4A /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965114AB7D6E00D54631 /* ASINetworkQueue.m */; };
 		BC3FA68D14E93B660055AB4A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
-		BC3FA68E14E93B660055AB4A /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
 		BC3FA68F14E93B660055AB4A /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
 		BC3FA69014E93B660055AB4A /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
 		BC3FA69114E93B660055AB4A /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
@@ -1303,8 +1288,6 @@
 		BC3FA6F814E93B660055AB4A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AD1454DC0500EA374C /* UIKit.framework */; };
 		BC3FA6F914E93B660055AB4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		BC3FA6FA14E93B660055AB4A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
-		BC3FA6FB14E93B660055AB4A /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		BC3FA6FC14E93B660055AB4A /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		BC3FA6FD14E93B660055AB4A /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		BC3FA70014E93B660055AB4A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		BC3FA70114E93B660055AB4A /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
@@ -1327,10 +1310,6 @@
 		BC3FA71414E93B660055AB4A /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
 		BC3FA71514E93B660055AB4A /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BA14A3920600CF922A /* iTunesConnect.png */; };
 		BC3FA71614E93B660055AB4A /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
-		BC3FA72B14E93B660055AB4A /* Changelog.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967314AB7D8900D54631 /* Changelog.txt */; };
-		BC3FA72C14E93B660055AB4A /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967514AB7D8900D54631 /* COPYING */; };
-		BC3FA72D14E93B660055AB4A /* README in Resources */ = {isa = PBXBuildFile; fileRef = BCDC968C14AB7D8900D54631 /* README */; };
-		BC3FA72E14E93B660055AB4A /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
 		BC3FA72F14E93B660055AB4A /* TwitterAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC979F14AB7DD100D54631 /* TwitterAccountsViewController.xib */; };
 		BC3FA73014E93B660055AB4A /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
 		BC3FA73514E93B660055AB4A /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
@@ -1736,7 +1715,6 @@
 		BC56F499152486AF005D1B40 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964F14AB7D6E00D54631 /* ASIInputStream.m */; };
 		BC56F49A152486AF005D1B40 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965114AB7D6E00D54631 /* ASINetworkQueue.m */; };
 		BC56F49B152486AF005D1B40 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
-		BC56F49C152486AF005D1B40 /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
 		BC56F49D152486AF005D1B40 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
 		BC56F49E152486AF005D1B40 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
 		BC56F49F152486AF005D1B40 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
@@ -1865,8 +1843,6 @@
 		BC56F521152486AF005D1B40 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AD1454DC0500EA374C /* UIKit.framework */; };
 		BC56F522152486AF005D1B40 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		BC56F523152486AF005D1B40 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
-		BC56F524152486AF005D1B40 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		BC56F525152486AF005D1B40 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		BC56F526152486AF005D1B40 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		BC56F529152486AF005D1B40 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		BC56F52A152486AF005D1B40 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
@@ -1889,10 +1865,6 @@
 		BC56F53B152486AF005D1B40 /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
 		BC56F53C152486AF005D1B40 /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BA14A3920600CF922A /* iTunesConnect.png */; };
 		BC56F53D152486AF005D1B40 /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
-		BC56F53E152486AF005D1B40 /* Changelog.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967314AB7D8900D54631 /* Changelog.txt */; };
-		BC56F53F152486AF005D1B40 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967514AB7D8900D54631 /* COPYING */; };
-		BC56F540152486AF005D1B40 /* README in Resources */ = {isa = PBXBuildFile; fileRef = BCDC968C14AB7D8900D54631 /* README */; };
-		BC56F541152486AF005D1B40 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
 		BC56F542152486AF005D1B40 /* TwitterAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC979F14AB7DD100D54631 /* TwitterAccountsViewController.xib */; };
 		BC56F543152486AF005D1B40 /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
 		BC56F546152486AF005D1B40 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
@@ -2276,7 +2248,6 @@
 		BC93CCF414CF3F7A007C723F /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964F14AB7D6E00D54631 /* ASIInputStream.m */; };
 		BC93CCF514CF3F7A007C723F /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965114AB7D6E00D54631 /* ASINetworkQueue.m */; };
 		BC93CCF614CF3F7A007C723F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
-		BC93CCF714CF3F7A007C723F /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
 		BC93CCF814CF3F7A007C723F /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
 		BC93CCF914CF3F7A007C723F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
 		BC93CCFA14CF3F7A007C723F /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
@@ -2341,8 +2312,6 @@
 		BC93CD4A14CF3F7A007C723F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AD1454DC0500EA374C /* UIKit.framework */; };
 		BC93CD4B14CF3F7A007C723F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		BC93CD4C14CF3F7A007C723F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
-		BC93CD4D14CF3F7A007C723F /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		BC93CD4E14CF3F7A007C723F /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		BC93CD5214CF3F7A007C723F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		BC93CD5514CF3F7A007C723F /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC93CD5614CF3F7A007C723F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
@@ -2364,10 +2333,6 @@
 		BC93CD9314CF3F7A007C723F /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
 		BC93CD9414CF3F7A007C723F /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BA14A3920600CF922A /* iTunesConnect.png */; };
 		BC93CD9514CF3F7A007C723F /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
-		BC93CDAC14CF3F7A007C723F /* Changelog.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967314AB7D8900D54631 /* Changelog.txt */; };
-		BC93CDAD14CF3F7A007C723F /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967514AB7D8900D54631 /* COPYING */; };
-		BC93CDAE14CF3F7A007C723F /* README in Resources */ = {isa = PBXBuildFile; fileRef = BCDC968C14AB7D8900D54631 /* README */; };
-		BC93CDAF14CF3F7A007C723F /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
 		BC93CDB114CF3F7A007C723F /* TwitterAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC979F14AB7DD100D54631 /* TwitterAccountsViewController.xib */; };
 		BC93CDB214CF3F7A007C723F /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
 		BC93CDC114CF3F7A007C723F /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
@@ -2954,6 +2919,14 @@
 		BCD1219F14C749D90013B2EF /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1219B14C749D90013B2EF /* bullets@2x.png */; };
 		BCD121A014C749D90013B2EF /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1219B14C749D90013B2EF /* bullets@2x.png */; };
 		BCD121A114C749D90013B2EF /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1219B14C749D90013B2EF /* bullets@2x.png */; };
+		BCD18EDB160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */; };
+		BCD18EDC160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */; };
+		BCD18EDD160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */; };
+		BCD18EDE160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */; };
+		BCD18EDF160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */; };
+		BCD18EE0160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */; };
+		BCD18EE1160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */; };
+		BCD18EE2160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */; };
 		BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BCD818681504F74700B818D1 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
 		BCD818691504F74700B818D1 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
@@ -2990,27 +2963,6 @@
 		BCDC966F14AB7D6E00D54631 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
 		BCDC967014AB7D6E00D54631 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
 		BCDC967114AB7D6E00D54631 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
-		BCDC96A614AB7D8900D54631 /* Changelog.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967314AB7D8900D54631 /* Changelog.txt */; };
-		BCDC96A714AB7D8900D54631 /* Changelog.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967314AB7D8900D54631 /* Changelog.txt */; };
-		BCDC96A814AB7D8900D54631 /* Changelog.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967314AB7D8900D54631 /* Changelog.txt */; };
-		BCDC96A914AB7D8900D54631 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967514AB7D8900D54631 /* COPYING */; };
-		BCDC96AA14AB7D8900D54631 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967514AB7D8900D54631 /* COPYING */; };
-		BCDC96AB14AB7D8900D54631 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967514AB7D8900D54631 /* COPYING */; };
-		BCDC96C714AB7D8900D54631 /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
-		BCDC96C814AB7D8900D54631 /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
-		BCDC96C914AB7D8900D54631 /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
-		BCDC96CA14AB7D8900D54631 /* README in Resources */ = {isa = PBXBuildFile; fileRef = BCDC968C14AB7D8900D54631 /* README */; };
-		BCDC96CB14AB7D8900D54631 /* README in Resources */ = {isa = PBXBuildFile; fileRef = BCDC968C14AB7D8900D54631 /* README */; };
-		BCDC96CC14AB7D8900D54631 /* README in Resources */ = {isa = PBXBuildFile; fileRef = BCDC968C14AB7D8900D54631 /* README */; };
-		BCDC96D914AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		BCDC96DA14AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		BCDC96DB14AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		BCDC96DC14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
-		BCDC96DD14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
-		BCDC96DE14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
-		BCDC96DF14AB7D8A00D54631 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
-		BCDC96E014AB7D8A00D54631 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
-		BCDC96E114AB7D8A00D54631 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
 		BCDC970614AB7D9000D54631 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
 		BCDC970714AB7D9000D54631 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
 		BCDC970814AB7D9000D54631 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
@@ -3972,6 +3924,8 @@
 		BCD0CBCE14FE851900E75CEF /* SongInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongInfoViewController.xib; path = Programming/SongInfoViewController.xib; sourceTree = "<group>"; };
 		BCD1219A14C749D90013B2EF /* bullets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullets.png; sourceTree = "<group>"; };
 		BCD1219B14C749D90013B2EF /* bullets@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bullets@2x.png"; sourceTree = "<group>"; };
+		BCD18ED9160BD2BD00DE3EEA /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = Library/GANTracker.h; sourceTree = "<group>"; };
+		BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Library/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		BCD4C2C414695FCD000A236A /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlertView.h; sourceTree = "<group>"; };
 		BCD4C2C514695FCD000A236A /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlertView.m; sourceTree = "<group>"; };
 		BCD818661504F74700B818D1 /* SongAddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongAddCell.h; path = Programming/SongAddCell.h; sourceTree = "<group>"; };
@@ -4001,15 +3955,6 @@
 		BCDC965214AB7D6E00D54631 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 		BCDC965514AB7D6E00D54631 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		BCDC965614AB7D6E00D54631 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		BCDC967314AB7D8900D54631 /* Changelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Changelog.txt; sourceTree = "<group>"; };
-		BCDC967514AB7D8900D54631 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
-		BCDC968A14AB7D8900D54631 /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyTracker.h; sourceTree = "<group>"; };
-		BCDC968B14AB7D8900D54631 /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyTracker.m; sourceTree = "<group>"; };
-		BCDC968C14AB7D8900D54631 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		BCDC969A14AB7D8900D54631 /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
-		BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
-		BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics_NoThumb.a; sourceTree = "<group>"; };
-		BCDC969D14AB7D8900D54631 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		BCDC96E914AB7D9000D54631 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
 		BCDC96EB14AB7D9000D54631 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
@@ -4165,11 +4110,10 @@
 				40B40A12152EFC630050D334 /* UIKit.framework in Frameworks */,
 				40B40A13152EFC630050D334 /* Foundation.framework in Frameworks */,
 				40B40A14152EFC630050D334 /* CoreGraphics.framework in Frameworks */,
-				40B40A15152EFC630050D334 /* libGoogleAnalytics.a in Frameworks */,
-				40B40A16152EFC630050D334 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				40B40A17152EFC630050D334 /* libOAuth.a in Frameworks */,
 				BC9BE82D1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 				E561068915874EC400FB8264 /* Crashlytics.framework in Frameworks */,
+				BCD18EE1160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4196,11 +4140,10 @@
 				40D53C181554280F001EB0C5 /* UIKit.framework in Frameworks */,
 				40D53C191554280F001EB0C5 /* Foundation.framework in Frameworks */,
 				40D53C1A1554280F001EB0C5 /* CoreGraphics.framework in Frameworks */,
-				40D53C1B1554280F001EB0C5 /* libGoogleAnalytics.a in Frameworks */,
-				40D53C1C1554280F001EB0C5 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				40D53C1D1554280F001EB0C5 /* libOAuth.a in Frameworks */,
 				40D53C1E1554280F001EB0C5 /* libTestFlight.a in Frameworks */,
 				E561068415874E7B00FB8264 /* Crashlytics.framework in Frameworks */,
+				BCD18EE2160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4227,11 +4170,10 @@
 				BC3FA6F814E93B660055AB4A /* UIKit.framework in Frameworks */,
 				BC3FA6F914E93B660055AB4A /* Foundation.framework in Frameworks */,
 				BC3FA6FA14E93B660055AB4A /* CoreGraphics.framework in Frameworks */,
-				BC3FA6FB14E93B660055AB4A /* libGoogleAnalytics.a in Frameworks */,
-				BC3FA6FC14E93B660055AB4A /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC3FA6FD14E93B660055AB4A /* libOAuth.a in Frameworks */,
 				BC9BE82C1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 				E561068815874EC300FB8264 /* Crashlytics.framework in Frameworks */,
+				BCD18EE0160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4258,11 +4200,10 @@
 				BC56F521152486AF005D1B40 /* UIKit.framework in Frameworks */,
 				BC56F522152486AF005D1B40 /* Foundation.framework in Frameworks */,
 				BC56F523152486AF005D1B40 /* CoreGraphics.framework in Frameworks */,
-				BC56F524152486AF005D1B40 /* libGoogleAnalytics.a in Frameworks */,
-				BC56F525152486AF005D1B40 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC56F526152486AF005D1B40 /* libOAuth.a in Frameworks */,
 				BC9BE8291536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 				E561068715874EC100FB8264 /* Crashlytics.framework in Frameworks */,
+				BCD18EDD160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4289,11 +4230,10 @@
 				BC71F5E0147FEC6F00DAE4BD /* UIKit.framework in Frameworks */,
 				BC71F5E1147FEC6F00DAE4BD /* Foundation.framework in Frameworks */,
 				BC71F5E2147FEC6F00DAE4BD /* CoreGraphics.framework in Frameworks */,
-				BCDC96DA14AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
-				BCDC96DD14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1314CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				BC9BE8281536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 				E561068615874EC100FB8264 /* Crashlytics.framework in Frameworks */,
+				BCD18EDC160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4320,11 +4260,10 @@
 				BC93CD4A14CF3F7A007C723F /* UIKit.framework in Frameworks */,
 				BC93CD4B14CF3F7A007C723F /* Foundation.framework in Frameworks */,
 				BC93CD4C14CF3F7A007C723F /* CoreGraphics.framework in Frameworks */,
-				BC93CD4D14CF3F7A007C723F /* libGoogleAnalytics.a in Frameworks */,
-				BC93CD4E14CF3F7A007C723F /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1514CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				BC9BE82B1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 				E51907401582250A0094C0DF /* Crashlytics.framework in Frameworks */,
+				BCD18EDF160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4351,11 +4290,10 @@
 				E5A9A3AE1454DC0500EA374C /* UIKit.framework in Frameworks */,
 				E5A9A3B01454DC0500EA374C /* Foundation.framework in Frameworks */,
 				E5A9A3B21454DC0500EA374C /* CoreGraphics.framework in Frameworks */,
-				BCDC96D914AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
-				BCDC96DC14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1214CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				BC9BE8271536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 				E519073C1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
+				BCD18EDB160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4382,11 +4320,10 @@
 				E5F3B8961498B88D008DD607 /* UIKit.framework in Frameworks */,
 				E5F3B8971498B88D008DD607 /* Foundation.framework in Frameworks */,
 				E5F3B8981498B88D008DD607 /* CoreGraphics.framework in Frameworks */,
-				BCDC96DB14AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
-				BCDC96DE14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1414CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				BC9BE82A1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 				E519073F1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
+				BCD18EDE160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5325,42 +5262,11 @@
 		BCDC967214AB7D8900D54631 /* Google Analytics SDK */ = {
 			isa = PBXGroup;
 			children = (
-				BCDC967314AB7D8900D54631 /* Changelog.txt */,
-				BCDC967414AB7D8900D54631 /* EasyTracker */,
-				BCDC969914AB7D8900D54631 /* Library */,
-				BCDC969D14AB7D8900D54631 /* ReadMe.txt */,
+				BCD18ED9160BD2BD00DE3EEA /* GANTracker.h */,
+				BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */,
 			);
 			name = "Google Analytics SDK";
 			path = "ThirdParties/Google Analytics SDK";
-			sourceTree = "<group>";
-		};
-		BCDC967414AB7D8900D54631 /* EasyTracker */ = {
-			isa = PBXGroup;
-			children = (
-				BCDC967514AB7D8900D54631 /* COPYING */,
-				BCDC968914AB7D8900D54631 /* Library */,
-				BCDC968C14AB7D8900D54631 /* README */,
-			);
-			path = EasyTracker;
-			sourceTree = "<group>";
-		};
-		BCDC968914AB7D8900D54631 /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				BCDC968A14AB7D8900D54631 /* EasyTracker.h */,
-				BCDC968B14AB7D8900D54631 /* EasyTracker.m */,
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
-		BCDC969914AB7D8900D54631 /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				BCDC969A14AB7D8900D54631 /* GANTracker.h */,
-				BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */,
-				BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */,
-			);
-			path = Library;
 			sourceTree = "<group>";
 		};
 		BCDC96E814AB7D9000D54631 /* json-framework */ = {
@@ -5975,10 +5881,6 @@
 				40B40A2C152EFC630050D334 /* KeywordsViewController.xib in Resources */,
 				40B40A2D152EFC630050D334 /* iTunesConnect.png in Resources */,
 				40B40A2E152EFC630050D334 /* iTunesConnect@2x.png in Resources */,
-				40B40A2F152EFC630050D334 /* Changelog.txt in Resources */,
-				40B40A30152EFC630050D334 /* COPYING in Resources */,
-				40B40A31152EFC630050D334 /* README in Resources */,
-				40B40A32152EFC630050D334 /* ReadMe.txt in Resources */,
 				40B40A33152EFC630050D334 /* TwitterAccountsViewController.xib in Resources */,
 				40B40A34152EFC630050D334 /* TwitterSigninViewController.xib in Resources */,
 				40B40A37152EFC630050D334 /* StatsViewController.xib in Resources */,
@@ -6193,10 +6095,6 @@
 				40D53C321554280F001EB0C5 /* KeywordsViewController.xib in Resources */,
 				40D53C331554280F001EB0C5 /* iTunesConnect.png in Resources */,
 				40D53C341554280F001EB0C5 /* iTunesConnect@2x.png in Resources */,
-				40D53C351554280F001EB0C5 /* Changelog.txt in Resources */,
-				40D53C361554280F001EB0C5 /* COPYING in Resources */,
-				40D53C371554280F001EB0C5 /* README in Resources */,
-				40D53C381554280F001EB0C5 /* ReadMe.txt in Resources */,
 				40D53C391554280F001EB0C5 /* TwitterAccountsViewController.xib in Resources */,
 				40D53C3A1554280F001EB0C5 /* TwitterSigninViewController.xib in Resources */,
 				40D53C3B1554280F001EB0C5 /* StatsViewController.xib in Resources */,
@@ -6413,10 +6311,6 @@
 				BC3FA71414E93B660055AB4A /* KeywordsViewController.xib in Resources */,
 				BC3FA71514E93B660055AB4A /* iTunesConnect.png in Resources */,
 				BC3FA71614E93B660055AB4A /* iTunesConnect@2x.png in Resources */,
-				BC3FA72B14E93B660055AB4A /* Changelog.txt in Resources */,
-				BC3FA72C14E93B660055AB4A /* COPYING in Resources */,
-				BC3FA72D14E93B660055AB4A /* README in Resources */,
-				BC3FA72E14E93B660055AB4A /* ReadMe.txt in Resources */,
 				BC3FA72F14E93B660055AB4A /* TwitterAccountsViewController.xib in Resources */,
 				BC3FA73014E93B660055AB4A /* TwitterSigninViewController.xib in Resources */,
 				BC3FA73514E93B660055AB4A /* StatsViewController.xib in Resources */,
@@ -6627,10 +6521,6 @@
 				BC56F53B152486AF005D1B40 /* KeywordsViewController.xib in Resources */,
 				BC56F53C152486AF005D1B40 /* iTunesConnect.png in Resources */,
 				BC56F53D152486AF005D1B40 /* iTunesConnect@2x.png in Resources */,
-				BC56F53E152486AF005D1B40 /* Changelog.txt in Resources */,
-				BC56F53F152486AF005D1B40 /* COPYING in Resources */,
-				BC56F540152486AF005D1B40 /* README in Resources */,
-				BC56F541152486AF005D1B40 /* ReadMe.txt in Resources */,
 				BC56F542152486AF005D1B40 /* TwitterAccountsViewController.xib in Resources */,
 				BC56F543152486AF005D1B40 /* TwitterSigninViewController.xib in Resources */,
 				BC56F546152486AF005D1B40 /* StatsViewController.xib in Resources */,
@@ -6846,10 +6736,6 @@
 				BCBAB4B614A35FE700CF922A /* KeywordsViewController.xib in Resources */,
 				BCBAB4BC14A3920600CF922A /* iTunesConnect.png in Resources */,
 				BCBAB4C014A39B9800CF922A /* iTunesConnect@2x.png in Resources */,
-				BCDC96A714AB7D8900D54631 /* Changelog.txt in Resources */,
-				BCDC96AA14AB7D8900D54631 /* COPYING in Resources */,
-				BCDC96CB14AB7D8900D54631 /* README in Resources */,
-				BCDC96E014AB7D8A00D54631 /* ReadMe.txt in Resources */,
 				BCDC97BA14AB7DD100D54631 /* TwitterAccountsViewController.xib in Resources */,
 				BCDC97C614AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
 				BCCA799914B1AE520011AADD /* StatsViewController.xib in Resources */,
@@ -7067,10 +6953,6 @@
 				BC93CD9314CF3F7A007C723F /* KeywordsViewController.xib in Resources */,
 				BC93CD9414CF3F7A007C723F /* iTunesConnect.png in Resources */,
 				BC93CD9514CF3F7A007C723F /* iTunesConnect@2x.png in Resources */,
-				BC93CDAC14CF3F7A007C723F /* Changelog.txt in Resources */,
-				BC93CDAD14CF3F7A007C723F /* COPYING in Resources */,
-				BC93CDAE14CF3F7A007C723F /* README in Resources */,
-				BC93CDAF14CF3F7A007C723F /* ReadMe.txt in Resources */,
 				BC93CDB114CF3F7A007C723F /* TwitterAccountsViewController.xib in Resources */,
 				BC93CDB214CF3F7A007C723F /* TwitterSigninViewController.xib in Resources */,
 				BC93CDC114CF3F7A007C723F /* StatsViewController.xib in Resources */,
@@ -7284,10 +7166,6 @@
 				BCBAB4B514A35FE700CF922A /* KeywordsViewController.xib in Resources */,
 				BCBAB4BB14A3920600CF922A /* iTunesConnect.png in Resources */,
 				BCBAB4BF14A39B9800CF922A /* iTunesConnect@2x.png in Resources */,
-				BCDC96A614AB7D8900D54631 /* Changelog.txt in Resources */,
-				BCDC96A914AB7D8900D54631 /* COPYING in Resources */,
-				BCDC96CA14AB7D8900D54631 /* README in Resources */,
-				BCDC96DF14AB7D8A00D54631 /* ReadMe.txt in Resources */,
 				BCDC97B914AB7DD100D54631 /* TwitterAccountsViewController.xib in Resources */,
 				BCDC97C514AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
 				BCCA799814B1AE520011AADD /* StatsViewController.xib in Resources */,
@@ -7503,10 +7381,6 @@
 				BCBAB4B714A35FE700CF922A /* KeywordsViewController.xib in Resources */,
 				BCBAB4BD14A3920600CF922A /* iTunesConnect.png in Resources */,
 				BCBAB4C114A39B9800CF922A /* iTunesConnect@2x.png in Resources */,
-				BCDC96A814AB7D8900D54631 /* Changelog.txt in Resources */,
-				BCDC96AB14AB7D8900D54631 /* COPYING in Resources */,
-				BCDC96CC14AB7D8900D54631 /* README in Resources */,
-				BCDC96E114AB7D8A00D54631 /* ReadMe.txt in Resources */,
 				BCDC97BB14AB7DD100D54631 /* TwitterAccountsViewController.xib in Resources */,
 				BCDC97C714AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
 				BCCA799A14B1AE520011AADD /* StatsViewController.xib in Resources */,
@@ -7800,7 +7674,6 @@
 				40B40977152EFC630050D334 /* ASIInputStream.m in Sources */,
 				40B40978152EFC630050D334 /* ASINetworkQueue.m in Sources */,
 				40B40979152EFC630050D334 /* Reachability.m in Sources */,
-				40B4097A152EFC630050D334 /* EasyTracker.m in Sources */,
 				40B4097B152EFC630050D334 /* NSObject+SBJson.m in Sources */,
 				40B4097C152EFC630050D334 /* SBJsonParser.m in Sources */,
 				40B4097D152EFC630050D334 /* SBJsonStreamParser.m in Sources */,
@@ -7991,7 +7864,6 @@
 				40D53B7C1554280F001EB0C5 /* ASIInputStream.m in Sources */,
 				40D53B7D1554280F001EB0C5 /* ASINetworkQueue.m in Sources */,
 				40D53B7E1554280F001EB0C5 /* Reachability.m in Sources */,
-				40D53B7F1554280F001EB0C5 /* EasyTracker.m in Sources */,
 				40D53B801554280F001EB0C5 /* NSObject+SBJson.m in Sources */,
 				40D53B811554280F001EB0C5 /* SBJsonParser.m in Sources */,
 				40D53B821554280F001EB0C5 /* SBJsonStreamParser.m in Sources */,
@@ -8182,7 +8054,6 @@
 				BC3FA68B14E93B660055AB4A /* ASIInputStream.m in Sources */,
 				BC3FA68C14E93B660055AB4A /* ASINetworkQueue.m in Sources */,
 				BC3FA68D14E93B660055AB4A /* Reachability.m in Sources */,
-				BC3FA68E14E93B660055AB4A /* EasyTracker.m in Sources */,
 				BC3FA68F14E93B660055AB4A /* NSObject+SBJson.m in Sources */,
 				BC3FA69014E93B660055AB4A /* SBJsonParser.m in Sources */,
 				BC3FA69114E93B660055AB4A /* SBJsonStreamParser.m in Sources */,
@@ -8369,7 +8240,6 @@
 				BC56F499152486AF005D1B40 /* ASIInputStream.m in Sources */,
 				BC56F49A152486AF005D1B40 /* ASINetworkQueue.m in Sources */,
 				BC56F49B152486AF005D1B40 /* Reachability.m in Sources */,
-				BC56F49C152486AF005D1B40 /* EasyTracker.m in Sources */,
 				BC56F49D152486AF005D1B40 /* NSObject+SBJson.m in Sources */,
 				BC56F49E152486AF005D1B40 /* SBJsonParser.m in Sources */,
 				BC56F49F152486AF005D1B40 /* SBJsonStreamParser.m in Sources */,
@@ -8560,7 +8430,6 @@
 				BCDC966A14AB7D6E00D54631 /* ASIInputStream.m in Sources */,
 				BCDC966D14AB7D6E00D54631 /* ASINetworkQueue.m in Sources */,
 				BCDC967014AB7D6E00D54631 /* Reachability.m in Sources */,
-				BCDC96C814AB7D8900D54631 /* EasyTracker.m in Sources */,
 				BCDC970714AB7D9000D54631 /* NSObject+SBJson.m in Sources */,
 				BCDC970A14AB7D9000D54631 /* SBJsonParser.m in Sources */,
 				BCDC970D14AB7D9000D54631 /* SBJsonStreamParser.m in Sources */,
@@ -8752,7 +8621,6 @@
 				BC93CCF414CF3F7A007C723F /* ASIInputStream.m in Sources */,
 				BC93CCF514CF3F7A007C723F /* ASINetworkQueue.m in Sources */,
 				BC93CCF614CF3F7A007C723F /* Reachability.m in Sources */,
-				BC93CCF714CF3F7A007C723F /* EasyTracker.m in Sources */,
 				BC93CCF814CF3F7A007C723F /* NSObject+SBJson.m in Sources */,
 				BC93CCF914CF3F7A007C723F /* SBJsonParser.m in Sources */,
 				BC93CCFA14CF3F7A007C723F /* SBJsonStreamParser.m in Sources */,
@@ -8943,7 +8811,6 @@
 				BCDC966914AB7D6E00D54631 /* ASIInputStream.m in Sources */,
 				BCDC966C14AB7D6E00D54631 /* ASINetworkQueue.m in Sources */,
 				BCDC966F14AB7D6E00D54631 /* Reachability.m in Sources */,
-				BCDC96C714AB7D8900D54631 /* EasyTracker.m in Sources */,
 				BCDC970614AB7D9000D54631 /* NSObject+SBJson.m in Sources */,
 				BCDC970914AB7D9000D54631 /* SBJsonParser.m in Sources */,
 				BCDC970C14AB7D9000D54631 /* SBJsonStreamParser.m in Sources */,
@@ -9134,7 +9001,6 @@
 				BCDC966B14AB7D6E00D54631 /* ASIInputStream.m in Sources */,
 				BCDC966E14AB7D6E00D54631 /* ASINetworkQueue.m in Sources */,
 				BCDC967114AB7D6E00D54631 /* Reachability.m in Sources */,
-				BCDC96C914AB7D8900D54631 /* EasyTracker.m in Sources */,
 				BCDC970814AB7D9000D54631 /* NSObject+SBJson.m in Sources */,
 				BCDC970B14AB7D9000D54631 /* SBJsonParser.m in Sources */,
 				BCDC970E14AB7D9000D54631 /* SBJsonStreamParser.m in Sources */,
@@ -9495,6 +9361,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
@@ -9521,6 +9388,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
@@ -9553,6 +9421,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Yasound TechTour";
@@ -9582,6 +9451,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Yasound TechTour";
@@ -9612,6 +9482,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
@@ -9637,6 +9508,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
@@ -9665,6 +9537,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD DEV SERVER";
@@ -9691,6 +9564,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD DEV SERVER";
@@ -9728,6 +9602,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = YasoundD;
@@ -9763,6 +9638,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = YasoundD;
@@ -9774,6 +9650,7 @@
 		BC93CDE814CF3F7A007C723F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SAS Yasound";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -9790,17 +9667,18 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "7E0D0DAD-40A6-4C86-8C2D-31887998484F";
+				PROVISIONING_PROFILE = "B1A71538-5BCA-4527-AB6A-105BB99E2EF4";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv6 armv7";
+				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -9808,6 +9686,7 @@
 		BC93CDE914CF3F7A007C723F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SAS Yasound";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -9822,18 +9701,19 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "7E0D0DAD-40A6-4C86-8C2D-31887998484F";
-				SUPPORTED_PLATFORMS = iphoneos;
+				PROVISIONING_PROFILE = "B1A71538-5BCA-4527-AB6A-105BB99E2EF4";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv6 armv7";
+				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -9935,6 +9815,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				PRODUCT_NAME = Yasound;
 				WARNING_CFLAGS = "$(inherited)";
@@ -9961,6 +9842,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				PRODUCT_NAME = Yasound;
 				WARNING_CFLAGS = "$(inherited)";
@@ -9992,6 +9874,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "068E7843-CE69-437F-849D-6DA148664D1C";
@@ -10023,6 +9906,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "068E7843-CE69-437F-849D-6DA148664D1C";

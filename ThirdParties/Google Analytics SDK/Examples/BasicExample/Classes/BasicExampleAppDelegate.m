@@ -7,49 +7,60 @@
 
 #import "BasicExampleAppDelegate.h"
 
-#import "GANTracker.h"
-
-// Dispatch period in seconds
-static const NSInteger kGANDispatchPeriodSec = 10;
 // **************************************************************************
-// PLEASE REPLACE WITH YOUR ACCOUNT DETAILS.
+// Replace this string with your Analytics account ID!
 // **************************************************************************
-static NSString* const kAnalyticsAccountId = @"UA-00000000-1";
+static NSString *const kAnalyticsAccountId = @"UA-00000000-1";
+// Dispatch period in seconds.
+static const NSInteger kDispatchPeriodSeconds = 10;
 
 @implementation BasicExampleAppDelegate
 
 @synthesize window = window_;
+@synthesize tabBarController = tabBarController_;
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
+#pragma mark -
+#pragma mark Application lifecycle
+
+- (BOOL)application:(UIApplication *)application
+    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [[GANTracker sharedTracker] startTrackerWithAccountID:kAnalyticsAccountId
-                                         dispatchPeriod:kGANDispatchPeriodSec
-                                               delegate:nil];
-  NSError *error;
+                                         dispatchPeriod:kDispatchPeriodSeconds
+                                               delegate:self];
 
+  NSError *error = nil;
   if (![[GANTracker sharedTracker] setCustomVariableAtIndex:1
                                                        name:@"iOS1"
                                                       value:@"iv1"
                                                   withError:&error]) {
-    NSLog(@"error in setCustomVariableAtIndex");
+    NSLog(@"setCustomVariableAtIndex failed: %@", error);
   }
 
-  if (![[GANTracker sharedTracker] trackEvent:@"Application iOS"
-                                       action:@"Launch iOS"
-                                        label:@"Example iOS"
-                                        value:99
-                                    withError:&error]) {
-    NSLog(@"error in trackEvent");
-  }
+  [self.window addSubview:self.tabBarController.view];
+  [self.window makeKeyAndVisible];
 
-  if (![[GANTracker sharedTracker] trackPageview:@"/app_entry_point"
-                                       withError:&error]) {
-    NSLog(@"error in trackPageview");
-  }
-  [window_ makeKeyAndVisible];
+  return YES;
 }
 
+#pragma mark -
+#pragma mark GANTrackerDelegate methods
+
+- (void)hitDispatched:(NSString *)hitString {
+  NSLog(@"Hit Dispatched: %@", hitString);
+}
+
+- (void)trackerDispatchDidComplete:(GANTracker *)tracker
+                  eventsDispatched:(NSUInteger)hitsDispatched
+              eventsFailedDispatch:(NSUInteger)hitsFailedDispatch {
+  NSLog(@"Dispatch completed (%u OK, %u failed)",
+        hitsDispatched, hitsFailedDispatch);
+}
+
+#pragma mark -
+#pragma mark Memory management
+
 - (void)dealloc {
-  [[GANTracker sharedTracker] stopTracker];
+  [tabBarController_ release];
   [window_ release];
   [super dealloc];
 }

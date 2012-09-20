@@ -6,12 +6,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GANTracker.h"
 
-@interface BasicExampleAppDelegate : NSObject <UIApplicationDelegate> {
-  UIWindow *window_;
+@interface BasicExampleAppDelegate : NSObject <UIApplicationDelegate,
+                                               UITabBarControllerDelegate,
+                                               GANTrackerDelegate> {
+    UIWindow *window_;
+    UITabBarController *tabBarController_;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 
 @end
-
