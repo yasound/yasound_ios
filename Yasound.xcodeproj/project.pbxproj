@@ -703,7 +703,6 @@
 		40D53C191554280F001EB0C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		40D53C1A1554280F001EB0C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		40D53C1D1554280F001EB0C5 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
-		40D53C1E1554280F001EB0C5 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
 		40D53C201554280F001EB0C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		40D53C211554280F001EB0C5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		40D53C221554280F001EB0C5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
@@ -2364,13 +2363,6 @@
 		BC9601C3154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
 		BC9601C4154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
 		BC9601C5154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
-		BC9BE8271536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
-		BC9BE8281536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
-		BC9BE8291536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
-		BC9BE82A1536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
-		BC9BE82B1536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
-		BC9BE82C1536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
-		BC9BE82D1536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
 		BC9F4149147E8A5F00D417EF /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
 		BC9F4A2314E6AC5400008AA3 /* CellRowFirst.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A0D14E6AC5400008AA3 /* CellRowFirst.png */; };
@@ -2935,6 +2927,14 @@
 		BCD18EEA160BD48900DE3EEA /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD18EE4160BD48900DE3EEA /* EasyTracker.m */; };
 		BCD18EEB160BD48900DE3EEA /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD18EE4160BD48900DE3EEA /* EasyTracker.m */; };
 		BCD18EEC160BD48900DE3EEA /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD18EE4160BD48900DE3EEA /* EasyTracker.m */; };
+		BCD18EF3160BD86300DE3EEA /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EEF160BD86300DE3EEA /* libTestFlight.a */; };
+		BCD18EF4160BD86300DE3EEA /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EEF160BD86300DE3EEA /* libTestFlight.a */; };
+		BCD18EF5160BD86300DE3EEA /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EEF160BD86300DE3EEA /* libTestFlight.a */; };
+		BCD18EF6160BD86300DE3EEA /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EEF160BD86300DE3EEA /* libTestFlight.a */; };
+		BCD18EF7160BD86300DE3EEA /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EEF160BD86300DE3EEA /* libTestFlight.a */; };
+		BCD18EF8160BD86300DE3EEA /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EEF160BD86300DE3EEA /* libTestFlight.a */; };
+		BCD18EF9160BD86300DE3EEA /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EEF160BD86300DE3EEA /* libTestFlight.a */; };
+		BCD18EFA160BD86300DE3EEA /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EEF160BD86300DE3EEA /* libTestFlight.a */; };
 		BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BCD818681504F74700B818D1 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
 		BCD818691504F74700B818D1 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
@@ -3768,8 +3768,6 @@
 		BC9601B5154997B90003AC7E /* WebPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebPageViewController.h; path = Settings/WebPageViewController.h; sourceTree = "<group>"; };
 		BC9601B6154997B90003AC7E /* WebPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebPageViewController.m; path = Settings/WebPageViewController.m; sourceTree = "<group>"; };
 		BC9601B7154997B90003AC7E /* WebPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebPageViewController.xib; path = Settings/WebPageViewController.xib; sourceTree = "<group>"; };
-		BC9BE8231536C8B500B01AD2 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		BC9BE8261536C8B500B01AD2 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		BC9F4143147E8A5F00D417EF /* BundleFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleFileManager.h; sourceTree = "<group>"; };
 		BC9F4144147E8A5F00D417EF /* BundleFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleFileManager.m; sourceTree = "<group>"; };
 		BC9F4145147E8A5F00D417EF /* BundleStylesheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleStylesheet.h; sourceTree = "<group>"; };
@@ -3936,6 +3934,8 @@
 		BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Library/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		BCD18EE3160BD48900DE3EEA /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasyTracker.h; path = EasyTracker/Library/EasyTracker.h; sourceTree = "<group>"; };
 		BCD18EE4160BD48900DE3EEA /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasyTracker.m; path = EasyTracker/Library/EasyTracker.m; sourceTree = "<group>"; };
+		BCD18EEF160BD86300DE3EEA /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		BCD18EF2160BD86300DE3EEA /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		BCD4C2C414695FCD000A236A /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlertView.h; sourceTree = "<group>"; };
 		BCD4C2C514695FCD000A236A /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlertView.m; sourceTree = "<group>"; };
 		BCD818661504F74700B818D1 /* SongAddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongAddCell.h; path = Programming/SongAddCell.h; sourceTree = "<group>"; };
@@ -4121,9 +4121,9 @@
 				40B40A13152EFC630050D334 /* Foundation.framework in Frameworks */,
 				40B40A14152EFC630050D334 /* CoreGraphics.framework in Frameworks */,
 				40B40A17152EFC630050D334 /* libOAuth.a in Frameworks */,
-				BC9BE82D1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 				E561068915874EC400FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD18EE1160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
+				BCD18EF9160BD86300DE3EEA /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4151,9 +4151,9 @@
 				40D53C191554280F001EB0C5 /* Foundation.framework in Frameworks */,
 				40D53C1A1554280F001EB0C5 /* CoreGraphics.framework in Frameworks */,
 				40D53C1D1554280F001EB0C5 /* libOAuth.a in Frameworks */,
-				40D53C1E1554280F001EB0C5 /* libTestFlight.a in Frameworks */,
 				E561068415874E7B00FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD18EE2160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
+				BCD18EFA160BD86300DE3EEA /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4181,9 +4181,9 @@
 				BC3FA6F914E93B660055AB4A /* Foundation.framework in Frameworks */,
 				BC3FA6FA14E93B660055AB4A /* CoreGraphics.framework in Frameworks */,
 				BC3FA6FD14E93B660055AB4A /* libOAuth.a in Frameworks */,
-				BC9BE82C1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 				E561068815874EC300FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD18EE0160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
+				BCD18EF8160BD86300DE3EEA /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4211,9 +4211,9 @@
 				BC56F522152486AF005D1B40 /* Foundation.framework in Frameworks */,
 				BC56F523152486AF005D1B40 /* CoreGraphics.framework in Frameworks */,
 				BC56F526152486AF005D1B40 /* libOAuth.a in Frameworks */,
-				BC9BE8291536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 				E561068715874EC100FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD18EDD160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
+				BCD18EF5160BD86300DE3EEA /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4241,9 +4241,9 @@
 				BC71F5E1147FEC6F00DAE4BD /* Foundation.framework in Frameworks */,
 				BC71F5E2147FEC6F00DAE4BD /* CoreGraphics.framework in Frameworks */,
 				BC40CC1314CF64B100DF0950 /* libOAuth.a in Frameworks */,
-				BC9BE8281536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 				E561068615874EC100FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD18EDC160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
+				BCD18EF4160BD86300DE3EEA /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4271,9 +4271,9 @@
 				BC93CD4B14CF3F7A007C723F /* Foundation.framework in Frameworks */,
 				BC93CD4C14CF3F7A007C723F /* CoreGraphics.framework in Frameworks */,
 				BC40CC1514CF64B100DF0950 /* libOAuth.a in Frameworks */,
-				BC9BE82B1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 				E51907401582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD18EDF160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
+				BCD18EF7160BD86300DE3EEA /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4301,9 +4301,9 @@
 				E5A9A3B01454DC0500EA374C /* Foundation.framework in Frameworks */,
 				E5A9A3B21454DC0500EA374C /* CoreGraphics.framework in Frameworks */,
 				BC40CC1214CF64B100DF0950 /* libOAuth.a in Frameworks */,
-				BC9BE8271536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 				E519073C1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD18EDB160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
+				BCD18EF3160BD86300DE3EEA /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4331,9 +4331,9 @@
 				E5F3B8971498B88D008DD607 /* Foundation.framework in Frameworks */,
 				E5F3B8981498B88D008DD607 /* CoreGraphics.framework in Frameworks */,
 				BC40CC1414CF64B100DF0950 /* libOAuth.a in Frameworks */,
-				BC9BE82A1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 				E519073F1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD18EDE160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */,
+				BCD18EF6160BD86300DE3EEA /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4916,16 +4916,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		BC9BE8221536C8B500B01AD2 /* TestFlightSDK1.0 */ = {
-			isa = PBXGroup;
-			children = (
-				BC9BE8231536C8B500B01AD2 /* libTestFlight.a */,
-				BC9BE8261536C8B500B01AD2 /* TestFlight.h */,
-			);
-			name = TestFlightSDK1.0;
-			path = ThirdParties/TestFlightSDK/TestFlightSDK1.0;
-			sourceTree = "<group>";
-		};
 		BC9F413E147E8A5F00D417EF /* BundleFileManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -5174,6 +5164,16 @@
 			name = s7graphview;
 			sourceTree = "<group>";
 		};
+		BCD18EEE160BD86300DE3EEA /* TestFlightSDK1 */ = {
+			isa = PBXGroup;
+			children = (
+				BCD18EEF160BD86300DE3EEA /* libTestFlight.a */,
+				BCD18EF2160BD86300DE3EEA /* TestFlight.h */,
+			);
+			name = TestFlightSDK1;
+			path = ThirdParties/TestFlightSDK1;
+			sourceTree = "<group>";
+		};
 		BCD8C79F14B4B59F009EAF61 /* SessionManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -5186,8 +5186,8 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				BCD18EEE160BD86300DE3EEA /* TestFlightSDK1 */,
 				BC7C07701541A82F004FC760 /* MKBitlyHelper */,
-				BC9BE8221536C8B500B01AD2 /* TestFlightSDK1.0 */,
 				BCB0EF12152351A900290383 /* UnderlinedButton */,
 				BCC41432150B00C800A5150B /* fmdb */,
 				B1F8868514E5B44300256383 /* MBProgressHUD */,
@@ -9382,6 +9382,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
@@ -9409,6 +9410,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
@@ -9442,6 +9444,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Yasound TechTour";
@@ -9472,6 +9475,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Yasound TechTour";
@@ -9503,6 +9507,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
@@ -9529,6 +9534,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
@@ -9558,6 +9564,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD DEV SERVER";
@@ -9585,6 +9592,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD DEV SERVER";
@@ -9623,6 +9631,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = YasoundD;
@@ -9659,6 +9668,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = YasoundD;
@@ -9694,6 +9704,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "B1A71538-5BCA-4527-AB6A-105BB99E2EF4";
@@ -9728,6 +9739,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "B1A71538-5BCA-4527-AB6A-105BB99E2EF4";
@@ -9836,6 +9848,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = Yasound;
 				WARNING_CFLAGS = "$(inherited)";
@@ -9863,6 +9876,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = Yasound;
 				WARNING_CFLAGS = "$(inherited)";
@@ -9895,6 +9909,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "068E7843-CE69-437F-849D-6DA148664D1C";
@@ -9927,6 +9942,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "068E7843-CE69-437F-849D-6DA148664D1C";
