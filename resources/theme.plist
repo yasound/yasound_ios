@@ -3532,6 +3532,20 @@
 				<integer>5</integer>
 			</dict>
 		</dict>
+		<key>ServerSongAddCell</key>
+		<dict>
+			<key>activityIndicator</key>
+			<dict>
+				<key>x</key>
+				<integer>290</integer>
+				<key>y</key>
+				<integer>12</integer>
+				<key>width</key>
+				<integer>20</integer>
+				<key>height</key>
+				<integer>20</integer>
+			</dict>
+		</dict>
 	</dict>
 </dict>
 </plist>

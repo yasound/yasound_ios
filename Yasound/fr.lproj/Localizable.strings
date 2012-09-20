@@ -637,7 +637,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Show.switch.label" = "Activer cette playlist";
 "Show.prog.label" = "Programmation";
 
-"Programming.Catalog.yasound" = "Yasound";
+"Programming.Catalog.yasound" = "Serveur";
 "Programming.Catalog.local" = "Mon iPhone";
 "Programming.Catalog.radio" = "Ma radio";
 "Programming.Catalog.server" = "Yasound's music";
@@ -718,4 +718,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "FavoritesWaitingText" = "en cours...";
 "FriendsWaitingText" = "en cours...";
 "SearchWaitingText" = "recherche en cours...";
+
+"AddServerSong.AlreadyInProgramming.Message" = "Ce morceau est déjà dans vorte programmation";
 

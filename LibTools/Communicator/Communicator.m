@@ -691,7 +691,7 @@
     Class objectClass = [userinfo valueForKey:@"objectClass"];
     NSDictionary* userData = [userinfo valueForKey:@"userData"];
     
-    //DLog(@"handleGetAllResponse %@", request.responseString);
+//    DLog(@"handleGetAllResponse '%@'", request.responseString);
     
     if (!succeeded)
     {

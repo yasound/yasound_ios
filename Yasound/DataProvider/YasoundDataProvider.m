@@ -2119,19 +2119,24 @@ static YasoundDataProvider* _main = nil;
     
 }
 
+- (void)addSong:(YasoundSong*)yasoundSong inRadio:(Radio*)radio target:(id)target action:(SEL)selector
+{
+    if (!yasoundSong)
+        return;
+    Auth* auth = self.apiKeyAuth;
+    int playlistIndex = 0;
+    NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/playlist/%d/add_song/%@", radio.id, playlistIndex, yasoundSong.id];
+    
+    NSMutableDictionary* userData = [NSMutableDictionary dictionary];
+    [userData setValue:target forKey:@"finalTarget"];
+    [userData setValue:NSStringFromSelector(selector) forKey:@"finalSelector"];
+    
+    [_communicator postToURL:url absolute:NO notifyTarget:self byCalling:@selector(didAddSong:info:) withUserData:userData withAuth:auth];
+}
+
 - (void)addSong:(YasoundSong*)yasoundSong target:(id)target action:(SEL)selector
 {
-  if (!yasoundSong)
-    return;
-  Auth* auth = self.apiKeyAuth;
-  int playlistIndex = 0;
-  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/playlist/%d/add_song/%@", _radio.id, playlistIndex, yasoundSong.id];
-  
-  NSMutableDictionary* userData = [NSMutableDictionary dictionary];
-  [userData setValue:target forKey:@"finalTarget"];
-  [userData setValue:NSStringFromSelector(selector) forKey:@"finalSelector"];
-  
-  [_communicator postToURL:url absolute:NO notifyTarget:self byCalling:@selector(didAddSong:info:) withUserData:userData withAuth:auth];
+    [self addSong:yasoundSong inRadio:_radio target:target action:selector];
 }
 
 - (void)didAddSong:(NSString*)res info:(NSDictionary*)info
