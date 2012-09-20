@@ -350,7 +350,6 @@
         [cell updateWithNotification:notif];
         [[YasoundDataProvider main] updateUserNotification:notif target:self action:@selector(updatedUserNotification:success:)];
         
-        return;
     }
     
     
@@ -391,7 +390,8 @@
     
     if ([notif.type isEqualToString:APNS_NOTIF_MESSAGE_POSTED])
     {
-        [self goToRadio:[YasoundDataProvider main].radio.id];
+        if (notif.from_radio_id != nil)
+            [self goToRadio:notif.from_radio_id];
         return;
     }
     
@@ -399,16 +399,17 @@
     if (notif.from_radio_id != nil)
     {
         DLog(@"go to radio %@", notif.from_radio_id);
-        [self goToRadio:notif.from_radio_id];
+        if (notif.from_radio_id != nil)
+            [self goToRadio:notif.from_radio_id];
         return;
     }
         
-    NSNumber* radioID = [notif.params objectForKey:@"radioID"];
-    if (radioID != nil)
-    {
-      DLog(@"go to radio %@", radioID);
-      [self goToRadio:radioID];
-    }
+//    NSNumber* radioID = [notif.params objectForKey:@"radioID"];
+//    if (radioID != nil)
+//    {
+//      DLog(@"go to radio %@", radioID);
+//      [self goToRadio:radioID];
+//    }
 
     
 }

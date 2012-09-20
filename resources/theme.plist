@@ -3115,7 +3115,7 @@
 					<key>size</key>
 					<integer>13</integer>
 					<key>textColor</key>
-					<string>rgb(232,232,232)</string>
+					<string>rgba(255,255,255,128)</string>
 					<key>weight</key>
 					<string>normal</string>
 				</dict>
@@ -3131,20 +3131,27 @@
 				<key>height</key>
 				<integer>34</integer>
 				<key>x</key>
-				<integer>38</integer>
+				<integer>50</integer>
 				<key>width</key>
-				<integer>222</integer>
+				<integer>210</integer>
 			</dict>
 			<key>date</key>
 			<dict>
 				<key>y</key>
 				<integer>5</integer>
+				<key>font.highlighted</key>
+				<dict>
+					<key>size</key>
+					<integer>11</integer>
+					<key>textColor</key>
+					<string>white</string>
+				</dict>
 				<key>font</key>
 				<dict>
 					<key>size</key>
-					<integer>13</integer>
+					<integer>11</integer>
 					<key>textColor</key>
-					<string>white</string>
+					<string>rgba(255,255,255,128)</string>
 				</dict>
 				<key>height</key>
 				<integer>18</integer>
@@ -3228,27 +3235,82 @@
 				<key>y</key>
 				<integer>11</integer>
 			</dict>
-			<key>readIcon</key>
+			<key>iconShare</key>
 			<dict>
 				<key>name</key>
-				<string>notificationsIconRead</string>
+				<string>notificationsIconShare</string>
 				<key>type</key>
 				<string>png</string>
 				<key>x</key>
-				<integer>10</integer>
+				<integer>8</integer>
 				<key>y</key>
-				<integer>15</integer>
+				<integer>8</integer>
 			</dict>
-			<key>unreadIcon</key>
+			<key>iconFriends</key>
 			<dict>
 				<key>name</key>
-				<string>notificationsIconUnread</string>
+				<string>notificationsIconFriends</string>
 				<key>type</key>
 				<string>png</string>
 				<key>x</key>
-				<integer>10</integer>
+				<integer>8</integer>
 				<key>y</key>
-				<integer>15</integer>
+				<integer>8</integer>
+			</dict>
+			<key>iconFavorites</key>
+			<dict>
+				<key>name</key>
+				<string>notificationsIconFavorites</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>8</integer>
+				<key>y</key>
+				<integer>8</integer>
+			</dict>
+			<key>iconLike</key>
+			<dict>
+				<key>name</key>
+				<string>notificationsIconLike</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>8</integer>
+				<key>y</key>
+				<integer>8</integer>
+			</dict>
+			<key>iconMessage</key>
+			<dict>
+				<key>name</key>
+				<string>notificationsIconMessage</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>8</integer>
+				<key>y</key>
+				<integer>8</integer>
+			</dict>
+			<key>iconNotifications</key>
+			<dict>
+				<key>name</key>
+				<string>notificationsIconNotification</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>8</integer>
+				<key>y</key>
+				<integer>8</integer>
+			</dict>
+			<key>iconRadio</key>
+			<dict>
+				<key>name</key>
+				<string>notificationsIconRadio</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>8</integer>
+				<key>y</key>
+				<integer>8</integer>
 			</dict>
 		</dict>
 		<key>Gift</key>

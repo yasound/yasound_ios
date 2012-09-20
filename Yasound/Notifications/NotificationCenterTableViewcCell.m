@@ -40,6 +40,8 @@
   if (self = [super initWithFrame:frame reuseIdentifier:cellIdentifier]) 
   {
     _notification = notif;
+      
+      self.selectionStyle = UITableViewCellSelectionStyleGray;
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Notifications.text"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
    _notifTextLabel = [sheet makeLabel];
@@ -58,38 +60,53 @@
     
 //    BundleFontsheet* fontSheet = [sheet.fontsheets objectForKey:@"default"];
 //    CGFloat fontSize = fontSheet.size;
-    if ([_notification isReadBool])
-    {
-        [sheet applyToLabel:_notifTextLabel class:@"default"];
-        [sheet applyToLabel:_notifDateLabel class:@"default"];
-//        _notifTextLabel.alpha = 0.5;
-//        _notifDateLabel.alpha = 0.5;
-    }
-    else
-    {
-        [sheet applyToLabel:_notifTextLabel class:@"highlighted"];
-        [sheet applyToLabel:_notifDateLabel class:@"highlighted"];
-//        _notifTextLabel.alpha = 1;
-//        _notifDateLabel.alpha = 1;
-    }
+      _notifDateLabel = [[[Theme theme] stylesheetForKey:@"Notifications.date"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeLabel];
+      NSString* s = [self dateToString:_notification.date];
+      _notifDateLabel.text = s;
     
-    [self addSubview:_notifTextLabel];
-    
-    _notifDateLabel = [[[Theme theme] stylesheetForKey:@"Notifications.date"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeLabel];
-    NSString* s = [self dateToString:_notification.date];
-    _notifDateLabel.text = s;
-    [self addSubview:_notifDateLabel];
-
       
-    if ([_notification isReadBool])
-    {
-        _unreadImage = [[[Theme theme] stylesheetForKey:@"Notifications.readIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
-    }
+      if ([_notification isReadBool])
+      {
+          [sheet applyToLabel:_notifTextLabel class:@"default"];
+          [sheet applyToLabel:_notifDateLabel class:@"default"];
+          //        _notifTextLabel.alpha = 0.5;
+          //        _notifDateLabel.alpha = 0.5;
+      }
       else
       {
-          _unreadImage = [[[Theme theme] stylesheetForKey:@"Notifications.unreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+          [sheet applyToLabel:_notifTextLabel class:@"highlighted"];
+          [sheet applyToLabel:_notifDateLabel class:@"highlighted"];
+          //        _notifTextLabel.alpha = 1;
+          //        _notifDateLabel.alpha = 1;
       }
-    [self addSubview:_unreadImage];
+
+      
+    [self addSubview:_notifTextLabel];
+    
+    [self addSubview:_notifDateLabel];
+
+      NSString* iconKey = [self iconKeyForType:_notification];
+      
+      sheet = [[Theme theme] stylesheetForKey:iconKey retainStylesheet:YES overwriteStylesheet:NO error:nil];
+      _image = [sheet makeImage];
+      [self addSubview:_image];
+      
+      if ([_notification isReadBool])
+          _image.alpha = 0.4;
+      else
+          _image.alpha = 1;
+      
+      
+
+//    if ([_notification isReadBool])
+//    {
+//        _unreadImage = [[[Theme theme] stylesheetForKey:@"Notifications.readIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+//    }
+//      else
+//      {
+//          _unreadImage = [[[Theme theme] stylesheetForKey:@"Notifications.unreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+//      }
+//    [self addSubview:_unreadImage];
   }
   return self;
 }
@@ -104,6 +121,54 @@
 
 
 
+- (NSString*)iconKeyForType:(UserNotification*)notif {
+
+    NSString* iconKey = [NSString string];
+    
+    if ([notif.type isEqualToString:APNS_NOTIF_FRIEND_ONLINE]
+        || [notif.type isEqualToString:APNS_NOTIF_USER_IN_RADIO]
+        || [notif.type isEqualToString:APNS_NOTIF_FRIEND_IN_RADIO]) {
+        
+        iconKey = [NSString stringWithFormat:@"Notifications.iconFriends"];
+    }
+    
+    else if ([notif.type isEqualToString:APNS_NOTIF_SONG_LIKED]){
+        
+        iconKey = [NSString stringWithFormat:@"Notifications.iconLike"];
+    }
+    
+    else if ([notif.type isEqualToString:APNS_NOTIF_RADIO_IN_FAVORITES]){
+        
+        iconKey = [NSString stringWithFormat:@"Notifications.iconFavorites"];
+    }
+    
+    else if ([notif.type isEqualToString:APNS_NOTIF_RADIO_SHARED]) {
+        
+        iconKey = [NSString stringWithFormat:@"Notifications.iconShare"];
+    }
+    
+    else if ([notif.type isEqualToString:APNS_NOTIF_FRIEND_CREATED_RADIO]){
+        
+        iconKey = [NSString stringWithFormat:@"Notifications.iconRadio"];
+    }
+    
+    else if ([notif.type isEqualToString:APNS_NOTIF_YASOUND_MESSAGE]
+             || [notif.type isEqualToString:APNS_NOTIF_USER_MESSAGE]
+             || [notif.type isEqualToString:APNS_NOTIF_MESSAGE_POSTED]) {
+        
+        iconKey = [NSString stringWithFormat:@"Notifications.iconMessage"];
+    }
+    
+    else {
+        
+        iconKey = [NSString stringWithFormat:@"Notifications.iconNotifications"];
+        
+    }
+    
+    return iconKey;
+}
+
+
 - (void)updateWithNotification:(UserNotification*)notif
 {
     _notification = notif;
@@ -116,7 +181,10 @@
     {
         _notifTextLabel.text = _notification.text;
     }
-    
+
+    NSString* s = [self dateToString:_notification.date];
+    _notifDateLabel.text = s;
+
     
   NSError* error;
   BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Notifications.text"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
@@ -137,19 +205,26 @@
       [sheet applyToLabel:_notifTextLabel class:@"highlighted"];
       [sheet applyToLabel:_notifDateLabel class:@"highlighted"];
   }
-  
-  NSString* s = [self dateToString:_notification.date];
-  _notifDateLabel.text = s;
-
+    
     if ([_notification isReadBool])
-    {
-         sheet = [[Theme theme] stylesheetForKey:@"Notifications.readIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    }
+        _image.alpha = 0.4;
     else
-    {
-        sheet = [[Theme theme] stylesheetForKey:@"Notifications.unreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    }
-    [_unreadImage setImage:[sheet image]];
+        _image.alpha = 1;
+    
+    NSString* iconKey = [self iconKeyForType:_notification];
+    sheet = [[Theme theme] stylesheetForKey:iconKey retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    _image.image  =[sheet image];
+
+
+//    if ([_notification isReadBool])
+//    {
+//         sheet = [[Theme theme] stylesheetForKey:@"Notifications.readIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    }
+//    else
+//    {
+//        sheet = [[Theme theme] stylesheetForKey:@"Notifications.unreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    }
+//    [_unreadImage setImage:[sheet image]];
 }
 
 

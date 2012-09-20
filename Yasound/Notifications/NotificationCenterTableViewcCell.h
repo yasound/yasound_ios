@@ -15,7 +15,7 @@
   
   UILabel* _notifTextLabel;
   UILabel* _notifDateLabel;
-  UIImageView* _unreadImage;
+  UIImageView* _image;
 }
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier notification:(UserNotification*)notif;
