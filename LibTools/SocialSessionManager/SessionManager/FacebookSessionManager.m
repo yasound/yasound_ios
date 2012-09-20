@@ -7,8 +7,8 @@
 //
 
 #import "FacebookSessionManager.h"
-#include "YasoundSessionManager.h"
-
+#import "YasoundSessionManager.h"
+#import "NSObject+SBJson.h"
 
 
 @implementation FacebookSessionManager

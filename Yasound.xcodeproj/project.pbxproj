@@ -281,7 +281,6 @@
 		40B409FF152EFC630050D334 /* MessageWeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7C0152DC13F0056B34B /* MessageWeViewController.m */; };
 		40B40A02152EFC630050D334 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CC8314D010BD00DF0950 /* QuartzCore.framework */; };
 		40B40A03152EFC630050D334 /* libOAuthConsumer_iPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBCD14CF649400DF0950 /* libOAuthConsumer_iPhone.a */; };
-		40B40A04152EFC630050D334 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
 		40B40A05152EFC630050D334 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
 		40B40A06152EFC630050D334 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		40B40A07152EFC630050D334 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97D214AB81EA00D54631 /* Accounts.framework */; };
@@ -685,7 +684,6 @@
 		40D53C061554280F001EB0C5 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
 		40D53C081554280F001EB0C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CC8314D010BD00DF0950 /* QuartzCore.framework */; };
 		40D53C091554280F001EB0C5 /* libOAuthConsumer_iPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBCD14CF649400DF0950 /* libOAuthConsumer_iPhone.a */; };
-		40D53C0A1554280F001EB0C5 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
 		40D53C0B1554280F001EB0C5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
 		40D53C0C1554280F001EB0C5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		40D53C0D1554280F001EB0C5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97D214AB81EA00D54631 /* Accounts.framework */; };
@@ -1270,7 +1268,6 @@
 		BC3FA6E614E93B660055AB4A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F8868714E5B44300256383 /* MBProgressHUD.m */; };
 		BC3FA6E814E93B660055AB4A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CC8314D010BD00DF0950 /* QuartzCore.framework */; };
 		BC3FA6E914E93B660055AB4A /* libOAuthConsumer_iPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBCD14CF649400DF0950 /* libOAuthConsumer_iPhone.a */; };
-		BC3FA6EA14E93B660055AB4A /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
 		BC3FA6EB14E93B660055AB4A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
 		BC3FA6EC14E93B660055AB4A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		BC3FA6ED14E93B660055AB4A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97D214AB81EA00D54631 /* Accounts.framework */; };
@@ -1378,10 +1375,6 @@
 		BC3FA78E14E96AEB0055AB4A /* ListenerSelectedBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA78614E96AEB0055AB4A /* ListenerSelectedBackground@2x.png */; };
 		BC3FA78F14E96AEB0055AB4A /* ListenerSelectedBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA78614E96AEB0055AB4A /* ListenerSelectedBackground@2x.png */; };
 		BC3FA79014E96AEB0055AB4A /* ListenerSelectedBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA78614E96AEB0055AB4A /* ListenerSelectedBackground@2x.png */; };
-		BC40CBBF14CF63A300DF0950 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
-		BC40CBC014CF63A800DF0950 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
-		BC40CBC114CF63B200DF0950 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
-		BC40CBC214CF63B500DF0950 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
 		BC40CC0A14CF64B100DF0950 /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD014CF64B100DF0950 /* jQueryInject.txt */; };
 		BC40CC0B14CF64B100DF0950 /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD014CF64B100DF0950 /* jQueryInject.txt */; };
 		BC40CC0C14CF64B100DF0950 /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD014CF64B100DF0950 /* jQueryInject.txt */; };
@@ -1825,7 +1818,6 @@
 		BC56F50F152486AF005D1B40 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EF201524755E00290383 /* LoginViewController.m */; };
 		BC56F511152486AF005D1B40 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CC8314D010BD00DF0950 /* QuartzCore.framework */; };
 		BC56F512152486AF005D1B40 /* libOAuthConsumer_iPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBCD14CF649400DF0950 /* libOAuthConsumer_iPhone.a */; };
-		BC56F513152486AF005D1B40 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
 		BC56F514152486AF005D1B40 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
 		BC56F515152486AF005D1B40 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		BC56F516152486AF005D1B40 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97D214AB81EA00D54631 /* Accounts.framework */; };
@@ -2895,6 +2887,78 @@
 		BCCD80171577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */; };
 		BCCD80181577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */; };
 		BCCD80191577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */; };
+		BCD04602160BE1E300A97DC3 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04538160BE1E300A97DC3 /* Facebook.m */; };
+		BCD04603160BE1E300A97DC3 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04538160BE1E300A97DC3 /* Facebook.m */; };
+		BCD04604160BE1E300A97DC3 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04538160BE1E300A97DC3 /* Facebook.m */; };
+		BCD04605160BE1E300A97DC3 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04538160BE1E300A97DC3 /* Facebook.m */; };
+		BCD04606160BE1E300A97DC3 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04538160BE1E300A97DC3 /* Facebook.m */; };
+		BCD04607160BE1E300A97DC3 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04538160BE1E300A97DC3 /* Facebook.m */; };
+		BCD04608160BE1E300A97DC3 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04538160BE1E300A97DC3 /* Facebook.m */; };
+		BCD04609160BE1E300A97DC3 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04538160BE1E300A97DC3 /* Facebook.m */; };
+		BCD0460A160BE1E300A97DC3 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCD0453B160BE1E300A97DC3 /* FBDialog.bundle */; };
+		BCD0460B160BE1E300A97DC3 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCD0453B160BE1E300A97DC3 /* FBDialog.bundle */; };
+		BCD0460C160BE1E300A97DC3 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCD0453B160BE1E300A97DC3 /* FBDialog.bundle */; };
+		BCD0460D160BE1E300A97DC3 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCD0453B160BE1E300A97DC3 /* FBDialog.bundle */; };
+		BCD0460E160BE1E300A97DC3 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCD0453B160BE1E300A97DC3 /* FBDialog.bundle */; };
+		BCD0460F160BE1E300A97DC3 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCD0453B160BE1E300A97DC3 /* FBDialog.bundle */; };
+		BCD04610160BE1E300A97DC3 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCD0453B160BE1E300A97DC3 /* FBDialog.bundle */; };
+		BCD04611160BE1E300A97DC3 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCD0453B160BE1E300A97DC3 /* FBDialog.bundle */; };
+		BCD04612160BE1E300A97DC3 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453D160BE1E300A97DC3 /* FBDialog.m */; };
+		BCD04613160BE1E300A97DC3 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453D160BE1E300A97DC3 /* FBDialog.m */; };
+		BCD04614160BE1E300A97DC3 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453D160BE1E300A97DC3 /* FBDialog.m */; };
+		BCD04615160BE1E300A97DC3 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453D160BE1E300A97DC3 /* FBDialog.m */; };
+		BCD04616160BE1E300A97DC3 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453D160BE1E300A97DC3 /* FBDialog.m */; };
+		BCD04617160BE1E300A97DC3 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453D160BE1E300A97DC3 /* FBDialog.m */; };
+		BCD04618160BE1E300A97DC3 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453D160BE1E300A97DC3 /* FBDialog.m */; };
+		BCD04619160BE1E300A97DC3 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453D160BE1E300A97DC3 /* FBDialog.m */; };
+		BCD0461A160BE1E300A97DC3 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453F160BE1E300A97DC3 /* FBLoginDialog.m */; };
+		BCD0461B160BE1E300A97DC3 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453F160BE1E300A97DC3 /* FBLoginDialog.m */; };
+		BCD0461C160BE1E300A97DC3 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453F160BE1E300A97DC3 /* FBLoginDialog.m */; };
+		BCD0461D160BE1E300A97DC3 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453F160BE1E300A97DC3 /* FBLoginDialog.m */; };
+		BCD0461E160BE1E300A97DC3 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453F160BE1E300A97DC3 /* FBLoginDialog.m */; };
+		BCD0461F160BE1E300A97DC3 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453F160BE1E300A97DC3 /* FBLoginDialog.m */; };
+		BCD04620160BE1E300A97DC3 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453F160BE1E300A97DC3 /* FBLoginDialog.m */; };
+		BCD04621160BE1E300A97DC3 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0453F160BE1E300A97DC3 /* FBLoginDialog.m */; };
+		BCD04622160BE1E300A97DC3 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04541160BE1E300A97DC3 /* FBRequest.m */; };
+		BCD04623160BE1E300A97DC3 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04541160BE1E300A97DC3 /* FBRequest.m */; };
+		BCD04624160BE1E300A97DC3 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04541160BE1E300A97DC3 /* FBRequest.m */; };
+		BCD04625160BE1E300A97DC3 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04541160BE1E300A97DC3 /* FBRequest.m */; };
+		BCD04626160BE1E300A97DC3 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04541160BE1E300A97DC3 /* FBRequest.m */; };
+		BCD04627160BE1E300A97DC3 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04541160BE1E300A97DC3 /* FBRequest.m */; };
+		BCD04628160BE1E300A97DC3 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04541160BE1E300A97DC3 /* FBRequest.m */; };
+		BCD04629160BE1E300A97DC3 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04541160BE1E300A97DC3 /* FBRequest.m */; };
+		BCD0469A160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04695160BE3A900A97DC3 /* NSObject+SBJSON.m */; };
+		BCD0469B160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04695160BE3A900A97DC3 /* NSObject+SBJSON.m */; };
+		BCD0469C160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04695160BE3A900A97DC3 /* NSObject+SBJSON.m */; };
+		BCD0469D160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04695160BE3A900A97DC3 /* NSObject+SBJSON.m */; };
+		BCD0469E160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04695160BE3A900A97DC3 /* NSObject+SBJSON.m */; };
+		BCD0469F160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04695160BE3A900A97DC3 /* NSObject+SBJSON.m */; };
+		BCD046A0160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04695160BE3A900A97DC3 /* NSObject+SBJSON.m */; };
+		BCD046A1160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04695160BE3A900A97DC3 /* NSObject+SBJSON.m */; };
+		BCD046A2160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04697160BE3A900A97DC3 /* NSString+SBJSON.m */; };
+		BCD046A3160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04697160BE3A900A97DC3 /* NSString+SBJSON.m */; };
+		BCD046A4160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04697160BE3A900A97DC3 /* NSString+SBJSON.m */; };
+		BCD046A5160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04697160BE3A900A97DC3 /* NSString+SBJSON.m */; };
+		BCD046A6160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04697160BE3A900A97DC3 /* NSString+SBJSON.m */; };
+		BCD046A7160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04697160BE3A900A97DC3 /* NSString+SBJSON.m */; };
+		BCD046A8160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04697160BE3A900A97DC3 /* NSString+SBJSON.m */; };
+		BCD046A9160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04697160BE3A900A97DC3 /* NSString+SBJSON.m */; };
+		BCD046AA160BE3A900A97DC3 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04699160BE3A900A97DC3 /* SBJSON.m */; };
+		BCD046AB160BE3A900A97DC3 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04699160BE3A900A97DC3 /* SBJSON.m */; };
+		BCD046AC160BE3A900A97DC3 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04699160BE3A900A97DC3 /* SBJSON.m */; };
+		BCD046AD160BE3A900A97DC3 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04699160BE3A900A97DC3 /* SBJSON.m */; };
+		BCD046AE160BE3A900A97DC3 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04699160BE3A900A97DC3 /* SBJSON.m */; };
+		BCD046AF160BE3A900A97DC3 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04699160BE3A900A97DC3 /* SBJSON.m */; };
+		BCD046B0160BE3A900A97DC3 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04699160BE3A900A97DC3 /* SBJSON.m */; };
+		BCD046B1160BE3A900A97DC3 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD04699160BE3A900A97DC3 /* SBJSON.m */; };
+		BCD046B4160BE3BD00A97DC3 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD046B3160BE3BD00A97DC3 /* SBJsonBase.m */; };
+		BCD046B5160BE3BD00A97DC3 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD046B3160BE3BD00A97DC3 /* SBJsonBase.m */; };
+		BCD046B6160BE3BD00A97DC3 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD046B3160BE3BD00A97DC3 /* SBJsonBase.m */; };
+		BCD046B7160BE3BD00A97DC3 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD046B3160BE3BD00A97DC3 /* SBJsonBase.m */; };
+		BCD046B8160BE3BD00A97DC3 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD046B3160BE3BD00A97DC3 /* SBJsonBase.m */; };
+		BCD046B9160BE3BD00A97DC3 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD046B3160BE3BD00A97DC3 /* SBJsonBase.m */; };
+		BCD046BA160BE3BD00A97DC3 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD046B3160BE3BD00A97DC3 /* SBJsonBase.m */; };
+		BCD046BB160BE3BD00A97DC3 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD046B3160BE3BD00A97DC3 /* SBJsonBase.m */; };
 		BCD0CBCF14FE851900E75CEF /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
 		BCD0CBD014FE851900E75CEF /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
 		BCD0CBD114FE851900E75CEF /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
@@ -3322,26 +3386,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		40B4094D152EFC630050D334 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
 		40B4094F152EFC630050D334 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = OAuthLib;
-		};
-		40D53B521554280F001EB0C5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
 		};
 		40D53B541554280F001EB0C5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -3350,33 +3400,12 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = OAuthLib;
 		};
-		BC3FA65F14E93B660055AB4A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
 		BC3FA66114E93B660055AB4A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = OAuthLib;
-		};
-		BC40CBBB14CF635D00DF0950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
-		BC40CBBD14CF639A00DF0950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
 		};
 		BC40CBCC14CF649400DF0950 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -3385,13 +3414,6 @@
 			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = OAuthLib;
 		};
-		BC40CC5A14CF64C500DF0950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
 		BC40CC5C14CF64C800DF0950 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
@@ -3399,26 +3421,12 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = OAuthLib;
 		};
-		BC40CC5E14CF64CD00DF0950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
 		BC40CC6014CF64D000DF0950 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = OAuthLib;
-		};
-		BC40CC6214CF64D500DF0950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
 		};
 		BC40CC6414CF64D500DF0950 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -3434,19 +3442,19 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = OAuthLib;
 		};
-		BC56F46F152486AF005D1B40 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
 		BC56F471152486AF005D1B40 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = OAuthLib;
+		};
+		BCD0468B160BE1E300A97DC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCD04534160BE1E300A97DC3 /* facebook-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = "facebook-ios-sdk";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -3596,7 +3604,6 @@
 		BC3FA77C14E93B660055AB4A /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC3FA78514E96AEB0055AB4A /* ListenerSelectedBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ListenerSelectedBackground.png; sourceTree = "<group>"; };
 		BC3FA78614E96AEB0055AB4A /* ListenerSelectedBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ListenerSelectedBackground@2x.png"; sourceTree = "<group>"; };
-		BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "facebook-ios-sdk.xcodeproj"; path = "ThirdParties/facebook-ios-sdk/src/facebook-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "OAuthConsumer-iPhoneLib.xcodeproj"; path = "ThirdParties/Twitter-OAuth-iPhone/OAuthConsumeriPhoneLib/OAuthConsumer-iPhoneLib.xcodeproj"; sourceTree = "<group>"; };
 		BC40CBD014CF64B100DF0950 /* jQueryInject.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jQueryInject.txt; sourceTree = "<group>"; };
 		BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jQueryInjectLandscape.txt; sourceTree = "<group>"; };
@@ -3925,6 +3932,26 @@
 		BCCD80071577C36F008E469F /* ProfileMyRadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileMyRadioViewController.h; sourceTree = "<group>"; };
 		BCCD80081577C36F008E469F /* ProfileMyRadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileMyRadioViewController.m; sourceTree = "<group>"; };
 		BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileMyRadioViewController.xib; sourceTree = "<group>"; };
+		BCD04534160BE1E300A97DC3 /* facebook-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "facebook-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
+		BCD04537160BE1E300A97DC3 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
+		BCD04538160BE1E300A97DC3 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook.m; sourceTree = "<group>"; };
+		BCD04539160BE1E300A97DC3 /* facebook_ios_sdk_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = facebook_ios_sdk_Prefix.pch; sourceTree = "<group>"; };
+		BCD0453A160BE1E300A97DC3 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
+		BCD0453B160BE1E300A97DC3 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
+		BCD0453C160BE1E300A97DC3 /* FBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBDialog.h; sourceTree = "<group>"; };
+		BCD0453D160BE1E300A97DC3 /* FBDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBDialog.m; sourceTree = "<group>"; };
+		BCD0453E160BE1E300A97DC3 /* FBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginDialog.h; sourceTree = "<group>"; };
+		BCD0453F160BE1E300A97DC3 /* FBLoginDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoginDialog.m; sourceTree = "<group>"; };
+		BCD04540160BE1E300A97DC3 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRequest.h; sourceTree = "<group>"; };
+		BCD04541160BE1E300A97DC3 /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBRequest.m; sourceTree = "<group>"; };
+		BCD04694160BE3A900A97DC3 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SBJSON.h"; path = "../../../../../tmp/tmp/yasound_ios/ThirdParties/facebook-ios-sdk/src/JSON/NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		BCD04695160BE3A900A97DC3 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SBJSON.m"; path = "../../../../../tmp/tmp/yasound_ios/ThirdParties/facebook-ios-sdk/src/JSON/NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		BCD04696160BE3A900A97DC3 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+SBJSON.h"; path = "../../../../../tmp/tmp/yasound_ios/ThirdParties/facebook-ios-sdk/src/JSON/NSString+SBJSON.h"; sourceTree = "<group>"; };
+		BCD04697160BE3A900A97DC3 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+SBJSON.m"; path = "../../../../../tmp/tmp/yasound_ios/ThirdParties/facebook-ios-sdk/src/JSON/NSString+SBJSON.m"; sourceTree = "<group>"; };
+		BCD04698160BE3A900A97DC3 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJSON.h; path = "../../../../../tmp/tmp/yasound_ios/ThirdParties/facebook-ios-sdk/src/JSON/SBJSON.h"; sourceTree = "<group>"; };
+		BCD04699160BE3A900A97DC3 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJSON.m; path = "../../../../../tmp/tmp/yasound_ios/ThirdParties/facebook-ios-sdk/src/JSON/SBJSON.m"; sourceTree = "<group>"; };
+		BCD046B2160BE3BD00A97DC3 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonBase.h; path = "../../../../../tmp/tmp/yasound_ios/ThirdParties/facebook-ios-sdk/src/JSON/SBJsonBase.h"; sourceTree = "<group>"; };
+		BCD046B3160BE3BD00A97DC3 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonBase.m; path = "../../../../../tmp/tmp/yasound_ios/ThirdParties/facebook-ios-sdk/src/JSON/SBJsonBase.m"; sourceTree = "<group>"; };
 		BCD0CBCC14FE851800E75CEF /* SongInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongInfoViewController.h; path = Programming/SongInfoViewController.h; sourceTree = "<group>"; };
 		BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongInfoViewController.m; path = Programming/SongInfoViewController.m; sourceTree = "<group>"; };
 		BCD0CBCE14FE851900E75CEF /* SongInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongInfoViewController.xib; path = Programming/SongInfoViewController.xib; sourceTree = "<group>"; };
@@ -4103,7 +4130,6 @@
 			files = (
 				40B40A02152EFC630050D334 /* QuartzCore.framework in Frameworks */,
 				40B40A03152EFC630050D334 /* libOAuthConsumer_iPhone.a in Frameworks */,
-				40B40A04152EFC630050D334 /* libfacebook_ios_sdk.a in Frameworks */,
 				40B40A05152EFC630050D334 /* SystemConfiguration.framework in Frameworks */,
 				40B40A06152EFC630050D334 /* AVFoundation.framework in Frameworks */,
 				40B40A07152EFC630050D334 /* Accounts.framework in Frameworks */,
@@ -4133,7 +4159,6 @@
 			files = (
 				40D53C081554280F001EB0C5 /* QuartzCore.framework in Frameworks */,
 				40D53C091554280F001EB0C5 /* libOAuthConsumer_iPhone.a in Frameworks */,
-				40D53C0A1554280F001EB0C5 /* libfacebook_ios_sdk.a in Frameworks */,
 				40D53C0B1554280F001EB0C5 /* SystemConfiguration.framework in Frameworks */,
 				40D53C0C1554280F001EB0C5 /* AVFoundation.framework in Frameworks */,
 				40D53C0D1554280F001EB0C5 /* Accounts.framework in Frameworks */,
@@ -4163,7 +4188,6 @@
 			files = (
 				BC3FA6E814E93B660055AB4A /* QuartzCore.framework in Frameworks */,
 				BC3FA6E914E93B660055AB4A /* libOAuthConsumer_iPhone.a in Frameworks */,
-				BC3FA6EA14E93B660055AB4A /* libfacebook_ios_sdk.a in Frameworks */,
 				BC3FA6EB14E93B660055AB4A /* SystemConfiguration.framework in Frameworks */,
 				BC3FA6EC14E93B660055AB4A /* AVFoundation.framework in Frameworks */,
 				BC3FA6ED14E93B660055AB4A /* Accounts.framework in Frameworks */,
@@ -4193,7 +4217,6 @@
 			files = (
 				BC56F511152486AF005D1B40 /* QuartzCore.framework in Frameworks */,
 				BC56F512152486AF005D1B40 /* libOAuthConsumer_iPhone.a in Frameworks */,
-				BC56F513152486AF005D1B40 /* libfacebook_ios_sdk.a in Frameworks */,
 				BC56F514152486AF005D1B40 /* SystemConfiguration.framework in Frameworks */,
 				BC56F515152486AF005D1B40 /* AVFoundation.framework in Frameworks */,
 				BC56F516152486AF005D1B40 /* Accounts.framework in Frameworks */,
@@ -4223,7 +4246,6 @@
 			files = (
 				BC40CC8414D010BD00DF0950 /* QuartzCore.framework in Frameworks */,
 				BC40CC6A14CF64F500DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */,
-				BC40CBC214CF63B500DF0950 /* libfacebook_ios_sdk.a in Frameworks */,
 				BC71F5DA147FEC6F00DAE4BD /* SystemConfiguration.framework in Frameworks */,
 				BC9522A414B70FE9001E1ACE /* AVFoundation.framework in Frameworks */,
 				BCDC97D314AB81EA00D54631 /* Accounts.framework in Frameworks */,
@@ -4253,7 +4275,6 @@
 			files = (
 				BC40CC8614D010E500DF0950 /* QuartzCore.framework in Frameworks */,
 				BC40CC6814CF64EC00DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */,
-				BC40CBC014CF63A800DF0950 /* libfacebook_ios_sdk.a in Frameworks */,
 				BC93CD3D14CF3F7A007C723F /* SystemConfiguration.framework in Frameworks */,
 				BC93CD3E14CF3F7A007C723F /* AVFoundation.framework in Frameworks */,
 				BC93CD3F14CF3F7A007C723F /* Accounts.framework in Frameworks */,
@@ -4284,7 +4305,6 @@
 				BC9522A514B70FF2001E1ACE /* AVFoundation.framework in Frameworks */,
 				BC40CC8714D010EB00DF0950 /* QuartzCore.framework in Frameworks */,
 				BC40CC6B14CF64F800DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */,
-				BC40CBBF14CF63A300DF0950 /* libfacebook_ios_sdk.a in Frameworks */,
 				E5280A5A145F006C00A88910 /* SystemConfiguration.framework in Frameworks */,
 				BCDC97DA14AB827200D54631 /* Accounts.framework in Frameworks */,
 				BCDC97DB14AB827200D54631 /* libxml2.dylib in Frameworks */,
@@ -4313,7 +4333,6 @@
 			files = (
 				BC40CC8514D010DD00DF0950 /* QuartzCore.framework in Frameworks */,
 				BC40CC6914CF64F100DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */,
-				BC40CBC114CF63B200DF0950 /* libfacebook_ios_sdk.a in Frameworks */,
 				E5F3B8901498B88D008DD607 /* SystemConfiguration.framework in Frameworks */,
 				BC9522A614B70FF7001E1ACE /* AVFoundation.framework in Frameworks */,
 				BCDC97DE14AB828B00D54631 /* Accounts.framework in Frameworks */,
@@ -4547,22 +4566,6 @@
 			name = YasoundReachability;
 			path = LibTools/YasoundReachability;
 			sourceTree = SOURCE_ROOT;
-		};
-		BC40CBB314CF633600DF0950 /* facebook-ios-sdk */ = {
-			isa = PBXGroup;
-			children = (
-				BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */,
-			);
-			name = "facebook-ios-sdk";
-			sourceTree = "<group>";
-		};
-		BC40CBB514CF635D00DF0950 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
 		};
 		BC40CBC414CF648500DF0950 /* Twitter-OAuth-iPhone */ = {
 			isa = PBXGroup;
@@ -5164,6 +5167,50 @@
 			name = s7graphview;
 			sourceTree = "<group>";
 		};
+		BCD0450F160BE1E300A97DC3 /* facebook-ios-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				BCD046B2160BE3BD00A97DC3 /* SBJsonBase.h */,
+				BCD046B3160BE3BD00A97DC3 /* SBJsonBase.m */,
+				BCD04694160BE3A900A97DC3 /* NSObject+SBJSON.h */,
+				BCD04695160BE3A900A97DC3 /* NSObject+SBJSON.m */,
+				BCD04696160BE3A900A97DC3 /* NSString+SBJSON.h */,
+				BCD04697160BE3A900A97DC3 /* NSString+SBJSON.m */,
+				BCD04698160BE3A900A97DC3 /* SBJSON.h */,
+				BCD04699160BE3A900A97DC3 /* SBJSON.m */,
+				BCD04533160BE1E300A97DC3 /* src */,
+			);
+			name = "facebook-ios-sdk";
+			path = "ThirdParties/facebook-ios-sdk";
+			sourceTree = "<group>";
+		};
+		BCD04533160BE1E300A97DC3 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				BCD04534160BE1E300A97DC3 /* facebook-ios-sdk.xcodeproj */,
+				BCD04537160BE1E300A97DC3 /* Facebook.h */,
+				BCD04538160BE1E300A97DC3 /* Facebook.m */,
+				BCD04539160BE1E300A97DC3 /* facebook_ios_sdk_Prefix.pch */,
+				BCD0453A160BE1E300A97DC3 /* FBConnect.h */,
+				BCD0453B160BE1E300A97DC3 /* FBDialog.bundle */,
+				BCD0453C160BE1E300A97DC3 /* FBDialog.h */,
+				BCD0453D160BE1E300A97DC3 /* FBDialog.m */,
+				BCD0453E160BE1E300A97DC3 /* FBLoginDialog.h */,
+				BCD0453F160BE1E300A97DC3 /* FBLoginDialog.m */,
+				BCD04540160BE1E300A97DC3 /* FBRequest.h */,
+				BCD04541160BE1E300A97DC3 /* FBRequest.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		BCD04535160BE1E300A97DC3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCD0468C160BE1E300A97DC3 /* libfacebook_ios_sdk.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		BCD18EEE160BD86300DE3EEA /* TestFlightSDK1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -5186,6 +5233,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				BCD0450F160BE1E300A97DC3 /* facebook-ios-sdk */,
 				BCD18EEE160BD86300DE3EEA /* TestFlightSDK1 */,
 				BC7C07701541A82F004FC760 /* MKBitlyHelper */,
 				BCB0EF12152351A900290383 /* UnderlinedButton */,
@@ -5195,7 +5243,6 @@
 				B1D634C414E1BC4E00BE852E /* UIDevice-with-UniqueIdentifier-for-iOS-5 */,
 				BC40CC7C14D0093F00DF0950 /* DDMenuController */,
 				BC40CBC414CF648500DF0950 /* Twitter-OAuth-iPhone */,
-				BC40CBB314CF633600DF0950 /* facebook-ios-sdk */,
 				BCCA798614AE24C80011AADD /* s7graphview */,
 				BCDC973014AB7D9700D54631 /* NSData+CocoaDevUsersAdditions */,
 				BCDC96E814AB7D9000D54631 /* json-framework */,
@@ -5661,7 +5708,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				40B4094C152EFC630050D334 /* PBXTargetDependency */,
 				40B4094E152EFC630050D334 /* PBXTargetDependency */,
 			);
 			name = "YasoundD LOCAL SERVER";
@@ -5681,7 +5727,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				40D53B511554280F001EB0C5 /* PBXTargetDependency */,
 				40D53B531554280F001EB0C5 /* PBXTargetDependency */,
 			);
 			name = "Yasound TECHTOUR";
@@ -5700,7 +5745,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BC3FA65E14E93B660055AB4A /* PBXTargetDependency */,
 				BC3FA66014E93B660055AB4A /* PBXTargetDependency */,
 			);
 			name = "YasoundD MUTE";
@@ -5719,7 +5763,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BC56F46E152486AF005D1B40 /* PBXTargetDependency */,
 				BC56F470152486AF005D1B40 /* PBXTargetDependency */,
 			);
 			name = "YasoundD DEV SERVER";
@@ -5738,7 +5781,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BC40CC6314CF64D500DF0950 /* PBXTargetDependency */,
 				BC40CC6514CF64D500DF0950 /* PBXTargetDependency */,
 			);
 			name = YasoundD;
@@ -5759,7 +5801,6 @@
 			);
 			dependencies = (
 				BC40CC5D14CF64C800DF0950 /* PBXTargetDependency */,
-				BC40CC5B14CF64C500DF0950 /* PBXTargetDependency */,
 			);
 			name = "Yasound App Store";
 			productName = Yasound;
@@ -5779,7 +5820,6 @@
 			);
 			dependencies = (
 				BC40CC6714CF64D800DF0950 /* PBXTargetDependency */,
-				BC40CBBE14CF639A00DF0950 /* PBXTargetDependency */,
 			);
 			name = Yasound;
 			productName = Yasound;
@@ -5799,7 +5839,6 @@
 			);
 			dependencies = (
 				BC40CC6114CF64D000DF0950 /* PBXTargetDependency */,
-				BC40CC5F14CF64CD00DF0950 /* PBXTargetDependency */,
 			);
 			name = "Yasound adhoc";
 			productName = Yasound;
@@ -5828,8 +5867,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = BC40CBB514CF635D00DF0950 /* Products */;
-					ProjectRef = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
+					ProductGroup = BCD04535160BE1E300A97DC3 /* Products */;
+					ProjectRef = BCD04534160BE1E300A97DC3 /* facebook-ios-sdk.xcodeproj */;
 				},
 				{
 					ProductGroup = BC40CBC614CF649400DF0950 /* Products */;
@@ -5851,18 +5890,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libfacebook_ios_sdk.a;
-			remoteRef = BC40CBBB14CF635D00DF0950 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		BC40CBCD14CF649400DF0950 /* libOAuthConsumer_iPhone.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libOAuthConsumer_iPhone.a;
 			remoteRef = BC40CBCC14CF649400DF0950 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BCD0468C160BE1E300A97DC3 /* libfacebook_ios_sdk.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libfacebook_ios_sdk.a;
+			remoteRef = BCD0468B160BE1E300A97DC3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -6079,6 +6118,7 @@
 				BC087D421588D3A70059D9F9 /* WallAvatarMask@2x.png in Resources */,
 				BC087D4C1588D3B50059D9F9 /* CellRadioUser_Mask.png in Resources */,
 				BC087D541588D3B50059D9F9 /* CellRadioUser_Mask@2x.png in Resources */,
+				BCD04610160BE1E300A97DC3 /* FBDialog.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6295,6 +6335,7 @@
 				BC087D431588D3A70059D9F9 /* WallAvatarMask@2x.png in Resources */,
 				BC087D4D1588D3B50059D9F9 /* CellRadioUser_Mask.png in Resources */,
 				BC087D551588D3B50059D9F9 /* CellRadioUser_Mask@2x.png in Resources */,
+				BCD04611160BE1E300A97DC3 /* FBDialog.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6505,6 +6546,7 @@
 				BC087D411588D3A70059D9F9 /* WallAvatarMask@2x.png in Resources */,
 				BC087D4B1588D3B50059D9F9 /* CellRadioUser_Mask.png in Resources */,
 				BC087D531588D3B50059D9F9 /* CellRadioUser_Mask@2x.png in Resources */,
+				BCD0460F160BE1E300A97DC3 /* FBDialog.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6720,6 +6762,7 @@
 				BC087D3E1588D3A70059D9F9 /* WallAvatarMask@2x.png in Resources */,
 				BC087D481588D3B50059D9F9 /* CellRadioUser_Mask.png in Resources */,
 				BC087D501588D3B50059D9F9 /* CellRadioUser_Mask@2x.png in Resources */,
+				BCD0460C160BE1E300A97DC3 /* FBDialog.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6935,6 +6978,7 @@
 				BC087D3D1588D3A70059D9F9 /* WallAvatarMask@2x.png in Resources */,
 				BC087D471588D3B50059D9F9 /* CellRadioUser_Mask.png in Resources */,
 				BC087D4F1588D3B50059D9F9 /* CellRadioUser_Mask@2x.png in Resources */,
+				BCD0460B160BE1E300A97DC3 /* FBDialog.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7150,6 +7194,7 @@
 				BC087D401588D3A70059D9F9 /* WallAvatarMask@2x.png in Resources */,
 				BC087D4A1588D3B50059D9F9 /* CellRadioUser_Mask.png in Resources */,
 				BC087D521588D3B50059D9F9 /* CellRadioUser_Mask@2x.png in Resources */,
+				BCD0460E160BE1E300A97DC3 /* FBDialog.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7365,6 +7410,7 @@
 				BC087D3C1588D3A70059D9F9 /* WallAvatarMask@2x.png in Resources */,
 				BC087D461588D3B50059D9F9 /* CellRadioUser_Mask.png in Resources */,
 				BC087D4E1588D3B50059D9F9 /* CellRadioUser_Mask@2x.png in Resources */,
+				BCD0460A160BE1E300A97DC3 /* FBDialog.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7580,6 +7626,7 @@
 				BC087D3F1588D3A70059D9F9 /* WallAvatarMask@2x.png in Resources */,
 				BC087D491588D3B50059D9F9 /* CellRadioUser_Mask.png in Resources */,
 				BC087D511588D3B50059D9F9 /* CellRadioUser_Mask@2x.png in Resources */,
+				BCD0460D160BE1E300A97DC3 /* FBDialog.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7829,6 +7876,14 @@
 				40CBB1E0159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242215A353F3002A870D /* CityInfo.m in Sources */,
 				BCD18EEB160BD48900DE3EEA /* EasyTracker.m in Sources */,
+				BCD04608160BE1E300A97DC3 /* Facebook.m in Sources */,
+				BCD04618160BE1E300A97DC3 /* FBDialog.m in Sources */,
+				BCD04620160BE1E300A97DC3 /* FBLoginDialog.m in Sources */,
+				BCD04628160BE1E300A97DC3 /* FBRequest.m in Sources */,
+				BCD046A0160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */,
+				BCD046A8160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */,
+				BCD046B0160BE3A900A97DC3 /* SBJSON.m in Sources */,
+				BCD046BA160BE3BD00A97DC3 /* SBJsonBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8020,6 +8075,14 @@
 				40CBB1E1159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242315A353F3002A870D /* CityInfo.m in Sources */,
 				BCD18EEC160BD48900DE3EEA /* EasyTracker.m in Sources */,
+				BCD04609160BE1E300A97DC3 /* Facebook.m in Sources */,
+				BCD04619160BE1E300A97DC3 /* FBDialog.m in Sources */,
+				BCD04621160BE1E300A97DC3 /* FBLoginDialog.m in Sources */,
+				BCD04629160BE1E300A97DC3 /* FBRequest.m in Sources */,
+				BCD046A1160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */,
+				BCD046A9160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */,
+				BCD046B1160BE3A900A97DC3 /* SBJSON.m in Sources */,
+				BCD046BB160BE3BD00A97DC3 /* SBJsonBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8207,6 +8270,14 @@
 				40CBB1DF159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242115A353F3002A870D /* CityInfo.m in Sources */,
 				BCD18EEA160BD48900DE3EEA /* EasyTracker.m in Sources */,
+				BCD04607160BE1E300A97DC3 /* Facebook.m in Sources */,
+				BCD04617160BE1E300A97DC3 /* FBDialog.m in Sources */,
+				BCD0461F160BE1E300A97DC3 /* FBLoginDialog.m in Sources */,
+				BCD04627160BE1E300A97DC3 /* FBRequest.m in Sources */,
+				BCD0469F160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */,
+				BCD046A7160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */,
+				BCD046AF160BE3A900A97DC3 /* SBJSON.m in Sources */,
+				BCD046B9160BE3BD00A97DC3 /* SBJsonBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8398,6 +8469,14 @@
 				40CBB1DC159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241E15A353F3002A870D /* CityInfo.m in Sources */,
 				BCD18EE7160BD48900DE3EEA /* EasyTracker.m in Sources */,
+				BCD04604160BE1E300A97DC3 /* Facebook.m in Sources */,
+				BCD04614160BE1E300A97DC3 /* FBDialog.m in Sources */,
+				BCD0461C160BE1E300A97DC3 /* FBLoginDialog.m in Sources */,
+				BCD04624160BE1E300A97DC3 /* FBRequest.m in Sources */,
+				BCD0469C160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */,
+				BCD046A4160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */,
+				BCD046AC160BE3A900A97DC3 /* SBJSON.m in Sources */,
+				BCD046B6160BE3BD00A97DC3 /* SBJsonBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8589,6 +8668,14 @@
 				40CBB1DB159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241D15A353F3002A870D /* CityInfo.m in Sources */,
 				BCD18EE6160BD48900DE3EEA /* EasyTracker.m in Sources */,
+				BCD04603160BE1E300A97DC3 /* Facebook.m in Sources */,
+				BCD04613160BE1E300A97DC3 /* FBDialog.m in Sources */,
+				BCD0461B160BE1E300A97DC3 /* FBLoginDialog.m in Sources */,
+				BCD04623160BE1E300A97DC3 /* FBRequest.m in Sources */,
+				BCD0469B160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */,
+				BCD046A3160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */,
+				BCD046AB160BE3A900A97DC3 /* SBJSON.m in Sources */,
+				BCD046B5160BE3BD00A97DC3 /* SBJsonBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8781,6 +8868,14 @@
 				40CBB1DE159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242015A353F3002A870D /* CityInfo.m in Sources */,
 				BCD18EE9160BD48900DE3EEA /* EasyTracker.m in Sources */,
+				BCD04606160BE1E300A97DC3 /* Facebook.m in Sources */,
+				BCD04616160BE1E300A97DC3 /* FBDialog.m in Sources */,
+				BCD0461E160BE1E300A97DC3 /* FBLoginDialog.m in Sources */,
+				BCD04626160BE1E300A97DC3 /* FBRequest.m in Sources */,
+				BCD0469E160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */,
+				BCD046A6160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */,
+				BCD046AE160BE3A900A97DC3 /* SBJSON.m in Sources */,
+				BCD046B8160BE3BD00A97DC3 /* SBJsonBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8972,6 +9067,14 @@
 				40CBB1DA159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241C15A353F3002A870D /* CityInfo.m in Sources */,
 				BCD18EE5160BD48900DE3EEA /* EasyTracker.m in Sources */,
+				BCD04602160BE1E300A97DC3 /* Facebook.m in Sources */,
+				BCD04612160BE1E300A97DC3 /* FBDialog.m in Sources */,
+				BCD0461A160BE1E300A97DC3 /* FBLoginDialog.m in Sources */,
+				BCD04622160BE1E300A97DC3 /* FBRequest.m in Sources */,
+				BCD0469A160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */,
+				BCD046A2160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */,
+				BCD046AA160BE3A900A97DC3 /* SBJSON.m in Sources */,
+				BCD046B4160BE3BD00A97DC3 /* SBJsonBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9163,71 +9266,44 @@
 				40CBB1DD159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241F15A353F3002A870D /* CityInfo.m in Sources */,
 				BCD18EE8160BD48900DE3EEA /* EasyTracker.m in Sources */,
+				BCD04605160BE1E300A97DC3 /* Facebook.m in Sources */,
+				BCD04615160BE1E300A97DC3 /* FBDialog.m in Sources */,
+				BCD0461D160BE1E300A97DC3 /* FBLoginDialog.m in Sources */,
+				BCD04625160BE1E300A97DC3 /* FBRequest.m in Sources */,
+				BCD0469D160BE3A900A97DC3 /* NSObject+SBJSON.m in Sources */,
+				BCD046A5160BE3A900A97DC3 /* NSString+SBJSON.m in Sources */,
+				BCD046AD160BE3A900A97DC3 /* SBJSON.m in Sources */,
+				BCD046B7160BE3BD00A97DC3 /* SBJsonBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		40B4094C152EFC630050D334 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = 40B4094D152EFC630050D334 /* PBXContainerItemProxy */;
-		};
 		40B4094E152EFC630050D334 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OAuthLib;
 			targetProxy = 40B4094F152EFC630050D334 /* PBXContainerItemProxy */;
-		};
-		40D53B511554280F001EB0C5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = 40D53B521554280F001EB0C5 /* PBXContainerItemProxy */;
 		};
 		40D53B531554280F001EB0C5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OAuthLib;
 			targetProxy = 40D53B541554280F001EB0C5 /* PBXContainerItemProxy */;
 		};
-		BC3FA65E14E93B660055AB4A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = BC3FA65F14E93B660055AB4A /* PBXContainerItemProxy */;
-		};
 		BC3FA66014E93B660055AB4A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OAuthLib;
 			targetProxy = BC3FA66114E93B660055AB4A /* PBXContainerItemProxy */;
-		};
-		BC40CBBE14CF639A00DF0950 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = BC40CBBD14CF639A00DF0950 /* PBXContainerItemProxy */;
-		};
-		BC40CC5B14CF64C500DF0950 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = BC40CC5A14CF64C500DF0950 /* PBXContainerItemProxy */;
 		};
 		BC40CC5D14CF64C800DF0950 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OAuthLib;
 			targetProxy = BC40CC5C14CF64C800DF0950 /* PBXContainerItemProxy */;
 		};
-		BC40CC5F14CF64CD00DF0950 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = BC40CC5E14CF64CD00DF0950 /* PBXContainerItemProxy */;
-		};
 		BC40CC6114CF64D000DF0950 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OAuthLib;
 			targetProxy = BC40CC6014CF64D000DF0950 /* PBXContainerItemProxy */;
-		};
-		BC40CC6314CF64D500DF0950 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = BC40CC6214CF64D500DF0950 /* PBXContainerItemProxy */;
 		};
 		BC40CC6514CF64D500DF0950 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -9238,11 +9314,6 @@
 			isa = PBXTargetDependency;
 			name = OAuthLib;
 			targetProxy = BC40CC6614CF64D800DF0950 /* PBXContainerItemProxy */;
-		};
-		BC56F46E152486AF005D1B40 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = BC56F46F152486AF005D1B40 /* PBXContainerItemProxy */;
 		};
 		BC56F470152486AF005D1B40 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -9365,6 +9436,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9383,6 +9455,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
@@ -9396,6 +9469,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9411,6 +9485,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
@@ -9425,6 +9500,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -9445,6 +9521,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Yasound TechTour";
@@ -9460,6 +9537,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -9476,6 +9554,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Yasound TechTour";
@@ -9490,6 +9569,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9508,6 +9588,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
@@ -9520,6 +9601,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9535,6 +9617,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
@@ -9547,6 +9630,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9565,6 +9649,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD DEV SERVER";
@@ -9578,6 +9663,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9593,6 +9679,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD DEV SERVER";
@@ -9606,6 +9693,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -9632,6 +9720,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = YasoundD;
@@ -9646,6 +9735,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -9669,6 +9759,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = YasoundD;
@@ -9686,6 +9777,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9696,6 +9788,13 @@
 					TESTFLIGHT_SDK,
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					../../ThirdParties/,
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
@@ -9705,6 +9804,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "B1A71538-5BCA-4527-AB6A-105BB99E2EF4";
@@ -9723,6 +9823,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9731,6 +9832,13 @@
 					TESTFLIGHT_SDK,
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					../../ThirdParties/,
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
@@ -9740,6 +9848,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "B1A71538-5BCA-4527-AB6A-105BB99E2EF4";
@@ -9835,6 +9944,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9849,6 +9959,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				PRODUCT_NAME = Yasound;
 				WARNING_CFLAGS = "$(inherited)";
@@ -9863,6 +9974,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9877,6 +9989,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				PRODUCT_NAME = Yasound;
 				WARNING_CFLAGS = "$(inherited)";
@@ -9891,6 +10004,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9910,6 +10024,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "068E7843-CE69-437F-849D-6DA148664D1C";
@@ -9924,6 +10039,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9943,6 +10059,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "068E7843-CE69-437F-849D-6DA148664D1C";
