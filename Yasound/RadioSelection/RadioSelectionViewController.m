@@ -125,6 +125,10 @@
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:swipeLeft];
 
+    //don't do it here, there's a delegate for that
+//    // init wheel selector and on-display screen
+//    [self.wheelSelector stickToItem:_wheelIndex silent:NO];
+
 
 }
 
@@ -266,7 +270,7 @@
 
 - (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
 {
-    return 0;
+    return WheelIdSelection;
 }
 
 

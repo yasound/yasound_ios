@@ -606,7 +606,7 @@
     }
     
     
-    self.radioSelectionViewController = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:0];
+    self.radioSelectionViewController = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:WheelIdSelection];
     [self.navigationController pushViewController:self.radioSelectionViewController animated:animated];
 }
 
@@ -679,7 +679,7 @@
 
 //    [self gotoMenuAnimated:NO];
     
-    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:0];
+    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:WheelIdSelection];
     [self.navigationController pushViewController:view animated:animated];
     [view release];
 }
@@ -695,7 +695,7 @@
     
 //    [self gotoMenuAnimated:NO];
     
-    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:0];
+    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:WheelIdSelection];
     [self.navigationController pushViewController:view animated:animated];
     [view release];
 }
