@@ -103,6 +103,12 @@ typedef enum
     _searchController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
     
 
+    // import previous search, if any
+    NSString* searchtext = [[UserSettings main] objectForKey:USKEYradioSearch];
+    if ((searchtext != nil) && (searchtext.length > 0))
+        [self searchRadios:searchtext];
+
+    
 }
 
 - (void)viewDidUnload
@@ -382,6 +388,13 @@ typedef enum
 
 #pragma mark - UISearchDisplayDelegate
 
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar {
+    
+    [[UserSettings main] setObject:@"" forKey:USKEYradioSearch];
+}
+
+
 - (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView
 {
   _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -406,8 +419,12 @@ typedef enum
   if (_radiosBySong != nil)
     [_radiosBySong release];
   _radiosBySong = nil;
+    
+    [[UserSettings main] setObject:searchText forKey:USKEYradioSearch];
   
-  [self.searchDisplayController.searchResultsTableView reloadData];
+    [self.searchDisplayController.searchBar becomeFirstResponder];
+    self.searchDisplayController.searchBar.text = searchText;
+    [self.searchDisplayController.searchResultsTableView reloadData];
   
   [[YasoundDataProvider main] searchRadios:searchText withTarget:self action:@selector(receiveRadios:withInfo:)];
   [[YasoundDataProvider main] searchRadiosByCreator:searchText withTarget:self action:@selector(receiveRadiosSearchedByCreator:withInfo:)];

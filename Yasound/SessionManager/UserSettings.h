@@ -43,6 +43,8 @@
 
 #define USKEYuserWantsHd @"userWantsHd"
 
+#define USKEYradioSearch @"userRadioSearch"
+
 
 + (UserSettings*)main;
 
