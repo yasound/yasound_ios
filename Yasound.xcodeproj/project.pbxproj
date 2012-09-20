@@ -2927,6 +2927,14 @@
 		BCD18EE0160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */; };
 		BCD18EE1160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */; };
 		BCD18EE2160BD2BD00DE3EEA /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */; };
+		BCD18EE5160BD48900DE3EEA /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD18EE4160BD48900DE3EEA /* EasyTracker.m */; };
+		BCD18EE6160BD48900DE3EEA /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD18EE4160BD48900DE3EEA /* EasyTracker.m */; };
+		BCD18EE7160BD48900DE3EEA /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD18EE4160BD48900DE3EEA /* EasyTracker.m */; };
+		BCD18EE8160BD48900DE3EEA /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD18EE4160BD48900DE3EEA /* EasyTracker.m */; };
+		BCD18EE9160BD48900DE3EEA /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD18EE4160BD48900DE3EEA /* EasyTracker.m */; };
+		BCD18EEA160BD48900DE3EEA /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD18EE4160BD48900DE3EEA /* EasyTracker.m */; };
+		BCD18EEB160BD48900DE3EEA /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD18EE4160BD48900DE3EEA /* EasyTracker.m */; };
+		BCD18EEC160BD48900DE3EEA /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD18EE4160BD48900DE3EEA /* EasyTracker.m */; };
 		BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BCD818681504F74700B818D1 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
 		BCD818691504F74700B818D1 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
@@ -3926,6 +3934,8 @@
 		BCD1219B14C749D90013B2EF /* bullets@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bullets@2x.png"; sourceTree = "<group>"; };
 		BCD18ED9160BD2BD00DE3EEA /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = Library/GANTracker.h; sourceTree = "<group>"; };
 		BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Library/libGoogleAnalytics.a; sourceTree = "<group>"; };
+		BCD18EE3160BD48900DE3EEA /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasyTracker.h; path = EasyTracker/Library/EasyTracker.h; sourceTree = "<group>"; };
+		BCD18EE4160BD48900DE3EEA /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasyTracker.m; path = EasyTracker/Library/EasyTracker.m; sourceTree = "<group>"; };
 		BCD4C2C414695FCD000A236A /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlertView.h; sourceTree = "<group>"; };
 		BCD4C2C514695FCD000A236A /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlertView.m; sourceTree = "<group>"; };
 		BCD818661504F74700B818D1 /* SongAddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongAddCell.h; path = Programming/SongAddCell.h; sourceTree = "<group>"; };
@@ -5262,6 +5272,8 @@
 		BCDC967214AB7D8900D54631 /* Google Analytics SDK */ = {
 			isa = PBXGroup;
 			children = (
+				BCD18EE3160BD48900DE3EEA /* EasyTracker.h */,
+				BCD18EE4160BD48900DE3EEA /* EasyTracker.m */,
 				BCD18ED9160BD2BD00DE3EEA /* GANTracker.h */,
 				BCD18EDA160BD2BD00DE3EEA /* libGoogleAnalytics.a */,
 			);
@@ -7816,6 +7828,7 @@
 				40B96B881591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1E0159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242215A353F3002A870D /* CityInfo.m in Sources */,
+				BCD18EEB160BD48900DE3EEA /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8006,6 +8019,7 @@
 				40B96B891591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1E1159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242315A353F3002A870D /* CityInfo.m in Sources */,
+				BCD18EEC160BD48900DE3EEA /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8192,6 +8206,7 @@
 				40B96B871591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1DF159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242115A353F3002A870D /* CityInfo.m in Sources */,
+				BCD18EEA160BD48900DE3EEA /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8382,6 +8397,7 @@
 				40B96B841591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1DC159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241E15A353F3002A870D /* CityInfo.m in Sources */,
+				BCD18EE7160BD48900DE3EEA /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8572,6 +8588,7 @@
 				40B96B831591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1DB159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241D15A353F3002A870D /* CityInfo.m in Sources */,
+				BCD18EE6160BD48900DE3EEA /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8763,6 +8780,7 @@
 				40B96B861591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1DE159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242015A353F3002A870D /* CityInfo.m in Sources */,
+				BCD18EE9160BD48900DE3EEA /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8953,6 +8971,7 @@
 				40B96B821591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1DA159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241C15A353F3002A870D /* CityInfo.m in Sources */,
+				BCD18EE5160BD48900DE3EEA /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9143,6 +9162,7 @@
 				40B96B851591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1DD159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241F15A353F3002A870D /* CityInfo.m in Sources */,
+				BCD18EE8160BD48900DE3EEA /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
