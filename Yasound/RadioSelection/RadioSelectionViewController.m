@@ -261,8 +261,6 @@
         return WheelIdFavoritesTitle;
     if (itemIndex == WheelIdFriends)
         return WheelIdFriendsTitle;
-    if (itemIndex == WheelIdSearch)
-        return WheelIdSearchTitle;
     return nil;
 }
 
@@ -275,39 +273,14 @@
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
 {    
 
-    if (self.contentsView != nil)
+    if (self.contentsView != nil) {
         [self.contentsView removeFromSuperview];
-    
-    if (self.searchview != nil)
-    {
-        [self.searchview.view removeFromSuperview];
-        [self.searchview release];
-        self.searchview = nil;
-    }
-    else
-    {
         [self.contentsController release];
         self.contentsController = nil;
     }
     
     NSString* url = nil;
     NSString* genre = nil;
-    
-    
-    if (itemIndex == WheelIdSearch)
-    {
-        self.searchview = [[RadioSearchViewController alloc] initWithNibName:@"RadioSearchViewController" bundle:nil];
-        //viewC.view.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
-        [self.listContainer addSubview:self.searchview.view];
-//        [self.searchview release];
-
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"BigMessage.Icons.search" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-       UIImageView* icon = [sheet makeImage];
-        
-        [self.searchview.view addSubview:icon];
-
-        return;
-    }
     
     
     // request my radios radios
