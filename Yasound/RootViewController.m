@@ -50,14 +50,41 @@
 //@end
 
 
-@implementation NSString (NSStringDebug)
-- (NSString*) absoluteString
-{
-    DLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
-    assert(0);
-}
-@end
+//@implementation NSString (NSStringDebug)
+//- (NSString*) absoluteString
+//{
+//    DLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+//    assert(0);
+//}
+//@end
 
+
+//@implementation NSDictionary (NSDictionaryDebug)
+//
+//- (CGFloat)length
+//{
+//    DLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+//    assert(0);
+//}
+//
+//@end
+//
+//
+//@implementation NSArray (NSArrayDebug)
+//
+//- (CGSize)sizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size lineBreakMode:(NSLineBreakMode)lineBreakMode
+//{
+//    DLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+//    assert(0);
+//}
+//
+//- (CGFloat)length
+//{
+//    DLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+//    assert(0);
+//}
+//
+//@end
 
 
 

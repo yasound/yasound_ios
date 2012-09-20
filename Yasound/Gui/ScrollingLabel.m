@@ -69,7 +69,18 @@
         [self.labelFlags removeAllObjects];
     }
     
+//    //LBDEBUGLBDEBUG
+//    if (![text isKindOfClass:[NSString class]])
+//    {
+//        NSLog(@"BUG");
+//        assert(0);
+//    }
+//    //////////////////////
+    
+    [_text release];
+    
     _text = text;
+    [_text retain];
     
     [self addLabelAtPosition:0];
     
@@ -84,8 +95,18 @@
     BundleStylesheet* stylesheet = [[Theme theme] stylesheetForKey:self.style retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UILabel* label = [stylesheet makeLabel];
     
+//    //LBDEBUGLBDEBUG
+//    if (![self.text isKindOfClass:[NSString class]])
+//    {
+//        NSLog(@"BUG");
+//        assert(0);
+//    }
+//    //////////////////////
+
     // compute the size of the text
-    CGSize suggestedSize = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(FLT_MAX, HEIGHT) lineBreakMode:UILineBreakModeClip];
+    CGSize suggestedSize = CGSizeMake(0,0);
+    if ((self.text != nil) && (self.text.length > 0))
+        suggestedSize = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(FLT_MAX, HEIGHT) lineBreakMode:UILineBreakModeClip];
     
     CGRect frame = CGRectMake(posx, 0, suggestedSize.width +ADDITIONAL_SPACE, HEIGHT);
     label.frame = frame;
