@@ -358,7 +358,6 @@
         || [notif.type isEqualToString:APNS_NOTIF_SONG_LIKED]
         || [notif.type isEqualToString:APNS_NOTIF_RADIO_IN_FAVORITES]
         || [notif.type isEqualToString:APNS_NOTIF_RADIO_SHARED]
-        || [notif.type isEqualToString:APNS_NOTIF_FRIEND_CREATED_RADIO]
         || [notif.type isEqualToString:APNS_NOTIF_USER_IN_RADIO]
         || [notif.type isEqualToString:APNS_NOTIF_FRIEND_IN_RADIO]
         )
@@ -388,7 +387,8 @@
     }
 
     
-    if ([notif.type isEqualToString:APNS_NOTIF_MESSAGE_POSTED])
+    if ([notif.type isEqualToString:APNS_NOTIF_MESSAGE_POSTED]
+                || [notif.type isEqualToString:APNS_NOTIF_FRIEND_CREATED_RADIO])
     {
         if (notif.from_radio_id != nil)
             [self goToRadio:notif.from_radio_id];
