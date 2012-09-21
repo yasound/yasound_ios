@@ -118,8 +118,8 @@ static EasyTracker *sSharedTracker = nil;
   easyTracker.launchOptions = launchOptions;
 
   // Load all values from the plist file into a dictionary.
-  NSString *filePath = [[NSBundle mainBundle] pathForResource:kPropertyFileName ofType:@"plist"];
-    
+  NSString *filePath =
+      [[NSBundle mainBundle] pathForResource:kPropertyFileName ofType:@"plist"];
   NSMutableDictionary *parameters;
   if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
     NSLog(@"ERROR: %@.plist not found! Attempting to continue.",
