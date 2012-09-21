@@ -1,6 +1,6 @@
 //
 //  BasicExampleAppDelegate.m
-//  Google Analytics iOS SDK.
+//  Google Analytics iPhone SDK.
 //
 //  Copyright 2009 Google Inc. All rights reserved.
 //
@@ -11,31 +11,30 @@
 
 // Dispatch period in seconds
 static const NSInteger kGANDispatchPeriodSec = 10;
-// **************************************************************************
-// PLEASE REPLACE WITH YOUR ACCOUNT DETAILS.
-// **************************************************************************
-static NSString* const kAnalyticsAccountId = @"UA-00000000-1";
 
 @implementation BasicExampleAppDelegate
 
 @synthesize window = window_;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-  [[GANTracker sharedTracker] startTrackerWithAccountID:kAnalyticsAccountId
+  // **************************************************************************
+  // PLEASE REPLACE WITH YOUR ACCOUNT DETAILS.
+  // **************************************************************************
+  [[GANTracker sharedTracker] startTrackerWithAccountID:@"UA-00000000-1"
                                          dispatchPeriod:kGANDispatchPeriodSec
                                                delegate:nil];
   NSError *error;
 
   if (![[GANTracker sharedTracker] setCustomVariableAtIndex:1
-                                                       name:@"iOS1"
+                                                       name:@"iPhone1"
                                                       value:@"iv1"
                                                   withError:&error]) {
     NSLog(@"error in setCustomVariableAtIndex");
   }
 
-  if (![[GANTracker sharedTracker] trackEvent:@"Application iOS"
-                                       action:@"Launch iOS"
-                                        label:@"Example iOS"
+  if (![[GANTracker sharedTracker] trackEvent:@"Application iPhone"
+                                       action:@"Launch iPhone"
+                                        label:@"Example iPhone"
                                         value:99
                                     withError:&error]) {
     NSLog(@"error in trackEvent");

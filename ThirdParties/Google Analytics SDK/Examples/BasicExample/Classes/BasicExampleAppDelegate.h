@@ -1,6 +1,6 @@
 //
 //  BasicExampleAppDelegate.h
-//  Google Analytics iOS SDK.
+//  Google Analytics iPhone SDK.
 //
 //  Copyright 2009 Google Inc. All rights reserved.
 //
