@@ -61,6 +61,22 @@
     [self.tableView reloadData];
 }
 
+- (void)appendRadios:(NSArray*)radios
+{
+    NSMutableArray* newRadios = [NSMutableArray array];
+    if (_radios)
+    {
+        [newRadios addObjectsFromArray:_radios];
+        [_radios release];
+        _radios = nil;
+    }
+    [newRadios addObjectsFromArray:radios];
+    _radios = newRadios;
+    [_radios retain];
+    
+    [self.tableView reloadData];
+}
+
 
 - (void)viewDidLoad
 {

@@ -22,6 +22,8 @@
     
     NSInteger _wheelIndex;
     WaitingView* _waitingView;
+    
+    NSString* _nextPageUrl;
 }
 
 @property (nonatomic) BOOL locked;

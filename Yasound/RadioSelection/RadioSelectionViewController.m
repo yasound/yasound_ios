@@ -50,6 +50,7 @@
         _wheelIndex = wheelIndex;
         
         _waitingView = nil;
+        _nextPageUrl = nil;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSlidingOut:) name:ECSlidingViewUnderLeftWillAppear object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSlidingIn:) name:ECSlidingViewTopDidReset object:nil];
@@ -208,33 +209,6 @@
     }
 }
 
-
-
-
-
-
-
-//#pragma  mark - Update
-//
-//- (void)updateRadios:(NSString*)genre
-//{
-//    NSString* g = genre;
-//    if ([genre isEqualToString:@"style_all"])
-//        g = nil;
-//    
-//    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:g target:self action:@selector(receiveRadios:info:)];
-//}
-
-
-
-
-
-
-
-
-
-
-
 #pragma mark - TopBarDelegate
 
 //- (BOOL)topBarItemClicked:(TopBarItemId)itemId
@@ -342,7 +316,8 @@
     if (itemIndex == WheelIdSelection)
     {
         [self showWaitingViewWithText:NSLocalizedString(@"SelectionWaitingText", nil)];
-        [[YasoundDataCache main] requestRadioRecommendationWithTarget:self action:@selector(receiveRadios:info:)];
+        self.url = [NSURL URLWithString:URL_RADIOS_SELECTION];
+        [[YasoundDataCache main] requestRadioRecommendationFirstPageWithUrl:self.url genre:genre target:self action:@selector(receiveRadiosFirstPage:success:)];
         return;
     }
 
@@ -359,12 +334,6 @@
         url = URL_RADIOS_FAVORITES;
     }
 
-    // request selection radios
-    else if (itemIndex == WheelIdSelection)
-    {
-        url = URL_RADIOS_SELECTION;
-    }
-
 
     // request top radios
     else if (itemIndex == WheelIdTop)
@@ -372,19 +341,12 @@
         url = URL_RADIOS_TOP;
         [self showWaitingViewWithText:NSLocalizedString(@"TopWaitingText", nil)];
     }
-    
-    else
-    {
-
-    }
-    
-    
 
     self.url = [NSURL URLWithString:url];
     
     //LBDEBUG
     //DLog(@"RadioSelection url '%@'", self.url);
-    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:genre target:self action:@selector(receiveRadios:info:)];
+    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:genre target:self action:@selector(receiveRadiosFirstPage:success:)];
         
 }
  
@@ -448,6 +410,16 @@
 
 
 
+- (BOOL)loadNextRadioPage
+{
+    if (_nextPageUrl == nil)
+        return NO;
+    
+    // pass nil as genre. If needed, the genre is alredy in the next page url
+    NSURL* nextUrl = [NSURL URLWithString:_nextPageUrl];
+    [[YasoundDataCache main] requestRadiosWithUrl:nextUrl withGenre:nil target:self action:@selector(receiveRadiosNextPage:success:)];
+    return YES;
+}
 
 
 
@@ -455,17 +427,15 @@
 
 
 
-
-- (void)receiveRadios:(NSArray*)radios info:(NSDictionary*)info
+- (void)receiveRadiosFirstPage:(Container*)radioContainer success:(BOOL)success
 {
     [self hideWaitingView];
 #ifdef TEST_FAKE
     return;
 #endif
-    NSError* error = [info valueForKey:@"error"];
-    if (error)
+    if (!success)
     {
-        DLog(@"can't get radios: %@", error.domain);
+        DLog(@"can't get radios");
         return;
     }
     
@@ -478,15 +448,29 @@
 //    DLog(@"end of list.");
     
     
-    
+    NSArray* radios = radioContainer.objects;
     [self.contentsController setRadios:radios];
+
+    // store next page url
+    _nextPageUrl = radioContainer.meta.next;
+}
+
+- (void)receiveRadiosNextPage:(Container*)radioContainer success:(BOOL)success
+{
+#ifdef TEST_FAKE
+    return;
+#endif
+    if (!success)
+    {
+        DLog(@"can't get radios next page");
+        return;
+    }
     
-//    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithStyle:UITableViewStylePlain radios:radios];
-//    newTableview.listDelegate = self;
-//    newTableview.tableView.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
-//    [self.listContainer addSubview:newTableview.view];
-//    
-//    self.tableview = newTableview;
+    NSArray* radios = radioContainer.objects;
+    [self.contentsController appendRadios:radios];
+    
+    // store next page url
+    _nextPageUrl = radioContainer.meta.next;
 }
 
 

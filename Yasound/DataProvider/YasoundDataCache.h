@@ -29,7 +29,6 @@
     NSMutableDictionary* _cacheRadios;
     NSMutableDictionary* _cacheSongs;
     NSMutableDictionary* _cacheFriends;
-    NSDictionary* _cacheRecommendation;
 }
 
 
@@ -57,7 +56,7 @@
 // return local cache , if it's available, using a request key and a genre
 // request for an update to server if local cache is not available or expired
 //
-// - (void)selector:(NSArray*)data withInfo:(NSDictionnary*)info
+// - (void)selector:(Container*)data success:(BOOL)success
 //
 - (void)requestRadiosWithUrl:(NSURL*)url withGenre:(NSString*)genre target:(id)target action:(SEL)selector;
 
@@ -65,9 +64,9 @@
 // return local cache , if it's available
 // request for an update to server if local cache is not available or expired
 //
-// - (void)selector:(NSArray*)radios withInfo:(NSDictionnary*)info
+// - (void)selector:(Container*)data success:(BOOL)success
 //
-- (void)requestRadioRecommendationWithTarget:(id)target action:(SEL)selector;
+- (void)requestRadioRecommendationFirstPageWithUrl:(NSURL*)url genre:(NSString*)genre target:(id)target action:(SEL)selector;
 
 //
 // return local cache , if it's available, using the radio ID

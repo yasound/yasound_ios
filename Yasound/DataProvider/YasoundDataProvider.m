@@ -984,12 +984,30 @@ static YasoundDataProvider* _main = nil;
     DLog(@"YasoundDataProvider::radiosWithUrl '%@'", url);
     //assert(url != nil);
     
-    Auth* auth = self.apiKeyAuth;
-    NSMutableArray* params = [NSMutableArray array];
-    if (genre)
-        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
+//    Auth* auth = self.apiKeyAuth;
+//    NSMutableArray* params = [NSMutableArray array];
+//    if (genre)
+//        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
+//    
+//    [_communicator getObjectsWithClass:[Radio class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
     
-    [_communicator getObjectsWithClass:[Radio class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = url;
+    conf.urlIsAbsolute = NO;
+    conf.method = @"GET";
+    conf.auth = self.apiKeyAuth;
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    if (userData)
+        conf.userData = userData;
+    if (genre)
+    {
+        NSArray* params = [NSArray arrayWithObject:[NSString stringWithFormat:@"genre=%@", genre]];
+        conf.params = params;
+    }
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
 }
 
 - (void)favoriteRadiosForUser:(User*)u withTarget:(id)target action:(SEL)selector

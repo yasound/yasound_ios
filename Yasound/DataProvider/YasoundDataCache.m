@@ -17,7 +17,6 @@
 #define TIMEOUT_RADIOS 60
 #define TIMEOUT_CURRENTSONGS 60
 #define TIMEOUT_FRIENDS 60
-#define TIMEOUT_RECOMMENDATION 3 * 60 * 60
 
 // 1 hour
 #define TIMEOUT_IMAGE (10*60)
@@ -82,9 +81,6 @@ static YasoundDataCache* _main = nil;
       [_cacheSongs retain];
       _cacheFriends = [[NSMutableDictionary alloc] init];
       [_cacheFriends retain];
-      if (_cacheRecommendation)
-          [_cacheRecommendation release];
-      _cacheRecommendation = nil;
   }
   
   return self;
@@ -109,7 +105,7 @@ static YasoundDataCache* _main = nil;
 // return local data from cache, using a request key, and a specific genre
 //
 
-- (NSArray*)cachedRadioForKey:(NSString*)key withGenre:(NSString*)genre
+- (Container*)cachedRadioForKey:(NSString*)key withGenre:(NSString*)genre
 {
     NSString* _genre = (genre == nil)? GENRE_NIL : genre;
     
@@ -129,7 +125,7 @@ static YasoundDataCache* _main = nil;
         return nil; // yes, it's expired
     
     // everything's ok, return cached data
-    NSArray* data = [requestCacheForGenre objectForKey:@"data"];
+    Container* data = [requestCacheForGenre objectForKey:@"data"];
     return data;
 }
 
@@ -149,42 +145,31 @@ static YasoundDataCache* _main = nil;
     op.target = target;
     op.action = action;
 
-    [[YasoundDataProvider main] radiosWithUrl:[url absoluteString] withGenre:genre withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
+    [[YasoundDataProvider main] radiosWithUrl:[url absoluteString] withGenre:genre withTarget:self action:@selector(radioReceived:success:) userData:op];
     return;
 }
 
-
-
-//
-// data provider callback
-//
-- (void)radioReceived:(NSArray*)radios withInfo:(NSDictionary*)info
+- (void)radioReceived:(ASIHTTPRequest*)req success:(BOOL)success
 {
-    //LBDEBUG
-    //NSLog(@"%@", info);
-    /////////
-    
-    YasoundDataCachePendingOp* op = [info objectForKey:@"userData"];
+    YasoundDataCachePendingOp* op = [req userData];;
     assert(op != nil);
     
     id target = op.target;
     SEL action = op.action;
     
-    if (radios == nil)
+    Container* radioContainer = [req responseObjectsWithClass:[Radio class]];
+    
+    if (radioContainer == nil)
     {
         DLog(@"YasoundDataCache requestRadios : the server returned nil!");
-        [target performSelector:action withObject:nil withObject:info];
+        [target performSelector:action withObject:nil withObject:NO];
         return;
     }
-
-    
-    
     
     // expiration date for the newly received data
     NSDate* date = [NSDate date];
     NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_RADIOS];
     
-//    NSString* RequestId = op.object;
     NSURL* url = op.object;
     
     // get/create dico for request
@@ -197,7 +182,7 @@ static YasoundDataCache* _main = nil;
     
     // get/create dico for request/genre
     NSString* _genre = (op.info == nil)? GENRE_NIL : op.info;
-
+    
     NSMutableDictionary* requestCacheForGenre = [requestCache objectForKey:_genre];
     if (requestCacheForGenre == nil)
     {
@@ -205,20 +190,19 @@ static YasoundDataCache* _main = nil;
         [requestCache setObject:requestCacheForGenre forKey:_genre];
     }
     
-    // cache data 
+    // cache data
     [requestCacheForGenre setObject:timeout forKey:@"timeout"];
     
-    [requestCacheForGenre setObject:radios forKey:@"data"];
+    [requestCacheForGenre setObject:radioContainer forKey:@"data"];
     
     // pending operation cleaning
     [op release];
     
     // return results to pending client
     //DLog(@"YasoundDataCache requestRadios : return server's updated data");
-    [target performSelector:action withObject:radios withObject:info];
+    [target performSelector:action withObject:radioContainer withObject:YES];
     
 }
-
 
 
 
@@ -233,7 +217,7 @@ static YasoundDataCache* _main = nil;
 //
 - (void)requestRadiosWithUrl:(NSURL*)url withGenre:(NSString*)genre target:(id)target action:(SEL)selector;
 {
-    NSArray* data = [self cachedRadioForKey:[url absoluteString] withGenre:genre];
+    Container* data = [self cachedRadioForKey:[url absoluteString] withGenre:genre];
     
     // there is no cached data yet for that request, OR it's expired
     // => request update from server
@@ -244,11 +228,41 @@ static YasoundDataCache* _main = nil;
     }
     
     // we got the cached data. Return to client, now.
-    NSDictionary* infoDico = nil;
-    //DLog(@"YasoundDataCache requestRadios : return local cached data");
-    [target performSelector:selector withObject:data withObject:infoDico];
+    [target performSelector:selector withObject:data withObject:YES];
 }
 
+
+- (void)requestRadioRecommendationFirstPageWithUrl:(NSURL*)url genre:(NSString*)genre target:(id)target action:(SEL)selector
+{
+    Container* data = [self cachedRadioForKey:[url absoluteString] withGenre:genre];
+    
+    // there is no cached data yet for that request, OR it's expired
+    // => request update from server
+    if (data == nil)
+    {
+        // do not exist or it's expired
+        YasoundDataCachePendingOp* op = [[YasoundDataCachePendingOp alloc] init];
+        [op retain];
+        op.target = target;
+        op.action = selector;
+        op.object = url;
+        op.info = genre;
+        [[PlaylistMoulinor main] buildArtistDataBinary:YES compressed:YES target:self action:@selector(didBuildArtistData:) userInfo:op];
+
+        return;
+    }
+    
+    // we got the cached data. Return to client, now.
+    [target performSelector:selector withObject:data withObject:YES];
+}
+
+- (void)didBuildArtistData:(NSDictionary*)info
+{
+    NSData* data = [info valueForKey:@"result"];
+    NSDictionary* userInfo = [info valueForKey:@"userInfo"];
+    
+    [[YasoundDataProvider main] radioRecommendationsWithArtistList:data target:self action:@selector(radioReceived:success:) userData:userInfo];
+}
 
 
 
@@ -271,69 +285,6 @@ static YasoundDataCache* _main = nil;
     
     _cacheRadios = [[NSMutableDictionary alloc] init];
     [_cacheRadios retain];
-}
-
-
-
-#pragma mark - recommendation
-- (NSArray*)cacheRecommendationRadios
-{
-    if (!_cacheRecommendation)
-        return nil;
-    
-    NSDate* timeout = [_cacheRecommendation objectForKey:@"timeout"];
-    NSDate* date = [NSDate date];
-    if ([date isLaterThanOrEqualTo:timeout])
-        return nil; // yes, it's expired
-    
-    // everything's ok, return cached data
-    NSArray* radios = [_cacheRecommendation objectForKey:@"data"];
-    return radios;
-}
-
-- (void)requestRadioRecommendationWithTarget:(id)target action:(SEL)selector
-{
-    NSArray* radios = [self cacheRecommendationRadios];
-    if (!radios)
-    {
-        // do not exist or it's expired
-        YasoundDataCachePendingOp* op = [[YasoundDataCachePendingOp alloc] init];
-        [op retain];
-        op.target = target;
-        op.action = selector;
-        [[PlaylistMoulinor main] buildArtistDataBinary:YES compressed:YES target:self action:@selector(didBuildArtistData:) userInfo:op];
-        
-        return;
-    }
-    
-    [target performSelector:selector withObject:radios withObject:nil];
-}
-
-- (void)didBuildArtistData:(NSDictionary*)info
-{
-    NSData* data = [info valueForKey:@"result"];
-    NSDictionary* userInfo = [info valueForKey:@"userInfo"];
-    
-    [[YasoundDataProvider main] radioRecommendationsWithArtistList:data target:self action:@selector(receivedRecomandation:success:) userData:userInfo];
-}
-
-- (void)receivedRecomandation:(ASIHTTPRequest*)req success:(NSNumber*)success
-{
-    YasoundDataCachePendingOp* op = [req userData];
-    id target = op.target;
-    SEL selector = op.action;
-    [op release];
-    NSArray* radios = [req responseObjectsWithClass:[Radio class]].objects;
-    NSDate* date = [NSDate date];
-    NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_RECOMMENDATION];
-    
-    NSDictionary* cache = [NSDictionary dictionaryWithObjectsAndKeys:radios, @"data", timeout, @"timeout", nil];
-    if (_cacheRecommendation)
-        [_cacheRecommendation release];
-    _cacheRecommendation = cache;
-    [_cacheRecommendation retain];
-    
-    [target performSelector:selector withObject:radios withObject:nil];
 }
 
 

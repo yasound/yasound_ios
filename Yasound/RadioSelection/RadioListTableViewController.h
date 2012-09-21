@@ -30,5 +30,7 @@
 - (void)setRadios:(NSArray*)radios;
 - (void)setFriends:(NSArray*)friends;
 
+- (void)appendRadios:(NSArray*)radios;
+
 
 @end

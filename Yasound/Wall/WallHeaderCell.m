@@ -83,10 +83,10 @@
 
 
 
-- (void)onFavoritesRadioReceived:(NSArray*)radios
+- (void)onFavoritesRadioReceived:(Container*)radioContainer
 {
     NSInteger currentRadioId = [self.radio.id integerValue];
-
+    NSArray* radios = radioContainer.objects;
     for (Radio* aRadio in radios)
     {
         if ([aRadio.id integerValue] == currentRadioId)
