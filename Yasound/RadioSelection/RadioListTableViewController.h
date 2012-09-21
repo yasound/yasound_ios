@@ -21,6 +21,8 @@
     BOOL _loadingNextPage;
     CGFloat _contentsHeight;
     BOOL _dragging;
+    NSDate* _freezeDate;
+    NSTimer* _freezeTimeout;
 }
 
 @property (nonatomic, retain) id<RadioListDelegate> listDelegate;

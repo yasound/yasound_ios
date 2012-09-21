@@ -464,12 +464,15 @@
 #endif
     
     // close the refresh indicator
-    [contentsController unfreeze];
+    //[contentsController unfreeze];
     
     
     if (!success)
     {
         DLog(@"can't get radios next page");
+        
+        [self.contentsController appendRadios:nil];
+
         return;
     }
     
