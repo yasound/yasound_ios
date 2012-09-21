@@ -18,28 +18,51 @@
 @implementation RadioListTableViewController
 
 @synthesize listDelegate;
+@synthesize tableView;
+
 @synthesize radios = _radios;
 @synthesize friends = _friends;
 @synthesize friendsMode;
 @synthesize delayTokens;
 @synthesize delay;
+@synthesize refreshIndicator;
 
-- (id)initWithStyle:(UITableViewStyle)style radios:(NSArray*)radios
+
+#define REFRESH_INDICATOR_HEIGHT 62.f
+
+- (id)initWithFrame:(CGRect)frame radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight
 {
-    self = [super initWithStyle:style];
-    if (self) 
+    self = [super init];
+    if (self)
     {
+        _dragging = NO;
+        
+        self.view.frame = frame;
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
+        
+        _loadingNextPage = NO;
+        _contentsHeight = contentsHeight;
+        
         self.delayTokens = 2;
         self.delay = 0.15;
         
         self.radios = radios;
         self.friendsMode = NO;
         
+
+        self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:CGRectMake(0, frame.size.height - REFRESH_INDICATOR_HEIGHT, self.view.frame.size.width, REFRESH_INDICATOR_HEIGHT)];
+        [self.view addSubview:self.refreshIndicator];
+        
+        
+        self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
+        [self.view addSubview:self.tableView];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
-        self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
+        self.tableView.backgroundColor = [UIColor clearColor];
+        
+        
     }
     return self;
 }
@@ -73,8 +96,9 @@
     [newRadios addObjectsFromArray:radios];
     _radios = newRadios;
     [_radios retain];
-    
-    [self.tableView reloadData];
+
+    if (!_dragging)
+        [self.tableView reloadData];
 }
 
 
@@ -87,8 +111,64 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+//    self.nextPageView = [[UIView alloc] initWithFrame:CGRectMake(0, _contentsHeight-62, self.view.frame.size.width, 62)];
+//    self.nextPageView = [[UIView alloc] initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 62)];
+//    self.nextPageView.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:self.nextPageView];
+////    [self.view sendSubviewToBack:self.nextPageView];
+////    [self.view sendSubviewToBack:self.tableView];
+//    self.nextPageView.hidden = NO;
+    
+//    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+//    [self.view addSubview:self.tableView];
+//    self.tableView.delegate = self;
+//    self.tableView.dataSource = self;
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    
+//    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
+//    
+//    self.nextPageView = [[UIView alloc] initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 62)];
+//    self.nextPageView.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:self.nextPageView];
+//    //    [self.view sendSubviewToBack:self.nextPageView];
+//    //    [self.view sendSubviewToBack:self.tableView];
+//    self.nextPageView.hidden = NO;
+    
 }
 
+
+//- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
+//    
+//}
+
+-(void) drawCABackgroundLayer: (CALayer*) layer inContext: (CGContextRef) context
+{
+    UIGraphicsPushContext(context);
+    
+    CGRect contentRect = [layer bounds];
+    
+//    UIImage *bgImage = [[ImageCacheController sharedImageCache] imageFromCache: GENERIC_BGIMAGE_FILENAME];
+//    
+//    [bgImage drawInRect: CGRectMake(contentRect.origin.x, contentRect.origin.y, contentRect.size.width, contentRect.size.height)];
+    
+//    [self.nextPageView draw]
+    
+    UIActivityIndicatorView* indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [indicatorView setFrame:CGRectMake(0, 0, 16, 16)];
+    [indicatorView setHidesWhenStopped:YES];
+    [indicatorView startAnimating];
+    [self.view addSubview:indicatorView];
+    
+    UIGraphicsPopContext();
+}
+//- (void)updateNextPageView {
+//    
+//    self.nextPageView.frame = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 88)];
+//}
+
+
+                         
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -138,6 +218,29 @@
     
     return 156.f;
 }
+
+
+
+
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+//{
+////	UIImage *myImage = [UIImage imageNamed:@"bluebar.png"];
+////    UIImageView *imageView = [[[UIImageView alloc] initWithImage:myImage] autorelease];
+////    imageView.frame = CGRectMake(10,10,300,100);
+////    return imageView;
+//    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 88)];
+//    view.backgroundColor = [UIColor redColor];
+//    return view;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    return 10;
+//}
+//
+
+
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -290,5 +393,136 @@
     // call delegate with selected radio
     [self.listDelegate friendListDidSelect:user];
 }
+
+
+
+
+#pragma mark - UIScrollViewDelegate
+
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    if (!_waitingForPreviousEvents)
+//    {
+//        float offset = scrollView.contentOffset.y;
+//        float contentHeight = scrollView.contentSize.height;
+//        float viewHeight = scrollView.bounds.size.height;
+//        
+//        if (offset + viewHeight > contentHeight + WALL_WAITING_ROW_HEIGHT)
+//        {
+//            [self askForPreviousEvents];
+//        }
+//    }
+//    
+//    if (scrollView.contentOffset.y > HEADER_HEIGHT)
+//    {
+//        // fix the post-message-bar at the top of the tableview
+//        if (!self.fixedCellPostBar.fixed)
+//            [self showFixedPostBar];
+//    }
+//    else
+//    {
+//        // put the post-message-bar back at its original position
+//        if (self.fixedCellPostBar.fixed)
+//            [self hideFixedPostBar];
+//    }
+//}
+
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+//    
+//    float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+//    if (bottomEdge >= scrollView.contentSize.height) {
+//        
+//        NSLog(@"END");
+//    }
+//}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+
+    if (bottomEdge < (scrollView.contentSize.height + self.refreshIndicator.height/2.f)) {
+        
+        if (self.refreshIndicator.status == eStatusPulled)
+            [self.refreshIndicator close];
+//        else if (self.refreshIndicator.status == eStatusOpened)
+//            [self.refreshIndicator unfree];
+    }
+    
+    
+    else if (_dragging && (self.refreshIndicator.status == eStatusClosed) && (bottomEdge >= (scrollView.contentSize.height + self.refreshIndicator.height/2.f))) {
+        
+        [self.refreshIndicator pull];
+    }
+
+    
+    else if (_dragging && (self.refreshIndicator.status == eStatusPulled) &&  (bottomEdge >= (scrollView.contentSize.height + self.refreshIndicator.height))) {
+        
+        [self.refreshIndicator open];
+        _loadingNextPage = [self.listDelegate listRequestNextPage];
+    }
+}
+
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+
+    _dragging = YES;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    
+    _dragging = NO;
+    
+    if (self.refreshIndicator.status == eStatusWaitingToClose) {
+        [self unfreeze];
+    }
+    
+    else if ((self.refreshIndicator.status == eStatusOpened) && !_loadingNextPage) {
+        [self unfreeze];
+    }
+
+    else if ((self.refreshIndicator.status == eStatusOpened) && _loadingNextPage) {
+        [self freeze];
+    }
+    
+    [self.tableView reloadData];    
+}
+
+
+- (void)freeze {
+    
+    self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + self.refreshIndicator.height);
+    self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y + self.refreshIndicator.height);
+    
+}
+
+- (void)unfreeze {
+    
+    NSLog(@"list unfreeze");
+    
+    if (_dragging) {
+        
+        NSLog(@"list  waiting to close");
+
+        self.refreshIndicator.status = eStatusWaitingToClose;
+        return;
+    }
+
+    NSLog(@"list closing");
+    _dragging = NO;
+    _loadingNextPage = NO;
+
+    [self.refreshIndicator close];
+    self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height - self.refreshIndicator.height);
+    self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y - self.refreshIndicator.height);
+
+    
+}
+
+
+
+
+
 
 @end

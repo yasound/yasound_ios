@@ -289,9 +289,9 @@
     [[YasoundDataCacheImageManager main].db beginTransaction];
 
     
-    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithStyle:UITableViewStylePlain radios:nil];
+    CGRect frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
+    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithFrame:frame radios:nil withContentsHeight:self.listContainer.frame.size.height];
     newTableview.listDelegate = self;
-    newTableview.tableView.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
     [self.listContainer addSubview:newTableview.view];
     
     self.contentsController = newTableview;
@@ -455,11 +455,18 @@
     _nextPageUrl = radioContainer.meta.next;
 }
 
+
+
 - (void)receiveRadiosNextPage:(Container*)radioContainer success:(BOOL)success
 {
 #ifdef TEST_FAKE
     return;
 #endif
+    
+    // close the refresh indicator
+    [contentsController unfreeze];
+    
+    
     if (!success)
     {
         DLog(@"can't get radios next page");
@@ -493,6 +500,10 @@
     [view release];
 }
 
+- (BOOL)listRequestNextPage {
+    
+    return [self loadNextRadioPage];
+}
 
 
 

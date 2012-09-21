@@ -3739,6 +3739,15 @@
 		BCD1522C160C6976009E3604 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = BCD15212160C6976009E3604 /* release_notes.md */; };
 		BCD1522D160C6976009E3604 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = BCD15212160C6976009E3604 /* release_notes.md */; };
 		BCD1522E160C6976009E3604 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = BCD15212160C6976009E3604 /* release_notes.md */; };
+		BCD15277160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
+		BCD15278160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
+		BCD15279160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
+		BCD1527A160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
+		BCD1527B160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
+		BCD1527C160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
+		BCD1527D160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
+		BCD1527E160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
+		BCD1527F160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
 		BCD29A6815DBAEE200291220 /* programmingDummyTrack30.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD29A6415DBAEE200291220 /* programmingDummyTrack30.png */; };
 		BCD29A6915DBAEE200291220 /* programmingDummyTrack30.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD29A6415DBAEE200291220 /* programmingDummyTrack30.png */; };
 		BCD29A6A15DBAEE200291220 /* programmingDummyTrack30.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD29A6415DBAEE200291220 /* programmingDummyTrack30.png */; };
@@ -7120,6 +7129,8 @@
 		BCD15211160C6976009E3604 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		BCD15212160C6976009E3604 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
 		BCD15213160C6976009E3604 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		BCD15275160D0C67009E3604 /* RefreshIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshIndicator.h; sourceTree = "<group>"; };
+		BCD15276160D0C67009E3604 /* RefreshIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshIndicator.m; sourceTree = "<group>"; };
 		BCD29A6415DBAEE200291220 /* programmingDummyTrack30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = programmingDummyTrack30.png; sourceTree = "<group>"; };
 		BCD29A6515DBAEE200291220 /* programmingDummyTrack30@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "programmingDummyTrack30@2x.png"; sourceTree = "<group>"; };
 		BCD29A6615DBAEE200291220 /* programmingDummyTrack256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = programmingDummyTrack256.png; sourceTree = "<group>"; };
@@ -9609,6 +9620,8 @@
 		BCFECFE61468439900BA20D9 /* Gui */ = {
 			isa = PBXGroup;
 			children = (
+				BCD15275160D0C67009E3604 /* RefreshIndicator.h */,
+				BCD15276160D0C67009E3604 /* RefreshIndicator.m */,
 				BC89C33C15E4FCF100E0BEE3 /* ObjectButton.h */,
 				BC89C33D15E4FCF100E0BEE3 /* ObjectButton.m */,
 				BC436905156F8F820059BC22 /* TouchedTableView.h */,
@@ -14442,6 +14455,7 @@
 				BC37C848160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9581608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51F1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
+				BCD1527E160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14683,6 +14697,7 @@
 				BC37C849160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9591608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA5201609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
+				BCD1527F160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14920,6 +14935,7 @@
 				BC37C847160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9571608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51E1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
+				BCD1527D160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15161,6 +15177,7 @@
 				BC37C844160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9541608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51B1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
+				BCD1527A160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15402,6 +15419,7 @@
 				BC37C842160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9521608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA5191609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
+				BCD15278160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15644,6 +15662,7 @@
 				BC37C846160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9561608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51D1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
+				BCD1527C160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15885,6 +15904,7 @@
 				BC37C843160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9531608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51A1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
+				BCD15279160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16126,6 +16146,7 @@
 				BC37C841160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9511608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA5181609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
+				BCD15277160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16368,6 +16389,7 @@
 				BC37C845160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9551608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51C1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
+				BCD1527B160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
