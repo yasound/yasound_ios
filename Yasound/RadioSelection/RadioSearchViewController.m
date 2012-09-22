@@ -151,8 +151,9 @@ typedef enum
     
     Radio* radio = notif.object;
     assert(radio);
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio userInfo:nil];
+
+    // emitted from the cell unit, now
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio userInfo:nil];
 
     [self.popover dismissPopoverAnimated:YES];
     
