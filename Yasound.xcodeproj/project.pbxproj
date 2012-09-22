@@ -17130,6 +17130,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SAS Yasound";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -17152,7 +17153,8 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "068E7843-CE69-437F-849D-6DA148664D1C";
+				PROVISIONING_PROFILE = "936378AB-4B1B-4376-9FDF-84FD13C85BB9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "936378AB-4B1B-4376-9FDF-84FD13C85BB9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -17161,6 +17163,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SAS Yasound";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -17183,7 +17186,8 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "068E7843-CE69-437F-849D-6DA148664D1C";
+				PROVISIONING_PROFILE = "936378AB-4B1B-4376-9FDF-84FD13C85BB9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "936378AB-4B1B-4376-9FDF-84FD13C85BB9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
