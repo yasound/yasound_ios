@@ -6387,15 +6387,6 @@
 		E5A9A3B21454DC0500EA374C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		E5A9A3B81454DC0500EA374C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		E5A9A3BA1454DC0500EA374C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
-		E5C9FB33160C927D00F07936 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C9FB32160C927D00F07936 /* Default-568h@2x.png */; };
-		E5C9FB34160C927D00F07936 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C9FB32160C927D00F07936 /* Default-568h@2x.png */; };
-		E5C9FB35160C927D00F07936 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C9FB32160C927D00F07936 /* Default-568h@2x.png */; };
-		E5C9FB36160C927D00F07936 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C9FB32160C927D00F07936 /* Default-568h@2x.png */; };
-		E5C9FB37160C927D00F07936 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C9FB32160C927D00F07936 /* Default-568h@2x.png */; };
-		E5C9FB38160C927D00F07936 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C9FB32160C927D00F07936 /* Default-568h@2x.png */; };
-		E5C9FB39160C927D00F07936 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C9FB32160C927D00F07936 /* Default-568h@2x.png */; };
-		E5C9FB3A160C927D00F07936 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C9FB32160C927D00F07936 /* Default-568h@2x.png */; };
-		E5C9FB3B160C927D00F07936 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C9FB32160C927D00F07936 /* Default-568h@2x.png */; };
 		E5F3B8551498B88D008DD607 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
 		E5F3B8561498B88D008DD607 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		E5F3B8591498B88D008DD607 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
@@ -7568,7 +7559,6 @@
 		E5A9A3B71454DC0500EA374C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E5A9A3B91454DC0500EA374C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E5A9A3BB1454DC0500EA374C /* Yasound-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yasound-Prefix.pch"; sourceTree = "<group>"; };
-		E5C9FB32160C927D00F07936 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E5F3B8F01498B88D008DD607 /* Yasound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yasound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -9570,7 +9560,6 @@
 				BCE35E8815D7FD2E008C26AC /* BarItems */,
 				BCE35ECE15D7FD2E008C26AC /* Common */,
 				BCE35EEB15D7FD2E008C26AC /* Default.png */,
-				E5C9FB32160C927D00F07936 /* Default-568h@2x.png */,
 				BCE35EEC15D7FD2E008C26AC /* Default@2x.png */,
 				BCE35EED15D7FD2E008C26AC /* EasyTracker.plist */,
 				BCE35F2815D7FD2E008C26AC /* iTunesArtwork */,
@@ -10470,7 +10459,6 @@
 				BCBCE93A160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD15224160C6976009E3604 /* README.md in Resources */,
 				BCD1522D160C6976009E3604 /* release_notes.md in Resources */,
-				E5C9FB3A160C927D00F07936 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10932,7 +10920,6 @@
 				BCBCE93B160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD15225160C6976009E3604 /* README.md in Resources */,
 				BCD1522E160C6976009E3604 /* release_notes.md in Resources */,
-				E5C9FB3B160C927D00F07936 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11388,7 +11375,6 @@
 				BCBCE939160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD15223160C6976009E3604 /* README.md in Resources */,
 				BCD1522C160C6976009E3604 /* release_notes.md in Resources */,
-				E5C9FB39160C927D00F07936 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11849,7 +11835,6 @@
 				BCBCE936160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD15220160C6976009E3604 /* README.md in Resources */,
 				BCD15229160C6976009E3604 /* release_notes.md in Resources */,
-				E5C9FB36160C927D00F07936 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12310,7 +12295,6 @@
 				BCBCE934160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD1521E160C6976009E3604 /* README.md in Resources */,
 				BCD15227160C6976009E3604 /* release_notes.md in Resources */,
-				E5C9FB34160C927D00F07936 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12771,7 +12755,6 @@
 				BCBCE938160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD15222160C6976009E3604 /* README.md in Resources */,
 				BCD1522B160C6976009E3604 /* release_notes.md in Resources */,
-				E5C9FB38160C927D00F07936 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13233,7 +13216,6 @@
 				BCBCE935160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD1521F160C6976009E3604 /* README.md in Resources */,
 				BCD15228160C6976009E3604 /* release_notes.md in Resources */,
-				E5C9FB35160C927D00F07936 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13694,7 +13676,6 @@
 				BCBCE933160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD1521D160C6976009E3604 /* README.md in Resources */,
 				BCD15226160C6976009E3604 /* release_notes.md in Resources */,
-				E5C9FB33160C927D00F07936 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14155,7 +14136,6 @@
 				BCBCE937160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD15221160C6976009E3604 /* README.md in Resources */,
 				BCD1522A160C6976009E3604 /* release_notes.md in Resources */,
-				E5C9FB37160C927D00F07936 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
