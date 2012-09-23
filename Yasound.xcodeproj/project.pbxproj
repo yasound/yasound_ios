@@ -1423,6 +1423,24 @@
 		BC31F1BA15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
 		BC31F1BB15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
 		BC31F1BC15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
+		BC325F2F160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2D160F0CF700BA38C9 /* radioListRefreshIndicator.png */; };
+		BC325F30160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2D160F0CF700BA38C9 /* radioListRefreshIndicator.png */; };
+		BC325F31160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2D160F0CF700BA38C9 /* radioListRefreshIndicator.png */; };
+		BC325F32160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2D160F0CF700BA38C9 /* radioListRefreshIndicator.png */; };
+		BC325F33160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2D160F0CF700BA38C9 /* radioListRefreshIndicator.png */; };
+		BC325F34160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2D160F0CF700BA38C9 /* radioListRefreshIndicator.png */; };
+		BC325F35160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2D160F0CF700BA38C9 /* radioListRefreshIndicator.png */; };
+		BC325F36160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2D160F0CF700BA38C9 /* radioListRefreshIndicator.png */; };
+		BC325F37160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2D160F0CF700BA38C9 /* radioListRefreshIndicator.png */; };
+		BC325F38160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */; };
+		BC325F39160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */; };
+		BC325F3A160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */; };
+		BC325F3B160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */; };
+		BC325F3C160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */; };
+		BC325F3D160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */; };
+		BC325F3E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */; };
+		BC325F3F160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */; };
+		BC325F40160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */; };
 		BC355BE615BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
 		BC355BE715BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
 		BC355BE815BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
@@ -6794,6 +6812,8 @@
 		BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingRadioViewController.m; sourceTree = "<group>"; };
 		BC31F1B215FBBE6F00A8E486 /* ProgrammingCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingCollectionViewController.h; sourceTree = "<group>"; };
 		BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingCollectionViewController.m; sourceTree = "<group>"; };
+		BC325F2D160F0CF700BA38C9 /* radioListRefreshIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListRefreshIndicator.png; sourceTree = "<group>"; };
+		BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListRefreshIndicator@2x.png"; sourceTree = "<group>"; };
 		BC355BD015BD4F9200305C56 /* MyRadiosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyRadiosViewController.h; path = Yasound/Tabs/MyRadiosViewController.h; sourceTree = SOURCE_ROOT; };
 		BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyRadiosViewController.m; path = Yasound/Tabs/MyRadiosViewController.m; sourceTree = SOURCE_ROOT; };
 		BC355BD215BD4F9200305C56 /* MyRadiosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyRadiosViewController.xib; path = Yasound/Tabs/MyRadiosViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -9344,6 +9364,8 @@
 		BCE35FAA15D7FD2F008C26AC /* RadioList */ = {
 			isa = PBXGroup;
 			children = (
+				BC325F2D160F0CF700BA38C9 /* radioListRefreshIndicator.png */,
+				BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */,
 				BC641DFA160771DA00E1C3A2 /* radioListFriendsDummy.png */,
 				BC641DFB160771DA00E1C3A2 /* radioListFriendsDummy@2x.png */,
 				BCDF56341605C54D00CAF6FA /* radioListFriendMask65.png */,
@@ -10459,6 +10481,8 @@
 				BCBCE93A160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD15224160C6976009E3604 /* README.md in Resources */,
 				BCD1522D160C6976009E3604 /* release_notes.md in Resources */,
+				BC325F36160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
+				BC325F3F160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10920,6 +10944,8 @@
 				BCBCE93B160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD15225160C6976009E3604 /* README.md in Resources */,
 				BCD1522E160C6976009E3604 /* release_notes.md in Resources */,
+				BC325F37160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
+				BC325F40160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11375,6 +11401,8 @@
 				BCBCE939160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD15223160C6976009E3604 /* README.md in Resources */,
 				BCD1522C160C6976009E3604 /* release_notes.md in Resources */,
+				BC325F35160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
+				BC325F3E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11835,6 +11863,8 @@
 				BCBCE936160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD15220160C6976009E3604 /* README.md in Resources */,
 				BCD15229160C6976009E3604 /* release_notes.md in Resources */,
+				BC325F32160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
+				BC325F3B160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12295,6 +12325,8 @@
 				BCBCE934160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD1521E160C6976009E3604 /* README.md in Resources */,
 				BCD15227160C6976009E3604 /* release_notes.md in Resources */,
+				BC325F30160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
+				BC325F39160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12755,6 +12787,8 @@
 				BCBCE938160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD15222160C6976009E3604 /* README.md in Resources */,
 				BCD1522B160C6976009E3604 /* release_notes.md in Resources */,
+				BC325F34160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
+				BC325F3D160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13216,6 +13250,8 @@
 				BCBCE935160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD1521F160C6976009E3604 /* README.md in Resources */,
 				BCD15228160C6976009E3604 /* release_notes.md in Resources */,
+				BC325F31160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
+				BC325F3A160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13676,6 +13712,8 @@
 				BCBCE933160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD1521D160C6976009E3604 /* README.md in Resources */,
 				BCD15226160C6976009E3604 /* release_notes.md in Resources */,
+				BC325F2F160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
+				BC325F38160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14136,6 +14174,8 @@
 				BCBCE937160B531D000B8F8B /* notificationsIconShare@2x.png in Resources */,
 				BCD15221160C6976009E3604 /* README.md in Resources */,
 				BCD1522A160C6976009E3604 /* release_notes.md in Resources */,
+				BC325F33160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
+				BC325F3C160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

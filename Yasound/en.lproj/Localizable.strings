@@ -733,3 +733,7 @@
 "SearchWaitingText" = "searching...";
 
 "AddServerSong.AlreadyInProgramming.Message" = "This song is already in your radio programming";
+
+"RefreshIndicator.label.pulled" = "Pull up for more radios...";
+"RefreshIndicator.label.opened" = "Release for more radios...";
+

@@ -24,12 +24,15 @@ typedef enum {
 
 @property (nonatomic, retain) UILabel* label;
 @property (nonatomic) CGFloat height;
+@property (nonatomic, retain) UIImageView* icon;
+@property (nonatomic, retain) UIActivityIndicatorView* indicator;
 @property (nonatomic) RefreshIndicatorStatus status;
 
 - (id)initWithFrame:(CGRect)frame;
 
 - (void)pull;
 - (void)open;
+- (void)openedAndRelease;
 - (void)close;
 
 @end

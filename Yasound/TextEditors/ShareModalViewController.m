@@ -128,9 +128,11 @@
     NSString* title = NSLocalizedString(@"Yasound_share", nil);
     
     DLog(@"Share on facebook.");
+
+    [ActivityAlertView showWithTitle:nil];
+
     [[YasoundSessionManager main] postMessageForFacebook:_textView.text title:title picture:self.pictureUrl link:fullLink target:self action:@selector(onPostMessageFinished:)];
     
-    [ActivityAlertView showWithTitle:nil];
     return NO;
 }
 

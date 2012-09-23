@@ -721,3 +721,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "AddServerSong.AlreadyInProgramming.Message" = "Ce morceau est déjà dans vorte programmation";
 
+"RefreshIndicator.label.pulled" = "Tirer pour plus de radios...";
+"RefreshIndicator.label.opened" = "Relâcher pour plus de radios...";
+
+
