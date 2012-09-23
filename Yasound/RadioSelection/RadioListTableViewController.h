@@ -35,9 +35,10 @@
 @property (nonatomic) CGFloat delay;
 
 @property (nonatomic, retain) RefreshIndicator* refreshIndicator;
+@property (nonatomic) BOOL showRefreshIndicator;
 
 
-- (id)initWithFrame:(CGRect)frame radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight;
+- (id)initWithFrame:(CGRect)frame radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator;
 - (void)setRadios:(NSArray*)radios;
 - (void)setFriends:(NSArray*)friends;
 

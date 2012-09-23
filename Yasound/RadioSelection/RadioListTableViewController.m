@@ -30,12 +30,14 @@
 
 #define REFRESH_INDICATOR_HEIGHT 62.f
 
-- (id)initWithFrame:(CGRect)frame radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight
+- (id)initWithFrame:(CGRect)frame radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator
 {
     self = [super init];
     if (self)
     {
         _dragging = NO;
+        
+        self.showRefreshIndicator = showRefreshIndicator;
         
         self.view.frame = frame;
         self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
@@ -50,8 +52,10 @@
         self.friendsMode = NO;
         
 
-        self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:CGRectMake(0, frame.size.height - REFRESH_INDICATOR_HEIGHT, self.view.frame.size.width, REFRESH_INDICATOR_HEIGHT)];
-        [self.view addSubview:self.refreshIndicator];
+        if (self.showRefreshIndicator) {
+            self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:CGRectMake(0, frame.size.height - REFRESH_INDICATOR_HEIGHT, self.view.frame.size.width, REFRESH_INDICATOR_HEIGHT)];
+            [self.view addSubview:self.refreshIndicator];
+        }
         
         
         self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
@@ -404,6 +408,9 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
+    if (!self.showRefreshIndicator)
+        return;
+
     float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
 
     if (bottomEdge < (scrollView.contentSize.height + self.refreshIndicator.height/2.f)) {
@@ -434,12 +441,20 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
 
     _dragging = YES;
+
+    if (!self.showRefreshIndicator)
+        return;
 }
+
+
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     
     _dragging = NO;
     
+    if (!self.showRefreshIndicator)
+        return;
+
     if (self.refreshIndicator.status == eStatusWaitingToClose) {
         [self unfreeze];
     }
@@ -469,7 +484,9 @@
 
 - (void)freeze {
     
-    NSLog(@"list freeze");
+    if (!self.showRefreshIndicator)
+        return;
+    
     
     _freezeDate = [NSDate date];
     [_freezeDate retain];
@@ -496,27 +513,23 @@
 
 - (void)unfreeze {
     
-    NSLog(@"list unfreeze");
+    if (!self.showRefreshIndicator)
+        return;
     
     [_freezeTimeout invalidate];
     _freezeTimeout = nil;
     
     if (_dragging) {
-        
-        NSLog(@"list  waiting to close");
-
         self.refreshIndicator.status = eStatusWaitingToClose;
         return;
     }
 
-    NSLog(@"list closing");
     _dragging = NO;
     _loadingNextPage = NO;
     
     NSDate* now = [NSDate date];
     NSTimeInterval interval = [now timeIntervalSinceDate:_freezeDate];
     
-    NSLog(@"INTERVAL %.4f", interval);
     if (interval < 1)
         [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(unfreezeFinish) userInfo:nil repeats:NO];
     else
@@ -526,6 +539,9 @@
 
 - (void)unfreezeFinish {
     
+    if (!self.showRefreshIndicator)
+        return;
+
     [self.refreshIndicator close];
     
     [UIView beginAnimations:nil context:NULL];
@@ -543,6 +559,9 @@
 
 - (void)unfreezeAnimationStoped:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
     
+    if (!self.showRefreshIndicator)
+        return;
+
     [self.tableView reloadData];
 }
 
