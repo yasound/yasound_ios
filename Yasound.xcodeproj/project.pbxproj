@@ -1441,6 +1441,15 @@
 		BC325F3E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */; };
 		BC325F3F160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */; };
 		BC325F40160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */; };
+		BC325F7B160F5FE300BA38C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */; };
+		BC325F7C160F5FE300BA38C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */; };
+		BC325F7D160F5FE300BA38C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */; };
+		BC325F7E160F5FE300BA38C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */; };
+		BC325F7F160F5FE300BA38C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */; };
+		BC325F80160F5FE300BA38C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */; };
+		BC325F81160F5FE300BA38C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */; };
+		BC325F82160F5FE300BA38C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */; };
+		BC325F83160F5FE300BA38C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */; };
 		BC355BE615BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
 		BC355BE715BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
 		BC355BE815BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
@@ -6814,6 +6823,7 @@
 		BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingCollectionViewController.m; sourceTree = "<group>"; };
 		BC325F2D160F0CF700BA38C9 /* radioListRefreshIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListRefreshIndicator.png; sourceTree = "<group>"; };
 		BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListRefreshIndicator@2x.png"; sourceTree = "<group>"; };
+		BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BC355BD015BD4F9200305C56 /* MyRadiosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyRadiosViewController.h; path = Yasound/Tabs/MyRadiosViewController.h; sourceTree = SOURCE_ROOT; };
 		BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyRadiosViewController.m; path = Yasound/Tabs/MyRadiosViewController.m; sourceTree = SOURCE_ROOT; };
 		BC355BD215BD4F9200305C56 /* MyRadiosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyRadiosViewController.xib; path = Yasound/Tabs/MyRadiosViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -9582,6 +9592,7 @@
 				BCE35E8815D7FD2E008C26AC /* BarItems */,
 				BCE35ECE15D7FD2E008C26AC /* Common */,
 				BCE35EEB15D7FD2E008C26AC /* Default.png */,
+				BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */,
 				BCE35EEC15D7FD2E008C26AC /* Default@2x.png */,
 				BCE35EED15D7FD2E008C26AC /* EasyTracker.plist */,
 				BCE35F2815D7FD2E008C26AC /* iTunesArtwork */,
@@ -10483,6 +10494,7 @@
 				BCD1522D160C6976009E3604 /* release_notes.md in Resources */,
 				BC325F36160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F3F160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
+				BC325F82160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10946,6 +10958,7 @@
 				BCD1522E160C6976009E3604 /* release_notes.md in Resources */,
 				BC325F37160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F40160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
+				BC325F83160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11403,6 +11416,7 @@
 				BCD1522C160C6976009E3604 /* release_notes.md in Resources */,
 				BC325F35160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F3E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
+				BC325F81160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11865,6 +11879,7 @@
 				BCD15229160C6976009E3604 /* release_notes.md in Resources */,
 				BC325F32160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F3B160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
+				BC325F7E160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12327,6 +12342,7 @@
 				BCD15227160C6976009E3604 /* release_notes.md in Resources */,
 				BC325F30160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F39160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
+				BC325F7C160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12789,6 +12805,7 @@
 				BCD1522B160C6976009E3604 /* release_notes.md in Resources */,
 				BC325F34160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F3D160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
+				BC325F80160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13252,6 +13269,7 @@
 				BCD15228160C6976009E3604 /* release_notes.md in Resources */,
 				BC325F31160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F3A160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
+				BC325F7D160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13714,6 +13732,7 @@
 				BCD15226160C6976009E3604 /* release_notes.md in Resources */,
 				BC325F2F160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F38160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
+				BC325F7B160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14176,6 +14195,7 @@
 				BCD1522A160C6976009E3604 /* release_notes.md in Resources */,
 				BC325F33160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F3C160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
+				BC325F7F160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
