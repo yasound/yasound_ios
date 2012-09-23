@@ -15,7 +15,9 @@
 #import "SongUploadManager.h"
 #import "RegExp.h"
 #import "YasoundDataCache.h"
-
+#import "YasoundLoginViewController.h"
+#import "LoginViewController.h"
+#import "YasoundAppDelegate.h"
 
 @implementation SignupViewController
 
@@ -362,8 +364,11 @@
 
 - (BOOL)topBarBackClicked {
     
-    [self.view removeFromSuperview];
-//    [self autorelease];
+    LoginViewController* viewC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+    [APPDELEGATE.navigationController presentModalViewController:viewC animated:NO];
+    [viewC release];
+
     return NO;
 }
 

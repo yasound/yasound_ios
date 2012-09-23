@@ -16,6 +16,8 @@
 #import "RegExp.h"
 #import "SignupViewController.h"
 #import "YasoundDataCache.h"
+#import "YasoundAppDelegate.h"
+#import "LoginViewController.h"
 
 @implementation YasoundLoginViewController
 
@@ -288,9 +290,10 @@
 
 - (IBAction)onSignupClicked:(id)sender
 {
-    SignupViewController* view = [[SignupViewController alloc] initWithNibName:@"SignupViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:NO];
-    [view release];        
+    SignupViewController* viewC = [[SignupViewController alloc] initWithNibName:@"SignupViewController" bundle:nil];
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+    [APPDELEGATE.navigationController presentModalViewController:viewC animated:NO];
+    [viewC release];
 }
 
 
@@ -319,8 +322,12 @@
 
 - (BOOL)topBarBackClicked {
 
-    [self.view removeFromSuperview];
-    [self autorelease];
+    LoginViewController* viewC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+    [APPDELEGATE.navigationController presentModalViewController:viewC animated:NO];
+    [viewC release];
+
+//    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
     return NO;
 }
 

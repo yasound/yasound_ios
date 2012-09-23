@@ -325,15 +325,8 @@
 - (IBAction)onYasound:(id)sender
 {
     YasoundLoginViewController* viewC = [[YasoundLoginViewController alloc] initWithNibName:@"YasoundLoginViewController" bundle:nil];
-    
-//    _dismissed = YES;
-//    [self retain];
-//    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
-//    
-//    [self.navigationController presentModalViewController:view animated:NO];
-    
-    [self.view addSubview:viewC.view];
-    
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+    [APPDELEGATE.navigationController presentModalViewController:viewC animated:NO];
     [viewC release];
 }
 
@@ -341,15 +334,8 @@
 - (IBAction)onYasoundSignup:(id)sender
 {
     SignupViewController* viewC = [[SignupViewController alloc] initWithNibName:@"SignupViewController" bundle:nil];
-
-//    _dismissed = YES;
-//    [self retain];
-//    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
-//
-//    [self.navigationController presentModalViewController:view animated:NO];
-    
-    [self.view addSubview:viewC.view];
-
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+    [APPDELEGATE.navigationController presentModalViewController:viewC animated:NO];
     [viewC release];
 }
 

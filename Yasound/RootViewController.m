@@ -625,6 +625,10 @@
     LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
 //    [self.navigationController pushViewController:view animated:YES];
     [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
+    
+    //LBDEBUG ICI
+//    [APPDELEGATE.navigationController presentViewController:view animated:YES completion:nil];
+    
   [view release];
 }
 
