@@ -70,6 +70,9 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifMyRadioEdited:) name:NOTIF_MYRADIO_EDIT object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifMyRadioUnedited:) name:NOTIF_MYRADIO_UNEDIT object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifRefreshGui:) name:NOTIF_REFRESH_GUI object:nil];
+    
+    
     [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withTarget:self action:@selector(radiosReceived:success:)];
 }
 
@@ -143,6 +146,11 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 {
     Radio* radio = notification.object;
     [self.editing setObject:[NSNumber numberWithBool:NO] forKey:radio.id];
+}
+
+- (void)onNotifRefreshGui:(NSNotification*)notification
+{
+    [self.tableview reloadData];
 }
 
 
