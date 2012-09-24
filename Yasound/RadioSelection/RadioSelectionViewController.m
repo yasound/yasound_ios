@@ -303,6 +303,7 @@
         [self.contentsController release];
         self.contentsController = nil;
     }
+    [[YasoundDataProvider main] cancelRequestsForKey:@"radios"];
     
     NSString* url = nil;
     NSString* genre = nil;

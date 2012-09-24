@@ -952,7 +952,6 @@ static YasoundDataProvider* _main = nil;
 
 - (void)friendsForUser:(User*)user withTarget:(id)target action:(SEL)selector
 {
-    [self cancelRequestsForKey:@"radios"];
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/user/%@/friends", user.username];
     conf.urlIsAbsolute = NO;
@@ -989,7 +988,6 @@ static YasoundDataProvider* _main = nil;
 
 - (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
 {
-    [self cancelRequestsForKey:@"radios"];
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = url;
     conf.key = @"radios";
@@ -1022,7 +1020,6 @@ static YasoundDataProvider* _main = nil;
 
 - (void)radiosForUser:(User*)u withTarget:(id)target action:(SEL)selector
 {
-    [self cancelRequestsForKey:@"radios"];
     
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/user/%@/radios", u.username];
