@@ -2817,6 +2817,15 @@
 		BCB0EF291524755F00290383 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
 		BCB0EF2A1524755F00290383 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
 		BCB0EF2B1524755F00290383 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
+		BCB31E2F1610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E301610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E311610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E321610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E331610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E341610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E351610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E361610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E371610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
 		BCB41F4414863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F4514863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCBAB48A14A22E3400CF922A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
@@ -7102,6 +7111,7 @@
 		BCB0EF1F1524755E00290383 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Login/LoginViewController.h; sourceTree = "<group>"; };
 		BCB0EF201524755E00290383 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Login/LoginViewController.m; sourceTree = "<group>"; };
 		BCB0EF211524755E00290383 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Login/LoginViewController.xib; sourceTree = "<group>"; };
+		BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "RadioSelectionViewController-4inch.xib"; path = "RadioSelection/RadioSelectionViewController-4inch.xib"; sourceTree = "<group>"; };
 		BCB41F4214863646008F3738 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		BCB41F4314863646008F3738 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		BCBAB48914A22E3400CF922A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -8469,6 +8479,7 @@
 				BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */,
 				BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */,
 				BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */,
+				BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */,
 				BC598E6D15B8786C004D6DCB /* RadioListTableViewController.h */,
 				BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */,
 				BC03C43515E2C6640017388D /* UserListTableViewCell.h */,
@@ -10541,6 +10552,7 @@
 				BC325F82160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FED16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF616103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				BCB31E361610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11007,6 +11019,7 @@
 				BC325F83160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FEE16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF716103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				BCB31E371610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11467,6 +11480,7 @@
 				BC325F81160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FEC16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF516103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				BCB31E351610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11932,6 +11946,7 @@
 				BC325F7E160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FE916103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF216103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				BCB31E321610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12397,6 +12412,7 @@
 				BC325F7C160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FE716103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF016103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				BCB31E301610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12862,6 +12878,7 @@
 				BC325F80160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FEB16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF416103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				BCB31E341610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13328,6 +13345,7 @@
 				BC325F7D160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FE816103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF116103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				BCB31E311610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13793,6 +13811,7 @@
 				BC325F7B160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FE616103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FEF16103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				BCB31E2F1610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14258,6 +14277,7 @@
 				BC325F7F160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FEA16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF316103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				BCB31E331610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

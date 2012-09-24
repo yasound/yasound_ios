@@ -10,6 +10,7 @@
 #import "RadioListTableViewCell.h"
 #import "UserListTableViewCell.h"
 
+
 @interface RadioListTableViewController ()
 
 @end
@@ -110,6 +111,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -139,7 +141,6 @@
 //    //    [self.view sendSubviewToBack:self.nextPageView];
 //    //    [self.view sendSubviewToBack:self.tableView];
 //    self.nextPageView.hidden = NO;
-    
 }
 
 
@@ -147,28 +148,30 @@
 //    
 //}
 
--(void) drawCABackgroundLayer: (CALayer*) layer inContext: (CGContextRef) context
-{
-    UIGraphicsPushContext(context);
-    
-    CGRect contentRect = [layer bounds];
-    
-//    UIImage *bgImage = [[ImageCacheController sharedImageCache] imageFromCache: GENERIC_BGIMAGE_FILENAME];
+//-(void) drawCABackgroundLayer: (CALayer*) layer inContext: (CGContextRef) context
+//{
+//    UIGraphicsPushContext(context);
 //    
-//    [bgImage drawInRect: CGRectMake(contentRect.origin.x, contentRect.origin.y, contentRect.size.width, contentRect.size.height)];
-    
-//    [self.nextPageView draw]
-    
-    UIActivityIndicatorView* indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [indicatorView setFrame:CGRectMake(0, 0, 16, 16)];
-    [indicatorView setHidesWhenStopped:YES];
-    [indicatorView startAnimating];
-    [self.view addSubview:indicatorView];
-    
-    UIGraphicsPopContext();
-}
-//- (void)updateNextPageView {
+//    CGRect contentRect = [layer bounds];
 //    
+////    UIImage *bgImage = [[ImageCacheController sharedImageCache] imageFromCache: GENERIC_BGIMAGE_FILENAME];
+////    
+////    [bgImage drawInRect: CGRectMake(contentRect.origin.x, contentRect.origin.y, contentRect.size.width, contentRect.size.height)];
+//    
+////    [self.nextPageView draw]
+//    
+//    NSLog(@"DEBUG");
+//    
+//    UIActivityIndicatorView* indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    [indicatorView setFrame:CGRectMake(0, 0, 16, 16)];
+//    [indicatorView setHidesWhenStopped:YES];
+//    [indicatorView startAnimating];
+//    [self.view addSubview:indicatorView];
+//    
+//    UIGraphicsPopContext();
+//}
+////- (void)updateNextPageView {
+//
 //    self.nextPageView.frame = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 88)];
 //}
 

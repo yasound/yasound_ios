@@ -620,8 +620,13 @@
         [self.navigationController popToViewController:APPDELEGATE.menuViewController animated:NO];
     }
     
+    if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
+        self.radioSelectionViewController = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController-4inch" bundle:nil withWheelIndex:WheelIdSelection];
+    }
+    else  {
+        self.radioSelectionViewController = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:WheelIdSelection];
+    }
     
-    self.radioSelectionViewController = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:WheelIdSelection];
     [self.navigationController pushViewController:self.radioSelectionViewController animated:animated];
 }
 
@@ -698,7 +703,15 @@
 
 //    [self gotoMenuAnimated:NO];
     
-    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:WheelIdSelection];
+    RadioSelectionViewController* view = nil;
+    if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
+        view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController-4inch" bundle:nil withWheelIndex:WheelIdSelection];
+    }
+    else  {
+        view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:WheelIdSelection];
+    }
+
+    
     [self.navigationController pushViewController:view animated:animated];
     [view release];
 }
@@ -714,7 +727,14 @@
     
 //    [self gotoMenuAnimated:NO];
     
-    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:WheelIdSelection];
+    RadioSelectionViewController* view = nil;
+    if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
+        view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController-4inch" bundle:nil withWheelIndex:WheelIdSelection];
+    }
+    else  {
+        view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:WheelIdSelection];
+    }
+
     [self.navigationController pushViewController:view animated:animated];
     [view release];
 }
