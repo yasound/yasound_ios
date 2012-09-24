@@ -111,9 +111,32 @@
     return count;
 }
 
+- (int)cancelRequestsForKey:(NSString*)key
+{
+    NSArray* targetRequests = [requests valueForKey:key];
+    int count = [targetRequests count];
+    for (ASIHTTPRequest* req in targetRequests)
+    {
+        [req cancel];
+    }
+    [requests removeObjectForKey:key];
+    return count;
+}
+
 - (void)addRequest:(ASIHTTPRequest*)req forTarget:(id)target
 {
     NSString* key = [NSString stringWithFormat:@"%p", target];
+    NSMutableArray* targetRequests = [requests valueForKey:key];
+    if (!targetRequests)
+    {
+        targetRequests = [NSMutableArray array];
+    }
+    [targetRequests addObject:req];
+    [requests setValue:targetRequests forKey:key];
+}
+
+- (void)addRequest:(ASIHTTPRequest*)req forKey:(NSString*)key
+{
     NSMutableArray* targetRequests = [requests valueForKey:key];
     if (!targetRequests)
     {
@@ -131,9 +154,23 @@
     [requests setValue:targetRequests forKey:key];
 }
 
+- (void)removeRequest:(ASIHTTPRequest*)req forKey:(NSString*)key
+{
+    NSMutableArray* targetRequests = [requests valueForKey:key];
+    [targetRequests removeObject:req];
+    [requests setValue:targetRequests forKey:key];
+}
+
 - (BOOL)isTarget:(id)target connectedToRequest:(ASIHTTPRequest*)req
 {
     NSString* key = [NSString stringWithFormat:@"%p", target];
+    NSMutableArray* targetRequests = [requests valueForKey:key];
+    BOOL res = [targetRequests containsObject:req];
+    return res;
+}
+
+- (BOOL)isKey:(NSString*)key connectedToRequest:(ASIHTTPRequest*)req
+{
     NSMutableArray* targetRequests = [requests valueForKey:key];
     BOOL res = [targetRequests containsObject:req];
     return res;
@@ -871,6 +908,15 @@
             return;
         else
             [self removeRequest:request forTarget:target];
+    }
+
+    NSString* key = [userinfo valueForKey:@"key"];
+    if (key)
+    {
+        if (![self isKey:key connectedToRequest:request]) // request has been invalidated
+            return;
+        else
+            [self removeRequest:request forKey:key];
     }
     
     if ([method isEqualToString:@"GET_ALL"])

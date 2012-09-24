@@ -19,6 +19,7 @@
     id _callbackTarget;
     SEL _callbackAction;
     id _userData;
+    NSString *_key;
 }
 
 @property (retain, nonatomic) NSString* url;
@@ -31,5 +32,6 @@
 @property (retain, nonatomic) id callbackTarget;
 @property SEL callbackAction;
 @property (retain, nonatomic) id userData;
+@property (retain, nonatomic) NSString* key;
 
 @end
