@@ -81,7 +81,7 @@
     [self updateHd];
     self.itemHd = [[UIBarButtonItem alloc] initWithCustomView:self.itemHdButton];
 
-    // hd
+    // search
     sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemSearch" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.itemSearchButton = [sheet makeButton];
     [self.itemSearchButton addTarget:self action:@selector(onSearch:) forControlEvents:UIControlEventTouchUpInside];
