@@ -989,8 +989,10 @@ static YasoundDataProvider* _main = nil;
 
 - (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
 {
+    [self cancelRequestsForKey:@"radios"];
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = url;
+    conf.key = @"radios";
     conf.urlIsAbsolute = NO;
     conf.method = @"GET";
     conf.auth = self.apiKeyAuth;
@@ -1015,7 +1017,7 @@ static YasoundDataProvider* _main = nil;
     
     NSString *url = [NSString stringWithFormat:@"/api/v1/user/%@/favorite_radio", u.id];
     
-    [_communicator getObjectsWithClass:[Radio class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    [_communicator getObjectsWithClass:[Radio class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth withKey:@"radios"];
 }
 
 - (void)radiosForUser:(User*)u withTarget:(id)target action:(SEL)selector
