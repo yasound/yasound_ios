@@ -381,12 +381,7 @@
 {
     if (!req)
         [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
-    
-    if (key)
-    {
-        [self cancelRequestsForKey:key];
-    }
-    
+        
     NSMutableDictionary* userinfo = [[NSMutableDictionary alloc] init];
     
     [userinfo setValue:target forKey:@"target"];
