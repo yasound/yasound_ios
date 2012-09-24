@@ -264,35 +264,6 @@
 }
 
 
-//- (void)fix4inchLayout {
-//    
-//    if ([UIDevice resolution] != UIDeviceResolution_iPhoneRetina4) {
-//        NSLog(@"YO");
-//        [UIView beginAnimations:nil context:NULL];
-//        self.listContainer.frame = CGRectMake(self.listContainer.frame.origin.x, self.listContainer.frame.origin.y, self.listContainer.frame.size.width, 370);
-//        [UIView commitAnimations];
-//
-//    }
-//
-//    if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
-//        
-//        [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(prout) userInfo:nil repeats:NO];
-////        self.contentsView.frame = CGRectMake(self.contentsView.frame.origin.x, self.contentsView.frame.origin.y, self.contentsView.frame.size.width, 458);
-////        [self.contentsView setNeedsDisplay];
-////        NSLog(@"fix4inchLayout");
-//    }
-//}
-
-- (void)prout {
-    self.contentsView.frame = CGRectMake(self.contentsView.frame.origin.x, self.contentsView.frame.origin.y, self.contentsView.frame.size.width, 800);
-    self.listContainer.frame = CGRectMake(self.listContainer.frame.origin.x, self.listContainer.frame.origin.y, self.listContainer.frame.size.width, 800);
-    
-    [self.contentsView setNeedsDisplay];
-    [self.listContainer setNeedsDisplay];
-    [self.listContainer setNeedsLayout];
-    NSLog(@"prout");
-
-}
 
 
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
