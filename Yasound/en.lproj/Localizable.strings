@@ -736,4 +736,5 @@
 
 "RefreshIndicator.label.pulled" = "Pull up for more radios...";
 "RefreshIndicator.label.opened" = "Release for more radios...";
+"RefreshIndicator.label.openedAndRelease" = "Loading...";
 

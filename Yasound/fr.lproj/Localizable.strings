@@ -723,5 +723,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "RefreshIndicator.label.pulled" = "Tirer pour plus de radios...";
 "RefreshIndicator.label.opened" = "Relâcher pour plus de radios...";
+"RefreshIndicator.label.openedAndRelease" = "Chargement...";
 
 

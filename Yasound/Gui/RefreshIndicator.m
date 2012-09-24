@@ -86,13 +86,17 @@
         [self.icon release];
         self.icon = nil;
     }
-
+    
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RefreshIndicator.icon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.indicator.frame = sheet.frame;
     [self addSubview:self.indicator];
     
+    self.label.text = NSLocalizedString(@"RefreshIndicator.label.openedAndRelease", nil);
+
     [self.indicator startAnimating];
+    
+
 
 }
 
