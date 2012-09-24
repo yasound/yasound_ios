@@ -229,6 +229,12 @@ static YasoundDataProvider* _main = nil;
     return count;
 }
 
+- (int)cancelRequestsForKey:(NSString*)key
+{
+    int count = [_communicator cancelRequestsForKey:key];
+    return count;
+}
+
 - (Auth*)apiKeyAuth
 {
   AuthApiKey* auth = [[AuthApiKey alloc] initWithUsername:_user.username andApiKey:_apiKey];
@@ -946,12 +952,14 @@ static YasoundDataProvider* _main = nil;
 
 - (void)friendsForUser:(User*)user withTarget:(id)target action:(SEL)selector
 {
+    [self cancelRequestsForKey:@"radios"];
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/user/%@/friends", user.username];
     conf.urlIsAbsolute = NO;
     conf.method = @"GET";
     conf.callbackTarget = target;
     conf.callbackAction = selector;
+    conf.key = @"radios";
     
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
     [req startAsynchronous];
@@ -1022,6 +1030,8 @@ static YasoundDataProvider* _main = nil;
 
 - (void)radiosForUser:(User*)u withTarget:(id)target action:(SEL)selector
 {
+    [self cancelRequestsForKey:@"radios"];
+    
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/user/%@/radios", u.username];
     conf.urlIsAbsolute = NO;
@@ -1029,6 +1039,7 @@ static YasoundDataProvider* _main = nil;
     conf.method = @"GET";
     
     conf.callbackTarget = target;
+    conf.key = @"radios";
     conf.callbackAction = selector;
     conf.userData = nil;
     

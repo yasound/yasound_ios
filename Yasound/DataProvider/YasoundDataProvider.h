@@ -86,6 +86,7 @@ taskStatus stringToStatus(NSString* str);
 
 
 - (int)cancelRequestsForTarget:(id)target;
+- (int)cancelRequestsForKey:(NSString *)key;
 
 - (void)resetUser;
 - (void)reloadUserWithUserData:(id)data withTarget:(id)target action:(SEL)selector;
@@ -125,7 +126,6 @@ taskStatus stringToStatus(NSString* str);
 - (void)favoriteRadiosForUser:(User*)u withTarget:(id)target action:(SEL)selector;
 
 - (void)radiosForUser:(User*)u withTarget:(id)target action:(SEL)selector;
-
 
 // .........................................................................................
 // deprecated methods
