@@ -565,21 +565,8 @@
     
     self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height - self.refreshIndicator.height);
     [UIView commitAnimations];
-//    self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y - self.refreshIndicator.height);
-    
     
 }
-
-
-//UITableViewRowAnimationFade,
-//UITableViewRowAnimationRight,           // slide in from right (or out to right)
-//UITableViewRowAnimationLeft,
-//UITableViewRowAnimationTop,
-//UITableViewRowAnimationBottom,
-//UITableViewRowAnimationNone,            // available in iOS 3.0
-//UITableViewRowAnimationMiddle,          // available in iOS 3.2.  attempts to keep cell centered in the space it will/did occupy
-//UITableViewRowAnimationAutomatic = 100  // available in iOS 5.0.  chooses an appropriate animation style for you
-//
 
 
 - (void)unfreezeAnimationStoped:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
@@ -587,43 +574,8 @@
     if (!self.showRefreshIndicator)
         return;
 
-//    [self.tableView beginUpdates];
-//
-//    
-//    //    [self.tableView reloadData];
-//    NSMutableArray* array = [NSMutableArray array];
-//    
-//    NSInteger previousNbRows = [self numberOfRowsFromRadios:self.radiosPreviousCount];
-//    NSInteger nbRows = [self numberOfRowsFromRadios:self.radios.count];
-//    
-//    for (NSInteger row = previousNbRows; row < nbRows; row++) {
-//        NSLog(@"row %d", row);
-//        [array addObject:[NSIndexPath indexPathForRow:row inSection:0]];
-//    }
-//    
-//    [self.tableView insertRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationNone];
-//
-//    [self.tableView endUpdates];
-//    
-//    [array insertObject:[NSIndexPath indexPathForRow:(previousNbRows-1) inSection:0] atIndex:0];
-//    [self.tableView reloadRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationNone];
-//    
-//    self.radiosPreviousCount = self.radios.count;
-    
     [self.tableView reloadData];
     [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y + self.tableView.frame.size.height) animated:YES];
-    
-//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(afterReload:) userInfo:nil repeats:NO];
-}
-
-- (void)afterReload:(NSTimer*)timer {
-
-    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y + self.tableView.frame.size.height) animated:YES];
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.3];
-//
-//    self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y + self.tableView.frame.size.height);
-//    [UIView commitAnimations];
 }
 
 
