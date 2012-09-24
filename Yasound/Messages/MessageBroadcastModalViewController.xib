@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">12B19</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
-		<string key="IBDocument.AppKitVersion">1187</string>
-		<string key="IBDocument.HIToolboxVersion">624.00</string>
+		<int key="IBDocument.SystemTarget">1536</int>
+		<string key="IBDocument.SystemVersion">12C54</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
+		<string key="IBDocument.AppKitVersion">1187.34</string>
+		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1498</string>
+			<string key="NS.object.0">1926</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -40,7 +40,7 @@
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUITextView" id="442278820">
 						<reference key="NSNextResponder" ref="13626721"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 90}, {320, 154}}</string>
 						<reference key="NSSuperview" ref="13626721"/>
 						<reference key="NSWindow"/>
@@ -70,7 +70,7 @@
 					</object>
 					<object class="IBUIToolbar" id="159279493">
 						<reference key="NSNextResponder" ref="13626721"/>
-						<int key="NSvFlags">266</int>
+						<int key="NSvFlags">290</int>
 						<string key="NSFrameSize">{320, 44}</string>
 						<reference key="NSSuperview" ref="13626721"/>
 						<reference key="NSWindow"/>
@@ -83,7 +83,7 @@
 					</object>
 					<object class="IBUIImageView" id="104635341">
 						<reference key="NSNextResponder" ref="13626721"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">290</int>
 						<string key="NSFrame">{{0, 44}, {320, 46}}</string>
 						<reference key="NSSuperview" ref="13626721"/>
 						<reference key="NSWindow"/>
@@ -198,7 +198,6 @@
 						<string key="NSFrame">{{0, 90}, {320, 3}}</string>
 						<reference key="NSSuperview" ref="13626721"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -388,47 +387,18 @@
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">MessageBroadcastModalViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="onBack:">id</string>
-						<string key="onPublishButton:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="onBack:">
-							<string key="name">onBack:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="onPublishButton:">
-							<string key="name">onPublishButton:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
+					<string key="superclassName">YaViewController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_buttonCancel">UIBarButtonItem</string>
-						<string key="_buttonSend">UIBarButtonItem</string>
 						<string key="_image">WebImageView</string>
-						<string key="_itemTitle">UIBarButtonItem</string>
 						<string key="_label1">UILabel</string>
 						<string key="_label2">UILabel</string>
 						<string key="_mask">UIImageView</string>
 						<string key="_textView">UITextView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_buttonCancel">
-							<string key="name">_buttonCancel</string>
-							<string key="candidateClassName">UIBarButtonItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_buttonSend">
-							<string key="name">_buttonSend</string>
-							<string key="candidateClassName">UIBarButtonItem</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="_image">
 							<string key="name">_image</string>
 							<string key="candidateClassName">WebImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_itemTitle">
-							<string key="name">_itemTitle</string>
-							<string key="candidateClassName">UIBarButtonItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_label1">
 							<string key="name">_label1</string>
@@ -472,11 +442,27 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">TrackedUIViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/TrackedUIViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">WebImageView</string>
 					<string key="superclassName">UIImageView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/WebImageView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">YaViewController</string>
+					<string key="superclassName">TrackedUIViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/YaViewController.h</string>
 					</object>
 				</object>
 			</array>
@@ -490,6 +476,6 @@
 			<string key="nowPlayingMask.png">{39, 46}</string>
 			<string key="shareShadow.png">{320, 3}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1498</string>
+		<string key="IBCocoaTouchPluginVersion">1926</string>
 	</data>
 </archive>
