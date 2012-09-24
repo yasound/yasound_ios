@@ -1450,6 +1450,15 @@
 		BC325F81160F5FE300BA38C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */; };
 		BC325F82160F5FE300BA38C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */; };
 		BC325F83160F5FE300BA38C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */; };
+		BC325FDB161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */; };
+		BC325FDC161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */; };
+		BC325FDD161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */; };
+		BC325FDE161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */; };
+		BC325FDF161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */; };
+		BC325FE0161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */; };
+		BC325FE1161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */; };
+		BC325FE2161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */; };
+		BC325FE3161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */; };
 		BC355BE615BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
 		BC355BE715BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
 		BC355BE815BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
@@ -6824,6 +6833,8 @@
 		BC325F2D160F0CF700BA38C9 /* radioListRefreshIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListRefreshIndicator.png; sourceTree = "<group>"; };
 		BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListRefreshIndicator@2x.png"; sourceTree = "<group>"; };
 		BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BC325FD9161038B300BA38C9 /* UIDevice+Resolutions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Resolutions.h"; sourceTree = "<group>"; };
+		BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Resolutions.m"; sourceTree = "<group>"; };
 		BC355BD015BD4F9200305C56 /* MyRadiosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyRadiosViewController.h; path = Yasound/Tabs/MyRadiosViewController.h; sourceTree = SOURCE_ROOT; };
 		BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyRadiosViewController.m; path = Yasound/Tabs/MyRadiosViewController.m; sourceTree = SOURCE_ROOT; };
 		BC355BD215BD4F9200305C56 /* MyRadiosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyRadiosViewController.xib; path = Yasound/Tabs/MyRadiosViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -8220,6 +8231,16 @@
 			path = Programming/CatalogViews;
 			sourceTree = "<group>";
 		};
+		BC325FD8161038B300BA38C9 /* UIDevice+Resolutions */ = {
+			isa = PBXGroup;
+			children = (
+				BC325FD9161038B300BA38C9 /* UIDevice+Resolutions.h */,
+				BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */,
+			);
+			name = "UIDevice+Resolutions";
+			path = "ThirdParties/UIDevice+Resolutions";
+			sourceTree = "<group>";
+		};
 		BC355BA615BD426000305C56 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
@@ -8865,6 +8886,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				BC325FD8161038B300BA38C9 /* UIDevice+Resolutions */,
 				BCD1520F160C6976009E3604 /* TestFlightSDK1 */,
 				BC209EE515EBABFF00A0E7DB /* Base64 */,
 				BC9B7E3815E42B000083CF6C /* ECSlidingViewController */,
@@ -14496,6 +14518,7 @@
 				40CFA9581608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51F1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD1527E160D0C67009E3604 /* RefreshIndicator.m in Sources */,
+				BC325FE2161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14738,6 +14761,7 @@
 				40CFA9591608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA5201609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD1527F160D0C67009E3604 /* RefreshIndicator.m in Sources */,
+				BC325FE3161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14976,6 +15000,7 @@
 				40CFA9571608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51E1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD1527D160D0C67009E3604 /* RefreshIndicator.m in Sources */,
+				BC325FE1161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15218,6 +15243,7 @@
 				40CFA9541608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51B1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD1527A160D0C67009E3604 /* RefreshIndicator.m in Sources */,
+				BC325FDE161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15460,6 +15486,7 @@
 				40CFA9521608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA5191609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD15278160D0C67009E3604 /* RefreshIndicator.m in Sources */,
+				BC325FDC161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15703,6 +15730,7 @@
 				40CFA9561608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51D1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD1527C160D0C67009E3604 /* RefreshIndicator.m in Sources */,
+				BC325FE0161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15945,6 +15973,7 @@
 				40CFA9531608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51A1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD15279160D0C67009E3604 /* RefreshIndicator.m in Sources */,
+				BC325FDD161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16187,6 +16216,7 @@
 				40CFA9511608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA5181609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD15277160D0C67009E3604 /* RefreshIndicator.m in Sources */,
+				BC325FDB161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16430,6 +16460,7 @@
 				40CFA9551608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51C1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD1527B160D0C67009E3604 /* RefreshIndicator.m in Sources */,
+				BC325FDF161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
