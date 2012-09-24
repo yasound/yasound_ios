@@ -13,6 +13,7 @@
 @implementation RequestConfig
 
 @synthesize url = _url;
+@synthesize key = _key;
 @synthesize urlIsAbsolute = _urlIsAbsolute;
 @synthesize method = _method;
 @synthesize params = _params;
@@ -27,6 +28,7 @@
     if (self)
     {
         _url = nil;
+        _key = nil;
         _urlIsAbsolute = NO;
         _method = @"GET";
         _params = nil;

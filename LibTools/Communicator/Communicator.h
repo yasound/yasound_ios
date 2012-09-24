@@ -33,6 +33,10 @@
 - (void)addRequest:(ASIHTTPRequest*)req forTarget:(id)target;
 - (void)removeRequest:(ASIHTTPRequest*)req forTarget:(id)target;
 
+- (int)cancelRequestsForKey:(NSString*)key;
+- (void)addRequest:(ASIHTTPRequest*)req forKey:(NSString*)key;
+- (void)removeRequest:(ASIHTTPRequest*)req forKey:(NSString*)key;
+
 #pragma mark - synchronous requests
 - (Container*)getObjectsWithClass:(Class)objectClass withAuth:(Auth*)auth;
 - (id)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID withAuth:(Auth*)auth;

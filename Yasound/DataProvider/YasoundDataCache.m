@@ -265,7 +265,6 @@ static YasoundDataCache* _main = nil;
 }
 
 
-
 //
 // empty local cache for a given request.
 // for instance, you may want to clear REQUEST_RADIOS_FAVORITES after having added a radio in your favorites
