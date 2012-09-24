@@ -40,7 +40,7 @@ NSString *NSStringFromResolution(UIDeviceResolution resolution)
 
 
 
-- (UIDeviceResolution)resolution
++ (UIDeviceResolution)resolution
 {
 	UIDeviceResolution resolution = UIDeviceResolution_Unknown;
 	UIScreen *mainScreen = [UIScreen mainScreen];

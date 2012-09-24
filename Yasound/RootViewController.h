@@ -74,6 +74,7 @@
 }
 
 @property (nonatomic, retain) User* user;
+@property (nonatomic, assign) IBOutlet UIImageView* imageBackground;
 
 //@property (nonatomic, retain) MenuViewController* menuView;
 @property (nonatomic, retain) RadioSelectionViewController* radioSelectionViewController;

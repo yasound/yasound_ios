@@ -22,7 +22,7 @@ enum {
 
 @interface UIDevice (Resolutions)
 
-- (UIDeviceResolution)resolution;
++ (UIDeviceResolution)resolution;
 
 NSString *NSStringFromResolution(UIDeviceResolution resolution);
 

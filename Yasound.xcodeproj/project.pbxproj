@@ -1459,6 +1459,24 @@
 		BC325FE1161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */; };
 		BC325FE2161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */; };
 		BC325FE3161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */; };
+		BC325FE616103EE800BA38C9 /* commonLogoScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE416103EE800BA38C9 /* commonLogoScreen.png */; };
+		BC325FE716103EE800BA38C9 /* commonLogoScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE416103EE800BA38C9 /* commonLogoScreen.png */; };
+		BC325FE816103EE800BA38C9 /* commonLogoScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE416103EE800BA38C9 /* commonLogoScreen.png */; };
+		BC325FE916103EE800BA38C9 /* commonLogoScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE416103EE800BA38C9 /* commonLogoScreen.png */; };
+		BC325FEA16103EE800BA38C9 /* commonLogoScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE416103EE800BA38C9 /* commonLogoScreen.png */; };
+		BC325FEB16103EE800BA38C9 /* commonLogoScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE416103EE800BA38C9 /* commonLogoScreen.png */; };
+		BC325FEC16103EE800BA38C9 /* commonLogoScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE416103EE800BA38C9 /* commonLogoScreen.png */; };
+		BC325FED16103EE800BA38C9 /* commonLogoScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE416103EE800BA38C9 /* commonLogoScreen.png */; };
+		BC325FEE16103EE800BA38C9 /* commonLogoScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE416103EE800BA38C9 /* commonLogoScreen.png */; };
+		BC325FEF16103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE516103EE800BA38C9 /* commonLogoScreen@2x.png */; };
+		BC325FF016103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE516103EE800BA38C9 /* commonLogoScreen@2x.png */; };
+		BC325FF116103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE516103EE800BA38C9 /* commonLogoScreen@2x.png */; };
+		BC325FF216103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE516103EE800BA38C9 /* commonLogoScreen@2x.png */; };
+		BC325FF316103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE516103EE800BA38C9 /* commonLogoScreen@2x.png */; };
+		BC325FF416103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE516103EE800BA38C9 /* commonLogoScreen@2x.png */; };
+		BC325FF516103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE516103EE800BA38C9 /* commonLogoScreen@2x.png */; };
+		BC325FF616103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE516103EE800BA38C9 /* commonLogoScreen@2x.png */; };
+		BC325FF716103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC325FE516103EE800BA38C9 /* commonLogoScreen@2x.png */; };
 		BC355BE615BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
 		BC355BE715BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
 		BC355BE815BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
@@ -6835,6 +6853,8 @@
 		BC325F7A160F5FE300BA38C9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BC325FD9161038B300BA38C9 /* UIDevice+Resolutions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Resolutions.h"; sourceTree = "<group>"; };
 		BC325FDA161038B300BA38C9 /* UIDevice+Resolutions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Resolutions.m"; sourceTree = "<group>"; };
+		BC325FE416103EE800BA38C9 /* commonLogoScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonLogoScreen.png; sourceTree = "<group>"; };
+		BC325FE516103EE800BA38C9 /* commonLogoScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonLogoScreen@2x.png"; sourceTree = "<group>"; };
 		BC355BD015BD4F9200305C56 /* MyRadiosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyRadiosViewController.h; path = Yasound/Tabs/MyRadiosViewController.h; sourceTree = SOURCE_ROOT; };
 		BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyRadiosViewController.m; path = Yasound/Tabs/MyRadiosViewController.m; sourceTree = SOURCE_ROOT; };
 		BC355BD215BD4F9200305C56 /* MyRadiosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyRadiosViewController.xib; path = Yasound/Tabs/MyRadiosViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -9158,6 +9178,8 @@
 		BCE35ECE15D7FD2E008C26AC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				BC325FE416103EE800BA38C9 /* commonLogoScreen.png */,
+				BC325FE516103EE800BA38C9 /* commonLogoScreen@2x.png */,
 				BCC7545115E69A0100CF7F7C /* commonIconHDGreyDisabled.png */,
 				BCC7545215E69A0100CF7F7C /* commonIconHDGreyDisabled@2x.png */,
 				BC89C36C15E587E300E0BEE3 /* commonViewShadow.png */,
@@ -10517,6 +10539,8 @@
 				BC325F36160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F3F160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 				BC325F82160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
+				BC325FED16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
+				BC325FF616103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10981,6 +11005,8 @@
 				BC325F37160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F40160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 				BC325F83160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
+				BC325FEE16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
+				BC325FF716103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11439,6 +11465,8 @@
 				BC325F35160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F3E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 				BC325F81160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
+				BC325FEC16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
+				BC325FF516103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11902,6 +11930,8 @@
 				BC325F32160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F3B160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 				BC325F7E160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
+				BC325FE916103EE800BA38C9 /* commonLogoScreen.png in Resources */,
+				BC325FF216103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12365,6 +12395,8 @@
 				BC325F30160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F39160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 				BC325F7C160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
+				BC325FE716103EE800BA38C9 /* commonLogoScreen.png in Resources */,
+				BC325FF016103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12828,6 +12860,8 @@
 				BC325F34160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F3D160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 				BC325F80160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
+				BC325FEB16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
+				BC325FF416103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13292,6 +13326,8 @@
 				BC325F31160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F3A160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 				BC325F7D160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
+				BC325FE816103EE800BA38C9 /* commonLogoScreen.png in Resources */,
+				BC325FF116103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13755,6 +13791,8 @@
 				BC325F2F160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F38160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 				BC325F7B160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
+				BC325FE616103EE800BA38C9 /* commonLogoScreen.png in Resources */,
+				BC325FEF16103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14218,6 +14256,8 @@
 				BC325F33160F0CF700BA38C9 /* radioListRefreshIndicator.png in Resources */,
 				BC325F3C160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png in Resources */,
 				BC325F7F160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
+				BC325FEA16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
+				BC325FF316103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

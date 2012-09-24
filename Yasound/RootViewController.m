@@ -30,6 +30,8 @@
 #import "AccountFacebookViewController.h"
 #import "WebPageViewController.h"
 #import "Version.h"
+#import "UIDevice+Resolutions.h"
+
 
 @class CreateRadioViewController;
 @class MyAccountViewController;
@@ -128,6 +130,10 @@
     if (self) 
     {
         _firstTime = YES;
+        
+//    if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4)
+//        self.imageBackground.image = [UIImage imageNamed:@"Default-568h@2x.png"];
+        
     }
     return self;
 }
@@ -151,6 +157,9 @@
 
 - (void)viewDidLoad
 {
+//    if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4)
+//        self.imageBackground.image = [UIImage imageNamed:@"Default-568h@2x.png"];
+    
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifLaunchRadio:) name:NOTIF_LAUNCH_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onPopAndGotoUploads:) name:NOTIF_POP_AND_GOTO_UPLOADS object:nil];
@@ -200,6 +209,7 @@
 //    // put the menu above the root viewController
 //     MenuViewController* menu = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
 //    [self.view addSubview:menu.view];
+    
 }
 
 - (void)viewDidUnload
@@ -228,6 +238,11 @@
 
 - (void)start
 {
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(mydebug) userInfo:nil repeats:NO];
+}
+
+- (void)mydebug{
+    
     if (_firstTime)
     {
         _firstTime = NO;
