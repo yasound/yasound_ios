@@ -238,10 +238,10 @@
 
 - (void)start
 {
-    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(mydebug) userInfo:nil repeats:NO];
-}
-
-- (void)mydebug{
+//    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(mydebug) userInfo:nil repeats:NO];
+//}
+//
+//- (void)mydebug{
     
     if (_firstTime)
     {
