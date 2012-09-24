@@ -424,6 +424,9 @@
     
     if (!self.showRefreshIndicator)
         return;
+    
+    if (self.refreshIndicator.status == eStatusOpened)
+        return;
 
     float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
 

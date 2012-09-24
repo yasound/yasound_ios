@@ -61,16 +61,19 @@
 
 
 - (void)open {
-    
+
+    if (self.status == eStatusOpened)
+        return;
+
     self.label.text = NSLocalizedString(@"RefreshIndicator.label.opened", nil);
     
     self.status = eStatusOpened;
     self.hidden = NO;
 
-    CABasicAnimation* rotateAnim = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-    rotateAnim.toValue = [NSNumber numberWithFloat: M_PI];
-    rotateAnim.delegate = self;
-    [self.icon.layer addAnimation:rotateAnim forKey:@"rotateAnim"];
+//    CABasicAnimation* rotateAnim = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+//    rotateAnim.toValue = [NSNumber numberWithFloat: M_PI];
+//    rotateAnim.delegate = self;
+//    [self.icon.layer addAnimation:rotateAnim forKey:@"rotateAnim"];
     
     NSLog(@"     refresh open");
 }
@@ -78,8 +81,11 @@
 
 - (void)openedAndRelease {
     
-    [self.icon removeFromSuperview];
-    [self.icon release];
+    if (self.icon != nil) {
+        [self.icon removeFromSuperview];
+        [self.icon release];
+        self.icon = nil;
+    }
 
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RefreshIndicator.icon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -96,8 +102,11 @@
     self.hidden = YES;
     NSLog(@"     refresh close");
     
-    [self.indicator stopAnimating];
-    [self.indicator release];
+    if (self.indicator != nil) {
+        [self.indicator stopAnimating];
+        [self.indicator release];
+        self.indicator = nil;
+    }
 }
 
 
@@ -109,6 +118,7 @@
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     
     self.icon.transform = CGAffineTransformMakeRotation(M_PI);
+//    [anim release];
 }
 
 
