@@ -61,7 +61,10 @@
 
 
 - (void)open {
-    
+
+    if (self.status == eStatusOpened)
+        return;
+
     self.label.text = NSLocalizedString(@"RefreshIndicator.label.opened", nil);
     
     self.status = eStatusOpened;
@@ -78,8 +81,11 @@
 
 - (void)openedAndRelease {
     
-    [self.icon removeFromSuperview];
-    [self.icon release];
+    if (self.icon != nil) {
+        [self.icon removeFromSuperview];
+        [self.icon release];
+        self.icon = nil;
+    }
 
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RefreshIndicator.icon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -96,8 +102,11 @@
     self.hidden = YES;
     NSLog(@"     refresh close");
     
-    [self.indicator stopAnimating];
-    [self.indicator release];
+    if (self.indicator != nil) {
+        [self.indicator stopAnimating];
+        [self.indicator release];
+        self.indicator = nil;
+    }
 }
 
 
@@ -109,6 +118,7 @@
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     
     self.icon.transform = CGAffineTransformMakeRotation(M_PI);
+//    [anim release];
 }
 
 
