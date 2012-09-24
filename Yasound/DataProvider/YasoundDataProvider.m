@@ -981,16 +981,6 @@ static YasoundDataProvider* _main = nil;
 
 - (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
 {
-    DLog(@"YasoundDataProvider::radiosWithUrl '%@'", url);
-    //assert(url != nil);
-    
-//    Auth* auth = self.apiKeyAuth;
-//    NSMutableArray* params = [NSMutableArray array];
-//    if (genre)
-//        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
-//    
-//    [_communicator getObjectsWithClass:[Radio class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-    
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = url;
     conf.urlIsAbsolute = NO;

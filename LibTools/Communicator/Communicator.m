@@ -77,7 +77,9 @@
     if (!path || ![path isKindOfClass:[NSString class]])
         return nil;
     
-    if (slash && ![path hasSuffix:@"/"])
+    NSRange range = [path rangeOfString:@"?"];
+    BOOL containParams = !NSEqualRanges(range, NSMakeRange(NSNotFound, 0));
+    if (!containParams && slash && ![path hasSuffix:@"/"])
         path = [path stringByAppendingString:@"/"];
     
     NSURL* url;
@@ -1005,6 +1007,7 @@
         return url;
     
     NSString* urlStr = [url absoluteString];
+    urlStr = [urlStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     bool firstParam = false;
     NSRange range = [urlStr rangeOfString:@"?"];
@@ -1029,8 +1032,9 @@
         {
             urlStr = [urlStr stringByAppendingString:@"&"];
         }
-        urlStr = [urlStr stringByAppendingString:[p stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        urlStr = [urlStr stringByAppendingString:p];
     }
+    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL* new = [NSURL URLWithString:urlStr];
     return new;
 }
