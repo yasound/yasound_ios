@@ -70,10 +70,10 @@
     self.status = eStatusOpened;
     self.hidden = NO;
 
-//    CABasicAnimation* rotateAnim = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-//    rotateAnim.toValue = [NSNumber numberWithFloat: M_PI];
-//    rotateAnim.delegate = self;
-//    [self.icon.layer addAnimation:rotateAnim forKey:@"rotateAnim"];
+    CABasicAnimation* rotateAnim = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    rotateAnim.toValue = [NSNumber numberWithFloat: M_PI];
+    rotateAnim.delegate = self;
+    [self.icon.layer addAnimation:rotateAnim forKey:@"rotateAnim"];
     
     NSLog(@"     refresh open");
 }
