@@ -59,8 +59,8 @@
 
     [self.topBar showTrashItem];
   
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Common.gradient" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Common.gradient" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
   
     [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)  limit:NOTIFICATIONS_LIMIT offset:0];
     
