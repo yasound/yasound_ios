@@ -16,6 +16,8 @@
 - (NSString*)titleForActionButton;
 - (NSString*)titleForCancelButton;
 - (UIColor*)tintForActionButton;
+
+- (NSString*)topBarModalTitle;
 @end
 
 

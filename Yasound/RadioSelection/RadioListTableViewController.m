@@ -9,6 +9,7 @@
 #import "RadioListTableViewController.h"
 #import "RadioListTableViewCell.h"
 #import "UserListTableViewCell.h"
+#import "InviteFriendsTableViewCell.h"
 
 @interface RadioListTableViewController ()
 
@@ -29,6 +30,13 @@
 
 
 #define REFRESH_INDICATOR_HEIGHT 62.f
+
+#define NB_SECTIONS_FRIENDS 2
+
+#define SECTION_FRIENDS_INDEX 0
+#define SECTION_INVITE_FRIENDS_INDEX 1
+
+#define NB_ROWS_SECTION_INVITE_FRIENDS 1
 
 - (id)initWithFrame:(CGRect)frame radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator
 {
@@ -190,6 +198,10 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (self.friendsMode)
+    {
+        return NB_SECTIONS_FRIENDS;
+    }
     return 1;
 }
 
@@ -197,12 +209,19 @@
 {
     if (self.friendsMode)
     {
-        if (self.friends == nil)
-            return 0;
-        NSInteger nbRows = self.friends.count / 3;
-        if ((self.friends.count % 3) != 0)
-            nbRows++;
-        return nbRows;
+        if (section == SECTION_FRIENDS_INDEX)
+        {
+            if (self.friends == nil)
+                return 0;
+            NSInteger nbRows = self.friends.count / 3;
+            if ((self.friends.count % 3) != 0)
+                nbRows++;
+            return nbRows;
+        }
+        else if (section == SECTION_INVITE_FRIENDS_INDEX)
+        {
+            return NB_ROWS_SECTION_INVITE_FRIENDS;
+        }
     }
     
     if (self.radios == nil)
@@ -218,6 +237,10 @@
 {
     if (self.friendsMode)
     {
+        if (indexPath.section == SECTION_INVITE_FRIENDS_INDEX)
+        {
+            return 130.f;
+        }
         return 100.f;
     }
     
@@ -299,6 +322,17 @@
 - (UITableViewCell*)userCellForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView*)tableView
 {
     static NSString* cellUserIdentifier = @"UserListTableViewCell";
+    static NSString* cellInviteIdentifier = @"InviteUserTableViewCell";
+    
+    if (indexPath.section == SECTION_INVITE_FRIENDS_INDEX)
+    {
+        InviteFriendsTableViewCell* cell = (InviteFriendsTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellInviteIdentifier];
+        if (cell == nil)
+        {
+            cell = [[InviteFriendsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellInviteIdentifier];
+        }
+        return cell;
+    }
     
     UserListTableViewCell* cell = (UserListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellUserIdentifier];
     

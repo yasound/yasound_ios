@@ -724,4 +724,11 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "RefreshIndicator.label.pulled" = "Tirer pour plus de radios...";
 "RefreshIndicator.label.opened" = "Relâcher pour plus de radios...";
 
+"ContactListPickerTitle" = "Inviter des amis";
+"ContactListPicker.SendButton" = "Envoyer";
+"ContactListPicker.CancelButton" = "Annuler";
 
+"InviteFriendsRow.title" = "Inviter plus d'amis";
+"InviteFriendsRow.facebookLabel" = "facebook";
+"InviteFriendsRow.twitterLabel" = "twitter";
+"InviteFriendsRow.emailLabel" = "email";

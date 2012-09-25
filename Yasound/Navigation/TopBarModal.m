@@ -70,9 +70,6 @@
     [btn addTarget:self action:@selector(onCancel:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* itemCancel = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
-    // flexible space
-    UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
     //    sheet = [[Theme theme] stylesheetForKey:sheetnameBlue retainStylesheet:YES overwriteStylesheet:NO error:nil];
     //    btn = [sheet makeButton];
     
@@ -105,8 +102,32 @@
         
     }
     
+    NSString* title = nil;
+    if ([self.delegate respondsToSelector:@selector(topBarModalTitle)])
+    {
+        title = [self.delegate topBarModalTitle];
+    }
+    UIBarButtonItem* itemTitle = nil;
+    if (title)
+    {
+        itemTitle = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:nil action:nil];
+        
+    }
     
-    [self setItems:[NSArray arrayWithObjects:itemCancel, flexibleSpace, self.actionButton, nil]];
+    if (itemTitle)
+    {
+        // flexible space
+        UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem* flexibleSpace2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [self setItems:[NSArray arrayWithObjects:itemCancel, flexibleSpace, itemTitle, flexibleSpace2, self.actionButton, nil]];
+    }
+    else
+    {
+        // flexible space
+        UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [self setItems:[NSArray arrayWithObjects:itemCancel, flexibleSpace, self.actionButton, nil]];
+    }
+        
 }
 
 
