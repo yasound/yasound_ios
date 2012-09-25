@@ -36,7 +36,7 @@
 
 - (void)moveTo:(CGFloat)posY {
     
-    self.layer.frame = CGRectMake(self.frame.origin.x, posY, self.frame.size.width, self.frame.size.height);
+    self.frame = CGRectMake(self.frame.origin.x, posY, self.frame.size.width, self.frame.size.height);
     
     [CATransaction begin];
     [CATransaction setValue: (id) kCFBooleanTrue forKey: kCATransactionDisableActions];
@@ -52,7 +52,7 @@
 
 - (void)open {
 
-    [self moveTo:self.frame.size.height];
+    [self moveTo:0];
 }
 
 

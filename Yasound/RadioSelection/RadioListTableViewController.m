@@ -584,7 +584,11 @@
 - (void)openGenreSelector {
     
     self.genreSelector.status = eGenreStatusOpened;
+    
     self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height - self.genreSelector.frame.size.height);
+    
+    [self.genreSelector open];
+
 }
 
 
