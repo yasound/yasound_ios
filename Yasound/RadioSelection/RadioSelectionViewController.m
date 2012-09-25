@@ -146,6 +146,7 @@
 //    // init wheel selector and on-display screen
 //    [self.wheelSelector stickToItem:_wheelIndex silent:NO];
 
+    
 
 }
 
@@ -325,6 +326,7 @@
     
     self.contentsController = newTableview;
     self.contentsView = newTableview.view;
+    [self.view sendSubviewToBack:self.listContainer];
 
 
     

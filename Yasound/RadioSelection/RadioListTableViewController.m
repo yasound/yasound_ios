@@ -63,18 +63,19 @@
         self.friendsMode = NO;
         
 
-        if (self.showRefreshIndicator) {
-            self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:CGRectMake(0, frame.size.height - REFRESH_INDICATOR_HEIGHT, self.view.frame.size.width, REFRESH_INDICATOR_HEIGHT)];
-            [self.view addSubview:self.refreshIndicator];
-        }
-        
         if (self.showGenreSelector) {
             self.genreSelector = [[WheelSelectorGenre alloc] init];
             [self.view addSubview:self.genreSelector];
             [self.genreSelector initWithTheme:@"Genre"];
+            
         }
         
-        
+
+        if (self.showRefreshIndicator) {
+            self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:CGRectMake(0, frame.size.height - REFRESH_INDICATOR_HEIGHT, self.view.frame.size.width, REFRESH_INDICATOR_HEIGHT)];
+            [self.view addSubview:self.refreshIndicator];
+        }
+
         self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
         [self.view addSubview:self.tableView];
         self.tableView.delegate = self;
@@ -499,8 +500,11 @@
     //
     if (self.genreSelector.status != eGenreStatusOpened) {
         
-        if (_dragging && (scrollView.contentOffset.y > 0)) {
+        //NSLog(@"%.2f",scrollView.contentOffset.y );
+        
+        if (_dragging && (scrollView.contentOffset.y < 0)) {
             
+            self.genreSelector.frame = CGRectMake(self.genreSelector.frame.origin.x, 0 - scrollView.contentOffset.y - self.genreSelector.frame.size.height, self.genreSelector.frame.size.width, self.genreSelector.frame.size.height);
         }
     }
 }

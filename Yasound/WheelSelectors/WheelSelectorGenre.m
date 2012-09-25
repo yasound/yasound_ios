@@ -20,7 +20,7 @@
         assert(self.genres != nil);
         
         self.wheelDelegate = self;
-        self.frame = CGRectMake(0, 0, 320, 44);
+        self.frame = CGRectMake(0, -44, 320, 44);
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         
 //        [self initWithTheme:@"Genre"];
