@@ -218,24 +218,42 @@
 		408507ED160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
 		408507EE160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
 		408507EF160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
-		408E75DE1611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
-		408E75DF1611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
-		408E75E01611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
-		408E75E11611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
-		408E75E21611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
-		408E75E31611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
-		408E75E41611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
-		408E75E51611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
-		408E75E61611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
-		408E75E71611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
-		408E75E81611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
-		408E75E91611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
-		408E75EA1611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
-		408E75EB1611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
-		408E75EC1611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
-		408E75ED1611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
-		408E75EE1611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
-		408E75EF1611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
+		408E761E1611BE7300AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761A1611BE7300AA82F9 /* facebook_logo_65.png */; };
+		408E761F1611BE7300AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761A1611BE7300AA82F9 /* facebook_logo_65.png */; };
+		408E76201611BE7300AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761A1611BE7300AA82F9 /* facebook_logo_65.png */; };
+		408E76211611BE7300AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761A1611BE7300AA82F9 /* facebook_logo_65.png */; };
+		408E76221611BE7300AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761A1611BE7300AA82F9 /* facebook_logo_65.png */; };
+		408E76231611BE7300AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761A1611BE7300AA82F9 /* facebook_logo_65.png */; };
+		408E76241611BE7300AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761A1611BE7300AA82F9 /* facebook_logo_65.png */; };
+		408E76251611BE7300AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761A1611BE7300AA82F9 /* facebook_logo_65.png */; };
+		408E76261611BE7300AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761A1611BE7300AA82F9 /* facebook_logo_65.png */; };
+		408E76271611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761B1611BE7300AA82F9 /* facebook_logo_65@2x.png */; };
+		408E76281611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761B1611BE7300AA82F9 /* facebook_logo_65@2x.png */; };
+		408E76291611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761B1611BE7300AA82F9 /* facebook_logo_65@2x.png */; };
+		408E762A1611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761B1611BE7300AA82F9 /* facebook_logo_65@2x.png */; };
+		408E762B1611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761B1611BE7300AA82F9 /* facebook_logo_65@2x.png */; };
+		408E762C1611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761B1611BE7300AA82F9 /* facebook_logo_65@2x.png */; };
+		408E762D1611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761B1611BE7300AA82F9 /* facebook_logo_65@2x.png */; };
+		408E762E1611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761B1611BE7300AA82F9 /* facebook_logo_65@2x.png */; };
+		408E762F1611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761B1611BE7300AA82F9 /* facebook_logo_65@2x.png */; };
+		408E76301611BE7300AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761C1611BE7300AA82F9 /* twitter_logo_65.png */; };
+		408E76311611BE7300AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761C1611BE7300AA82F9 /* twitter_logo_65.png */; };
+		408E76321611BE7300AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761C1611BE7300AA82F9 /* twitter_logo_65.png */; };
+		408E76331611BE7300AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761C1611BE7300AA82F9 /* twitter_logo_65.png */; };
+		408E76341611BE7300AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761C1611BE7300AA82F9 /* twitter_logo_65.png */; };
+		408E76351611BE7300AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761C1611BE7300AA82F9 /* twitter_logo_65.png */; };
+		408E76361611BE7300AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761C1611BE7300AA82F9 /* twitter_logo_65.png */; };
+		408E76371611BE7300AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761C1611BE7300AA82F9 /* twitter_logo_65.png */; };
+		408E76381611BE7300AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761C1611BE7300AA82F9 /* twitter_logo_65.png */; };
+		408E76391611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761D1611BE7300AA82F9 /* twitter_logo_65@2x.png */; };
+		408E763A1611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761D1611BE7300AA82F9 /* twitter_logo_65@2x.png */; };
+		408E763B1611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761D1611BE7300AA82F9 /* twitter_logo_65@2x.png */; };
+		408E763C1611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761D1611BE7300AA82F9 /* twitter_logo_65@2x.png */; };
+		408E763D1611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761D1611BE7300AA82F9 /* twitter_logo_65@2x.png */; };
+		408E763E1611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761D1611BE7300AA82F9 /* twitter_logo_65@2x.png */; };
+		408E763F1611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761D1611BE7300AA82F9 /* twitter_logo_65@2x.png */; };
+		408E76401611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761D1611BE7300AA82F9 /* twitter_logo_65@2x.png */; };
+		408E76411611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E761D1611BE7300AA82F9 /* twitter_logo_65@2x.png */; };
 		40AAEC4B14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40AAEC4C14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40B40951152EFC630050D334 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
@@ -6802,8 +6820,10 @@
 		408507DB1601DEBB009DC246 /* WaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaitingView.m; path = RadioSelection/WaitingView.m; sourceTree = "<group>"; };
 		408507E5160231C9009DC246 /* PromoCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PromoCodeCell.h; path = Gifts/PromoCodeCell.h; sourceTree = "<group>"; };
 		408507E6160231C9009DC246 /* PromoCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PromoCodeCell.m; path = Gifts/PromoCodeCell.m; sourceTree = "<group>"; };
-		408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_logo_65.png; sourceTree = "<group>"; };
-		408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_logo_65.png; sourceTree = "<group>"; };
+		408E761A1611BE7300AA82F9 /* facebook_logo_65.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_logo_65.png; sourceTree = "<group>"; };
+		408E761B1611BE7300AA82F9 /* facebook_logo_65@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_logo_65@2x.png"; sourceTree = "<group>"; };
+		408E761C1611BE7300AA82F9 /* twitter_logo_65.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_logo_65.png; sourceTree = "<group>"; };
+		408E761D1611BE7300AA82F9 /* twitter_logo_65@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_logo_65@2x.png"; sourceTree = "<group>"; };
 		40AAEC4914921AE70031B39D /* YasoundDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataProvider.h; sourceTree = "<group>"; };
 		40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataProvider.m; sourceTree = "<group>"; };
 		40B40AEB152EFC630050D334 /* YasoundD LOCAL SERVER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD LOCAL SERVER.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -8140,8 +8160,10 @@
 		408E75DB1611A7F400AA82F9 /* social_logos */ = {
 			isa = PBXGroup;
 			children = (
-				408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */,
-				408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */,
+				408E761A1611BE7300AA82F9 /* facebook_logo_65.png */,
+				408E761B1611BE7300AA82F9 /* facebook_logo_65@2x.png */,
+				408E761C1611BE7300AA82F9 /* twitter_logo_65.png */,
+				408E761D1611BE7300AA82F9 /* twitter_logo_65@2x.png */,
 			);
 			path = social_logos;
 			sourceTree = "<group>";
@@ -10717,8 +10739,6 @@
 				BC325FED16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF616103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 				40319851161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
-				408E75E51611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
-				408E75EE1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E361610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC46373C161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC463745161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -10734,6 +10754,10 @@
 				BC46379F161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637AA16119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637B316119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				408E76251611BE7300AA82F9 /* facebook_logo_65.png in Resources */,
+				408E762E1611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */,
+				408E76371611BE7300AA82F9 /* twitter_logo_65.png in Resources */,
+				408E76401611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11193,8 +11217,6 @@
 				BC325FEE16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF716103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 				40319852161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
-				408E75E61611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
-				408E75EF1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E371610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC46373D161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC463746161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -11210,6 +11232,10 @@
 				BC4637A0161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637AB16119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637B416119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				408E76261611BE7300AA82F9 /* facebook_logo_65.png in Resources */,
+				408E762F1611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */,
+				408E76381611BE7300AA82F9 /* twitter_logo_65.png in Resources */,
+				408E76411611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11663,8 +11689,6 @@
 				BC325FEC16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF516103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 				40319850161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
-				408E75E41611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
-				408E75ED1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E351610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC46373B161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC463744161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -11680,6 +11704,10 @@
 				BC46379E161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637A916119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637B216119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				408E76241611BE7300AA82F9 /* facebook_logo_65.png in Resources */,
+				408E762D1611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */,
+				408E76361611BE7300AA82F9 /* twitter_logo_65.png in Resources */,
+				408E763F1611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12138,8 +12166,6 @@
 				BC325FE916103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF216103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 				4031984D161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
-				408E75E11611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
-				408E75EA1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E321610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC463738161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC463741161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -12155,6 +12181,10 @@
 				BC46379B161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637A616119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637AF16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				408E76211611BE7300AA82F9 /* facebook_logo_65.png in Resources */,
+				408E762A1611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */,
+				408E76331611BE7300AA82F9 /* twitter_logo_65.png in Resources */,
+				408E763C1611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12613,8 +12643,6 @@
 				BC325FE716103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF016103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 				4031984B161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
-				408E75DF1611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
-				408E75E81611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E301610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC463736161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC46373F161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -12630,6 +12658,10 @@
 				BC463799161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637A416119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637AD16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				408E761F1611BE7300AA82F9 /* facebook_logo_65.png in Resources */,
+				408E76281611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */,
+				408E76311611BE7300AA82F9 /* twitter_logo_65.png in Resources */,
+				408E763A1611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13088,8 +13120,6 @@
 				BC325FEB16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF416103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 				4031984F161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
-				408E75E31611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
-				408E75EC1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E341610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC46373A161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC463743161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -13105,6 +13135,10 @@
 				BC46379D161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637A816119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637B116119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				408E76231611BE7300AA82F9 /* facebook_logo_65.png in Resources */,
+				408E762C1611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */,
+				408E76351611BE7300AA82F9 /* twitter_logo_65.png in Resources */,
+				408E763E1611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13564,8 +13598,6 @@
 				BC325FE816103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF116103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 				4031984C161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
-				408E75E01611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
-				408E75E91611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E311610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC463737161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC463740161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -13581,6 +13613,10 @@
 				BC46379A161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637A516119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637AE16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				408E76201611BE7300AA82F9 /* facebook_logo_65.png in Resources */,
+				408E76291611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */,
+				408E76321611BE7300AA82F9 /* twitter_logo_65.png in Resources */,
+				408E763B1611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14039,8 +14075,6 @@
 				BC325FE616103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FEF16103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 				4031984A161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
-				408E75DE1611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
-				408E75E71611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E2F1610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC463735161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC46373E161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -14056,6 +14090,10 @@
 				BC463798161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637A316119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637AC16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				408E761E1611BE7300AA82F9 /* facebook_logo_65.png in Resources */,
+				408E76271611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */,
+				408E76301611BE7300AA82F9 /* twitter_logo_65.png in Resources */,
+				408E76391611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14514,8 +14552,6 @@
 				BC325FEA16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF316103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
 				4031984E161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
-				408E75E21611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
-				408E75EB1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E331610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC463739161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC463742161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -14531,6 +14567,10 @@
 				BC46379C161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637A716119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637B016119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				408E76221611BE7300AA82F9 /* facebook_logo_65.png in Resources */,
+				408E762B1611BE7300AA82F9 /* facebook_logo_65@2x.png in Resources */,
+				408E76341611BE7300AA82F9 /* twitter_logo_65.png in Resources */,
+				408E763D1611BE7300AA82F9 /* twitter_logo_65@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
