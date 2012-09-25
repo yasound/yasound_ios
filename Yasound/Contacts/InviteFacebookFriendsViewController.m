@@ -10,6 +10,7 @@
 #import "FacebookFriend.h"
 #import "YasoundSessionManager.h"
 #import "SessionManager.h"
+#import "FacebookFriendTableViewCell.h"
 
 @interface InviteFacebookFriendsViewController ()
 
@@ -39,6 +40,8 @@
         [_selectedFriends release];
     
     [_checkmarkImage release];
+    
+    [super dealloc];
 }
 
 - (void)viewDidLoad
@@ -80,18 +83,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString* CellIdentifier = @"Cell";
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    FacebookFriendTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.textColor = [UIColor whiteColor];
+        cell = [[FacebookFriendTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     FacebookFriend* friend = [_friends objectAtIndex:indexPath.row];
-    cell.textLabel.text = friend.name;
-//    cell.imageView.image = contact.thumbnail;
+    [cell updateWithFacebookFriend:friend];
     BOOL selected = [_selectedFriends containsObject:friend];
     [self checkmark:cell with:selected];
     
@@ -173,6 +173,7 @@
         FacebookFriend* f = [[FacebookFriend alloc] init];
         f.id = [dict valueForKey:DATA_FIELD_ID];
         f.name = [dict valueForKey:DATA_FIELD_NAME];
+        f.picture = [dict valueForKey:DATA_FIELD_PICTURE];
         
         [friends addObject:f];
     }
