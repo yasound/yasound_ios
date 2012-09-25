@@ -16,6 +16,7 @@
 #import "YasoundAppDelegate.h"
 #import "UserSettings.h"
 #import "YasoundSessionManager.h"
+#import "RootViewController.h"
 
 @implementation InviteFriendsTableViewCell
 
@@ -28,9 +29,22 @@
         
         // facebook
         {
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.facebookImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            _facebookImage = [sheet makeImage];
-            [self addSubview:_facebookImage];
+            BundleStylesheet* sheet;
+            
+            BOOL facebookEnabled = [[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK];
+            if (facebookEnabled)
+            {
+                sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.facebookImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                _facebookImage = [sheet makeImage];
+                [self addSubview:_facebookImage];
+            }
+            else
+            {
+                sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.facebookImageDisabled" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                _facebookImage = [sheet makeImage];
+                [self addSubview:_facebookImage];
+            }
+            
             
             // draw circle mask
             _facebookImage.layer.masksToBounds = YES;
@@ -40,21 +54,37 @@
             UIButton* mask = [sheet makeButton];
             [mask addTarget:self action:@selector(onFacebookButtonActivated:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:mask];
+            if (!facebookEnabled)
+            {
+                mask.enabled = NO;
+            }
             
             sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.facebookLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UILabel* label = [sheet makeLabel];
             label.text = NSLocalizedString(@"InviteFriendsRow.facebookLabel", nil);
             [self addSubview:label];
             
-            BOOL facebookEnabled = [[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK];
-            mask.enabled = facebookEnabled;
+            
+            
         }
         
         // twitter
         {
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.twitterImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            _twitterImage = [sheet makeImage];
-            [self addSubview:_twitterImage];
+            BundleStylesheet* sheet;
+            BOOL twitterEnabled = [[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER];
+            
+            if (twitterEnabled)
+            {
+                sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.twitterImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                _twitterImage = [sheet makeImage];
+                [self addSubview:_twitterImage];
+            }
+            else
+            {
+                sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.twitterImageDisabled" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                _twitterImage = [sheet makeImage];
+                [self addSubview:_twitterImage];
+            }
             
             // draw circle mask
             _twitterImage.layer.masksToBounds = YES;
@@ -70,8 +100,10 @@
             label.text = NSLocalizedString(@"InviteFriendsRow.twitterLabel", nil);
             [self addSubview:label];
             
-            BOOL twitterEnabled = [[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER];
-            mask.enabled = twitterEnabled;
+            if (!twitterEnabled)
+            {
+                mask.enabled = NO;
+            }
         }
         
         // email
@@ -105,29 +137,21 @@
 }
 
 - (void)onFacebookButtonActivated:(id)sender
-{
-    DLog(@"Facebook button clicked");
-    
-    InviteFacebookFriendsViewController* controller = [[InviteFacebookFriendsViewController alloc] init];
-    [APPDELEGATE.navigationController presentModalViewController:controller animated:YES];
-    [controller release];
+{    
+    NSNumber* animated = [NSNumber numberWithBool:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_INVITE_FACEBOOK object:animated];
 }
 
 - (void)onTwitterButtonActivated:(id)sender
 {
-    DLog(@"Twitter button clicked");
-    
-    InviteTwitterFriendsViewController* controller = [[InviteTwitterFriendsViewController alloc] init];
-    [APPDELEGATE.navigationController presentModalViewController:controller animated:YES];
-    [controller release];
+    NSNumber* animated = [NSNumber numberWithBool:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_INVITE_TWITTER object:animated];
 }
 
 - (void)onEmailButtonActivated:(id)sender
 {
-    DLog(@"Email button clicked");    
-    InviteContactsViewController* controller = [[InviteContactsViewController alloc] init];
-    [APPDELEGATE.navigationController presentModalViewController:controller animated:YES];
-    [controller release];
+    NSNumber* animated = [NSNumber numberWithBool:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_INVITE_CONTACTS object:animated];
 }
 
 

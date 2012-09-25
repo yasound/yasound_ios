@@ -31,6 +31,10 @@
 #import "WebPageViewController.h"
 #import "Version.h"
 #import "UIDevice+Resolutions.h"
+#import "InviteContactsViewController.h"
+#import "InviteFacebookFriendsViewController.h"
+#import "InviteTwitterFriendsViewController.h"
+
 
 
 @class CreateRadioViewController;
@@ -196,6 +200,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoRadioProgramming:) name:NOTIF_GOTO_RADIO_PROGRAMMING object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoRadioStats:) name:NOTIF_GOTO_RADIO_STATS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoCreateRadio:) name:NOTIF_GOTO_CREATE_RADIO object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifInviteContacts:) name:NOTIF_INVITE_CONTACTS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifInviteFacebook:) name:NOTIF_INVITE_FACEBOOK object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifInviteTwitter:) name:NOTIF_INVITE_TWITTER object:nil];
     
 
 
@@ -866,6 +874,63 @@
     MyAccountViewController* view = [[MyAccountViewController alloc] initWithNibName:@"MyAccountViewController" bundle:nil];
     [APPDELEGATE.navigationController pushViewController:view animated:YES];
     [view release];
+}
+
+- (void)onNotifInviteContacts:(NSNotification*)notification
+{
+    if (![YasoundSessionManager main].registered)
+    {
+        NSNumber* animated = [NSNumber numberWithBool:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:animated];
+        return ;
+    }
+    
+    InviteContactsViewController* controller = [[InviteContactsViewController alloc] init];
+    [APPDELEGATE.navigationController presentModalViewController:controller animated:YES];
+    [controller release];
+}
+
+- (void)onNotifInviteFacebook:(NSNotification*)notification
+{
+    if (![YasoundSessionManager main].registered)
+    {
+        NSNumber* animated = [NSNumber numberWithBool:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:animated];
+        return ;
+    }
+    BOOL facebookEnabled = [[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK];
+    if (!facebookEnabled)
+    {
+        NSNumber* animated = [NSNumber numberWithBool:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_FACEBOOK_ASSOCIATION object:animated];
+        return;
+    }
+    
+    InviteFacebookFriendsViewController* controller = [[InviteFacebookFriendsViewController alloc] init];
+    [APPDELEGATE.navigationController presentModalViewController:controller animated:YES];
+    [controller release];
+
+}
+
+- (void)onNotifInviteTwitter:(NSNotification*)notification
+{
+    if (![YasoundSessionManager main].registered)
+    {
+        NSNumber* animated = [NSNumber numberWithBool:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:animated];
+        return ;
+    }
+    BOOL twitterEnabled = [[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER];
+    if (!twitterEnabled)
+    {
+        NSNumber* animated = [NSNumber numberWithBool:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_TWITTER_ASSOCIATION object:animated];
+        return;
+    }
+    
+    InviteTwitterFriendsViewController* controller = [[InviteTwitterFriendsViewController alloc] init];
+    [APPDELEGATE.navigationController presentModalViewController:controller animated:YES];
+    [controller release];
 }
 
 

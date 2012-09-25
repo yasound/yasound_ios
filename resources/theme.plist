@@ -3692,6 +3692,17 @@
 					<key>name</key>
 					<string>facebook_logo_65</string>
 				</dict>
+				<key>facebookImageDisabled</key>
+				<dict>
+					<key>x</key>
+					<integer>20</integer>
+					<key>y</key>
+					<integer>2</integer>
+					<key>type</key>
+					<string>png</string>
+					<key>name</key>
+					<string>facebook_logo_65_disabled</string>
+				</dict>
 				<key>twitterImage</key>
 				<dict>
 					<key>x</key>
@@ -3702,6 +3713,17 @@
 					<string>png</string>
 					<key>name</key>
 					<string>twitter_logo_65</string>
+				</dict>
+				<key>twitterImageDisabled</key>
+				<dict>
+					<key>x</key>
+					<integer>127</integer>
+					<key>y</key>
+					<integer>2</integer>
+					<key>type</key>
+					<string>png</string>
+					<key>name</key>
+					<string>twitter_logo_65_disabled</string>
 				</dict>
 				<key>emailImage</key>
 				<dict>
