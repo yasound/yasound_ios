@@ -464,8 +464,8 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    if (!self.showRefreshIndicator)
-        return;
+//    if (!self.showRefreshIndicator)
+//        return;
     
     //
     // Refresh Indicator
@@ -498,12 +498,16 @@
     //
     // Genre Selector
     //
-    if (self.genreSelector.status != eGenreStatusOpened) {
+    if (self.genreSelector.status == eGenreStatusClosed) {
         
-        //NSLog(@"%.2f",scrollView.contentOffset.y );
+//        NSLog(@"%.2f < %.2f",scrollView.contentOffset.y, self.genreSelector.frame.size.height );
         
-        if (_dragging && (scrollView.contentOffset.y < 0)) {
-            
+        if (_dragging && (scrollView.contentOffset.y < (0-self.genreSelector.frame.size.height))) {
+            self.genreSelector.status = eGenreStatusPulled;
+        }
+        else
+        
+            if (_dragging && (scrollView.contentOffset.y < 0)) {
             CGFloat posY = 0 - scrollView.contentOffset.y - self.genreSelector.frame.size.height;
             [self.genreSelector moveTo:posY];
         }
@@ -523,33 +527,38 @@
     
     _dragging = NO;
     
-    if (!self.showRefreshIndicator)
-        return;
+    if (self.showRefreshIndicator) {
 
-    if (self.refreshIndicator.status == eStatusWaitingToClose) {
-        [self unfreeze];
-    }
-    
-    else if ((self.refreshIndicator.status == eStatusOpened) && !_loadingNextPage) {
-
-        [self.refreshIndicator openedAndRelease];
-        
-        [self freeze];
-        
-        
-        // request next page to the server
-        _loadingNextPage = [self.listDelegate listRequestNextPage];
-        
-        if (!_loadingNextPage)
+        if (self.refreshIndicator.status == eStatusWaitingToClose) {
             [self unfreeze];
+        }
+        
+        else if ((self.refreshIndicator.status == eStatusOpened) && !_loadingNextPage) {
 
+            [self.refreshIndicator openedAndRelease];
+            
+            [self freeze];
+            
+            
+            // request next page to the server
+            _loadingNextPage = [self.listDelegate listRequestNextPage];
+            
+            if (!_loadingNextPage)
+                [self unfreeze];
+
+        }
+        
     }
 
-//    else if ((self.refreshIndicator.status == eStatusOpened) && _loadingNextPage) {
-//        [self freeze];
-//    }
-    
-//    [self.tableView reloadData];    
+
+    if (self.showGenreSelector) {
+        
+        if (self.genreSelector.status == eGenreStatusPulled) {
+            self.genreSelector.status = eGenreStatusOpened;
+            self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height - self.genreSelector.frame.size.height);
+        }
+    }
+
 }
 
 

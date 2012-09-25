@@ -13,6 +13,7 @@
 typedef enum {
     
     eGenreStatusClosed = 0,
+    eGenreStatusPulled,
     eGenreStatusOpened
     
 } WheelSelectorGenreStatus;
