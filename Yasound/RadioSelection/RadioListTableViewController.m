@@ -504,7 +504,8 @@
         
         if (_dragging && (scrollView.contentOffset.y < 0)) {
             
-            self.genreSelector.frame = CGRectMake(self.genreSelector.frame.origin.x, 0 - scrollView.contentOffset.y - self.genreSelector.frame.size.height, self.genreSelector.frame.size.width, self.genreSelector.frame.size.height);
+            CGFloat posY = 0 - scrollView.contentOffset.y - self.genreSelector.frame.size.height;
+            [self.genreSelector moveTo:posY];
         }
     }
 }

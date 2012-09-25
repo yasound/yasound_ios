@@ -23,4 +23,6 @@ typedef enum {
 @property (nonatomic) WheelSelectorGenreStatus status;
 @property (nonatomic, retain) NSArray* genres;
 
+- (void)moveTo:(CGFloat)posY;
+
 @end

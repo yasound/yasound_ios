@@ -326,6 +326,8 @@
     
     self.contentsController = newTableview;
     self.contentsView = newTableview.view;
+    
+    // we want the genre selector goes behind the wheel selector : make sure the views are stacked in the right way to do that
     [self.view sendSubviewToBack:self.listContainer];
 
 

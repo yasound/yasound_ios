@@ -37,6 +37,14 @@
 @property (nonatomic) BOOL tapRegistered;
 @property (nonatomic) NSInteger currentIndex;
 
+@property (nonatomic, retain) CALayer* indicatorLayer;
+//@property (nonatomic, retain) UIImage* indicatorLayer;
+@property (nonatomic) CGPoint indicatorOffset;
+
+@property (nonatomic, retain) CALayer* shadowLayer;
+//@property (nonatomic, retain) CALayer* shadowLayer;
+@property (nonatomic) CGPoint shadowOffset;
+
 - (void)initWithTheme:(NSString*)theme;
 
 - (void)stickToItem:(NSInteger)itemId silent:(BOOL)silent;

@@ -32,6 +32,32 @@
 
 
 
+- (void)moveTo:(CGFloat)posY {
+    
+//    self.frame = CGRectMake(self.frame.origin.x, posY, self.frame.size.width, self.frame.size.height);
+    self.layer.frame = CGRectMake(self.frame.origin.x, posY, self.frame.size.width, self.frame.size.height);
+//    self.shadowLayer.frame = CGRectMake(self.shadowLayer.frame.origin.x, posY + self.shadowOffsetY, self.shadowLayer.frame.size.width, self.shadowLayer.frame.size.height);
+//    self.indicatorLayer.frame = CGRectMake(self.indicatorLayer.frame.origin.x, posY + self.indicatorOffsetY, self.indicatorLayer.frame.size.width, self.indicatorLayer.frame.size.height);
+//    self.shadowLayer.position = CGPointMake(self.shadowLayer.bounds.origin.x, posY + self.shadowOffsetY);
+//    self.indicatorLayer.position = CGPointMake(self.indicatorLayer.bounds.origin.x, posY + self.indicatorOffsetY);
+    
+    [CATransaction begin];
+    [CATransaction setValue: (id) kCFBooleanTrue forKey: kCATransactionDisableActions];
+    
+//    NSLog(@"%.2f", self.shadowOffset.x);
+    self.shadowLayer.anchorPoint = CGPointMake(0, 0);
+    self.indicatorLayer.anchorPoint = CGPointMake(0, 0);
+    
+    self.shadowLayer.position = CGPointMake(self.shadowOffset.x, posY + self.shadowOffset.y);
+    self.indicatorLayer.position = CGPointMake(self.indicatorOffset.x, posY + self.indicatorOffset.y);
+    [CATransaction commit];
+    
+//    [self.shadowLayer setNeedsDisplay];
+//    [self.indicatorLayer setNeedsDisplay];
+}
+
+
+
 
 
 #pragma mark - WheelSelectorDelegate
