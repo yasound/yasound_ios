@@ -1133,14 +1133,14 @@
 				<key>shadow</key>
 				<dict>
 					<key>name</key>
-					<string>wheelSelectorGenreShadow</string>
+					<string>wheelGenreSelectorShadow</string>
 					<key>type</key>
 					<string>png</string>
 				</dict>
 				<key>indicator</key>
 				<dict>
 					<key>name</key>
-					<string>wheelSelectorGenreIndicator</string>
+					<string>wheelGenreSelectorIndicator</string>
 					<key>type</key>
 					<string>png</string>
 				</dict>

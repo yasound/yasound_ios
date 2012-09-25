@@ -1041,17 +1041,17 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="myRadiosDelete.png">{16, 16}</string>
-			<string key="myRadiosMessage.png">{16, 16}</string>
-			<string key="myRadiosMetricBackground.png">{16, 16}</string>
-			<string key="myRadiosProgramming.png">{16, 16}</string>
-			<string key="myRadiosSeparator.png">{16, 16}</string>
-			<string key="myRadiosSettings.png">{16, 16}</string>
-			<string key="myRadiosStats.png">{16, 16}</string>
-			<string key="radioListListenersIcon.png">{16, 16}</string>
-			<string key="radioListMaskHighlightedSize2.png">{16, 16}</string>
-			<string key="radioListMaskSize2.png">{16, 16}</string>
-			<string key="radioListSubscribersIcon.png">{16, 16}</string>
+			<string key="myRadiosDelete.png">{64, 32}</string>
+			<string key="myRadiosMessage.png">{64, 42}</string>
+			<string key="myRadiosMetricBackground.png">{31, 31}</string>
+			<string key="myRadiosProgramming.png">{64, 42}</string>
+			<string key="myRadiosSeparator.png">{320, 2}</string>
+			<string key="myRadiosSettings.png">{64, 42}</string>
+			<string key="myRadiosStats.png">{64, 42}</string>
+			<string key="radioListListenersIcon.png">{14, 14}</string>
+			<string key="radioListMaskHighlightedSize2.png">{156, 157}</string>
+			<string key="radioListMaskSize2.png">{156, 157}</string>
+			<string key="radioListSubscribersIcon.png">{14, 14}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1926</string>
 	</data>

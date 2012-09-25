@@ -39,7 +39,7 @@
 
 #define NB_ROWS_SECTION_INVITE_FRIENDS 1
 
-- (id)initWithFrame:(CGRect)frame radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator
+- (id)initWithFrame:(CGRect)frame radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator showGenreSelector:(BOOL)showGenreSelector
 {
     self = [super init];
     if (self)
@@ -47,6 +47,7 @@
         _dragging = NO;
         
         self.showRefreshIndicator = showRefreshIndicator;
+        self.showGenreSelector = showGenreSelector;
         
         self.view.frame = frame;
         self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
@@ -65,6 +66,12 @@
         if (self.showRefreshIndicator) {
             self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:CGRectMake(0, frame.size.height - REFRESH_INDICATOR_HEIGHT, self.view.frame.size.width, REFRESH_INDICATOR_HEIGHT)];
             [self.view addSubview:self.refreshIndicator];
+        }
+        
+        if (self.showGenreSelector) {
+            self.genreSelector = [[WheelSelectorGenre alloc] init];
+            [self.view addSubview:self.genreSelector];
+            [self.genreSelector initWithTheme:@"Genre"];
         }
         
         
@@ -459,32 +466,42 @@
     if (!self.showRefreshIndicator)
         return;
     
-    if (self.refreshIndicator.status == eStatusOpened)
-        return;
+    //
+    // Refresh Indicator
+    //
+    if (self.refreshIndicator.status != eStatusOpened) {
 
-    float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+        float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
 
-    if (bottomEdge < (scrollView.contentSize.height + self.refreshIndicator.height/2.f)) {
+        // close it
+        if (bottomEdge < (scrollView.contentSize.height + self.refreshIndicator.height/2.f)) {
+            
+            if (self.refreshIndicator.status == eStatusPulled)
+                [self.refreshIndicator close];
+        }
         
-        if (self.refreshIndicator.status == eStatusPulled)
-            [self.refreshIndicator close];
-//        else if (self.refreshIndicator.status == eStatusOpened)
-//            [self.refreshIndicator unfree];
+        // pull it out
+        else if (_dragging && (self.refreshIndicator.status == eStatusClosed) && (bottomEdge >= (scrollView.contentSize.height + self.refreshIndicator.height/2.f))) {
+            
+            [self.refreshIndicator pull];
+        }
+
+        // open it entirely
+        else if (_dragging && (self.refreshIndicator.status == eStatusPulled) &&  (bottomEdge >= (scrollView.contentSize.height + self.refreshIndicator.height))) {
+            
+            [self.refreshIndicator open];
+        }
     }
     
     
-    else if (_dragging && (self.refreshIndicator.status == eStatusClosed) && (bottomEdge >= (scrollView.contentSize.height + self.refreshIndicator.height/2.f))) {
+    //
+    // Genre Selector
+    //
+    if (self.genreSelector.status != eGenreStatusOpened) {
         
-        [self.refreshIndicator pull];
-    }
-
-    
-    else if (_dragging && (self.refreshIndicator.status == eStatusPulled) &&  (bottomEdge >= (scrollView.contentSize.height + self.refreshIndicator.height))) {
-        
-        [self.refreshIndicator open];
-        
-//        // request next page to the server
-//        _loadingNextPage = [self.listDelegate listRequestNextPage];
+        if (_dragging && (scrollView.contentOffset.y > 0)) {
+            
+        }
     }
 }
 
@@ -493,8 +510,6 @@
 
     _dragging = YES;
 
-    if (!self.showRefreshIndicator)
-        return;
 }
 
 

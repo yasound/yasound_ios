@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Radio.h"
 #import "RefreshIndicator.h"
+#import "WheelSelectorGenre.h"
 
 @protocol RadioListDelegate <NSObject>
 - (void)radioListDidSelect:(Radio*)radio;
@@ -39,8 +40,11 @@
 @property (nonatomic, retain) RefreshIndicator* refreshIndicator;
 @property (nonatomic) BOOL showRefreshIndicator;
 
+@property (nonatomic, retain) WheelSelectorGenre* genreSelector;
+@property (nonatomic) BOOL showGenreSelector;
 
-- (id)initWithFrame:(CGRect)frame radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator;
+
+- (id)initWithFrame:(CGRect)frame radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator showGenreSelector:(BOOL)showGenreSelector;
 - (void)setRadios:(NSArray*)radios;
 - (void)setFriends:(NSArray*)friends;
 
