@@ -491,9 +491,15 @@
 #ifdef TEST_FAKE
     return;
 #endif
+    if (self.locked)
+        return;
     
     // close the refresh indicator
     //[contentsController unfreeze];
+    if (![self.contentsController respondsToSelector:@selector(appendRadios:)])
+    {
+        return;
+    }
     
     
     if (!success)
@@ -501,7 +507,7 @@
         DLog(@"can't get radios next page");
         
         [self.contentsController appendRadios:nil];
-
+        
         return;
     }
     
