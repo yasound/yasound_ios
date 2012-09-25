@@ -21,6 +21,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Version.h"
 #import "MyRadiosViewController.h"
+#import "UIDevice+Resolutions.h"
+
+
 
 @implementation RadioSelectionViewController
 
@@ -125,6 +128,19 @@
     UISwipeGestureRecognizer* swipeLeft = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeLeft)] autorelease];
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:swipeLeft];
+    
+
+    // temporarly bug fix for iPhone 5 layout to be right
+//    CGRect frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
+//    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithFrame:frame radios:nil withContentsHeight:self.listContainer.frame.size.height showRefreshIndicator:YES];
+//    newTableview.listDelegate = self;
+//    [self.listContainer addSubview:newTableview.view];
+//    
+//    self.contentsController = newTableview;
+//    self.contentsView = newTableview.view;
+    //////////////
+    
+
 
     //don't do it here, there's a delegate for that
 //    // init wheel selector and on-display screen
@@ -248,6 +264,8 @@
 }
 
 
+
+
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
 {    
 
@@ -256,6 +274,7 @@
         [self.contentsController release];
         self.contentsController = nil;
     }
+    [[YasoundDataProvider main] cancelRequestsForKey:@"radios"];
     
     NSString* url = nil;
     NSString* genre = nil;
@@ -273,10 +292,13 @@
         //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MYRADIOS object:nil userInfo:nil];
         
         MyRadiosViewController* view = [[MyRadiosViewController alloc] initWithNibName:@"MyRadiosViewController" bundle:nil];
-        view.view.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
+        view.view.autoresizesSubviews = YES;
+//        view.view.autoresizingMask = UIViewAutoresizingFlexibleWidth || UIViewAutoresizingFlexibleHeight;
+//        view.view.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
         [self.listContainer addSubview:view.view];
         self.contentsController = view;
         self.contentsView = view.view;
+        
         
         
         return;
@@ -301,7 +323,7 @@
     self.contentsController = newTableview;
     self.contentsView = newTableview.view;
 
-    
+
     
     
     if (itemIndex == WheelIdFriends)
@@ -377,6 +399,7 @@
     
     [self.contentsController setFriends:self.friends];
 
+//    [self fix4inchLayout];
 
 //    for (User* friend in friends)
 //    {
@@ -457,6 +480,8 @@
 
     // store next page url
     _nextPageUrl = radioContainer.meta.next;
+    
+//    [self fix4inchLayout];
 }
 
 

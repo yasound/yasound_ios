@@ -11,6 +11,7 @@
 #import "UserListTableViewCell.h"
 #import "InviteFriendsTableViewCell.h"
 
+
 @interface RadioListTableViewController ()
 
 @end
@@ -57,6 +58,7 @@
         self.delay = 0.15;
         
         self.radios = radios;
+        self.radiosPreviousCount = radios.count;
         self.friendsMode = NO;
         
 
@@ -83,6 +85,8 @@
 {
     _radios = radios;
     [_radios retain];
+    
+    self.radiosPreviousCount = radios.count;
     
     [self.tableView reloadData];
 }
@@ -118,6 +122,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -147,7 +152,6 @@
 //    //    [self.view sendSubviewToBack:self.nextPageView];
 //    //    [self.view sendSubviewToBack:self.tableView];
 //    self.nextPageView.hidden = NO;
-    
 }
 
 
@@ -155,28 +159,30 @@
 //    
 //}
 
--(void) drawCABackgroundLayer: (CALayer*) layer inContext: (CGContextRef) context
-{
-    UIGraphicsPushContext(context);
-    
-    CGRect contentRect = [layer bounds];
-    
-//    UIImage *bgImage = [[ImageCacheController sharedImageCache] imageFromCache: GENERIC_BGIMAGE_FILENAME];
+//-(void) drawCABackgroundLayer: (CALayer*) layer inContext: (CGContextRef) context
+//{
+//    UIGraphicsPushContext(context);
 //    
-//    [bgImage drawInRect: CGRectMake(contentRect.origin.x, contentRect.origin.y, contentRect.size.width, contentRect.size.height)];
-    
-//    [self.nextPageView draw]
-    
-    UIActivityIndicatorView* indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [indicatorView setFrame:CGRectMake(0, 0, 16, 16)];
-    [indicatorView setHidesWhenStopped:YES];
-    [indicatorView startAnimating];
-    [self.view addSubview:indicatorView];
-    
-    UIGraphicsPopContext();
-}
-//- (void)updateNextPageView {
+//    CGRect contentRect = [layer bounds];
 //    
+////    UIImage *bgImage = [[ImageCacheController sharedImageCache] imageFromCache: GENERIC_BGIMAGE_FILENAME];
+////    
+////    [bgImage drawInRect: CGRectMake(contentRect.origin.x, contentRect.origin.y, contentRect.size.width, contentRect.size.height)];
+//    
+////    [self.nextPageView draw]
+//    
+//    NSLog(@"DEBUG");
+//    
+//    UIActivityIndicatorView* indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    [indicatorView setFrame:CGRectMake(0, 0, 16, 16)];
+//    [indicatorView setHidesWhenStopped:YES];
+//    [indicatorView startAnimating];
+//    [self.view addSubview:indicatorView];
+//    
+//    UIGraphicsPopContext();
+//}
+////- (void)updateNextPageView {
+//
 //    self.nextPageView.frame = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 88)];
 //}
 
@@ -227,11 +233,19 @@
     if (self.radios == nil)
         return 0;
     
-    NSInteger nbRows = self.radios.count / 2;
-    if ((self.radios.count % 2) != 0)
+    NSInteger nbRows = [self numberOfRowsFromRadios:self.radios.count];
+    return nbRows;
+}
+
+
+- (NSInteger)numberOfRowsFromRadios:(NSInteger)radiosCount {
+    
+    NSInteger nbRows = radiosCount / 2;
+    if ((radiosCount % 2) != 0)
         nbRows++;
     return nbRows;
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -301,7 +315,7 @@
         if (self.delayTokens > 0)
             delay = self.delay;
         
-        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellRadioIdentifier radios:radiosForRow delay:delay target:self action:@selector(onRadioClicked:)];
+        cell = [[[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellRadioIdentifier radios:radiosForRow delay:delay target:self action:@selector(onRadioClicked:)] autorelease];
         
         self.delayTokens--;
         self.delay += 0.3;
@@ -444,6 +458,9 @@
     
     if (!self.showRefreshIndicator)
         return;
+    
+    if (self.refreshIndicator.status == eStatusOpened)
+        return;
 
     float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
 
@@ -585,8 +602,6 @@
     
     self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height - self.refreshIndicator.height);
     [UIView commitAnimations];
-//    self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y - self.refreshIndicator.height);
-    
     
 }
 
@@ -597,6 +612,7 @@
         return;
 
     [self.tableView reloadData];
+    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y + self.tableView.frame.size.height) animated:YES];
 }
 
 

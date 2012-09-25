@@ -374,12 +374,18 @@
 
 - (void)getObjectsWithRequest:(ASIHTTPRequest*)req class:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData
 {
+    [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:userData withKey:nil];
+}
+
+- (void)getObjectsWithRequest:(ASIHTTPRequest*)req class:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withKey:(NSString*)key
+{
     if (!req)
         [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
-    
+        
     NSMutableDictionary* userinfo = [[NSMutableDictionary alloc] init];
     
     [userinfo setValue:target forKey:@"target"];
+    [userinfo setValue:key forKey:@"key"];
     [userinfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
     [userinfo setValue:@"GET_ALL" forKey:@"method"];
     [userinfo setValue:objectClass forKey:@"objectClass"];
@@ -551,6 +557,21 @@
 //    NSDictionary* fuckingFinalUserData = [NSDictionary dictionaryWithDictionary:newUserData];
     //LBDEBUG
     [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:newUserData];
+    return req;
+}
+
+- (ASIHTTPRequest*)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute withParams:(NSArray*)params notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth withKey:(NSString*)key
+{
+    ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute withUrlParams:params withAuth:auth];
+    
+    NSMutableDictionary* newUserData = userData;
+    if (userData == nil)
+    {
+        newUserData = [NSMutableDictionary dictionary];
+        [newUserData setObject:req forKey:@"request"];
+    }
+    
+    [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:newUserData withKey:key];
     return req;
 }
 

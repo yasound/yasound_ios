@@ -30,8 +30,9 @@
 @synthesize metric1;
 @synthesize metric2;
 @synthesize metric1sub;
-@synthesize metric2sub;
-@synthesize buttonSettings;
+//@synthesize metric2sub;
+//@synthesize buttonSettings;
+@synthesize metric2Background;
 @synthesize buttonDelete;
 
 
@@ -89,8 +90,8 @@
 - (void)awakeFromNib
 {
         self.metric1sub.text = NSLocalizedString(@"MyRadios.metric1.sublabel", nil);
-        self.metric2sub.text = NSLocalizedString(@"MyRadios.metric2.sublabel", nil);
-     
+//        self.metric2sub.text = NSLocalizedString(@"MyRadios.metric2.sublabel", nil);
+    
         
         UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight)] autorelease];
         swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
@@ -124,7 +125,18 @@
 
     // metrics
     self.metric1.text = [self.radio.overall_listening_time stringValue];
-    self.metric2.text = [self.radio.new_wall_messages_count stringValue];
+    
+    NSInteger metric2Int = [self.radio.new_wall_messages_count integerValue];
+    if (metric2Int == 0) {
+        self.metric2.text = @"0";
+        self.metric2.hidden = YES;
+        self.metric2Background.hidden = YES;
+    }
+    else {
+        self.metric2.text = [self.radio.new_wall_messages_count stringValue];
+        self.metric2.hidden = NO;
+        self.metric2Background.hidden = NO;
+    }
     
     if (editing)
         [self activateEditModeAnimated:NO];
@@ -172,43 +184,56 @@
 
 - (IBAction)onSettingsClicked:(id)sender
 {
-    DLog(@"settings clicked for radio : %@", [self.radio toString]);
+//    DLog(@"settings clicked for radio : %@", [self.radio toString]);
+//    
+//
+//    _sheetTools = [[UIActionSheet alloc] initWithTitle:self.radio.name delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Radio.sheet.button.programming", nil), NSLocalizedString(@"Radio.sheet.button.broadcast", nil), NSLocalizedString(@"Radio.sheet.button.settings", nil), nil];
+//    _sheetTools.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+//    [_sheetTools showInView:self.superview];
+//    [_sheetTools release];
+    [self.delegate myRadioRequestedSettings:self.radio];
+}
+
+
+- (IBAction)onProgrammingClicked:(id)sender {
     
+    [self.delegate myRadioRequestedProgramming:self.radio];
+}
 
-    _sheetTools = [[UIActionSheet alloc] initWithTitle:self.radio.name delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Radio.sheet.button.programming", nil), NSLocalizedString(@"Radio.sheet.button.broadcast", nil), NSLocalizedString(@"Radio.sheet.button.settings", nil), nil];
-    _sheetTools.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-    [_sheetTools showInView:self.superview];
-    [_sheetTools release];
+
+- (IBAction)onMessageClicked:(id)sender {
+    
+    [self.delegate myRadioRequestedBroadcast:self.radio];
 }
 
 
 
 
 
-#pragma mark - ActionSheet Delegate
-
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (actionSheet == _sheetTools)
-    {
-        if (buttonIndex == 0)
-        {
-            [self.delegate myRadioRequestedProgramming:self.radio];
-            return;
-        }
-        else if (buttonIndex == 1)
-        {
-            [self.delegate myRadioRequestedBroadcast:self.radio];
-            return;
-        }
-        else if (buttonIndex == 2)
-        {
-            [self.delegate myRadioRequestedSettings:self.radio];
-            return;
-        }
-    }
-}
+//#pragma mark - ActionSheet Delegate
+//
+//
+//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if (actionSheet == _sheetTools)
+//    {
+//        if (buttonIndex == 0)
+//        {
+//            [self.delegate myRadioRequestedProgramming:self.radio];
+//            return;
+//        }
+//        else if (buttonIndex == 1)
+//        {
+//            [self.delegate myRadioRequestedBroadcast:self.radio];
+//            return;
+//        }
+//        else if (buttonIndex == 2)
+//        {
+//            [self.delegate myRadioRequestedSettings:self.radio];
+//            return;
+//        }
+//    }
+//}
 
     
 

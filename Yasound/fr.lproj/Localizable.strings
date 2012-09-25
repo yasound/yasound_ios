@@ -473,7 +473,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "GoTo_CurrentUser_Radio_OkButton_Title" = "Oui";
 "GoTo_CurrentUser_Radio_Unavailable_OkButton_Title" = "OK";
 
-"SearchBar_Placeholder" = "utilisateur, radio, artiste ou titre";
+"SearchBar_Placeholder" = "radio, artiste ou titre";
 
 "GoTo_FriendRadio_Title" = "Rejoindre ?";
 "GoTo_FriendRadio_Label" = "Sa radio";
@@ -723,6 +723,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "RefreshIndicator.label.pulled" = "Tirer pour plus de radios...";
 "RefreshIndicator.label.opened" = "Relâcher pour plus de radios...";
+"RefreshIndicator.label.openedAndRelease" = "Chargement...";
 
 "ContactListPickerTitle" = "Inviter des amis";
 "ContactListPicker.SendButton" = "Envoyer";

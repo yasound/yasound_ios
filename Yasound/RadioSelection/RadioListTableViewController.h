@@ -29,6 +29,8 @@
 @property (nonatomic, retain) UITableView* tableView;
 
 @property (nonatomic, retain) NSArray* radios;
+@property (nonatomic) NSInteger radiosPreviousCount;
+
 @property (nonatomic, retain) NSArray* friends;
 @property (nonatomic) BOOL friendsMode;
 @property (nonatomic) NSInteger delayTokens;

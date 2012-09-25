@@ -47,12 +47,20 @@
 
 - (void)pull {
     
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RefreshIndicator.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.label.text = NSLocalizedString(@"RefreshIndicator.label.pulled", nil);
+    self.label.frame = sheet.frame;
 
     self.status = eStatusPulled;
     self.hidden = NO;
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RefreshIndicator.icon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    if (self.icon != nil) {
+        [self.icon removeFromSuperview];
+        [self.icon release];
+        self.icon = nil;
+    }
+    
+    sheet = [[Theme theme] stylesheetForKey:@"RefreshIndicator.icon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.icon = [sheet makeImage];
     [self addSubview:self.icon];
 
@@ -61,7 +69,10 @@
 
 
 - (void)open {
-    
+
+    if (self.status == eStatusOpened)
+        return;
+
     self.label.text = NSLocalizedString(@"RefreshIndicator.label.opened", nil);
     
     self.status = eStatusOpened;
@@ -78,15 +89,25 @@
 
 - (void)openedAndRelease {
     
-    [self.icon removeFromSuperview];
-    [self.icon release];
-
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RefreshIndicator.icon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    if (self.icon != nil) {
+        [self.icon removeFromSuperview];
+        [self.icon release];
+        self.icon = nil;
+    }
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RefreshIndicator.iconLoading" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.indicator.frame = sheet.frame;
     [self addSubview:self.indicator];
     
+    self.label.text = NSLocalizedString(@"RefreshIndicator.label.openedAndRelease", nil);
+
+    sheet = [[Theme theme] stylesheetForKey:@"RefreshIndicator.labelLoading" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.label.frame = sheet.frame;
+
     [self.indicator startAnimating];
+    
+
 
 }
 
@@ -96,8 +117,11 @@
     self.hidden = YES;
     NSLog(@"     refresh close");
     
-    [self.indicator stopAnimating];
-    [self.indicator release];
+    if (self.indicator != nil) {
+        [self.indicator stopAnimating];
+        [self.indicator release];
+        self.indicator = nil;
+    }
 }
 
 
@@ -109,6 +133,7 @@
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     
     self.icon.transform = CGAffineTransformMakeRotation(M_PI);
+//    [anim release];
 }
 
 

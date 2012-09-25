@@ -973,22 +973,6 @@
 		BC03C3FC15E241480017388D /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
 		BC03C3FD15E241480017388D /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
 		BC03C3FE15E241480017388D /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
-		BC03C40115E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
-		BC03C40215E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
-		BC03C40315E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
-		BC03C40415E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
-		BC03C40515E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
-		BC03C40615E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
-		BC03C40715E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
-		BC03C40815E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
-		BC03C40915E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
-		BC03C40A15E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
-		BC03C40B15E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
-		BC03C40C15E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
-		BC03C40D15E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
-		BC03C40E15E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
-		BC03C40F15E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
-		BC03C41015E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
 		BC03C41315E2BDA00017388D /* commonAvatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */; };
 		BC03C41415E2BDA00017388D /* commonAvatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */; };
 		BC03C41515E2BDA00017388D /* commonAvatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */; };
@@ -2000,6 +1984,132 @@
 		BC436933156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */; };
 		BC436934156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */; };
 		BC436935156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */; };
+		BC463735161192CD008CE52F /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463729161192CD008CE52F /* myRadiosDelete.png */; };
+		BC463736161192CD008CE52F /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463729161192CD008CE52F /* myRadiosDelete.png */; };
+		BC463737161192CD008CE52F /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463729161192CD008CE52F /* myRadiosDelete.png */; };
+		BC463738161192CD008CE52F /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463729161192CD008CE52F /* myRadiosDelete.png */; };
+		BC463739161192CD008CE52F /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463729161192CD008CE52F /* myRadiosDelete.png */; };
+		BC46373A161192CD008CE52F /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463729161192CD008CE52F /* myRadiosDelete.png */; };
+		BC46373B161192CD008CE52F /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463729161192CD008CE52F /* myRadiosDelete.png */; };
+		BC46373C161192CD008CE52F /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463729161192CD008CE52F /* myRadiosDelete.png */; };
+		BC46373D161192CD008CE52F /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463729161192CD008CE52F /* myRadiosDelete.png */; };
+		BC46373E161192CD008CE52F /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372A161192CD008CE52F /* myRadiosDelete@2x.png */; };
+		BC46373F161192CD008CE52F /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372A161192CD008CE52F /* myRadiosDelete@2x.png */; };
+		BC463740161192CD008CE52F /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372A161192CD008CE52F /* myRadiosDelete@2x.png */; };
+		BC463741161192CD008CE52F /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372A161192CD008CE52F /* myRadiosDelete@2x.png */; };
+		BC463742161192CD008CE52F /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372A161192CD008CE52F /* myRadiosDelete@2x.png */; };
+		BC463743161192CD008CE52F /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372A161192CD008CE52F /* myRadiosDelete@2x.png */; };
+		BC463744161192CD008CE52F /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372A161192CD008CE52F /* myRadiosDelete@2x.png */; };
+		BC463745161192CD008CE52F /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372A161192CD008CE52F /* myRadiosDelete@2x.png */; };
+		BC463746161192CD008CE52F /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372A161192CD008CE52F /* myRadiosDelete@2x.png */; };
+		BC463747161192CD008CE52F /* myRadiosMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372B161192CD008CE52F /* myRadiosMessage.png */; };
+		BC463748161192CD008CE52F /* myRadiosMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372B161192CD008CE52F /* myRadiosMessage.png */; };
+		BC463749161192CD008CE52F /* myRadiosMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372B161192CD008CE52F /* myRadiosMessage.png */; };
+		BC46374A161192CD008CE52F /* myRadiosMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372B161192CD008CE52F /* myRadiosMessage.png */; };
+		BC46374B161192CD008CE52F /* myRadiosMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372B161192CD008CE52F /* myRadiosMessage.png */; };
+		BC46374C161192CD008CE52F /* myRadiosMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372B161192CD008CE52F /* myRadiosMessage.png */; };
+		BC46374D161192CD008CE52F /* myRadiosMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372B161192CD008CE52F /* myRadiosMessage.png */; };
+		BC46374E161192CD008CE52F /* myRadiosMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372B161192CD008CE52F /* myRadiosMessage.png */; };
+		BC46374F161192CD008CE52F /* myRadiosMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372B161192CD008CE52F /* myRadiosMessage.png */; };
+		BC463750161192CD008CE52F /* myRadiosMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372C161192CD008CE52F /* myRadiosMessage@2x.png */; };
+		BC463751161192CD008CE52F /* myRadiosMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372C161192CD008CE52F /* myRadiosMessage@2x.png */; };
+		BC463752161192CD008CE52F /* myRadiosMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372C161192CD008CE52F /* myRadiosMessage@2x.png */; };
+		BC463753161192CD008CE52F /* myRadiosMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372C161192CD008CE52F /* myRadiosMessage@2x.png */; };
+		BC463754161192CD008CE52F /* myRadiosMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372C161192CD008CE52F /* myRadiosMessage@2x.png */; };
+		BC463755161192CD008CE52F /* myRadiosMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372C161192CD008CE52F /* myRadiosMessage@2x.png */; };
+		BC463756161192CD008CE52F /* myRadiosMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372C161192CD008CE52F /* myRadiosMessage@2x.png */; };
+		BC463757161192CD008CE52F /* myRadiosMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372C161192CD008CE52F /* myRadiosMessage@2x.png */; };
+		BC463758161192CD008CE52F /* myRadiosMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372C161192CD008CE52F /* myRadiosMessage@2x.png */; };
+		BC463759161192CD008CE52F /* myRadiosProgramming.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372D161192CD008CE52F /* myRadiosProgramming.png */; };
+		BC46375A161192CD008CE52F /* myRadiosProgramming.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372D161192CD008CE52F /* myRadiosProgramming.png */; };
+		BC46375B161192CD008CE52F /* myRadiosProgramming.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372D161192CD008CE52F /* myRadiosProgramming.png */; };
+		BC46375C161192CD008CE52F /* myRadiosProgramming.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372D161192CD008CE52F /* myRadiosProgramming.png */; };
+		BC46375D161192CD008CE52F /* myRadiosProgramming.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372D161192CD008CE52F /* myRadiosProgramming.png */; };
+		BC46375E161192CD008CE52F /* myRadiosProgramming.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372D161192CD008CE52F /* myRadiosProgramming.png */; };
+		BC46375F161192CD008CE52F /* myRadiosProgramming.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372D161192CD008CE52F /* myRadiosProgramming.png */; };
+		BC463760161192CD008CE52F /* myRadiosProgramming.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372D161192CD008CE52F /* myRadiosProgramming.png */; };
+		BC463761161192CD008CE52F /* myRadiosProgramming.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372D161192CD008CE52F /* myRadiosProgramming.png */; };
+		BC463762161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372E161192CD008CE52F /* myRadiosProgramming@2x.png */; };
+		BC463763161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372E161192CD008CE52F /* myRadiosProgramming@2x.png */; };
+		BC463764161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372E161192CD008CE52F /* myRadiosProgramming@2x.png */; };
+		BC463765161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372E161192CD008CE52F /* myRadiosProgramming@2x.png */; };
+		BC463766161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372E161192CD008CE52F /* myRadiosProgramming@2x.png */; };
+		BC463767161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372E161192CD008CE52F /* myRadiosProgramming@2x.png */; };
+		BC463768161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372E161192CD008CE52F /* myRadiosProgramming@2x.png */; };
+		BC463769161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372E161192CD008CE52F /* myRadiosProgramming@2x.png */; };
+		BC46376A161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372E161192CD008CE52F /* myRadiosProgramming@2x.png */; };
+		BC46376B161192CD008CE52F /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372F161192CD008CE52F /* myRadiosSeparator.png */; };
+		BC46376C161192CD008CE52F /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372F161192CD008CE52F /* myRadiosSeparator.png */; };
+		BC46376D161192CD008CE52F /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372F161192CD008CE52F /* myRadiosSeparator.png */; };
+		BC46376E161192CD008CE52F /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372F161192CD008CE52F /* myRadiosSeparator.png */; };
+		BC46376F161192CD008CE52F /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372F161192CD008CE52F /* myRadiosSeparator.png */; };
+		BC463770161192CD008CE52F /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372F161192CD008CE52F /* myRadiosSeparator.png */; };
+		BC463771161192CD008CE52F /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372F161192CD008CE52F /* myRadiosSeparator.png */; };
+		BC463772161192CD008CE52F /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372F161192CD008CE52F /* myRadiosSeparator.png */; };
+		BC463773161192CD008CE52F /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46372F161192CD008CE52F /* myRadiosSeparator.png */; };
+		BC463774161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463730161192CD008CE52F /* myRadiosSeparator@2x.png */; };
+		BC463775161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463730161192CD008CE52F /* myRadiosSeparator@2x.png */; };
+		BC463776161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463730161192CD008CE52F /* myRadiosSeparator@2x.png */; };
+		BC463777161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463730161192CD008CE52F /* myRadiosSeparator@2x.png */; };
+		BC463778161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463730161192CD008CE52F /* myRadiosSeparator@2x.png */; };
+		BC463779161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463730161192CD008CE52F /* myRadiosSeparator@2x.png */; };
+		BC46377A161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463730161192CD008CE52F /* myRadiosSeparator@2x.png */; };
+		BC46377B161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463730161192CD008CE52F /* myRadiosSeparator@2x.png */; };
+		BC46377C161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463730161192CD008CE52F /* myRadiosSeparator@2x.png */; };
+		BC46377D161192CD008CE52F /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463731161192CD008CE52F /* myRadiosSettings.png */; };
+		BC46377E161192CD008CE52F /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463731161192CD008CE52F /* myRadiosSettings.png */; };
+		BC46377F161192CD008CE52F /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463731161192CD008CE52F /* myRadiosSettings.png */; };
+		BC463780161192CD008CE52F /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463731161192CD008CE52F /* myRadiosSettings.png */; };
+		BC463781161192CD008CE52F /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463731161192CD008CE52F /* myRadiosSettings.png */; };
+		BC463782161192CD008CE52F /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463731161192CD008CE52F /* myRadiosSettings.png */; };
+		BC463783161192CD008CE52F /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463731161192CD008CE52F /* myRadiosSettings.png */; };
+		BC463784161192CD008CE52F /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463731161192CD008CE52F /* myRadiosSettings.png */; };
+		BC463785161192CD008CE52F /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463731161192CD008CE52F /* myRadiosSettings.png */; };
+		BC463786161192CD008CE52F /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463732161192CD008CE52F /* myRadiosSettings@2x.png */; };
+		BC463787161192CD008CE52F /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463732161192CD008CE52F /* myRadiosSettings@2x.png */; };
+		BC463788161192CD008CE52F /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463732161192CD008CE52F /* myRadiosSettings@2x.png */; };
+		BC463789161192CD008CE52F /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463732161192CD008CE52F /* myRadiosSettings@2x.png */; };
+		BC46378A161192CD008CE52F /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463732161192CD008CE52F /* myRadiosSettings@2x.png */; };
+		BC46378B161192CD008CE52F /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463732161192CD008CE52F /* myRadiosSettings@2x.png */; };
+		BC46378C161192CD008CE52F /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463732161192CD008CE52F /* myRadiosSettings@2x.png */; };
+		BC46378D161192CD008CE52F /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463732161192CD008CE52F /* myRadiosSettings@2x.png */; };
+		BC46378E161192CD008CE52F /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463732161192CD008CE52F /* myRadiosSettings@2x.png */; };
+		BC46378F161192CD008CE52F /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463733161192CD008CE52F /* myRadiosStats.png */; };
+		BC463790161192CD008CE52F /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463733161192CD008CE52F /* myRadiosStats.png */; };
+		BC463791161192CD008CE52F /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463733161192CD008CE52F /* myRadiosStats.png */; };
+		BC463792161192CD008CE52F /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463733161192CD008CE52F /* myRadiosStats.png */; };
+		BC463793161192CD008CE52F /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463733161192CD008CE52F /* myRadiosStats.png */; };
+		BC463794161192CD008CE52F /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463733161192CD008CE52F /* myRadiosStats.png */; };
+		BC463795161192CD008CE52F /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463733161192CD008CE52F /* myRadiosStats.png */; };
+		BC463796161192CD008CE52F /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463733161192CD008CE52F /* myRadiosStats.png */; };
+		BC463797161192CD008CE52F /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463733161192CD008CE52F /* myRadiosStats.png */; };
+		BC463798161192CD008CE52F /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463734161192CD008CE52F /* myRadiosStats@2x.png */; };
+		BC463799161192CD008CE52F /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463734161192CD008CE52F /* myRadiosStats@2x.png */; };
+		BC46379A161192CD008CE52F /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463734161192CD008CE52F /* myRadiosStats@2x.png */; };
+		BC46379B161192CD008CE52F /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463734161192CD008CE52F /* myRadiosStats@2x.png */; };
+		BC46379C161192CD008CE52F /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463734161192CD008CE52F /* myRadiosStats@2x.png */; };
+		BC46379D161192CD008CE52F /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463734161192CD008CE52F /* myRadiosStats@2x.png */; };
+		BC46379E161192CD008CE52F /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463734161192CD008CE52F /* myRadiosStats@2x.png */; };
+		BC46379F161192CD008CE52F /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463734161192CD008CE52F /* myRadiosStats@2x.png */; };
+		BC4637A0161192CD008CE52F /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC463734161192CD008CE52F /* myRadiosStats@2x.png */; };
+		BC4637A316119431008CE52F /* myRadiosMetricBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A116119431008CE52F /* myRadiosMetricBackground.png */; };
+		BC4637A416119431008CE52F /* myRadiosMetricBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A116119431008CE52F /* myRadiosMetricBackground.png */; };
+		BC4637A516119431008CE52F /* myRadiosMetricBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A116119431008CE52F /* myRadiosMetricBackground.png */; };
+		BC4637A616119431008CE52F /* myRadiosMetricBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A116119431008CE52F /* myRadiosMetricBackground.png */; };
+		BC4637A716119431008CE52F /* myRadiosMetricBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A116119431008CE52F /* myRadiosMetricBackground.png */; };
+		BC4637A816119431008CE52F /* myRadiosMetricBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A116119431008CE52F /* myRadiosMetricBackground.png */; };
+		BC4637A916119431008CE52F /* myRadiosMetricBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A116119431008CE52F /* myRadiosMetricBackground.png */; };
+		BC4637AA16119431008CE52F /* myRadiosMetricBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A116119431008CE52F /* myRadiosMetricBackground.png */; };
+		BC4637AB16119431008CE52F /* myRadiosMetricBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A116119431008CE52F /* myRadiosMetricBackground.png */; };
+		BC4637AC16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */; };
+		BC4637AD16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */; };
+		BC4637AE16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */; };
+		BC4637AF16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */; };
+		BC4637B016119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */; };
+		BC4637B116119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */; };
+		BC4637B216119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */; };
+		BC4637B316119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */; };
+		BC4637B416119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */; };
 		BC47AFD7154AD23200B0AA55 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
 		BC47AFD8154AD23200B0AA55 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
 		BC47AFD9154AD23200B0AA55 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
@@ -2880,6 +2990,15 @@
 		BCB0EF291524755F00290383 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
 		BCB0EF2A1524755F00290383 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
 		BCB0EF2B1524755F00290383 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
+		BCB31E2F1610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E301610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E311610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E321610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E331610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E341610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E351610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E361610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
+		BCB31E371610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */; };
 		BCB41F4414863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F4514863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCBAB48A14A22E3400CF922A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
@@ -3501,12 +3620,6 @@
 		BCC7534115E689EF00CF7F7C /* menuRowHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F4F15D7FD2E008C26AC /* menuRowHighlighted@2x.png */; };
 		BCC7534215E689EF00CF7F7C /* myAccountPictureMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5115D7FD2E008C26AC /* myAccountPictureMask.png */; };
 		BCC7534315E689EF00CF7F7C /* myAccountPictureMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5215D7FD2E008C26AC /* myAccountPictureMask@2x.png */; };
-		BCC7534815E689EF00CF7F7C /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5815D7FD2F008C26AC /* myRadiosSeparator.png */; };
-		BCC7534915E689EF00CF7F7C /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5915D7FD2F008C26AC /* myRadiosSeparator@2x.png */; };
-		BCC7534A15E689EF00CF7F7C /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5A15D7FD2F008C26AC /* myRadiosSettings.png */; };
-		BCC7534B15E689EF00CF7F7C /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5B15D7FD2F008C26AC /* myRadiosSettings@2x.png */; };
-		BCC7534C15E689EF00CF7F7C /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5C15D7FD2F008C26AC /* myRadiosStats.png */; };
-		BCC7534D15E689EF00CF7F7C /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */; };
 		BCC7535415E689EF00CF7F7C /* notificationStripeFullWidth.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6815D7FD2F008C26AC /* notificationStripeFullWidth.png */; };
 		BCC7535515E689EF00CF7F7C /* notificationStripeFullWidth@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6915D7FD2F008C26AC /* notificationStripeFullWidth@2x.png */; };
 		BCC7535615E689EF00CF7F7C /* notificationStripePatternWidth.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6A15D7FD2F008C26AC /* notificationStripePatternWidth.png */; };
@@ -3694,8 +3807,6 @@
 		BCC7543A15E689EF00CF7F7C /* commonBigButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */; };
 		BCC7543B15E689EF00CF7F7C /* commonBigButtonRed.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DD15E241480017388D /* commonBigButtonRed.png */; };
 		BCC7543C15E689EF00CF7F7C /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
-		BCC7543D15E689EF00CF7F7C /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
-		BCC7543E15E689EF00CF7F7C /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
 		BCC7543F15E689EF00CF7F7C /* commonAvatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */; };
 		BCC7544015E689EF00CF7F7C /* commonAvatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41215E2BD9F0017388D /* commonAvatarDummy@2x.png */; };
 		BCC7544115E689EF00CF7F7C /* radioListFriendMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C42315E2C1960017388D /* radioListFriendMask.png */; };
@@ -5180,54 +5291,6 @@
 		BCE3668D15D7FD30008C26AC /* myAccountPictureMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5215D7FD2E008C26AC /* myAccountPictureMask@2x.png */; };
 		BCE3668E15D7FD30008C26AC /* myAccountPictureMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5215D7FD2E008C26AC /* myAccountPictureMask@2x.png */; };
 		BCE3668F15D7FD30008C26AC /* myAccountPictureMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5215D7FD2E008C26AC /* myAccountPictureMask@2x.png */; };
-		BCE366B015D7FD30008C26AC /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5815D7FD2F008C26AC /* myRadiosSeparator.png */; };
-		BCE366B115D7FD30008C26AC /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5815D7FD2F008C26AC /* myRadiosSeparator.png */; };
-		BCE366B215D7FD30008C26AC /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5815D7FD2F008C26AC /* myRadiosSeparator.png */; };
-		BCE366B315D7FD30008C26AC /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5815D7FD2F008C26AC /* myRadiosSeparator.png */; };
-		BCE366B415D7FD30008C26AC /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5815D7FD2F008C26AC /* myRadiosSeparator.png */; };
-		BCE366B515D7FD30008C26AC /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5815D7FD2F008C26AC /* myRadiosSeparator.png */; };
-		BCE366B615D7FD30008C26AC /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5815D7FD2F008C26AC /* myRadiosSeparator.png */; };
-		BCE366B715D7FD30008C26AC /* myRadiosSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5815D7FD2F008C26AC /* myRadiosSeparator.png */; };
-		BCE366B815D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5915D7FD2F008C26AC /* myRadiosSeparator@2x.png */; };
-		BCE366B915D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5915D7FD2F008C26AC /* myRadiosSeparator@2x.png */; };
-		BCE366BA15D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5915D7FD2F008C26AC /* myRadiosSeparator@2x.png */; };
-		BCE366BB15D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5915D7FD2F008C26AC /* myRadiosSeparator@2x.png */; };
-		BCE366BC15D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5915D7FD2F008C26AC /* myRadiosSeparator@2x.png */; };
-		BCE366BD15D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5915D7FD2F008C26AC /* myRadiosSeparator@2x.png */; };
-		BCE366BE15D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5915D7FD2F008C26AC /* myRadiosSeparator@2x.png */; };
-		BCE366BF15D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5915D7FD2F008C26AC /* myRadiosSeparator@2x.png */; };
-		BCE366C015D7FD30008C26AC /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5A15D7FD2F008C26AC /* myRadiosSettings.png */; };
-		BCE366C115D7FD30008C26AC /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5A15D7FD2F008C26AC /* myRadiosSettings.png */; };
-		BCE366C215D7FD30008C26AC /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5A15D7FD2F008C26AC /* myRadiosSettings.png */; };
-		BCE366C315D7FD30008C26AC /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5A15D7FD2F008C26AC /* myRadiosSettings.png */; };
-		BCE366C415D7FD30008C26AC /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5A15D7FD2F008C26AC /* myRadiosSettings.png */; };
-		BCE366C515D7FD30008C26AC /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5A15D7FD2F008C26AC /* myRadiosSettings.png */; };
-		BCE366C615D7FD30008C26AC /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5A15D7FD2F008C26AC /* myRadiosSettings.png */; };
-		BCE366C715D7FD30008C26AC /* myRadiosSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5A15D7FD2F008C26AC /* myRadiosSettings.png */; };
-		BCE366C815D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5B15D7FD2F008C26AC /* myRadiosSettings@2x.png */; };
-		BCE366C915D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5B15D7FD2F008C26AC /* myRadiosSettings@2x.png */; };
-		BCE366CA15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5B15D7FD2F008C26AC /* myRadiosSettings@2x.png */; };
-		BCE366CB15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5B15D7FD2F008C26AC /* myRadiosSettings@2x.png */; };
-		BCE366CC15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5B15D7FD2F008C26AC /* myRadiosSettings@2x.png */; };
-		BCE366CD15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5B15D7FD2F008C26AC /* myRadiosSettings@2x.png */; };
-		BCE366CE15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5B15D7FD2F008C26AC /* myRadiosSettings@2x.png */; };
-		BCE366CF15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5B15D7FD2F008C26AC /* myRadiosSettings@2x.png */; };
-		BCE366D015D7FD30008C26AC /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5C15D7FD2F008C26AC /* myRadiosStats.png */; };
-		BCE366D115D7FD30008C26AC /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5C15D7FD2F008C26AC /* myRadiosStats.png */; };
-		BCE366D215D7FD30008C26AC /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5C15D7FD2F008C26AC /* myRadiosStats.png */; };
-		BCE366D315D7FD30008C26AC /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5C15D7FD2F008C26AC /* myRadiosStats.png */; };
-		BCE366D415D7FD30008C26AC /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5C15D7FD2F008C26AC /* myRadiosStats.png */; };
-		BCE366D515D7FD30008C26AC /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5C15D7FD2F008C26AC /* myRadiosStats.png */; };
-		BCE366D615D7FD30008C26AC /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5C15D7FD2F008C26AC /* myRadiosStats.png */; };
-		BCE366D715D7FD30008C26AC /* myRadiosStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5C15D7FD2F008C26AC /* myRadiosStats.png */; };
-		BCE366D815D7FD30008C26AC /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */; };
-		BCE366D915D7FD30008C26AC /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */; };
-		BCE366DA15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */; };
-		BCE366DB15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */; };
-		BCE366DC15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */; };
-		BCE366DD15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */; };
-		BCE366DE15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */; };
-		BCE366DF15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */; };
 		BCE3672015D7FD30008C26AC /* notificationStripeFullWidth.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6815D7FD2F008C26AC /* notificationStripeFullWidth.png */; };
 		BCE3672115D7FD30008C26AC /* notificationStripeFullWidth.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6815D7FD2F008C26AC /* notificationStripeFullWidth.png */; };
 		BCE3672215D7FD30008C26AC /* notificationStripeFullWidth.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6815D7FD2F008C26AC /* notificationStripeFullWidth.png */; };
@@ -6833,8 +6896,6 @@
 		BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonBigButtonDisabled@2x.png"; sourceTree = "<group>"; };
 		BC03C3DD15E241480017388D /* commonBigButtonRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonBigButtonRed.png; sourceTree = "<group>"; };
 		BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonBigButtonRed@2x.png"; sourceTree = "<group>"; };
-		BC03C3FF15E27DB00017388D /* myRadiosDelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosDelete.png; sourceTree = "<group>"; };
-		BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosDelete@2x.png"; sourceTree = "<group>"; };
 		BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonAvatarDummy.png; sourceTree = "<group>"; };
 		BC03C41215E2BD9F0017388D /* commonAvatarDummy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonAvatarDummy@2x.png"; sourceTree = "<group>"; };
 		BC03C42315E2C1960017388D /* radioListFriendMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListFriendMask.png; sourceTree = "<group>"; };
@@ -7023,6 +7084,20 @@
 		BC436923156FE36C0059BC22 /* SongPublicInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongPublicInfoViewController.h; path = Programming/SongPublicInfoViewController.h; sourceTree = "<group>"; };
 		BC436924156FE36C0059BC22 /* SongPublicInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongPublicInfoViewController.m; path = Programming/SongPublicInfoViewController.m; sourceTree = "<group>"; };
 		BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongPublicInfoViewController.xib; path = Programming/SongPublicInfoViewController.xib; sourceTree = "<group>"; };
+		BC463729161192CD008CE52F /* myRadiosDelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosDelete.png; sourceTree = "<group>"; };
+		BC46372A161192CD008CE52F /* myRadiosDelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosDelete@2x.png"; sourceTree = "<group>"; };
+		BC46372B161192CD008CE52F /* myRadiosMessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosMessage.png; sourceTree = "<group>"; };
+		BC46372C161192CD008CE52F /* myRadiosMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosMessage@2x.png"; sourceTree = "<group>"; };
+		BC46372D161192CD008CE52F /* myRadiosProgramming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosProgramming.png; sourceTree = "<group>"; };
+		BC46372E161192CD008CE52F /* myRadiosProgramming@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosProgramming@2x.png"; sourceTree = "<group>"; };
+		BC46372F161192CD008CE52F /* myRadiosSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosSeparator.png; sourceTree = "<group>"; };
+		BC463730161192CD008CE52F /* myRadiosSeparator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosSeparator@2x.png"; sourceTree = "<group>"; };
+		BC463731161192CD008CE52F /* myRadiosSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosSettings.png; sourceTree = "<group>"; };
+		BC463732161192CD008CE52F /* myRadiosSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosSettings@2x.png"; sourceTree = "<group>"; };
+		BC463733161192CD008CE52F /* myRadiosStats.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosStats.png; sourceTree = "<group>"; };
+		BC463734161192CD008CE52F /* myRadiosStats@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosStats@2x.png"; sourceTree = "<group>"; };
+		BC4637A116119431008CE52F /* myRadiosMetricBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosMetricBackground.png; sourceTree = "<group>"; };
+		BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosMetricBackground@2x.png"; sourceTree = "<group>"; };
 		BC47AFD4154AD23200B0AA55 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = Login/SignupViewController.h; sourceTree = "<group>"; };
 		BC47AFD5154AD23200B0AA55 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = Login/SignupViewController.m; sourceTree = "<group>"; };
 		BC47AFD6154AD23200B0AA55 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignupViewController.xib; path = Login/SignupViewController.xib; sourceTree = "<group>"; };
@@ -7174,6 +7249,7 @@
 		BCB0EF1F1524755E00290383 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Login/LoginViewController.h; sourceTree = "<group>"; };
 		BCB0EF201524755E00290383 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Login/LoginViewController.m; sourceTree = "<group>"; };
 		BCB0EF211524755E00290383 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Login/LoginViewController.xib; sourceTree = "<group>"; };
+		BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "RadioSelectionViewController-4inch.xib"; path = "RadioSelection/RadioSelectionViewController-4inch.xib"; sourceTree = "<group>"; };
 		BCB41F4214863646008F3738 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		BCB41F4314863646008F3738 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		BCBAB48914A22E3400CF922A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -7494,12 +7570,6 @@
 		BCE35F4F15D7FD2E008C26AC /* menuRowHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuRowHighlighted@2x.png"; sourceTree = "<group>"; };
 		BCE35F5115D7FD2E008C26AC /* myAccountPictureMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myAccountPictureMask.png; sourceTree = "<group>"; };
 		BCE35F5215D7FD2E008C26AC /* myAccountPictureMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myAccountPictureMask@2x.png"; sourceTree = "<group>"; };
-		BCE35F5815D7FD2F008C26AC /* myRadiosSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosSeparator.png; sourceTree = "<group>"; };
-		BCE35F5915D7FD2F008C26AC /* myRadiosSeparator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosSeparator@2x.png"; sourceTree = "<group>"; };
-		BCE35F5A15D7FD2F008C26AC /* myRadiosSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosSettings.png; sourceTree = "<group>"; };
-		BCE35F5B15D7FD2F008C26AC /* myRadiosSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosSettings@2x.png"; sourceTree = "<group>"; };
-		BCE35F5C15D7FD2F008C26AC /* myRadiosStats.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosStats.png; sourceTree = "<group>"; };
-		BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosStats@2x.png"; sourceTree = "<group>"; };
 		BCE35F6815D7FD2F008C26AC /* notificationStripeFullWidth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationStripeFullWidth.png; sourceTree = "<group>"; };
 		BCE35F6915D7FD2F008C26AC /* notificationStripeFullWidth@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notificationStripeFullWidth@2x.png"; sourceTree = "<group>"; };
 		BCE35F6A15D7FD2F008C26AC /* notificationStripePatternWidth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationStripePatternWidth.png; sourceTree = "<group>"; };
@@ -8571,6 +8641,7 @@
 				BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */,
 				BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */,
 				BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */,
+				BCB31E2E1610683F00AAF8DF /* RadioSelectionViewController-4inch.xib */,
 				BC598E6D15B8786C004D6DCB /* RadioListTableViewController.h */,
 				BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */,
 				BC03C43515E2C6640017388D /* UserListTableViewCell.h */,
@@ -9397,14 +9468,20 @@
 		BCE35F5315D7FD2E008C26AC /* MyRadios */ = {
 			isa = PBXGroup;
 			children = (
-				BCE35F5815D7FD2F008C26AC /* myRadiosSeparator.png */,
-				BCE35F5915D7FD2F008C26AC /* myRadiosSeparator@2x.png */,
-				BCE35F5A15D7FD2F008C26AC /* myRadiosSettings.png */,
-				BCE35F5B15D7FD2F008C26AC /* myRadiosSettings@2x.png */,
-				BC03C3FF15E27DB00017388D /* myRadiosDelete.png */,
-				BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */,
-				BCE35F5C15D7FD2F008C26AC /* myRadiosStats.png */,
-				BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */,
+				BC4637A116119431008CE52F /* myRadiosMetricBackground.png */,
+				BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */,
+				BC463729161192CD008CE52F /* myRadiosDelete.png */,
+				BC46372A161192CD008CE52F /* myRadiosDelete@2x.png */,
+				BC46372B161192CD008CE52F /* myRadiosMessage.png */,
+				BC46372C161192CD008CE52F /* myRadiosMessage@2x.png */,
+				BC46372D161192CD008CE52F /* myRadiosProgramming.png */,
+				BC46372E161192CD008CE52F /* myRadiosProgramming@2x.png */,
+				BC46372F161192CD008CE52F /* myRadiosSeparator.png */,
+				BC463730161192CD008CE52F /* myRadiosSeparator@2x.png */,
+				BC463731161192CD008CE52F /* myRadiosSettings.png */,
+				BC463732161192CD008CE52F /* myRadiosSettings@2x.png */,
+				BC463733161192CD008CE52F /* myRadiosStats.png */,
+				BC463734161192CD008CE52F /* myRadiosStats@2x.png */,
 			);
 			path = MyRadios;
 			sourceTree = "<group>";
@@ -10346,12 +10423,6 @@
 				BCE3667E15D7FD30008C26AC /* menuRowHighlighted@2x.png in Resources */,
 				BCE3668615D7FD30008C26AC /* myAccountPictureMask.png in Resources */,
 				BCE3668E15D7FD30008C26AC /* myAccountPictureMask@2x.png in Resources */,
-				BCE366B615D7FD30008C26AC /* myRadiosSeparator.png in Resources */,
-				BCE366BE15D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */,
-				BCE366C615D7FD30008C26AC /* myRadiosSettings.png in Resources */,
-				BCE366CE15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
-				BCE366D615D7FD30008C26AC /* myRadiosStats.png in Resources */,
-				BCE366DE15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
 				BCE3672615D7FD30008C26AC /* notificationStripeFullWidth.png in Resources */,
 				BCE3672E15D7FD30008C26AC /* notificationStripeFullWidth@2x.png in Resources */,
 				BCE3673615D7FD30008C26AC /* notificationStripePatternWidth.png in Resources */,
@@ -10539,8 +10610,6 @@
 				BC03C3ED15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F515E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3FD15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
-				BC03C40715E27DB00017388D /* myRadiosDelete.png in Resources */,
-				BC03C40F15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 				BC03C41915E2BDA00017388D /* commonAvatarDummy.png in Resources */,
 				BC03C42115E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 				BC03C42B15E2C1960017388D /* radioListFriendMask.png in Resources */,
@@ -10650,6 +10719,21 @@
 				40319851161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
 				408E75E51611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
 				408E75EE1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
+				BCB31E361610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
+				BC46373C161192CD008CE52F /* myRadiosDelete.png in Resources */,
+				BC463745161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
+				BC46374E161192CD008CE52F /* myRadiosMessage.png in Resources */,
+				BC463757161192CD008CE52F /* myRadiosMessage@2x.png in Resources */,
+				BC463760161192CD008CE52F /* myRadiosProgramming.png in Resources */,
+				BC463769161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */,
+				BC463772161192CD008CE52F /* myRadiosSeparator.png in Resources */,
+				BC46377B161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */,
+				BC463784161192CD008CE52F /* myRadiosSettings.png in Resources */,
+				BC46378D161192CD008CE52F /* myRadiosSettings@2x.png in Resources */,
+				BC463796161192CD008CE52F /* myRadiosStats.png in Resources */,
+				BC46379F161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
+				BC4637AA16119431008CE52F /* myRadiosMetricBackground.png in Resources */,
+				BC4637B316119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10815,12 +10899,6 @@
 				BCE3667F15D7FD30008C26AC /* menuRowHighlighted@2x.png in Resources */,
 				BCE3668715D7FD30008C26AC /* myAccountPictureMask.png in Resources */,
 				BCE3668F15D7FD30008C26AC /* myAccountPictureMask@2x.png in Resources */,
-				BCE366B715D7FD30008C26AC /* myRadiosSeparator.png in Resources */,
-				BCE366BF15D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */,
-				BCE366C715D7FD30008C26AC /* myRadiosSettings.png in Resources */,
-				BCE366CF15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
-				BCE366D715D7FD30008C26AC /* myRadiosStats.png in Resources */,
-				BCE366DF15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
 				BCE3672715D7FD30008C26AC /* notificationStripeFullWidth.png in Resources */,
 				BCE3672F15D7FD30008C26AC /* notificationStripeFullWidth@2x.png in Resources */,
 				BCE3673715D7FD30008C26AC /* notificationStripePatternWidth.png in Resources */,
@@ -11008,8 +11086,6 @@
 				BC03C3EE15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F615E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3FE15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
-				BC03C40815E27DB00017388D /* myRadiosDelete.png in Resources */,
-				BC03C41015E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 				BC03C41A15E2BDA00017388D /* commonAvatarDummy.png in Resources */,
 				BC03C42215E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 				BC03C42C15E2C1960017388D /* radioListFriendMask.png in Resources */,
@@ -11119,6 +11195,21 @@
 				40319852161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
 				408E75E61611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
 				408E75EF1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
+				BCB31E371610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
+				BC46373D161192CD008CE52F /* myRadiosDelete.png in Resources */,
+				BC463746161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
+				BC46374F161192CD008CE52F /* myRadiosMessage.png in Resources */,
+				BC463758161192CD008CE52F /* myRadiosMessage@2x.png in Resources */,
+				BC463761161192CD008CE52F /* myRadiosProgramming.png in Resources */,
+				BC46376A161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */,
+				BC463773161192CD008CE52F /* myRadiosSeparator.png in Resources */,
+				BC46377C161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */,
+				BC463785161192CD008CE52F /* myRadiosSettings.png in Resources */,
+				BC46378E161192CD008CE52F /* myRadiosSettings@2x.png in Resources */,
+				BC463797161192CD008CE52F /* myRadiosStats.png in Resources */,
+				BC4637A0161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
+				BC4637AB16119431008CE52F /* myRadiosMetricBackground.png in Resources */,
+				BC4637B416119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11278,12 +11369,6 @@
 				BCE3667D15D7FD30008C26AC /* menuRowHighlighted@2x.png in Resources */,
 				BCE3668515D7FD30008C26AC /* myAccountPictureMask.png in Resources */,
 				BCE3668D15D7FD30008C26AC /* myAccountPictureMask@2x.png in Resources */,
-				BCE366B515D7FD30008C26AC /* myRadiosSeparator.png in Resources */,
-				BCE366BD15D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */,
-				BCE366C515D7FD30008C26AC /* myRadiosSettings.png in Resources */,
-				BCE366CD15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
-				BCE366D515D7FD30008C26AC /* myRadiosStats.png in Resources */,
-				BCE366DD15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
 				BCE3672515D7FD30008C26AC /* notificationStripeFullWidth.png in Resources */,
 				BCE3672D15D7FD30008C26AC /* notificationStripeFullWidth@2x.png in Resources */,
 				BCE3673515D7FD30008C26AC /* notificationStripePatternWidth.png in Resources */,
@@ -11471,8 +11556,6 @@
 				BC03C3EC15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F415E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3FC15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
-				BC03C40615E27DB00017388D /* myRadiosDelete.png in Resources */,
-				BC03C40E15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 				BC03C41815E2BDA00017388D /* commonAvatarDummy.png in Resources */,
 				BC03C42015E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 				BC03C42A15E2C1960017388D /* radioListFriendMask.png in Resources */,
@@ -11582,6 +11665,21 @@
 				40319850161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
 				408E75E41611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
 				408E75ED1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
+				BCB31E351610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
+				BC46373B161192CD008CE52F /* myRadiosDelete.png in Resources */,
+				BC463744161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
+				BC46374D161192CD008CE52F /* myRadiosMessage.png in Resources */,
+				BC463756161192CD008CE52F /* myRadiosMessage@2x.png in Resources */,
+				BC46375F161192CD008CE52F /* myRadiosProgramming.png in Resources */,
+				BC463768161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */,
+				BC463771161192CD008CE52F /* myRadiosSeparator.png in Resources */,
+				BC46377A161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */,
+				BC463783161192CD008CE52F /* myRadiosSettings.png in Resources */,
+				BC46378C161192CD008CE52F /* myRadiosSettings@2x.png in Resources */,
+				BC463795161192CD008CE52F /* myRadiosStats.png in Resources */,
+				BC46379E161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
+				BC4637A916119431008CE52F /* myRadiosMetricBackground.png in Resources */,
+				BC4637B216119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11746,12 +11844,6 @@
 				BCE3667A15D7FD30008C26AC /* menuRowHighlighted@2x.png in Resources */,
 				BCE3668215D7FD30008C26AC /* myAccountPictureMask.png in Resources */,
 				BCE3668A15D7FD30008C26AC /* myAccountPictureMask@2x.png in Resources */,
-				BCE366B215D7FD30008C26AC /* myRadiosSeparator.png in Resources */,
-				BCE366BA15D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */,
-				BCE366C215D7FD30008C26AC /* myRadiosSettings.png in Resources */,
-				BCE366CA15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
-				BCE366D215D7FD30008C26AC /* myRadiosStats.png in Resources */,
-				BCE366DA15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
 				BCE3672215D7FD30008C26AC /* notificationStripeFullWidth.png in Resources */,
 				BCE3672A15D7FD30008C26AC /* notificationStripeFullWidth@2x.png in Resources */,
 				BCE3673215D7FD30008C26AC /* notificationStripePatternWidth.png in Resources */,
@@ -11939,8 +12031,6 @@
 				BC03C3E915E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F115E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3F915E241480017388D /* commonBigButtonRed@2x.png in Resources */,
-				BC03C40315E27DB00017388D /* myRadiosDelete.png in Resources */,
-				BC03C40B15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 				BC03C41515E2BDA00017388D /* commonAvatarDummy.png in Resources */,
 				BC03C41D15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 				BC03C42715E2C1960017388D /* radioListFriendMask.png in Resources */,
@@ -12050,6 +12140,21 @@
 				4031984D161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
 				408E75E11611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
 				408E75EA1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
+				BCB31E321610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
+				BC463738161192CD008CE52F /* myRadiosDelete.png in Resources */,
+				BC463741161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
+				BC46374A161192CD008CE52F /* myRadiosMessage.png in Resources */,
+				BC463753161192CD008CE52F /* myRadiosMessage@2x.png in Resources */,
+				BC46375C161192CD008CE52F /* myRadiosProgramming.png in Resources */,
+				BC463765161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */,
+				BC46376E161192CD008CE52F /* myRadiosSeparator.png in Resources */,
+				BC463777161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */,
+				BC463780161192CD008CE52F /* myRadiosSettings.png in Resources */,
+				BC463789161192CD008CE52F /* myRadiosSettings@2x.png in Resources */,
+				BC463792161192CD008CE52F /* myRadiosStats.png in Resources */,
+				BC46379B161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
+				BC4637A616119431008CE52F /* myRadiosMetricBackground.png in Resources */,
+				BC4637AF16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12214,12 +12319,6 @@
 				BCE3667915D7FD30008C26AC /* menuRowHighlighted@2x.png in Resources */,
 				BCE3668115D7FD30008C26AC /* myAccountPictureMask.png in Resources */,
 				BCE3668915D7FD30008C26AC /* myAccountPictureMask@2x.png in Resources */,
-				BCE366B115D7FD30008C26AC /* myRadiosSeparator.png in Resources */,
-				BCE366B915D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */,
-				BCE366C115D7FD30008C26AC /* myRadiosSettings.png in Resources */,
-				BCE366C915D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
-				BCE366D115D7FD30008C26AC /* myRadiosStats.png in Resources */,
-				BCE366D915D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
 				BCE3672115D7FD30008C26AC /* notificationStripeFullWidth.png in Resources */,
 				BCE3672915D7FD30008C26AC /* notificationStripeFullWidth@2x.png in Resources */,
 				BCE3673115D7FD30008C26AC /* notificationStripePatternWidth.png in Resources */,
@@ -12407,8 +12506,6 @@
 				BC03C3E815E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F015E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3F815E241480017388D /* commonBigButtonRed@2x.png in Resources */,
-				BC03C40215E27DB00017388D /* myRadiosDelete.png in Resources */,
-				BC03C40A15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 				BC03C41415E2BDA00017388D /* commonAvatarDummy.png in Resources */,
 				BC03C41C15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 				BC03C42615E2C1960017388D /* radioListFriendMask.png in Resources */,
@@ -12518,6 +12615,21 @@
 				4031984B161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
 				408E75DF1611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
 				408E75E81611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
+				BCB31E301610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
+				BC463736161192CD008CE52F /* myRadiosDelete.png in Resources */,
+				BC46373F161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
+				BC463748161192CD008CE52F /* myRadiosMessage.png in Resources */,
+				BC463751161192CD008CE52F /* myRadiosMessage@2x.png in Resources */,
+				BC46375A161192CD008CE52F /* myRadiosProgramming.png in Resources */,
+				BC463763161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */,
+				BC46376C161192CD008CE52F /* myRadiosSeparator.png in Resources */,
+				BC463775161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */,
+				BC46377E161192CD008CE52F /* myRadiosSettings.png in Resources */,
+				BC463787161192CD008CE52F /* myRadiosSettings@2x.png in Resources */,
+				BC463790161192CD008CE52F /* myRadiosStats.png in Resources */,
+				BC463799161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
+				BC4637A416119431008CE52F /* myRadiosMetricBackground.png in Resources */,
+				BC4637AD16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12682,12 +12794,6 @@
 				BCE3667C15D7FD30008C26AC /* menuRowHighlighted@2x.png in Resources */,
 				BCE3668415D7FD30008C26AC /* myAccountPictureMask.png in Resources */,
 				BCE3668C15D7FD30008C26AC /* myAccountPictureMask@2x.png in Resources */,
-				BCE366B415D7FD30008C26AC /* myRadiosSeparator.png in Resources */,
-				BCE366BC15D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */,
-				BCE366C415D7FD30008C26AC /* myRadiosSettings.png in Resources */,
-				BCE366CC15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
-				BCE366D415D7FD30008C26AC /* myRadiosStats.png in Resources */,
-				BCE366DC15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
 				BCE3672415D7FD30008C26AC /* notificationStripeFullWidth.png in Resources */,
 				BCE3672C15D7FD30008C26AC /* notificationStripeFullWidth@2x.png in Resources */,
 				BCE3673415D7FD30008C26AC /* notificationStripePatternWidth.png in Resources */,
@@ -12875,8 +12981,6 @@
 				BC03C3EB15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F315E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3FB15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
-				BC03C40515E27DB00017388D /* myRadiosDelete.png in Resources */,
-				BC03C40D15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 				BC03C41715E2BDA00017388D /* commonAvatarDummy.png in Resources */,
 				BC03C41F15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 				BC03C42915E2C1960017388D /* radioListFriendMask.png in Resources */,
@@ -12986,6 +13090,21 @@
 				4031984F161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
 				408E75E31611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
 				408E75EC1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
+				BCB31E341610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
+				BC46373A161192CD008CE52F /* myRadiosDelete.png in Resources */,
+				BC463743161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
+				BC46374C161192CD008CE52F /* myRadiosMessage.png in Resources */,
+				BC463755161192CD008CE52F /* myRadiosMessage@2x.png in Resources */,
+				BC46375E161192CD008CE52F /* myRadiosProgramming.png in Resources */,
+				BC463767161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */,
+				BC463770161192CD008CE52F /* myRadiosSeparator.png in Resources */,
+				BC463779161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */,
+				BC463782161192CD008CE52F /* myRadiosSettings.png in Resources */,
+				BC46378B161192CD008CE52F /* myRadiosSettings@2x.png in Resources */,
+				BC463794161192CD008CE52F /* myRadiosStats.png in Resources */,
+				BC46379D161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
+				BC4637A816119431008CE52F /* myRadiosMetricBackground.png in Resources */,
+				BC4637B116119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13150,12 +13269,6 @@
 				BCC7534115E689EF00CF7F7C /* menuRowHighlighted@2x.png in Resources */,
 				BCC7534215E689EF00CF7F7C /* myAccountPictureMask.png in Resources */,
 				BCC7534315E689EF00CF7F7C /* myAccountPictureMask@2x.png in Resources */,
-				BCC7534815E689EF00CF7F7C /* myRadiosSeparator.png in Resources */,
-				BCC7534915E689EF00CF7F7C /* myRadiosSeparator@2x.png in Resources */,
-				BCC7534A15E689EF00CF7F7C /* myRadiosSettings.png in Resources */,
-				BCC7534B15E689EF00CF7F7C /* myRadiosSettings@2x.png in Resources */,
-				BCC7534C15E689EF00CF7F7C /* myRadiosStats.png in Resources */,
-				BCC7534D15E689EF00CF7F7C /* myRadiosStats@2x.png in Resources */,
 				BCC7535415E689EF00CF7F7C /* notificationStripeFullWidth.png in Resources */,
 				BCC7535515E689EF00CF7F7C /* notificationStripeFullWidth@2x.png in Resources */,
 				BCC7535615E689EF00CF7F7C /* notificationStripePatternWidth.png in Resources */,
@@ -13343,8 +13456,6 @@
 				BCC7543A15E689EF00CF7F7C /* commonBigButtonDisabled@2x.png in Resources */,
 				BCC7543B15E689EF00CF7F7C /* commonBigButtonRed.png in Resources */,
 				BCC7543C15E689EF00CF7F7C /* commonBigButtonRed@2x.png in Resources */,
-				BCC7543D15E689EF00CF7F7C /* myRadiosDelete.png in Resources */,
-				BCC7543E15E689EF00CF7F7C /* myRadiosDelete@2x.png in Resources */,
 				BCC7543F15E689EF00CF7F7C /* commonAvatarDummy.png in Resources */,
 				BCC7544015E689EF00CF7F7C /* commonAvatarDummy@2x.png in Resources */,
 				BCC7544115E689EF00CF7F7C /* radioListFriendMask.png in Resources */,
@@ -13455,6 +13566,21 @@
 				4031984C161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
 				408E75E01611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
 				408E75E91611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
+				BCB31E311610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
+				BC463737161192CD008CE52F /* myRadiosDelete.png in Resources */,
+				BC463740161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
+				BC463749161192CD008CE52F /* myRadiosMessage.png in Resources */,
+				BC463752161192CD008CE52F /* myRadiosMessage@2x.png in Resources */,
+				BC46375B161192CD008CE52F /* myRadiosProgramming.png in Resources */,
+				BC463764161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */,
+				BC46376D161192CD008CE52F /* myRadiosSeparator.png in Resources */,
+				BC463776161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */,
+				BC46377F161192CD008CE52F /* myRadiosSettings.png in Resources */,
+				BC463788161192CD008CE52F /* myRadiosSettings@2x.png in Resources */,
+				BC463791161192CD008CE52F /* myRadiosStats.png in Resources */,
+				BC46379A161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
+				BC4637A516119431008CE52F /* myRadiosMetricBackground.png in Resources */,
+				BC4637AE16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13619,12 +13745,6 @@
 				BCE3667815D7FD30008C26AC /* menuRowHighlighted@2x.png in Resources */,
 				BCE3668015D7FD30008C26AC /* myAccountPictureMask.png in Resources */,
 				BCE3668815D7FD30008C26AC /* myAccountPictureMask@2x.png in Resources */,
-				BCE366B015D7FD30008C26AC /* myRadiosSeparator.png in Resources */,
-				BCE366B815D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */,
-				BCE366C015D7FD30008C26AC /* myRadiosSettings.png in Resources */,
-				BCE366C815D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
-				BCE366D015D7FD30008C26AC /* myRadiosStats.png in Resources */,
-				BCE366D815D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
 				BCE3672015D7FD30008C26AC /* notificationStripeFullWidth.png in Resources */,
 				BCE3672815D7FD30008C26AC /* notificationStripeFullWidth@2x.png in Resources */,
 				BCE3673015D7FD30008C26AC /* notificationStripePatternWidth.png in Resources */,
@@ -13812,8 +13932,6 @@
 				BC03C3E715E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3EF15E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3F715E241480017388D /* commonBigButtonRed@2x.png in Resources */,
-				BC03C40115E27DB00017388D /* myRadiosDelete.png in Resources */,
-				BC03C40915E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 				BC03C41315E2BDA00017388D /* commonAvatarDummy.png in Resources */,
 				BC03C41B15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 				BC03C42515E2C1960017388D /* radioListFriendMask.png in Resources */,
@@ -13923,6 +14041,21 @@
 				4031984A161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
 				408E75DE1611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
 				408E75E71611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
+				BCB31E2F1610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
+				BC463735161192CD008CE52F /* myRadiosDelete.png in Resources */,
+				BC46373E161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
+				BC463747161192CD008CE52F /* myRadiosMessage.png in Resources */,
+				BC463750161192CD008CE52F /* myRadiosMessage@2x.png in Resources */,
+				BC463759161192CD008CE52F /* myRadiosProgramming.png in Resources */,
+				BC463762161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */,
+				BC46376B161192CD008CE52F /* myRadiosSeparator.png in Resources */,
+				BC463774161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */,
+				BC46377D161192CD008CE52F /* myRadiosSettings.png in Resources */,
+				BC463786161192CD008CE52F /* myRadiosSettings@2x.png in Resources */,
+				BC46378F161192CD008CE52F /* myRadiosStats.png in Resources */,
+				BC463798161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
+				BC4637A316119431008CE52F /* myRadiosMetricBackground.png in Resources */,
+				BC4637AC16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14087,12 +14220,6 @@
 				BCE3667B15D7FD30008C26AC /* menuRowHighlighted@2x.png in Resources */,
 				BCE3668315D7FD30008C26AC /* myAccountPictureMask.png in Resources */,
 				BCE3668B15D7FD30008C26AC /* myAccountPictureMask@2x.png in Resources */,
-				BCE366B315D7FD30008C26AC /* myRadiosSeparator.png in Resources */,
-				BCE366BB15D7FD30008C26AC /* myRadiosSeparator@2x.png in Resources */,
-				BCE366C315D7FD30008C26AC /* myRadiosSettings.png in Resources */,
-				BCE366CB15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
-				BCE366D315D7FD30008C26AC /* myRadiosStats.png in Resources */,
-				BCE366DB15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
 				BCE3672315D7FD30008C26AC /* notificationStripeFullWidth.png in Resources */,
 				BCE3672B15D7FD30008C26AC /* notificationStripeFullWidth@2x.png in Resources */,
 				BCE3673315D7FD30008C26AC /* notificationStripePatternWidth.png in Resources */,
@@ -14280,8 +14407,6 @@
 				BC03C3EA15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F215E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3FA15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
-				BC03C40415E27DB00017388D /* myRadiosDelete.png in Resources */,
-				BC03C40C15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 				BC03C41615E2BDA00017388D /* commonAvatarDummy.png in Resources */,
 				BC03C41E15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 				BC03C42815E2C1960017388D /* radioListFriendMask.png in Resources */,
@@ -14391,6 +14516,21 @@
 				4031984E161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
 				408E75E21611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
 				408E75EB1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
+				BCB31E331610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
+				BC463739161192CD008CE52F /* myRadiosDelete.png in Resources */,
+				BC463742161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
+				BC46374B161192CD008CE52F /* myRadiosMessage.png in Resources */,
+				BC463754161192CD008CE52F /* myRadiosMessage@2x.png in Resources */,
+				BC46375D161192CD008CE52F /* myRadiosProgramming.png in Resources */,
+				BC463766161192CD008CE52F /* myRadiosProgramming@2x.png in Resources */,
+				BC46376F161192CD008CE52F /* myRadiosSeparator.png in Resources */,
+				BC463778161192CD008CE52F /* myRadiosSeparator@2x.png in Resources */,
+				BC463781161192CD008CE52F /* myRadiosSettings.png in Resources */,
+				BC46378A161192CD008CE52F /* myRadiosSettings@2x.png in Resources */,
+				BC463793161192CD008CE52F /* myRadiosStats.png in Resources */,
+				BC46379C161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
+				BC4637A716119431008CE52F /* myRadiosMetricBackground.png in Resources */,
+				BC4637B016119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17444,8 +17584,8 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "936378AB-4B1B-4376-9FDF-84FD13C85BB9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "936378AB-4B1B-4376-9FDF-84FD13C85BB9";
+				PROVISIONING_PROFILE = "844C96B6-EA94-49FA-823F-7109DB018D1C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "844C96B6-EA94-49FA-823F-7109DB018D1C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -17477,8 +17617,8 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "936378AB-4B1B-4376-9FDF-84FD13C85BB9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "936378AB-4B1B-4376-9FDF-84FD13C85BB9";
+				PROVISIONING_PROFILE = "844C96B6-EA94-49FA-823F-7109DB018D1C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "844C96B6-EA94-49FA-823F-7109DB018D1C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

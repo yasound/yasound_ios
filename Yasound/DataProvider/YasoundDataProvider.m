@@ -952,7 +952,6 @@ static YasoundDataProvider* _main = nil;
 
 - (void)friendsForUser:(User*)user withTarget:(id)target action:(SEL)selector
 {
-    [self cancelRequestsForKey:@"radios"];
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/user/%@/friends", user.username];
     conf.urlIsAbsolute = NO;
@@ -991,6 +990,7 @@ static YasoundDataProvider* _main = nil;
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = url;
+    conf.key = @"radios";
     conf.urlIsAbsolute = NO;
     conf.method = @"GET";
     conf.auth = self.apiKeyAuth;
@@ -1015,12 +1015,11 @@ static YasoundDataProvider* _main = nil;
     
     NSString *url = [NSString stringWithFormat:@"/api/v1/user/%@/favorite_radio", u.id];
     
-    [_communicator getObjectsWithClass:[Radio class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    [_communicator getObjectsWithClass:[Radio class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth withKey:@"radios"];
 }
 
 - (void)radiosForUser:(User*)u withTarget:(id)target action:(SEL)selector
 {
-    [self cancelRequestsForKey:@"radios"];
     
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/user/%@/radios", u.username];
@@ -1085,27 +1084,9 @@ static YasoundDataProvider* _main = nil;
 {
   Auth* auth = self.apiKeyAuth;
   NSMutableArray* params = [NSMutableArray array];
-  [params addObject:[NSString stringWithFormat:@"search=%@", search]];
+  [params addObject:[NSString stringWithFormat:@"q=%@", search]];
 
-  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/search_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
-- (void)searchRadiosByCreator:(NSString*)search withTarget:(id)target action:(SEL)selector
-{
-  Auth* auth = self.apiKeyAuth;
-  NSMutableArray* params = [NSMutableArray array];
-  [params addObject:[NSString stringWithFormat:@"search=%@", search]];
-  
-  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/search_radio_by_user" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
-- (void)searchRadiosBySong:(NSString*)search withTarget:(id)target action:(SEL)selector
-{
-  Auth* auth = self.apiKeyAuth;
-  NSMutableArray* params = [NSMutableArray array];
-  [params addObject:[NSString stringWithFormat:@"search=%@", search]];
-  
-  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/search_radio_by_song" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/search/radios" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 
