@@ -10,7 +10,7 @@
 #import "RadioListTableViewCell.h"
 #import "UserListTableViewCell.h"
 #import "InviteFriendsTableViewCell.h"
-
+#import "Theme.h"
 
 @interface RadioListTableViewController ()
 
@@ -384,6 +384,42 @@
 }
 
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (self.friendsMode && section == SECTION_INVITE_FRIENDS_INDEX)
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.section.container" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        float height = sheet.frame.size.height;
+        return height;
+    }
+    
+    return 0;
+}
+
+//#FIXME MatDebug
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (self.friendsMode && section == SECTION_INVITE_FRIENDS_INDEX)
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.section.container" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIView* view = [[UIView alloc] initWithFrame:sheet.frame];
+        
+        sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.section.separator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIImageView* img = [sheet makeImage];
+        [view addSubview:img];
+        
+        sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.section.title" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UILabel* label = [sheet makeLabel];
+        label.text = NSLocalizedString(@"InviteFriendsSection.title", nil);
+        [view addSubview:label];
+        
+        return view;
+    }
+    
+    return nil;
+}
+//
 
 
 

@@ -22,14 +22,9 @@
     {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"InviteFriendsRow.title" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        UILabel* titleLabel = [sheet makeLabel];
-        titleLabel.text = NSLocalizedString(@"InviteFriendsRow.title", nil);
-        [self addSubview:titleLabel];
-        
         // facebook
         {
-            sheet = [[Theme theme] stylesheetForKey:@"InviteFriendsRow.facebookImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.facebookImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _facebookImage = [sheet makeImage];
             [self addSubview:_facebookImage];
             
@@ -37,12 +32,12 @@
             _facebookImage.layer.masksToBounds = YES;
             _facebookImage.layer.cornerRadius = _facebookImage.frame.size.width / 2.f;
             
-            sheet = [[Theme theme] stylesheetForKey:@"InviteFriendsRow.facebookMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.facebookMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UIButton* mask = [sheet makeButton];
             [mask addTarget:self action:@selector(onFacebookButtonActivated:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:mask];
             
-            sheet = [[Theme theme] stylesheetForKey:@"InviteFriendsRow.facebookLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.facebookLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UILabel* label = [sheet makeLabel];
             label.text = NSLocalizedString(@"InviteFriendsRow.facebookLabel", nil);
             [self addSubview:label];
@@ -50,7 +45,7 @@
         
         // twitter
         {
-            sheet = [[Theme theme] stylesheetForKey:@"InviteFriendsRow.twitterImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.twitterImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _twitterImage = [sheet makeImage];
             [self addSubview:_twitterImage];
             
@@ -58,12 +53,12 @@
             _twitterImage.layer.masksToBounds = YES;
             _twitterImage.layer.cornerRadius = _twitterImage.frame.size.width / 2.f;
             
-            sheet = [[Theme theme] stylesheetForKey:@"InviteFriendsRow.twitterMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.twitterMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UIButton* mask = [sheet makeButton];
             [mask addTarget:self action:@selector(onTwitterButtonActivated:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:mask];
             
-            sheet = [[Theme theme] stylesheetForKey:@"InviteFriendsRow.twitterLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.twitterLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UILabel* label = [sheet makeLabel];
             label.text = NSLocalizedString(@"InviteFriendsRow.twitterLabel", nil);
             [self addSubview:label];
@@ -71,7 +66,7 @@
         
         // email
         {
-            sheet = [[Theme theme] stylesheetForKey:@"InviteFriendsRow.emailImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.emailImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _emailImage = [sheet makeImage];
             [self addSubview:_emailImage];
             
@@ -79,12 +74,12 @@
             _emailImage.layer.masksToBounds = YES;
             _emailImage.layer.cornerRadius = _emailImage.frame.size.width / 2.f;
             
-            sheet = [[Theme theme] stylesheetForKey:@"InviteFriendsRow.emailMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.emailMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UIButton* mask = [sheet makeButton];
             [mask addTarget:self action:@selector(onEmailButtonActivated:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:mask];
             
-            sheet = [[Theme theme] stylesheetForKey:@"InviteFriendsRow.emailLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"InviteFriends.row.emailLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UILabel* label = [sheet makeLabel];
             label.text = NSLocalizedString(@"InviteFriendsRow.emailLabel", nil);
             [self addSubview:label];

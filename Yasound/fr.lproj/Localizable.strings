@@ -729,7 +729,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "ContactListPicker.SendButton" = "Envoyer";
 "ContactListPicker.CancelButton" = "Annuler";
 
-"InviteFriendsRow.title" = "Inviter plus d'amis";
+"InviteFriendsSection.title" = "Inviter plus d'amis";
 "InviteFriendsRow.facebookLabel" = "facebook";
 "InviteFriendsRow.twitterLabel" = "twitter";
 "InviteFriendsRow.emailLabel" = "email";

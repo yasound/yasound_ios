@@ -742,7 +742,7 @@
 "ContactListPicker.SendButton" = "Send";
 "ContactListPicker.CancelButton" = "Cancel";
 
-"InviteFriendsRow.title" = "Invite more friends";
+"InviteFriendsSection.title" = "Invite more friends";
 "InviteFriendsRow.facebookLabel" = "facebook";
 "InviteFriendsRow.twitterLabel" = "twitter";
 "InviteFriendsRow.emailLabel" = "email";
