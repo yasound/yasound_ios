@@ -10,7 +10,7 @@
 #import "Theme.h"
 #import <AddressBook/AddressBook.h>
 #import "Contact.h"
-#import "ContactListPickerViewController.h"
+#import "InviteContactsViewController.h"
 #import "YasoundAppDelegate.h"
 
 @implementation InviteFriendsTableViewCell
@@ -153,7 +153,7 @@
     CFRelease(people);
     CFRelease(peopleMutable);
     
-    ContactListPickerViewController* controller = [[ContactListPickerViewController alloc] initWithContacts:contacts];
+    InviteContactsViewController* controller = [[InviteContactsViewController alloc] initWithContacts:contacts];
     [APPDELEGATE.navigationController presentModalViewController:controller animated:YES];
     [controller release];
 }

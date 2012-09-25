@@ -1,5 +1,5 @@
 //
-//  ContactListPickerViewController.h
+//  InviteContactsViewController.h
 //  Yasound
 //
 //  Created by mat on 24/09/12.
@@ -10,13 +10,12 @@
 #import "TopBarModal.h"
 #import "Contact.h"
 
-@interface ContactListPickerViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TopBarModalDelegate>
+@interface InviteContactsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TopBarModalDelegate>
 {
     NSArray* _contacts;
     NSMutableSet* _selectedContacts;
     
     IBOutlet UITableView* _tableview;
-    IBOutlet TopBarModal* _topBar;
     
     UIImage* _checkmarkImage;
 }

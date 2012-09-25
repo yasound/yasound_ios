@@ -1,14 +1,14 @@
 //
-//  ContactListPickerViewController.m
+//  InviteContactsViewController.m
 //  Yasound
 //
 //  Created by mat on 24/09/12.
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "ContactListPickerViewController.h"
+#import "InviteContactsViewController.h"
 
-@implementation ContactListPickerViewController
+@implementation InviteContactsViewController
 
 - (id)initWithContacts:(NSArray*)contacts
 {
@@ -79,6 +79,7 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.textColor = [UIColor whiteColor];
     }
     
     Contact* contact = [_contacts objectAtIndex:indexPath.row];

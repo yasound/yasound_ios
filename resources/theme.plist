@@ -3866,15 +3866,15 @@
 				<key>separator</key>
 				<dict>
 					<key>x</key>
-					<integer>20</integer>
+					<integer>40</integer>
 					<key>y</key>
 					<integer>34</integer>
 					<key>width</key>
-					<integer>280</integer>
+					<integer>240</integer>
 					<key>type</key>
 					<string>png</string>
 					<key>name</key>
-					<string>myRadiosSeparator</string>
+					<string>inviteFriendsSectionSeparator</string>
 				</dict>
 			</dict>
 		</dict>
