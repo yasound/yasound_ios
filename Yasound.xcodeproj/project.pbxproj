@@ -116,6 +116,51 @@
 		402946BF15F910D900F73830 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402946AF15F910D900F73830 /* GiftsViewController.xib */; };
 		402946C015F910D900F73830 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402946AF15F910D900F73830 /* GiftsViewController.xib */; };
 		402946C115F910D900F73830 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402946AF15F910D900F73830 /* GiftsViewController.xib */; };
+		403198341610941900DD54F0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE9F2215FDF4B600CE615B /* AddressBook.framework */; };
+		403198351610951600DD54F0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE9F2215FDF4B600CE615B /* AddressBook.framework */; };
+		403198361610951700DD54F0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE9F2215FDF4B600CE615B /* AddressBook.framework */; };
+		403198371610951800DD54F0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE9F2215FDF4B600CE615B /* AddressBook.framework */; };
+		403198381610951800DD54F0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE9F2215FDF4B600CE615B /* AddressBook.framework */; };
+		403198391610951900DD54F0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE9F2215FDF4B600CE615B /* AddressBook.framework */; };
+		4031983A1610951900DD54F0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE9F2215FDF4B600CE615B /* AddressBook.framework */; };
+		4031983B1610951A00DD54F0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE9F2215FDF4B600CE615B /* AddressBook.framework */; };
+		4031983C1610951B00DD54F0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE9F2215FDF4B600CE615B /* AddressBook.framework */; };
+		40319841161095C700DD54F0 /* ContactListPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031983F161095C700DD54F0 /* ContactListPickerViewController.m */; };
+		40319842161095C700DD54F0 /* ContactListPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031983F161095C700DD54F0 /* ContactListPickerViewController.m */; };
+		40319843161095C700DD54F0 /* ContactListPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031983F161095C700DD54F0 /* ContactListPickerViewController.m */; };
+		40319844161095C700DD54F0 /* ContactListPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031983F161095C700DD54F0 /* ContactListPickerViewController.m */; };
+		40319845161095C700DD54F0 /* ContactListPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031983F161095C700DD54F0 /* ContactListPickerViewController.m */; };
+		40319846161095C700DD54F0 /* ContactListPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031983F161095C700DD54F0 /* ContactListPickerViewController.m */; };
+		40319847161095C700DD54F0 /* ContactListPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031983F161095C700DD54F0 /* ContactListPickerViewController.m */; };
+		40319848161095C700DD54F0 /* ContactListPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031983F161095C700DD54F0 /* ContactListPickerViewController.m */; };
+		40319849161095C700DD54F0 /* ContactListPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031983F161095C700DD54F0 /* ContactListPickerViewController.m */; };
+		4031984A161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40319840161095C700DD54F0 /* ContactListPickerViewController.xib */; };
+		4031984B161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40319840161095C700DD54F0 /* ContactListPickerViewController.xib */; };
+		4031984C161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40319840161095C700DD54F0 /* ContactListPickerViewController.xib */; };
+		4031984D161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40319840161095C700DD54F0 /* ContactListPickerViewController.xib */; };
+		4031984E161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40319840161095C700DD54F0 /* ContactListPickerViewController.xib */; };
+		4031984F161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40319840161095C700DD54F0 /* ContactListPickerViewController.xib */; };
+		40319850161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40319840161095C700DD54F0 /* ContactListPickerViewController.xib */; };
+		40319851161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40319840161095C700DD54F0 /* ContactListPickerViewController.xib */; };
+		40319852161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40319840161095C700DD54F0 /* ContactListPickerViewController.xib */; };
+		403198551610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 403198541610BE4300DD54F0 /* InviteFriendsTableViewCell.m */; };
+		403198561610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 403198541610BE4300DD54F0 /* InviteFriendsTableViewCell.m */; };
+		403198571610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 403198541610BE4300DD54F0 /* InviteFriendsTableViewCell.m */; };
+		403198581610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 403198541610BE4300DD54F0 /* InviteFriendsTableViewCell.m */; };
+		403198591610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 403198541610BE4300DD54F0 /* InviteFriendsTableViewCell.m */; };
+		4031985A1610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 403198541610BE4300DD54F0 /* InviteFriendsTableViewCell.m */; };
+		4031985B1610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 403198541610BE4300DD54F0 /* InviteFriendsTableViewCell.m */; };
+		4031985C1610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 403198541610BE4300DD54F0 /* InviteFriendsTableViewCell.m */; };
+		4031985D1610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 403198541610BE4300DD54F0 /* InviteFriendsTableViewCell.m */; };
+		403198601610D06400DD54F0 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031985F1610D06400DD54F0 /* Contact.m */; };
+		403198611610D06400DD54F0 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031985F1610D06400DD54F0 /* Contact.m */; };
+		403198621610D06400DD54F0 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031985F1610D06400DD54F0 /* Contact.m */; };
+		403198631610D06400DD54F0 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031985F1610D06400DD54F0 /* Contact.m */; };
+		403198641610D06400DD54F0 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031985F1610D06400DD54F0 /* Contact.m */; };
+		403198651610D06400DD54F0 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031985F1610D06400DD54F0 /* Contact.m */; };
+		403198661610D06400DD54F0 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031985F1610D06400DD54F0 /* Contact.m */; };
+		403198671610D06400DD54F0 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031985F1610D06400DD54F0 /* Contact.m */; };
+		403198681610D06400DD54F0 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031985F1610D06400DD54F0 /* Contact.m */; };
 		40560D2515F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
 		40560D2615F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
 		40560D2715F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
@@ -173,6 +218,24 @@
 		408507ED160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
 		408507EE160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
 		408507EF160231C9009DC246 /* PromoCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507E6160231C9009DC246 /* PromoCodeCell.m */; };
+		408E75DE1611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
+		408E75DF1611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
+		408E75E01611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
+		408E75E11611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
+		408E75E21611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
+		408E75E31611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
+		408E75E41611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
+		408E75E51611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
+		408E75E61611A7F400AA82F9 /* facebook_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */; };
+		408E75E71611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
+		408E75E81611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
+		408E75E91611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
+		408E75EA1611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
+		408E75EB1611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
+		408E75EC1611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
+		408E75ED1611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
+		408E75EE1611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
+		408E75EF1611A7F400AA82F9 /* twitter_logo_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */; };
 		40AAEC4B14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40AAEC4C14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40B40951152EFC630050D334 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
@@ -6736,6 +6799,13 @@
 		402946AD15F910D900F73830 /* GiftsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiftsViewController.h; path = Gifts/GiftsViewController.h; sourceTree = "<group>"; };
 		402946AE15F910D900F73830 /* GiftsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GiftsViewController.m; path = Gifts/GiftsViewController.m; sourceTree = "<group>"; };
 		402946AF15F910D900F73830 /* GiftsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GiftsViewController.xib; path = Gifts/GiftsViewController.xib; sourceTree = "<group>"; };
+		4031983E161095C700DD54F0 /* ContactListPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactListPickerViewController.h; path = Contacts/ContactListPickerViewController.h; sourceTree = "<group>"; };
+		4031983F161095C700DD54F0 /* ContactListPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactListPickerViewController.m; path = Contacts/ContactListPickerViewController.m; sourceTree = "<group>"; };
+		40319840161095C700DD54F0 /* ContactListPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactListPickerViewController.xib; path = Contacts/ContactListPickerViewController.xib; sourceTree = "<group>"; };
+		403198531610BE4300DD54F0 /* InviteFriendsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InviteFriendsTableViewCell.h; path = RadioSelection/InviteFriendsTableViewCell.h; sourceTree = "<group>"; };
+		403198541610BE4300DD54F0 /* InviteFriendsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InviteFriendsTableViewCell.m; path = RadioSelection/InviteFriendsTableViewCell.m; sourceTree = "<group>"; };
+		4031985E1610D06400DD54F0 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		4031985F1610D06400DD54F0 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		40560D2315F7BDF1006900D5 /* Gift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gift.h; sourceTree = "<group>"; };
 		40560D2415F7BDF1006900D5 /* Gift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gift.m; sourceTree = "<group>"; };
 		405A956515D4105300569FE0 /* Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Show.h; sourceTree = "<group>"; };
@@ -6750,6 +6820,8 @@
 		408507DB1601DEBB009DC246 /* WaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaitingView.m; path = RadioSelection/WaitingView.m; sourceTree = "<group>"; };
 		408507E5160231C9009DC246 /* PromoCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PromoCodeCell.h; path = Gifts/PromoCodeCell.h; sourceTree = "<group>"; };
 		408507E6160231C9009DC246 /* PromoCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PromoCodeCell.m; path = Gifts/PromoCodeCell.m; sourceTree = "<group>"; };
+		408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_logo_65.png; sourceTree = "<group>"; };
+		408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_logo_65.png; sourceTree = "<group>"; };
 		40AAEC4914921AE70031B39D /* YasoundDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataProvider.h; sourceTree = "<group>"; };
 		40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataProvider.m; sourceTree = "<group>"; };
 		40B40AEB152EFC630050D334 /* YasoundD LOCAL SERVER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD LOCAL SERVER.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -7745,6 +7817,7 @@
 				40B40A17152EFC630050D334 /* libOAuth.a in Frameworks */,
 				E561068915874EC400FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD1521B160C6976009E3604 /* libTestFlight.a in Frameworks */,
+				4031983B1610951A00DD54F0 /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7777,6 +7850,7 @@
 				40D53C1D1554280F001EB0C5 /* libOAuth.a in Frameworks */,
 				E561068415874E7B00FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD1521C160C6976009E3604 /* libTestFlight.a in Frameworks */,
+				4031983C1610951B00DD54F0 /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7809,6 +7883,7 @@
 				BC3FA6FD14E93B660055AB4A /* libOAuth.a in Frameworks */,
 				E561068815874EC300FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD1521A160C6976009E3604 /* libTestFlight.a in Frameworks */,
+				4031983A1610951900DD54F0 /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7841,6 +7916,7 @@
 				BC56F526152486AF005D1B40 /* libOAuth.a in Frameworks */,
 				E561068715874EC100FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD15217160C6976009E3604 /* libTestFlight.a in Frameworks */,
+				403198371610951800DD54F0 /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7848,6 +7924,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				403198341610941900DD54F0 /* AddressBook.framework in Frameworks */,
 				BCC7518315E686D200CF7F7C /* StoreKit.framework in Frameworks */,
 				BC40CC8414D010BD00DF0950 /* QuartzCore.framework in Frameworks */,
 				BC40CC6A14CF64F500DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */,
@@ -7905,6 +7982,7 @@
 				BC40CC1514CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				E51907401582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD15219160C6976009E3604 /* libTestFlight.a in Frameworks */,
+				403198381610951800DD54F0 /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7937,6 +8015,7 @@
 				BCC7527315E689EF00CF7F7C /* libOAuth.a in Frameworks */,
 				BCC7527515E689EF00CF7F7C /* Crashlytics.framework in Frameworks */,
 				BCD15216160C6976009E3604 /* libTestFlight.a in Frameworks */,
+				403198361610951700DD54F0 /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7969,6 +8048,7 @@
 				BC40CC1214CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				E519073C1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD15214160C6976009E3604 /* libTestFlight.a in Frameworks */,
+				403198351610951600DD54F0 /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8001,6 +8081,7 @@
 				BC40CC1414CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				E519073F1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD15218160C6976009E3604 /* libTestFlight.a in Frameworks */,
+				403198391610951900DD54F0 /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8066,6 +8147,25 @@
 				408507E6160231C9009DC246 /* PromoCodeCell.m */,
 			);
 			name = Gifts;
+			sourceTree = "<group>";
+		};
+		4031983D1610954800DD54F0 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				4031983E161095C700DD54F0 /* ContactListPickerViewController.h */,
+				4031983F161095C700DD54F0 /* ContactListPickerViewController.m */,
+				40319840161095C700DD54F0 /* ContactListPickerViewController.xib */,
+			);
+			name = Contacts;
+			sourceTree = "<group>";
+		};
+		408E75DB1611A7F400AA82F9 /* social_logos */ = {
+			isa = PBXGroup;
+			children = (
+				408E75DC1611A7F400AA82F9 /* facebook_logo_65.png */,
+				408E75DD1611A7F400AA82F9 /* twitter_logo_65.png */,
+			);
+			path = social_logos;
 			sourceTree = "<group>";
 		};
 		40AAEC4714921ACE0031B39D /* DataProvider */ = {
@@ -8265,6 +8365,8 @@
 				405A956615D4105300569FE0 /* Show.m */,
 				40560D2315F7BDF1006900D5 /* Gift.h */,
 				40560D2415F7BDF1006900D5 /* Gift.m */,
+				4031985E1610D06400DD54F0 /* Contact.h */,
+				4031985F1610D06400DD54F0 /* Contact.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -8590,6 +8692,8 @@
 				BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */,
 				BC03C43515E2C6640017388D /* UserListTableViewCell.h */,
 				BC03C43615E2C6650017388D /* UserListTableViewCell.m */,
+				403198531610BE4300DD54F0 /* InviteFriendsTableViewCell.h */,
+				403198541610BE4300DD54F0 /* InviteFriendsTableViewCell.m */,
 				BC598E8115B94A43004D6DCB /* RadioListTableViewCell.h */,
 				BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */,
 				BC48937C15EFCD980061C24D /* RadioSearchViewController.h */,
@@ -9541,6 +9645,7 @@
 		BCE35FAA15D7FD2F008C26AC /* RadioList */ = {
 			isa = PBXGroup;
 			children = (
+				408E75DB1611A7F400AA82F9 /* social_logos */,
 				BC325F2D160F0CF700BA38C9 /* radioListRefreshIndicator.png */,
 				BC325F2E160F0CF700BA38C9 /* radioListRefreshIndicator@2x.png */,
 				BC641DFA160771DA00E1C3A2 /* radioListFriendsDummy.png */,
@@ -9900,6 +10005,7 @@
 			isa = PBXGroup;
 			children = (
 				BC46382D1611EE77008CE52F /* WheelSelectors */,
+				4031983D1610954800DD54F0 /* Contacts */,
 				402946A115F8E97900F73830 /* Gifts */,
 				4029469515F8A2FC00F73830 /* AppURL */,
 				BCDABC1415F74FDD002E8708 /* SongCatalog */,
@@ -10638,6 +10744,9 @@
 				BC325F82160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FED16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF616103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				40319851161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
+				408E75E51611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
+				408E75EE1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E361610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC46373C161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC463745161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -11111,6 +11220,9 @@
 				BC325F83160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FEE16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF716103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				40319852161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
+				408E75E61611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
+				408E75EF1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E371610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC46373D161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC463746161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -11578,6 +11690,9 @@
 				BC325F81160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FEC16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF516103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				40319850161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
+				408E75E41611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
+				408E75ED1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E351610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC46373B161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC463744161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -12050,6 +12165,9 @@
 				BC325F7E160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FE916103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF216103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				4031984D161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
+				408E75E11611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
+				408E75EA1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E321610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC463738161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC463741161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -12522,6 +12640,9 @@
 				BC325F7C160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FE716103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF016103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				4031984B161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
+				408E75DF1611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
+				408E75E81611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E301610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC463736161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC46373F161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -12994,6 +13115,9 @@
 				BC325F80160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FEB16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF416103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				4031984F161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
+				408E75E31611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
+				408E75EC1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E341610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC46373A161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC463743161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -13467,6 +13591,9 @@
 				BC325F7D160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FE816103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF116103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				4031984C161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
+				408E75E01611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
+				408E75E91611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E311610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC463737161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC463740161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -13939,6 +14066,9 @@
 				BC325F7B160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FE616103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FEF16103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				4031984A161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
+				408E75DE1611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
+				408E75E71611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E2F1610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC463735161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC46373E161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -14411,6 +14541,9 @@
 				BC325F7F160F5FE300BA38C9 /* Default-568h@2x.png in Resources */,
 				BC325FEA16103EE800BA38C9 /* commonLogoScreen.png in Resources */,
 				BC325FF316103EE800BA38C9 /* commonLogoScreen@2x.png in Resources */,
+				4031984E161095C700DD54F0 /* ContactListPickerViewController.xib in Resources */,
+				408E75E21611A7F400AA82F9 /* facebook_logo_65.png in Resources */,
+				408E75EB1611A7F400AA82F9 /* twitter_logo_65.png in Resources */,
 				BCB31E331610684000AAF8DF /* RadioSelectionViewController-4inch.xib in Resources */,
 				BC463739161192CD008CE52F /* myRadiosDelete.png in Resources */,
 				BC463742161192CD008CE52F /* myRadiosDelete@2x.png in Resources */,
@@ -14735,6 +14868,9 @@
 				BC46383A1611EE78008CE52F /* WheelSelector.m in Sources */,
 				BC4638501611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
 				BC4638591611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
+				40319848161095C700DD54F0 /* ContactListPickerViewController.m in Sources */,
+				4031985C1610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */,
+				403198671610D06400DD54F0 /* Contact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14980,6 +15116,9 @@
 				BC46383B1611EE78008CE52F /* WheelSelector.m in Sources */,
 				BC4638511611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
 				BC46385A1611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
+				40319849161095C700DD54F0 /* ContactListPickerViewController.m in Sources */,
+				4031985D1610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */,
+				403198681610D06400DD54F0 /* Contact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15221,6 +15360,9 @@
 				BC4638391611EE78008CE52F /* WheelSelector.m in Sources */,
 				BC46384F1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
 				BC4638581611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
+				40319847161095C700DD54F0 /* ContactListPickerViewController.m in Sources */,
+				4031985B1610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */,
+				403198661610D06400DD54F0 /* Contact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15466,6 +15608,9 @@
 				BC4638361611EE78008CE52F /* WheelSelector.m in Sources */,
 				BC46384C1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
 				BC4638551611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
+				40319844161095C700DD54F0 /* ContactListPickerViewController.m in Sources */,
+				403198581610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */,
+				403198631610D06400DD54F0 /* Contact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15711,6 +15856,9 @@
 				BC4638341611EE77008CE52F /* WheelSelector.m in Sources */,
 				BC46384A1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
 				BC4638531611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
+				40319842161095C700DD54F0 /* ContactListPickerViewController.m in Sources */,
+				403198561610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */,
+				403198611610D06400DD54F0 /* Contact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15957,6 +16105,9 @@
 				BC4638381611EE78008CE52F /* WheelSelector.m in Sources */,
 				BC46384E1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
 				BC4638571611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
+				40319846161095C700DD54F0 /* ContactListPickerViewController.m in Sources */,
+				4031985A1610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */,
+				403198651610D06400DD54F0 /* Contact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16202,6 +16353,9 @@
 				BC4638351611EE77008CE52F /* WheelSelector.m in Sources */,
 				BC46384B1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
 				BC4638541611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
+				40319843161095C700DD54F0 /* ContactListPickerViewController.m in Sources */,
+				403198571610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */,
+				403198621610D06400DD54F0 /* Contact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16447,6 +16601,9 @@
 				BC4638331611EE77008CE52F /* WheelSelector.m in Sources */,
 				BC4638491611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
 				BC4638521611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
+				40319841161095C700DD54F0 /* ContactListPickerViewController.m in Sources */,
+				403198551610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */,
+				403198601610D06400DD54F0 /* Contact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16693,6 +16850,9 @@
 				BC4638371611EE78008CE52F /* WheelSelector.m in Sources */,
 				BC46384D1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
 				BC4638561611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
+				40319845161095C700DD54F0 /* ContactListPickerViewController.m in Sources */,
+				403198591610BE4300DD54F0 /* InviteFriendsTableViewCell.m in Sources */,
+				403198641610D06400DD54F0 /* Contact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

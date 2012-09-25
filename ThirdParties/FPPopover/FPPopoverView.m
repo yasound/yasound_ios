@@ -353,11 +353,10 @@
 
     
     CGContextFillRect(ctx, CGRectMake(0, end.y, self.bounds.size.width, self.bounds.size.height-end.y));
-    //EXTERNAL BORDER
+    //internal border
     CGContextBeginPath(ctx);
     CGContextAddPath(ctx, contentPath);
-    CGContextSetRGBStrokeColor(ctx, 0.6, 0.6, 0.6, 1.0);
-    //CGContextSetRGBStrokeColor(ctx, 1, 0, 0, 1.0);
+    CGContextSetRGBStrokeColor(ctx, 0.2, 0.2, 0.2, 1.0);
     CGContextSetLineWidth(ctx, 1);
     CGContextSetLineCap(ctx,kCGLineCapRound);
     CGContextSetLineJoin(ctx, kCGLineJoinRound);
@@ -368,26 +367,25 @@
     CGPathRef externalBorderPath = [self newContentPathWithBorderWidth:1.0 arrowDirection:_arrowDirection];
     CGContextBeginPath(ctx);
     CGContextAddPath(ctx, externalBorderPath);
-//    CGContextSetRGBStrokeColor(ctx, 0.4, 0.4, 0.4, 1.0);
-    CGContextSetRGBStrokeColor(ctx, 0, 1, 0, 1.0);
+    CGContextSetRGBStrokeColor(ctx, 0.1, 0.1, 0.1, 1.0);
     CGContextSetLineWidth(ctx, 1);
     CGContextSetLineCap(ctx,kCGLineCapRound);
     CGContextSetLineJoin(ctx, kCGLineJoinRound);
     CGContextStrokePath(ctx);
     CGPathRelease(externalBorderPath);
 
-//    //3D border of the content view
-//    CGRect cvRect = _contentView.frame;
-//    //firstLine
-////    CGContextSetRGBStrokeColor(ctx, 0.7, 0.7, 0.7, 1.0);
-//    CGContextSetRGBStrokeColor(ctx, 0, 0, 1, 1.0);
-//    CGContextStrokeRect(ctx, cvRect);
-//    //secondLine
-//    cvRect.origin.x -= 1; cvRect.origin.y -= 1; cvRect.size.height += 2; cvRect.size.width += 2;
-//    CGContextSetRGBStrokeColor(ctx, 0.4, 0.4, 0.4, 1.0);
-//    CGContextStrokeRect(ctx, cvRect);
-    
-    
+#if 0
+    //3D border of the content view
+    CGRect cvRect = _contentView.frame;
+    //firstLine
+    CGContextSetRGBStrokeColor(ctx, 0.7, 0.7, 0.7, 1.0);
+    CGContextStrokeRect(ctx, cvRect);
+    //secondLine
+    cvRect.origin.x -= 1; cvRect.origin.y -= 1; cvRect.size.height += 2; cvRect.size.width += 2;
+    CGContextSetRGBStrokeColor(ctx, 0.4, 0.4, 0.4, 1.0);
+    CGContextStrokeRect(ctx, cvRect);
+#endif
+
     
     CGContextRestoreGState(ctx);
 }
