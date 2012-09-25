@@ -154,8 +154,6 @@ taskStatus stringToStatus(NSString* str);
 - (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
 
 - (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector;
-- (void)searchRadiosByCreator:(NSString*)search withTarget:(id)target action:(SEL)selector;
-- (void)searchRadiosBySong:(NSString*)search withTarget:(id)target action:(SEL)selector;
 
 - (void)radioUserForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)setMood:(UserMood)mood forRadio:(Radio*)radio;

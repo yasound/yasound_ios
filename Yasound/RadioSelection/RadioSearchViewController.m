@@ -428,8 +428,6 @@ typedef enum
     [self.searchDisplayController.searchResultsTableView reloadData];
   
   [[YasoundDataProvider main] searchRadios:searchText withTarget:self action:@selector(receiveRadios:withInfo:)];
-  [[YasoundDataProvider main] searchRadiosByCreator:searchText withTarget:self action:@selector(receiveRadiosSearchedByCreator:withInfo:)];
-  [[YasoundDataProvider main] searchRadiosBySong:searchText withTarget:self action:@selector(receiveRadiosSearchBySong:withInfo:)];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
