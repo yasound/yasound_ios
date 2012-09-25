@@ -26,19 +26,22 @@
 #define ITEM_STICKY_POS 2
 #define ITEM_STICKY_LIMIT 3
 
-- (void)awakeFromNib
+
+
+
+- (void)initWithTheme:(NSString*)theme
 {
     self.needsToStick = NO;
     self.tapRegistered = NO;
     self.locked = NO;
     
-    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wheelSelectorBackground.png"]];
+    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"wheelSelector%@Background.png", theme]]];
     
     // compute selector's options
         self.items = [[NSMutableArray alloc] init];
     self.itemToIndex = [[NSMutableDictionary alloc] init];
 
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"WheelSelector.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:[NSString stringWithFormat:@"WheelSelector.%@.label", theme] retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UIFont* font = [sheet makeFont];
     
     
@@ -119,7 +122,7 @@
     self.decelerationRate = UIScrollViewDecelerationRateFast;
 
     // add visual layer for the selector indicator (the red needle)
-    sheet = [[Theme theme] stylesheetForKey:@"WheelSelector.indicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:[NSString stringWithFormat:@"WheelSelector.%@.indicator", theme] retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIImage* indicatorImage = [sheet image];
     CGRect indicatorFrame = CGRectMake(self.frame.size.width/2.f - indicatorImage.size.width/2.f, self.frame.origin.y + self.frame.size.height - indicatorImage.size.height, indicatorImage.size.width, indicatorImage.size.height);
     CALayer* indicatorLayer = [CALayer layer];
@@ -128,7 +131,7 @@
     [[self.superview layer] addSublayer:indicatorLayer]; // to superview 'cause it must not scroll
 
     // add visual layer for the selector's shadow
-    sheet = [[Theme theme] stylesheetForKey:@"WheelSelector.shadow" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:[NSString stringWithFormat:@"WheelSelector.%@.shadow", theme] retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIImage* shadowImage = [sheet image];
     CGRect frame = CGRectMake(0, self.frame.origin.y, shadowImage.size.width, shadowImage.size.height);
     CALayer* layer = [CALayer layer];

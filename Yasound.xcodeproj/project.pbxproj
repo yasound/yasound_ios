@@ -2047,6 +2047,87 @@
 		BC4637B216119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */; };
 		BC4637B316119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */; };
 		BC4637B416119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */; };
+		BC4638331611EE77008CE52F /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638301611EE77008CE52F /* WheelSelector.m */; };
+		BC4638341611EE77008CE52F /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638301611EE77008CE52F /* WheelSelector.m */; };
+		BC4638351611EE77008CE52F /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638301611EE77008CE52F /* WheelSelector.m */; };
+		BC4638361611EE78008CE52F /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638301611EE77008CE52F /* WheelSelector.m */; };
+		BC4638371611EE78008CE52F /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638301611EE77008CE52F /* WheelSelector.m */; };
+		BC4638381611EE78008CE52F /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638301611EE77008CE52F /* WheelSelector.m */; };
+		BC4638391611EE78008CE52F /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638301611EE77008CE52F /* WheelSelector.m */; };
+		BC46383A1611EE78008CE52F /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638301611EE77008CE52F /* WheelSelector.m */; };
+		BC46383B1611EE78008CE52F /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638301611EE77008CE52F /* WheelSelector.m */; };
+		BC4638491611F0E4008CE52F /* WheelSelectorGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638461611F0E4008CE52F /* WheelSelectorGenre.m */; };
+		BC46384A1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638461611F0E4008CE52F /* WheelSelectorGenre.m */; };
+		BC46384B1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638461611F0E4008CE52F /* WheelSelectorGenre.m */; };
+		BC46384C1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638461611F0E4008CE52F /* WheelSelectorGenre.m */; };
+		BC46384D1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638461611F0E4008CE52F /* WheelSelectorGenre.m */; };
+		BC46384E1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638461611F0E4008CE52F /* WheelSelectorGenre.m */; };
+		BC46384F1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638461611F0E4008CE52F /* WheelSelectorGenre.m */; };
+		BC4638501611F0E4008CE52F /* WheelSelectorGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638461611F0E4008CE52F /* WheelSelectorGenre.m */; };
+		BC4638511611F0E4008CE52F /* WheelSelectorGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638461611F0E4008CE52F /* WheelSelectorGenre.m */; };
+		BC4638521611F0E4008CE52F /* WheelSelectorRadios.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638481611F0E4008CE52F /* WheelSelectorRadios.m */; };
+		BC4638531611F0E4008CE52F /* WheelSelectorRadios.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638481611F0E4008CE52F /* WheelSelectorRadios.m */; };
+		BC4638541611F0E4008CE52F /* WheelSelectorRadios.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638481611F0E4008CE52F /* WheelSelectorRadios.m */; };
+		BC4638551611F0E4008CE52F /* WheelSelectorRadios.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638481611F0E4008CE52F /* WheelSelectorRadios.m */; };
+		BC4638561611F0E4008CE52F /* WheelSelectorRadios.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638481611F0E4008CE52F /* WheelSelectorRadios.m */; };
+		BC4638571611F0E4008CE52F /* WheelSelectorRadios.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638481611F0E4008CE52F /* WheelSelectorRadios.m */; };
+		BC4638581611F0E4008CE52F /* WheelSelectorRadios.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638481611F0E4008CE52F /* WheelSelectorRadios.m */; };
+		BC4638591611F0E4008CE52F /* WheelSelectorRadios.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638481611F0E4008CE52F /* WheelSelectorRadios.m */; };
+		BC46385A1611F0E4008CE52F /* WheelSelectorRadios.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4638481611F0E4008CE52F /* WheelSelectorRadios.m */; };
+		BC4638621611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385C1611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png */; };
+		BC4638631611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385C1611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png */; };
+		BC4638641611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385C1611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png */; };
+		BC4638651611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385C1611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png */; };
+		BC4638661611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385C1611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png */; };
+		BC4638671611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385C1611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png */; };
+		BC4638681611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385C1611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png */; };
+		BC4638691611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385C1611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png */; };
+		BC46386A1611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385C1611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png */; };
+		BC46386B1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385D1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png */; };
+		BC46386C1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385D1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png */; };
+		BC46386D1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385D1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png */; };
+		BC46386E1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385D1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png */; };
+		BC46386F1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385D1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png */; };
+		BC4638701611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385D1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png */; };
+		BC4638711611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385D1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png */; };
+		BC4638721611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385D1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png */; };
+		BC4638731611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385D1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png */; };
+		BC4638741611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385E1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png */; };
+		BC4638751611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385E1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png */; };
+		BC4638761611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385E1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png */; };
+		BC4638771611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385E1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png */; };
+		BC4638781611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385E1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png */; };
+		BC4638791611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385E1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png */; };
+		BC46387A1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385E1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png */; };
+		BC46387B1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385E1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png */; };
+		BC46387C1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385E1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png */; };
+		BC46387D1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385F1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png */; };
+		BC46387E1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385F1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png */; };
+		BC46387F1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385F1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png */; };
+		BC4638801611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385F1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png */; };
+		BC4638811611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385F1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png */; };
+		BC4638821611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385F1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png */; };
+		BC4638831611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385F1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png */; };
+		BC4638841611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385F1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png */; };
+		BC4638851611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46385F1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png */; };
+		BC4638861611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638601611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png */; };
+		BC4638871611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638601611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png */; };
+		BC4638881611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638601611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png */; };
+		BC4638891611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638601611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png */; };
+		BC46388A1611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638601611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png */; };
+		BC46388B1611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638601611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png */; };
+		BC46388C1611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638601611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png */; };
+		BC46388D1611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638601611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png */; };
+		BC46388E1611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638601611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png */; };
+		BC46388F1611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638611611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png */; };
+		BC4638901611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638611611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png */; };
+		BC4638911611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638611611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png */; };
+		BC4638921611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638611611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png */; };
+		BC4638931611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638611611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png */; };
+		BC4638941611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638611611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png */; };
+		BC4638951611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638611611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png */; };
+		BC4638961611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638611611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png */; };
+		BC4638971611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4638611611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png */; };
 		BC47AFD7154AD23200B0AA55 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
 		BC47AFD8154AD23200B0AA55 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
 		BC47AFD9154AD23200B0AA55 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
@@ -2465,14 +2546,6 @@
 		BC598E7415B8786C004D6DCB /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */; };
 		BC598E7515B8786C004D6DCB /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */; };
 		BC598E7615B8786C004D6DCB /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */; };
-		BC598E7915B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
-		BC598E7A15B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
-		BC598E7B15B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
-		BC598E7C15B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
-		BC598E7D15B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
-		BC598E7E15B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
-		BC598E7F15B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
-		BC598E8015B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
 		BC598E8315B94A43004D6DCB /* RadioListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */; };
 		BC598E8415B94A43004D6DCB /* RadioListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */; };
 		BC598E8515B94A43004D6DCB /* RadioListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */; };
@@ -3336,7 +3409,6 @@
 		BCC7522A15E689EF00CF7F7C /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
 		BCC7522B15E689EF00CF7F7C /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
 		BCC7522C15E689EF00CF7F7C /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */; };
-		BCC7522D15E689EF00CF7F7C /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
 		BCC7522E15E689EF00CF7F7C /* RadioListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */; };
 		BCC7522F15E689EF00CF7F7C /* TwitterSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */; };
 		BCC7523015E689EF00CF7F7C /* CityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027241B15A353F3002A870D /* CityInfo.m */; };
@@ -3696,12 +3768,6 @@
 		BCC7540415E689EF00CF7F7C /* wallPostBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607615D7FD2F008C26AC /* wallPostBar@2x.png */; };
 		BCC7540515E689EF00CF7F7C /* wallPostBarButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607715D7FD2F008C26AC /* wallPostBarButton.png */; };
 		BCC7540615E689EF00CF7F7C /* wallPostBarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607815D7FD2F008C26AC /* wallPostBarButton@2x.png */; };
-		BCC7540715E689EF00CF7F7C /* wheelSelectorBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607A15D7FD2F008C26AC /* wheelSelectorBackground.png */; };
-		BCC7540815E689EF00CF7F7C /* wheelSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607B15D7FD2F008C26AC /* wheelSelectorBackground@2x.png */; };
-		BCC7540915E689EF00CF7F7C /* wheelSelectorIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607C15D7FD2F008C26AC /* wheelSelectorIndicator.png */; };
-		BCC7540A15E689EF00CF7F7C /* wheelSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607D15D7FD2F008C26AC /* wheelSelectorIndicator@2x.png */; };
-		BCC7540B15E689EF00CF7F7C /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607E15D7FD2F008C26AC /* wheelSelectorShadow.png */; };
-		BCC7540C15E689EF00CF7F7C /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607F15D7FD2F008C26AC /* wheelSelectorShadow@2x.png */; };
 		BCC7540D15E689EF00CF7F7C /* commonTableViewSection.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE36F3015D80068008C26AC /* commonTableViewSection.png */; };
 		BCC7540E15E689EF00CF7F7C /* commonTableViewSection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE36F3115D80068008C26AC /* commonTableViewSection@2x.png */; };
 		BCC7540F15E689EF00CF7F7C /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */; };
@@ -6340,54 +6406,6 @@
 		BCE36EFD15D7FD31008C26AC /* wallPostBarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607815D7FD2F008C26AC /* wallPostBarButton@2x.png */; };
 		BCE36EFE15D7FD31008C26AC /* wallPostBarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607815D7FD2F008C26AC /* wallPostBarButton@2x.png */; };
 		BCE36EFF15D7FD31008C26AC /* wallPostBarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607815D7FD2F008C26AC /* wallPostBarButton@2x.png */; };
-		BCE36F0015D7FD31008C26AC /* wheelSelectorBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607A15D7FD2F008C26AC /* wheelSelectorBackground.png */; };
-		BCE36F0115D7FD31008C26AC /* wheelSelectorBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607A15D7FD2F008C26AC /* wheelSelectorBackground.png */; };
-		BCE36F0215D7FD31008C26AC /* wheelSelectorBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607A15D7FD2F008C26AC /* wheelSelectorBackground.png */; };
-		BCE36F0315D7FD31008C26AC /* wheelSelectorBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607A15D7FD2F008C26AC /* wheelSelectorBackground.png */; };
-		BCE36F0415D7FD31008C26AC /* wheelSelectorBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607A15D7FD2F008C26AC /* wheelSelectorBackground.png */; };
-		BCE36F0515D7FD31008C26AC /* wheelSelectorBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607A15D7FD2F008C26AC /* wheelSelectorBackground.png */; };
-		BCE36F0615D7FD31008C26AC /* wheelSelectorBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607A15D7FD2F008C26AC /* wheelSelectorBackground.png */; };
-		BCE36F0715D7FD31008C26AC /* wheelSelectorBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607A15D7FD2F008C26AC /* wheelSelectorBackground.png */; };
-		BCE36F0815D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607B15D7FD2F008C26AC /* wheelSelectorBackground@2x.png */; };
-		BCE36F0915D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607B15D7FD2F008C26AC /* wheelSelectorBackground@2x.png */; };
-		BCE36F0A15D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607B15D7FD2F008C26AC /* wheelSelectorBackground@2x.png */; };
-		BCE36F0B15D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607B15D7FD2F008C26AC /* wheelSelectorBackground@2x.png */; };
-		BCE36F0C15D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607B15D7FD2F008C26AC /* wheelSelectorBackground@2x.png */; };
-		BCE36F0D15D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607B15D7FD2F008C26AC /* wheelSelectorBackground@2x.png */; };
-		BCE36F0E15D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607B15D7FD2F008C26AC /* wheelSelectorBackground@2x.png */; };
-		BCE36F0F15D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607B15D7FD2F008C26AC /* wheelSelectorBackground@2x.png */; };
-		BCE36F1015D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607C15D7FD2F008C26AC /* wheelSelectorIndicator.png */; };
-		BCE36F1115D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607C15D7FD2F008C26AC /* wheelSelectorIndicator.png */; };
-		BCE36F1215D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607C15D7FD2F008C26AC /* wheelSelectorIndicator.png */; };
-		BCE36F1315D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607C15D7FD2F008C26AC /* wheelSelectorIndicator.png */; };
-		BCE36F1415D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607C15D7FD2F008C26AC /* wheelSelectorIndicator.png */; };
-		BCE36F1515D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607C15D7FD2F008C26AC /* wheelSelectorIndicator.png */; };
-		BCE36F1615D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607C15D7FD2F008C26AC /* wheelSelectorIndicator.png */; };
-		BCE36F1715D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607C15D7FD2F008C26AC /* wheelSelectorIndicator.png */; };
-		BCE36F1815D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607D15D7FD2F008C26AC /* wheelSelectorIndicator@2x.png */; };
-		BCE36F1915D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607D15D7FD2F008C26AC /* wheelSelectorIndicator@2x.png */; };
-		BCE36F1A15D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607D15D7FD2F008C26AC /* wheelSelectorIndicator@2x.png */; };
-		BCE36F1B15D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607D15D7FD2F008C26AC /* wheelSelectorIndicator@2x.png */; };
-		BCE36F1C15D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607D15D7FD2F008C26AC /* wheelSelectorIndicator@2x.png */; };
-		BCE36F1D15D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607D15D7FD2F008C26AC /* wheelSelectorIndicator@2x.png */; };
-		BCE36F1E15D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607D15D7FD2F008C26AC /* wheelSelectorIndicator@2x.png */; };
-		BCE36F1F15D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607D15D7FD2F008C26AC /* wheelSelectorIndicator@2x.png */; };
-		BCE36F2015D7FD31008C26AC /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607E15D7FD2F008C26AC /* wheelSelectorShadow.png */; };
-		BCE36F2115D7FD31008C26AC /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607E15D7FD2F008C26AC /* wheelSelectorShadow.png */; };
-		BCE36F2215D7FD31008C26AC /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607E15D7FD2F008C26AC /* wheelSelectorShadow.png */; };
-		BCE36F2315D7FD31008C26AC /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607E15D7FD2F008C26AC /* wheelSelectorShadow.png */; };
-		BCE36F2415D7FD31008C26AC /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607E15D7FD2F008C26AC /* wheelSelectorShadow.png */; };
-		BCE36F2515D7FD31008C26AC /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607E15D7FD2F008C26AC /* wheelSelectorShadow.png */; };
-		BCE36F2615D7FD31008C26AC /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607E15D7FD2F008C26AC /* wheelSelectorShadow.png */; };
-		BCE36F2715D7FD31008C26AC /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607E15D7FD2F008C26AC /* wheelSelectorShadow.png */; };
-		BCE36F2815D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607F15D7FD2F008C26AC /* wheelSelectorShadow@2x.png */; };
-		BCE36F2915D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607F15D7FD2F008C26AC /* wheelSelectorShadow@2x.png */; };
-		BCE36F2A15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607F15D7FD2F008C26AC /* wheelSelectorShadow@2x.png */; };
-		BCE36F2B15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607F15D7FD2F008C26AC /* wheelSelectorShadow@2x.png */; };
-		BCE36F2C15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607F15D7FD2F008C26AC /* wheelSelectorShadow@2x.png */; };
-		BCE36F2D15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607F15D7FD2F008C26AC /* wheelSelectorShadow@2x.png */; };
-		BCE36F2E15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607F15D7FD2F008C26AC /* wheelSelectorShadow@2x.png */; };
-		BCE36F2F15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE3607F15D7FD2F008C26AC /* wheelSelectorShadow@2x.png */; };
 		BCE36F3215D80068008C26AC /* commonTableViewSection.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE36F3015D80068008C26AC /* commonTableViewSection.png */; };
 		BCE36F3315D80068008C26AC /* commonTableViewSection.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE36F3015D80068008C26AC /* commonTableViewSection.png */; };
 		BCE36F3415D80068008C26AC /* commonTableViewSection.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE36F3015D80068008C26AC /* commonTableViewSection.png */; };
@@ -7026,6 +7044,19 @@
 		BC463734161192CD008CE52F /* myRadiosStats@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosStats@2x.png"; sourceTree = "<group>"; };
 		BC4637A116119431008CE52F /* myRadiosMetricBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosMetricBackground.png; sourceTree = "<group>"; };
 		BC4637A216119431008CE52F /* myRadiosMetricBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosMetricBackground@2x.png"; sourceTree = "<group>"; };
+		BC46382E1611EE77008CE52F /* WheelRadiosSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WheelRadiosSelector.h; sourceTree = "<group>"; };
+		BC46382F1611EE77008CE52F /* WheelSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WheelSelector.h; sourceTree = "<group>"; };
+		BC4638301611EE77008CE52F /* WheelSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WheelSelector.m; sourceTree = "<group>"; };
+		BC4638451611F0E4008CE52F /* WheelSelectorGenre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WheelSelectorGenre.h; sourceTree = "<group>"; };
+		BC4638461611F0E4008CE52F /* WheelSelectorGenre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WheelSelectorGenre.m; sourceTree = "<group>"; };
+		BC4638471611F0E4008CE52F /* WheelSelectorRadios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WheelSelectorRadios.h; sourceTree = "<group>"; };
+		BC4638481611F0E4008CE52F /* WheelSelectorRadios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WheelSelectorRadios.m; sourceTree = "<group>"; };
+		BC46385C1611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheelGenreSelectorBackground@2x.png"; sourceTree = "<group>"; };
+		BC46385D1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheelGenreSelectorIndicator@2x.png"; sourceTree = "<group>"; };
+		BC46385E1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheelGenreSelectorShadow@2x.png"; sourceTree = "<group>"; };
+		BC46385F1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheelSelectorRadiosBackground@2x.png"; sourceTree = "<group>"; };
+		BC4638601611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheelSelectorRadiosIndicator@2x.png"; sourceTree = "<group>"; };
+		BC4638611611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheelSelectorRadiosShadow@2x.png"; sourceTree = "<group>"; };
 		BC47AFD4154AD23200B0AA55 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = Login/SignupViewController.h; sourceTree = "<group>"; };
 		BC47AFD5154AD23200B0AA55 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = Login/SignupViewController.m; sourceTree = "<group>"; };
 		BC47AFD6154AD23200B0AA55 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignupViewController.xib; path = Login/SignupViewController.xib; sourceTree = "<group>"; };
@@ -7084,8 +7115,6 @@
 		BC56F5E5152486AF005D1B40 /* YasoundD DEV SERVER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD DEV SERVER.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC598E6D15B8786C004D6DCB /* RadioListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioListTableViewController.h; path = RadioSelection/RadioListTableViewController.h; sourceTree = "<group>"; };
 		BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioListTableViewController.m; path = RadioSelection/RadioListTableViewController.m; sourceTree = "<group>"; };
-		BC598E7715B8788D004D6DCB /* WheelSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheelSelector.h; path = RadioSelection/WheelSelector.h; sourceTree = "<group>"; };
-		BC598E7815B8788D004D6DCB /* WheelSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WheelSelector.m; path = RadioSelection/WheelSelector.m; sourceTree = "<group>"; };
 		BC598E8115B94A43004D6DCB /* RadioListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioListTableViewCell.h; path = RadioSelection/RadioListTableViewCell.h; sourceTree = "<group>"; };
 		BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioListTableViewCell.m; path = RadioSelection/RadioListTableViewCell.m; sourceTree = "<group>"; };
 		BC598EFB15B9AA98004D6DCB /* TopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBar.h; sourceTree = "<group>"; };
@@ -7391,7 +7420,6 @@
 		BCE35C3B15D6BD58008C26AC /* ShowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShowViewController.xib; path = Programming/ShowViewController.xib; sourceTree = "<group>"; };
 		BCE35C4C15D7013B008C26AC /* TopBarBackAndTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarBackAndTitle.h; sourceTree = "<group>"; };
 		BCE35C4D15D7013B008C26AC /* TopBarBackAndTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarBackAndTitle.m; sourceTree = "<group>"; };
-		BCE35E4E15D79DB9008C26AC /* WheelRadiosSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheelRadiosSelector.h; path = RadioSelection/WheelRadiosSelector.h; sourceTree = "<group>"; };
 		BCE35E7515D7D5C7008C26AC /* ProgrammingUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingUploadViewController.h; path = Programming/ProgrammingUploadViewController.h; sourceTree = "<group>"; };
 		BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingUploadViewController.m; path = Programming/ProgrammingUploadViewController.m; sourceTree = "<group>"; };
 		BCE35E8915D7FD2E008C26AC /* barItemAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemAdd.png; sourceTree = "<group>"; };
@@ -7637,12 +7665,6 @@
 		BCE3607615D7FD2F008C26AC /* wallPostBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wallPostBar@2x.png"; sourceTree = "<group>"; };
 		BCE3607715D7FD2F008C26AC /* wallPostBarButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallPostBarButton.png; sourceTree = "<group>"; };
 		BCE3607815D7FD2F008C26AC /* wallPostBarButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wallPostBarButton@2x.png"; sourceTree = "<group>"; };
-		BCE3607A15D7FD2F008C26AC /* wheelSelectorBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wheelSelectorBackground.png; sourceTree = "<group>"; };
-		BCE3607B15D7FD2F008C26AC /* wheelSelectorBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheelSelectorBackground@2x.png"; sourceTree = "<group>"; };
-		BCE3607C15D7FD2F008C26AC /* wheelSelectorIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wheelSelectorIndicator.png; sourceTree = "<group>"; };
-		BCE3607D15D7FD2F008C26AC /* wheelSelectorIndicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheelSelectorIndicator@2x.png"; sourceTree = "<group>"; };
-		BCE3607E15D7FD2F008C26AC /* wheelSelectorShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wheelSelectorShadow.png; sourceTree = "<group>"; };
-		BCE3607F15D7FD2F008C26AC /* wheelSelectorShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheelSelectorShadow@2x.png"; sourceTree = "<group>"; };
 		BCE36F3015D80068008C26AC /* commonTableViewSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonTableViewSection.png; sourceTree = "<group>"; };
 		BCE36F3115D80068008C26AC /* commonTableViewSection@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonTableViewSection@2x.png"; sourceTree = "<group>"; };
 		BCE66B3215494C410094B4D0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text; name = fr; path = fr.lproj/defaultMenuDescription.json.txt; sourceTree = "<group>"; };
@@ -8492,6 +8514,33 @@
 			path = SAOAuthTwitterEngine;
 			sourceTree = "<group>";
 		};
+		BC46382D1611EE77008CE52F /* WheelSelectors */ = {
+			isa = PBXGroup;
+			children = (
+				BC46382E1611EE77008CE52F /* WheelRadiosSelector.h */,
+				BC46382F1611EE77008CE52F /* WheelSelector.h */,
+				BC4638301611EE77008CE52F /* WheelSelector.m */,
+				BC4638451611F0E4008CE52F /* WheelSelectorGenre.h */,
+				BC4638461611F0E4008CE52F /* WheelSelectorGenre.m */,
+				BC4638471611F0E4008CE52F /* WheelSelectorRadios.h */,
+				BC4638481611F0E4008CE52F /* WheelSelectorRadios.m */,
+			);
+			path = WheelSelectors;
+			sourceTree = "<group>";
+		};
+		BC46385B1611F1D9008CE52F /* WheelSelectors */ = {
+			isa = PBXGroup;
+			children = (
+				BC46385C1611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png */,
+				BC46385D1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png */,
+				BC46385E1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png */,
+				BC46385F1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png */,
+				BC4638601611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png */,
+				BC4638611611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png */,
+			);
+			path = WheelSelectors;
+			sourceTree = "<group>";
+		};
 		BC48C7B215D16B5A00624E76 /* DatePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -8533,9 +8582,6 @@
 		BC5EE20E147D3EB300A282A5 /* RadioSelection */ = {
 			isa = PBXGroup;
 			children = (
-				BC598E7715B8788D004D6DCB /* WheelSelector.h */,
-				BC598E7815B8788D004D6DCB /* WheelSelector.m */,
-				BCE35E4E15D79DB9008C26AC /* WheelRadiosSelector.h */,
 				BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */,
 				BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */,
 				BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */,
@@ -9664,19 +9710,6 @@
 			path = Wall;
 			sourceTree = "<group>";
 		};
-		BCE3607915D7FD2F008C26AC /* WheelSelector */ = {
-			isa = PBXGroup;
-			children = (
-				BCE3607A15D7FD2F008C26AC /* wheelSelectorBackground.png */,
-				BCE3607B15D7FD2F008C26AC /* wheelSelectorBackground@2x.png */,
-				BCE3607C15D7FD2F008C26AC /* wheelSelectorIndicator.png */,
-				BCE3607D15D7FD2F008C26AC /* wheelSelectorIndicator@2x.png */,
-				BCE3607E15D7FD2F008C26AC /* wheelSelectorShadow.png */,
-				BCE3607F15D7FD2F008C26AC /* wheelSelectorShadow@2x.png */,
-			);
-			path = WheelSelector;
-			sourceTree = "<group>";
-		};
 		BCE4632E148FDEA000422448 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -9741,10 +9774,10 @@
 				BCE3602215D7FD2F008C26AC /* TableView */,
 				BCE3604515D7FD2F008C26AC /* TableViewPlain */,
 				BCE3604815D7FD2F008C26AC /* theme.plist */,
+				BC46385B1611F1D9008CE52F /* WheelSelectors */,
 				BCE3604915D7FD2F008C26AC /* Themes */,
 				BCE3604A15D7FD2F008C26AC /* TopBar */,
 				BCE3605015D7FD2F008C26AC /* Wall */,
-				BCE3607915D7FD2F008C26AC /* WheelSelector */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -9866,6 +9899,7 @@
 		E5A9A3B31454DC0500EA374C /* Yasound */ = {
 			isa = PBXGroup;
 			children = (
+				BC46382D1611EE77008CE52F /* WheelSelectors */,
 				402946A115F8E97900F73830 /* Gifts */,
 				4029469515F8A2FC00F73830 /* AppURL */,
 				BCDABC1415F74FDD002E8708 /* SongCatalog */,
@@ -10456,12 +10490,6 @@
 				BCE36EEE15D7FD31008C26AC /* wallPostBar@2x.png in Resources */,
 				BCE36EF615D7FD31008C26AC /* wallPostBarButton.png in Resources */,
 				BCE36EFE15D7FD31008C26AC /* wallPostBarButton@2x.png in Resources */,
-				BCE36F0615D7FD31008C26AC /* wheelSelectorBackground.png in Resources */,
-				BCE36F0E15D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */,
-				BCE36F1615D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */,
-				BCE36F1E15D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */,
-				BCE36F2615D7FD31008C26AC /* wheelSelectorShadow.png in Resources */,
-				BCE36F2E15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3815D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F4015D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
 				BC071AC215D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
@@ -10625,6 +10653,12 @@
 				BC46379F161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637AA16119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637B316119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				BC4638691611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */,
+				BC4638721611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */,
+				BC46387B1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */,
+				BC4638841611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */,
+				BC46388D1611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */,
+				BC4638961611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10929,12 +10963,6 @@
 				BCE36EEF15D7FD31008C26AC /* wallPostBar@2x.png in Resources */,
 				BCE36EF715D7FD31008C26AC /* wallPostBarButton.png in Resources */,
 				BCE36EFF15D7FD31008C26AC /* wallPostBarButton@2x.png in Resources */,
-				BCE36F0715D7FD31008C26AC /* wheelSelectorBackground.png in Resources */,
-				BCE36F0F15D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */,
-				BCE36F1715D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */,
-				BCE36F1F15D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */,
-				BCE36F2715D7FD31008C26AC /* wheelSelectorShadow.png in Resources */,
-				BCE36F2F15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3915D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F4115D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
 				BC071AC315D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
@@ -11098,6 +11126,12 @@
 				BC4637A0161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637AB16119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637B416119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				BC46386A1611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */,
+				BC4638731611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */,
+				BC46387C1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */,
+				BC4638851611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */,
+				BC46388E1611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */,
+				BC4638971611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11396,12 +11430,6 @@
 				BCE36EED15D7FD31008C26AC /* wallPostBar@2x.png in Resources */,
 				BCE36EF515D7FD31008C26AC /* wallPostBarButton.png in Resources */,
 				BCE36EFD15D7FD31008C26AC /* wallPostBarButton@2x.png in Resources */,
-				BCE36F0515D7FD31008C26AC /* wheelSelectorBackground.png in Resources */,
-				BCE36F0D15D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */,
-				BCE36F1515D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */,
-				BCE36F1D15D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */,
-				BCE36F2515D7FD31008C26AC /* wheelSelectorShadow.png in Resources */,
-				BCE36F2D15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3715D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F3F15D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
 				BC071AC115D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
@@ -11565,6 +11593,12 @@
 				BC46379E161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637A916119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637B216119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				BC4638681611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */,
+				BC4638711611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */,
+				BC46387A1611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */,
+				BC4638831611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */,
+				BC46388C1611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */,
+				BC4638951611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11868,12 +11902,6 @@
 				BCE36EEA15D7FD31008C26AC /* wallPostBar@2x.png in Resources */,
 				BCE36EF215D7FD31008C26AC /* wallPostBarButton.png in Resources */,
 				BCE36EFA15D7FD31008C26AC /* wallPostBarButton@2x.png in Resources */,
-				BCE36F0215D7FD31008C26AC /* wheelSelectorBackground.png in Resources */,
-				BCE36F0A15D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */,
-				BCE36F1215D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */,
-				BCE36F1A15D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */,
-				BCE36F2215D7FD31008C26AC /* wheelSelectorShadow.png in Resources */,
-				BCE36F2A15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3415D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F3C15D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
 				BC071ABE15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
@@ -12037,6 +12065,12 @@
 				BC46379B161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637A616119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637AF16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				BC4638651611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */,
+				BC46386E1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */,
+				BC4638771611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */,
+				BC4638801611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */,
+				BC4638891611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */,
+				BC4638921611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12340,12 +12374,6 @@
 				BCE36EE915D7FD31008C26AC /* wallPostBar@2x.png in Resources */,
 				BCE36EF115D7FD31008C26AC /* wallPostBarButton.png in Resources */,
 				BCE36EF915D7FD31008C26AC /* wallPostBarButton@2x.png in Resources */,
-				BCE36F0115D7FD31008C26AC /* wheelSelectorBackground.png in Resources */,
-				BCE36F0915D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */,
-				BCE36F1115D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */,
-				BCE36F1915D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */,
-				BCE36F2115D7FD31008C26AC /* wheelSelectorShadow.png in Resources */,
-				BCE36F2915D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3315D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F3B15D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
 				BC071ABD15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
@@ -12509,6 +12537,12 @@
 				BC463799161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637A416119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637AD16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				BC4638631611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */,
+				BC46386C1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */,
+				BC4638751611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */,
+				BC46387E1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */,
+				BC4638871611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */,
+				BC4638901611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12812,12 +12846,6 @@
 				BCE36EEC15D7FD31008C26AC /* wallPostBar@2x.png in Resources */,
 				BCE36EF415D7FD31008C26AC /* wallPostBarButton.png in Resources */,
 				BCE36EFC15D7FD31008C26AC /* wallPostBarButton@2x.png in Resources */,
-				BCE36F0415D7FD31008C26AC /* wheelSelectorBackground.png in Resources */,
-				BCE36F0C15D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */,
-				BCE36F1415D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */,
-				BCE36F1C15D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */,
-				BCE36F2415D7FD31008C26AC /* wheelSelectorShadow.png in Resources */,
-				BCE36F2C15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3615D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F3E15D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
 				BC071AC015D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
@@ -12981,6 +13009,12 @@
 				BC46379D161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637A816119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637B116119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				BC4638671611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */,
+				BC4638701611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */,
+				BC4638791611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */,
+				BC4638821611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */,
+				BC46388B1611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */,
+				BC4638941611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13284,12 +13318,6 @@
 				BCC7540415E689EF00CF7F7C /* wallPostBar@2x.png in Resources */,
 				BCC7540515E689EF00CF7F7C /* wallPostBarButton.png in Resources */,
 				BCC7540615E689EF00CF7F7C /* wallPostBarButton@2x.png in Resources */,
-				BCC7540715E689EF00CF7F7C /* wheelSelectorBackground.png in Resources */,
-				BCC7540815E689EF00CF7F7C /* wheelSelectorBackground@2x.png in Resources */,
-				BCC7540915E689EF00CF7F7C /* wheelSelectorIndicator.png in Resources */,
-				BCC7540A15E689EF00CF7F7C /* wheelSelectorIndicator@2x.png in Resources */,
-				BCC7540B15E689EF00CF7F7C /* wheelSelectorShadow.png in Resources */,
-				BCC7540C15E689EF00CF7F7C /* wheelSelectorShadow@2x.png in Resources */,
 				BCC7540D15E689EF00CF7F7C /* commonTableViewSection.png in Resources */,
 				BCC7540E15E689EF00CF7F7C /* commonTableViewSection@2x.png in Resources */,
 				BCC7540F15E689EF00CF7F7C /* ProgrammingViewController.xib in Resources */,
@@ -13454,6 +13482,12 @@
 				BC46379A161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637A516119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637AE16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				BC4638641611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */,
+				BC46386D1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */,
+				BC4638761611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */,
+				BC46387F1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */,
+				BC4638881611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */,
+				BC4638911611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13757,12 +13791,6 @@
 				BCE36EE815D7FD31008C26AC /* wallPostBar@2x.png in Resources */,
 				BCE36EF015D7FD31008C26AC /* wallPostBarButton.png in Resources */,
 				BCE36EF815D7FD31008C26AC /* wallPostBarButton@2x.png in Resources */,
-				BCE36F0015D7FD31008C26AC /* wheelSelectorBackground.png in Resources */,
-				BCE36F0815D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */,
-				BCE36F1015D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */,
-				BCE36F1815D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */,
-				BCE36F2015D7FD31008C26AC /* wheelSelectorShadow.png in Resources */,
-				BCE36F2815D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3215D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F3A15D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
 				BC071ABC15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
@@ -13926,6 +13954,12 @@
 				BC463798161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637A316119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637AC16119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				BC4638621611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */,
+				BC46386B1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */,
+				BC4638741611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */,
+				BC46387D1611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */,
+				BC4638861611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */,
+				BC46388F1611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14229,12 +14263,6 @@
 				BCE36EEB15D7FD31008C26AC /* wallPostBar@2x.png in Resources */,
 				BCE36EF315D7FD31008C26AC /* wallPostBarButton.png in Resources */,
 				BCE36EFB15D7FD31008C26AC /* wallPostBarButton@2x.png in Resources */,
-				BCE36F0315D7FD31008C26AC /* wheelSelectorBackground.png in Resources */,
-				BCE36F0B15D7FD31008C26AC /* wheelSelectorBackground@2x.png in Resources */,
-				BCE36F1315D7FD31008C26AC /* wheelSelectorIndicator.png in Resources */,
-				BCE36F1B15D7FD31008C26AC /* wheelSelectorIndicator@2x.png in Resources */,
-				BCE36F2315D7FD31008C26AC /* wheelSelectorShadow.png in Resources */,
-				BCE36F2B15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3515D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F3D15D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
 				BC071ABF15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
@@ -14398,6 +14426,12 @@
 				BC46379C161192CD008CE52F /* myRadiosStats@2x.png in Resources */,
 				BC4637A716119431008CE52F /* myRadiosMetricBackground.png in Resources */,
 				BC4637B016119431008CE52F /* myRadiosMetricBackground@2x.png in Resources */,
+				BC4638661611F1D9008CE52F /* wheelGenreSelectorBackground@2x.png in Resources */,
+				BC46386F1611F1D9008CE52F /* wheelGenreSelectorIndicator@2x.png in Resources */,
+				BC4638781611F1D9008CE52F /* wheelGenreSelectorShadow@2x.png in Resources */,
+				BC4638811611F1D9008CE52F /* wheelSelectorRadiosBackground@2x.png in Resources */,
+				BC46388A1611F1D9008CE52F /* wheelSelectorRadiosIndicator@2x.png in Resources */,
+				BC4638931611F1D9008CE52F /* wheelSelectorRadiosShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14616,7 +14650,6 @@
 				BC732631158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B881591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BC598E7515B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
-				BC598E7F15B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8915B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1E0159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242215A353F3002A870D /* CityInfo.m in Sources */,
@@ -14699,6 +14732,9 @@
 				406DA51F1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD1527E160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FE2161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
+				BC46383A1611EE78008CE52F /* WheelSelector.m in Sources */,
+				BC4638501611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
+				BC4638591611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14859,7 +14895,6 @@
 				BC732632158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B891591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BC598E7615B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
-				BC598E8015B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8A15B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1E1159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242315A353F3002A870D /* CityInfo.m in Sources */,
@@ -14942,6 +14977,9 @@
 				406DA5201609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD1527F160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FE3161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
+				BC46383B1611EE78008CE52F /* WheelSelector.m in Sources */,
+				BC4638511611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
+				BC46385A1611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15098,7 +15136,6 @@
 				BC732630158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B871591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BC598E7415B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
-				BC598E7E15B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8815B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1DF159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242115A353F3002A870D /* CityInfo.m in Sources */,
@@ -15181,6 +15218,9 @@
 				406DA51E1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD1527D160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FE1161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
+				BC4638391611EE78008CE52F /* WheelSelector.m in Sources */,
+				BC46384F1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
+				BC4638581611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15341,7 +15381,6 @@
 				BC73262D158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B841591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BC598E7115B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
-				BC598E7B15B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8515B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1DC159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241E15A353F3002A870D /* CityInfo.m in Sources */,
@@ -15424,6 +15463,9 @@
 				406DA51B1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD1527A160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FDE161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
+				BC4638361611EE78008CE52F /* WheelSelector.m in Sources */,
+				BC46384C1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
+				BC4638551611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15584,7 +15626,6 @@
 				BC73262C158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B831591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BC598E7015B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
-				BC598E7A15B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8415B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1DB159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241D15A353F3002A870D /* CityInfo.m in Sources */,
@@ -15667,6 +15708,9 @@
 				406DA5191609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD15278160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FDC161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
+				BC4638341611EE77008CE52F /* WheelSelector.m in Sources */,
+				BC46384A1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
+				BC4638531611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15828,7 +15872,6 @@
 				BC73262F158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B861591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BC598E7315B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
-				BC598E7D15B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8715B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1DE159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242015A353F3002A870D /* CityInfo.m in Sources */,
@@ -15911,6 +15954,9 @@
 				406DA51D1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD1527C160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FE0161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
+				BC4638381611EE78008CE52F /* WheelSelector.m in Sources */,
+				BC46384E1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
+				BC4638571611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16071,7 +16117,6 @@
 				BCC7522A15E689EF00CF7F7C /* UserSettings.m in Sources */,
 				BCC7522B15E689EF00CF7F7C /* FacebookSharePreferences.m in Sources */,
 				BCC7522C15E689EF00CF7F7C /* RadioListTableViewController.m in Sources */,
-				BCC7522D15E689EF00CF7F7C /* WheelSelector.m in Sources */,
 				BCC7522E15E689EF00CF7F7C /* RadioListTableViewCell.m in Sources */,
 				BCC7522F15E689EF00CF7F7C /* TwitterSharePreferences.m in Sources */,
 				BCC7523015E689EF00CF7F7C /* CityInfo.m in Sources */,
@@ -16154,6 +16199,9 @@
 				406DA51A1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD15279160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FDD161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
+				BC4638351611EE77008CE52F /* WheelSelector.m in Sources */,
+				BC46384B1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
+				BC4638541611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16314,7 +16362,6 @@
 				BC73262B158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B821591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BC598E6F15B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
-				BC598E7915B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8315B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1DA159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241C15A353F3002A870D /* CityInfo.m in Sources */,
@@ -16397,6 +16444,9 @@
 				406DA5181609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD15277160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FDB161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
+				BC4638331611EE77008CE52F /* WheelSelector.m in Sources */,
+				BC4638491611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
+				BC4638521611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16558,7 +16608,6 @@
 				BC73262E158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B851591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BC598E7215B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
-				BC598E7C15B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8615B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1DD159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241F15A353F3002A870D /* CityInfo.m in Sources */,
@@ -16641,6 +16690,9 @@
 				406DA51C1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
 				BCD1527B160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FDF161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
+				BC4638371611EE78008CE52F /* WheelSelector.m in Sources */,
+				BC46384D1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
+				BC4638561611F0E4008CE52F /* WheelSelectorRadios.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

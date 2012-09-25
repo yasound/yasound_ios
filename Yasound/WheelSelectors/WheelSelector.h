@@ -37,6 +37,7 @@
 @property (nonatomic) BOOL tapRegistered;
 @property (nonatomic) NSInteger currentIndex;
 
+- (void)initWithTheme:(NSString*)theme;
 
 - (void)stickToItem:(NSInteger)itemId silent:(BOOL)silent;
 

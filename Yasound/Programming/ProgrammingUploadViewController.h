@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "WheelSelector.h"
 #import "Radio.h"
 
 @interface ProgrammingUploadViewController : UITableViewController
@@ -18,7 +17,6 @@
 }
 
 @property (nonatomic, retain) Radio* radio;
-//@property (nonatomic, retain) WheelSelector* wheelSelector;
 
 - (id)initWithStyle:(UITableViewStyle)style  forRadio:(Radio*)radio;
 - (void)setSegment:(NSInteger)index;

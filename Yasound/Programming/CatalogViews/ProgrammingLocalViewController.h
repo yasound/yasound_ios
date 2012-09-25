@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WheelSelector.h"
 #import "Radio.h"
 #import "ProgrammingCatalogViewController.h"
 #import "ProgrammingViewController.h"
