@@ -92,6 +92,14 @@
 //@end
 
 
+@implementation NSURL (NSURLDebug)
+- (CGFloat)length {
+    DLog(@"SHOULD NOT HAPPEN!");
+    assert(0);
+}
+
+
+@end
 
 
 

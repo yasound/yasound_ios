@@ -7,6 +7,9 @@
 //
 
 #import "WheelSelectorGenre.h"
+#import "RootViewController.h"
+
+
 
 @implementation WheelSelectorGenre
 
@@ -47,6 +50,12 @@
 }
 
 
+- (void)open {
+
+    [self moveTo:self.frame.size.height];
+}
+
+
 
 
 
@@ -66,17 +75,19 @@
     return title;
 }
 
-- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
-{
-    return 0;
-}
+//- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
+//{
+//    return 0;
+//}
 
 
 
 
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
 {
+    NSString* genre = [self.genres objectAtIndex:itemIndex];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GENRE_SELECTED object:genre];
     
 }
 

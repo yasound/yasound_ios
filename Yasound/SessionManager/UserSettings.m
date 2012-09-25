@@ -20,6 +20,7 @@ static UserSettings* _main;
     if (_main == nil)
     {
         _main = [[UserSettings alloc] init];
+        _main.selectedGenres = [NSMutableDictionary dictionary];
     }
     
     return _main;
@@ -42,7 +43,8 @@ static UserSettings* _main;
 
 - (id)objectForKey:(NSString*)key
 {
-    return [[NSUserDefaults standardUserDefaults] valueForKey:key];
+//    return [[NSUserDefaults standardUserDefaults] valueForKey:key];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:key];
 }
 
 - (NSMutableArray*)mutableArrayForKey:(NSString*)key
@@ -153,6 +155,29 @@ static UserSettings* _main;
     [self dump];
 }
 
+
+
+- (NSString*)selectedGenreForUrl:(NSURL*)url {
+ 
+    if (url == nil)
+        return nil;
+
+    NSString* genre = [self.selectedGenres objectForKey:[url absoluteString]];
+    return genre;
+}
+
+- (void)setGenre:(NSString*)genre forUrl:(NSURL*)url {
+    
+    if (url == nil)
+        return;
+    
+    if ([genre isEqualToString:@"style_all"]) {
+        [self.selectedGenres removeObjectForKey:[url absoluteString]];
+        return;
+    }
+    
+    [self.selectedGenres setObject:genre forKey:[url absoluteString]];
+}
 
 
 

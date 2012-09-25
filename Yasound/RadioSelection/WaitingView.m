@@ -44,6 +44,8 @@
         else
             _label = nil;
         
+        self.alpha = 0.85;
+        
         
         
     }

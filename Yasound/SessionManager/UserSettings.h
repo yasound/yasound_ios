@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserSettings : NSObject
-
 #define USKEYnowPlaying @"NowPlaying"
 
 #define USKEYfacebookAccessTokenKey @"FBAccessTokenKey"
@@ -46,6 +44,11 @@
 #define USKEYradioSearch @"userRadioSearch"
 
 
+
+@interface UserSettings : NSObject
+
+@property (nonatomic, retain) NSMutableDictionary* selectedGenres;
+
 + (UserSettings*)main;
 
 - (void)setObject:(id)value forKey:(NSString*)key;
@@ -64,5 +67,8 @@
 - (void)dump;
 - (void)clearSession;
 
+
+- (NSString*)selectedGenreForUrl:(NSURL*)url;
+- (void)setGenre:(NSString*)genre forUrl:(NSURL*)url;
 
 @end

@@ -43,6 +43,8 @@
 
 @property (nonatomic, retain) MenuViewController* menu;
 
+@property (nonatomic, retain) NSString* currentGenre;
+
 //@property (nonatomic, retain) ASIHTTPRequest* currentRequest;
 
 

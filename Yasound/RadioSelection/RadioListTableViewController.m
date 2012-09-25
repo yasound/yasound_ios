@@ -39,7 +39,7 @@
 
 #define NB_ROWS_SECTION_INVITE_FRIENDS 1
 
-- (id)initWithFrame:(CGRect)frame radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator showGenreSelector:(BOOL)showGenreSelector
+- (id)initWithFrame:(CGRect)frame url:(NSURL*)url radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator showGenreSelector:(BOOL)showGenreSelector
 {
     self = [super init];
     if (self)
@@ -58,6 +58,7 @@
         self.delayTokens = 2;
         self.delay = 0.15;
         
+        self.url = url;
         self.radios = radios;
         self.radiosPreviousCount = radios.count;
         self.friendsMode = NO;
@@ -67,6 +68,14 @@
             self.genreSelector = [[WheelSelectorGenre alloc] init];
             [self.view addSubview:self.genreSelector];
             [self.genreSelector initWithTheme:@"Genre"];
+
+            if (self.url != nil) {
+                NSString* genre = [[UserSettings main] objectForKey:self.url];
+                if (genre != nil) {
+                    [self openGenreSelector];
+                    [self.genreSelector open];
+                }
+            }
             
         }
         
@@ -89,12 +98,23 @@
     return self;
 }
 
-- (void)setRadios:(NSArray*)radios
+
+
+- (void)setRadios:(NSArray*)radios forUrl:(NSURL*)url
 {
-    _radios = radios;
-    [_radios retain];
+    self.radios = radios;
+    self.url = url;
     
     self.radiosPreviousCount = radios.count;
+    
+    if (self.url != nil) {
+        NSString* genre = [[UserSettings main] objectForKey:self.url];
+        if ((genre != nil) && (self.genreSelector.status != eGenreStatusOpened)) {
+            [self openGenreSelector];
+            [self.genreSelector open];
+        }
+    }
+
     
     [self.tableView reloadData];
 }
@@ -554,12 +574,19 @@
     if (self.showGenreSelector) {
         
         if (self.genreSelector.status == eGenreStatusPulled) {
-            self.genreSelector.status = eGenreStatusOpened;
-            self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height - self.genreSelector.frame.size.height);
+            [self openGenreSelector];
         }
     }
 
 }
+
+
+- (void)openGenreSelector {
+    
+    self.genreSelector.status = eGenreStatusOpened;
+    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height - self.genreSelector.frame.size.height);
+}
+
 
 
 - (void)freeze {

@@ -25,5 +25,6 @@ typedef enum {
 @property (nonatomic, retain) NSArray* genres;
 
 - (void)moveTo:(CGFloat)posY;
+- (void)open;
 
 @end
