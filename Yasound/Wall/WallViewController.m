@@ -251,6 +251,8 @@
     }
     
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REFRESH_GUI object:nil];
+    
     
     
 }
