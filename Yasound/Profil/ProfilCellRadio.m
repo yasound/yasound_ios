@@ -53,6 +53,7 @@
     UILabel* title = [sheet makeLabel];
     title.text = self.radio.name;
     [self addSubview:title];
+    self.text = title;
 }
 
 
