@@ -746,3 +746,8 @@
 "InviteFriendsRow.facebookLabel" = "facebook";
 "InviteFriendsRow.twitterLabel" = "twitter";
 "InviteFriendsRow.emailLabel" = "email";
+
+"AllowContacts.title" = "Contacts";
+"AllowContacts.message" = "Do you authorize Yasound to access your contacts ?";
+"AllowContacts.yes" = "Yes";
+"AllowContacts.no" = "No";

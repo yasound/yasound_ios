@@ -42,6 +42,7 @@
 #define USKEYcacheImageRegisterSize @"imageRegisterSize"
 
 #define USKEYuserWantsHd @"userWantsHd"
+#define USKEYuserAllowsAccessToContacts @"userAllowsAccessToContacts"
 
 #define USKEYradioSearch @"userRadioSearch"
 

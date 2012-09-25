@@ -733,3 +733,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "InviteFriendsRow.facebookLabel" = "facebook";
 "InviteFriendsRow.twitterLabel" = "twitter";
 "InviteFriendsRow.emailLabel" = "email";
+
+"AllowContacts.title" = "Contacts";
+"AllowContacts.message" = "Autorisez-vous Yasound à accéder à vos contacts ?";
+"AllowContacts.yes" = "Oui";
+"AllowContacts.no" = "Non";
