@@ -11,6 +11,7 @@
 
 @interface InviteTwitterFriendsViewController : UIViewController <TopBarModalDelegate>
 {
+    IBOutlet UILabel* _label;
 }
 
 @end

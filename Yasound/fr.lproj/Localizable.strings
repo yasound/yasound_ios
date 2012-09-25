@@ -738,3 +738,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "AllowContacts.message" = "Autorisez-vous Yasound à accéder à vos contacts ?";
 "AllowContacts.yes" = "Oui";
 "AllowContacts.no" = "Non";
+
+"InviteTwitterFriends.label" = "Un tweet d'invitation va être posté sur votre fil.";
+
+"InviteContacts.accessNotGrantedLabel" = "Autorisez Yasound à accéder à vos contacts pour les inviter.";
+

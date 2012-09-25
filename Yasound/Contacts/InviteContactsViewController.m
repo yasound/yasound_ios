@@ -7,20 +7,24 @@
 //
 
 #import "InviteContactsViewController.h"
+#import <AddressBook/AddressBook.h>
+#import "UserSettings.h"
 
 @implementation InviteContactsViewController
 
-- (id)initWithContacts:(NSArray*)contacts
+- (id)init
 {
     self = [super init];
     if (self)
     {
-        _contacts = contacts;
-        [_contacts retain];
-        _selectedContacts = [[NSMutableSet alloc] initWithArray:_contacts];
+        _contacts = nil;
+        
+        _selectedContacts = [[NSMutableSet alloc] init];
         
         _checkmarkImage = [UIImage imageNamed:@"GrayCheckmark.png"];
         [_checkmarkImage retain];
+        
+        _accessGranted = NO;
     }
     return self;
 }
@@ -40,19 +44,139 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    ABAddressBookRef addressBook = ABAddressBookCreate();
+    
+    __block BOOL accessGranted = NO;
+    
+    if (ABAddressBookRequestAccessWithCompletion != NULL)
+    { // we're on iOS6
+        dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+        
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+            accessGranted = granted;
+            dispatch_semaphore_signal(sema);
+        });
+        
+        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+        dispatch_release(sema);
+    }
+    else
+    { // we're on iOS5 or older
+        BOOL error;
+        accessGranted = [[UserSettings main] boolForKey:USKEYuserAllowsAccessToContacts error:&error];
+        
+        if (!accessGranted)
+        {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"AllowContacts.title", nil) message:NSLocalizedString(@"AllowContacts.message", nil)
+                                                           delegate:self
+                                                  cancelButtonTitle:NSLocalizedString(@"AllowContacts.yes", nil)
+                                                  otherButtonTitles:NSLocalizedString(@"AllowContacts.no", nil), nil];
+            [alert show];
+            [alert release];
+        }
+    }
+    
+    if (accessGranted)
+        [self setAccess:YES];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    BOOL accessGranted = (buttonIndex == 0);
+    [[UserSettings main] setBool:accessGranted forKey:USKEYuserAllowsAccessToContacts];
+    
+    [self setAccess:accessGranted];
+}
+
+- (void)loadContacts
+{
+    NSMutableArray* contacts = [NSMutableArray array];
+    
+    ABAddressBookRef addressBook = ABAddressBookCreate();
+    
+    
+    CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    CFMutableArrayRef peopleMutable = CFArrayCreateMutableCopy(kCFAllocatorDefault, CFArrayGetCount(people), people);
+    
+    CFArraySortValues(peopleMutable, CFRangeMake(0, CFArrayGetCount(peopleMutable)), (CFComparatorFunction) ABPersonComparePeopleByName, (void*) ABPersonGetSortOrdering());
+    
+    for (CFIndex i = 0; i < CFArrayGetCount(peopleMutable); i++)
+    {
+        ABRecordRef person = CFArrayGetValueAtIndex(peopleMutable, i);
+        ABMultiValueRef emailsValue = ABRecordCopyValue(person, kABPersonEmailProperty);
+        if (ABMultiValueGetCount(emailsValue) > 0)
+        {
+            NSString* firstName = ABRecordCopyValue(person, kABPersonFirstNameProperty);
+            NSString* lastName = ABRecordCopyValue(person, kABPersonLastNameProperty);
+            
+            UIImage* thumbnail = nil;
+            if (person != nil && ABPersonHasImageData(person))
+            {
+                thumbnail = [UIImage imageWithData:(NSData *)ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail)];
+            }
+            
+            NSMutableArray* emails = [NSMutableArray array];
+            for (CFIndex j=0; j < ABMultiValueGetCount(emailsValue); j++)
+            {
+                NSString* email = (NSString*)ABMultiValueCopyValueAtIndex(emailsValue, j);
+                [emails addObject:email];
+                [email release];
+            }
+            
+            Contact* contact = [[Contact alloc] init];
+            contact.firstName = firstName;
+            contact.lastName = lastName;
+            contact.thumbnail = thumbnail;
+            contact.emails = emails;
+            [contacts addObject:contact];
+        }
+        CFRelease(emailsValue);
+    }
+    
+    CFRelease(addressBook);
+    CFRelease(people);
+    CFRelease(peopleMutable);
+    
+    _contacts = contacts;
+    [_contacts retain];
+    
+    [_selectedContacts removeAllObjects];
+    [_selectedContacts addObjectsFromArray:_contacts];
+    
+    [_tableview reloadData];
+}
+
+- (void)setAccess:(BOOL)granted
+{
+    _accessGranted = granted;
+    
+    if (_accessGranted)
+    {
+        _accessNotGrantedLabel.hidden = YES;
+        _tableview.hidden = NO;
+        [self loadContacts];
+    }
+    else
+    {
+        _tableview.hidden = YES;
+        _accessNotGrantedLabel.hidden = NO;
+        _accessNotGrantedLabel.text = NSLocalizedString(@"InviteContacts.accessNotGrantedLabel", nil);
+    }
+}
+
 
 #pragma mark - Table view data source
 
@@ -103,45 +227,6 @@
         cell.accessoryView = nil;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -151,13 +236,11 @@
     Contact* contact = [_contacts objectAtIndex:indexPath.row];
     if ([_selectedContacts containsObject:contact])
     {
-        DLog(@"deselect %@ %@", contact.firstName, contact.lastName);
         [_selectedContacts removeObject:contact];
         [self checkmark:cell with:NO];
     }
     else
     {
-        DLog(@"select %@ %@", contact.firstName, contact.lastName);
         [_selectedContacts addObject:contact];
         [self checkmark:cell with:YES];
     }

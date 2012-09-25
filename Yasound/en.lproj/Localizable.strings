@@ -751,3 +751,7 @@
 "AllowContacts.message" = "Do you authorize Yasound to access your contacts ?";
 "AllowContacts.yes" = "Yes";
 "AllowContacts.no" = "No";
+
+"InviteTwitterFriends.label" = "An invitation tweet will be posted in your timeline.";
+
+"InviteContacts.accessNotGrantedLabel" = "Authorize yasound to access your contacts to invite them.";

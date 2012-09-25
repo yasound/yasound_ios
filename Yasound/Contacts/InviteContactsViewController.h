@@ -16,11 +16,12 @@
     NSMutableSet* _selectedContacts;
     
     IBOutlet UITableView* _tableview;
+    IBOutlet UILabel* _accessNotGrantedLabel;
     
     UIImage* _checkmarkImage;
+    
+    BOOL _accessGranted;
 }
-
-- (id)initWithContacts:(NSArray*)contacts;
 
 
 @end
