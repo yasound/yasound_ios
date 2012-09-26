@@ -486,7 +486,7 @@ static YasoundDataCacheImageManager* _main;
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    DLog(@"connectionDidFinishLoading for image %@", self.url);
+    //DLog(@"connectionDidFinishLoading for image %@", self.url);
 
     self.image = [[UIImage alloc] initWithData:self.receivedData];
     
