@@ -122,7 +122,7 @@
     
     [self.tableView reloadData];
     
-        [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
+//    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
     
 }
 
@@ -744,7 +744,13 @@
     NSString* genre = notif.object;
     
     if ([genre isEqualToString:@"style_all"])
+    {
         [self closeGenreSelector];
+        [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
+    }
+    else
+        [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
+
 //    else
 //        [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
     
