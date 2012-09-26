@@ -121,6 +121,9 @@
 
     
     [self.tableView reloadData];
+    
+        [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
+    
 }
 
 - (void)setFriends:(NSArray*)friends
@@ -742,6 +745,9 @@
     
     if ([genre isEqualToString:@"style_all"])
         [self closeGenreSelector];
+//    else
+//        [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
+    
 }
 
 
