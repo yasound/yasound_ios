@@ -834,14 +834,14 @@
 - (void)onNotifGotoTwitterAssociation:(NSNotification *)notification
 {
     AccountTwitterViewController* view = [[AccountTwitterViewController alloc] initWithNibName:@"AccountTwitterViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];
+    [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
     [view release];
 }
 
 - (void)onNotifGotoFacebookAssociation:(NSNotification *)notification
 {
     AccountFacebookViewController* view = [[AccountFacebookViewController alloc] initWithNibName:@"AccountFacebookViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];
+    [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
     [view release];
 }
 

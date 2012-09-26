@@ -18,6 +18,8 @@
 #import "YasoundSessionManager.h"
 #import "RootViewController.h"
 
+#import "YasoundAppURLHandler.h"
+
 @implementation InviteFriendsTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
