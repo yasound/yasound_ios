@@ -309,7 +309,7 @@
     // import associated accounts
     [[YasoundSessionManager main] importUserData];
 
-        
+
     // show connection alert
     [self.view addSubview:[ConnectionView startWithTarget:self timeout:@selector(onConnectionTimeout)]];
 
@@ -952,8 +952,9 @@
 
 - (void)onNotifConnectionTimeout:(NSNotification*)notification {
     
-    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
-    [APPDELEGATE.navigationController popViewControllerAnimated:YES];
+    
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+//    [APPDELEGATE.navigationController popViewControllerAnimated:YES];
     
     [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturnedAfterTimeout)];
 }
@@ -961,9 +962,15 @@
 
 - (void)logoutReturnedAfterTimeout
 {
+    [APPDELEGATE.slideController resetTopView];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:nil];
+    
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_title", nil) message:NSLocalizedString(@"Connection.timeout", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [av show];
     [av release];
+    
+    
 }
 
 

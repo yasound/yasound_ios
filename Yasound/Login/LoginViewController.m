@@ -144,7 +144,7 @@
     [self hideButtons:YES];
         
     // show a connection alert
-    [self.view addSubview:[ConnectionView startWithTarget:self timeout:@selector(onConnectionTimeout)]];
+    [self.view addSubview:[ConnectionView start]];
     
     
 }
@@ -182,7 +182,7 @@
 
     
     // show a connection alert
-    [self.view addSubview:[ConnectionView startWithTarget:self timeout:@selector(onConnectionTimeout)]];
+    [self.view addSubview:[ConnectionView start]];
 }
 
 

@@ -19,31 +19,52 @@ static ConnectionView* _main = nil;
 
 + (ConnectionView*)startWithTarget:(id)target timeout:(SEL)timeout
 {
+    [ConnectionView start];
+    [ConnectionView startTimerWithTarget:target timeout:timeout];
+    
+    return _main;
+}
+
+
++ (ConnectionView*)start {
+    
     if (_main != nil)
         return _main;
     
     _main = [[ConnectionView alloc] initWithFrame:CGRectMake(86,278, 138, 90)];
-    _main.target = target;
-    _main.timeout = timeout;
-    
-    _main.timer = [NSTimer scheduledTimerWithTimeInterval:60 target:_main.target selector:_main.timeout userInfo:nil repeats:NO];
     
     return _main;
 }
 
-+ (ConnectionView*)startWithFrame:(CGRect)frame target:(id)target timeout:(SEL)timeout
-{
+
+
+
++ (ConnectionView*)startWithFrame:(CGRect)frame {
+    
     if (_main != nil)
         return _main;
     _main = [[ConnectionView alloc] initWithFrame:frame];
     
-    _main.target = target;
-    _main.timeout = timeout;
-    
-    _main.timer = [NSTimer scheduledTimerWithTimeInterval:60 target:_main.target selector:_main.timeout userInfo:nil repeats:NO];
+    return _main;
+}
+
+
++ (ConnectionView*)startWithFrame:(CGRect)frame target:(id)target timeout:(SEL)timeout
+{
+    [ConnectionView startWithFrame:frame];
+    [ConnectionView startTimerWithTarget:target timeout:timeout];
 
     return _main;
 }
+
+
++ (void)startTimerWithTarget:(id)target timeout:(SEL)timeout {
+    
+    _main.target = target;
+    _main.timeout = timeout;
+    _main.timer = [NSTimer scheduledTimerWithTimeInterval:10 target:_main.target selector:_main.timeout userInfo:nil repeats:NO];
+}
+
 
 
 
