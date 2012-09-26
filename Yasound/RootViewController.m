@@ -888,6 +888,7 @@
 - (void)onNotifConnectionTimeout:(NSNotification*)notification {
     
     [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+    [APPDELEGATE.navigationController popViewControllerAnimated:YES];
     
     [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturnedAfterTimeout)];
 }
