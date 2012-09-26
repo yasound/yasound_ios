@@ -111,9 +111,9 @@
 //    _cellMonthSelectorLabel.text = NSLocalizedString(@"StatsView_monthselector_label", nil);
 //  _cellLeaderBoardSelectorLabel.text = NSLocalizedString(@"StatsView_leaderboardselector_label", nil);
     
-  [[YasoundDataProvider main] monthListeningStatsWithTarget:self action:@selector(receivedMonthStats:withInfo:)];
-  [[YasoundDataProvider main] leaderboardWithTarget:self action:@selector(receivedLeaderBoard:withInfo:)];
-  [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadio:withInfo:)];
+    [[YasoundDataProvider main] monthListeningStatsForRadio:self.radio withTarget:self action:@selector(receivedMonthStats:withInfo:)];
+    [[YasoundDataProvider main] leaderboardForRadio:self.radio withTarget:self action:@selector(receivedLeaderBoard:success:)];
+    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receivedRadio:withInfo:)];
 }
 
 - (void)viewDidUnload
@@ -129,7 +129,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)receivedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
+- (void)receivedRadio:(Radio*)r withInfo:(NSDictionary*)info
 {
   if (!r)
     return;
@@ -178,21 +178,30 @@
 }
 
 
-- (void)receivedLeaderBoard:(NSArray*)entries withInfo:(NSDictionary*)info
-{
-  if (!entries || entries.count == 0)
-    return;
-  
-  DLog(@"%d entries in leaderboard", entries.count);
-//  for (LeaderBoardEntry* entry in entries)
-//  {
-//    DLog(@"LeaderBoardEntry %@ - %@: %@ favorites %@", entry.leaderboard_rank, entry.name, entry.leaderboard_favorites, [entry isUserRadio] ? @"(user's radio)" : @"");
-//  }
-  
-  self.leaderboard = entries;
-  [_tableView reloadData];
-}
+//- (void)receivedLeaderBoard:(NSArray*)entries withInfo:(NSDictionary*)info
+//{
+//  if (!entries || entries.count == 0)
+//    return;
+//  
+//  DLog(@"%d entries in leaderboard", entries.count);
+////  for (LeaderBoardEntry* entry in entries)
+////  {
+////    DLog(@"LeaderBoardEntry %@ - %@: %@ favorites %@", entry.leaderboard_rank, entry.name, entry.leaderboard_favorites, [entry isUserRadio] ? @"(user's radio)" : @"");
+////  }
+//  
+//  self.leaderboard = entries;
+//  [_tableView reloadData];
+//}
 
+- (void)receivedLeaderBoard:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    Container* leaderboardContainer = [req responseObjectsWithClass:[LeaderBoardEntry class]];
+    if (!leaderboardContainer || leaderboardContainer.objects == nil || leaderboardContainer.objects.count == 0)
+        return;
+    
+    self.leaderboard = leaderboardContainer.objects;
+    [_tableView reloadData];
+}
 
 
 
@@ -429,6 +438,7 @@
         {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
             cell.textLabel.textColor = [UIColor blackColor];
+            cell.detailTextLabel.textColor = [UIColor blackColor];
         }
         
 

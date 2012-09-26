@@ -1859,14 +1859,19 @@ static YasoundDataProvider* _main = nil;
 //
 - (void)monthListeningStatsWithTarget:(id)target action:(SEL)selector
 {
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = @"/api/v1/listening_stats/";
-  NSMutableArray* params = [[NSMutableArray alloc] init];
-  [params addObject:[NSString stringWithFormat:@"radio=%@", self.radio.id]];
-  
-  [_communicator getObjectsWithClass:[RadioListeningStat class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    [self monthListeningStatsForRadio:self.radio withTarget:target action:selector];
+}
+
+- (void)monthListeningStatsForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
+{
+    Auth* auth = self.apiKeyAuth;
+    NSString* url = @"/api/v1/listening_stats/";
+    NSMutableArray* params = [[NSMutableArray alloc] init];
+    [params addObject:[NSString stringWithFormat:@"radio=%@", radio.id]];
     
-    [params release];    
+    [_communicator getObjectsWithClass:[RadioListeningStat class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    
+    [params release];
 }
 
 - (void)leaderboardWithTarget:(id)target action:(SEL)selector
