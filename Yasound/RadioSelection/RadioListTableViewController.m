@@ -606,6 +606,10 @@
             // request next page to the server
             _loadingNextPage = [self.listDelegate listRequestNextPage];
             
+            //LBDEBUG
+            NSLog(@"loadingNextPage %d : listRequestNextPage", _loadingNextPage);
+
+            
             if (!_loadingNextPage)
                 [self unfreeze];
 
@@ -652,6 +656,8 @@
 
 
 
+static NSInteger mycount = 0;
+
 - (void)freeze {
     
     if (!self.showRefreshIndicator)
@@ -663,11 +669,24 @@
     
     _freezeTimeout = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(freezeTimeout:) userInfo:nil repeats:NO];
 
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.2];
-    self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + self.refreshIndicator.height);
-    [UIView commitAnimations];
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.2];
+//    self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + self.refreshIndicator.height);
+//    [UIView commitAnimations];
+
+    //LBDEBUG
+    mycount++;
     
+    if (mycount == 2)
+    {
+        NSLog(@"ok");
+    }
+    ///////////////
+    
+    
+    
+    
+    [self.tableView setContentSize: CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + self.refreshIndicator.height)];
 //    self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y + self.refreshIndicator.height);
     
 }
@@ -693,9 +712,15 @@
         self.refreshIndicator.status = eStatusWaitingToClose;
         return;
     }
+    
+    if (!_loadingNextPage)
+        return;
 
     _dragging = NO;
     _loadingNextPage = NO;
+    
+    //LBDEBUG
+    NSLog(@"loadingNextPage %d : UNFREEZE", _loadingNextPage);
     
     NSDate* now = [NSDate date];
     NSTimeInterval interval = [now timeIntervalSinceDate:_freezeDate];

@@ -78,7 +78,7 @@
 						<float key="IBUISectionHeaderHeight">22</float>
 						<float key="IBUISectionFooterHeight">22</float>
 					</object>
-					<object class="IBUIToolbar" id="676414864">
+					<object class="IBUIToolbar" id="626008395">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">266</int>
 						<string key="NSFrameSize">{320, 44}</string>
@@ -95,7 +95,7 @@
 				<string key="NSFrameSize">{320, 460}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="676414864"/>
+				<reference key="NSNextKeyView" ref="626008395"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -143,7 +143,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
-						<reference key="source" ref="676414864"/>
+						<reference key="source" ref="626008395"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">45</int>
@@ -174,7 +174,7 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="688703795"/>
 							<reference ref="536320609"/>
-							<reference ref="676414864"/>
+							<reference ref="626008395"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -192,7 +192,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">43</int>
-						<reference key="object" ref="676414864"/>
+						<reference key="object" ref="626008395"/>
 						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
