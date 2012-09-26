@@ -50,9 +50,44 @@
 }
 
 
+- (void)moveTo:(CGFloat)posY animated:(BOOL)animated {
+    
+    if (animated) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+    }
+    
+    self.layer.frame = CGRectMake(self.frame.origin.x, posY, self.frame.size.width, self.frame.size.height);
+
+//    if (!animated) {
+        [CATransaction begin];
+        [CATransaction setValue: (id) kCFBooleanTrue forKey: kCATransactionDisableActions];
+//    }
+    
+    self.shadowLayer.anchorPoint = CGPointMake(0, 0);
+    self.indicatorLayer.anchorPoint = CGPointMake(0, 0);
+    self.shadowLayer.position = CGPointMake(self.shadowOffset.x, posY + self.shadowOffset.y);
+    self.indicatorLayer.position = CGPointMake(self.indicatorOffset.x, posY + self.indicatorOffset.y);
+    
+//    if (!animated) {
+        [CATransaction commit];
+//    }
+
+    if (animated) {
+        [UIView commitAnimations];
+    }
+}
+
+
+
 - (void)open {
 
     [self moveTo:0];
+}
+
+- (void)close {
+    
+    [self moveTo:-self.frame.size.height animated:YES];
 }
 
 
@@ -88,7 +123,6 @@
     NSString* genre = [self.genres objectAtIndex:itemIndex];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GENRE_SELECTED object:genre];
-    
 }
 
 

@@ -10,7 +10,7 @@
 #import "RadioListTableViewCell.h"
 #import "UserListTableViewCell.h"
 #import "InviteFriendsTableViewCell.h"
-
+#import "RootViewController.h"
 
 @interface RadioListTableViewController ()
 
@@ -65,6 +65,9 @@
         
 
         if (self.showGenreSelector) {
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGenreSelected:) name:NOTIF_GENRE_SELECTED object:nil];
+            
             self.genreSelector = [[WheelSelectorGenre alloc] init];
             [self.view addSubview:self.genreSelector];
             [self.genreSelector initWithTheme:@"Genre"];
@@ -592,6 +595,22 @@
 }
 
 
+- (void)closeGenreSelector {
+    
+    self.genreSelector.status = eGenreStatusClosed;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.33];
+    
+    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y - self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height + self.genreSelector.frame.size.height);
+    
+    [UIView commitAnimations];
+    
+    [self.genreSelector close];
+    
+}
+
+
 
 - (void)freeze {
     
@@ -676,6 +695,17 @@
 }
 
 
+
+
+#pragma mark - Notifications
+
+- (void)onNotifGenreSelected:(NSNotification*)notif {
+    
+    NSString* genre = notif.object;
+    
+    if ([genre isEqualToString:@"style_all"])
+        [self closeGenreSelector];
+}
 
 
 
