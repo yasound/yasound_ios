@@ -259,9 +259,10 @@ static YasoundDataCache* _main = nil;
 - (void)didBuildArtistData:(NSDictionary*)info
 {
     NSData* data = [info valueForKey:@"result"];
-    NSDictionary* userInfo = [info valueForKey:@"userInfo"];
+    YasoundDataCachePendingOp* op = [info valueForKey:@"userInfo"];
+    NSString* genre = op.info;
     
-    [[YasoundDataProvider main] radioRecommendationsWithArtistList:data target:self action:@selector(radioReceived:success:) userData:userInfo];
+    [[YasoundDataProvider main] radioRecommendationsWithArtistList:data genre:genre target:self action:@selector(radioReceived:success:) userData:op];
 }
 
 
