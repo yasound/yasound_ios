@@ -50,10 +50,9 @@
 
     // title
     sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.title"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UILabel* title = [sheet makeLabel];
-    title.text = self.radio.name;
-    [self addSubview:title];
-    self.text = title;
+    self.text = [sheet makeLabel];
+    self.text.text = self.radio.name;
+    [self addSubview:self.text];
 }
 
 
