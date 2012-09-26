@@ -11,6 +11,7 @@
 #import "AudioStreamManager.h"
 #import "ConnectionView.h"
 #import "ActivityAlertView.h"
+#import "RootViewController.h"
 
 @interface AccountTwitterViewController ()
 
@@ -121,6 +122,16 @@
     }
     
 }
+
+
+
+
+- (void)onConnectionTimeout {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CONNECTION_TIMEOUT object:nil];
+}
+
+
 
 
 

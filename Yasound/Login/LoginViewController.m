@@ -151,6 +151,8 @@
 
 
 
+
+
 - (IBAction)onTwitter:(id)sender
 {
     if (([YasoundReachability main].hasNetwork == YR_NO) || ([YasoundReachability main].isReachable == YR_NO))
@@ -184,6 +186,10 @@
 }
 
 
+- (void)onConnectionTimeout {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CONNECTION_TIMEOUT object:nil];
+}
 
 
 

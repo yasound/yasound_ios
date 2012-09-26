@@ -190,7 +190,7 @@
     // TAG ACTIVITY ALERT
 //    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
     
-    [self.view addSubview:[ConnectionView start]];
+    [self.view addSubview:[ConnectionView startWithTarget:self timeout:@selector(onConnectionTimeout)]];
 
     [_email resignFirstResponder];    
     [_pword resignFirstResponder];    
@@ -199,6 +199,15 @@
     // login request to server
     [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
 }
+
+
+
+
+- (void)onConnectionTimeout {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CONNECTION_TIMEOUT object:nil];
+}
+
 
 - (void) requestDidReturn:(User*)user info:(NSDictionary*)info
 {

@@ -17,17 +17,30 @@ static ConnectionView* _main = nil;
 
 
 
-+ (ConnectionView*)start
++ (ConnectionView*)startWithTarget:(id)target timeout:(SEL)timeout
 {
+    [ConnectionView start];
+    [ConnectionView startTimerWithTarget:target timeout:timeout];
+    
+    return _main;
+}
+
+
++ (ConnectionView*)start {
+    
     if (_main != nil)
         return _main;
+    
     _main = [[ConnectionView alloc] initWithFrame:CGRectMake(86,278, 138, 90)];
     
     return _main;
 }
 
-+ (ConnectionView*)startWithFrame:(CGRect)frame
-{
+
+
+
++ (ConnectionView*)startWithFrame:(CGRect)frame {
+    
     if (_main != nil)
         return _main;
     _main = [[ConnectionView alloc] initWithFrame:frame];
@@ -36,11 +49,36 @@ static ConnectionView* _main = nil;
 }
 
 
++ (ConnectionView*)startWithFrame:(CGRect)frame target:(id)target timeout:(SEL)timeout
+{
+    [ConnectionView startWithFrame:frame];
+    [ConnectionView startTimerWithTarget:target timeout:timeout];
+
+    return _main;
+}
+
+
++ (void)startTimerWithTarget:(id)target timeout:(SEL)timeout {
+    
+    _main.target = target;
+    _main.timeout = timeout;
+    _main.timer = [NSTimer scheduledTimerWithTimeInterval:10 target:_main.target selector:_main.timeout userInfo:nil repeats:NO];
+}
+
+
+
 
 + (void)stop
 {
     if (_main == nil)
         return;
+    
+    if (_main.timer != nil) {
+        [_main.timer invalidate];
+        _main.timer = nil;
+    }
+    
+    [_main.target release];
     
     [_main removeFromSuperview];
     [_main release];

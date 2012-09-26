@@ -96,14 +96,12 @@
 //@end
 
 
-@implementation NSURL (NSURLDebug)
-- (CGFloat)length {
-    DLog(@"SHOULD NOT HAPPEN!");
-    assert(0);
-}
-
-
-@end
+//@implementation NSURL (NSURLDebug)
+//- (CGFloat)length {
+//    DLog(@"SHOULD NOT HAPPEN!");
+//    assert(0);
+//}
+//@end
 
 
 
@@ -173,6 +171,8 @@
 //        self.imageBackground.image = [UIImage imageNamed:@"Default-568h@2x.png"];
     
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifConnectionTimeout:) name:NOTIF_CONNECTION_TIMEOUT object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifLaunchRadio:) name:NOTIF_LAUNCH_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onPopAndGotoUploads:) name:NOTIF_POP_AND_GOTO_UPLOADS object:nil];
     
@@ -309,9 +309,9 @@
     // import associated accounts
     [[YasoundSessionManager main] importUserData];
 
-        
+
     // show connection alert
-    [self.view addSubview:[ConnectionView start]];
+    [self.view addSubview:[ConnectionView startWithTarget:self timeout:@selector(onConnectionTimeout)]];
 
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
         [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];
@@ -341,11 +341,18 @@
         
 }
 
+
+- (void)onConnectionTimeout {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CONNECTION_TIMEOUT object:nil];
+}
+
+
 - (void)loginReturned:(User*)user info:(NSDictionary*)info
 {
     // show connection alert
     [ConnectionView stop];
-
+    
     if (user != nil)
     {
         [[YasoundSessionManager main] writeUserIdentity:user];
@@ -941,6 +948,30 @@
     [controller release];
 }
 
+
+
+- (void)onNotifConnectionTimeout:(NSNotification*)notification {
+    
+    
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+//    [APPDELEGATE.navigationController popViewControllerAnimated:YES];
+    
+    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturnedAfterTimeout)];
+}
+
+
+- (void)logoutReturnedAfterTimeout
+{
+    [APPDELEGATE.slideController resetTopView];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:nil];
+    
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_title", nil) message:NSLocalizedString(@"Connection.timeout", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    [av release];
+    
+    
+}
 
 
 

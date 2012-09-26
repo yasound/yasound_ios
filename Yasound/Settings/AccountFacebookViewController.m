@@ -11,6 +11,7 @@
 #import "AudioStreamManager.h"
 #import "ConnectionView.h"
 #import "ActivityAlertView.h"
+#import "RootViewController.h"
 
 @interface AccountFacebookViewController ()
 
@@ -119,6 +120,11 @@
    
 }
 
+
+- (void)onConnectionTimeout {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CONNECTION_TIMEOUT object:nil];
+}
 
 
 - (void)associateReturned:(User*)user info:(NSDictionary*)info
