@@ -55,12 +55,15 @@
         _waitingView = nil;
         _nextPageUrl = nil;
         
+        self.currentGenre = nil;
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSlidingOut:) name:ECSlidingViewUnderLeftWillAppear object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSlidingIn:) name:ECSlidingViewTopDidReset object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogout:) name:NOTIF_DID_LOGOUT object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogin:) name:NOTIF_DID_LOGIN object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifRefreshGui:) name:NOTIF_REFRESH_GUI object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGenreSelected:) name:NOTIF_GENRE_SELECTED object:nil];
         
     }
     return self;
@@ -146,6 +149,7 @@
 //    // init wheel selector and on-display screen
 //    [self.wheelSelector stickToItem:_wheelIndex silent:NO];
 
+    
 
 }
 
@@ -274,11 +278,18 @@
         [self.contentsController release];
         self.contentsController = nil;
     }
+    
+    [self loadContentsForItem:itemIndex];
+}
+
+
+- (void)loadContentsForItem:(NSInteger)itemIndex {
+    
     [[YasoundDataProvider main] cancelRequestsForKey:@"radios"];
     
     NSString* url = nil;
-    NSString* genre = nil;
     BOOL showRefreshIndicator = NO;
+    BOOL showGenreSelector = NO;
     
     // request my radios radios
     if (itemIndex == WheelIdMyRadios)
@@ -305,8 +316,10 @@
     }
     
     // infinite scroll for Selection and Top
-    if ((itemIndex == WheelIdSelection) || (itemIndex == WheelIdTop))
+    if ((itemIndex == WheelIdSelection) || (itemIndex == WheelIdTop)) {
         showRefreshIndicator = YES;
+        showGenreSelector = YES;
+    }
 
     
     // optimized DB access
@@ -316,12 +329,15 @@
 
     
     CGRect frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
-    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithFrame:frame radios:nil withContentsHeight:self.listContainer.frame.size.height showRefreshIndicator:showRefreshIndicator];
+    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithFrame:frame url:self.url radios:nil withContentsHeight:self.listContainer.frame.size.height showRefreshIndicator:showRefreshIndicator showGenreSelector:showGenreSelector];
     newTableview.listDelegate = self;
     [self.listContainer addSubview:newTableview.view];
     
     self.contentsController = newTableview;
     self.contentsView = newTableview.view;
+    
+    // we want the genre selector goes behind the wheel selector : make sure the views are stacked in the right way to do that
+    [self.view sendSubviewToBack:self.listContainer];
 
 
     
@@ -343,7 +359,7 @@
     {
         [self showWaitingViewWithText:NSLocalizedString(@"SelectionWaitingText", nil)];
         self.url = [NSURL URLWithString:URL_RADIOS_SELECTION];
-        [[YasoundDataCache main] requestRadioRecommendationFirstPageWithUrl:self.url genre:genre target:self action:@selector(receiveRadiosFirstPage:success:)];
+        [[YasoundDataCache main] requestRadioRecommendationFirstPageWithUrl:self.url genre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosFirstPage:success:)];
         return;
     }
 
@@ -372,10 +388,78 @@
     
     //LBDEBUG
     //DLog(@"RadioSelection url '%@'", self.url);
-    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:genre target:self action:@selector(receiveRadiosFirstPage:success:)];
+    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosFirstPage:success:)];
         
 }
- 
+
+
+
+
+
+
+
+- (void)updateContentsForItem:(NSInteger)itemIndex {
+    
+    [[YasoundDataProvider main] cancelRequestsForKey:@"radios"];
+    
+    NSString* url = nil;
+    BOOL showRefreshIndicator = NO;
+    BOOL showGenreSelector = NO;
+    
+    // infinite scroll for Selection and Top
+    if ((itemIndex == WheelIdSelection) || (itemIndex == WheelIdTop)) {
+        showRefreshIndicator = YES;
+        showGenreSelector = YES;
+    }
+    
+    
+    // optimized DB access
+    [[YasoundDataCacheImageManager main].db commit];
+    // optimized DB access
+    [[YasoundDataCacheImageManager main].db beginTransaction];
+    
+    
+    // request selection radios
+    if (itemIndex == WheelIdSelection)
+    {
+        [self showWaitingViewWithText:NSLocalizedString(@"SelectionWaitingText", nil)];
+        self.url = [NSURL URLWithString:URL_RADIOS_SELECTION];
+        [[YasoundDataCache main] requestRadioRecommendationFirstPageWithUrl:self.url genre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosFirstPage:success:)];
+        return;
+    }
+    
+    
+    // request top radios
+    else if (itemIndex == WheelIdTop)
+    {
+        url = URL_RADIOS_TOP;
+        [self showWaitingViewWithText:NSLocalizedString(@"TopWaitingText", nil)];
+    }
+    
+    self.url = [NSURL URLWithString:url];
+    
+    //LBDEBUG
+    //DLog(@"RadioSelection url '%@'", self.url);
+    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosFirstPage:success:)];
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - (void)friendsReceived:(ASIHTTPRequest*)req success:(BOOL)success
 {
@@ -476,7 +560,7 @@
     
     
     NSArray* radios = radioContainer.objects;
-    [self.contentsController setRadios:radios];
+    [self.contentsController setRadios:radios forUrl:self.url];
 
     // store next page url
     _nextPageUrl = radioContainer.meta.next;
@@ -491,9 +575,15 @@
 #ifdef TEST_FAKE
     return;
 #endif
+    if (self.locked)
+        return;
     
     // close the refresh indicator
     //[contentsController unfreeze];
+    if (![self.contentsController respondsToSelector:@selector(appendRadios:)])
+    {
+        return;
+    }
     
     
     if (!success)
@@ -501,7 +591,7 @@
         DLog(@"can't get radios next page");
         
         [self.contentsController appendRadios:nil];
-
+        
         return;
     }
     
@@ -608,6 +698,16 @@
     [self.wheelSelector stickToItem:self.wheelSelector.currentIndex silent:NO];    
 }
 
+
+- (void)onNotifGenreSelected:(NSNotification*)notif {
+    
+    NSString* genre = notif.object;
+    DLog(@"onNotifGenreSelected '%@'", genre);
+    [[UserSettings main] setGenre:genre forUrl:self.url];
+    
+    // reload
+    [self updateContentsForItem:self.wheelSelector.currentIndex];
+}
 
 
 

@@ -11,6 +11,7 @@
 #import "UserListTableViewCell.h"
 #import "InviteFriendsTableViewCell.h"
 #import "Theme.h"
+#import "RootViewController.h"
 
 @interface RadioListTableViewController ()
 
@@ -39,7 +40,7 @@
 
 #define NB_ROWS_SECTION_INVITE_FRIENDS 1
 
-- (id)initWithFrame:(CGRect)frame radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator
+- (id)initWithFrame:(CGRect)frame url:(NSURL*)url radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator showGenreSelector:(BOOL)showGenreSelector
 {
     self = [super init];
     if (self)
@@ -47,6 +48,7 @@
         _dragging = NO;
         
         self.showRefreshIndicator = showRefreshIndicator;
+        self.showGenreSelector = showGenreSelector;
         
         self.view.frame = frame;
         self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
@@ -57,17 +59,36 @@
         self.delayTokens = 2;
         self.delay = 0.15;
         
+        self.url = url;
         self.radios = radios;
         self.radiosPreviousCount = radios.count;
         self.friendsMode = NO;
+        
+
+        if (self.showGenreSelector) {
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGenreSelected:) name:NOTIF_GENRE_SELECTED object:nil];
+            
+            self.genreSelector = [[WheelSelectorGenre alloc] init];
+            [self.view addSubview:self.genreSelector];
+            [self.genreSelector initWithTheme:@"Genre"];
+
+            if (self.url != nil) {
+                NSString* genre = [[UserSettings main] objectForKey:self.url];
+                if (genre != nil) {
+                    [self openGenreSelector];
+                    [self.genreSelector open];
+                }
+            }
+            
+        }
         
 
         if (self.showRefreshIndicator) {
             self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:CGRectMake(0, frame.size.height - REFRESH_INDICATOR_HEIGHT, self.view.frame.size.width, REFRESH_INDICATOR_HEIGHT)];
             [self.view addSubview:self.refreshIndicator];
         }
-        
-        
+
         self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
         [self.view addSubview:self.tableView];
         self.tableView.delegate = self;
@@ -81,12 +102,23 @@
     return self;
 }
 
-- (void)setRadios:(NSArray*)radios
+
+
+- (void)setRadios:(NSArray*)radios forUrl:(NSURL*)url
 {
-    _radios = radios;
-    [_radios retain];
+    self.radios = radios;
+    self.url = url;
     
     self.radiosPreviousCount = radios.count;
+    
+    if (self.url != nil) {
+        NSString* genre = [[UserSettings main] objectForKey:self.url];
+        if ((genre != nil) && (self.genreSelector.status != eGenreStatusOpened)) {
+            [self openGenreSelector];
+            [self.genreSelector open];
+        }
+    }
+
     
     [self.tableView reloadData];
 }
@@ -492,35 +524,53 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    if (!self.showRefreshIndicator)
-        return;
+//    if (!self.showRefreshIndicator)
+//        return;
     
-    if (self.refreshIndicator.status == eStatusOpened)
-        return;
+    //
+    // Refresh Indicator
+    //
+    if (self.refreshIndicator.status != eStatusOpened) {
 
-    float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+        float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
 
-    if (bottomEdge < (scrollView.contentSize.height + self.refreshIndicator.height/2.f)) {
+        // close it
+        if (bottomEdge < (scrollView.contentSize.height + self.refreshIndicator.height/2.f)) {
+            
+            if (self.refreshIndicator.status == eStatusPulled)
+                [self.refreshIndicator close];
+        }
         
-        if (self.refreshIndicator.status == eStatusPulled)
-            [self.refreshIndicator close];
-//        else if (self.refreshIndicator.status == eStatusOpened)
-//            [self.refreshIndicator unfree];
+        // pull it out
+        else if (_dragging && (self.refreshIndicator.status == eStatusClosed) && (bottomEdge >= (scrollView.contentSize.height + self.refreshIndicator.height/2.f))) {
+            
+            [self.refreshIndicator pull];
+        }
+
+        // open it entirely
+        else if (_dragging && (self.refreshIndicator.status == eStatusPulled) &&  (bottomEdge >= (scrollView.contentSize.height + self.refreshIndicator.height))) {
+            
+            [self.refreshIndicator open];
+        }
     }
     
     
-    else if (_dragging && (self.refreshIndicator.status == eStatusClosed) && (bottomEdge >= (scrollView.contentSize.height + self.refreshIndicator.height/2.f))) {
+    //
+    // Genre Selector
+    //
+    if (self.genreSelector.status == eGenreStatusClosed) {
         
-        [self.refreshIndicator pull];
-    }
-
-    
-    else if (_dragging && (self.refreshIndicator.status == eStatusPulled) &&  (bottomEdge >= (scrollView.contentSize.height + self.refreshIndicator.height))) {
+//        NSLog(@"%.2f < %.2f",scrollView.contentOffset.y, self.genreSelector.frame.size.height );
         
-        [self.refreshIndicator open];
+        if (_dragging && (scrollView.contentOffset.y < (0-self.genreSelector.frame.size.height))) {
+            self.genreSelector.status = eGenreStatusPulled;
+        }
+        else
         
-//        // request next page to the server
-//        _loadingNextPage = [self.listDelegate listRequestNextPage];
+            if (_dragging && (scrollView.contentOffset.y < 0)) {
+            CGFloat posY = 0 - scrollView.contentOffset.y - self.genreSelector.frame.size.height;
+            [self.genreSelector moveTo:posY];
+        }
     }
 }
 
@@ -529,8 +579,6 @@
 
     _dragging = YES;
 
-    if (!self.showRefreshIndicator)
-        return;
 }
 
 
@@ -539,34 +587,66 @@
     
     _dragging = NO;
     
-    if (!self.showRefreshIndicator)
-        return;
+    if (self.showRefreshIndicator) {
 
-    if (self.refreshIndicator.status == eStatusWaitingToClose) {
-        [self unfreeze];
-    }
-    
-    else if ((self.refreshIndicator.status == eStatusOpened) && !_loadingNextPage) {
-
-        [self.refreshIndicator openedAndRelease];
-        
-        [self freeze];
-        
-        
-        // request next page to the server
-        _loadingNextPage = [self.listDelegate listRequestNextPage];
-        
-        if (!_loadingNextPage)
+        if (self.refreshIndicator.status == eStatusWaitingToClose) {
             [self unfreeze];
+        }
+        
+        else if ((self.refreshIndicator.status == eStatusOpened) && !_loadingNextPage) {
 
+            [self.refreshIndicator openedAndRelease];
+            
+            [self freeze];
+            
+            
+            // request next page to the server
+            _loadingNextPage = [self.listDelegate listRequestNextPage];
+            
+            if (!_loadingNextPage)
+                [self unfreeze];
+
+        }
+        
     }
 
-//    else if ((self.refreshIndicator.status == eStatusOpened) && _loadingNextPage) {
-//        [self freeze];
-//    }
-    
-//    [self.tableView reloadData];    
+
+    if (self.showGenreSelector) {
+        
+        if (self.genreSelector.status == eGenreStatusPulled) {
+            [self openGenreSelector];
+        }
+    }
+
 }
+
+
+- (void)openGenreSelector {
+    
+    self.genreSelector.status = eGenreStatusOpened;
+    
+    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height - self.genreSelector.frame.size.height);
+    
+    [self.genreSelector open];
+
+}
+
+
+- (void)closeGenreSelector {
+    
+    self.genreSelector.status = eGenreStatusClosed;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.33];
+    
+    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y - self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height + self.genreSelector.frame.size.height);
+    
+    [UIView commitAnimations];
+    
+    [self.genreSelector close];
+    
+}
+
 
 
 - (void)freeze {
@@ -652,6 +732,17 @@
 }
 
 
+
+
+#pragma mark - Notifications
+
+- (void)onNotifGenreSelected:(NSNotification*)notif {
+    
+    NSString* genre = notif.object;
+    
+    if ([genre isEqualToString:@"style_all"])
+        [self closeGenreSelector];
+}
 
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "YaViewController.h"
-#import "WheelSelector.h"
+#import "WheelSelectorRadios.h"
 #import "Radio.h"
 #import "TopBarBackAndTitle.h"
 
@@ -48,7 +48,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIView* container;
-@property (nonatomic, retain) IBOutlet WheelSelector* wheelSelector;
+@property (nonatomic, retain) IBOutlet WheelSelectorRadios* wheelSelector;
 @property (nonatomic, retain) IBOutlet TopBarBackAndTitle* topbar;
 
 @property (nonatomic, retain) Radio* radio;

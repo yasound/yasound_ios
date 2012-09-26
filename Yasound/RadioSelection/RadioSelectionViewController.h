@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 //#import <QuartzCore/QuartzCore.h>
 #import "YaViewController.h"
-#import "WheelSelector.h"
+#import "WheelSelectorRadios.h"
 #import "WheelRadiosSelector.h"
 #import "RadioListTableViewController.h"
 #import "TopBar.h"
@@ -35,13 +35,15 @@
 //@property (nonatomic, retain) NSMutableArray* friendsRadios;
 @property (nonatomic, retain) NSArray* friends;
 
-@property (nonatomic, retain) IBOutlet WheelSelector* wheelSelector;
+@property (nonatomic, retain) IBOutlet WheelSelectorRadios* wheelSelector;
 @property (nonatomic, retain) IBOutlet UIView* listContainer;
 @property (nonatomic, retain) UIViewController* contentsController;
 @property (nonatomic, retain) UIView* contentsView;
 @property (nonatomic, retain) RadioSearchViewController* searchview;
 
 @property (nonatomic, retain) MenuViewController* menu;
+
+@property (nonatomic, retain) NSString* currentGenre;
 
 //@property (nonatomic, retain) ASIHTTPRequest* currentRequest;
 
