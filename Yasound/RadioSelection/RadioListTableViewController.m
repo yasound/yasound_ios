@@ -432,7 +432,6 @@
     return 0;
 }
 
-//#FIXME MatDebug
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (self.friendsMode && section == SECTION_INVITE_FRIENDS_INDEX)
@@ -454,7 +453,6 @@
     
     return nil;
 }
-//
 
 
 

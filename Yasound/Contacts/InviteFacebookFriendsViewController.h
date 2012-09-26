@@ -20,7 +20,11 @@
     
     UIImage* _checkmarkImage;
     
-    WaitingView* _waitingView;
+    IBOutlet UIBarButtonItem* _selectAllButton;
+    IBOutlet UIBarButtonItem* _unselectAllButton;
 }
+
+- (IBAction)selectAllClicked:(id)sender;
+- (IBAction)unselectAllClicked:(id)sender;
 
 @end

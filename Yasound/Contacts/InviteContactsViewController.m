@@ -47,6 +47,9 @@
 {
     [super viewDidLoad];
     
+    _selectAllButton.title = NSLocalizedString(@"SelectAll", nil);
+    _unselectAllButton.title = NSLocalizedString(@"UnselectAll", nil);
+    
     ABAddressBookRef addressBook = ABAddressBookCreate();
     
     __block BOOL accessGranted = NO;
@@ -92,6 +95,30 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+- (void)setAllcontactsSelected:(BOOL)selected
+{
+    if (selected)
+    {
+        [_selectedContacts addObjectsFromArray:_contacts];
+    }
+    else
+    {
+        [_selectedContacts removeAllObjects];
+    }
+    [_tableview reloadData];
+}
+
+- (IBAction)selectAllClicked:(id)sender
+{
+    [self setAllcontactsSelected:YES];
+}
+
+- (IBAction)unselectAllClicked:(id)sender
+{
+    [self setAllcontactsSelected:NO];
+}
+
 
 #pragma mark - UIAlertViewDelegate
 
@@ -253,7 +280,13 @@
 
 - (BOOL)topBarSave
 {
-    [[YasoundDataProvider main] inviteContacts:_contacts target:self action:@selector(contactsInvited:success:)];
+    NSMutableArray* contactData = [NSMutableArray array];
+    for (Contact* c in _contacts)
+    {
+        NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:c.emails, @"emails", c.firstName, @"firstName", c.lastName, @"lastName", nil];
+        [contactData addObject:dict];
+    }
+    [[YasoundDataProvider main] inviteContacts:contactData target:self action:@selector(contactsInvited:success:)];
     return NO;
 }
 

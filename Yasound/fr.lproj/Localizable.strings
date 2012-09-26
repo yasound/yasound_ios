@@ -747,3 +747,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "InviteFriends.WaitingText" = "envoi en cours...";
 
+"SelectAll" = "sélectionner tout";
+"UnselectAll" = "desélectionner tout";
+
