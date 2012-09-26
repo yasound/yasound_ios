@@ -757,3 +757,5 @@
 "InviteTwitterFriends.label" = "An invitation tweet will be posted in your timeline.";
 
 "InviteContacts.accessNotGrantedLabel" = "Authorize yasound to access your contacts to invite them.";
+
+"InviteFriends.WaitingText" = "in progress...";

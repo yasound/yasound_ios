@@ -11,6 +11,8 @@
 #import "YasoundSessionManager.h"
 #import "SessionManager.h"
 #import "FacebookFriendTableViewCell.h"
+#import "YasoundDataProvider.h"
+#import "YasoundAppDelegate.h"
 
 @interface InviteFacebookFriendsViewController ()
 
@@ -28,6 +30,8 @@
         
         _checkmarkImage = [UIImage imageNamed:@"GrayCheckmark.png"];
         [_checkmarkImage retain];
+        
+        _waitingView = nil;
     }
     return self;
 }
@@ -60,6 +64,27 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)showWaitingView
+{
+    if (_waitingView)
+    {
+        [_waitingView removeFromSuperview];
+        _waitingView = nil;
+    }
+    
+    _waitingView = [[WaitingView alloc] initWithText:NSLocalizedString(@"InviteFriends.WaitingText", nil)];
+    [self.view addSubview:_waitingView];
+}
+
+- (void)hideWaitingView
+{
+    if (!_waitingView)
+        return;
+    
+    [_waitingView removeFromSuperview];
+    _waitingView = nil;
 }
 
 
@@ -134,7 +159,21 @@
 
 - (BOOL)topBarSave
 {
-    return YES;
+    [self showWaitingView];
+    [[YasoundDataProvider main] inviteFacebookFriends:_friends target:self action:@selector(friendsInvited:success:)];
+    return NO;
+}
+
+- (void) friendsInvited:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    NSDictionary* resp = [req responseDict];
+    NSNumber* ok = [resp valueForKey:@"success"];
+    if (!success || ok == nil || [ok boolValue] == NO)
+    {
+        DLog(@"facebook friends invitation failed   error: %@", [resp valueForKey:@"error"]);
+    }
+    [self hideWaitingView];
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 - (BOOL)topBarCancel

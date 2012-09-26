@@ -7,6 +7,8 @@
 //
 
 #import "InviteTwitterFriendsViewController.h"
+#import "YasoundDataProvider.h"
+#import "YasoundAppDelegate.h"
 
 @interface InviteTwitterFriendsViewController ()
 
@@ -47,8 +49,20 @@
 
 - (BOOL)topBarSave
 {
-    return YES;
-    //[APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+    [[YasoundDataProvider main] inviteTwitterFriendsWithTarget:self action:@selector(friendsInvited:success:)];
+    return NO;
+}
+
+- (void)friendsInvited:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    NSDictionary* resp = [req responseDict];
+    NSNumber* ok = [resp valueForKey:@"success"];
+    if (!success || ok == nil || [ok boolValue] == NO)
+    {
+        DLog(@"twitter friends invitation failed   error: %@", [resp valueForKey:@"error"]);
+    }
+    
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 - (BOOL)topBarCancel
