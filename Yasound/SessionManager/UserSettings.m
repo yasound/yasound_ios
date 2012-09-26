@@ -150,6 +150,7 @@ static UserSettings* _main;
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYtutorials];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYcacheMenuDescription];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYuserWantsHd];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYuserAllowsAccessToContacts];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self dump];

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InviteFriendsTableViewCell : UITableViewCell
+@interface InviteFriendsTableViewCell : UITableViewCell <UIAlertViewDelegate>
 {
     UIImageView* _facebookImage;
     UIImageView* _twitterImage;

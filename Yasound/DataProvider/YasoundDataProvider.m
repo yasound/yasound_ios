@@ -1797,7 +1797,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)radioRecommendationsWithArtistList:(NSData*)data target:(id)target action:(SEL)selector userData:(id)userData
+- (void)radioRecommendationsWithArtistList:(NSData*)data genre:(NSString*)genre target:(id)target action:(SEL)selector userData:(id)userData
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/radio_recommendations/"];
@@ -1807,6 +1807,12 @@ static YasoundDataProvider* _main = nil;
     conf.callbackTarget = target;
     conf.callbackAction = selector;
     conf.userData = userData;
+    
+    if (genre != nil)
+    {
+        NSArray* params = [NSArray arrayWithObject:[NSString stringWithFormat:@"genre=%@", genre]];
+        conf.params = params;
+    }
     
     ASIFormDataRequest* req = [_communicator buildFormDataRequestWithConfig:conf];
     [req addData:data forKey:@"artists_data"];

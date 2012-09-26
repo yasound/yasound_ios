@@ -27,6 +27,9 @@
 - (BOOL)gotoRadioProgramming;
 - (BOOL)gotoRadioStats;
 - (BOOL)gotoProfile;
+- (BOOL)gotoInviteFacebookFriends;
+- (BOOL)gotoInviteTwitterFriends;
+- (BOOL)gotoInviteContacts;
 
 - (void)postNotification:(NSString*)notifName;
 
@@ -131,6 +134,24 @@ static YasoundAppURLHandler* _main = nil;
     else if (componentCount == 2 && [[components objectAtIndex:1] isEqualToString:@"profile"]) // '/' + 'profile'
     {
         BOOL res = [self gotoProfile];
+        if (res)
+            return YES;
+    }
+    else if (componentCount == 2 && [[components objectAtIndex:1] isEqualToString:@"invite_ios_contacts"]) // '/' + 'invite_ios_contacts'
+    {
+        BOOL res = [self gotoInviteContacts];
+        if (res)
+            return YES;
+    }
+    else if (componentCount == 2 && [[components objectAtIndex:1] isEqualToString:@"invite_facebook_friends"]) // '/' + 'invite_facebook_friends'
+    {
+        BOOL res = [self gotoInviteFacebookFriends];
+        if (res)
+            return YES;
+    }
+    else if (componentCount == 2 && [[components objectAtIndex:1] isEqualToString:@"invite_twitter_friends"]) // '/' + 'invite_twitter_friends'
+    {
+        BOOL res = [self gotoInviteTwitterFriends];
         if (res)
             return YES;
     }
@@ -255,6 +276,37 @@ static YasoundAppURLHandler* _main = nil;
     if (![YasoundSessionManager main].registered)
         return [self gotoLogin];
     [self postNotification:NOTIF_GOTO_EDIT_PROFIL];
+    return YES;
+}
+
+- (BOOL)gotoInviteFacebookFriends
+{
+    if (![YasoundSessionManager main].registered)
+        return [self gotoLogin];
+    if (![[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
+        return [self gotoFacebookAssociation];
+    
+    [self postNotification:NOTIF_INVITE_FACEBOOK];
+    return YES;
+}
+
+- (BOOL)gotoInviteTwitterFriends
+{
+    if (![YasoundSessionManager main].registered)
+        return [self gotoLogin];
+    if (![[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
+        return [self gotoTwitterAssociation];
+    
+    [self postNotification:NOTIF_INVITE_TWITTER];
+    return YES;
+}
+
+- (BOOL)gotoInviteContacts
+{
+    if (![YasoundSessionManager main].registered)
+        return [self gotoLogin];
+    
+    [self postNotification:NOTIF_INVITE_CONTACTS];
     return YES;
 }
 

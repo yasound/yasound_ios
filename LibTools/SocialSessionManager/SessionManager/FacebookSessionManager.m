@@ -167,7 +167,8 @@ static FacebookSessionManager* _facebook = nil;
   
   if (requestType == SRequestInfoFriends)
   {
-    _requestFriends = [_facebookConnect requestWithGraphPath:@"me/friends" andDelegate:self];
+      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:@"picture,name" forKey:@"fields"];
+      _requestFriends = [_facebookConnect requestWithGraphPath:@"me/friends" andParams:params andDelegate:self];
     return YES;
   }
   
@@ -200,9 +201,6 @@ static FacebookSessionManager* _facebook = nil;
   _requestFeed = [_facebookConnect requestWithGraphPath:@"me/links" andParams:params andHttpMethod:@"POST"  andDelegate:self];  
   return YES;
 }
-
-
-
 
 
 
@@ -337,6 +335,7 @@ static FacebookSessionManager* _facebook = nil;
       [user setValue:@"facebook" forKey:DATA_FIELD_TYPE];
       [user setValue:@"" forKey:DATA_FIELD_USERNAME]; // no username directly available from this list
       [user setValue:[friend valueForKey:@"name"] forKey:DATA_FIELD_NAME];
+        [user setValue:[friend valueForKey:@"picture"] forKey:DATA_FIELD_PICTURE];
 
       [data addObject:user];
     }

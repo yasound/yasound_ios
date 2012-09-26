@@ -25,6 +25,7 @@ typedef enum
 #define DATA_FIELD_USERNAME @"username"
 #define DATA_FIELD_NAME @"name"
 #define DATA_FIELD_EMAIL @"email"
+#define DATA_FIELD_PICTURE @"picture"
 
 
 
