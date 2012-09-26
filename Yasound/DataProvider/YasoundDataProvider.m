@@ -13,6 +13,8 @@
 #import "UIDevice+IdentifierAddition.h"
 #import "ASIFormDataRequest.h"
 #import "ProgrammingObjectParameters.h"
+#import "FacebookFriend.h"
+#import "Contact.h"
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 
@@ -2711,6 +2713,62 @@ static YasoundDataProvider* _main = nil;
     [params addObject:@"format=json"];
     [params addObject:[NSString stringWithFormat:@"q=%@", city]];
     conf.params = params;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+#pragma mark - friends invitation
+- (void)inviteContacts:(NSArray*)contacts target:(id)target action:(SEL)action
+{    
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"api/v1/invite_ios_contacts";
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"POST";
+    conf.callbackTarget = target;
+    conf.callbackAction = action;
+    
+    NSString* dataStr = [contacts JSONRepresentation];
+    NSData* data = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req appendPostData:data];
+    [req startAsynchronous];
+}
+
+- (void)inviteFacebookFriends:(NSArray*)friends target:(id)target action:(SEL)action
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"api/v1/invite_facebook_friends";
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"POST";
+    conf.callbackTarget = target;
+    conf.callbackAction = action;
+    
+    NSMutableArray* facebook_ids = [NSMutableArray array];
+    for (FacebookFriend* f in friends)
+    {
+        [facebook_ids addObject:f.id];
+    }
+    NSString* dataStr = [facebook_ids JSONRepresentation];
+    NSData* data = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req appendPostData:data];
+    [req startAsynchronous];
+}
+
+- (void)inviteTwitterFriendsWithTarget:(id)target action:(SEL)action
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"api/v1/invite_twitter_friends";
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"POST";
+    conf.callbackTarget = target;
+    conf.callbackAction = action;
     
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
     [req startAsynchronous];

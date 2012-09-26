@@ -743,3 +743,5 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "InviteContacts.accessNotGrantedLabel" = "Autorisez Yasound à accéder à vos contacts pour les inviter.";
 
+"InviteFriends.WaitingText" = "envoi en cours...";
+

@@ -9,6 +9,8 @@
 #import "InviteContactsViewController.h"
 #import <AddressBook/AddressBook.h>
 #import "UserSettings.h"
+#import "YasoundDataProvider.h"
+#import "YasoundAppDelegate.h"
 
 @implementation InviteContactsViewController
 
@@ -251,7 +253,20 @@
 
 - (BOOL)topBarSave
 {
-    return YES;
+    [[YasoundDataProvider main] inviteContacts:_contacts target:self action:@selector(contactsInvited:success:)];
+    return NO;
+}
+
+- (void)contactsInvited:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    NSDictionary* resp = [req responseDict];
+    NSNumber* ok = [resp valueForKey:@"success"];
+    if (!success || ok == nil || [ok boolValue] == NO)
+    {
+        DLog(@"contacts invitation failed   error: %@", [resp valueForKey:@"error"]);
+    }
+    
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 - (BOOL)topBarCancel

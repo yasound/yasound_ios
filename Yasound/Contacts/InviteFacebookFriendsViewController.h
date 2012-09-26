@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TopBarModal.h"
 #import "FacebookSessionManager.h"
+#import "WaitingView.h"
 
 @interface InviteFacebookFriendsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TopBarModalDelegate, SessionDelegate>
 {
@@ -18,6 +19,8 @@
     NSMutableSet* _selectedFriends;
     
     UIImage* _checkmarkImage;
+    
+    WaitingView* _waitingView;
 }
 
 @end

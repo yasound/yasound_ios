@@ -322,6 +322,11 @@ taskStatus stringToStatus(NSString* str);
 // streamer authentication
 - (void)streamingAuthenticationTokenWithTarget:(id)target action:(SEL)action userData:(id)userData;
 
+// invite friends
+- (void)inviteContacts:(NSArray*)contacts target:(id)target action:(SEL)action;
+- (void)inviteFacebookFriends:(NSArray*)friends target:(id)target action:(SEL)action;
+- (void)inviteTwitterFriendsWithTarget:(id)target action:(SEL)action;
+
 
 - (void)testV2;
 
