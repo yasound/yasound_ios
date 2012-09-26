@@ -283,11 +283,6 @@ static YasoundSessionManager* _main = nil;
     User* nilUser = nil;
     _error = YES;
     [_target performSelector:_action withObject:nilUser withObject:[NSDictionary dictionaryWithObject:@"Login" forKey:@"error"]];
-//    [ActivityAlertView close];
-    
-//    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//    [av show];
-//    [av release];
     _target = nil;
 
 }
@@ -297,11 +292,6 @@ static YasoundSessionManager* _main = nil;
   User* nilUser = nil;
   _error = NO;
   [_target performSelector:_action withObject:nilUser withObject:[NSDictionary dictionaryWithObject:@"Cancel" forKey:@"error"]];
-  //    [ActivityAlertView close];
-  
-  //    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-  //    [av show];
-  //    [av release];
     _target = nil;
 
 }
@@ -312,18 +302,6 @@ static YasoundSessionManager* _main = nil;
     _error = YES;
     [_target performSelector:_action withObject:nilUser withObject:[NSDictionary dictionaryWithObject:@"UserInfo" forKey:@"error"]];
 }
-
-// Called when a button is clicked. The view will be automatically dismissed after this call returns
-//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//    // refers to (user == nil) in loginRequestDidReturn
-//    
-//    // callback
-//    assert(_target);
-//    [_target performSelector:_action withObject:nil];
-//}
-
-
 
 
 

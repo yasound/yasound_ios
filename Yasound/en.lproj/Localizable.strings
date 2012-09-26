@@ -9,6 +9,8 @@
 "Navigation.delete" = "Delete";
 "Navigation.close" = "Close";
 
+"Connection.timeout" = "Connection timeout.";
+
 "Navigation_back" = "Back";
 "Navigation_next" = "Next";
 "Navigation_NowPlaying" = "Now playing";

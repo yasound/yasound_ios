@@ -13,8 +13,12 @@
     UIActivityIndicatorView* _indicator;
 }
 
-+ (ConnectionView*)start;
-+ (ConnectionView*)startWithFrame:(CGRect)frame;
+@property (nonatomic, retain) NSTimer* timer;
+@property (nonatomic, retain) id target;
+@property (nonatomic) SEL timeout;
+
++ (ConnectionView*)startWithTarget:(id)target timeout:(SEL)timeout;
++ (ConnectionView*)startWithFrame:(CGRect)frame target:(id)target timeout:(SEL)timeout;
 + (void)stop;
 
 

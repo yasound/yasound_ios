@@ -12,7 +12,7 @@
 #import "ConnectionView.h"
 #import "RegExp.h"
 #import "ActivityAlertView.h"
-
+#import "RootViewController.h"
 
 @interface AccountYasoundViewController ()
 
@@ -195,10 +195,17 @@
         [[YasoundSessionManager main] associateAccountYasound:email password:pword target:self action:@selector(associateReturned:info:) automatic:NO];
         
         // show a connection alert
-        [self.view addSubview:[ConnectionView startWithFrame:CGRectMake(86,340, 138, 90)]];
+        [self.view addSubview:[ConnectionView startWithFrame:CGRectMake(86,340, 138, 90) target:self timeout:@selector(onConnectionTimeout)]];
     }
     
 }
+
+
+- (void)onConnectionTimeout {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CONNECTION_TIMEOUT object:nil];
+}
+
 
 
 

@@ -92,14 +92,12 @@
 //@end
 
 
-@implementation NSURL (NSURLDebug)
-- (CGFloat)length {
-    DLog(@"SHOULD NOT HAPPEN!");
-    assert(0);
-}
-
-
-@end
+//@implementation NSURL (NSURLDebug)
+//- (CGFloat)length {
+//    DLog(@"SHOULD NOT HAPPEN!");
+//    assert(0);
+//}
+//@end
 
 
 
@@ -169,6 +167,8 @@
 //        self.imageBackground.image = [UIImage imageNamed:@"Default-568h@2x.png"];
     
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifConnectionTimeout:) name:NOTIF_CONNECTION_TIMEOUT object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifLaunchRadio:) name:NOTIF_LAUNCH_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onPopAndGotoUploads:) name:NOTIF_POP_AND_GOTO_UPLOADS object:nil];
     
@@ -303,7 +303,7 @@
 
         
     // show connection alert
-    [self.view addSubview:[ConnectionView start]];
+    [self.view addSubview:[ConnectionView startWithTarget:self timeout:@selector(onConnectionTimeout)]];
 
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
         [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];
@@ -333,11 +333,18 @@
         
 }
 
+
+- (void)onConnectionTimeout {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CONNECTION_TIMEOUT object:nil];
+}
+
+
 - (void)loginReturned:(User*)user info:(NSDictionary*)info
 {
     // show connection alert
     [ConnectionView stop];
-
+    
     if (user != nil)
     {
         [[YasoundSessionManager main] writeUserIdentity:user];
@@ -876,6 +883,22 @@
     [view release];
 }
 
+
+
+- (void)onNotifConnectionTimeout:(NSNotification*)notification {
+    
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+    
+    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturnedAfterTimeout)];
+}
+
+
+- (void)logoutReturnedAfterTimeout
+{
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_title", nil) message:NSLocalizedString(@"Connection.timeout", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    [av release];
+}
 
 
 

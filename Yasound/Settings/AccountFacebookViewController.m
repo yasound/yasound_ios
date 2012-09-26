@@ -11,6 +11,7 @@
 #import "AudioStreamManager.h"
 #import "ConnectionView.h"
 #import "ActivityAlertView.h"
+#import "RootViewController.h"
 
 @interface AccountFacebookViewController ()
 
@@ -114,11 +115,16 @@
         [[YasoundSessionManager main] associateAccountFacebook:self action:@selector(associateReturned:info:) automatic:NO];
         
         // show a connection alert
-        [self.view addSubview:[ConnectionView startWithFrame:CGRectMake(86,340, 138, 90)]];
+        [self.view addSubview:[ConnectionView startWithFrame:CGRectMake(86,340, 138, 90) target:self timeout:@selector(onConnectionTimeout)]];
     }
    
 }
 
+
+- (void)onConnectionTimeout {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CONNECTION_TIMEOUT object:nil];
+}
 
 
 - (void)associateReturned:(User*)user info:(NSDictionary*)info

@@ -144,10 +144,12 @@
     [self hideButtons:YES];
         
     // show a connection alert
-    [self.view addSubview:[ConnectionView start]];
+    [self.view addSubview:[ConnectionView startWithTarget:self timeout:@selector(onConnectionTimeout)]];
     
     
 }
+
+
 
 
 
@@ -180,10 +182,14 @@
 
     
     // show a connection alert
-    [self.view addSubview:[ConnectionView start]];
+    [self.view addSubview:[ConnectionView startWithTarget:self timeout:@selector(onConnectionTimeout)]];
 }
 
 
+- (void)onConnectionTimeout {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CONNECTION_TIMEOUT object:nil];
+}
 
 
 

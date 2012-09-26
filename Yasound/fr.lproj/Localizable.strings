@@ -9,6 +9,8 @@
 "Navigation.delete" = "Supprimer";
 "Navigation.close" = "Fermer";
 
+"Connection.timeout" = "Délai de connexion dépassé";
+
 "Navigation_back" = "Retour";
 "Navigation_next" = "Suivant";
 "Navigation_NowPlaying" = "A l'écoute";
