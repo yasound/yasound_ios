@@ -84,7 +84,10 @@
         }
         
 
+        
         if (self.showRefreshIndicator) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifNextPageCancel:) name:NOTIF_NEXTPAGE_CANCEL object:nil];
+            
             self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:CGRectMake(0, frame.size.height - REFRESH_INDICATOR_HEIGHT, self.view.frame.size.width, REFRESH_INDICATOR_HEIGHT)];
             [self.view addSubview:self.refreshIndicator];
         }
@@ -715,9 +718,15 @@ static NSInteger mycount = 0;
 
 - (void)unfreeze {
     
+    //LBDEBUG
+    NSLog(@"unfreeze 01");
+
     if (!self.showRefreshIndicator)
         return;
     
+    //LBDEBUG
+    NSLog(@"unfreeze 02");
+
     [_freezeTimeout invalidate];
     _freezeTimeout = nil;
     
@@ -726,8 +735,14 @@ static NSInteger mycount = 0;
         return;
     }
     
+    //LBDEBUG
+    NSLog(@"unfreeze 03");
+
     if (!_loadingNextPage)
         return;
+
+    //LBDEBUG
+    NSLog(@"unfreeze 04");
 
     _dragging = NO;
     _loadingNextPage = NO;
@@ -742,6 +757,9 @@ static NSInteger mycount = 0;
         [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(unfreezeFinish) userInfo:nil repeats:NO];
     else
         [self unfreezeFinish];
+
+    //LBDEBUG
+    NSLog(@"unfreeze 05");
 
 }
 
@@ -770,8 +788,13 @@ static NSInteger mycount = 0;
 
     [self.tableView reloadData];
     
-    NSLog(@"contentOffset.y  %.2f     rame.size.height %.2f => offset %.2f", self.tableView.contentOffset.y , self.tableView.frame.size.height, self.tableView.contentOffset.y + self.tableView.frame.size.height);
-    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y + self.tableView.frame.size.height) animated:YES];
+    NSLog(@"contentOffset.y  %.2f     rame.size.height %.2f => offset %.2f     (contentSize %.2f x %.2f)", self.tableView.contentOffset.y , self.tableView.frame.size.height, self.tableView.contentOffset.y + self.tableView.frame.size.height, self.tableView.contentSize.width, self.tableView.contentSize.height);
+    
+    
+//    CGFloat newY = self.tableView.contentOffset.y + self.tableView.frame.size.height;
+    CGFloat newY = self.tableView.contentSize.height - self.tableView.frame.size.height;
+    
+    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, newY) animated:YES];
 }
 
 
@@ -794,6 +817,13 @@ static NSInteger mycount = 0;
 //    else
 //        [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
     
+}
+
+
+
+- (void)onNotifNextPageCancel:(NSNotification*)notif {
+    
+    [self unfreeze];    
 }
 
 

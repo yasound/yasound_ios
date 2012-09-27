@@ -13,6 +13,7 @@
 #import "RadioSelectionViewController.h"
 
 #define NOTIF_LAUNCH_RADIO @"NOTIF_LAUNCH_RADIO"
+#define NOTIF_NEXTPAGE_CANCEL @"NOTIF_NEXTPAGE_CANCEL"
 
 #define NOTIF_REFRESH_GUI @"NOTIF_REFRESH_GUI"
 

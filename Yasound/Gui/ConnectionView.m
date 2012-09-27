@@ -62,7 +62,7 @@ static ConnectionView* _main = nil;
     
     _main.target = target;
     _main.timeout = timeout;
-    _main.timer = [NSTimer scheduledTimerWithTimeInterval:10 target:_main.target selector:_main.timeout userInfo:nil repeats:NO];
+    _main.timer = [NSTimer scheduledTimerWithTimeInterval:60 target:_main.target selector:_main.timeout userInfo:nil repeats:NO];
 }
 
 

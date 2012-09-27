@@ -26,6 +26,7 @@
 }
 
 @property (nonatomic, retain) NSString* nextPageUrl;
+@property (nonatomic, retain) NSTimer* nextPageTimer;
 
 @property (nonatomic) BOOL locked;
 
