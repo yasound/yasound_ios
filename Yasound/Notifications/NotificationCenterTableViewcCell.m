@@ -57,7 +57,7 @@
     _notifTextLabel.numberOfLines = 0;
       
       
-    
+     
 //    BundleFontsheet* fontSheet = [sheet.fontsheets objectForKey:@"default"];
 //    CGFloat fontSize = fontSheet.size;
       _notifDateLabel = [[[Theme theme] stylesheetForKey:@"Notifications.date"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeLabel];
