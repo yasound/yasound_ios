@@ -30,8 +30,6 @@
         
         _checkmarkImage = [UIImage imageNamed:@"GrayCheckmark.png"];
         [_checkmarkImage retain];
-        
-        _waitingView = nil;
     }
     return self;
 }
@@ -52,6 +50,9 @@
 {
     [super viewDidLoad];
     
+    _selectAllButton.title = NSLocalizedString(@"SelectAll", nil);
+    _unselectAllButton.title = NSLocalizedString(@"UnselectAll", nil);
+    
     FacebookSessionManager* manager = [[YasoundSessionManager main] getFacebookManager];
     if (manager)
     {
@@ -65,28 +66,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (void)showWaitingView
-{
-    if (_waitingView)
-    {
-        [_waitingView removeFromSuperview];
-        _waitingView = nil;
-    }
-    
-    _waitingView = [[WaitingView alloc] initWithText:NSLocalizedString(@"InviteFriends.WaitingText", nil)];
-    [self.view addSubview:_waitingView];
-}
-
-- (void)hideWaitingView
-{
-    if (!_waitingView)
-        return;
-    
-    [_waitingView removeFromSuperview];
-    _waitingView = nil;
-}
-
 
 
 #pragma mark - Table view data source
@@ -135,6 +114,29 @@
         cell.accessoryView = nil;
 }
 
+- (void)setAllFriendsSelected:(BOOL)selected
+{
+    if (selected)
+    {
+        [_selectedFriends addObjectsFromArray:_friends];
+    }
+    else
+    {
+        [_selectedFriends removeAllObjects];
+    }
+    [_tableview reloadData];
+}
+
+- (IBAction)selectAllClicked:(id)sender
+{
+    [self setAllFriendsSelected:YES];
+}
+
+- (IBAction)unselectAllClicked:(id)sender
+{
+    [self setAllFriendsSelected:NO];
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -159,7 +161,6 @@
 
 - (BOOL)topBarSave
 {
-    [self showWaitingView];
     [[YasoundDataProvider main] inviteFacebookFriends:_friends target:self action:@selector(friendsInvited:success:)];
     return NO;
 }
@@ -172,7 +173,6 @@
     {
         DLog(@"facebook friends invitation failed   error: %@", [resp valueForKey:@"error"]);
     }
-    [self hideWaitingView];
     [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
 }
 

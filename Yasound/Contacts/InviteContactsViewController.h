@@ -21,7 +21,13 @@
     UIImage* _checkmarkImage;
     
     BOOL _accessGranted;
+    
+    IBOutlet UIBarButtonItem* _selectAllButton;
+    IBOutlet UIBarButtonItem* _unselectAllButton;
 }
+
+- (IBAction)selectAllClicked:(id)sender;
+- (IBAction)unselectAllClicked:(id)sender;
 
 
 @end

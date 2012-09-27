@@ -231,6 +231,7 @@ taskStatus stringToStatus(NSString* str);
 
 
 - (void)monthListeningStatsWithTarget:(id)target action:(SEL)selector;
+- (void)monthListeningStatsForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
 - (void)leaderboardWithTarget:(id)target action:(SEL)selector;
 
 
