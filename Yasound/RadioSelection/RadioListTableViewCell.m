@@ -164,23 +164,23 @@
 
 
 
-- (void)willMoveToSuperview:(UIView *)newSuperview
-{
-    [super willMoveToSuperview:newSuperview];
-    if(!newSuperview)
-    {
-        for (NSArray* objects in self.radioObjects)
-        {
-            WebImageView* view = [objects objectAtIndex:RADIO_OBJECT_IMAGE];
-            if (view)
-                [view releaseCache];
-            view = [objects objectAtIndex:RADIO_OBJECT_USER_IMAGE];
-            if (view)
-                [view releaseCache];
-        }
-    }
-}
-
+//- (void)willMoveToSuperview:(UIView *)newSuperview
+//{
+//    [super willMoveToSuperview:newSuperview];
+//    if(!newSuperview)
+//    {
+//        for (NSArray* objects in self.radioObjects)
+//        {
+//            WebImageView* view = [objects objectAtIndex:RADIO_OBJECT_IMAGE];
+//            if (view)
+//                [view releaseCache];
+//            view = [objects objectAtIndex:RADIO_OBJECT_USER_IMAGE];
+//            if (view)
+//                [view releaseCache];
+//        }
+//    }
+//}
+//
 
 
 
@@ -222,33 +222,41 @@
         //[self.radioObjects replaceObjectAtIndex:radioIndex withObject:objects];
         
 
+        
+        
+        WebImageView* view = [objects objectAtIndex:RADIO_OBJECT_IMAGE];
+        assert(view);
+        assert([view isKindOfClass:[WebImageView class]]);
+        [view releaseCache];
 
         
         // and update infos and images
         NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
         
         
-        WebImageView* view = [objects objectAtIndex:RADIO_OBJECT_IMAGE];
         
-        
-#ifdef DEBUG_PROFILE
-        //LBDEBUG ICI
-        [[TimeProfile main] begin:@"updateRadios3c"];
-#endif
-
+//#ifdef DEBUG_PROFILE
+//        //LBDEBUG ICI
+//        [[TimeProfile main] begin:@"updateRadios3c"];
+//#endif
+//
         
         [view setUrl:imageURL];
 
         
-#ifdef DEBUG_PROFILE
-        //LBDEBUG ICI
-        [[TimeProfile main] end:@"updateRadios3c"];
-        [[TimeProfile main] logAverageInterval:@"updateRadios3c" inMilliseconds:YES];
-#endif
+//#ifdef DEBUG_PROFILE
+//        //LBDEBUG ICI
+//        [[TimeProfile main] end:@"updateRadios3c"];
+//        [[TimeProfile main] logAverageInterval:@"updateRadios3c" inMilliseconds:YES];
+//#endif
 
         
-        imageURL = [[YasoundDataProvider main] urlForPicture:radio.creator.picture];
         view = [objects objectAtIndex:RADIO_OBJECT_USER_IMAGE];
+        assert(view);
+        assert([view isKindOfClass:[WebImageView class]]);
+        [view releaseCache];
+
+        imageURL = [[YasoundDataProvider main] urlForPicture:radio.creator.picture];
         [view setUrl:imageURL];
 
         

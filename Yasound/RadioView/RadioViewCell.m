@@ -262,6 +262,7 @@
     
 //    self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - 2, self.separator.frame.size.width, self.separator.frame.size.height);
     
+    [self.avatar releaseCache];
     [self.avatar setUrl:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
     
 //    // draw circle mask
@@ -711,14 +712,14 @@ static const CGFloat kSpringRestingHeight = 4;
 
 
 
-- (void)willMoveToSuperview:(UIView *)newSuperview 
-{
-    [super willMoveToSuperview:newSuperview];
-    if(!newSuperview) 
-    {
-        [self.avatar releaseCache];
-    }
-}
+//- (void)willMoveToSuperview:(UIView *)newSuperview 
+//{
+//    [super willMoveToSuperview:newSuperview];
+//    if(!newSuperview) 
+//    {
+//        [self.avatar releaseCache];
+//    }
+//}
 
 
 

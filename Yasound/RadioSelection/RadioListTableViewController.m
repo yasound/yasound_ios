@@ -143,6 +143,12 @@
 {
     DLog(@"appendRadios add %d radios   to existing radios %d", radios.count, self.radios.count);
     assert(self.radios);
+    
+//    NSLog(@"\n\nAPPEND RADIO\n");
+//    for (Radio* r in radios) {
+//        NSLog(@"radio '%@'", r.name);
+//    }
+//    NSLog(@"\n\n");
 
     [self.radios addObjectsFromArray:radios];
 

@@ -132,19 +132,19 @@
 
 
 
-- (void)willMoveToSuperview:(UIView *)newSuperview 
-{
-    [super willMoveToSuperview:newSuperview];
-    if(!newSuperview) 
-    {
-        for (NSArray* objects in self.objects)
-        {
-            WebImageView* view = [objects objectAtIndex:OBJECT_IMAGE];
-            if (view)
-                [view releaseCache];
-        }
-    }
-}
+//- (void)willMoveToSuperview:(UIView *)newSuperview 
+//{
+//    [super willMoveToSuperview:newSuperview];
+//    if(!newSuperview) 
+//    {
+//        for (NSArray* objects in self.objects)
+//        {
+//            WebImageView* view = [objects objectAtIndex:OBJECT_IMAGE];
+//            if (view)
+//                [view releaseCache];
+//        }
+//    }
+//}
 
 
 
@@ -190,6 +190,7 @@
 //        [view setImage:[UIImage image]]
         
         WebImageView* view = [objects objectAtIndex:OBJECT_IMAGE];
+        [view releaseCache];
         [view setUrl:imageURL];
 
         UILabel* label = [objects objectAtIndex:OBJECT_NAME];
