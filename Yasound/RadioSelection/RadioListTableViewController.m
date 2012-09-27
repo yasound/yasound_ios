@@ -73,13 +73,14 @@
             [self.view addSubview:self.genreSelector];
             [self.genreSelector initWithTheme:@"Genre"];
 
-            if (self.url != nil) {
-                NSString* genre = [[UserSettings main] objectForKey:self.url];
-                if (genre != nil) {
-                    [self openGenreSelector];
-                    [self.genreSelector open];
-                }
-            }
+
+
+//            if (self.url != nil) {
+//                NSString* genre = [[UserSettings main] objectForKey:self.url];
+//                if (genre != nil) {
+//                    [self openGenreSelector];
+//                }
+//            }
             
         }
         
@@ -114,6 +115,11 @@
     
     self.radiosPreviousCount = radios.count;
     
+    if (self.showGenreSelector) {
+        [self tutorial];
+        //        [self.genreSelector open];
+    }
+
     if (self.url != nil) {
         NSString* genre = [[UserSettings main] objectForKey:self.url];
         if ((genre != nil) && (self.genreSelector.status != eGenreStatusOpened)) {
@@ -130,6 +136,34 @@
 //    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
     
 }
+
+
+- (void)tutorial {
+
+    NSInteger nb = [[UserSettings main] integerForKey:USKEYtutorialGenreSelector error:nil];
+    if (nb < 4) {
+    
+        [self openGenreSelectorAnimated:YES];
+        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(tutorial2) userInfo:nil repeats:NO];
+        
+        nb++;
+        [[UserSettings main] setInteger:nb forKey:USKEYtutorialGenreSelector];
+    }
+    
+
+}
+
+- (void)tutorial2 {
+    
+    [self closeGenreSelector];
+}
+
+
+
+
+
+
+
 
 - (void)setFriends:(NSArray*)friends
 {
@@ -646,13 +680,30 @@
 
 - (void)openGenreSelector {
     
+    [self openGenreSelectorAnimated:NO];
+}
+
+- (void)openGenreSelectorAnimated:(BOOL)animated {
+    
     self.genreSelector.status = eGenreStatusOpened;
     
-    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height - self.genreSelector.frame.size.height);
+    if (animated) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+    }
+    
+    CGRect frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height - self.genreSelector.frame.size.height);
+    self.tableView.frame = frame;
     
     [self.genreSelector open];
-
+    
+    if (animated) {
+        [UIView commitAnimations];
+    }
+    
 }
+
+
 
 
 - (void)closeGenreSelector {
@@ -663,10 +714,11 @@
     [UIView setAnimationDuration:0.33];
     
     self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y - self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height + self.genreSelector.frame.size.height);
+
+    [self.genreSelector close];
     
     [UIView commitAnimations];
     
-    [self.genreSelector close];
     
 }
 
