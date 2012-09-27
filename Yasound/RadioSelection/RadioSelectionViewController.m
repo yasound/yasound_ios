@@ -53,7 +53,7 @@
         _wheelIndex = wheelIndex;
         
         _waitingView = nil;
-        _nextPageUrl = nil;
+        self.nextPageUrl = nil;
         
         self.currentGenre = nil;
         
@@ -523,11 +523,13 @@
 
 - (BOOL)loadNextRadioPage
 {
-    if (_nextPageUrl == nil)
+    DLog(@"loadNextRadioPage '%@'", self.nextPageUrl);
+    
+    if (self.nextPageUrl == nil)
         return NO;
     
     // pass nil as genre. If needed, the genre is alredy in the next page url
-    NSURL* nextUrl = [NSURL URLWithString:_nextPageUrl];
+    NSURL* nextUrl = [NSURL URLWithString:self.nextPageUrl];
     [[YasoundDataCache main] requestRadiosWithUrl:nextUrl withGenre:nil target:self action:@selector(receiveRadiosNextPage:success:)];
     return YES;
 }
@@ -563,7 +565,8 @@
     [self.contentsController setRadios:radios forUrl:self.url];
 
     // store next page url
-    _nextPageUrl = radioContainer.meta.next;
+    self.nextPageUrl = radioContainer.meta.next;
+    DLog(@"self.nextPageUrl '%@'", self.nextPageUrl);
     
 //    [self fix4inchLayout];
 }
@@ -596,10 +599,15 @@
     }
     
     NSArray* radios = radioContainer.objects;
+    
+    DLog(@"receiveRadiosNextPage  %d radios", radios.count);
+
+    
     [self.contentsController appendRadios:radios];
     
     // store next page url
-    _nextPageUrl = radioContainer.meta.next;
+    self.nextPageUrl = radioContainer.meta.next;
+    DLog(@"self.nextPageUrl '%@'", self.nextPageUrl);
 }
 
 

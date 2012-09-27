@@ -122,6 +122,8 @@
     
     [self.tableView reloadData];
     
+    DLog(@"setRadios verif self.radios.count %d", self.radios.count);
+    
 //    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
     
 }
@@ -135,18 +137,25 @@
     [self.tableView reloadData];
 }
 
+
+
 - (void)appendRadios:(NSArray*)radios
 {
+    DLog(@"appendRadios add %d radios", radios.count);
+
     NSMutableArray* newRadios = [NSMutableArray array];
-    if (_radios)
+    if (self.radios)
     {
-        [newRadios addObjectsFromArray:_radios];
-        [_radios release];
-        _radios = nil;
+        [newRadios addObjectsFromArray:self.radios];
     }
-    [newRadios addObjectsFromArray:radios];
-    _radios = newRadios;
-    [_radios retain];
+
+//    [newRadios addObjectsFromArray:radios];
+    self.radios = newRadios;
+//    _radios = newRadios;
+//    [_radios retain];
+    
+    DLog(@"appendRadios verif self.radios.count %d", self.radios.count);
+
 
 //    if (!_dragging)
 //        [self.tableView reloadData];
@@ -269,6 +278,9 @@
         return 0;
     
     NSInteger nbRows = [self numberOfRowsFromRadios:self.radios.count];
+    
+    DLog(@"nb Rows in list : %d", nbRows);
+    
     return nbRows;
 }
 
@@ -756,6 +768,8 @@ static NSInteger mycount = 0;
         return;
 
     [self.tableView reloadData];
+    
+    NSLog(@"contentOffset.y  %.2f     rame.size.height %.2f => offset %.2f", self.tableView.contentOffset.y , self.tableView.frame.size.height, self.tableView.contentOffset.y + self.tableView.frame.size.height);
     [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y + self.tableView.frame.size.height) animated:YES];
 }
 

@@ -95,6 +95,14 @@
         self.icon = nil;
     }
     
+    if (self.indicator != nil) {
+        DLog(@"UIViewIndicator was not nil");
+        [self.indicator stopAnimating];
+        [self.indicator release];
+        self.indicator = nil;
+    }
+
+    
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RefreshIndicator.iconLoading" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.indicator.frame = sheet.frame;
