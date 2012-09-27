@@ -60,7 +60,7 @@
         self.delay = 0.15;
         
         self.url = url;
-        self.radios = radios;
+        self.radios = [NSMutableArray arrayWithArray:radios];
         self.radiosPreviousCount = radios.count;
         self.friendsMode = NO;
         
@@ -106,7 +106,7 @@
 
 - (void)setRadios:(NSArray*)radios forUrl:(NSURL*)url
 {
-    self.radios = radios;
+    self.radios = [NSMutableArray arrayWithArray:radios];
     self.url = url;
     
     self.radiosPreviousCount = radios.count;
@@ -141,16 +141,13 @@
 
 - (void)appendRadios:(NSArray*)radios
 {
-    DLog(@"appendRadios add %d radios", radios.count);
+    DLog(@"appendRadios add %d radios   to existing radios %d", radios.count, self.radios.count);
+    assert(self.radios);
 
-    NSMutableArray* newRadios = [NSMutableArray array];
-    if (self.radios)
-    {
-        [newRadios addObjectsFromArray:self.radios];
-    }
+    [self.radios addObjectsFromArray:radios];
 
 //    [newRadios addObjectsFromArray:radios];
-    self.radios = newRadios;
+//    self.radios = newRadios;
 //    _radios = newRadios;
 //    [_radios retain];
     

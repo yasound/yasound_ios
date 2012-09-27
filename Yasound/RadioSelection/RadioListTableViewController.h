@@ -31,7 +31,7 @@
 @property (nonatomic, retain) id<RadioListDelegate> listDelegate;
 @property (nonatomic, retain) UITableView* tableView;
 
-@property (nonatomic, retain) NSArray* radios;
+@property (nonatomic, retain) NSMutableArray* radios;
 @property (nonatomic) NSInteger radiosPreviousCount;
 
 @property (nonatomic, retain) NSArray* friends;
