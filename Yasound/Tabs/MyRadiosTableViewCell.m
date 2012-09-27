@@ -115,6 +115,8 @@
     self.delegate = target;
 
     
+    [self.image releaseCache];
+
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
     [self.image setUrl:imageURL];
     
@@ -150,15 +152,15 @@
 
 
 
-- (void)willMoveToSuperview:(UIView *)newSuperview 
-{
-    [super willMoveToSuperview:newSuperview];
-    if(!newSuperview) 
-    {
-        if (self.image)
-            [self.image releaseCache];
-    }
-}
+//- (void)willMoveToSuperview:(UIView *)newSuperview 
+//{
+//    [super willMoveToSuperview:newSuperview];
+//    if(!newSuperview) 
+//    {
+//        if (self.image)
+//            [self.image releaseCache];
+//    }
+//}
 
 
 

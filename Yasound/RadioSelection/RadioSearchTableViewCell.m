@@ -85,19 +85,19 @@
 
 
 
-- (void)willMoveToSuperview:(UIView *)newSuperview
-{
-    [super willMoveToSuperview:newSuperview];
-    if(!newSuperview)
-    {
-        for (NSArray* objects in self.radioObjects)
-        {
-            ProfilCellRadio* view = [objects objectAtIndex:RADIO_OBJECT_VIEW];
-            if (view && view.image)
-                [view.image releaseCache];
-        }
-    }
-}
+//- (void)willMoveToSuperview:(UIView *)newSuperview
+//{
+//    [super willMoveToSuperview:newSuperview];
+//    if(!newSuperview)
+//    {
+//        for (NSArray* objects in self.radioObjects)
+//        {
+//            ProfilCellRadio* view = [objects objectAtIndex:RADIO_OBJECT_VIEW];
+//            if (view && view.image)
+//                [view.image releaseCache];
+//        }
+//    }
+//}
 
 
 
@@ -141,12 +141,16 @@
         // may not be needed, since "objects" is a reference. Check and go back later...
         //[self.radioObjects replaceObjectAtIndex:radioIndex withObject:objects];
         
+        
+        
         // and update infos and images
         NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
         
         ProfilCellRadio* view = [objects objectAtIndex:RADIO_OBJECT_VIEW];
         view.radio = radio;
         
+        [view.image releaseCache];
+
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Search.avatarDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         view.image.image = [sheet image];
         

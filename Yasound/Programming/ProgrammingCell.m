@@ -31,15 +31,15 @@ static NSMutableDictionary* gEditingSongs = nil;
 
 
 
-- (void)willMoveToSuperview:(UIView *)newSuperview
-{
-    [super willMoveToSuperview:newSuperview];
-    if(!newSuperview)
-    {
-        if (self.image)
-            [self.image releaseCache];
-    }
-}
+//- (void)willMoveToSuperview:(UIView *)newSuperview
+//{
+//    [super willMoveToSuperview:newSuperview];
+//    if(!newSuperview)
+//    {
+//        if (self.image)
+//            [self.image releaseCache];
+//    }
+//}
 
 
 
@@ -165,6 +165,8 @@ static NSMutableDictionary* gEditingSongs = nil;
 
     self.sublabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
     
+    [self.image releaseCache];
+
     NSURL* url = [[YasoundDataProvider main] urlForPicture:self.song.cover];
     self.image.url = url;
 
@@ -205,6 +207,8 @@ static NSMutableDictionary* gEditingSongs = nil;
     self.label.text = text;
     self.sublabel.text = detailText;
     
+    [self.image releaseCache];
+
     if (customImage == nil)
     {
         NSURL* url = [[YasoundDataProvider main] urlForPicture:self.song.cover];

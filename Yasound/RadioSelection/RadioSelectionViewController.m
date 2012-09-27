@@ -528,6 +528,10 @@
     if (self.nextPageUrl == nil)
         return NO;
     
+    
+    self.nextPageTimer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(onRequestRadiosWithUrlTimeout:) userInfo:nil repeats:NO];
+    
+    
     // pass nil as genre. If needed, the genre is alredy in the next page url
     NSURL* nextUrl = [NSURL URLWithString:self.nextPageUrl];
     [[YasoundDataCache main] requestRadiosWithUrl:nextUrl withGenre:nil target:self action:@selector(receiveRadiosNextPage:success:)];
@@ -535,6 +539,13 @@
 }
 
 
+
+- (void)onRequestRadiosWithUrlTimeout:(NSTimer*)timer {
+    
+    self.nextPageTimer = nil;
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_NEXTPAGE_CANCEL object:nil];
+}
 
 
 
@@ -578,13 +589,20 @@
 #ifdef TEST_FAKE
     return;
 #endif
-    if (self.locked)
+    
+    [self.nextPageTimer invalidate];
+    self.nextPageTimer = nil;
+    
+    if (self.locked) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_NEXTPAGE_CANCEL object:nil];
         return;
+    }
     
     // close the refresh indicator
     //[contentsController unfreeze];
     if (![self.contentsController respondsToSelector:@selector(appendRadios:)])
     {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_NEXTPAGE_CANCEL object:nil];
         return;
     }
     
@@ -595,6 +613,7 @@
         
         [self.contentsController appendRadios:nil];
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_NEXTPAGE_CANCEL object:nil];
         return;
     }
     
