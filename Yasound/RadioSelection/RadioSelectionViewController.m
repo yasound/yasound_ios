@@ -485,8 +485,8 @@
         return;
     
     //LBDEBUG
-    NSLog(@"URL '%@'", [req.url absoluteString]);
-    NSLog(@"compare TO RL '%@'", [self.url absoluteString]);
+//    NSLog(@"URL '%@'", [req.url absoluteString]);
+//    NSLog(@"compare TO RL '%@'", [self.url absoluteString]);
     
     [self.contentsController setFriends:self.friends];
 
@@ -580,6 +580,10 @@
     
     
     NSArray* radios = radioContainer.objects;
+    
+    if (![self.contentsController respondsToSelector:@selector(setRadios:)])
+        return;
+    
     [self.contentsController setRadios:radios forUrl:self.url];
 
     // store next page url
