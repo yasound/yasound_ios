@@ -40,12 +40,13 @@
 
 #define NB_ROWS_SECTION_INVITE_FRIENDS 1
 
-- (id)initWithFrame:(CGRect)frame url:(NSURL*)url radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator showGenreSelector:(BOOL)showGenreSelector
+- (id)initWithFrame:(CGRect)frame url:(NSURL*)url radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator showGenreSelector:(BOOL)showGenreSelector showRank:(BOOL)showRank
 {
     self = [super init];
     if (self)
     {
         _dragging = NO;
+        _showRank = showRank;
         
         self.showRefreshIndicator = showRefreshIndicator;
         self.showGenreSelector = showGenreSelector;
@@ -402,7 +403,7 @@
         if (self.delayTokens > 0)
             delay = self.delay;
         
-        cell = [[[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellRadioIdentifier radios:radiosForRow delay:delay target:self action:@selector(onRadioClicked:)] autorelease];
+        cell = [[[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellRadioIdentifier radios:radiosForRow delay:delay target:self action:@selector(onRadioClicked:) showRank:_showRank] autorelease];
         
         self.delayTokens--;
         self.delay += 0.3;

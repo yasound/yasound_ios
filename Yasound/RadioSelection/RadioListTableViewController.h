@@ -22,6 +22,7 @@
     BOOL _loadingNextPage;
     CGFloat _contentsHeight;
     BOOL _dragging;
+    BOOL _showRank;
     NSDate* _freezeDate;
     NSTimer* _freezeTimeout;
 }
@@ -46,7 +47,7 @@
 @property (nonatomic) BOOL showGenreSelector;
 
 
-- (id)initWithFrame:(CGRect)frame url:(NSURL*)url radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator showGenreSelector:(BOOL)showGenreSelector;
+- (id)initWithFrame:(CGRect)frame url:(NSURL*)url radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator showGenreSelector:(BOOL)showGenreSelector showRank:(BOOL)showRank;
 - (void)setRadios:(NSArray*)radios;
 - (void)setFriends:(NSArray*)friends;
 

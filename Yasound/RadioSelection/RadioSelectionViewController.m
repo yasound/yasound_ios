@@ -290,6 +290,7 @@
     NSString* url = nil;
     BOOL showRefreshIndicator = NO;
     BOOL showGenreSelector = NO;
+    BOOL showRank = NO;
     
     // request my radios radios
     if (itemIndex == WheelIdMyRadios)
@@ -315,6 +316,9 @@
         return;
     }
     
+    if (itemIndex == WheelIdTop)
+        showRank = YES;
+    
     // infinite scroll for Selection and Top
     if ((itemIndex == WheelIdSelection) || (itemIndex == WheelIdTop)) {
         showRefreshIndicator = YES;
@@ -329,7 +333,7 @@
 
     
     CGRect frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
-    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithFrame:frame url:self.url radios:nil withContentsHeight:self.listContainer.frame.size.height showRefreshIndicator:showRefreshIndicator showGenreSelector:showGenreSelector];
+    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithFrame:frame url:self.url radios:nil withContentsHeight:self.listContainer.frame.size.height showRefreshIndicator:showRefreshIndicator showGenreSelector:showGenreSelector showRank:showRank];
     newTableview.listDelegate = self;
     [self.listContainer addSubview:newTableview.view];
     

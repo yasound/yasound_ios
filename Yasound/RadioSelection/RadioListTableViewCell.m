@@ -30,6 +30,7 @@
 #define RADIO_OBJECT_LISTENERS 6
 #define RADIO_OBJECT_INTERACTIVE_VIEW 7
 #define RADIO_OBJECT_CONTAINER 8
+#define RADIO_OBJECT_RANK 9
 
 
 
@@ -40,13 +41,14 @@
 @synthesize action;
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios delay:(CGFloat)delay target:(id)target action:(SEL)action
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios delay:(CGFloat)delay target:(id)target action:(SEL)action showRank:(BOOL)showRank
 {
     if (self = [super initWithFrame:frame reuseIdentifier:cellIdentifier]) 
     {
         BundleStylesheet* sheet;
         NSError* error;
-          
+        
+        _showRank = showRank;
         self.target = target;
         self.action = action;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -154,9 +156,18 @@
     [interactiveView setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:radioIndex]];
     [container addSubview:interactiveView];
     
+    //
+    sheet = [[Theme theme] stylesheetForKey:@"Radios.rank"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* rank = [sheet makeLabel];
+    
+    NSLog(@"RANK %@", radio.leaderboard_rank);
+    rank.text = [radio.leaderboard_rank stringValue];
+    
+    if (_showRank)
+        [container addSubview:rank];
     
     // store objects
-    NSMutableArray* objects = [NSMutableArray arrayWithObjects:radio, radioImage, radioMask, userImage, title, subscribers, listeners, interactiveView, container, nil];
+    NSMutableArray* objects = [NSMutableArray arrayWithObjects:radio, radioImage, radioMask, userImage, title, subscribers, listeners, interactiveView, container, rank, nil];
     
     [self.radioObjects addObject:objects];
 }
@@ -270,6 +281,11 @@
         label = [objects objectAtIndex:RADIO_OBJECT_LISTENERS];
         label.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
         
+        if (_showRank) {
+            label = [objects objectAtIndex:RADIO_OBJECT_RANK];
+            label.text = [radio.leaderboard_rank stringValue];
+        }
+
         
         radioIndex++;
         xOffset += (self.frame.size.width / 2.f);

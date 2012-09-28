@@ -28,7 +28,8 @@
 @property (retain, nonatomic) NSString* web_url;
 @property (retain, nonatomic) NSNumber* overall_listening_time; // in seconds
 @property (retain, nonatomic) NSNumber* new_wall_messages_count;
-
+@property (retain, nonatomic) NSNumber* leaderboard_rank;
+@property (retain, nonatomic) NSNumber* leaderboard_favorites;
 
 
 - (NSArray*)tagsArray;

@@ -11,14 +11,17 @@
 #import "YasoundDataProvider.h"
 
 
-@interface RadioListTableViewCell : UITableViewCell
+@interface RadioListTableViewCell : UITableViewCell {
+
+    BOOL _showRank;
+}
 
 
 @property (nonatomic, retain) NSMutableArray* radioObjects; //array of array [Radio*, UILabel*, UILabel*, UILabel*, WebImageView*, WebImageView*] 
 @property (nonatomic, retain) id target;
 @property (nonatomic) SEL action;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios delay:(CGFloat)delay target:(id)target action:(SEL)action;
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios delay:(CGFloat)delay target:(id)target action:(SEL)action showRank:(BOOL)showRank;
 - (void)updateWithRadios:(NSArray*)radios target:(id)target action:(SEL)action;
 
 @end
