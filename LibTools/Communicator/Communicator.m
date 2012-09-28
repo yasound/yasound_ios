@@ -398,6 +398,8 @@
     // store request
     if (target)
         [self addRequest:req forTarget:target];
+    if (key)
+        [self addRequest:req forKey:key];
     
     [req startAsynchronous];
 }
@@ -1008,6 +1010,8 @@
     // store request
     if (config.callbackTarget)
         [self addRequest:req forTarget:config.callbackTarget];
+    if (config.key)
+        [self addRequest:req forKey:config.key];
     
     return req;
 }
@@ -1026,6 +1030,8 @@
     // store request
     if (config.callbackTarget)
         [self addRequest:req forTarget:config.callbackTarget];
+    if (config.key)
+        [self addRequest:req forKey:config.key];
     
     return req;
 }
@@ -1048,6 +1054,16 @@
     
     RequestConfig* config = (RequestConfig*)[req.userInfo valueForKey:REQUEST_CONFIG_USER_INFO_KEY];
     BOOL success = !failed;
+    
+    NSString* key = config.key;
+    if (key != nil)
+    {
+        if ([self isKey:key connectedToRequest:req] == NO)
+            return YES;
+        else
+            [self removeRequest:req forKey:key];
+    }
+    
     if (config.callbackTarget && config.callbackAction)
     {
         if ([self isTarget:config.callbackTarget connectedToRequest:req]) // call callback function only if it is stored in requests dictionary
