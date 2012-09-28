@@ -375,6 +375,8 @@
 
 
 
+#define TITLE_MAX_LENGTH 22
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
 //  if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CONTROL))
@@ -395,12 +397,15 @@
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
             cell.textLabel.textColor = [UIColor whiteColor];
             [cell.imageView setImage:[UIImage imageNamed:@"statsIconHeadphones.png"]];
+
+            cell.detailTextLabel.textColor = [UIColor colorWithRed:162.f/255.f green:162.f/255.f blue:162.f/255.f alpha:1];
+            cell.textLabel.backgroundColor = [UIColor clearColor];
+            cell.detailTextLabel.backgroundColor = [UIColor clearColor];
         }
 
         NSNumber* listeners = [YasoundDataProvider main].radio.nb_current_users;
         cell.textLabel.text = NSLocalizedString(@"StatsView_listeners_label", nil);
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", listeners];
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:162.f/255.f green:162.f/255.f blue:162.f/255.f alpha:1];
 
       
     }
@@ -436,9 +441,12 @@
         
         if (cell == nil) 
         {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
             cell.textLabel.textColor = [UIColor blackColor];
-            cell.detailTextLabel.textColor = [UIColor blackColor];
+            cell.textLabel.backgroundColor = [UIColor clearColor];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.detailTextLabel.textColor = [UIColor darkGrayColor];
+            cell.detailTextLabel.backgroundColor = [UIColor clearColor];
         }
         
 
@@ -451,13 +459,29 @@
         // radio rank + name
 //        sheet = [[Theme theme] stylesheetForKey:@"Stats.StatsView_LeaderBoard_Name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //        UILabel* label = [[sheet makeLabel] autorelease];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@",  entry.leaderboard_rank, entry.name];
+        NSString* title = [NSString stringWithFormat:@"%@ - %@",  entry.leaderboard_rank, entry.name];
+        
+        if (title.length > TITLE_MAX_LENGTH) {
+            title = [title substringToIndex:TITLE_MAX_LENGTH];
+            title = [title stringByAppendingString:@"..."];
+        }
+        
+        
+        cell.textLabel.text = title;
         //[cell.contentView addSubview:label];
 
         // favorites
 //        sheet = [[Theme theme] stylesheetForKey:@"Stats.StatsView_LeaderBoard_Favorites" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //        label = [[sheet makeLabel] autorelease];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", entry.leaderboard_favorites];
+        
+        NSString* infos = [NSString stringWithFormat:@"%@", entry.leaderboard_favorites];
+        NSLog(@"infos '%@'", infos);
+        
+        cell.detailTextLabel.text = infos;
+        
+        NSLog(@"NB favorites '%@'", entry.leaderboard_favorites);
+        NSLog(@"cell '%@'", cell.detailTextLabel.text);
+
 //        [cell.contentView addSubview:label];
 
         // favorites icon
@@ -468,10 +492,6 @@
         
     }
     
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    cell.detailTextLabel.textColor = [UIColor colorWithRed:160.f/255.f green:182.f/255.f blue:222.f/255.f alpha:1];
-    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
 
     
     
