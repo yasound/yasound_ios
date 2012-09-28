@@ -36,5 +36,5 @@
 - (void)setTagsWithArray:(NSArray*)tagArray;
 
 - (NSString*)toString;
-
+ 
 @end
