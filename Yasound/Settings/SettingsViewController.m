@@ -97,10 +97,15 @@
 {
     [super viewDidLoad];
     
-    if (self.createMode)
-        [self.topbar hideCancelButton];
-
     _settingsTitleLabel.text = NSLocalizedString(@"Settings.radio.title.label", nil);
+    _settingsTitleTextField.placeholder = NSLocalizedString(@"Settings.radio.title.placeholder", nil);
+
+    if (self.createMode) {
+        [self.topbar hideCancelButton];
+    }
+    else {
+        
+    }
     
     _settingsTitleTextField.delegate = self;
     
@@ -118,12 +123,9 @@
 - (void)update
 {
     // set radio title
-    NSString* radioTitle = nil;
-    if (self.radio)
-        radioTitle = self.radio.name;
-    if ((radioTitle == nil) || (radioTitle.length == 0))
-        radioTitle = [NSString stringWithFormat:@"%@'s Yasound", [[UIDevice currentDevice] name]];
-    _settingsTitleTextField.text = radioTitle;
+    if (self.radio && !self.createMode) {
+        _settingsTitleTextField.text = self.radio.name;
+    }
     
 
     
@@ -742,6 +744,15 @@
 
 - (BOOL)topBarSave
 {
+    NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    NSString* title = [_settingsTitleTextField.text stringByTrimmingCharactersInSet:space];
+    if (title.length == 0) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Settings.radio.title.missing.title", nil) message:NSLocalizedString(@"Settings.radio.title.missing.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        return NO;
+    }
+
     [self save];
     return NO;
 }

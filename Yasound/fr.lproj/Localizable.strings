@@ -619,6 +619,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Settings.submit" = "Mise à jour de la radio";
 
 "Settings.radio.title.label" = "Titre";
+"Settings.radio.title.placeholder" = "nom de ma radio";
+"Settings.radio.title.missing.title" = "Ma radio";
+"Settings.radio.title.missing.message" = "Donnez un nom à votre radio!";
 "Settings.radio.image.label" = "Image";
 
 "Settings.update.failed.title" = "Oups...";
