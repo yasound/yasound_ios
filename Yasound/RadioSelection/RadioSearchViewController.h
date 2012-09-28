@@ -29,6 +29,8 @@
 @property (nonatomic) NSInteger delayTokens;
 @property (nonatomic) CGFloat delay;
 
+@property (nonatomic, retain) UILabel* noResultLabel;
+
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 
 

@@ -735,7 +735,10 @@
 "TopWaitingText" = "in progress...";
 "FavoritesWaitingText" = "in progress...";
 "FriendsWaitingText" = "in progress...";
-"SearchWaitingText" = "searching...";
+
+"RadiosSearch.waitingText" = "Searching...";
+"RadiosSearch.error" = "Oops! Error...";
+"RadiosSearch.noResult" = "No results.";
 
 "AddServerSong.AlreadyInProgramming.Message" = "This song is already in your radio programming";
 

@@ -722,7 +722,10 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "TopWaitingText" = "en cours...";
 "FavoritesWaitingText" = "en cours...";
 "FriendsWaitingText" = "en cours...";
-"SearchWaitingText" = "recherche en cours...";
+
+"RadiosSearch.waitingText" = "Recherche en cours...";
+"RadiosSearch.error" = "Oups! Erreur...";
+"RadiosSearch.noResult" = "Pas de résultats.";
 
 "AddServerSong.AlreadyInProgramming.Message" = "Ce morceau est déjà dans vorte programmation";
 

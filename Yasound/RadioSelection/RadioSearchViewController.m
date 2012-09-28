@@ -33,6 +33,11 @@ typedef enum
 @synthesize delay;
 
 
+
+
+
+
+
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -44,6 +49,7 @@ typedef enum
       
       self.delayTokens = 2;
       self.delay = 0.15;
+      self.noResultLabel = nil;
 
     
   }
@@ -51,6 +57,62 @@ typedef enum
   return self;
     
 }
+
+
+
+
+
+
+//- (void)changeNoResultsText:(NSString *)text {
+//    
+//    if (self.noResultLabel == nil) {
+//        for (id subview in _searchController.searchResultsTableView.subviews) {
+//            
+//            NSLog(@"subview %@", [subview class]);
+//            
+//            if ([subview isKindOfClass:[UILabel class]]) {
+//                if ([((UILabel *)subview).text isEqualToString:@"No Results"]) {
+//                    if (self.noResultLabel == nil)
+//                        self.noResultLabel = subview;
+//                }
+//            }
+//        }
+//    }
+//    
+//    if (self.noResultLabel != nil)
+//        self.noResultLabel.text = text;
+//}
+//
+- (void)searchBarSearchButtonClicked:(UISearchBar *)bar {
+//    [self changeNoResultsText:NSLocalizedString(@"SearchWaitingText", nil)];
+    [self searchRadios:_searchController    .searchBar.text];
+
+}
+
+
+- (void)changeNoResultsText:(NSString *)text {
+
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.001);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    for (UIView* v in _searchController.searchResultsTableView.subviews) {
+        if ([v isKindOfClass: [UILabel class]] &&
+            [[(UILabel*)v text] isEqualToString:@"No Results"]) {
+            
+            UILabel* label = (UILabel*)v;
+            label.text = text;
+            
+            break;
+        }
+    }
+    });
+}
+
+
+- (BOOL) searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    [self changeNoResultsText:NSLocalizedString(@"RadiosSearch.waitingText", nil)];
+    return YES;
+}
+
 
 
 - (void)dealloc
@@ -430,10 +492,10 @@ typedef enum
   [[YasoundDataProvider main] searchRadios:searchText withTarget:self action:@selector(receiveRadios:withInfo:)];
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-  [self searchRadios:searchBar.text];
-}
+//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+//{
+//    [self searchRadios:searchBar.text];
+//}
 
 
 
@@ -447,6 +509,8 @@ typedef enum
     NSError* error = [info valueForKey:@"error"];
     if (error)
     {
+        [self changeNoResultsText:NSLocalizedString(@"RadiosSearch.error", nil)];
+
         DLog(@"can't get radios: %@", error.domain);
         return;
     }
@@ -462,6 +526,12 @@ typedef enum
     _radios = radios;
     [_radios retain];
   }
+    else
+    {
+        [self changeNoResultsText:NSLocalizedString(@"RadiosSearch.noResult", nil)];
+    }
+    
+    
     [self.searchDisplayController.searchResultsTableView reloadData];
 }
 
