@@ -480,6 +480,13 @@
 //    self.nbFriends = friends.count;
     
     DLog(@"received %d friends", self.friends.count);
+
+    if (![self.contentsController respondsToSelector:@selector(setFriends:)])
+        return;
+    
+    //LBDEBUG
+    NSLog(@"URL '%@'", [req.url absoluteString]);
+    NSLog(@"compare TO RL '%@'", [self.url absoluteString]);
     
     [self.contentsController setFriends:self.friends];
 
