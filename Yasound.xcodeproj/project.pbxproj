@@ -4603,6 +4603,15 @@
 		BCDC97DF14AB828B00D54631 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CC14AB818300D54631 /* libxml2.dylib */; };
 		BCDC97E014AB828B00D54631 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CE14AB81BF00D54631 /* Security.framework */; };
 		BCDC97E114AB828B00D54631 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CF14AB81BF00D54631 /* Twitter.framework */; };
+		BCDD81BB16159385005E63B1 /* Genres.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDD81BA16159385005E63B1 /* Genres.m */; };
+		BCDD81BC16159385005E63B1 /* Genres.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDD81BA16159385005E63B1 /* Genres.m */; };
+		BCDD81BD16159385005E63B1 /* Genres.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDD81BA16159385005E63B1 /* Genres.m */; };
+		BCDD81BE16159385005E63B1 /* Genres.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDD81BA16159385005E63B1 /* Genres.m */; };
+		BCDD81BF16159385005E63B1 /* Genres.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDD81BA16159385005E63B1 /* Genres.m */; };
+		BCDD81C016159385005E63B1 /* Genres.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDD81BA16159385005E63B1 /* Genres.m */; };
+		BCDD81C116159385005E63B1 /* Genres.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDD81BA16159385005E63B1 /* Genres.m */; };
+		BCDD81C216159385005E63B1 /* Genres.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDD81BA16159385005E63B1 /* Genres.m */; };
+		BCDD81C316159385005E63B1 /* Genres.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDD81BA16159385005E63B1 /* Genres.m */; };
 		BCDF56221605C3DB00CAF6FA /* profilBarMaskHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDF56201605C3DB00CAF6FA /* profilBarMaskHighlighted.png */; };
 		BCDF56231605C3DB00CAF6FA /* profilBarMaskHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDF56201605C3DB00CAF6FA /* profilBarMaskHighlighted.png */; };
 		BCDF56241605C3DB00CAF6FA /* profilBarMaskHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDF56201605C3DB00CAF6FA /* profilBarMaskHighlighted.png */; };
@@ -7682,6 +7691,8 @@
 		BCDC97D214AB81EA00D54631 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		BCDC97D514AB820500D54631 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		BCDC97D614AB820500D54631 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		BCDD81B916159385005E63B1 /* Genres.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Genres.h; sourceTree = "<group>"; };
+		BCDD81BA16159385005E63B1 /* Genres.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Genres.m; sourceTree = "<group>"; };
 		BCDF56201605C3DB00CAF6FA /* profilBarMaskHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profilBarMaskHighlighted.png; sourceTree = "<group>"; };
 		BCDF56211605C3DB00CAF6FA /* profilBarMaskHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profilBarMaskHighlighted@2x.png"; sourceTree = "<group>"; };
 		BCDF56341605C54D00CAF6FA /* radioListFriendMask65.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListFriendMask65.png; sourceTree = "<group>"; };
@@ -8936,6 +8947,8 @@
 		BC6314CF14B4665200549EF6 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				BCDD81B916159385005E63B1 /* Genres.h */,
+				BCDD81BA16159385005E63B1 /* Genres.m */,
 				BCAAE18D14FBE17D00B7F2B4 /* TimeProfile.h */,
 				BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */,
 				BC0304E614BF030200F39374 /* Tutorial.h */,
@@ -15247,6 +15260,7 @@
 				4080C363161208130037BB4F /* FacebookFriend.m in Sources */,
 				4080C36F16120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3AB161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
+				BCDD81C216159385005E63B1 /* Genres.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15499,6 +15513,7 @@
 				4080C364161208130037BB4F /* FacebookFriend.m in Sources */,
 				4080C37016120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3AC161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
+				BCDD81C316159385005E63B1 /* Genres.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15747,6 +15762,7 @@
 				4080C362161208130037BB4F /* FacebookFriend.m in Sources */,
 				4080C36E16120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3AA161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
+				BCDD81C116159385005E63B1 /* Genres.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15999,6 +16015,7 @@
 				4080C35F161208130037BB4F /* FacebookFriend.m in Sources */,
 				4080C36B16120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3A7161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
+				BCDD81BE16159385005E63B1 /* Genres.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16251,6 +16268,7 @@
 				4080C35D161208130037BB4F /* FacebookFriend.m in Sources */,
 				4080C36916120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3A5161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
+				BCDD81BC16159385005E63B1 /* Genres.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16504,6 +16522,7 @@
 				4080C361161208130037BB4F /* FacebookFriend.m in Sources */,
 				4080C36D16120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3A9161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
+				BCDD81C016159385005E63B1 /* Genres.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16756,6 +16775,7 @@
 				4080C35E161208130037BB4F /* FacebookFriend.m in Sources */,
 				4080C36A16120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3A6161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
+				BCDD81BD16159385005E63B1 /* Genres.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17008,6 +17028,7 @@
 				4080C35C161208130037BB4F /* FacebookFriend.m in Sources */,
 				4080C36816120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3A4161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
+				BCDD81BB16159385005E63B1 /* Genres.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17261,6 +17282,7 @@
 				4080C360161208130037BB4F /* FacebookFriend.m in Sources */,
 				4080C36C16120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3A8161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
+				BCDD81BF16159385005E63B1 /* Genres.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
