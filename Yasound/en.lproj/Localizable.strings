@@ -635,6 +635,9 @@
 "Settings.submit" = "update your radio";
 
 "Settings.radio.title.label" = "Title";
+"Settings.radio.title.placeholder" = "my radio's name";
+"Settings.radio.title.missing.title" = "My radio";
+"Settings.radio.title.missing.message" = "Give your radio a name!";
 "Settings.radio.image.label" = "Picture";
 
 "Settings.update.failed.title" = "Oops...";

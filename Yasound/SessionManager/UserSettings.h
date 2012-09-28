@@ -44,6 +44,8 @@
 
 #define USKEYradioSearch @"userRadioSearch"
 
+#define USKEYtutorialGenreSelector @"tutorialGenreSelector"
+
 
 
 @interface UserSettings : NSObject

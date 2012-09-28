@@ -7,6 +7,7 @@
 //
 
 #import "StyleSelectorViewController.h"
+#import "Genres.h"
 
 @implementation StyleSelectorViewController
 
@@ -22,9 +23,8 @@
     {
       self.delegate = target;
       
-      NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
-      self.styles = [resources objectForKey:@"styles"];
-      assert(self.styles != nil);
+        self.styles = [Genres genres];
+        assert(self.styles != nil);
       
       _startStyle = currentStyle;
     }

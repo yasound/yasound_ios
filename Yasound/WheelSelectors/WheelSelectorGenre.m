@@ -8,7 +8,7 @@
 
 #import "WheelSelectorGenre.h"
 #import "RootViewController.h"
-
+#import "Genres.h"
 
 
 @implementation WheelSelectorGenre
@@ -18,8 +18,7 @@
     
     if (self = [super init]) {
         
-        NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
-        self.genres = [resources objectForKey:@"styles"];
+        self.genres = [Genres genres];
         assert(self.genres != nil);
         
         self.wheelDelegate = self;
