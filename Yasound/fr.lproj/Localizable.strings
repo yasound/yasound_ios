@@ -339,7 +339,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "YasoundSessionManager_login_error" = "Impossible de se connecter au serveur!";
 "YasoundSessionManager_userinfo_error" = "Impossible de récupérer les informations utilisateur!";
 
-"RadioSelection_update" = "mise à jour";
+"RadioSelection_update" = "Mise à jour";
 
 
 "Tutorial_RadioView_title" = "Bienvenue sur le wall";
@@ -446,7 +446,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 ";
 
 
-"UpdatingPrevious_label" = "mise à jour du wall...";
+"UpdatingPrevious_label" = "Mise à jour du wall...";
 
 "SongsView_unmatched_songs" = "Titres non synchronisés";
 "SongsView_matched_songs" = "Titres synchronisés";
@@ -616,7 +616,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Settings.pickImage.image" = "Prendre une photo";
 "Settings.pickImage.camera" = "Choisir existante";
 
-"Settings.submit" = "mise à jour de la radio";
+"Settings.submit" = "Mise à jour de la radio";
 
 "Settings.radio.title.label" = "Titre";
 "Settings.radio.image.label" = "Image";
