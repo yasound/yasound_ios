@@ -124,7 +124,9 @@
     space3.width = 10.f;
 
 //    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace,flexibleSpace, self.itemHd,  self.itemNotifs, self.itemSearch, flexibleSpace,flexibleSpace, itemNowPlaying, nil];
-    self.customItems = [NSMutableArray arrayWithObjects:itemBack, space1, self.itemHd, space2, self.itemNotifs, space3, self.itemSearch, flexibleSpace, itemNowPlaying, nil];
+    
+//    self.customItems = [NSMutableArray arrayWithObjects:itemBack, space1, self.itemHd, space2, self.itemNotifs, space3, self.itemSearch, flexibleSpace, itemNowPlaying, nil];
+    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace, self.itemHd, flexibleSpace, self.itemNotifs, flexibleSpace, self.itemSearch, flexibleSpace, itemNowPlaying, nil];
     
     [self setItems:self.customItems];
     
