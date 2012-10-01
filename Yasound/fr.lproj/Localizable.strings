@@ -642,10 +642,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Show.switch.label" = "Activer cette playlist";
 "Show.prog.label" = "Programmation";
 
-"Programming.Catalog.yasound" = "Yasound's music";
-"Programming.Catalog.local" = "Mon iPhone";
-"Programming.Catalog.radio" = "Ma radio";
-"Programming.Catalog.server" = "Yasound's music";
+"Programming.Catalog.yasound" = "Ajouter depuis Yasound";
+"Programming.Catalog.local" = "Ajouter depuis mon appareil";
+"Programming.Catalog.radio" = "Ma programmation";
 "Programming.Catalog.uploads" = "Téléchargements";
 "Programming.empty" = "Ajoutez de la musique sur votre appareil en le synchronisant avec iTunes.";
 "Programming.delete.artist" = "Voulez-vous vraiment supprimer tous les morceaux de cet artiste?";

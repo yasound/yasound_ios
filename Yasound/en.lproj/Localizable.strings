@@ -657,10 +657,9 @@
 "Show.switch.label" = "Enable this schedule";
 "Show.prog.label" = "Programming";
 
-"Programming.Catalog.yasound" = "Yasound's music";
-"Programming.Catalog.local" = "My iPhone";
-"Programming.Catalog.radio" = "My radio";
-"Programming.Catalog.server" = "Yasound's music";
+"Programming.Catalog.yasound" = "Add from Yasound";
+"Programming.Catalog.local" = "Add from my device";
+"Programming.Catalog.radio" = "My programming";
 "Programming.Catalog.uploads" = "Uploads";
 "Programming.empty" = "Add some music to your device, by synchronizing it with iTunes.";
 "Programming.delete.artist" = "Do you really want to delete all the songs from this artist?";
