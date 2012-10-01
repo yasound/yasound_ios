@@ -2725,6 +2725,24 @@
 		BC641E0B160771DA00E1C3A2 /* radioListFriendsDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC641DFB160771DA00E1C3A2 /* radioListFriendsDummy@2x.png */; };
 		BC641E0C160771DA00E1C3A2 /* radioListFriendsDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC641DFB160771DA00E1C3A2 /* radioListFriendsDummy@2x.png */; };
 		BC641E0D160771DA00E1C3A2 /* radioListFriendsDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC641DFB160771DA00E1C3A2 /* radioListFriendsDummy@2x.png */; };
+		BC64A5311619E53D008A7984 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A52E1619E53D008A7984 /* RefreshIndicator.m */; };
+		BC64A5321619E53D008A7984 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A52E1619E53D008A7984 /* RefreshIndicator.m */; };
+		BC64A5331619E53D008A7984 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A52E1619E53D008A7984 /* RefreshIndicator.m */; };
+		BC64A5341619E53D008A7984 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A52E1619E53D008A7984 /* RefreshIndicator.m */; };
+		BC64A5351619E53D008A7984 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A52E1619E53D008A7984 /* RefreshIndicator.m */; };
+		BC64A5361619E53D008A7984 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A52E1619E53D008A7984 /* RefreshIndicator.m */; };
+		BC64A5371619E53D008A7984 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A52E1619E53D008A7984 /* RefreshIndicator.m */; };
+		BC64A5381619E53D008A7984 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A52E1619E53D008A7984 /* RefreshIndicator.m */; };
+		BC64A5391619E53D008A7984 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A52E1619E53D008A7984 /* RefreshIndicator.m */; };
+		BC64A55D1619F615008A7984 /* RefreshIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A55C1619F615008A7984 /* RefreshIndicatorViewController.m */; };
+		BC64A55E1619F615008A7984 /* RefreshIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A55C1619F615008A7984 /* RefreshIndicatorViewController.m */; };
+		BC64A55F1619F615008A7984 /* RefreshIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A55C1619F615008A7984 /* RefreshIndicatorViewController.m */; };
+		BC64A5601619F615008A7984 /* RefreshIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A55C1619F615008A7984 /* RefreshIndicatorViewController.m */; };
+		BC64A5611619F615008A7984 /* RefreshIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A55C1619F615008A7984 /* RefreshIndicatorViewController.m */; };
+		BC64A5621619F615008A7984 /* RefreshIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A55C1619F615008A7984 /* RefreshIndicatorViewController.m */; };
+		BC64A5631619F615008A7984 /* RefreshIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A55C1619F615008A7984 /* RefreshIndicatorViewController.m */; };
+		BC64A5641619F615008A7984 /* RefreshIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A55C1619F615008A7984 /* RefreshIndicatorViewController.m */; };
+		BC64A5651619F615008A7984 /* RefreshIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC64A55C1619F615008A7984 /* RefreshIndicatorViewController.m */; };
 		BC6ADD18149B9EDF00D00E5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */; };
 		BC6ADD1A149B9EEE00D00E5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */; };
 		BC6ADD1B149B9EFF00D00E5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */; };
@@ -4213,15 +4231,6 @@
 		BCD1522C160C6976009E3604 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = BCD15212160C6976009E3604 /* release_notes.md */; };
 		BCD1522D160C6976009E3604 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = BCD15212160C6976009E3604 /* release_notes.md */; };
 		BCD1522E160C6976009E3604 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = BCD15212160C6976009E3604 /* release_notes.md */; };
-		BCD15277160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
-		BCD15278160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
-		BCD15279160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
-		BCD1527A160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
-		BCD1527B160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
-		BCD1527C160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
-		BCD1527D160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
-		BCD1527E160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
-		BCD1527F160D0C67009E3604 /* RefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD15276160D0C67009E3604 /* RefreshIndicator.m */; };
 		BCD29A6815DBAEE200291220 /* programmingDummyTrack30.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD29A6415DBAEE200291220 /* programmingDummyTrack30.png */; };
 		BCD29A6915DBAEE200291220 /* programmingDummyTrack30.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD29A6415DBAEE200291220 /* programmingDummyTrack30.png */; };
 		BCD29A6A15DBAEE200291220 /* programmingDummyTrack30.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD29A6415DBAEE200291220 /* programmingDummyTrack30.png */; };
@@ -7401,6 +7410,10 @@
 		BC6314D114B4665200549EF6 /* RegExp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExp.m; sourceTree = "<group>"; };
 		BC641DFA160771DA00E1C3A2 /* radioListFriendsDummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListFriendsDummy.png; sourceTree = "<group>"; };
 		BC641DFB160771DA00E1C3A2 /* radioListFriendsDummy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListFriendsDummy@2x.png"; sourceTree = "<group>"; };
+		BC64A52D1619E53D008A7984 /* RefreshIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshIndicator.h; sourceTree = "<group>"; };
+		BC64A52E1619E53D008A7984 /* RefreshIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshIndicator.m; sourceTree = "<group>"; };
+		BC64A55B1619F615008A7984 /* RefreshIndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshIndicatorViewController.h; sourceTree = "<group>"; };
+		BC64A55C1619F615008A7984 /* RefreshIndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshIndicatorViewController.m; sourceTree = "<group>"; };
 		BC69A7811542C0E500F05B26 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = "ThirdParties/facebook-ios-sdk/src/JSON/JSON.h"; sourceTree = SOURCE_ROOT; };
 		BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		BC6C1FE51612060B001F6463 /* wheelGenreSelectorIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wheelGenreSelectorIndicator.png; sourceTree = "<group>"; };
@@ -7571,8 +7584,6 @@
 		BCD15211160C6976009E3604 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		BCD15212160C6976009E3604 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
 		BCD15213160C6976009E3604 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
-		BCD15275160D0C67009E3604 /* RefreshIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshIndicator.h; sourceTree = "<group>"; };
-		BCD15276160D0C67009E3604 /* RefreshIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshIndicator.m; sourceTree = "<group>"; };
 		BCD29A6415DBAEE200291220 /* programmingDummyTrack30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = programmingDummyTrack30.png; sourceTree = "<group>"; };
 		BCD29A6515DBAEE200291220 /* programmingDummyTrack30@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "programmingDummyTrack30@2x.png"; sourceTree = "<group>"; };
 		BCD29A6615DBAEE200291220 /* programmingDummyTrack256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = programmingDummyTrack256.png; sourceTree = "<group>"; };
@@ -8959,6 +8970,17 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		BC64A52C1619E53D008A7984 /* RefreshIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				BC64A55B1619F615008A7984 /* RefreshIndicatorViewController.h */,
+				BC64A55C1619F615008A7984 /* RefreshIndicatorViewController.m */,
+				BC64A52D1619E53D008A7984 /* RefreshIndicator.h */,
+				BC64A52E1619E53D008A7984 /* RefreshIndicator.m */,
+			);
+			path = RefreshIndicator;
+			sourceTree = "<group>";
+		};
 		BC71F57F147F978700DAE4BD /* en */ = {
 			isa = PBXGroup;
 			children = (
@@ -10142,8 +10164,6 @@
 		BCFECFE61468439900BA20D9 /* Gui */ = {
 			isa = PBXGroup;
 			children = (
-				BCD15275160D0C67009E3604 /* RefreshIndicator.h */,
-				BCD15276160D0C67009E3604 /* RefreshIndicator.m */,
 				BC89C33C15E4FCF100E0BEE3 /* ObjectButton.h */,
 				BC89C33D15E4FCF100E0BEE3 /* ObjectButton.m */,
 				BC436905156F8F820059BC22 /* TouchedTableView.h */,
@@ -10263,6 +10283,7 @@
 				40AAEC4714921ACE0031B39D /* DataProvider */,
 				BCFECFE31468439900BA20D9 /* Audio */,
 				BC0DD8381487C73E00DCD550 /* Model */,
+				BC64A52C1619E53D008A7984 /* RefreshIndicator */,
 				BCFECFE61468439900BA20D9 /* Gui */,
 				BCE4632E148FDEA000422448 /* Login */,
 				BCE66A7F1548599A0094B4D0 /* Menu */,
@@ -15248,7 +15269,6 @@
 				BC37C848160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9581608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51F1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
-				BCD1527E160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FE2161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 				BC46383A1611EE78008CE52F /* WheelSelector.m in Sources */,
 				BC4638501611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
@@ -15261,6 +15281,8 @@
 				4080C36F16120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3AB161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
 				BCDD81C216159385005E63B1 /* Genres.m in Sources */,
+				BC64A5381619E53D008A7984 /* RefreshIndicator.m in Sources */,
+				BC64A5641619F615008A7984 /* RefreshIndicatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15501,7 +15523,6 @@
 				BC37C849160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9591608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA5201609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
-				BCD1527F160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FE3161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 				BC46383B1611EE78008CE52F /* WheelSelector.m in Sources */,
 				BC4638511611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
@@ -15514,6 +15535,8 @@
 				4080C37016120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3AC161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
 				BCDD81C316159385005E63B1 /* Genres.m in Sources */,
+				BC64A5391619E53D008A7984 /* RefreshIndicator.m in Sources */,
+				BC64A5651619F615008A7984 /* RefreshIndicatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15750,7 +15773,6 @@
 				BC37C847160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9571608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51E1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
-				BCD1527D160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FE1161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 				BC4638391611EE78008CE52F /* WheelSelector.m in Sources */,
 				BC46384F1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
@@ -15763,6 +15785,8 @@
 				4080C36E16120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3AA161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
 				BCDD81C116159385005E63B1 /* Genres.m in Sources */,
+				BC64A5371619E53D008A7984 /* RefreshIndicator.m in Sources */,
+				BC64A5631619F615008A7984 /* RefreshIndicatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16003,7 +16027,6 @@
 				BC37C844160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9541608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51B1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
-				BCD1527A160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FDE161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 				BC4638361611EE78008CE52F /* WheelSelector.m in Sources */,
 				BC46384C1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
@@ -16016,6 +16039,8 @@
 				4080C36B16120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3A7161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
 				BCDD81BE16159385005E63B1 /* Genres.m in Sources */,
+				BC64A5341619E53D008A7984 /* RefreshIndicator.m in Sources */,
+				BC64A5601619F615008A7984 /* RefreshIndicatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16256,7 +16281,6 @@
 				BC37C842160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9521608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA5191609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
-				BCD15278160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FDC161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 				BC4638341611EE77008CE52F /* WheelSelector.m in Sources */,
 				BC46384A1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
@@ -16269,6 +16293,8 @@
 				4080C36916120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3A5161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
 				BCDD81BC16159385005E63B1 /* Genres.m in Sources */,
+				BC64A5321619E53D008A7984 /* RefreshIndicator.m in Sources */,
+				BC64A55E1619F615008A7984 /* RefreshIndicatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16510,7 +16536,6 @@
 				BC37C846160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9561608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51D1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
-				BCD1527C160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FE0161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 				BC4638381611EE78008CE52F /* WheelSelector.m in Sources */,
 				BC46384E1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
@@ -16523,6 +16548,8 @@
 				4080C36D16120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3A9161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
 				BCDD81C016159385005E63B1 /* Genres.m in Sources */,
+				BC64A5361619E53D008A7984 /* RefreshIndicator.m in Sources */,
+				BC64A5621619F615008A7984 /* RefreshIndicatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16763,7 +16790,6 @@
 				BC37C843160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9531608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51A1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
-				BCD15279160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FDD161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 				BC4638351611EE77008CE52F /* WheelSelector.m in Sources */,
 				BC46384B1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
@@ -16776,6 +16802,8 @@
 				4080C36A16120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3A6161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
 				BCDD81BD16159385005E63B1 /* Genres.m in Sources */,
+				BC64A5331619E53D008A7984 /* RefreshIndicator.m in Sources */,
+				BC64A55F1619F615008A7984 /* RefreshIndicatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17016,7 +17044,6 @@
 				BC37C841160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9511608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA5181609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
-				BCD15277160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FDB161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 				BC4638331611EE77008CE52F /* WheelSelector.m in Sources */,
 				BC4638491611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
@@ -17029,6 +17056,8 @@
 				4080C36816120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3A4161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
 				BCDD81BB16159385005E63B1 /* Genres.m in Sources */,
+				BC64A5311619E53D008A7984 /* RefreshIndicator.m in Sources */,
+				BC64A55D1619F615008A7984 /* RefreshIndicatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17270,7 +17299,6 @@
 				BC37C845160A06BF00BCD289 /* RadioSearchTableViewCell.m in Sources */,
 				40CFA9551608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */,
 				406DA51C1609BBA7000C26F9 /* ActionAddServerSongCell.m in Sources */,
-				BCD1527B160D0C67009E3604 /* RefreshIndicator.m in Sources */,
 				BC325FDF161038B300BA38C9 /* UIDevice+Resolutions.m in Sources */,
 				BC4638371611EE78008CE52F /* WheelSelector.m in Sources */,
 				BC46384D1611F0E4008CE52F /* WheelSelectorGenre.m in Sources */,
@@ -17283,6 +17311,8 @@
 				4080C36C16120EE50037BB4F /* InviteFacebookFriendsViewController.m in Sources */,
 				4080C3A8161222860037BB4F /* FacebookFriendTableViewCell.m in Sources */,
 				BCDD81BF16159385005E63B1 /* Genres.m in Sources */,
+				BC64A5351619E53D008A7984 /* RefreshIndicator.m in Sources */,
+				BC64A5611619F615008A7984 /* RefreshIndicatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
