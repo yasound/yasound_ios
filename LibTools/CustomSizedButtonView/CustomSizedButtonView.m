@@ -139,15 +139,15 @@
     _enabled = enabled;
     
     if (_enabled) {
-        self.left.alpha = 0.5;
-        self.center.alpha = 0.5;
-        self.right.alpha = 0.5;
-        self.label.alpha = 0.5;
-    } else {
         self.left.alpha = 1;
         self.center.alpha = 1;
         self.right.alpha = 1;
         self.label.alpha = 1;
+    } else {
+        self.left.alpha = 0.5;
+        self.center.alpha = 0.5;
+        self.right.alpha = 0.5;
+        self.label.alpha = 0.5;
     }
 }
 
