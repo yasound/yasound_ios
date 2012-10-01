@@ -218,6 +218,8 @@
 - (IBAction)hdSwitchChanged:(id)sender
 {
     [[UserSettings main] setBool:self.switchHd.on forKey:USKEYuserWantsHd];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HD_CHANGED  object:nil];
 }
 
 #pragma mark - promoCodeDelegate

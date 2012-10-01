@@ -53,6 +53,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogout:) name:NOTIF_DID_LOGOUT object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogin:) name:NOTIF_DID_LOGIN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifsChanged:) name:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onHdChanged:) name:NOTIF_HD_CHANGED object:nil];
     
     
     // set background
@@ -214,7 +215,10 @@
     self.itemHdButton.enabled = YES;
     [self.itemHdButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
     
-    if ([[YasoundDataProvider main].user permission:PERM_HD])
+    BOOL activated = [[UserSettings main] boolForKey:USKEYuserWantsHd error:nil];
+    activated &= [[YasoundDataProvider main].user permission:PERM_HD];
+    
+    if (activated)
         self.itemHdButton.selected = YES;
     else
         self.itemHdButton.selected = NO;
@@ -619,6 +623,10 @@
 
 - (void)onNotifsChanged:(NSNotification*)notif {
     [self updateNotifs];
+}
+
+- (void)onHdChanged:(NSNotification*)notif {
+    [self updateHd];
 }
 
 
