@@ -269,12 +269,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Gift* gift = [self.gifts objectAtIndex:indexPath.row];
     static NSString* giftCellIdentifier = @"GiftTableViewCell";
     static NSString* promoCellIdentifier = @"PromoTableViewCell";
     
     if (indexPath.section == SECTION_GIFTS)
     {
+        Gift* gift = [self.gifts objectAtIndex:indexPath.row];
+
         GiftCell* cell = [tableView dequeueReusableCellWithIdentifier:giftCellIdentifier];
         if (cell == nil)
         {
