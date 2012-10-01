@@ -63,36 +63,36 @@
 			<key>en</key>
 			<array>
 				<string>style_all</string>
-				<string>style_classique</string>
-				<string>style_blues</string>
-				<string>style_alternative</string>
-				<string>style_electro</string>
-				<string>style_jazz</string>
 				<string>style_pop</string>
-				<string>style_reggae</string>
-				<string>style_rock</string>
-				<string>style_metal</string>
 				<string>style_hiphop</string>
+				<string>style_rock</string>
 				<string>style_rnbsoul</string>
+				<string>style_electro</string>
+				<string>style_alternative</string>
+				<string>style_jazz</string>
+				<string>style_classique</string>
+				<string>style_reggae</string>
 				<string>style_world</string>
+				<string>style_metal</string>
+				<string>style_blues</string>
 				<string>style_divers</string>
 			</array>
 			<key>fr</key>
 			<array>
 				<string>style_all</string>
-				<string>style_classique</string>
-				<string>style_blues</string>
-				<string>style_alternative</string>
+				<string>style_pop</string>
+				<string>style_hiphop</string>
+				<string>style_rock</string>
+				<string>style_rnbsoul</string>
 				<string>style_electro</string>
 				<string>style_chanson_francaise</string>
+				<string>style_alternative</string>
 				<string>style_jazz</string>
-				<string>style_pop</string>
+				<string>style_classique</string>
 				<string>style_reggae</string>
-				<string>style_rock</string>
-				<string>style_metal</string>
-				<string>style_hiphop</string>
-				<string>style_rnbsoul</string>
 				<string>style_world</string>
+				<string>style_metal</string>
+				<string>style_blues</string>
 				<string>style_divers</string>
 			</array>
 		</dict>
