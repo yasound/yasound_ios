@@ -89,7 +89,7 @@
         return nil;
     
     YasoundSong* song = [_searchResults objectAtIndex:indexPath.row];
-    DLog(@"%d - song   %@, %@, %@", indexPath.row, song.artist_name, song.album_name, song.name);
+    //DLog(@"%d - song   %@, %@, %@", indexPath.row, song.artist_name, song.album_name, song.name);
     
     static NSString* CellIdentifier = @"SearchServerSongCell";
     

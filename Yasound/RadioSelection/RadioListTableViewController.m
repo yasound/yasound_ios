@@ -738,26 +738,7 @@ static NSInteger mycount = 0;
     
     _freezeTimeout = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(freezeTimeout:) userInfo:nil repeats:NO];
 
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.2];
-//    self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + self.refreshIndicator.height);
-//    [UIView commitAnimations];
-
-    //LBDEBUG
-    mycount++;
-    
-    if (mycount == 2)
-    {
-        NSLog(@"ok");
-    }
-    ///////////////
-    
-    
-    
-    
     [self.tableView setContentSize: CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + self.refreshIndicator.height)];
-//    self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y + self.refreshIndicator.height);
-    
 }
 
 
@@ -771,15 +752,9 @@ static NSInteger mycount = 0;
 
 - (void)unfreeze {
     
-    //LBDEBUG
-    NSLog(@"unfreeze 01");
-
     if (!self.showRefreshIndicator)
         return;
     
-    //LBDEBUG
-    NSLog(@"unfreeze 02");
-
     [_freezeTimeout invalidate];
     _freezeTimeout = nil;
     
@@ -788,20 +763,11 @@ static NSInteger mycount = 0;
         return;
     }
     
-    //LBDEBUG
-    NSLog(@"unfreeze 03");
-
     if (!_loadingNextPage)
         return;
 
-    //LBDEBUG
-    NSLog(@"unfreeze 04");
-
     _dragging = NO;
     _loadingNextPage = NO;
-    
-    //LBDEBUG
-    NSLog(@"loadingNextPage %d : UNFREEZE", _loadingNextPage);
     
     NSDate* now = [NSDate date];
     NSTimeInterval interval = [now timeIntervalSinceDate:_freezeDate];
@@ -810,10 +776,6 @@ static NSInteger mycount = 0;
         [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(unfreezeFinish) userInfo:nil repeats:NO];
     else
         [self unfreezeFinish];
-
-    //LBDEBUG
-    NSLog(@"unfreeze 05");
-
 }
 
 - (void)unfreezeFinish {
