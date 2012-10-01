@@ -11,20 +11,9 @@
 #import "ProgrammingAlbumViewController.h"
 
 @interface ProgrammingArtistViewController : ProgrammingCatalogViewController <UIActionSheetDelegate>
-{
-//    IBOutlet UIBarButtonItem* _backBtn;
-//    IBOutlet UIBarButtonItem* _nowPlayingButton;
-
-//    IBOutlet UILabel* _titleLabel;
-//    IBOutlet UILabel* _subtitleLabel;
-//    IBOutlet UIToolbar* _toolbar;
-//    
-//    IBOutlet UITableView* _tableView;
-}
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, assign) SongCatalog* catalog;
-//@property (nonatomic, retain) NSArray* sortedAlbums;
 
 @property (nonatomic, retain) ProgrammingAlbumViewController* albumVC;
 

@@ -117,8 +117,7 @@
 {
     NSArray* songs = nil;
     
-    //LBDEBUG
-    NSLog(@"selected Album '%@'", self.catalog.selectedAlbum);
+    DLog(@"selected Album '%@'", self.catalog.selectedAlbum);
     
     if (self.catalog.selectedGenre) {
         songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
@@ -144,8 +143,7 @@
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    //LBDEBUG
-    NSLog(@"selected Album '%@'", self.catalog.selectedAlbum);
+    DLog(@"selected Album '%@'", self.catalog.selectedAlbum);
 
     NSString* title = nil;
     if (self.catalog.selectedGenre) {
@@ -273,9 +271,6 @@
     // clean catalogs and wait for the refresh notifs
     [[SongRadioCatalog main] updateSongRemovedFromProgramming:song];
     [[SongLocalCatalog main] updateSongRemovedFromProgramming:song];
-
-    
-//    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 
@@ -325,11 +320,6 @@
 
 
 
-
-
-
-
-
 #pragma mark - IBActions
 
 
@@ -358,64 +348,5 @@
     [self.tableView reloadData];
 }
 
-
-
-//
-//
-//#pragma mark - WheelSelectorDelegate
-//
-//
-//#define WHEEL_NB_ITEMS 3
-//#define WHEEL_ITEM_LOCAL 0
-//#define WHEEL_ITEM_RADIO 1
-//#define WHEEL_ITEM_UPLOADS 2
-////#define WHEEL_ITEM_SERVER 3
-//
-//- (NSInteger)numberOfItemsInWheelSelector:(WheelSelector*)wheel
-//{
-//    return WHEEL_NB_ITEMS;
-//}
-//
-//- (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
-//{
-//    if (itemIndex == WHEEL_ITEM_LOCAL)
-//        return NSLocalizedString(@"Programming.Catalog.local", nil);
-//    if (itemIndex == WHEEL_ITEM_RADIO)
-//        return NSLocalizedString(@"Programming.Catalog.radio", nil);
-//    //    if (itemIndex == WHEEL_ITEM_SERVER)
-//    //        return NSLocalizedString(@"Programming.Catalog.server", nil);
-//    if (itemIndex == WHEEL_ITEM_UPLOADS)
-//        return NSLocalizedString(@"Programming.Catalog.uploads", nil);
-//    return nil;
-//}
-//
-//- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
-//{
-//    return WHEEL_ITEM_RADIO;
-//}
-//
-//- (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
-//{
-//    if (itemIndex == WHEEL_ITEM_LOCAL)
-//    {
-//        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil forRadio:self.radio];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
-//    }
-//    else if (itemIndex == WHEEL_ITEM_RADIO)
-//    {
-//        //        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithNibName:@"ProgrammingRadioViewController" bundle:nil  forRadio:self.radio];
-//        //        [self.navigationController pushViewController:view animated:YES];
-//        //        [view release];
-//    }
-//    else if (itemIndex == WHEEL_ITEM_UPLOADS)
-//    {
-//        ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
-//    }
-//}
-//
-//
 
 @end

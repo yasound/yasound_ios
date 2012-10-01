@@ -13,27 +13,10 @@
 #import "ObjectButton.h"
 
 @interface ProgrammingRadioViewController : ProgrammingCatalogViewController <UIActionSheetDelegate>
-{
-//    IBOutlet UIBarButtonItem* _synchroBtn;
-    
-//    IBOutlet UILabel* _titleLabel;
-//    IBOutlet UILabel* _subtitleLabel;
-//    IBOutlet UIToolbar* _toolbar;
-//    IBOutlet UISegmentedControl* _segment;
-    ObjectAlertView* _alertDeleteArtist;
-}
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, retain) NSMutableDictionary* songToIndexPath;
 
-
-//@property (nonatomic, retain) NSMutableDictionary* sortedSongs;
-//@property (nonatomic, retain) NSMutableDictionary* sortedArtists;
-
-//@property (nonatomic, retain) NSMutableDictionary* artistToIndexPath;
-//@property (nonatomic, retain) NSString* deleteArtistNameFromClient;
-//@property (nonatomic) BOOL deleteRunning;
- 
 
 @property (nonatomic) NSInteger selectedSegmentIndex;
 

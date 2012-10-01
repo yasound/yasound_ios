@@ -11,17 +11,13 @@
 #import "ProgrammingCatalogViewController.h"
 #import "ProgrammingViewController.h"
 #import "ProgrammingCollectionViewController.h"
-//#import "ProgrammingGenreViewController.h"
 
 @interface ProgrammingLocalViewController : ProgrammingCatalogViewController
 
 @property (nonatomic, retain) Radio* radio;
-//@property (nonatomic, retain) NSMutableDictionary* sortedArtists;
-//@property (nonatomic, retain) NSMutableDictionary* sortedSongs;
 @property (nonatomic) NSInteger selectedSegmentIndex;
 
 @property (nonatomic, retain) ProgrammingCollectionViewController* collectionVC;
-//@property (nonatomic, retain) ProgrammingGenreViewController* genreVC;
 
 
 - (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio withSegmentIndex:(NSInteger)segmentIndex;

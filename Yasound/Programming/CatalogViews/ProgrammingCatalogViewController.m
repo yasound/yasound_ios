@@ -31,21 +31,13 @@
 
 - (void)onNotifSongRemoved:(NSNotification*)notif
 {
-//    UIViewController* sender = notif.object;
-//    
-//    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//
-//    if (sender != self)
-        [self.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 
 - (void)onNotifSongUpdated:(NSNotification*)notif
 {
-//    UIViewController* sender = notif.object;
-//    
-//    if (sender != self)
-        [self.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 
@@ -76,16 +68,9 @@
     UITableViewCell* cell = [info objectForKey:@"userData"];
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
     
-    //LBDEBUG
-    assert(0);
-    
     // refresh DataBase
     [[SongRadioCatalog main] updateSongRemovedFromProgramming:song];
     [[SongLocalCatalog main] updateSongRemovedFromProgramming:song];
-    
-    
-    //     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:self];
-    
 }
 
 

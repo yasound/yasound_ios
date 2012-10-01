@@ -22,8 +22,6 @@
 #import "AudioStreamManager.h"
 #import "SongLocal.h"
 #import "ProgrammingCell.h"
-//#import "ProgrammingLocalViewController.h"
-//#import "ProgrammingRadioViewController.h"
 #import "ActionAddCollectionCell.h"
 #import "ActionRemoveCollectionCell.h"
 
@@ -32,7 +30,6 @@
 
 @synthesize radio;
 @synthesize catalog;
-//@synthesize sortedAlbums;
 @synthesize albumVC;
 
 - (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio
@@ -47,10 +44,6 @@
         self.tableView.dataSource = self;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
-
-        
-//        NSArray* array = [self.catalog.selectedArtistRepo allKeys];
-//         self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
     }
     return self;
 }
@@ -193,79 +186,12 @@
 
 
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-//{
-//    static NSString* CellIdentifier = @"Cell";
-//    
-//    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    
-//    if (cell == nil) 
-//    {
-//        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-//    }
-//    
-//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UIImageView* di = [sheet makeImage];
-//    cell.accessoryView = di;
-//    [di release];
-//
-//    
-//    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
-//    cell.textLabel.textColor = [sheet fontTextColor];
-//    cell.textLabel.font = [sheet makeFont];
-//    
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    cell.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
-//    cell.detailTextLabel.textColor = [sheet fontTextColor];
-//    cell.detailTextLabel.font = [sheet makeFont];
-//
-//    
-//    
-//    
-//    NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
-//    cell.textLabel.text = albumKey;
-//
-//     NSArray* songs = [self.catalog.selectedArtistRepo objectForKey:albumKey];
-//
-//    NSInteger nbSongs = songs.count;
-//    
-//    if (nbSongs == 1)
-//        cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbSongs.1", nil);
-//    else
-//        cell.detailTextLabel.text = NSLocalizedString(@"Programming.nbSongs.n", nil);
-//    
-//    cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];    
-//
-//    id firstSong = [songs objectAtIndex:0];
-//    if ([firstSong isKindOfClass:[SongLocal class]])
-//    {
-//        SongLocal* songLocal = (SongLocal*)firstSong;
-//        
-//        NSInteger imageSize = 44;
-//        cell.imageView.image = [songLocal.artwork imageWithSize:CGSizeMake(imageSize,imageSize)];
-//    }
-//        
-//    
-//    return cell;
-//}
-//
-
-
-
-
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString* CellIdentifier = @"Cell";
-    
-//    ProgrammingCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     NSArray* albums = nil;
     NSString* album = nil;
@@ -319,16 +245,6 @@
         }
     }
     
-    // else customImage will be replaced by refSong's image
-
-    
-//    if (cell == nil)
-//    {
-//        cell = [[[ProgrammingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier text:albumKey detailText:detailText customImage:customImage refSong:firstSong] autorelease];
-//    }
-//    else
-//        [cell updateWithText:albumKey detailText:detailText customImage:customImage refSong:firstSong];
-
     if (self.catalog == [SongLocalCatalog main]) {
 
         ActionAddCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -404,9 +320,6 @@
     frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
     self.albumVC.tableView.frame = frame;
     [UIView commitAnimations];
-
-    
-    //    [viewc release];
 }
 
 
@@ -417,56 +330,15 @@
 
 
 
-
-
-
-
-
-//
-//
-//#pragma mark - IBActions
-//
-//
-//
-//- (IBAction)onSynchronize:(id)semder
-//{
-//    ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
-//}
-//
-
-//- (IBAction)onAdd:(id)sender
-//{
-//    ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil withMatchedSongs:[SongCatalog synchronizedCatalog].matchedSongs];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
-//}
-
-
 - (void)onNotifSongAdded:(NSNotification*)notif
 {
-//    //[self.sortedAlbums release];
-//    self.sortedAlbums = nil;
-//    //LBDEBUG
-////    NSArray* array = [self.catalog.selectedArtistRepo allKeys];
-//    NSArray* array = nil;
-//    self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
-//    
     [self.tableView reloadData];
 }
 
 
 - (void)onNotifSongDeleted:(NSNotification*)notif
 {
-    //    //[self.sortedAlbums release];
-    //    self.sortedAlbums = nil;
-    //    //LBDEBUG
-    ////    NSArray* array = [self.catalog.selectedArtistRepo allKeys];
-    //    NSArray* array = nil;
-    //    self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
-    //
-        [self.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 
@@ -498,64 +370,6 @@
     [self.albumVC release];
     self.albumVC = nil;
 }
-
-
-
-//
-//
-//#pragma mark - WheelSelectorDelegate
-//
-//
-//#define WHEEL_NB_ITEMS 3
-//#define WHEEL_ITEM_LOCAL 0
-//#define WHEEL_ITEM_RADIO 1
-//#define WHEEL_ITEM_UPLOADS 2
-////#define WHEEL_ITEM_SERVER 3
-//
-//- (NSInteger)numberOfItemsInWheelSelector:(WheelSelector*)wheel
-//{
-//    return WHEEL_NB_ITEMS;
-//}
-//
-//- (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
-//{
-//    if (itemIndex == WHEEL_ITEM_LOCAL)
-//        return NSLocalizedString(@"Programming.Catalog.local", nil);
-//    if (itemIndex == WHEEL_ITEM_RADIO)
-//        return NSLocalizedString(@"Programming.Catalog.radio", nil);
-//    //    if (itemIndex == WHEEL_ITEM_SERVER)
-//    //        return NSLocalizedString(@"Programming.Catalog.server", nil);
-//    if (itemIndex == WHEEL_ITEM_UPLOADS)
-//        return NSLocalizedString(@"Programming.Catalog.uploads", nil);
-//    return nil;
-//}
-//
-//- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
-//{
-//    return WHEEL_ITEM_RADIO;
-//}
-//
-//- (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
-//{
-//    if (itemIndex == WHEEL_ITEM_LOCAL)
-//    {
-//        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil forRadio:self.radio];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
-//    }
-//    else if (itemIndex == WHEEL_ITEM_RADIO)
-//    {
-//        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithNibName:@"ProgrammingRadioViewController" bundle:nil  forRadio:self.radio];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
-//    }
-//    else if (itemIndex == WHEEL_ITEM_UPLOADS)
-//    {
-//        ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
-//    }
-//}
 
 
 

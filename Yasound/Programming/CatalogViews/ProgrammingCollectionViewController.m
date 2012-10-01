@@ -186,79 +186,18 @@
 {
     static NSString* CellIdentifier = @"CellArtist";
     
-//    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-//    if (cell == nil)
-//    {
-//        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-        
-        //            cell.textLabel.backgroundColor = [UIColor clearColor];
-        //            cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-        //            cell.textLabel.textColor = [UIColor whiteColor];
-        //            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        
-//        cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    
-    
     NSString* artist = [self.artists objectAtIndex:indexPath.row];
     
-//    NSInteger nbAlbums = 0;
-//    if (self.catalog.selectedGenre)
-//        nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist withGenre:self.catalog.selectedGenre fromTable:LOCALCATALOG_TABLE].count;
-//    else if (self.catalog.selectedPlaylist)
-//        nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist withPlaylist:self.catalog.selectedPlaylist fromTable:LOCALCATALOG_TABLE].count;
-//    else
-//        nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist].count;
+    ActionAddCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-//    NSString* subtitle = nil;
-//    
-//    if (nbAlbums == 1)
-//        subtitle = NSLocalizedString(@"Programming.nbAlbums.1", nil);
-//    else
-//        subtitle = NSLocalizedString(@"Programming.nbAlbums.n", nil);
-//    
-//    subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
-
-        
-        ActionAddCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if (cell == nil)
-        {
-            cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier artist:artist subtitle:nil forRadio:self.radio usingCatalog:self.catalog] autorelease];
-        }
-        else
-            [cell updateArtist:artist subtitle:nil];
-        
-        return cell;
-
-        
-//        // button "add to upload list"
-//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.add" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        UIButton* button = [sheet makeButton];
-//        [button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-//        //[self addSubview];
-//        
-//        
-//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        UIImageView* di = [sheet makeImage];
-//        cell.accessoryView = di;
-//        [di release];
-//        
-//        sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
-//        cell.textLabel.textColor = [sheet fontTextColor];
-//        cell.textLabel.font = [sheet makeFont];
-//        
-//        
-//        sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        cell.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
-//        cell.detailTextLabel.textColor = [sheet fontTextColor];
-//        cell.detailTextLabel.font = [sheet makeFont];
-//    }
-//    
-//
-//    return cell;
+    if (cell == nil)
+    {
+        cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier artist:artist subtitle:nil forRadio:self.radio usingCatalog:self.catalog] autorelease];
+    }
+    else
+        [cell updateArtist:artist subtitle:nil];
+    
+    return cell;
 }
 
 
@@ -306,26 +245,6 @@
 
 
 
-
-
-
-
-
-//- (void)setSegment:(NSInteger)index
-//{
-////    self.selectedSegmentIndex = index;
-//    
-//    if (self.artistVC)
-//    {
-//        [self.artistVC onBackClicked];
-//        [self.artistVC.tableView removeFromSuperview];
-//        [self.artistVC release];
-//        self.artistVC = nil;
-//    }
-//    
-//    [self.tableView reloadData];
-//}
-//
 - (BOOL)onBackClicked
 {
     BOOL goBack = YES;
@@ -369,63 +288,5 @@
 
 
 
-
-//
-//
-//#pragma mark - WheelSelectorDelegate
-//
-//
-//#define WHEEL_NB_ITEMS 3
-//#define WHEEL_ITEM_LOCAL 0
-//#define WHEEL_ITEM_RADIO 1
-//#define WHEEL_ITEM_UPLOADS 2
-////#define WHEEL_ITEM_SERVER 3
-//
-//- (NSInteger)numberOfItemsInWheelSelector:(WheelSelector*)wheel
-//{
-//    return WHEEL_NB_ITEMS;
-//}
-//
-//- (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
-//{
-//    if (itemIndex == WHEEL_ITEM_LOCAL)
-//        return NSLocalizedString(@"Programming.Catalog.local", nil);
-//    if (itemIndex == WHEEL_ITEM_RADIO)
-//        return NSLocalizedString(@"Programming.Catalog.radio", nil);
-//    //    if (itemIndex == WHEEL_ITEM_SERVER)
-//    //        return NSLocalizedString(@"Programming.Catalog.server", nil);
-//    if (itemIndex == WHEEL_ITEM_UPLOADS)
-//        return NSLocalizedString(@"Programming.Catalog.uploads", nil);
-//    return nil;
-//}
-//
-//- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
-//{
-//    return WHEEL_ITEM_RADIO;
-//}
-//
-//- (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
-//{
-//    if (itemIndex == WHEEL_ITEM_LOCAL)
-//    {
-//        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil forRadio:self.radio];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
-//    }
-//    else if (itemIndex == WHEEL_ITEM_RADIO)
-//    {
-//        //        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithNibName:@"ProgrammingRadioViewController" bundle:nil  forRadio:self.radio];
-//        //        [self.navigationController pushViewController:view animated:YES];
-//        //        [view release];
-//    }
-//    else if (itemIndex == WHEEL_ITEM_UPLOADS)
-//    {
-//        ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
-//    }
-//}
-//
-//
 
 @end
