@@ -422,7 +422,8 @@ static SongRadioCatalog* _main = nil;
         DLog(@"buildSynchronizedWithSource: empty album found!");
     }
     
-//    NSString* songKey = [SongCatalog catalogKeyOfSong:song.name artistKey:artistKey albumKey:albumKey];
+    if (song.catalogKey == nil)
+        song.catalogKey = [SongCatalog catalogKeyOfSong:song.name artistKey:artistKey albumKey:albumKey];
     NSString* songKey = song.catalogKey;
     assert(songKey);
     
