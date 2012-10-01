@@ -116,16 +116,6 @@
 
     // flexible space
     UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem* space1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    space1.width = 14.f;
-    UIBarButtonItem* space2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    space2.width = 6.f;
-    UIBarButtonItem* space3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    space3.width = 10.f;
-
-//    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace,flexibleSpace, self.itemHd,  self.itemNotifs, self.itemSearch, flexibleSpace,flexibleSpace, itemNowPlaying, nil];
-    
-//    self.customItems = [NSMutableArray arrayWithObjects:itemBack, space1, self.itemHd, space2, self.itemNotifs, space3, self.itemSearch, flexibleSpace, itemNowPlaying, nil];
     self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace, self.itemHd, flexibleSpace, self.itemNotifs, flexibleSpace, self.itemSearch, flexibleSpace, itemNowPlaying, nil];
     
     [self setItems:self.customItems];
@@ -248,7 +238,6 @@
             self.itemNotifsLabel = nil;
         }
         
-//        [self.itemNotifsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
         [self.itemNotifsButton removeTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
     }
     else
@@ -257,8 +246,6 @@
         self.itemNotifsButton.enabled = YES;
         [self.itemNotifsButton addTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
 
-//        // request number of notifs
-//        [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:) limit:0 offset:0];
         // request number of unread notifs
         [[YasoundDataProvider main] unreadNotificationCountWithTarget:self action:@selector(onUnreadNotificationCountReceived:success:)];
 
@@ -483,16 +470,7 @@
         [self runItem:TopBarItemTrash];
 }
 
-//- (void)onAdd:(id)sender
-//{
-//    BOOL run = YES;
-//    
-//    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
-//        run = [self.delegate topBarItemClicked:TopBarItemAdd];
-//
-//    if (run)
-//        [self runItem:TopBarItemAdd];
-//}
+
 
 - (void)onSettings:(id)sender
 {
@@ -544,10 +522,6 @@
 
     else if (itemId == TopBarItemHd)
     {
-//        PurchaseViewController* view = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
-//        [APPDELEGATE.navigationController pushViewController:view animated:YES];
-//        [view release];
-        
         // show gifts
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Gift.popover" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         CGSize popoverSize = sheet.frame.size;
@@ -650,24 +624,7 @@
     [self updateNotifs];
 }
 
-//- (id)initWithFrame:(CGRect)frame
-//{
-//    self = [super initWithFrame:frame];
-//    if (self) 
-//    {
-//    }
-//    return self;
-//}
 
 
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end
