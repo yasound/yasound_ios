@@ -31,10 +31,13 @@
 
 
 #define INDEX_BACK 0
-#define INDEX_HD 3
+#define INDEX_HD 2
 #define INDEX_NOTIFS 4
-#define INDEX_SEARCH 5
+#define INDEX_SEARCH 6
 #define INDEX_NOWPLAYING 8
+
+
+
 
 - (void)dealloc
 {
@@ -113,8 +116,15 @@
 
     // flexible space
     UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem* space1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    space1.width = 14.f;
+    UIBarButtonItem* space2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    space2.width = 6.f;
+    UIBarButtonItem* space3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    space3.width = 10.f;
 
-    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace,flexibleSpace, self.itemHd,  self.itemNotifs, self.itemSearch, flexibleSpace,flexibleSpace, itemNowPlaying, nil];
+//    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace,flexibleSpace, self.itemHd,  self.itemNotifs, self.itemSearch, flexibleSpace,flexibleSpace, itemNowPlaying, nil];
+    self.customItems = [NSMutableArray arrayWithObjects:itemBack, space1, self.itemHd, space2, self.itemNotifs, space3, self.itemSearch, flexibleSpace, itemNowPlaying, nil];
     
     [self setItems:self.customItems];
     
