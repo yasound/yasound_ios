@@ -188,6 +188,35 @@
     
 }
 
+
+
+- (void)appendSongs:(NSArray*)songs info:(NSDictionary*)info
+{
+    if (!songs)
+        return;
+    
+    [self.searchResults addObjectsFromArray:songs];
+    [self.searchDisplayController.searchResultsTableView reloadData];
+    
+    [self unfreeze];
+    
+//    self.searchDisplayController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
+//    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor clearColor];
+    
+//    CGRect frame = self.searchDisplayController.searchResultsTableView.frame;
+//    frame = CGRectMake(0, frame.size.height + self.searchDisplayController.searchBar.frame.size.height - REFRESH_INDICATOR_HEIGHT, frame.size.width, REFRESH_INDICATOR_HEIGHT);
+//    self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:frame];
+//    self.refreshIndicator.backgroundColor = [UIColor redColor];
+//    //    [self.searchDisplayController.searchResultsTableView.superview addSubview:self.refreshIndicator];
+//    [self.view addSubview:self.refreshIndicator];
+//    [self.view sendSubviewToBack:self.refreshIndicator];
+    //    [self.searchDisplayController.searchContentsController.view sendSubviewToBack:self.refreshIndicator];
+    
+}
+
+
+
 - (BOOL)onBackClicked
 {
     return YES;
@@ -230,7 +259,7 @@
     [super refreshIndicatorRequest];
     
     _searchOffset += 25;
-    [[YasoundDataProvider main] searchSong:self.searchText count:25 offset:_searchOffset target:self action:@selector(receivedSongs:info:)];
+    [[YasoundDataProvider main] searchSong:self.searchText count:25 offset:_searchOffset target:self action:@selector(appendSongs:info:)];
 }
 
 

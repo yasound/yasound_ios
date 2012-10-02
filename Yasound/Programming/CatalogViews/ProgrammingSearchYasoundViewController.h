@@ -12,12 +12,12 @@
 
 @interface ProgrammingSearchYasoundViewController : RefreshIndicatorViewController <UISearchBarDelegate, UISearchDisplayDelegate>
 {
-    NSArray* _searchResults;
     NSInteger _searchOffset;
     BOOL _searching;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andRadio:(Radio*)r;
 
+@property (nonatomic, retain) NSMutableArray* searchResults;
 @property (retain, nonatomic) Radio* radio;
 @property (nonatomic, retain) NSString* searchText;
 
