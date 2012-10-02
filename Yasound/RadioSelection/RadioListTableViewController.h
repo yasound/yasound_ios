@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Radio.h"
-//#import "RefreshIndicator.h"
 #import "WheelSelectorGenre.h"
 #import "RefreshIndicatorViewController.h"
 
@@ -20,18 +19,13 @@
 
 
 @interface RadioListTableViewController : RefreshIndicatorViewController {
-//    BOOL _loadingNextPage;
     CGFloat _contentsHeight;
-//    BOOL _dragging;
     BOOL _showRank;
-//    NSDate* _freezeDate;
-//    NSTimer* _freezeTimeout;
 }
 
 @property (nonatomic, retain) NSURL* url;
 
 @property (nonatomic, retain) id<RadioListDelegate> listDelegate;
-//@property (nonatomic, retain) UITableView* tableView;
 
 @property (nonatomic, retain) NSMutableArray* radios;
 @property (nonatomic) NSInteger radiosPreviousCount;
@@ -41,8 +35,6 @@
 @property (nonatomic) NSInteger delayTokens;
 @property (nonatomic) CGFloat delay;
 
-//@property (nonatomic, retain) RefreshIndicator* refreshIndicator;
-//@property (nonatomic) BOOL showRefreshIndicator;
 
 @property (nonatomic, retain) WheelSelectorGenre* genreSelector;
 @property (nonatomic) BOOL showGenreSelector;

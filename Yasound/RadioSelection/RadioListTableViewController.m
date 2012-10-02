@@ -12,7 +12,6 @@
 #import "InviteFriendsTableViewCell.h"
 #import "Theme.h"
 #import "RootViewController.h"
-//#import "UIViewController+RefreshIndicator.h"
 
 
 
@@ -31,30 +30,6 @@
 @synthesize friendsMode;
 @synthesize delayTokens;
 @synthesize delay;
-
-//@synthesize refreshIndicator;
-
-
-// UIViewController+RefreshIndicator
-//@synthesize dragging;
-//@synthesize loadingNextPage;
-//@synthesize refreshIndicator;
-//@synthesize showRefreshIndicator;
-//
-//@synthesize freezeDate;
-//@synthesize freezeTimeout;
-//
-//@synthesize refreshIndicatorDelegate;
-
-//@dynamic dragging;
-//@dynamic loadingNextPage;
-//@dynamic refreshIndicator;
-//@dynamic showRefreshIndicator;
-//
-//@dynamic freezeDate;
-//@dynamic freezeTimeout;
-//
-//@dynamic refreshIndicatorDelegate;
 
 
 
@@ -95,8 +70,6 @@
         self.friendsMode = NO;
         
         
-//        self.refreshIndicatorDelegate = self;
-
         if (self.showGenreSelector) {
             
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGenreSelected:) name:NOTIF_GENRE_SELECTED object:nil];
@@ -106,14 +79,6 @@
             [self.genreSelector initWithTheme:@"Genre"];
 
 
-
-//            if (self.url != nil) {
-//                NSString* genre = [[UserSettings main] objectForKey:self.url];
-//                if (genre != nil) {
-//                    [self openGenreSelector];
-//                }
-//            }
-            
         }
         
 
@@ -149,7 +114,6 @@
     
     if (self.showGenreSelector) {
         [self tutorial];
-        //        [self.genreSelector open];
     }
 
     if (self.url != nil) {
@@ -164,9 +128,6 @@
     [self.tableView reloadData];
     
     DLog(@"setRadios verif self.radios.count %d", self.radios.count);
-    
-//    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
-    
 }
 
 
@@ -210,27 +171,11 @@
 
 - (void)appendRadios:(NSArray*)radios
 {
-    DLog(@"appendRadios add %d radios   to existing radios %d", radios.count, self.radios.count);
+//    DLog(@"appendRadios add %d radios   to existing radios %d", radios.count, self.radios.count);
     assert(self.radios);
     
-//    NSLog(@"\n\nAPPEND RADIO\n");
-//    for (Radio* r in radios) {
-//        NSLog(@"radio '%@'", r.name);
-//    }
-//    NSLog(@"\n\n");
-
     [self.radios addObjectsFromArray:radios];
 
-//    [newRadios addObjectsFromArray:radios];
-//    self.radios = newRadios;
-//    _radios = newRadios;
-//    [_radios retain];
-    
-    DLog(@"appendRadios verif self.radios.count %d", self.radios.count);
-
-
-//    if (!_dragging)
-//        [self.tableView reloadData];
     [self unfreeze];
 }
 
@@ -239,68 +184,9 @@
 {
     [super viewDidLoad];
     
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-//    self.nextPageView = [[UIView alloc] initWithFrame:CGRectMake(0, _contentsHeight-62, self.view.frame.size.width, 62)];
-//    self.nextPageView = [[UIView alloc] initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 62)];
-//    self.nextPageView.backgroundColor = [UIColor redColor];
-//    [self.view addSubview:self.nextPageView];
-////    [self.view sendSubviewToBack:self.nextPageView];
-////    [self.view sendSubviewToBack:self.tableView];
-//    self.nextPageView.hidden = NO;
-    
-//    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
-//    [self.view addSubview:self.tableView];
-//    self.tableView.delegate = self;
-//    self.tableView.dataSource = self;
-//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    
-//    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
-//    
-//    self.nextPageView = [[UIView alloc] initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 62)];
-//    self.nextPageView.backgroundColor = [UIColor redColor];
-//    [self.view addSubview:self.nextPageView];
-//    //    [self.view sendSubviewToBack:self.nextPageView];
-//    //    [self.view sendSubviewToBack:self.tableView];
-//    self.nextPageView.hidden = NO;
 }
 
 
-//- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
-//    
-//}
-
-//-(void) drawCABackgroundLayer: (CALayer*) layer inContext: (CGContextRef) context
-//{
-//    UIGraphicsPushContext(context);
-//    
-//    CGRect contentRect = [layer bounds];
-//    
-////    UIImage *bgImage = [[ImageCacheController sharedImageCache] imageFromCache: GENERIC_BGIMAGE_FILENAME];
-////    
-////    [bgImage drawInRect: CGRectMake(contentRect.origin.x, contentRect.origin.y, contentRect.size.width, contentRect.size.height)];
-//    
-////    [self.nextPageView draw]
-//    
-//    NSLog(@"DEBUG");
-//    
-//    UIActivityIndicatorView* indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    [indicatorView setFrame:CGRectMake(0, 0, 16, 16)];
-//    [indicatorView setHidesWhenStopped:YES];
-//    [indicatorView startAnimating];
-//    [self.view addSubview:indicatorView];
-//    
-//    UIGraphicsPopContext();
-//}
-////- (void)updateNextPageView {
-//
-//    self.nextPageView.frame = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 88)];
-//}
 
 
                          
@@ -380,25 +266,6 @@
     return 156.f;
 }
 
-
-
-
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-//{
-////	UIImage *myImage = [UIImage imageNamed:@"bluebar.png"];
-////    UIImageView *imageView = [[[UIImageView alloc] initWithImage:myImage] autorelease];
-////    imageView.frame = CGRectMake(10,10,300,100);
-////    return imageView;
-//    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 88)];
-//    view.backgroundColor = [UIColor redColor];
-//    return view;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//    return 10;
-//}
-//
 
 
 
@@ -540,50 +407,6 @@
 
 
 
-//- (void)cellFadeIn:(NSTimer*)timer
-//{
-//    RadioListTableViewCell* cell = timer.userInfo;
-//    cell
-//}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -611,46 +434,10 @@
 
     [super scrollViewDidScroll:scrollView];
     
-//    if (!self.showRefreshIndicator)
-//        return;
-    
-    //
-    // Refresh Indicator
-    //
-//    if (!self.showRefreshIndicator)
-//        [self refreshIndicator_scrollViewDidScroll:scrollView];
-
-//    if (self.refreshIndicator.status != eStatusOpened) {
-//
-//        float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
-//
-//        // close it
-//        if (bottomEdge < (scrollView.contentSize.height + self.refreshIndicator.height/2.f)) {
-//            
-//            if (self.refreshIndicator.status == eStatusPulled)
-//                [self.refreshIndicator close];
-//        }
-//        
-//        // pull it out
-//        else if (_dragging && (self.refreshIndicator.status == eStatusClosed) && (bottomEdge >= (scrollView.contentSize.height + self.refreshIndicator.height/2.f))) {
-//            
-//            [self.refreshIndicator pull];
-//        }
-//
-//        // open it entirely
-//        else if (_dragging && (self.refreshIndicator.status == eStatusPulled) &&  (bottomEdge >= (scrollView.contentSize.height + self.refreshIndicator.height))) {
-//            
-//            [self.refreshIndicator open];
-//        }
-//    }
-    
-    
     //
     // Genre Selector
     //
     if (self.genreSelector.status == eGenreStatusClosed) {
-        
-//        NSLog(@"%.2f < %.2f",scrollView.contentOffset.y, self.genreSelector.frame.size.height );
         
         if (self.dragging && (scrollView.contentOffset.y < (0-self.genreSelector.frame.size.height))) {
             self.genreSelector.status = eGenreStatusPulled;
@@ -668,7 +455,6 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
 
     [super scrollViewWillBeginDragging:scrollView];
-//    self.dragging = YES;
 
 }
 
@@ -678,46 +464,6 @@
 
     [super scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
     
-//    self.dragging = NO;
-//    
-//    if (self.showRefreshIndicator)
-//        [self refreshIndicator_scrollViewDidEndDragging:scrollView];
-//    
-//    if ((self.refreshIndicator.status == eStatusOpened) && !self.loadingNextPage) {
-//        
-//        
-//        // request next page to the server
-//        self.loadingNextPage = [self.listDelegate listRequestNextPage];
-//    }
-    
-    
-//    {
-//
-//        if (self.refreshIndicator.status == eStatusWaitingToClose) {
-//            [self unfreeze];
-//        }
-//        
-//        else if ((self.refreshIndicator.status == eStatusOpened) && !_loadingNextPage) {
-//
-//            [self.refreshIndicator openedAndRelease];
-//            
-//            [self freeze];
-//            
-//            
-//            // request next page to the server
-//            _loadingNextPage = [self.listDelegate listRequestNextPage];
-//            
-//            //LBDEBUG
-//            NSLog(@"loadingNextPage %d : listRequestNextPage", _loadingNextPage);
-//
-//            
-//            if (!_loadingNextPage)
-//                [self unfreeze];
-//
-//        }
-//        
-//    }
-
 
     if (self.showGenreSelector) {
         
@@ -782,130 +528,6 @@
 }
 
 
-//- (void)refreshIndicatorFreeze {
-//    
-//    [self.tableView setContentSize: CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + self.refreshIndicator.height)];
-//}
-
-
-//- (void)refreshIndicatorUnfreezeFinished {
-//    
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.2];
-//    [UIView setAnimationDelegate:self];
-//    [UIView setAnimationDidStopSelector:@selector(unfreezeAnimationStoped:finished:context:)];
-//    
-//    self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height - self.refreshIndicator.height);
-//    [UIView commitAnimations];
-//
-//}
-//
-//- (void)unfreezeAnimationStoped:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
-//    
-//    if (!self.showRefreshIndicator)
-//        return;
-//    
-//    [self.tableView reloadData];
-//    
-//    NSLog(@"contentOffset.y  %.2f     rame.size.height %.2f => offset %.2f     (contentSize %.2f x %.2f)", self.tableView.contentOffset.y , self.tableView.frame.size.height, self.tableView.contentOffset.y + self.tableView.frame.size.height, self.tableView.contentSize.width, self.tableView.contentSize.height);
-//    
-//    
-//    //    CGFloat newY = self.tableView.contentOffset.y + self.tableView.frame.size.height;
-//    CGFloat newY = self.tableView.contentSize.height - self.tableView.frame.size.height;
-//    
-//    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, newY) animated:YES];
-//}
-//
-
-//
-//
-//- (void)freeze {
-//    
-//    if (!self.showRefreshIndicator)
-//        return;
-//    
-//    
-//    _freezeDate = [NSDate date];
-//    [_freezeDate retain];
-//    
-//    _freezeTimeout = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(freezeTimeout:) userInfo:nil repeats:NO];
-//
-//    [self.tableView setContentSize: CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + self.refreshIndicator.height)];
-//}
-//
-//
-//- (void)freezeTimeout:(NSTimer*)timer {
-//    
-//    _freezeTimeout = nil;
-//    
-//    [self unfreeze];
-//}
-//
-//
-//- (void)unfreeze {
-//    
-//    if (!self.showRefreshIndicator)
-//        return;
-//    
-//    [_freezeTimeout invalidate];
-//    _freezeTimeout = nil;
-//    
-//    if (_dragging) {
-//        self.refreshIndicator.status = eStatusWaitingToClose;
-//        return;
-//    }
-//    
-//    if (!_loadingNextPage)
-//        return;
-//
-//    _dragging = NO;
-//    _loadingNextPage = NO;
-//    
-//    NSDate* now = [NSDate date];
-//    NSTimeInterval interval = [now timeIntervalSinceDate:_freezeDate];
-//    
-//    if (interval < 1)
-//        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(unfreezeFinish) userInfo:nil repeats:NO];
-//    else
-//        [self unfreezeFinish];
-//}
-//
-//- (void)unfreezeFinish {
-//    
-//    if (!self.showRefreshIndicator)
-//        return;
-//
-//    [self.refreshIndicator close];
-//    
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.2];
-//    [UIView setAnimationDelegate:self];
-//    [UIView setAnimationDidStopSelector:@selector(unfreezeAnimationStoped:finished:context:)];
-//    
-//    self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height - self.refreshIndicator.height);
-//    [UIView commitAnimations];
-//    
-//}
-//
-//
-//- (void)unfreezeAnimationStoped:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
-//    
-//    if (!self.showRefreshIndicator)
-//        return;
-//
-//    [self.tableView reloadData];
-//    
-//    NSLog(@"contentOffset.y  %.2f     rame.size.height %.2f => offset %.2f     (contentSize %.2f x %.2f)", self.tableView.contentOffset.y , self.tableView.frame.size.height, self.tableView.contentOffset.y + self.tableView.frame.size.height, self.tableView.contentSize.width, self.tableView.contentSize.height);
-//    
-//    
-////    CGFloat newY = self.tableView.contentOffset.y + self.tableView.frame.size.height;
-//    CGFloat newY = self.tableView.contentSize.height - self.tableView.frame.size.height;
-//    
-//    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, newY) animated:YES];
-//}
-//
-
-
 
 #pragma mark - Notifications
 
@@ -921,8 +543,6 @@
     else
         [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
 
-//    else
-//        [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
     
 }
 
