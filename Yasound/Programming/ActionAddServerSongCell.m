@@ -40,8 +40,12 @@
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.cell" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIImageView* background = [sheet makeImage];
+        [self addSubview:background];
+        
         // button "add to upload list"
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.add" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Programming.add" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.button = [sheet makeButton];
         [self.button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];

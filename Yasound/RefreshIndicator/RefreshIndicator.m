@@ -27,7 +27,7 @@
 //        self.icon = [sheet makeImage];
 //        [self addSubview:self.icon];
         
-        self.hidden = YES;
+//        self.hidden = YES;
         
         self.height = frame.size.height;
         self.status = eStatusClosed;

@@ -17,12 +17,17 @@
 
 @implementation ProgrammingSearchYasoundViewController
 
+
+#define REFRESH_INDICATOR_HEIGHT 62.f
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andRadio:(Radio*)r
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
         self.radio = r;
+        _searching = NO;
         _searchResults = nil;
     }
     return self;
@@ -32,10 +37,18 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
+    self.view.backgroundColor = [UIColor clearColor];
     
     self.searchDisplayController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
+//    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
+    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor clearColor];
+    
+//    CGRect frame = self.view.frame;
+//    frame = CGRectMake(0, frame.size.height - REFRESH_INDICATOR_HEIGHT, frame.size.width, REFRESH_INDICATOR_HEIGHT);
+//    self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:frame];
+//    self.refreshIndicator.backgroundColor = [UIColor redColor];
+//    [self.searchDisplayController.searchResultsTableView.superview addSubview:self.refreshIndicator];
 }
 
 - (void)viewDidUnload
@@ -122,8 +135,8 @@
     if (searchBar != self.searchDisplayController.searchBar)
         return;
     
-    NSString* searchText = searchBar.text;
-    DLog(@"search text: %@", searchText);
+    self.searchText = searchBar.text;
+    DLog(@"search text: %@", self.searchText);
     
     if (_searchResults)
     {
@@ -131,7 +144,20 @@
         _searchResults = nil;
         [self.searchDisplayController.searchResultsTableView reloadData];
     }
-    [[YasoundDataProvider main] searchSong:searchText count:25 offset:0 target:self action:@selector(receivedSongs:info:)];
+    
+    _searching = YES;
+    self.showRefreshIndicator = YES;
+    
+//    CGRect frame = self.searchDisplayController.searchResultsTableView.frame;
+//    frame = CGRectMake(0, frame.size.height + self.searchDisplayController.searchBar.frame.size.height - REFRESH_INDICATOR_HEIGHT, frame.size.width, REFRESH_INDICATOR_HEIGHT);
+//    self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:frame];
+//    self.refreshIndicator.backgroundColor = [UIColor redColor];
+////    [self.searchDisplayController.searchResultsTableView.superview addSubview:self.refreshIndicator];
+//    [self.searchDisplayController.searchContentsController.view addSubview:self.refreshIndicator];
+//    [self.searchDisplayController.searchContentsController.view sendSubviewToBack:self.refreshIndicator];
+    
+    _searchOffset = 0;
+    [[YasoundDataProvider main] searchSong:self.searchText count:25 offset:_searchOffset target:self action:@selector(receivedSongs:info:)];
 }
 
 - (void)receivedSongs:(NSArray*)songs info:(NSDictionary*)info
@@ -148,7 +174,18 @@
     [self.searchDisplayController.searchResultsTableView reloadData];
     
     self.searchDisplayController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
+//    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
+    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor clearColor];
+    
+    CGRect frame = self.searchDisplayController.searchResultsTableView.frame;
+    frame = CGRectMake(0, frame.size.height + self.searchDisplayController.searchBar.frame.size.height - REFRESH_INDICATOR_HEIGHT, frame.size.width, REFRESH_INDICATOR_HEIGHT);
+    self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:frame];
+    self.refreshIndicator.backgroundColor = [UIColor redColor];
+    //    [self.searchDisplayController.searchResultsTableView.superview addSubview:self.refreshIndicator];
+    [self.view addSubview:self.refreshIndicator];
+    [self.view sendSubviewToBack:self.refreshIndicator];
+//    [self.searchDisplayController.searchContentsController.view sendSubviewToBack:self.refreshIndicator];
+    
 }
 
 - (BOOL)onBackClicked
@@ -157,6 +194,44 @@
 }
 
 
+
+
+
+
+
+
+#pragma mark - UIScrollViewDelegate
+
+
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    
+//    [super scrollViewDidScroll:scrollView];
+//    
+//}
+//
+//
+//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+//    
+//    [super scrollViewWillBeginDragging:scrollView];
+//    
+//}
+//
+
+
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+//    
+//    [super scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+//}
+
+
+- (BOOL) refreshIndicatorRequest {
+    
+    [super refreshIndicatorRequest];
+    
+    _searchOffset += 25;
+    [[YasoundDataProvider main] searchSong:self.searchText count:25 offset:_searchOffset target:self action:@selector(receivedSongs:info:)];
+}
 
 
 

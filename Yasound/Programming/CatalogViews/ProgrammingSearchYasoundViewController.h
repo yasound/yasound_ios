@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "Radio.h"
+#import "RefreshIndicatorViewController.h"
 
-@interface ProgrammingSearchYasoundViewController : UIViewController <UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface ProgrammingSearchYasoundViewController : RefreshIndicatorViewController <UISearchBarDelegate, UISearchDisplayDelegate>
 {
     NSArray* _searchResults;
+    NSInteger _searchOffset;
+    BOOL _searching;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andRadio:(Radio*)r;
 
 @property (retain, nonatomic) Radio* radio;
+@property (nonatomic, retain) NSString* searchText;
 
 @end
