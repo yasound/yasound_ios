@@ -578,7 +578,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Menu.login" = "Se connecter";
 "Menu.logout" = "Se déconnecter";
 "Menu.account" = "Mon compte";
-"Menu.notifs" = "Notifications";
+"Menu.notifs" = "Gestion des notifications";
 "Menu.facebook" = "Facebook";
 "Menu.twitter" = "Twitter";
 "Menu.yasound" = "Yasound";

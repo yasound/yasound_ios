@@ -592,7 +592,7 @@
 "Menu.login" = "Login";
 "Menu.logout" = "Logout";
 "Menu.account" = "My account";
-"Menu.notifs" = "Notifications";
+"Menu.notifs" = "Manage notifications";
 "Menu.facebook" = "Facebook";
 "Menu.twitter" = "Twitter";
 "Menu.yasound" = "Yasound";
