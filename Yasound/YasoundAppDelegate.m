@@ -92,6 +92,8 @@ void SignalHandler(int sig) {
 #endif
   
   [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO animated:NO];
 
     // google analytics launcher
     NSMutableDictionary *trackerParameters =
