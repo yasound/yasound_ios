@@ -86,7 +86,7 @@
         if (self.showRefreshIndicator) {
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifNextPageCancel:) name:NOTIF_NEXTPAGE_CANCEL object:nil];
             
-            self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:CGRectMake(0, frame.size.height - REFRESH_INDICATOR_HEIGHT, self.view.frame.size.width, REFRESH_INDICATOR_HEIGHT)];
+            self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:CGRectMake(0, frame.size.height - REFRESH_INDICATOR_HEIGHT, self.view.frame.size.width, REFRESH_INDICATOR_HEIGHT) withStyle:UIActivityIndicatorViewStyleGray];
             [self.view addSubview:self.refreshIndicator];
         }
 

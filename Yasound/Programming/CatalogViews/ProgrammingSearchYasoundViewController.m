@@ -179,8 +179,8 @@
     
     CGRect frame = self.searchDisplayController.searchResultsTableView.frame;
     frame = CGRectMake(0, frame.size.height + self.searchDisplayController.searchBar.frame.size.height - REFRESH_INDICATOR_HEIGHT, frame.size.width, REFRESH_INDICATOR_HEIGHT);
-    self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:frame];
-    self.refreshIndicator.backgroundColor = [UIColor redColor];
+    self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:frame withStyle:UIActivityIndicatorViewStyleWhite];
+//    self.refreshIndicator.backgroundColor = [UIColor redColor];
     //    [self.searchDisplayController.searchResultsTableView.superview addSubview:self.refreshIndicator];
     [self.view addSubview:self.refreshIndicator];
     [self.view sendSubviewToBack:self.refreshIndicator];

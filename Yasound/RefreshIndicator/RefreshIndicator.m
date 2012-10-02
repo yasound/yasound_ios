@@ -13,13 +13,15 @@
 @synthesize label;
 @synthesize height;
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame withStyle:(UIActivityIndicatorViewStyle)style
 {
     if (self = [super initWithFrame:frame])
     {
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RefreshIndicator.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.label = [sheet makeLabel];
         [self addSubview:self.label];
+        
+        _style = style;
         
         self.backgroundColor = [UIColor clearColor];
         
@@ -104,7 +106,7 @@
 
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RefreshIndicator.iconLoading" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:_style];
     self.indicator.frame = sheet.frame;
     [self addSubview:self.indicator];
     

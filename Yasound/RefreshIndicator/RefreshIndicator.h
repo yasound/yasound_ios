@@ -20,6 +20,7 @@ typedef enum {
 @interface RefreshIndicator : UIView
 {
     NSTimer* _timer;
+    UIActivityIndicatorViewStyle _style;
 }
 
 @property (nonatomic, retain) UILabel* label;
@@ -28,7 +29,7 @@ typedef enum {
 @property (nonatomic, retain) UIActivityIndicatorView* indicator;
 @property (nonatomic) RefreshIndicatorStatus status;
 
-- (id)initWithFrame:(CGRect)frame;
+- (id)initWithFrame:(CGRect)frame withStyle:(UIActivityIndicatorViewStyle)style;
 
 - (void)pull;
 - (void)open;
