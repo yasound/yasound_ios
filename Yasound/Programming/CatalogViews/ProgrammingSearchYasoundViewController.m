@@ -264,6 +264,47 @@
 
 
 
+- (void)refreshIndicatorDidFreeze {
+    
+    [super refreshIndicatorDidFreeze];
+    [self.searchDisplayController.searchResultsTableView setContentSize: CGSizeMake(self.searchDisplayController.searchResultsTableView.contentSize.width, self.searchDisplayController.searchResultsTableView.contentSize.height + self.refreshIndicator.height)];
+}
+
+
+
+- (void)refreshIndicatorDidUnfreeze {
+    
+    [super refreshIndicatorDidUnfreeze];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.2];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(unfreezeAnimationStoped:finished:context:)];
+    
+    self.searchDisplayController.searchResultsTableView.contentSize = CGSizeMake(self.searchDisplayController.searchResultsTableView.contentSize.width, self.searchDisplayController.searchResultsTableView.contentSize.height - self.refreshIndicator.height);
+    [UIView commitAnimations];
+    
+}
+
+
+- (void)unfreezeAnimationStoped:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+    
+    if (!self.showRefreshIndicator)
+        return;
+    
+    [self.searchDisplayController.searchResultsTableView reloadData];
+    
+    NSLog(@"contentOffset.y  %.2f     rame.size.height %.2f => offset %.2f     (contentSize %.2f x %.2f)", self.searchDisplayController.searchResultsTableView.contentOffset.y , self.searchDisplayController.searchResultsTableView.frame.size.height, self.searchDisplayController.searchResultsTableView.contentOffset.y + self.searchDisplayController.searchResultsTableView.frame.size.height, self.searchDisplayController.searchResultsTableView.contentSize.width, self.searchDisplayController.searchResultsTableView.contentSize.height);
+    
+    
+    //    CGFloat newY = self.searchDisplayController.searchResultsTableView.contentOffset.y + self.searchDisplayController.searchResultsTableView.frame.size.height;
+    CGFloat newY = self.searchDisplayController.searchResultsTableView.contentSize.height - self.searchDisplayController.searchResultsTableView.frame.size.height;
+    
+    [self.searchDisplayController.searchResultsTableView setContentOffset:CGPointMake(self.searchDisplayController.searchResultsTableView.contentOffset.x, newY) animated:YES];
+}
+
+
+
 
 
 @end

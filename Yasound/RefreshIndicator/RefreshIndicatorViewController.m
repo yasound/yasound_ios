@@ -93,7 +93,7 @@
             
             [self.refreshIndicator openedAndRelease];
             
-            [self freeze];
+            [self refreshIndicatorDidFreeze];
             
             
             BOOL res = [self refreshIndicatorRequest];
@@ -124,7 +124,7 @@
 
 
 
-- (void)freeze {
+- (void)refreshIndicatorDidFreeze {
     
     if (!self.showRefreshIndicator)
         return;
@@ -138,7 +138,7 @@
     self.freezeTimeout = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(freezeTimeout:) userInfo:nil repeats:NO];
     
 //    [self.refreshIndicatorDelegate refreshIndicatorFreeze];
-    [self.tableView setContentSize: CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + self.refreshIndicator.height)];
+//    [self.tableView setContentSize: CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + self.refreshIndicator.height)];
 }
 
 
@@ -186,34 +186,40 @@
     [self.refreshIndicator close];
     
 //    [self.refreshIndicatorDelegate refreshIndicatorUnfreeze];
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.2];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(unfreezeAnimationStoped:finished:context:)];
-    
-    self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height - self.refreshIndicator.height);
-    [UIView commitAnimations];
-    
+    [self refreshIndicatorDidUnfreeze];
+}
+
+- (void)refreshIndicatorDidUnfreeze {
 }
 
 
-- (void)unfreezeAnimationStoped:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
-    
-    if (!self.showRefreshIndicator)
-        return;
-    
-    [self.tableView reloadData];
-    
-    NSLog(@"contentOffset.y  %.2f     rame.size.height %.2f => offset %.2f     (contentSize %.2f x %.2f)", self.tableView.contentOffset.y , self.tableView.frame.size.height, self.tableView.contentOffset.y + self.tableView.frame.size.height, self.tableView.contentSize.width, self.tableView.contentSize.height);
-    
-    
-    //    CGFloat newY = self.tableView.contentOffset.y + self.tableView.frame.size.height;
-    CGFloat newY = self.tableView.contentSize.height - self.tableView.frame.size.height;
-    
-    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, newY) animated:YES];
-}
-
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.2];
+//    [UIView setAnimationDelegate:self];
+//    [UIView setAnimationDidStopSelector:@selector(unfreezeAnimationStoped:finished:context:)];
+//    
+//    self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height - self.refreshIndicator.height);
+//    [UIView commitAnimations];
+//    
+//}
+//
+//
+//- (void)unfreezeAnimationStoped:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+//    
+//    if (!self.showRefreshIndicator)
+//        return;
+//    
+//    [self.tableView reloadData];
+//    
+//    NSLog(@"contentOffset.y  %.2f     rame.size.height %.2f => offset %.2f     (contentSize %.2f x %.2f)", self.tableView.contentOffset.y , self.tableView.frame.size.height, self.tableView.contentOffset.y + self.tableView.frame.size.height, self.tableView.contentSize.width, self.tableView.contentSize.height);
+//    
+//    
+//    //    CGFloat newY = self.tableView.contentOffset.y + self.tableView.frame.size.height;
+//    CGFloat newY = self.tableView.contentSize.height - self.tableView.frame.size.height;
+//    
+//    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, newY) animated:YES];
+//}
+//
 
 
 

@@ -34,5 +34,10 @@
 //@property (nonatomic, assign) id<RefreshIndicatorDelegate> refreshIndicatorDelegate;
 
 
+- (BOOL)refreshIndicatorRequest;
+- (void)refreshIndicatorDidFreeze;
+- (void)refreshIndicatorDidUnfreeze;
+
+
 
 @end
