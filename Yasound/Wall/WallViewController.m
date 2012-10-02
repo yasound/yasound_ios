@@ -1041,7 +1041,7 @@
     {
         if (buttonIndex == 1)
         {
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:nil];
             return;
         }
     }

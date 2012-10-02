@@ -344,7 +344,7 @@ enum MenuDescription
     
     if ((row == ROW_LOGIN) && !([YasoundSessionManager main].registered))
     {
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:nil];
     }
     
     else if (row == ROW_ACCOUNT)

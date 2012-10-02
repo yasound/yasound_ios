@@ -316,7 +316,7 @@
     {
         if (![YasoundSessionManager main].registered)
         {
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:nil];
             [self.popover dismissPopoverAnimated:NO];
         }
     }

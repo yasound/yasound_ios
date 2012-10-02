@@ -63,7 +63,7 @@ static YasoundReachability* _main = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REACHABILITY_CHANGED object:nil];
         
         if (_target != nil)
-            [_target performSelector:_action];
+            [_target performSelector:_action withObject:nil];
     }
 
         
@@ -153,7 +153,7 @@ static YasoundReachability* _main = nil;
             
             // network connection is back
             if (_target != nil)
-                [_target performSelector:_action];
+                [_target performSelector:_action withObject:nil];
 
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REACHABILITY_CHANGED object:nil];
             
@@ -163,9 +163,12 @@ static YasoundReachability* _main = nil;
     }
 
     
+    
     if ((r == _reachHost) && (self.hasNetwork != YR_NO))
     {
         _networkStatus = r.currentReachabilityStatus;
+
+        NSString* message = nil;
     
         if (_networkStatus != NotReachable)
         {
@@ -186,14 +189,17 @@ static YasoundReachability* _main = nil;
             
             self.isReachable = YR_NO;
 
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_host", nil) message:NSLocalizedString(@"YasoundReachability_host_no", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [av show];
-            [av release];  
+            message = NSLocalizedString(@"YasoundReachability_host_no", nil);
+//            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_host", nil) message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//            [av show];
+//            [av release];  
         }
             
             if (_target != nil)
-                [_target performSelector:_action];
-            
+                [_target performSelector:_action withObject:message];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REACHABILITY_CHANGED object:nil];
+        
             return;
     }
 }

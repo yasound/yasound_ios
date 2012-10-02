@@ -18,6 +18,7 @@
 "Navigation_confirm" = "Je confirme";
 "Navigation_OK" = "OK";
 "Navigation_Yes" = "Oui";
+"Navigation_Exit" = "Quitter";
 "Navigation_No" = "Non";
 
 "Error.generic.title" = "Oups...";
@@ -71,7 +72,7 @@
 "YasoundReachability_connection_no" = "pas de connexion Internet!";
 "YasoundReachability_connection_lost" = "connexion Internet perdue!";
 "YasoundReachability_host" = "Serveur Yasound";
-"YasoundReachability_host_no" = "impossible de joindre le serveur!";
+"YasoundReachability_host_no" = "Impossible de joindre le serveur!\nMerci de réessayer.";
 
 
 "LoginView_title" = "Yasound";

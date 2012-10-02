@@ -81,6 +81,7 @@
     BOOL _firstTime;
     
     UIAlertView* _alertWifiInterrupted;
+    UIAlertView* _alertReachabilityNo;
 }
 
 @property (nonatomic, retain) User* user;

@@ -18,6 +18,8 @@
 "Navigation_confirm" = "I confirme";
 "Navigation_OK" = "OK";
 "Navigation_Yes" = "Yes";
+"Navigation_Exit" = "Exit";
+
 "Navigation_No" = "No";
 
 "Error.generic.title" = "Oops...";
@@ -73,7 +75,7 @@
 "YasoundReachability_connection_no" = "no Internet connection!";
 "YasoundReachability_connection_lost" = "Connection lost!";
 "YasoundReachability_host" = "Yasound Server";
-"YasoundReachability_host_no" = "unable to contact the server!";
+"YasoundReachability_host_no" = "Unable to contact the server!\nLet's try again.";
 
 
 

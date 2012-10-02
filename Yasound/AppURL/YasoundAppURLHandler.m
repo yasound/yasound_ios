@@ -188,7 +188,7 @@ static YasoundAppURLHandler* _main = nil;
 {
     if ([YasoundSessionManager main].registered)
         return NO;
-    [self postNotification:NOTIF_GOTO_LOGIN];
+    [self postNotification:NOTIF_PUSH_LOGIN];
     return YES;
 }
 

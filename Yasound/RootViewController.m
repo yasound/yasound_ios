@@ -263,35 +263,46 @@
     {
         _firstTime = NO;
         
-        [[YasoundReachability main] startWithTargetForChange:self action:@selector(onReachabilityChanged)];
+        [[YasoundReachability main] startWithTargetForChange:self action:@selector(onReachabilityChanged:)];
     }
 
   [self becomeFirstResponder];
 }
 
 
-- (void)onReachabilityChanged
+- (void)onReachabilityChanged:(NSString*)message
 {
-    if (([YasoundReachability main].hasNetwork == YR_YES) && ([YasoundReachability main].isReachable == YR_YES))
-    {
-        [[YasoundReachability main] removeTarget];
+    // connection problem. do you want to retry?
+    if (([YasoundReachability main].hasNetwork != YR_YES) || ([YasoundReachability main].isReachable != YR_YES)) {
         
-        // if the user has already signed in, launch the automatic login process
-        if ([YasoundSessionManager main].registered)
-        {
-            [self automaticLoginProcess];
-        }
-        else
+        if (message) {
             
-        {
-            // get the app menu from the server, before you can proceed
-            //[[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
-        
-            // didReceivedMenuDescription will proceed to the app entry
-            
-            [self enterTheApp];
+            _alertReachabilityNo = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_host", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_OK", nil) otherButtonTitles:nil];
+            [_alertReachabilityNo show];
+            [_alertReachabilityNo release];
 
         }
+        return;
+    }
+    
+
+    [[YasoundReachability main] removeTarget];
+    
+    // if the user has already signed in, launch the automatic login process
+    if ([YasoundSessionManager main].registered)
+    {
+        [self automaticLoginProcess];
+    }
+    else
+        
+    {
+        // get the app menu from the server, before you can proceed
+        //[[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
+    
+        // didReceivedMenuDescription will proceed to the app entry
+        
+        [self enterTheApp];
+
     }
 }
 
@@ -896,7 +907,7 @@
     if (![YasoundSessionManager main].registered)
     {
         NSNumber* animated = [NSNumber numberWithBool:NO];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:animated];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:animated];
         return ;
     }
     
@@ -910,7 +921,7 @@
     if (![YasoundSessionManager main].registered)
     {
         NSNumber* animated = [NSNumber numberWithBool:NO];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:animated];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:animated];
         return ;
     }
     BOOL facebookEnabled = [[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK];
@@ -932,7 +943,7 @@
     if (![YasoundSessionManager main].registered)
     {
         NSNumber* animated = [NSNumber numberWithBool:NO];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:animated];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:animated];
         return ;
     }
     BOOL twitterEnabled = [[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER];
@@ -993,7 +1004,23 @@
     if (alertView == _alertWifiInterrupted)
     {
         _alertWifiInterrupted = nil;
+        return;
     }
+    
+    if (alertView == _alertReachabilityNo) {
+        
+        [ActivityAlertView showWithTitle:nil];
+        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onRetryTick:) userInfo:nil repeats:NO];
+        return;
+    }
+    
+}
+
+- (void)onRetryTick:(NSTimer*)timer {
+    
+    [ActivityAlertView close];
+    [[YasoundReachability main] startWithTargetForChange:self action:@selector(onReachabilityChanged:)];
+
 }
 
 
