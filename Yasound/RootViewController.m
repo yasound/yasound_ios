@@ -167,8 +167,8 @@
 
 - (void)viewDidLoad
 {
-//    if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4)
-//        self.imageBackground.image = [UIImage imageNamed:@"Default-568h@2x.png"];
+    if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4)
+        self.imageBackground.image = [UIImage imageNamed:@"commonLogoScreen-568h@2x.png"];
     
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifConnectionTimeout:) name:NOTIF_CONNECTION_TIMEOUT object:nil];
