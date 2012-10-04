@@ -7564,7 +7564,7 @@
 		BC71F582147F979700DAE4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F586147F97DA00DAE4BD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F588147F9CD900DAE4BD /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		BC71F635147FEC6F00DAE4BD /* YasoundD Radio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD Radio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC71F635147FEC6F00DAE4BD /* Radio Yasound D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Radio Yasound D.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC732629158F91C4000D6584 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
 		BC73262A158F91C4000D6584 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
 		BC784E8615D575A400C09FE0 /* TopBarSaveOrCancel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarSaveOrCancel.h; sourceTree = "<group>"; };
@@ -7596,7 +7596,7 @@
 		BC93B4AA148E68DE00A87157 /* StyleSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleSelectorViewController.h; sourceTree = "<group>"; };
 		BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleSelectorViewController.m; sourceTree = "<group>"; };
 		BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StyleSelectorViewController.xib; sourceTree = "<group>"; };
-		BC93CDEA14CF3F7A007C723F /* Yasound Radio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yasound Radio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC93CDEA14CF3F7A007C723F /* Radio Yasound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Radio Yasound.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC9601B5154997B90003AC7E /* WebPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebPageViewController.h; path = Settings/WebPageViewController.h; sourceTree = "<group>"; };
 		BC9601B6154997B90003AC7E /* WebPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebPageViewController.m; path = Settings/WebPageViewController.m; sourceTree = "<group>"; };
 		BC9601B7154997B90003AC7E /* WebPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebPageViewController.xib; path = Settings/WebPageViewController.xib; sourceTree = "<group>"; };
@@ -8141,7 +8141,7 @@
 		E5A9A3B71454DC0500EA374C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E5A9A3B91454DC0500EA374C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E5A9A3BB1454DC0500EA374C /* Yasound-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yasound-Prefix.pch"; sourceTree = "<group>"; };
-		E5F3B8F01498B88D008DD607 /* Yasound Radio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yasound Radio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5F3B8F01498B88D008DD607 /* Radio Yasound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Radio Yasound.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -10365,9 +10365,9 @@
 			isa = PBXGroup;
 			children = (
 				E5A9A3A91454DC0500EA374C /* Yasound Radio.app */,
-				BC71F635147FEC6F00DAE4BD /* YasoundD Radio.app */,
-				E5F3B8F01498B88D008DD607 /* Yasound Radio.app */,
-				BC93CDEA14CF3F7A007C723F /* Yasound Radio.app */,
+				BC71F635147FEC6F00DAE4BD /* Radio Yasound D.app */,
+				E5F3B8F01498B88D008DD607 /* Radio Yasound.app */,
+				BC93CDEA14CF3F7A007C723F /* Radio Yasound.app */,
 				BC3FA77C14E93B660055AB4A /* YasoundD.app */,
 				BC56F5E5152486AF005D1B40 /* YasoundD DEV SERVER.app */,
 				40B40AEB152EFC630050D334 /* YasoundD LOCAL SERVER.app */,
@@ -10559,7 +10559,7 @@
 			);
 			name = YasoundD;
 			productName = Yasound;
-			productReference = BC71F635147FEC6F00DAE4BD /* YasoundD Radio.app */;
+			productReference = BC71F635147FEC6F00DAE4BD /* Radio Yasound D.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BC93CCC514CF3F7A007C723F /* Yasound App Store */ = {
@@ -10579,7 +10579,7 @@
 			);
 			name = "Yasound App Store";
 			productName = Yasound;
-			productReference = BC93CDEA14CF3F7A007C723F /* Yasound Radio.app */;
+			productReference = BC93CDEA14CF3F7A007C723F /* Radio Yasound.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BCC7518915E689EF00CF7F7C /* YasoundtestD */ = {
@@ -10638,7 +10638,7 @@
 			);
 			name = "Yasound adhoc";
 			productName = Yasound;
-			productReference = E5F3B8F01498B88D008DD607 /* Yasound Radio.app */;
+			productReference = E5F3B8F01498B88D008DD607 /* Radio Yasound.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -18152,7 +18152,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "YasoundD Radio";
+				PRODUCT_NAME = "Radio Yasound D";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
@@ -18190,7 +18190,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "YasoundD Radio";
+				PRODUCT_NAME = "Radio Yasound D";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
@@ -18223,7 +18223,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
-				PRODUCT_NAME = "Yasound Radio";
+				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "B1A71538-5BCA-4527-AB6A-105BB99E2EF4";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -18255,7 +18255,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
-				PRODUCT_NAME = "Yasound Radio";
+				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "B1A71538-5BCA-4527-AB6A-105BB99E2EF4";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -18477,7 +18477,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
-				PRODUCT_NAME = "Yasound Radio";
+				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "CE70886E-3FD2-4F4F-B602-93EFB29D8139";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CE70886E-3FD2-4F4F-B602-93EFB29D8139";
 				WRAPPER_EXTENSION = app;
@@ -18510,7 +18510,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
-				PRODUCT_NAME = "Yasound Radio";
+				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "CE70886E-3FD2-4F4F-B602-93EFB29D8139";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CE70886E-3FD2-4F4F-B602-93EFB29D8139";
 				WRAPPER_EXTENSION = app;
