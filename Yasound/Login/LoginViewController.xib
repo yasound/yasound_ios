@@ -43,6 +43,7 @@
 						<int key="NSvFlags">290</int>
 						<string key="NSFrameSize">{320, 44}</string>
 						<reference key="NSSuperview" ref="620316837"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="979615432"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -55,6 +56,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 44}, {320, 416}}</string>
 						<reference key="NSSuperview" ref="620316837"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="599785467"/>
 						<string key="NSReuseIdentifierKey">_NS:567</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -69,6 +71,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{16, 251}, {291, 45}}</string>
 						<reference key="NSSuperview" ref="620316837"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="94336076"/>
 						<string key="NSReuseIdentifierKey">_NS:225</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -106,6 +109,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{58, 251}, {226, 44}}</string>
 						<reference key="NSSuperview" ref="620316837"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="814006387"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -133,6 +137,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{16, 331}, {292, 46}}</string>
 						<reference key="NSSuperview" ref="620316837"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="741069440"/>
 						<string key="NSReuseIdentifierKey">_NS:225</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -157,6 +162,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{58, 331}, {226, 44}}</string>
 						<reference key="NSSuperview" ref="620316837"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="162292384"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -181,6 +187,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{16, 196}, {289, 44}}</string>
 						<reference key="NSSuperview" ref="620316837"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="925192010"/>
 						<string key="NSReuseIdentifierKey">_NS:225</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -205,6 +212,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{58, 195}, {226, 44}}</string>
 						<reference key="NSSuperview" ref="620316837"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="120389532"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -229,6 +237,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 406}, {280, 15}}</string>
 						<reference key="NSSuperview" ref="620316837"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -255,8 +264,9 @@
 					<object class="IBUIImageView" id="599785467">
 						<reference key="NSNextResponder" ref="620316837"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{35, 100}, {249, 49}}</string>
+						<string key="NSFrame">{{92, 61}, {137, 108}}</string>
 						<reference key="NSSuperview" ref="620316837"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="87830494"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -269,6 +279,7 @@
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="520566559"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -415,7 +426,6 @@
 						<reference key="object" ref="620316837"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="979615432"/>
-							<reference ref="599785467"/>
 							<reference ref="87830494"/>
 							<reference ref="120389532"/>
 							<reference ref="814006387"/>
@@ -424,6 +434,7 @@
 							<reference ref="741069440"/>
 							<reference ref="520566559"/>
 							<reference ref="94336076"/>
+							<reference ref="599785467"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">LoginViewController</string>
@@ -647,7 +658,7 @@
 			<string key="loginBtnFacebook.png">{289, 44}</string>
 			<string key="loginBtnTwitter.png">{291, 45}</string>
 			<string key="loginBtnYasound.png">{292, 46}</string>
-			<string key="loginLogoYasoundLarge.png">{249, 49}</string>
+			<string key="loginLogoYasoundLarge.png">{213, 168}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1926</string>
 	</data>
