@@ -34,6 +34,8 @@
 #import "InviteContactsViewController.h"
 #import "InviteFacebookFriendsViewController.h"
 #import "InviteTwitterFriendsViewController.h"
+#import "AccountYasoundViewController.h"
+#import "NotificationCenterViewController.h"
 
 
 
@@ -201,6 +203,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoFavorites:) name:NOTIF_GOTO_FAVORITES object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadios:) name:NOTIF_GOTO_MYRADIOS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoGifts:) name:NOTIF_GOTO_GIFTS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoNotifications:) name:NOTIF_GOTO_NOTIFICATIONS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoProfil:) name:NOTIF_GOTO_PROFIL object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoEditProfile:) name:NOTIF_GOTO_EDIT_PROFIL object:nil];
     
@@ -213,13 +216,16 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoTwitterAssociation:) name:NOTIF_GOTO_TWITTER_ASSOCIATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoFacebookAssociation:) name:NOTIF_GOTO_FACEBOOK_ASSOCIATION object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoYasoundAssociation:) name:NOTIF_GOTO_YASOUND_ASSOCIATION object:nil];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoWebPageView:) name:NOTIF_GOTO_WEB_PAGE_VIEW object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoRadioProgramming:) name:NOTIF_GOTO_RADIO_PROGRAMMING object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoRadioStats:) name:NOTIF_GOTO_RADIO_STATS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoCreateRadio:) name:NOTIF_GOTO_CREATE_RADIO object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoFriends:) name:NOTIF_GOTO_FRIENDS object:nil];
     
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifInviteContacts:) name:NOTIF_INVITE_CONTACTS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifInviteFacebook:) name:NOTIF_INVITE_FACEBOOK object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifInviteTwitter:) name:NOTIF_INVITE_TWITTER object:nil];
@@ -817,6 +823,15 @@
 }
 
 
+- (void)onNotifGotoNotifications:(NSNotification*)notification
+{
+    NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
+
+
 - (void)onNotifGotoProfil:(NSNotification*)notification
 {
     DLog(@"onNotifGotoProfil");
@@ -874,6 +889,14 @@
     [view release];
 }
 
+
+- (void)onNotifGotoYasoundAssociation:(NSNotification *)notification
+{
+    AccountYasoundViewController* view = [[AccountYasoundViewController alloc] initWithNibName:@"AccountYasoundViewController" bundle:nil];
+    [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
+    [view release];
+}
+
 - (void)onNotifGotoWebPageView:(NSNotification *)notification
 {
     NSURL* url = notification.object;
@@ -904,6 +927,13 @@
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
+
+
+- (void)onNotifGotoFriends:(NSNotification *)notification
+{
+    [self onNotifInviteContacts:notification];
+}
+
 
 
 - (void)onNotifGotoEditProfile:(NSNotification*)notification

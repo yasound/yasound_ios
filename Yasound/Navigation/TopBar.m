@@ -556,9 +556,7 @@
     
     else if (itemId == TopBarItemNotif)
     {
-        NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
-        [APPDELEGATE.navigationController pushViewController:view animated:YES];
-        [view release];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_NOTIFICATIONS object:nil];
     }
         
     else if (itemId == TopBarItemSettings)
