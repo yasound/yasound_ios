@@ -1046,17 +1046,15 @@ static YasoundSessionManager* _main = nil;
         return nil;
     }
     
-    NSLocale* enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    NSLocale* enUSPOSIXLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease];
     
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
     [dateFormatter setLocale:enUSPOSIXLocale];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
     NSString* datestr = [dateFormatter stringFromDate:date];
     NSString* ts = [[NSString alloc] initWithString:datestr];
 
-    [dateFormatter release];
-    [enUSPOSIXLocale release];
     return ts;
 }
 
@@ -1093,8 +1091,6 @@ static YasoundSessionManager* _main = nil;
     
     
     [date retain];
-//    [dateFormatter release];
-//    [enUSPOSIXLocale release];
     return date;
 }
 
