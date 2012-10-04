@@ -70,6 +70,12 @@ static UserSettings* _main;
     NSNumber* nb = [[NSUserDefaults standardUserDefaults] valueForKey:key];
     if (nb == nil)
     {
+        if ([key isEqualToString:USKEYuserWantsHd]) {
+            [self setBool:YES forKey:USKEYuserWantsHd];
+            return YES;
+        }
+        
+        
         if (error != nil)
             *error = YES;
         return NO;
