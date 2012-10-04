@@ -198,6 +198,7 @@
 						<string key="NSFrame">{{28, 220}, {286, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -226,7 +227,7 @@
 					<object class="IBUIImageView" id="825836685">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 90}, {320, 3}}</string>
+						<string key="NSFrame">{{0, 90}, {320, 6}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="611964618"/>
@@ -235,7 +236,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">shareShadow.png</string>
+							<string key="NSResourceName">commonClientShadow.png</string>
 						</object>
 					</object>
 				</array>
@@ -525,9 +526,9 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="commonClientShadow.png">{320, 6}</string>
 			<string key="nowPlayingBkg.png">{320, 46}</string>
 			<string key="nowPlayingMask.png">{39, 46}</string>
-			<string key="shareShadow.png">{320, 3}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1926</string>
 	</data>
