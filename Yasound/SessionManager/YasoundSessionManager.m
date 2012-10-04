@@ -1072,6 +1072,26 @@ static YasoundSessionManager* _main = nil;
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
     NSDate* date = [dateFormatter dateFromString:string];
+    
+    //LBDEBUG anti-bug iOS 6
+    NSString* verif = [dateFormatter stringFromDate:date];
+    if ([verif isEqualToString:@"2001-01-01 01:00:00"]) {
+
+        DLog(@"iOS6 NSDateFormatter antibug.");
+
+        NSDateComponents *comps = [[[NSDateComponents alloc] init] autorelease];
+        [comps setSecond:0];
+        [comps setMinute:0];
+        [comps setHour:1];
+        [comps setDay:1];
+        [comps setMonth:1];
+        [comps setYear:4001];
+        date = [[NSCalendar currentCalendar] dateFromComponents:comps];
+    }
+
+    ////////////////////////
+    
+    
     [date retain];
 //    [dateFormatter release];
 //    [enUSPOSIXLocale release];
