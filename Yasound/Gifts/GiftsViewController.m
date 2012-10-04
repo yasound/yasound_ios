@@ -309,7 +309,7 @@
         Gift* gift = [self.gifts objectAtIndex:indexPath.row];
         if (![gift canBeWon])
             return;
-        [self.popover dismissPopoverAnimated:NO];
+        [self.popover dismissPopoverAnimated:YES];
         [gift doAction];
     }
     else if (indexPath.section == SECTION_PROMO)
@@ -317,7 +317,7 @@
         if (![YasoundSessionManager main].registered)
         {
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:nil];
-            [self.popover dismissPopoverAnimated:NO];
+            [self.popover dismissPopoverAnimated:YES];
         }
     }
     
