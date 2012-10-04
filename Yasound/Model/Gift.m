@@ -9,9 +9,9 @@
 #import "Gift.h"
 #import "YasoundDataProvider.h"
 #import "RootViewController.h"
-#import <MediaPlayer/MediaPlayer.h>
-
-
+//#import <MediaPlayer/MediaPlayer.h>
+#import "YasoundAppDelegate.h"
+//#import "WebVideoViewController.h"
 
 @implementation Gift
 
@@ -99,6 +99,8 @@
 
     [self dump];
     
+
+    
     if ([self.sku isEqualToString:GIFT_SKU_CREATE_ACCOUNT]) {
         
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:nil];
@@ -129,10 +131,9 @@
         
     }
     else if ([self.sku isEqualToString:GIFT_SKU_WATCH_TUTORIAL]) {
-        
+
         NSURL* url = [NSURL URLWithString:self.action_url_ios];
-        MPMoviePlayerViewController* playerv = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
-        [self presentMoviePlayerViewControllerAnimated:playerv];
+        [[UIApplication sharedApplication] openURL:url];
     }
     else if ([self.sku isEqualToString:GIFT_SKU_CREATE_RADIO]) {
         
@@ -156,11 +157,10 @@
     }
 
 
-//    NSURL* url = [NSURL URLWithString:self.action_url_ios];
 //    [[UIApplication sharedApplication] openURL:url];
     
-//    if (self.completed_url)
-//        [[YasoundDataProvider main] sendGetRequestWithURL:self.completed_url];
+    if (self.completed_url)
+        [[YasoundDataProvider main] sendGetRequestWithURL:self.completed_url];
 }
 
 @end
