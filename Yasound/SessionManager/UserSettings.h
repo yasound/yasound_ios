@@ -11,7 +11,8 @@
 #define USKEYnowPlaying @"NowPlaying"
 
 #define USKEYfacebookAccessTokenKey @"FBAccessTokenKey"
-#define USKEYfacebookExpirationDateKey @"FBExpirationDateKey"
+#define USKEYfacebookExpirationDateKey_deprecated @"FBExpirationDateKey"
+#define USKEYfacebookExpirationDateKey @"FBExpirationDateKey2"
 
 #define USKEYtwitterAccountId @"twitterAccountIdentifier"
 #define USKEYtwitterOAuthUsername @"oauth_username"

@@ -103,6 +103,15 @@ static AudioStreamer* _gAudioStreamer = nil;
     NSURL* radiourl = [NSURL URLWithString:@"http://localhost:8888/test.mp3"];
 #else
   NSString* url = radio.stream_url;
+    
+    // add HD param if it's requested
+    BOOL hdPermission = [[YasoundDataProvider main].user permission:PERM_HD];
+    BOOL hdRequest = [[UserSettings main] boolForKey:USKEYuserWantsHd error:nil];
+    if (hdPermission && hdRequest) {
+        url = [url stringByAppendingString:@"&hd=1"];
+    }
+
+    
     NSURL* radiourl = [NSURL URLWithString:url];
     ASLog(@"radio url: %@\n", url);
 #endif

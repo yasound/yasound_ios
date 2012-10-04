@@ -66,6 +66,10 @@
 - (void)writeUserIdentity:(User*)user;
 - (void)importUserData;
 
++ (NSString*)expirationDateToString:(NSDate*)date;
++ (NSDate*)stringToExpirationDate:(NSString*)string;
+
+
 
 - (void)associateAccountYasound:(NSString*)email password:(NSString*)pword target:(id)target action:(SEL)selector automatic:(BOOL)automatic;
 - (void)associateAccountFacebook:(id)target action:(SEL)selector automatic:(BOOL)automatic;

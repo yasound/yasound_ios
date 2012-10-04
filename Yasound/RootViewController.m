@@ -54,6 +54,17 @@
 //}
 //@end
 
+
+@implementation NSDate (NSDateDebug)
+
+
+- (NSInteger)length
+{
+        DLog(@"SHOULD NOT HAPPEN ");
+        assert(0);
+}
+@end
+
 //@implementation NSDictionary (NSDictionaryDebug)
 //- (id)target
 //{

@@ -110,7 +110,10 @@ static FacebookSessionManager* _facebook = nil;
  //   [_facebookConnect authorizeWithFBAppAuth:YES safariAuth:NO];
   
     NSString* accessToken = [[UserSettings main] objectForKey:USKEYfacebookAccessTokenKey];
-    NSDate* expirationDate = [[UserSettings main] objectForKey:USKEYfacebookExpirationDateKey];
+    NSString* dateStr = [[UserSettings main] objectForKey:USKEYfacebookExpirationDateKey];
+
+    NSDate* expirationDate = [YasoundSessionManager stringToExpirationDate:dateStr];
+
     
   if (accessToken && expirationDate) 
   {
@@ -218,7 +221,10 @@ static FacebookSessionManager* _facebook = nil;
     
     NSDate* date = [_facebookConnect expirationDate];
     NSLog(@"fb expiration date %@", date);
-    [[UserSettings main] setObject:date forKey:USKEYfacebookExpirationDateKey];
+    
+    NSString* dateStr = [YasoundSessionManager expirationDateToString:date];
+
+    [[UserSettings main] setObject:dateStr forKey:USKEYfacebookExpirationDateKey];
      
   [self.delegate sessionDidLogin:YES];
 }
