@@ -113,7 +113,6 @@ static AudioStreamer* _gAudioStreamer = nil;
 
     
     NSURL* radiourl = [NSURL URLWithString:url];
-    DLog(@"radio url: %@\n", url);
 #endif
     
     if ([YasoundSessionManager main].registered)
@@ -122,6 +121,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     }
     else
     {
+        DLog(@"radio url: %@\n", url);
         [self startStreamerWithURL:radiourl];
     }
 }
