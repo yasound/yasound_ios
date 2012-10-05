@@ -190,7 +190,8 @@ static AudioStreamer* _gAudioStreamer = nil;
         return;
 
     _isPaused = YES;
-    [_gAudioStreamer stop];
+    if (_gAudioStreamer.isPlaying)
+        [_gAudioStreamer stop];
     [_gAudioStreamer release];
     _gAudioStreamer = nil;
     
@@ -291,10 +292,12 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 - (void)onAudioStreamReset:(NSNotification*)notif
 {
-    Radio* radio = self.currentRadio;
-    self.currentRadio = nil;
-    [self _startRadio:radio];
+    DLog(@"onAudioStreamReset");
     
+    Radio* radio = self.currentRadio;
+    [self stopRadio];
+    self.currentRadio = nil;
+    [self _startRadio:radio];    
 }
 
 
