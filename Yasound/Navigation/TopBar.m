@@ -355,7 +355,7 @@
         self.itemSettings.enabled = NO;
         self.itemSettingsButton.selected = NO;
         self.itemSettingsButton.enabled = NO;
-        self.itemSettingsButton.alpha = 0.5;
+        self.itemSettingsButton.hidden = YES;
         
         [self.itemSettingsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
     }
@@ -363,13 +363,9 @@
     {
         self.itemSettings.enabled = YES;
         self.itemSettingsButton.enabled = YES;
-        self.itemSettingsButton.alpha = 1;
-        [self.itemSettingsButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
+        self.itemSettingsButton.hidden = NO;
+        [self.itemSettingsButton addTarget:self action:@selector(onSettings:) forControlEvents:UIControlEventTouchUpInside];
         
-        if ([[YasoundDataProvider main].user permission:PERM_HD])
-            self.itemSettingsButton.selected = YES;
-        else
-            self.itemSettingsButton.selected = NO;
     }
 }
 
