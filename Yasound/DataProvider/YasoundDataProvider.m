@@ -2699,8 +2699,6 @@ static YasoundDataProvider* _main = nil;
     
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
     
-    DLog(@"radio authenticated url: %@\n", req.url);
-    
     [req startAsynchronous];
 }
 

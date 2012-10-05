@@ -107,9 +107,6 @@ static AudioStreamer* _gAudioStreamer = nil;
     // add HD param if it's requested
     BOOL hdPermission = [[YasoundDataProvider main].user permission:PERM_HD];
     BOOL hdRequest = [[UserSettings main] boolForKey:USKEYuserWantsHd error:nil];
-    if (hdPermission && hdRequest) {
-        url = [url stringByAppendingString:@"&hd=1"];
-    }
 
     
     NSURL* radiourl = [NSURL URLWithString:url];
@@ -155,16 +152,18 @@ static AudioStreamer* _gAudioStreamer = nil;
         finalUrlStr = [urlStr stringByAppendingFormat:@"/?token=%@", token];
     }
     
-    BOOL error;
-    BOOL wantHd = [[UserSettings main] boolForKey:USKEYuserWantsHd error:&error];
-    if (error)
-        wantHd = NO;
-    if (wantHd)
+    BOOL hdPermission = [[YasoundDataProvider main].user permission:PERM_HD];
+    BOOL hdRequest = [[UserSettings main] boolForKey:USKEYuserWantsHd error:nil];
+
+    if (hdPermission && hdRequest)
     {
-        finalUrlStr = [urlStr stringByAppendingString:@"&hd=1"];
+        finalUrlStr = [finalUrlStr stringByAppendingString:@"&hd=1"];
     }
     
     NSURL* finalRadioUrl = [NSURL URLWithString:finalUrlStr];
+    
+    DLog(@"radio authenticated url: %@\n", finalRadioUrl);
+
     [self startStreamerWithURL:finalRadioUrl];
 }
 
