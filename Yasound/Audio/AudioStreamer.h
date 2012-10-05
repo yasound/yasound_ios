@@ -32,7 +32,7 @@
 #include <AudioToolbox/AudioToolbox.h>
 
 #define NOTIF_AUDIOSTREAM_ERROR @"NOTIF_AudioStream_error"
-#define NOTIF_AUDIOSTREAM_RESET @"NOTIF_AudioStream_error"
+#define NOTIF_AUDIOSTREAM_RESET @"NOTIF_AUDIOSTREAM_RESET"
 #define NOTIF_DISPLAY_AUDIOSTREAM_ERROR @"NOTIF_DISPLAY_AudioStream_error"
 
 #define LOG_QUEUED_BUFFERS 0
