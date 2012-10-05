@@ -576,18 +576,18 @@
     if (_wallEvents.count > 0)
         wev = [_wallEvents objectAtIndex:0];
     
-    DLog(@"first event is %@ : %@", [ev wallEventTypeString], ev.start_date);
+    //DLog(@"first event is %@ : %@", [ev wallEventTypeString], ev.start_date);
     
     if (wev != nil)
-        DLog(@"first wallevent is %@ : %@", [wev wallEventTypeString], wev.start_date);
+        //DLog(@"first wallevent is %@ : %@", [wev wallEventTypeString], wev.start_date);
     
     if ((wev != nil) && [wev.start_date isLaterThan:ev.start_date])
         _latestEvent = wev;
     else
         _latestEvent = ev;
     
-    DLog(@"_latestEvent is %@ : %@", [_latestEvent wallEventTypeString], _latestEvent.start_date);
-    DLog(@"_lastWallEvent is %@ : %@", [_lastWallEvent wallEventTypeString], _lastWallEvent.start_date);
+    //DLog(@"_latestEvent is %@ : %@", [_latestEvent wallEventTypeString], _latestEvent.start_date);
+    //DLog(@"_lastWallEvent is %@ : %@", [_lastWallEvent wallEventTypeString], _lastWallEvent.start_date);
     
     // launch update timer
     if (_firstUpdateRequest)
@@ -612,7 +612,7 @@
     }
     
     
-    DLog(@"end receivedPreviousWAllEvents\n");
+    //DLog(@"end receivedPreviousWAllEvents\n");
 }
 
 
@@ -1726,7 +1726,6 @@
     if ([notification.name isEqualToString:NOTIF_DISPLAY_AUDIOSTREAM_ERROR])
     {
         [self setStatusMessage:NSLocalizedString(@"RadioView_status_message_audiostream_error", nil)];
-        DLog(@"stream error notification");
         return;
     }
     else if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_PLAY])

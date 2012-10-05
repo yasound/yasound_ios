@@ -90,7 +90,7 @@
 
 - (BOOL)permission:(NSString*)permId
 {
-    DLog(@"permission user dump :%@", [self toString]);
+    //DLog(@"permission user dump :%@", [self toString]);
     
     if ((self.permissions == nil) || (self.permissions.count == 0))
     {

@@ -113,7 +113,7 @@ static AudioStreamer* _gAudioStreamer = nil;
 
     
     NSURL* radiourl = [NSURL URLWithString:url];
-    ASLog(@"radio url: %@\n", url);
+    DLog(@"radio url: %@\n", url);
 #endif
     
     if ([YasoundSessionManager main].registered)
@@ -278,8 +278,6 @@ static AudioStreamer* _gAudioStreamer = nil;
     if ((_streamErrorTimer != nil) && [_streamErrorTimer isValid])
         return;
 
-    ASLog(@"onAudioStreamNotif");
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_DISPLAY_AUDIOSTREAM_ERROR object:nil];
 
     
