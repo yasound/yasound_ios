@@ -3355,6 +3355,42 @@
 		BCAAE1A414FBF10500B7F2B4 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		BCAAE1A514FBF10500B7F2B4 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		BCAAE1A614FBF10500B7F2B4 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
+		BCAC26F8161F207500904A72 /* mail_logo_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F4161F207500904A72 /* mail_logo_disabled.png */; };
+		BCAC26F9161F207500904A72 /* mail_logo_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F4161F207500904A72 /* mail_logo_disabled.png */; };
+		BCAC26FA161F207500904A72 /* mail_logo_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F4161F207500904A72 /* mail_logo_disabled.png */; };
+		BCAC26FB161F207500904A72 /* mail_logo_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F4161F207500904A72 /* mail_logo_disabled.png */; };
+		BCAC26FC161F207500904A72 /* mail_logo_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F4161F207500904A72 /* mail_logo_disabled.png */; };
+		BCAC26FD161F207500904A72 /* mail_logo_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F4161F207500904A72 /* mail_logo_disabled.png */; };
+		BCAC26FE161F207500904A72 /* mail_logo_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F4161F207500904A72 /* mail_logo_disabled.png */; };
+		BCAC26FF161F207500904A72 /* mail_logo_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F4161F207500904A72 /* mail_logo_disabled.png */; };
+		BCAC2700161F207500904A72 /* mail_logo_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F4161F207500904A72 /* mail_logo_disabled.png */; };
+		BCAC2701161F207500904A72 /* mail_logo_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F5161F207500904A72 /* mail_logo_disabled@2x.png */; };
+		BCAC2702161F207500904A72 /* mail_logo_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F5161F207500904A72 /* mail_logo_disabled@2x.png */; };
+		BCAC2703161F207500904A72 /* mail_logo_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F5161F207500904A72 /* mail_logo_disabled@2x.png */; };
+		BCAC2704161F207500904A72 /* mail_logo_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F5161F207500904A72 /* mail_logo_disabled@2x.png */; };
+		BCAC2705161F207500904A72 /* mail_logo_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F5161F207500904A72 /* mail_logo_disabled@2x.png */; };
+		BCAC2706161F207500904A72 /* mail_logo_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F5161F207500904A72 /* mail_logo_disabled@2x.png */; };
+		BCAC2707161F207500904A72 /* mail_logo_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F5161F207500904A72 /* mail_logo_disabled@2x.png */; };
+		BCAC2708161F207500904A72 /* mail_logo_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F5161F207500904A72 /* mail_logo_disabled@2x.png */; };
+		BCAC2709161F207500904A72 /* mail_logo_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F5161F207500904A72 /* mail_logo_disabled@2x.png */; };
+		BCAC270A161F207500904A72 /* mail_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F6161F207500904A72 /* mail_logo.png */; };
+		BCAC270B161F207500904A72 /* mail_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F6161F207500904A72 /* mail_logo.png */; };
+		BCAC270C161F207500904A72 /* mail_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F6161F207500904A72 /* mail_logo.png */; };
+		BCAC270D161F207500904A72 /* mail_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F6161F207500904A72 /* mail_logo.png */; };
+		BCAC270E161F207500904A72 /* mail_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F6161F207500904A72 /* mail_logo.png */; };
+		BCAC270F161F207500904A72 /* mail_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F6161F207500904A72 /* mail_logo.png */; };
+		BCAC2710161F207500904A72 /* mail_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F6161F207500904A72 /* mail_logo.png */; };
+		BCAC2711161F207500904A72 /* mail_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F6161F207500904A72 /* mail_logo.png */; };
+		BCAC2712161F207500904A72 /* mail_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F6161F207500904A72 /* mail_logo.png */; };
+		BCAC2713161F207500904A72 /* mail_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F7161F207500904A72 /* mail_logo@2x.png */; };
+		BCAC2714161F207500904A72 /* mail_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F7161F207500904A72 /* mail_logo@2x.png */; };
+		BCAC2715161F207500904A72 /* mail_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F7161F207500904A72 /* mail_logo@2x.png */; };
+		BCAC2716161F207500904A72 /* mail_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F7161F207500904A72 /* mail_logo@2x.png */; };
+		BCAC2717161F207500904A72 /* mail_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F7161F207500904A72 /* mail_logo@2x.png */; };
+		BCAC2718161F207500904A72 /* mail_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F7161F207500904A72 /* mail_logo@2x.png */; };
+		BCAC2719161F207500904A72 /* mail_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F7161F207500904A72 /* mail_logo@2x.png */; };
+		BCAC271A161F207500904A72 /* mail_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F7161F207500904A72 /* mail_logo@2x.png */; };
+		BCAC271B161F207500904A72 /* mail_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC26F7161F207500904A72 /* mail_logo@2x.png */; };
 		BCB0769415790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0769215790EEB00F9347C /* MessageBroadcastModalViewController.m */; };
 		BCB0769515790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0769215790EEB00F9347C /* MessageBroadcastModalViewController.m */; };
 		BCB0769615790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0769215790EEB00F9347C /* MessageBroadcastModalViewController.m */; };
@@ -7626,6 +7662,10 @@
 		BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeProfile.m; sourceTree = "<group>"; };
 		BCAAE1A014FBF10500B7F2B4 /* SongUploadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongUploadCell.h; path = Programming/SongUploadCell.h; sourceTree = "<group>"; };
 		BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongUploadCell.m; path = Programming/SongUploadCell.m; sourceTree = "<group>"; };
+		BCAC26F4161F207500904A72 /* mail_logo_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail_logo_disabled.png; sourceTree = "<group>"; };
+		BCAC26F5161F207500904A72 /* mail_logo_disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mail_logo_disabled@2x.png"; sourceTree = "<group>"; };
+		BCAC26F6161F207500904A72 /* mail_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail_logo.png; sourceTree = "<group>"; };
+		BCAC26F7161F207500904A72 /* mail_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mail_logo@2x.png"; sourceTree = "<group>"; };
 		BCB0769115790EEB00F9347C /* MessageBroadcastModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBroadcastModalViewController.h; sourceTree = "<group>"; };
 		BCB0769215790EEB00F9347C /* MessageBroadcastModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBroadcastModalViewController.m; sourceTree = "<group>"; };
 		BCB0769315790EEB00F9347C /* MessageBroadcastModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageBroadcastModalViewController.xib; sourceTree = "<group>"; };
@@ -8530,6 +8570,10 @@
 		408E75DB1611A7F400AA82F9 /* social_logos */ = {
 			isa = PBXGroup;
 			children = (
+				BCAC26F4161F207500904A72 /* mail_logo_disabled.png */,
+				BCAC26F5161F207500904A72 /* mail_logo_disabled@2x.png */,
+				BCAC26F6161F207500904A72 /* mail_logo.png */,
+				BCAC26F7161F207500904A72 /* mail_logo@2x.png */,
 				4080C37A16121C2C0037BB4F /* facebook_logo_65_disabled.png */,
 				4080C37B16121C2C0037BB4F /* facebook_logo_65_disabled@2x.png */,
 				408E761A1611BE7300AA82F9 /* facebook_logo_65.png */,
@@ -11203,6 +11247,10 @@
 				BC2215CB161DE5C300390453 /* commonClientShadow.png in Resources */,
 				BC2215D4161DE5C300390453 /* commonClientShadow@2x.png in Resources */,
 				BC221603161DF9B500390453 /* WebVideoViewController.xib in Resources */,
+				BCAC26FF161F207500904A72 /* mail_logo_disabled.png in Resources */,
+				BCAC2708161F207500904A72 /* mail_logo_disabled@2x.png in Resources */,
+				BCAC2711161F207500904A72 /* mail_logo.png in Resources */,
+				BCAC271A161F207500904A72 /* mail_logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11707,6 +11755,10 @@
 				BC2215CC161DE5C300390453 /* commonClientShadow.png in Resources */,
 				BC2215D5161DE5C300390453 /* commonClientShadow@2x.png in Resources */,
 				BC221604161DF9B500390453 /* WebVideoViewController.xib in Resources */,
+				BCAC2700161F207500904A72 /* mail_logo_disabled.png in Resources */,
+				BCAC2709161F207500904A72 /* mail_logo_disabled@2x.png in Resources */,
+				BCAC2712161F207500904A72 /* mail_logo.png in Resources */,
+				BCAC271B161F207500904A72 /* mail_logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12205,6 +12257,10 @@
 				BC2215CA161DE5C300390453 /* commonClientShadow.png in Resources */,
 				BC2215D3161DE5C300390453 /* commonClientShadow@2x.png in Resources */,
 				BC221602161DF9B500390453 /* WebVideoViewController.xib in Resources */,
+				BCAC26FE161F207500904A72 /* mail_logo_disabled.png in Resources */,
+				BCAC2707161F207500904A72 /* mail_logo_disabled@2x.png in Resources */,
+				BCAC2710161F207500904A72 /* mail_logo.png in Resources */,
+				BCAC2719161F207500904A72 /* mail_logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12708,6 +12764,10 @@
 				BC2215C7161DE5C300390453 /* commonClientShadow.png in Resources */,
 				BC2215D0161DE5C300390453 /* commonClientShadow@2x.png in Resources */,
 				BC2215FF161DF9B500390453 /* WebVideoViewController.xib in Resources */,
+				BCAC26FB161F207500904A72 /* mail_logo_disabled.png in Resources */,
+				BCAC2704161F207500904A72 /* mail_logo_disabled@2x.png in Resources */,
+				BCAC270D161F207500904A72 /* mail_logo.png in Resources */,
+				BCAC2716161F207500904A72 /* mail_logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13211,6 +13271,10 @@
 				BC2215C5161DE5C300390453 /* commonClientShadow.png in Resources */,
 				BC2215CE161DE5C300390453 /* commonClientShadow@2x.png in Resources */,
 				BC2215FD161DF9B500390453 /* WebVideoViewController.xib in Resources */,
+				BCAC26F9161F207500904A72 /* mail_logo_disabled.png in Resources */,
+				BCAC2702161F207500904A72 /* mail_logo_disabled@2x.png in Resources */,
+				BCAC270B161F207500904A72 /* mail_logo.png in Resources */,
+				BCAC2714161F207500904A72 /* mail_logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13714,6 +13778,10 @@
 				BC2215C9161DE5C300390453 /* commonClientShadow.png in Resources */,
 				BC2215D2161DE5C300390453 /* commonClientShadow@2x.png in Resources */,
 				BC221601161DF9B500390453 /* WebVideoViewController.xib in Resources */,
+				BCAC26FD161F207500904A72 /* mail_logo_disabled.png in Resources */,
+				BCAC2706161F207500904A72 /* mail_logo_disabled@2x.png in Resources */,
+				BCAC270F161F207500904A72 /* mail_logo.png in Resources */,
+				BCAC2718161F207500904A72 /* mail_logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14218,6 +14286,10 @@
 				BC2215C6161DE5C300390453 /* commonClientShadow.png in Resources */,
 				BC2215CF161DE5C300390453 /* commonClientShadow@2x.png in Resources */,
 				BC2215FE161DF9B500390453 /* WebVideoViewController.xib in Resources */,
+				BCAC26FA161F207500904A72 /* mail_logo_disabled.png in Resources */,
+				BCAC2703161F207500904A72 /* mail_logo_disabled@2x.png in Resources */,
+				BCAC270C161F207500904A72 /* mail_logo.png in Resources */,
+				BCAC2715161F207500904A72 /* mail_logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14721,6 +14793,10 @@
 				BC2215C4161DE5C300390453 /* commonClientShadow.png in Resources */,
 				BC2215CD161DE5C300390453 /* commonClientShadow@2x.png in Resources */,
 				BC2215FC161DF9B500390453 /* WebVideoViewController.xib in Resources */,
+				BCAC26F8161F207500904A72 /* mail_logo_disabled.png in Resources */,
+				BCAC2701161F207500904A72 /* mail_logo_disabled@2x.png in Resources */,
+				BCAC270A161F207500904A72 /* mail_logo.png in Resources */,
+				BCAC2713161F207500904A72 /* mail_logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15224,6 +15300,10 @@
 				BC2215C8161DE5C300390453 /* commonClientShadow.png in Resources */,
 				BC2215D1161DE5C300390453 /* commonClientShadow@2x.png in Resources */,
 				BC221600161DF9B500390453 /* WebVideoViewController.xib in Resources */,
+				BCAC26FC161F207500904A72 /* mail_logo_disabled.png in Resources */,
+				BCAC2705161F207500904A72 /* mail_logo_disabled@2x.png in Resources */,
+				BCAC270E161F207500904A72 /* mail_logo.png in Resources */,
+				BCAC2717161F207500904A72 /* mail_logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
