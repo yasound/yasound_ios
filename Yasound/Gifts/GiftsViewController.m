@@ -17,6 +17,7 @@
 #import "Theme.h"
 #import "RootViewController.h"
 #import "PromoCodeCell.h"
+#import "AudioStreamer.h"
 
 #define SECTION_COUNT 2
 #define SECTION_GIFTS 0
@@ -220,6 +221,7 @@
     [[UserSettings main] setBool:self.switchHd.on forKey:USKEYuserWantsHd];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HD_CHANGED  object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_RESET  object:nil];
 }
 
 #pragma mark - promoCodeDelegate
