@@ -190,8 +190,15 @@ static AudioStreamer* _gAudioStreamer = nil;
         return;
 
     _isPaused = YES;
-    if (_gAudioStreamer.isPlaying)
-        [_gAudioStreamer stop];
+//    if (_gAudioStreamer.isPlaying)
+
+//    DLog(@"_gAudioStreamer.isPlaying %d", _gAudioStreamer.isPlaying);
+//    DLog(@"_gAudioStreamer.isPaused %d", _gAudioStreamer.isPaused);
+//    DLog(@"_gAudioStreamer.isWaiting %d", _gAudioStreamer.isWaiting);
+//    DLog(@"_gAudioStreamer.isIdle %d", _gAudioStreamer.isIdle);
+
+    
+    [_gAudioStreamer stop];
     [_gAudioStreamer release];
     _gAudioStreamer = nil;
     
@@ -295,9 +302,14 @@ static AudioStreamer* _gAudioStreamer = nil;
     DLog(@"onAudioStreamReset");
     
     Radio* radio = self.currentRadio;
-    [self stopRadio];
-    self.currentRadio = nil;
-    [self _startRadio:radio];    
+    
+    [self pauseRadio];
+    
+    //LBDEBUG AUDIO
+
+//    [self stopRadio];
+//    self.currentRadio = nil;
+    [self _startRadio:radio];
 }
 
 
