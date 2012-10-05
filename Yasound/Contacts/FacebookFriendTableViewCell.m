@@ -16,18 +16,18 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
-        _friend = nil;
+        self.ffriend = nil;
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.textLabel.textColor = [UIColor whiteColor];
         
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"FacebookFriendCell.image" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        _image = [[WebImageView alloc] initWithFrame:sheet.frame];
-        [self addSubview:_image];
+        self.image = [[WebImageView alloc] initWithFrame:sheet.frame];
+        [self addSubview:self.image];
         
         sheet = [[Theme theme] stylesheetForKey:@"FacebookFriendCell.nameLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        _nameLabel = [sheet makeLabel];
-        [self addSubview:_nameLabel];
+        self.nameLabel = [sheet makeLabel];
+        [self addSubview:self.nameLabel];
     }
     return self;
 }
@@ -41,10 +41,20 @@
 
 - (void)updateWithFacebookFriend:(FacebookFriend*)facebookFriend
 {
-    _friend = facebookFriend;
-    _nameLabel.text = _friend.name;
+    self.ffriend = facebookFriend;
     
-    _image.url = [NSURL URLWithString:_friend.picture];
+//    NSLog(@"facebookFriend id '%@'", self.ffriend.id);
+//    NSLog(@"facebookFriend name '%@'", self.ffriend.name);
+//    NSLog(@"facebookFriend picture '%@'", self.ffriend.picture);
+    
+    self.nameLabel.text = self.ffriend.name;
+
+    NSDictionary* data = [self.ffriend.picture objectForKey:@"data"];
+    NSString* urlstr = [data objectForKey:@"url"];
+    //DLog(@"class '%@' '%@'", [urlstr class], urlstr);
+    
+    NSURL* url = [NSURL URLWithString:urlstr];
+    [self.image setUrl:url];
 }
 
 

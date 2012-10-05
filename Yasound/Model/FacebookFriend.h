@@ -12,6 +12,6 @@
 
 @property (retain, nonatomic) NSNumber* id;
 @property (retain, nonatomic) NSString* name;
-@property (retain, nonatomic) NSString* picture;
+@property (retain, nonatomic) NSDictionary* picture;
 
 @end

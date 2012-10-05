@@ -11,11 +11,10 @@
 #import "WebImageView.h"
 
 @interface FacebookFriendTableViewCell : UITableViewCell
-{
-    FacebookFriend* _friend;
-    WebImageView* _image;
-    UILabel* _nameLabel;
-}
+
+@property (nonatomic, retain) FacebookFriend* ffriend;
+@property (nonatomic, retain) WebImageView* image;
+@property (nonatomic, retain) UILabel* nameLabel;
 
 
 - (void)updateWithFacebookFriend:(FacebookFriend*)facebookFriend;
