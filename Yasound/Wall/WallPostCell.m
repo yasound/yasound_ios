@@ -22,6 +22,7 @@
 - (void)awakeFromNib
 {
     self.fixed = NO;
+    self.textfield.placeholder = NSLocalizedString(@"Wall.postBar.placeholder", nil);
     self.label.text = NSLocalizedString(@"Wall.postBar.label", nil);
 }
 

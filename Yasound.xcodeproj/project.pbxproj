@@ -1329,14 +1329,6 @@
 		BC23871E15D2B9D100D1A4C4 /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23871715D2B9D100D1A4C4 /* WallViewController.m */; };
 		BC23871F15D2B9D100D1A4C4 /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23871715D2B9D100D1A4C4 /* WallViewController.m */; };
 		BC23872015D2B9D100D1A4C4 /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23871715D2B9D100D1A4C4 /* WallViewController.m */; };
-		BC23872115D2B9D100D1A4C4 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC23871815D2B9D100D1A4C4 /* WallViewController.xib */; };
-		BC23872215D2B9D100D1A4C4 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC23871815D2B9D100D1A4C4 /* WallViewController.xib */; };
-		BC23872315D2B9D100D1A4C4 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC23871815D2B9D100D1A4C4 /* WallViewController.xib */; };
-		BC23872415D2B9D100D1A4C4 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC23871815D2B9D100D1A4C4 /* WallViewController.xib */; };
-		BC23872515D2B9D100D1A4C4 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC23871815D2B9D100D1A4C4 /* WallViewController.xib */; };
-		BC23872615D2B9D100D1A4C4 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC23871815D2B9D100D1A4C4 /* WallViewController.xib */; };
-		BC23872715D2B9D100D1A4C4 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC23871815D2B9D100D1A4C4 /* WallViewController.xib */; };
-		BC23872815D2B9D100D1A4C4 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC23871815D2B9D100D1A4C4 /* WallViewController.xib */; };
 		BC23873515D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23873415D2BE6400D1A4C4 /* WallHeaderCell.m */; };
 		BC23873615D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23873415D2BE6400D1A4C4 /* WallHeaderCell.m */; };
 		BC23873715D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23873415D2BE6400D1A4C4 /* WallHeaderCell.m */; };
@@ -3954,7 +3946,6 @@
 		BCC752AC15E689EF00CF7F7C /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C65D15CFA76F00624E76 /* MenuViewController.xib */; };
 		BCC752AD15E689EF00CF7F7C /* MyAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C77115D14C7600624E76 /* MyAccountViewController.xib */; };
 		BCC752AE15E689EF00CF7F7C /* GenderPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C7D315D2425400624E76 /* GenderPickerViewController.xib */; };
-		BCC752AF15E689EF00CF7F7C /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC23871815D2B9D100D1A4C4 /* WallViewController.xib */; };
 		BCC752B015E689EF00CF7F7C /* SchedulingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C1615D66855008C26AC /* SchedulingViewController.xib */; };
 		BCC752B115E689EF00CF7F7C /* ShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C3B15D6BD58008C26AC /* ShowViewController.xib */; };
 		BCC752B215E689EF00CF7F7C /* barItemAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E8915D7FD2E008C26AC /* barItemAdd.png */; };
@@ -6936,6 +6927,15 @@
 		E5A9A3B21454DC0500EA374C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		E5A9A3B81454DC0500EA374C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		E5A9A3BA1454DC0500EA374C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
+		E5CC57631620C4840055E5E3 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC576D1620C4840055E5E3 /* WallViewController.xib */; };
+		E5CC57641620C4840055E5E3 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC576D1620C4840055E5E3 /* WallViewController.xib */; };
+		E5CC57651620C4840055E5E3 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC576D1620C4840055E5E3 /* WallViewController.xib */; };
+		E5CC57661620C4840055E5E3 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC576D1620C4840055E5E3 /* WallViewController.xib */; };
+		E5CC57671620C4840055E5E3 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC576D1620C4840055E5E3 /* WallViewController.xib */; };
+		E5CC57681620C4840055E5E3 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC576D1620C4840055E5E3 /* WallViewController.xib */; };
+		E5CC57691620C4840055E5E3 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC576D1620C4840055E5E3 /* WallViewController.xib */; };
+		E5CC576A1620C4840055E5E3 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC576D1620C4840055E5E3 /* WallViewController.xib */; };
+		E5CC576B1620C4840055E5E3 /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC576D1620C4840055E5E3 /* WallViewController.xib */; };
 		E5F3B8551498B88D008DD607 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
 		E5F3B8561498B88D008DD607 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		E5F3B8591498B88D008DD607 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
@@ -7326,7 +7326,6 @@
 		BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PropertyDictionary.m"; sourceTree = "<group>"; };
 		BC23871615D2B9D100D1A4C4 /* WallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallViewController.h; sourceTree = "<group>"; };
 		BC23871715D2B9D100D1A4C4 /* WallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallViewController.m; sourceTree = "<group>"; };
-		BC23871815D2B9D100D1A4C4 /* WallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WallViewController.xib; sourceTree = "<group>"; };
 		BC23873315D2BE6400D1A4C4 /* WallHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallHeaderCell.h; sourceTree = "<group>"; };
 		BC23873415D2BE6400D1A4C4 /* WallHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallHeaderCell.m; sourceTree = "<group>"; };
 		BC23873D15D2C09900D1A4C4 /* WallPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallPostCell.h; sourceTree = "<group>"; };
@@ -8181,6 +8180,7 @@
 		E5A9A3B71454DC0500EA374C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E5A9A3B91454DC0500EA374C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E5A9A3BB1454DC0500EA374C /* Yasound-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yasound-Prefix.pch"; sourceTree = "<group>"; };
+		E5CC576E1620C4BB0055E5E3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/WallViewController.xib; sourceTree = "<group>"; };
 		E5F3B8F01498B88D008DD607 /* Radio Yasound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Radio Yasound.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -8827,7 +8827,7 @@
 				BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */,
 				BC23871615D2B9D100D1A4C4 /* WallViewController.h */,
 				BC23871715D2B9D100D1A4C4 /* WallViewController.m */,
-				BC23871815D2B9D100D1A4C4 /* WallViewController.xib */,
+				E5CC576D1620C4840055E5E3 /* WallViewController.xib */,
 			);
 			path = Wall;
 			sourceTree = "<group>";
@@ -10801,7 +10801,7 @@
 				BC48C66C15CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C78015D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7E215D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC23872715D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
+				E5CC576A1620C4840055E5E3 /* WallViewController.xib in Resources */,
 				BCE35C2515D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4A15D6BD58008C26AC /* ShowViewController.xib in Resources */,
 				BCE3608615D7FD2F008C26AC /* barItemAdd.png in Resources */,
@@ -11309,7 +11309,7 @@
 				BC48C66D15CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C78115D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7E315D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC23872815D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
+				E5CC576B1620C4840055E5E3 /* WallViewController.xib in Resources */,
 				BCE35C2615D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4B15D6BD58008C26AC /* ShowViewController.xib in Resources */,
 				BCE3608715D7FD2F008C26AC /* barItemAdd.png in Resources */,
@@ -11811,7 +11811,7 @@
 				BC48C66B15CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C77F15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7E115D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC23872615D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
+				E5CC57691620C4840055E5E3 /* WallViewController.xib in Resources */,
 				BCE35C2415D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4915D6BD58008C26AC /* ShowViewController.xib in Resources */,
 				BCE3608515D7FD2F008C26AC /* barItemAdd.png in Resources */,
@@ -12318,7 +12318,7 @@
 				BC48C66815CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C77C15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7DE15D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC23872315D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
+				E5CC57661620C4840055E5E3 /* WallViewController.xib in Resources */,
 				BCE35C2115D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4615D6BD58008C26AC /* ShowViewController.xib in Resources */,
 				BCE3608215D7FD2F008C26AC /* barItemAdd.png in Resources */,
@@ -12825,7 +12825,7 @@
 				BC48C66715CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C77B15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7DD15D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC23872215D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
+				E5CC57641620C4840055E5E3 /* WallViewController.xib in Resources */,
 				BCE35C2015D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4515D6BD58008C26AC /* ShowViewController.xib in Resources */,
 				BCE3608115D7FD2F008C26AC /* barItemAdd.png in Resources */,
@@ -13332,7 +13332,7 @@
 				BC48C66A15CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C77E15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7E015D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC23872515D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
+				E5CC57681620C4840055E5E3 /* WallViewController.xib in Resources */,
 				BCE35C2315D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4815D6BD58008C26AC /* ShowViewController.xib in Resources */,
 				BCE3608415D7FD2F008C26AC /* barItemAdd.png in Resources */,
@@ -13839,7 +13839,7 @@
 				BCC752AC15E689EF00CF7F7C /* MenuViewController.xib in Resources */,
 				BCC752AD15E689EF00CF7F7C /* MyAccountViewController.xib in Resources */,
 				BCC752AE15E689EF00CF7F7C /* GenderPickerViewController.xib in Resources */,
-				BCC752AF15E689EF00CF7F7C /* WallViewController.xib in Resources */,
+				E5CC57651620C4840055E5E3 /* WallViewController.xib in Resources */,
 				BCC752B015E689EF00CF7F7C /* SchedulingViewController.xib in Resources */,
 				BCC752B115E689EF00CF7F7C /* ShowViewController.xib in Resources */,
 				BCC752B215E689EF00CF7F7C /* barItemAdd.png in Resources */,
@@ -14347,7 +14347,7 @@
 				BC48C66615CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C77A15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7DC15D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC23872115D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
+				E5CC57631620C4840055E5E3 /* WallViewController.xib in Resources */,
 				BCE35C1F15D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4415D6BD58008C26AC /* ShowViewController.xib in Resources */,
 				BCE3608015D7FD2F008C26AC /* barItemAdd.png in Resources */,
@@ -14854,7 +14854,7 @@
 				BC48C66915CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C77D15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7DF15D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC23872415D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
+				E5CC57671620C4840055E5E3 /* WallViewController.xib in Resources */,
 				BCE35C2215D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4715D6BD58008C26AC /* ShowViewController.xib in Resources */,
 				BCE3608315D7FD2F008C26AC /* barItemAdd.png in Resources */,
@@ -17968,6 +17968,14 @@
 				E5A9A3B71454DC0500EA374C /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E5CC576D1620C4840055E5E3 /* WallViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E5CC576E1620C4BB0055E5E3 /* fr */,
+			);
+			name = WallViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

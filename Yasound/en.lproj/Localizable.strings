@@ -648,6 +648,7 @@
 "Wall.header.favorite.button.add" = "Add to favorites";
 "Wall.header.favorite.button.remove" = "Remove from favorites";
 "Wall.postBar.label" = "Send";
+"Wall.postBar.placeholder" = "Enter your message";
 
 "Share.title" = "Share";
 "Share.email" = "Send an email";
