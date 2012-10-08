@@ -271,7 +271,9 @@
 
 
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
-{    
+{
+    [self hideWaitingView];
+    
     // cancel all running requests before opening a new one
     [[YasoundDataProvider main] cancelRequestsForKey:@"radios"];
     [self refreshWheelClientForIndex:itemIndex];
