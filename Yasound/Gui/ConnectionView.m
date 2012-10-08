@@ -16,6 +16,7 @@
 static ConnectionView* _main = nil;
 
 
+#define VIEW_HEIGHT 44.f
 
 + (ConnectionView*)startWithTarget:(id)target timeout:(SEL)timeout
 {
@@ -31,7 +32,7 @@ static ConnectionView* _main = nil;
     if (_main != nil)
         return _main;
     
-    _main = [[ConnectionView alloc] initWithFrame:CGRectMake(86,278, 138, 90)];
+    _main = [[ConnectionView alloc] initWithFrame:CGRectMake(0,0, 320, VIEW_HEIGHT)];
     
     return _main;
 }
@@ -92,25 +93,34 @@ static ConnectionView* _main = nil;
     self = [super initWithFrame:frame];
     if (self) 
     {
-       self.layer.masksToBounds = YES;
-        self.layer.cornerRadius = 6;
-        self.layer.borderColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.2].CGColor;
-        self.layer.borderWidth = 1.0; 
-        self.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1].CGColor;
+//       self.layer.masksToBounds = YES;
+//        self.layer.cornerRadius = 6;
+//        self.layer.borderColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.2].CGColor;
+//        self.layer.borderWidth = 1.0; 
+//        self.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1].CGColor;
         
-        _indicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(56, 18, 22, 22)];
+        self.backgroundColor = [UIColor whiteColor];
+        self.alpha = 0.25;
+        self.frame = CGRectMake(0, -VIEW_HEIGHT, self.frame.size.width, VIEW_HEIGHT);
+        
+        _indicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.frame.size.width/2.f - 22.f/2.f, VIEW_HEIGHT/2.f - 22.f/2.f, 22, 22)];
         [_indicator retain];
 		[self addSubview:_indicator];
-		_indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+		_indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
 		[_indicator startAnimating];
         
-        UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, frame.size.width, 20)];
-        label.text = NSLocalizedString(@"Connection", nil);
-        label.textColor = [UIColor whiteColor];
-        label.font = [UIFont boldSystemFontOfSize:16];
-        label.backgroundColor = [UIColor clearColor];
-        label.textAlignment = UITextAlignmentCenter;
-        [self addSubview:label];
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+        self.frame = CGRectMake(0, 0, self.frame.size.width, VIEW_HEIGHT);
+        [UIView commitAnimations];
+        
+//        UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, frame.size.width, 20)];
+//        label.text = NSLocalizedString(@"Connection", nil);
+//        label.textColor = [UIColor whiteColor];
+//        label.font = [UIFont boldSystemFontOfSize:16];
+//        label.backgroundColor = [UIColor clearColor];
+//        label.textAlignment = UITextAlignmentCenter;
+//        [self addSubview:label];
         
     }
     return self;

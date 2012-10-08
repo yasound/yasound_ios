@@ -346,7 +346,7 @@
 
 
     // show connection alert
-    [self.view addSubview:[ConnectionView startWithTarget:self timeout:@selector(onConnectionTimeout)]];
+    [self.view addSubview:[ConnectionView startWithFrame:self.view.frame  target:self timeout:@selector(onConnectionTimeout)]];
 
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
         [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];

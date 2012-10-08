@@ -115,7 +115,7 @@
         [[YasoundSessionManager main] associateAccountFacebook:self action:@selector(associateReturned:info:) automatic:NO];
         
         // show a connection alert
-        [self.view addSubview:[ConnectionView startWithFrame:CGRectMake(86,340, 138, 90)]];
+        [self.view addSubview:[ConnectionView startWithFrame:self.view.frame]];
     }
    
 }
