@@ -319,8 +319,6 @@
         self.contentsController = view;
         self.contentsView = view.view;
         
-        
-        
         return;
     }
     
@@ -371,7 +369,7 @@
     {
         [self showWaitingViewWithText:NSLocalizedString(@"SelectionWaitingText", nil)];
         self.url = [NSURL URLWithString:URL_RADIOS_SELECTION];
-        [[YasoundDataCache main] requestRadioRecommendationFirstPageWithUrl:self.url genre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosFirstPage:success:)];
+        [[YasoundDataCache main] requestRadioRecommendationFirstPageWithUrl:self.url genre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosSelectionFirstPage:success:)];
         return;
     }
 
@@ -385,23 +383,23 @@
         }
         
         [self showWaitingViewWithText:NSLocalizedString(@"FavoritesWaitingText", nil)];
-        url = URL_RADIOS_FAVORITES;
+        self.url = [NSURL URLWithString:URL_RADIOS_FAVORITES];
+        [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosFavoritesFirstPage:success:)];
+        return;
     }
 
 
     // request top radios
     else if (itemIndex == WheelIdTop)
     {
-        url = URL_RADIOS_TOP;
         [self showWaitingViewWithText:NSLocalizedString(@"TopWaitingText", nil)];
+        self.url = [NSURL URLWithString:URL_RADIOS_TOP];
+        [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosTopFirstPage:success:)];
+        return;
     }
 
-    self.url = [NSURL URLWithString:url];
     
-    //LBDEBUG
-    //DLog(@"RadioSelection url '%@'", self.url);
-    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosFirstPage:success:)];
-        
+
 }
 
 
@@ -436,7 +434,7 @@
     {
         [self showWaitingViewWithText:NSLocalizedString(@"SelectionWaitingText", nil)];
         self.url = [NSURL URLWithString:URL_RADIOS_SELECTION];
-        [[YasoundDataCache main] requestRadioRecommendationFirstPageWithUrl:self.url genre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosFirstPage:success:)];
+        [[YasoundDataCache main] requestRadioRecommendationFirstPageWithUrl:self.url genre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosSelectionSelectionFirstPage:success:)];
         return;
     }
     
@@ -444,15 +442,15 @@
     // request top radios
     else if (itemIndex == WheelIdTop)
     {
-        url = URL_RADIOS_TOP;
+        self.url = [NSURL URLWithString:URL_RADIOS_TOP];
         [self showWaitingViewWithText:NSLocalizedString(@"TopWaitingText", nil)];
+        [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosTopFirstPage:success:)];
+        return;
     }
     
-    self.url = [NSURL URLWithString:url];
     
     //LBDEBUG
     //DLog(@"RadioSelection url '%@'", self.url);
-    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosFirstPage:success:)];
     
 }
 
@@ -570,7 +568,28 @@
 
 
 
-- (void)receiveRadiosFirstPage:(Container*)radioContainer success:(BOOL)success
+- (void)receiveRadiosSelectionFirstPage:(Container*)radioContainer success:(BOOL)success {
+    
+    if (self.wheelSelector.currentIndex != WheelIdSelection)
+        return;
+    [self processRadiosFirstPage:radioContainer success:success];
+}
+
+- (void)receiveRadiosFavoritesFirstPage:(Container*)radioContainer success:(BOOL)success {
+    
+    if (self.wheelSelector.currentIndex != WheelIdFavorites)
+        return;
+    [self processRadiosFirstPage:radioContainer success:success];
+}
+
+- (void)receiveRadiosTopFirstPage:(Container*)radioContainer success:(BOOL)success {
+    
+    if (self.wheelSelector.currentIndex != WheelIdTop)
+        return;
+    [self processRadiosFirstPage:radioContainer success:success];
+}
+
+- (void)processRadiosFirstPage:(Container*)radioContainer success:(BOOL)success
 {
     [self hideWaitingView];
 #ifdef TEST_FAKE
