@@ -434,7 +434,7 @@
     {
         [self showWaitingViewWithText:NSLocalizedString(@"SelectionWaitingText", nil)];
         self.url = [NSURL URLWithString:URL_RADIOS_SELECTION];
-        [[YasoundDataCache main] requestRadioRecommendationFirstPageWithUrl:self.url genre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosSelectionSelectionFirstPage:success:)];
+        [[YasoundDataCache main] requestRadioRecommendationFirstPageWithUrl:self.url genre:[[UserSettings main] selectedGenreForUrl:self.url] target:self action:@selector(receiveRadiosSelectionFirstPage:success:)];
         return;
     }
     
