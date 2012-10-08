@@ -121,7 +121,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     }
     else
     {
-        DLog(@"radio url: %@\n", url);
+        DLog(@"radio url: %@\n", radiourl);
         [self startStreamerWithURL:radiourl];
     }
 }
