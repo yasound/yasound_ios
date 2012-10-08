@@ -100,7 +100,7 @@
     [self dump];
     
 
-    
+    NSLog(@"Gift Action SKU: %@\n", self.sku);
     if ([self.sku isEqualToString:GIFT_SKU_CREATE_ACCOUNT]) {
         
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:nil];
