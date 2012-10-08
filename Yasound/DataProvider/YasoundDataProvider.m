@@ -1007,6 +1007,9 @@ static YasoundDataProvider* _main = nil;
     }
     
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    
+    DLog(@"radiosWithUrl '%@'", req.url);
+    
     [req startAsynchronous];
 }
 

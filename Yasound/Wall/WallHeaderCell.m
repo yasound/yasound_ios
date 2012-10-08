@@ -48,7 +48,9 @@
     self.headerIconFavorite.hidden = YES;
 
     NSString* str = URL_RADIOS_FAVORITES;
-    [[YasoundDataCache main] requestRadiosWithUrl:[NSURL URLWithString:str] withGenre:nil target:self action:@selector(onFavoritesRadioReceived:)];
+    NSURL* favoritesUrl = [NSURL URLWithString:str];
+    NSLog(@"favoritesUrl '%@'", favoritesUrl);
+    [[YasoundDataCache main] requestRadiosWithUrl:favoritesUrl withGenre:nil target:self action:@selector(onFavoritesRadioReceived:)];
 }
 
 

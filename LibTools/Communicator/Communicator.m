@@ -549,15 +549,6 @@
         [newUserData setObject:req forKey:@"request"];
     }
     
-    //LBDEBUG ICI : clean
-   // NSDictionary* dico = [NSDictionary dictionaryWithObject:req forKey:@"request"];
-    
-//    if (userData)
-//        [newUserData setValuesForKeysWithDictionary:userData];
-//    NSMutableDictionary* newUserData = [[NSMutableDictionary alloc] initWithDictionary:userData];
-//    [newUserData setObject:req forKey:@"request"];
-//    NSDictionary* fuckingFinalUserData = [NSDictionary dictionaryWithDictionary:newUserData];
-    //LBDEBUG
     [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:newUserData];
     return req;
 }
@@ -925,6 +916,16 @@
     NSDictionary* userinfo = request.userInfo;
     NSString* method  = [userinfo valueForKey:@"method"];
     id target = [userinfo valueForKey:@"target"];
+    
+    //LBDEBUG ICI
+//    NSRange range = [[request.url absoluteString] rangeOfString:@"favorite_radio"];
+//    if (range.location != NSNotFound){
+//        NSLog(@"REÇU!");
+//    }
+//    NSString* selectorStr = [userinfo valueForKey:@"selector"];
+//    NSLog(@"handleResponse '%@'", selectorStr);
+    ////////////////////////
+    
     if (target)
     {
         if (![self isTarget:target connectedToRequest:request]) // request has been invalidated
@@ -986,6 +987,8 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+    DLog(@"requestFailed : %@", [request error]);
+    
     if ([self handleResponse_v2:request failed:YES])
         return; // it is a v2 request, it has been handled
     
@@ -1042,6 +1045,20 @@
 
 - (BOOL)handleResponse_v2:(ASIHTTPRequest*)req failed:(BOOL)failed
 {
+    
+    //LBDEBUG ICI
+//    NSRange range = [[req.url absoluteString] rangeOfString:@"favorite_radio"];
+//    if (range.location != NSNotFound){
+//        NSLog(@"REÇU!");
+//    }
+//    NSDictionary* userinfo = req.userInfo;
+//    if (userinfo) {
+//        NSString* selectorStr = [userinfo valueForKey:@"selector"];
+//        NSLog(@"handleResponse '%@'", selectorStr);
+//        ////////////////////////
+//    }
+    ////////////////////////
+
     // this is a v2 request if :
     //    req.userinfo is a dictionary with a RequestConfig object for the key REQUEST_CONFIG_USER_INFO_KEY (= @"RequestConfig")
     if (!req.userInfo)
@@ -1054,6 +1071,7 @@
     
     RequestConfig* config = (RequestConfig*)[req.userInfo valueForKey:REQUEST_CONFIG_USER_INFO_KEY];
     BOOL success = !failed;
+    
     
     NSString* key = config.key;
     if (key != nil)
