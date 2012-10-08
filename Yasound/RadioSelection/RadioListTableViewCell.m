@@ -160,11 +160,16 @@
     sheet = [[Theme theme] stylesheetForKey:@"Radios.rank"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UILabel* rank = [sheet makeLabel];
     
-    NSLog(@"RANK %@", radio.leaderboard_rank);
-    rank.text = [radio.leaderboard_rank stringValue];
-    
-    if (_showRank)
-        [container addSubview:rank];
+    if (_showRank) {
+        
+        sheet = [[Theme theme] stylesheetForKey:@"Radios.rankBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIImageView* rankBackground = [sheet makeImage];
+        [container addSubview:rankBackground];
+
+        [rankBackground addSubview:rank];
+        NSLog(@"RANK %@", radio.leaderboard_rank);
+        rank.text = [radio.leaderboard_rank stringValue];
+    }
     
     // store objects
     NSMutableArray* objects = [NSMutableArray arrayWithObjects:radio, radioImage, radioMask, userImage, title, subscribers, listeners, interactiveView, container, rank, nil];
