@@ -299,6 +299,13 @@
             [_alertReachabilityNo release];
 
         }
+        else  {
+            
+            _alertReachabilityNo = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_host", nil) message:NSLocalizedString(@"YasoundReachability_connection_no", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_OK", nil) otherButtonTitles:nil];
+            [_alertReachabilityNo show];
+            [_alertReachabilityNo release];
+            
+        }
         return;
     }
     
