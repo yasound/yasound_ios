@@ -64,7 +64,14 @@
     assert(self.items.count > 0);
         
     CGFloat W2 = (self.frame.size.width /2.f);
-    CGFloat firstWidth = [[[self.items objectAtIndex:0] objectAtIndex:ITEM_WIDTH] floatValue];
+    
+    NSArray* firstItem = [self.items objectAtIndex:0];
+
+    //LBDEBUG
+    assert(ITEM_WIDTH < firstItem.count);
+    
+    CGFloat firstWidth = [[firstItem objectAtIndex:ITEM_WIDTH] floatValue];
+    
     CGFloat fw2 = (firstWidth /2.f);
     CGFloat marginLeft = W2 - fw2;
 //    CGFloat marginRight = (self.frame.size.width /2.f) - ([[[self.items objectAtIndex:(self.items.count-1)] objectAtIndex:ITEM_WIDTH] floatValue]);
@@ -82,6 +89,9 @@
         {
             UILabel* label = [sheet makeLabel];
             
+            //LBDEBUG
+            assert(ITEM_WIDTH < item.count);
+
             width = [[item objectAtIndex:ITEM_WIDTH] floatValue];
             
             // set the "sticky" position for this item (<=> the center position)
@@ -95,6 +105,9 @@
              //LBDEBUG
             //NSLog(@"Item %d : width %.2f,   pos %.2f   limit %.2f", index, width, stickyPos, stickyLimit);
             
+            //LBDEBUG
+            assert(ITEM_TEXT < item.count);
+
             label.text = [item objectAtIndex:ITEM_TEXT];
             CGRect frame = CGRectMake(x, y, width, h);
             label.frame = frame;
@@ -206,6 +219,9 @@
     NSInteger stickyIndex = 0;
     for (NSArray* item in self.items)
     {
+        //LBDEBUG
+        assert(ITEM_STICKY_LIMIT < item.count);
+
         CGFloat stickyLimit = [[item objectAtIndex:ITEM_STICKY_LIMIT] floatValue];
         if (currentPost < stickyLimit)
             break;
@@ -221,9 +237,18 @@
 
 - (void)stickToItem:(NSInteger)itemIndex silent:(BOOL)silent
 {
-    assert(self.items.count > 0);
+    if (itemIndex >= self.items.count)
+        return;
 
-    CGFloat stickyPos = [[[self.items objectAtIndex:itemIndex] objectAtIndex:ITEM_STICKY_POS] floatValue];
+    //LBDEBUG
+    assert(self.items.count > itemIndex);
+
+    NSArray* item = [self.items objectAtIndex:itemIndex];
+    
+    //LBDEBUG
+    assert(ITEM_STICKY_POS < item.count);
+
+    CGFloat stickyPos = [[item objectAtIndex:ITEM_STICKY_POS] floatValue];
     
     // translate the stickyPos, for the scrollview position reference
     stickyPos -= self.frame.size.width/2.f;

@@ -288,6 +288,9 @@
     
     NSInteger radioIndex = indexPath.row * 2;
     
+    //LBDEBUG
+    assert(radioIndex < self.radios.count);
+    
     Radio* radio1 = [self.radios objectAtIndex:radioIndex];
     [radio1 setAssignedTopRank:radioIndex+1];
     Radio* radio2 = nil;
@@ -341,6 +344,9 @@
     
     NSInteger userIndex = indexPath.row * 3;
     
+    //LBDEBUG
+    assert(userIndex < self.friends.count);
+
     User* user1 = [self.friends objectAtIndex:userIndex];
     User* user2 = nil;
     User* user3 = nil;
