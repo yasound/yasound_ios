@@ -272,7 +272,13 @@
 
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
 {    
+    // cancel all running requests before opening a new one
+    [[YasoundDataProvider main] cancelRequestsForKey:@"radios"];
+    [self refreshWheelClientForIndex:itemIndex];
+}
 
+- (void)refreshWheelClientForIndex:(NSInteger)itemIndex {
+    
     if (self.contentsView != nil) {
         [self.contentsView removeFromSuperview];
         [self.contentsController release];
@@ -285,7 +291,7 @@
 
 - (void)loadContentsForItem:(NSInteger)itemIndex {
     
-    [[YasoundDataProvider main] cancelRequestsForKey:@"radios"];
+//    [[YasoundDataProvider main] cancelRequestsForKey:@"radios"];
     
     NSString* url = nil;
     BOOL showRefreshIndicator = NO;
@@ -404,7 +410,7 @@
 
 - (void)updateContentsForItem:(NSInteger)itemIndex {
     
-    [[YasoundDataProvider main] cancelRequestsForKey:@"radios"];
+   // [[YasoundDataProvider main] cancelRequestsForKey:@"radios"];
     
     NSString* url = nil;
     BOOL showRefreshIndicator = NO;
@@ -724,20 +730,23 @@
 - (void)onNotifDidLogout:(NSNotification*)notif {
 
     // refresh GUI
-    [self.wheelSelector stickToItem:self.wheelSelector.currentIndex silent:NO];
+    [self refreshWheelClientForIndex:self.wheelSelector.currentIndex];
+//    [self.wheelSelector stickToItem:self.wheelSelector.currentIndex silent:NO];
 }
 
 
 - (void)onNotifDidLogin:(NSNotification*)notif {
     // refresh GUI
-    [self.wheelSelector stickToItem:self.wheelSelector.currentIndex silent:NO];
+//    [self.wheelSelector stickToItem:self.wheelSelector.currentIndex silent:NO];
+    [self refreshWheelClientForIndex:self.wheelSelector.currentIndex];
     
 }
 
 
 - (void)onNotifRefreshGui:(NSNotification*)notif {
     // refresh GUI
-    [self.wheelSelector stickToItem:self.wheelSelector.currentIndex silent:NO];    
+//    [self.wheelSelector stickToItem:self.wheelSelector.currentIndex silent:NO];    
+    [self refreshWheelClientForIndex:self.wheelSelector.currentIndex];
 }
 
 
@@ -745,6 +754,9 @@
     
     NSString* genre = notif.object;
     DLog(@"onNotifGenreSelected '%@'", genre);
+    
+    [[YasoundDataProvider main] cancelRequestsForKey:@"radios"];
+
     [[UserSettings main] setGenre:genre forUrl:self.url];
     
     // reload
