@@ -166,9 +166,9 @@
         UIImageView* rankBackground = [sheet makeImage];
         [container addSubview:rankBackground];
 
+        rank.adjustsFontSizeToFitWidth = YES;
         [rankBackground addSubview:rank];
-        NSLog(@"RANK %@", radio.leaderboard_rank);
-        rank.text = [radio.leaderboard_rank stringValue];
+        rank.text = [NSString stringWithFormat:@"%d", [radio assignedTopRank]];
     }
     
     // store objects
@@ -288,7 +288,7 @@
         
         if (_showRank) {
             label = [objects objectAtIndex:RADIO_OBJECT_RANK];
-            label.text = [radio.leaderboard_rank stringValue];
+            label.text = [NSString stringWithFormat:@"%d", [radio assignedTopRank]];
         }
 
         

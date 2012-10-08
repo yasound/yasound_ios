@@ -9,7 +9,10 @@
 #import "Model.h"
 #import "User.h"
 
-@interface Radio : Model
+@interface Radio : Model {
+    
+    NSInteger _assignedTopRank;
+}
 
 @property (retain, nonatomic) NSString* name;
 @property (retain, nonatomic) User* creator;
@@ -34,6 +37,9 @@
 
 - (NSArray*)tagsArray;
 - (void)setTagsWithArray:(NSArray*)tagArray;
+
+- (NSInteger) assignedTopRank;
+- (void)setAssignedTopRank:(NSInteger)rank;
 
 - (NSString*)toString;
  

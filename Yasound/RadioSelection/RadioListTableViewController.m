@@ -289,9 +289,12 @@
     NSInteger radioIndex = indexPath.row * 2;
     
     Radio* radio1 = [self.radios objectAtIndex:radioIndex];
+    [radio1 setAssignedTopRank:radioIndex+1];
     Radio* radio2 = nil;
-    if (radioIndex+1 < self.radios.count)
+    if (radioIndex+1 < self.radios.count) {
         radio2 = [self.radios objectAtIndex:radioIndex+1];
+        [radio2 setAssignedTopRank:radioIndex+2];
+    }
     
     NSArray* radiosForRow = [NSArray arrayWithObjects:radio1, radio2, nil];
     

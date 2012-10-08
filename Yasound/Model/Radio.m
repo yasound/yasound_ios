@@ -57,6 +57,18 @@
 }
 
 
+- (NSInteger) assignedTopRank {
+    
+    return _assignedTopRank;
+}
+
+
+- (void)setAssignedTopRank:(NSInteger)rank {
+    
+    _assignedTopRank = rank;
+}
+
+
 -(NSString*)toString
 {
     NSString* desc = [NSString stringWithFormat:@"id: '%@', name: '%@', creator: '%@', description: '%@', genre: '%@', theme: '%@', uuid: '%@'", self.id, self.name, self.creator.username, self.description, self.genre, self.theme, self.uuid];
