@@ -35,19 +35,23 @@
 {
     UIView *theView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view = theView;
-    self.view.backgroundColor = [UIColor blackColor];
+//    self.view.backgroundColor = [UIColor blackColor];
     [theView release];
     
     UIToolbar* toolbar = [self setToolbar];
     [self.view addSubview:toolbar];
     
-    UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"commonGradient.png"]];
-    imageView.frame = CGRectMake(0, toolbar.frame.origin.y + toolbar.frame.size.height, imageView.frame.size.width, imageView.frame.size.height);
-    [self.view addSubview:imageView];
-    [imageView release];
     
-    UITableView *theTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 67.0, 320.0, 480.0) style:UITableViewStyleGrouped];
-    theTableView.backgroundColor = [UIColor clearColor];
+//    UIImage* image = [UIImage imageNamed:@"commonGradient.png"];
+//    UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
+//    imageView.frame = CGRectMake(0, toolbar.frame.origin.y + toolbar.frame.size.height, image.size.width, 480);
+//    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    [self.view addSubview:imageView];
+//    [imageView release];
+    
+    
+    UITableView *theTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 44.0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
+    theTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
     theTableView.delegate = self;
     theTableView.dataSource = self;
     [self.view addSubview:theTableView];
@@ -119,6 +123,17 @@
 }
 #pragma mark -
 #pragma mark Table View Methods
+
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    UIView* view = [[UIView alloc] init];
+//    view.backgroundColor = [UIColor clearColor];
+//    cell.backgroundView = view;
+//}
+
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
