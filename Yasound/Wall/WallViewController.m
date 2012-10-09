@@ -180,6 +180,8 @@
     
     _waitingForPreviousEvents = NO;
     
+//    self.cellPostBar.placeholder 
+    
     self.fixedCellPostBar.frame = CGRectMake(self.fixedCellPostBar.frame.origin.x, self.tableview.frame.origin.y, self.fixedCellPostBar.frame.size.width, self.fixedCellPostBar.frame.size.height);
 
     // table view

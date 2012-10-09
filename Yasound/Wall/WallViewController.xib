@@ -61,6 +61,7 @@
 						<string key="NSFrame">{{0, 90}, {320, 370}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -554,6 +555,7 @@
 								<string key="NSFrame">{{178, 115}, {122, 21}}</string>
 								<reference key="NSSuperview" ref="660981972"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -709,6 +711,7 @@
 								<string key="NSFrame">{{245, 12}, {60, 21}}</string>
 								<reference key="NSSuperview" ref="233233562"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -827,6 +830,7 @@
 								<string key="NSFrame">{{245, 12}, {60, 21}}</string>
 								<reference key="NSSuperview" ref="1066101427"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -1300,11 +1304,6 @@
 						<reference key="parent" ref="1039083067"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">53</int>
-						<reference key="object" ref="74407120"/>
-						<reference key="parent" ref="1039083067"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">54</int>
 						<reference key="object" ref="233841030"/>
 						<reference key="parent" ref="1039083067"/>
@@ -1469,6 +1468,11 @@
 						<reference key="object" ref="240424672"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">track mask</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">53</int>
+						<reference key="object" ref="74407120"/>
+						<reference key="parent" ref="1039083067"/>
 					</object>
 				</array>
 			</object>
