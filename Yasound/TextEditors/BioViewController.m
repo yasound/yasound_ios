@@ -8,6 +8,8 @@
 
 #import "BioViewController.h"
 #import "YasoundDataProvider.h"
+#import "YasoundAppDelegate.h"
+#import "RootViewController.h"
 
 
 
@@ -86,7 +88,10 @@
 
 - (BOOL)topBarCancel
 {
-    return YES;
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:[NSNumber numberWithBool:NO]];
+
+    return NO;
 }
 
 - (void)save
@@ -99,7 +104,9 @@
 
     [self.delegate bioDidReturn:message];
 
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:[NSNumber numberWithBool:NO]];
 }
 
 
