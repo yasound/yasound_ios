@@ -3,6 +3,8 @@
  http://iphonedevelopment.blogspot.fr/2009/01/better-generic-date-picker.html
  */
 #import "DateViewController.h"
+#import "YasoundAppDelegate.h"
+#import "RootViewController.h"
 
 @implementation DateViewController
 @synthesize datePicker;
@@ -17,12 +19,16 @@
 }
 -(IBAction)cancel
 {
-    [[self.delegate navController] popViewControllerAnimated:YES];
+//    [[self.delegate navController] popViewControllerAnimated:YES];
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:[NSNumber numberWithBool:NO]];
 }
 -(IBAction)save
 {
     [self.delegate takeNewDate:date];
-    [[self.delegate navController] popViewControllerAnimated:YES];
+//    [[self.delegate navController] popViewControllerAnimated:YES];
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:[NSNumber numberWithBool:NO]];
 }
 
 - (void)loadView

@@ -945,8 +945,13 @@
 
 - (void)onNotifGotoEditProfile:(NSNotification*)notification
 {
+    BOOL animated = YES;
+    NSNumber* nbAnimated = notification.object;
+    if (nbAnimated)
+        animated = [nbAnimated boolValue];
+    
     MyAccountViewController* view = [[MyAccountViewController alloc] initWithNibName:@"MyAccountViewController" bundle:nil];
-    [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
+    [APPDELEGATE.navigationController presentModalViewController:view animated:animated];
     [view release];
 }
 

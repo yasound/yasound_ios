@@ -320,7 +320,10 @@ enum SectionBio
         DateViewController *controller = [[DateViewController alloc] init];
         controller.delegate = self;
         controller.date = self.user.birthday;
-        [self.navigationController pushViewController:controller animated:YES];
+        
+        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+        [APPDELEGATE.navigationController presentModalViewController:controller animated:NO];
+        
         [controller release];
     }
     
@@ -333,14 +336,18 @@ enum SectionBio
     {
         GenderPickerViewController* view = [[GenderPickerViewController alloc] initWithNibName:@"GenderPickerViewController" bundle:nil currentItem:@"M" target:self];
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-        [self.navigationController presentModalViewController:view animated:YES];    
+
+        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+        [APPDELEGATE.navigationController presentModalViewController:view animated:NO];
     }
     
     else if ((indexPath.section == SECTION_BIO) && (indexPath.row == ROW_BIO))
     {
         BioViewController* view = [[BioViewController alloc] initWithNibName:@"BioViewController" bundle:nil forUser:self.user target:self];
         view.delegate = self;
-        [self.navigationController pushViewController:view animated:YES];
+
+        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+        [APPDELEGATE.navigationController presentModalViewController:view animated:NO];
         [view release];
     }
 }
@@ -482,7 +489,9 @@ enum SectionBio
         UIImagePickerController* picker =  [[UIImagePickerController alloc] init];
         picker.delegate = self;
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        [self presentModalViewController:picker animated:YES];
+        
+        [self dismissModalViewControllerAnimated:NO];
+        [self presentModalViewController:picker animated:NO];
     }
     
 }
@@ -579,6 +588,8 @@ enum SectionBio
         UIImagePickerController* picker =  [[UIImagePickerController alloc] init];
         picker.delegate = self;
         picker.sourceType = sourceType;
+        
+        [self dismissModalViewControllerAnimated:NO];
         [self presentModalViewController:picker animated:YES];
         
         return;
