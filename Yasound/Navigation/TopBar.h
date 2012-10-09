@@ -35,6 +35,10 @@ typedef enum TopBarItemId
 @property (nonatomic, assign) UIButton* itemHdButton;
 @property (nonatomic, retain) UIBarButtonItem* itemHd;
 
+@property (nonatomic, assign) UIButton* itemNowPlayingButton;
+@property (nonatomic, assign) UILabel* itemNowPlayingLabel;
+@property (nonatomic, retain) UIBarButtonItem* itemNowPlaying;
+
 @property (nonatomic, assign) UIButton* itemSearchButton;
 @property (nonatomic, retain) UIBarButtonItem* itemSearch;
 

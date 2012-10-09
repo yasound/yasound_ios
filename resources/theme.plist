@@ -1208,6 +1208,38 @@
 					<string>white</string>
 				</dict>
 			</dict>
+			<key>itemNowPlayingLabel</key>
+			<dict>
+				<key>height</key>
+				<integer>24</integer>
+				<key>width</key>
+				<integer>36</integer>
+				<key>x</key>
+				<integer>28</integer>
+				<key>y</key>
+				<integer>3</integer>
+				<key>font</key>
+				<dict>
+					<key>textAlignment</key>
+					<string>center</string>
+					<key>shadowOffset</key>
+					<string>0, -1</string>
+					<key>shadowRadius</key>
+					<real>0.5</real>
+					<key>shadowColor</key>
+					<string>black</string>
+					<key>shadowOpacity</key>
+					<real>0.75</real>
+					<key>weight</key>
+					<string>bold</string>
+					<key>size</key>
+					<integer>9</integer>
+					<key>numberOfLines</key>
+					<integer>2</integer>
+					<key>textColor</key>
+					<string>white</string>
+				</dict>
+			</dict>
 			<key>itemMenu</key>
 			<dict>
 				<key>name</key>

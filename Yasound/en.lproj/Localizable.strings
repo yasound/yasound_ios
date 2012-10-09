@@ -13,7 +13,7 @@
 
 "Navigation_back" = "Back";
 "Navigation_next" = "Next";
-"Navigation_NowPlaying" = "Now playing";
+"Navigation.nowPlaying" = "Now\nplaying";
 "Navigation_cancel" = "Cancel";
 "Navigation_confirm" = "I confirme";
 "Navigation_OK" = "OK";

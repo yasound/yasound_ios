@@ -157,7 +157,7 @@
 {
     [super viewDidAppear:animated];
     
-    [self.topbar showMenuItem];    
+    [self.topbar showMenuItem];
 }
 
 

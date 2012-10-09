@@ -106,18 +106,30 @@
     
     // "now playing" item
     sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemNowPlaying" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    btn = [sheet makeButton];
-    [btn addTarget:self action:@selector(onNowPlaying:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem* itemNowPlaying = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.itemNowPlayingButton = [sheet makeButton];
+    [self.itemNowPlayingButton addTarget:self action:@selector(onNowPlaying:) forControlEvents:UIControlEventTouchUpInside];
     
-    // init "now playing" button
-    if ([AudioStreamManager main].currentRadio == nil)
-        [btn setEnabled:NO];
+    sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemNowPlayingLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.itemNowPlayingLabel = [sheet makeLabel];
+    self.itemNowPlayingLabel.text = NSLocalizedString(@"Navigation.nowPlaying", nil);
+    self.itemNowPlayingLabel.adjustsFontSizeToFitWidth = YES;
+    [self.itemNowPlayingButton addSubview:self.itemNowPlayingLabel];
+    
+    self.itemNowPlaying = [[UIBarButtonItem alloc] initWithCustomView:self.itemNowPlayingButton];
+
+    [self updateNowPlaying];
+    
+    
+//    // init "now playing" button
+//    if ([AudioStreamManager main].currentRadio == nil) {
+//        [self.itemNowPlayingLabel setEnabled:NO];
+//        self.itemNowPlayingButton.alpha = 0.5;
+//    }
 
 
     // flexible space
     UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace, self.itemHd, flexibleSpace, self.itemNotifs, flexibleSpace, self.itemSearch, flexibleSpace, itemNowPlaying, nil];
+    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace, self.itemHd, flexibleSpace, self.itemNotifs, flexibleSpace, self.itemSearch, flexibleSpace, self.itemNowPlaying, nil];
     
     [self setItems:self.customItems];
     
@@ -127,6 +139,23 @@
     
 
 }
+
+
+
+
+- (void)updateNowPlaying {
+    
+    if ([AudioStreamManager main].currentRadio == nil) {
+        [self.itemNowPlayingButton setEnabled:NO];
+        self.itemNowPlayingLabel.alpha = 0.5;
+    }
+    else {
+        [self.itemNowPlayingButton setEnabled:YES];
+        self.itemNowPlayingLabel.alpha = 1;
+    }
+    
+}
+
 
 
 
@@ -197,6 +226,8 @@
     
     [self.customItems replaceObjectAtIndex:INDEX_BACK withObject:item];
     [self setItems:self.customItems];
+    
+    [self updateNowPlaying];
 }
 
 
