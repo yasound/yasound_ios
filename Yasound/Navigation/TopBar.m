@@ -221,7 +221,7 @@
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemMenu" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIButton* btn = [sheet makeButton];
     
-    [btn addTarget:self action:@selector(onTrash:) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:@selector(onMenu:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     [self.customItems replaceObjectAtIndex:INDEX_BACK withObject:item];
