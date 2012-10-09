@@ -21,6 +21,7 @@
 #import "YasoundDataCacheImage.h"
 #import "ProgrammingViewController.h"
 #import "SchedulingViewController.h"
+#import "YasoundAppDelegate.h"
 
 #define NB_SECTIONS 2
 
@@ -547,13 +548,13 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *) Picker
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
     [Picker release];
 }
 
 - (void)imagePickerController:(UIImagePickerController *) Picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
     [Picker release];
     
     UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];

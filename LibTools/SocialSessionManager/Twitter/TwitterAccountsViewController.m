@@ -9,6 +9,7 @@
 #import "TwitterAccountsViewController.h"
 #import <Twitter/Twitter.h>
 #import <Accounts/Accounts.h>
+#import "YasoundAppDelegate.h"
 
 
 @implementation TwitterAccountsViewController
@@ -46,7 +47,7 @@
 
 - (IBAction)onCloseClicked:(id)sender
 {
-  [self dismissModalViewControllerAnimated:YES];
+  [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -168,7 +169,7 @@
   
   [self.delegate twitterDidSelectAccount:account];
 
-  [self dismissModalViewControllerAnimated:YES];
+  [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
 
 //  TweetsListViewController *tweetsListViewController = [[TweetsListViewController alloc] init];
 //  tweetsListViewController.account = [self.accounts objectAtIndex:[indexPath row]];

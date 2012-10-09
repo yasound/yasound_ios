@@ -7,6 +7,7 @@
 //
 
 #import "TwitterSigninViewController.h"
+#import "YasoundAppDelegate.h"
 
 @implementation TwitterSigninViewController
 
@@ -33,7 +34,7 @@
 
 - (IBAction)onCloseClicked:(id)sender
 {
-  [self dismissModalViewControllerAnimated:YES];
+  [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -138,7 +139,7 @@
 //  
 //  [self.delegate twitterDidSelectAccount:account];
 //  
-//  [self dismissModalViewControllerAnimated:YES];
+//  [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
 //  
 //  //  TweetsListViewController *tweetsListViewController = [[TweetsListViewController alloc] init];
 //  //  tweetsListViewController.account = [self.accounts objectAtIndex:[indexPath row]];

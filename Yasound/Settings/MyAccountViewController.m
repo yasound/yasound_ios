@@ -81,6 +81,17 @@ enum SectionBio
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+//    UIImage* image = [[UserSettings main] objectForKey:@"UIImagePickerControllerOriginalImage"];
+//    if (image != nil) {
+//        [self.userImage setImage:image];
+//        // wait for "save" action to upload the image to the server
+//        _imageChanged = YES;
+//        _changed = YES;
+//        
+//        [[UserSettings main] removeObjectForKey:@"UIImagePickerControllerOriginalImage"];
+//    }
+    
 }
 
 - (void)viewDidUnload
@@ -489,9 +500,11 @@ enum SectionBio
         UIImagePickerController* picker =  [[UIImagePickerController alloc] init];
         picker.delegate = self;
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        
-        [self dismissModalViewControllerAnimated:NO];
-        [self presentModalViewController:picker animated:NO];
+
+        picker.view.frame = CGRectMake(0, -20, picker.view.frame.size.width, picker.view.frame.size.height);
+        [self.view addSubview:picker.view];
+//        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+//        [APPDELEGATE.navigationController presentModalViewController:picker animated:NO];
     }
     
 }
@@ -503,26 +516,52 @@ enum SectionBio
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *) Picker
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [Picker.view removeFromSuperview];
     [Picker release];
+    
+//    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:[NSNumber numberWithBool:NO]];
 }
 
 - (void)imagePickerController:(UIImagePickerController *) Picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [Picker.view removeFromSuperview];
     [Picker release];
+    
+//    NSLog(@"%@", info);
     
     UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     if (image == nil)
         return;
+//    {
+//
+//        NSURL* url = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
+////        UIImage* image = [UIImage imageNamed:[url absoluteString]];
+//
+////        ALAssetsLibrary* assetslibrary = [[[ALAssetsLibrary alloc] init] autorelease];
+////        [assetslibrary assetForURL:asseturl
+////                       resultBlock:resultblock
+////                      failureBlock:failureblock];
+////        if (image == nil)
+////            return;
+//    }
+    
+    
     if (![image isKindOfClass:[UIImage class]])
         return;
-    
+        
+
     [self.userImage setImage:image];
     
     // wait for "save" action to upload the image to the server
     _imageChanged = YES;
     _changed = YES;
+
+    
+    
+//    
+//    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:[NSNumber numberWithBool:NO]];
 }
 
 
@@ -588,9 +627,12 @@ enum SectionBio
         UIImagePickerController* picker =  [[UIImagePickerController alloc] init];
         picker.delegate = self;
         picker.sourceType = sourceType;
-        
-        [self dismissModalViewControllerAnimated:NO];
-        [self presentModalViewController:picker animated:YES];
+
+        picker.view.frame = CGRectMake(0, -20, picker.view.frame.size.width, picker.view.frame.size.height);
+        [self.view addSubview:picker.view];
+
+//        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
+//        [self presentModalViewController:picker animated:YES];
         
         return;
     }
