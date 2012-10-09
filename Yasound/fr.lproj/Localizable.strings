@@ -8,6 +8,7 @@
 "Navigation.create" = "Créer";
 "Navigation.delete" = "Supprimer";
 "Navigation.close" = "Fermer";
+"Navigation.edit" = "Modifier";
 
 "Connection.timeout" = "Délai de connexion dépassé";
 

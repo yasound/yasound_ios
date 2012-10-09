@@ -13,6 +13,7 @@
 #import "YasoundDataCache.h"
 #import "ActivityAlertView.h"
 #import "YasoundAppDelegate.h"
+#import "RootViewController.h"
 
 @interface MyAccountViewController ()
 
@@ -643,6 +644,8 @@ enum SectionBio
     self.user = u;
     
     [ActivityAlertView close];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROFIL_UPDATED object:nil];
     
     [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
 

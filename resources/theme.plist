@@ -127,6 +127,8 @@
 				</dict>
 				<key>title</key>
 				<dict>
+					<key>offset</key>
+					<integer>14</integer>
 					<key>height</key>
 					<integer>0</integer>
 					<key>width</key>
@@ -221,7 +223,7 @@
 						<key>size</key>
 						<integer>11</integer>
 						<key>textColor</key>
-						<string>lightGray</string>
+						<string>white</string>
 						<key>backgroundColor</key>
 						<string>clear</string>
 						<key>shadowOffset</key>
@@ -1360,6 +1362,13 @@
 				<string>commonBarItemTrash</string>
 				<key>type</key>
 				<string>png</string>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
+			<key>itemEdit</key>
+			<dict>
 				<key>x</key>
 				<integer>0</integer>
 				<key>y</key>

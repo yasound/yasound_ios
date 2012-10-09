@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1536</int>
-		<string key="IBDocument.SystemVersion">12C54</string>
+		<string key="IBDocument.SystemVersion">12C60</string>
 		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
@@ -60,7 +60,6 @@
 						<string key="NSFrame">{{0, 44}, {320, 416}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -301,7 +300,6 @@
 						<string key="NSFrame">{{10, 93}, {304, 83}}</string>
 						<reference key="NSSuperview" ref="605080890"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -471,7 +469,6 @@
 						<string key="NSFrame">{{0, 33}, {320, 104}}</string>
 						<reference key="NSSuperview" ref="53498305"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -676,6 +673,14 @@
 						<reference key="destination" ref="792265859"/>
 					</object>
 					<int key="connectionID">119</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">topbar</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="879545147"/>
+					</object>
+					<int key="connectionID">120</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -1007,7 +1012,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">119</int>
+			<int key="maxID">120</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1075,6 +1080,7 @@
 						<string key="name">UILabel</string>
 						<string key="profil">UILabel</string>
 						<string key="scrollview">ProfilScrollview</string>
+						<string key="topbar">TopBar</string>
 						<string key="userImage">WebImageView</string>
 						<string key="viewFavorites">ProfilScrollviewRow</string>
 						<string key="viewFriends">ProfilScrollviewRow</string>
@@ -1113,6 +1119,10 @@
 						<object class="IBToOneOutletInfo" key="scrollview">
 							<string key="name">scrollview</string>
 							<string key="candidateClassName">ProfilScrollview</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="topbar">
+							<string key="name">topbar</string>
+							<string key="candidateClassName">TopBar</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="userImage">
 							<string key="name">userImage</string>

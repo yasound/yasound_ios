@@ -17,6 +17,7 @@ typedef enum TopBarItemId
     TopBarItemNotif,
     TopBarItemSettings,
     TopBarItemTrash,
+    TopBarItemEdit,
     TopBarItemAdd,
     TopBarItemNowPlaying,
     TopBarItemNone
@@ -54,6 +55,7 @@ typedef enum TopBarItemId
 - (void)showSettingsItem:(BOOL)enabled;
 - (void)showTrashItem;
 - (void)showMenuItem;
+- (void)showEditItem;
 
 - (void)runItem:(TopBarItemId)itemId;
 

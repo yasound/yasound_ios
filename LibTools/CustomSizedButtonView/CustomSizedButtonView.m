@@ -115,7 +115,13 @@
     // title
     sheet = [[Theme theme] stylesheetForKey:[NSString stringWithFormat:@"CustomSizedButtonView.%@.title", themeRef] retainStylesheet:YES overwriteStylesheet:YES error:nil];
     self.label = [sheet makeLabel];
-    self.label.frame = CGRectMake(LEFT_BORDER, 0, textWidth, totalHeight-2); // -2 is fine tuning for visual good result
+    
+    CGFloat xoffset = totalWidth / 2.f - textWidth / 2.f;
+    NSNumber* offset = [sheet.customProperties objectForKey:@"offset"];
+    if (offset)
+        xoffset = [offset floatValue];
+    
+    self.label.frame = CGRectMake(xoffset, 0, textWidth, totalHeight-2); // -2 is fine tuning for visual good result
     self.label.frame = [self moveFrame:self.label.frame toPos:CGPointMake(self.frame.origin.x, self.frame.origin.y)];
 
     self.label.text = title;

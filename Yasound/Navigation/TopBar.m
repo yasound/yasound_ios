@@ -18,6 +18,7 @@
 #import "YasoundDataProvider.h"
 #import "CustomSizedButtonView.h"
 #import "GiftsViewController.h"
+#import "CustomSizedButtonView.h"
 
 #import "FPPopoverController.h"
 
@@ -49,6 +50,8 @@
 - (void)awakeFromNib
 {
     self.backgroundColor = [UIColor blackColor];
+    
+    self.barStyle = UIBarStyleBlack;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogout:) name:NOTIF_DID_LOGOUT object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogin:) name:NOTIF_DID_LOGIN object:nil];
@@ -200,7 +203,7 @@
 }
 
 
-- (void)showTrashItem;
+- (void)showTrashItem
 {
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemTrash" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIButton* btn = [sheet makeButton];
@@ -213,21 +216,39 @@
 }
 
 
-
-
-
 - (void)showMenuItem
 {
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemMenu" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIButton* btn = [sheet makeButton];
     
-    [btn addTarget:self action:@selector(onMenu:) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:@selector(onTrash:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     [self.customItems replaceObjectAtIndex:INDEX_BACK withObject:item];
     [self setItems:self.customItems];
+}
+
+
+
+
+
+- (void)showEditItem
+{
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemMenu" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    UIButton* btn = [sheet makeButton];
+//    
+//    [btn addTarget:self action:@selector(onMenu:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self updateNowPlaying];
+    
+    CustomSizedButtonView* editButton = [[CustomSizedButtonView alloc] initWithThemeRef:@"darkGray" title:NSLocalizedString(@"Navigation.edit", nil)];
+
+    UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithCustomView:editButton];
+    editButton.target = self;
+    editButton.action = @selector(onEdit:);
+    
+    [self.customItems replaceObjectAtIndex:INDEX_NOWPLAYING withObject:item];
+    [self setItems:self.customItems];
+    
 }
 
 
@@ -499,6 +520,19 @@
 }
 
 
+- (void)onEdit:(id)sender {
+    
+    BOOL run = YES;
+    
+    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
+        run = [self.delegate topBarItemClicked:TopBarItemEdit];
+    
+    if (run)
+        [self runItem:TopBarItemEdit];
+    
+}
+
+
 
 - (void)onSettings:(id)sender
 {
@@ -595,7 +629,12 @@
     {
         // nothing
     }
-    
+
+    else if (itemId == TopBarItemEdit)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:nil];
+    }
+
     else if (itemId == TopBarItemAdd)
     {
         // nothing

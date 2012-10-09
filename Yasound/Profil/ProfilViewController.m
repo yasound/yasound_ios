@@ -91,9 +91,16 @@
 {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifProfilUpdated:) name:NOTIF_PROFIL_UPDATED object:nil];
+    
     // temporarly deactivated "message" function
     self.buttonBlue.hidden = YES;
     self.buttonBlueLabel.hidden = YES;
+    
+    // update top bar with an edit button
+    if (self.user && [self.user.id isEqualToNumber:[YasoundDataProvider main].user.id]) {
+        [self.topbar showEditItem];
+    }
     
     
     // build scrollview
@@ -631,6 +638,15 @@
 }
 
 
+
+
+- (void)onNotifProfilUpdated:(NSNotification*)notif {
+
+    //refresh
+    if ([YasoundSessionManager main].registered)
+        [[YasoundDataProvider main] userWithId:self.user.id target:self action:@selector(userReceived:info:)];
+
+}
 
 
 

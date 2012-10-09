@@ -946,7 +946,7 @@
 - (void)onNotifGotoEditProfile:(NSNotification*)notification
 {
     MyAccountViewController* view = [[MyAccountViewController alloc] initWithNibName:@"MyAccountViewController" bundle:nil];
-    [APPDELEGATE.navigationController pushViewController:view animated:YES];
+    [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
     [view release];
 }
 

@@ -29,6 +29,8 @@
 @property (nonatomic) BOOL followed;
 
 
+@property (nonatomic, retain) IBOutlet TopBar* topbar;
+
 @property (nonatomic, retain) IBOutlet UIView* viewProfil;
 @property (nonatomic, retain) IBOutlet UILabel* bio;
 
