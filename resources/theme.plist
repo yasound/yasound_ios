@@ -1640,6 +1640,19 @@
 				<key>highlighted</key>
 				<string>radioListFriendMask65Highlighted</string>
 			</dict>
+			<key>maskConnected</key>
+			<dict>
+				<key>x</key>
+				<integer>9</integer>
+				<key>y</key>
+				<integer>10</integer>
+				<key>type</key>
+				<string>png</string>
+				<key>name</key>
+				<string>radioListFriendMaskConnected65</string>
+				<key>highlighted</key>
+				<string>radioListFriendMaskConnected65Highlighted</string>
+			</dict>
 			<key>maskHighlighted</key>
 			<dict>
 				<key>x</key>

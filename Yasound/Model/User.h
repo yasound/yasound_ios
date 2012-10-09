@@ -55,6 +55,9 @@ UserMood stringToUsermood(NSString* str);
 @property (retain, nonatomic) NSString* bio_text;
 @property (retain, nonatomic) NSString* url;
 
+@property (retain, nonatomic) NSNumber* connected;
+
+
 //String gender
 //Integer age
 //birthday
@@ -95,5 +98,7 @@ UserMood stringToUsermood(NSString* str);
 - (NSString*)formatedProfil;
 
 - (BOOL)permission:(NSString*)permId;
+
+- (BOOL)isConnected;
 
 @end

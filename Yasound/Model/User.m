@@ -109,6 +109,15 @@
 }
 
 
+- (BOOL)isConnected {
+    
+    if (self.connected == nil)
+        return NO;
+    
+    BOOL res = [self.connected boolValue];
+    return res;
+}
+
 
 @end
 
@@ -146,6 +155,9 @@ UserMood stringToUsermood(NSString* str)
     
     return eMoodInvalid;
 }
+
+
+
 
 
 

@@ -93,7 +93,12 @@
     userImage.layer.cornerRadius = USER_IMAGE_SIZE / 2.f;
 
     // user mask
-    sheet = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    if ([user isConnected]) {
+        sheet = [[Theme theme] stylesheetForKey:@"Users.maskConnected" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    } else {
+        sheet = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    }
+    
 //    UIImageView* userMask = [sheet makeImage];
     UIButton* userButton = [sheet makeButton];
     [userButton addTarget:self action:@selector(onInteractivePressedUp:) forControlEvents:UIControlEventTouchUpInside];
