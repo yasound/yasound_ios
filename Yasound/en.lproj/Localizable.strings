@@ -108,24 +108,6 @@
 
 
 
-//"HomeView_title" = "Yasound";
-//"HomeView_facebook_label" = "Log in with Facebook";
-//"HomeView_twitter_label" = "Log in with Twitter";
-//"HomeView_login_label" = "log in";
-//"HomeView_signup_label" = "create an account";
-//
-//
-//"LoginView_title" = "Log in";
-//"LoginView_email_label" = "email";
-//"LoginView_email_placeholder" = "enter your email address";
-//"LoginView_pword_label" = "password";
-//"LoginView_pword_placeholder" = "required";
-//"LoginView_submit_label" = "connection";
-//"LoginView_alert_title" = "Connection";
-//"LoginView_alert_message_error" = "incorrect login information!";
-//"LoginView_alert_email_not_valid" = "incorrect email address!";
-
-
 "SignupView_title" = "Create an account";
 "SignupView_username_label" = "User";
 "SignupView_username_placeholder" = "Choose a username";

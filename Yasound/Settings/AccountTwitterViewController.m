@@ -12,6 +12,8 @@
 #import "ConnectionView.h"
 #import "ActivityAlertView.h"
 #import "RootViewController.h"
+#import "YasoundAppDelegate.h"
+
 
 @interface AccountTwitterViewController ()
 
@@ -98,14 +100,12 @@
 
 #pragma mark - IBActions
 
-- (IBAction)onBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 
 - (IBAction)onButtonClicked:(id)sender
 {
+//    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+
     // logout
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
     {
@@ -121,6 +121,7 @@
         [self.view addSubview:[ConnectionView startWithFrame:self.view.frame]];
     }
     
+
 }
 
 
@@ -229,6 +230,13 @@
 
 
 #pragma mark - TopBarModalDelegate
+
+
+- (BOOL)topBarCancel {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    return NO;
+}
 
 - (BOOL)shouldShowActionButton {
     return NO;

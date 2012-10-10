@@ -373,8 +373,10 @@ enum MenuDescription
     else if (row == ROW_TWITTER)
     {
         AccountTwitterViewController* view = [[AccountTwitterViewController alloc] initWithNibName:@"AccountTwitterViewController" bundle:nil];
-        [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
-//        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+//        [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
+        
+        [APPDELEGATE.slideController resetTopView];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     else if (row == ROW_YASOUND)
