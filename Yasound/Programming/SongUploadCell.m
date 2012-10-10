@@ -48,7 +48,6 @@
         
         self.isSongLocal = [songup.songLocal isKindOfClass:[SongLocal class]];
         
-//        assert([song isKindOfClass:[SongLocal class]]);
         
         sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.image.frame = sheet.frame;
@@ -186,7 +185,6 @@
     self.label.text = [NSString stringWithFormat:@"%@ - %@", mediaItem.song.songLocal.name, mediaItem.song.songLocal.artist];
     
     SongUploading* songup = self.item.song;
-//    §([song isKindOfClass:[SongLocal class]]);
     
     self.isSongLocal = [songup.songLocal isKindOfClass:[SongLocal class]];
     
@@ -298,7 +296,6 @@
     static NSUInteger BYTES_1o = 1024;
     static NSUInteger BYTES_1Ko = 1024*1024;
     static NSUInteger BYTES_1Mo = 1024*1024*1024;
-    // static NSUInteger BYTES_1Go = 1024*1024*1024*1024;
     
     if (bytes == 0)
         return NSLocalizedString(@"SongUpload_progress_prepare", nil);

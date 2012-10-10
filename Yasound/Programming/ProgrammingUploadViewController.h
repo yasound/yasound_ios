@@ -10,11 +10,6 @@
 #import "Radio.h"
 
 @interface ProgrammingUploadViewController : UITableViewController
-{
-//    IBOutlet UIBarButtonItem* _backBtn;
-//    IBOutlet UILabel* _titleLabel;
-//    IBOutlet UITableView* _tableView;
-}
 
 @property (nonatomic, retain) Radio* radio;
 
