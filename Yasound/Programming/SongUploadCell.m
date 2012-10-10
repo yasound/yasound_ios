@@ -56,6 +56,7 @@
         {
             UIImage* coverImage = [songup.songLocal.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
             self.image = [[UIImageView alloc] initWithImage:coverImage];
+            self.image.frame = sheet.frame;
 
             if (coverImage == nil)
             {
