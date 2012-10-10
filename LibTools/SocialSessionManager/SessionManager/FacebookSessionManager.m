@@ -8,7 +8,7 @@
 
 #import "FacebookSessionManager.h"
 #import "YasoundSessionManager.h"
-
+#import "FacebookFriend.h"
 
 @implementation FacebookSessionManager
 
@@ -259,9 +259,21 @@ static FacebookSessionManager* _facebook = nil;
 //  DLog(@"requestLoading");
 //}
 //
-//- (void)request:(FBRequest *)request didReceiveResponse:(NSURLResponse *)response
-//{
-//  DLog(@"didReceiveResponse");
+
+
+
+//- (void)request:(FBRequest *)request didReceiveResponse:(NSURLResponse *)response {
+//    
+//    // cast the response to NSHTTPURLResponse so we can look for 404 etc
+//    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+//    
+//    if ([httpResponse statusCode] < 400) {
+//        
+//        NSString* url = [request url];
+//        DLog(@"url '%@'", url);
+//        
+//        
+//    }
 //}
 
 
@@ -299,6 +311,8 @@ static FacebookSessionManager* _facebook = nil;
 
 - (void)request:(FBRequest *)request didLoad:(id)result
 {
+    NSLog(@"Facebook request %@ loaded", [request url]);
+
   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
   //DLog(@"Parsed Response: %@", result);
   
@@ -368,21 +382,52 @@ static FacebookSessionManager* _facebook = nil;
 }
 
 
-- (void)inviteFriends
+- (void)inviteFriends:(NSArray*)users withTarget:(id)target action:(SEL)action
 {
+    self.inviteTarget = target;
+    self.inviteAction = action;
+    
   NSString* uid = [YasoundDataProvider main].user.facebook_uid;
+    
+    NSString* friends = @"";
+
+    for (FacebookFriend* friend in users) {
+        
+        friends = [friends stringByAppendingFormat:@"%@,", friend.id];
+    }
+    friends = [friends substringToIndex:(friends.length - 1)];
+        
+        
+//    if (users && users.count > 0) {
+//        FacebookFriend* friend = [users objectAtIndex:0];
+//        friends = [NSString stringWithFormat:@"%@", friend.id];
+//        for (NSInteger index = 1; index < users.count; index++) {
+//            friend = [users objectAtIndex:index];
+//            friends = [friends stringByAppendingFormat:@",%@", friend.id];
+//        }
+//    }
+    
+    //DLog(@"friends '%@'", friends);
     
   NSDictionary* data = [NSDictionary dictionaryWithObject:uid forKey:@"from_user"];
   NSString* dataStr = data.JSONRepresentation;
   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  NSLocalizedString(@"Facebook_AppRequest_Message", nil),  @"message",
-                                 dataStr, @"data",
+                                 dataStr, @"data", friends, @"to",
                                  nil];
   
   [_facebookConnect dialog:@"apprequests" andParams:params andDelegate:self];
 }
 
 
+
+- (void)dialogCompleteWithUrl:(NSURL*)url {
+ 
+    if ((self.inviteTarget != nil) && ([self.inviteTarget respondsToSelector:self.inviteAction])) {
+
+        [self.inviteTarget performSelector:self.inviteAction];
+    }
+}
 
 
 

@@ -22,9 +22,14 @@
   FBRequest* _requestFeed;
     
     BOOL _logout;
+    
 }
 
 @property (retain) Facebook* facebookConnect;
+
+
+@property (nonatomic, retain) id inviteTarget;
+@property (nonatomic) SEL inviteAction;
 
 
 + (FacebookSessionManager*)facebook;
@@ -36,7 +41,7 @@
 - (BOOL)requestGetInfo:(SessionRequestType)requestType;
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl link:(NSURL*)link;
 
-- (void)inviteFriends;
+- (void)inviteFriends:(NSArray*)users withTarget:(id)target action:(SEL)action;
 
 
 - (void)invalidConnexion;

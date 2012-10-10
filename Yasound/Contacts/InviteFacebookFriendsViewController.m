@@ -161,8 +161,14 @@
 
 - (BOOL)topBarSave
 {
-    [[YasoundDataProvider main] inviteFacebookFriends:_friends target:self action:@selector(friendsInvited:success:)];
+    NSArray* array =[_selectedFriends allObjects];
+    [[FacebookSessionManager facebook] inviteFriends:array withTarget:self action:@selector(inviteCallback)];
     return NO;
+}
+
+- (void)inviteCallback {
+    
+    [[YasoundDataProvider main] inviteFacebookFriends:_friends target:self action:@selector(friendsInvited:success:)];
 }
 
 - (void) friendsInvited:(ASIHTTPRequest*)req success:(BOOL)success
