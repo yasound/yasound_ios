@@ -292,6 +292,28 @@
 }
 
 
+- (void)enableUpdatesFor:(NSString *)username
+{
+  NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
+  [tempDict setValue:username forKey:@"screen_name"];
+  [tempDict setValue:@"true" forKey:@"follow"];
+
+  TWRequest *postRequest = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/create.format"]
+                                               parameters:tempDict
+                                            requestMethod:TWRequestMethodPOST];
+
+
+  [postRequest setAccount:self.account];
+
+  NSString* res = nil;
+  [postRequest
+   performRequestWithHandler: ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
+   {
+     NSString *output = [NSString stringWithFormat:@"HTTP response status: %i", [urlResponse statusCode]];
+     NSLog(@"%@", output);
+  }
+  ];
+}
 
 
 

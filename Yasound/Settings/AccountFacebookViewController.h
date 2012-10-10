@@ -13,6 +13,7 @@
 {
     IBOutlet TopBarModal* _topbar;
     IBOutlet UILabel* _usernameLabel;
+    IBOutlet UILabel* _likeLabel;
     IBOutlet UILabel* _usernameValue;
 
     IBOutlet UILabel* _logoutLabel;

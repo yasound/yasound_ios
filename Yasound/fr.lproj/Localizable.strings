@@ -334,6 +334,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "AccountsView_alert_login_success" = "Compte %@ enregistré.";
 "AccountsView_alert_logout_success" = "Compte %@ déconnecté.";
 "AccountsView_alert_logout_error" = "Impossible de déconnecter le compte.";
+"AccountsView_like_label" = "Aimez Yasound sur Facebook";
 
 
 
@@ -757,4 +758,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "SelectAll" = "sélectionner tout";
 "UnselectAll" = "desélectionner tout";
+
+"TwitterYasoundAccount" = "@YasoundSAS";
 
