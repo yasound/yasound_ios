@@ -7,17 +7,6 @@
 //
 
 #import "PurchaseTableViewCell.h"
-//#import "YasoundDataProvider.h"
-//#import "Theme.h"
-//#import <QuartzCore/QuartzCore.h>
-//#import "ActivityAlertView.h"
-//#import "RootViewController.h"
-
-
-
-//#define PRODUCTID_YAHD1M @"yasound.com"
-//#define PRODUCTID_YAHD1Y @"yaHD1y"
-//#define PRODUCTID_YAHD1YS @"yaHD1ysp"
 
 @implementation PurchaseTableViewCell
 
@@ -27,17 +16,6 @@
 @synthesize subtitle;
 @synthesize price;
 
-
-
-//@property(nonatomic, readonly) NSString *localizedDescription __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
-//
-//@property(nonatomic, readonly) NSString *localizedTitle __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
-//
-//@property(nonatomic, readonly) NSDecimalNumber *price __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
-//
-//@property(nonatomic, readonly) NSLocale *priceLocale __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
-//
-//@property(nonatomic, readonly) NSString *productIdentifier __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 
 
 - (void)updateForProduct:(SKProduct*)product withSubscription:(Subscription*)sub
@@ -76,19 +54,6 @@
 
 
 
-//- (void)willMoveToSuperview:(UIView *)newSuperview
-//{
-//    [super willMoveToSuperview:newSuperview];
-//    if(!newSuperview)
-//    {
-//        if (self.image)
-//            [self.image releaseCache];
-//    }
-//}
-
-
-
-
 
 - (void)dealloc
 {
@@ -98,25 +63,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 }
-
-
-
 
 
 

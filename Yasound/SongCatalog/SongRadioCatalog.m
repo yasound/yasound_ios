@@ -47,7 +47,6 @@ static SongRadioCatalog* _main = nil;
 
 - (void)dealloc {
     
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 
@@ -57,9 +56,6 @@ static SongRadioCatalog* _main = nil;
     if (self = [super init]) {
         
         self.catalogCache = [NSMutableDictionary dictionary];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAddToProgramming:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoveFromProgramming:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongUpdated:) name:NOTIF_PROGAMMING_SONG_UPDATED object:nil];
     }
     return self;
 }
@@ -102,12 +98,6 @@ static SongRadioCatalog* _main = nil;
         [self.target performSelector:self.action withObject:info];
         return;
     }
-    
-//    // otherwise , create cache and build data
-//    self.matchedSongs = [[NSMutableDictionary alloc] init];
-//    
-//    self.artistRegister = [[NSMutableDictionary alloc] init];
-//    self.albumRegister = [[NSMutableDictionary alloc] init];
     
     _data = [[NSMutableArray alloc] init];
     [_data retain];
@@ -196,7 +186,6 @@ static SongRadioCatalog* _main = nil;
             
             
             // create a key for the dictionary
-            // LBDEBUG NSString* key = [SongCatalog catalogKeyOfSong:song.name artist:song.artist album:song.album];
             NSString* localKey = [SongCatalog catalogKeyOfSong:song.name_client artistKey:song.artist_client albumKey:song.album_client];
             
             // and store the song in the dictionnary, for later convenient use
@@ -309,8 +298,6 @@ static SongRadioCatalog* _main = nil;
     return [self songsForArtist:artist withGenre:genre fromTable:RADIOCATALOG_TABLE];
 }
 
-//- (NSArray*)songsForArtist:(NSString*)artist withPlaylist:(NSString*)playlist;
-
 
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist {
     
@@ -349,16 +336,6 @@ static SongRadioCatalog* _main = nil;
 #pragma mark - Notifications
 
 
-//@property (nonatomic, retain) NSMutableDictionary* songsForLetter;
-//
-//@property (nonatomic, retain) NSMutableDictionary* artistsForLetter;
-//
-//@property (nonatomic, retain) NSMutableDictionary* albumsForArtist;
-//
-//@property (nonatomic, retain) NSMutableDictionary* songsForArtistAlbum;
-//
-
-
 
 - (void)updateSongAddedToProgramming:(Song*)song
 {
@@ -389,11 +366,6 @@ static SongRadioCatalog* _main = nil;
     // clear related cache
     self.catalogCache = nil;
     self.catalogCache = [NSMutableDictionary dictionary];
-    
-//    self.songsForLetter = nil;
-//    self.artistsForLetter = nil;
-//    self.albumsForArtist = nil;
-//    self.songsForArtistAlbum = nil;
     
     // and call for a GUI refresh
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:song];
@@ -433,11 +405,6 @@ static SongRadioCatalog* _main = nil;
     // clear related cache
     self.catalogCache = nil;
     self.catalogCache = [NSMutableDictionary dictionary];
-    
-    //    self.songsForLetter = nil;
-    //    self.artistsForLetter = nil;
-    //    self.albumsForArtist = nil;
-    //    self.songsForArtistAlbum = nil;
     
     DLog(@"send delete update notification");
 

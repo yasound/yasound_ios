@@ -41,7 +41,6 @@
 
 - (NSArray*)songsForArtist:(NSString*)artist;
 - (NSArray*)songsForArtist:(NSString*)artist withGenre:(NSString*)genre;
-//- (NSArray*)songsForArtist:(NSString*)artist withPlaylist:(NSString*)playlist;
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist;
 
 - (BOOL)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;

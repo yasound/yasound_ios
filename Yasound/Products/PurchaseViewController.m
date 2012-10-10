@@ -34,7 +34,6 @@
 
 @synthesize cellProfil;
 @synthesize cellProfilImage;
-//@synthesize cellProfilHdImage;
 @synthesize cellProfilLabel;
 
 
@@ -88,22 +87,11 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     // e.g. self.myOutlet = nil;
 }
 
-//- (void)viewWillDisappear:(BOOL)animated
-//{
-//    
-//}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
-
-
-
-
-
 
 
 
@@ -115,10 +103,6 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     [dateFormat release];
     return s;
 }
-
-
-
-
 
 - (void)onServicesReceived:(ASIHTTPRequest*)req success:(BOOL)success
 {
@@ -346,16 +330,6 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     if (!sub.isEnabled)
         return;
     
-//    if ([sub isCurrent])
-//    {
-//        UIAlertView *successesAlert = [[UIAlertView alloc] initWithTitle:product.description                                       
-//                                                                 message:NSLocalizedString(@"Purchase.transaction.current.message", nil)
-//                                                                delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-//        [successesAlert show];
-//        [successesAlert release];
-//        return;
-//    }
-
     [ActivityAlertView showWithTitle:nil];
     
     SKPayment* payment = [SKPayment paymentWithProductIdentifier:productId];
@@ -402,10 +376,6 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
     NSString* encodedReceipt = [Base64 encodeBase64WithData:transaction.transactionReceipt];
 
-    
-    //LBDEBUG
-//    NSData* emailData = [encodedReceipt dataUsingEncoding:NSASCIIStringEncoding];
-//    [[PlaylistMoulinor main] emailData:emailData to:@"jerome@yasound.com" mimetype:@"application/octet-stream" filename:@"yasound_inapp_apple_receipt.bin" controller:self];
     
     [[YasoundDataProvider main] subscriptionComplete:sku withBase64Receipt:encodedReceipt target:self action:@selector(onTransactionRecorded:info:)];
         

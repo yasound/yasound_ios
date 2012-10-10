@@ -66,11 +66,6 @@
         [_image setImage:[sheet image]];
     }
 
-    //mask
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Header.HeaderAvatarMask" error:nil];
-//    [_mask setImage:[sheet image]];
-
-
     // format messages
     Radio* currentRadio = [AudioStreamManager main].currentRadio;
     
@@ -80,12 +75,6 @@
     //
     self.pictureUrl = [[NSURL alloc] initWithString:[APPDELEGATE getServerUrlWith:@"fr/images/logo.png"]];
     self.fullLink = [[NSURL alloc] initWithString:currentRadio.web_url];
-    
-    //
-    //NSString* twitterFullMessage = [NSString stringWithFormat:@"#yasound %@ %@ ", [fullLink absoluteString], facebookFullMessage];
-    //
-    //NSString* emailFullMessage = facebookFullMessage;
-
     
     // message objects input
     _textView.text = fullMessage;

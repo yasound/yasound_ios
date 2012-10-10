@@ -12,9 +12,7 @@
 #import "YasoundSessionManager.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-//#import "BitlyURLShortener.h"
 #import "TwitterOAuthSessionManager.h"
-//#import "BitlyConfig.h"
 #import "MKBitlyHelper.h"
 #import "ActivityAlertView.h"
 
@@ -75,10 +73,6 @@
         [_image setImage:[sheet image]];
     }
 
-//    //mask
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Header.HeaderAvatarMask" error:nil];
-//    [_mask setImage:[sheet image]];
-
     [_textView becomeFirstResponder];
     
 
@@ -90,30 +84,8 @@
     self.fullLink = [bitlyHelper shortenURL:[self.fullLink absoluteString]];
     
     [self fillView];
-    
-////    // set bit.ly API key
-//    [[BitlyConfig sharedBitlyConfig] setBitlyLogin:BITLY_LOGIN bitlyAPIKey:BITLY_API_KEY];
-////    [[BitlyConfig sharedBitlyConfig] setTwitterOAuthConsumerKey:[TwitterOAuthSessionManager oauthConsumerKeyForYasound] twitterOAuthConsumerSecret:[TwitterOAuthSessionManager oauthConsumerSecretForYasound] twitterOAuthSuccessCallbackURL:@"https://yasound.com"];    
-//    
-//    BitlyURLShortener* bitly = [[BitlyURLShortener alloc] init];
-//    bitly.delegate = self;
-//    [bitly shortenURL:[self.fullLink absoluteString]];
-    
 }
 
-
-//- (void)bitlyURLShortenerDidShortenURL:(BitlyURLShortener *)shortener longURL:(NSURL *)longURL shortURLString:(NSString *)shortURLString
-//{
-//    self.fullLink = [[NSURL alloc] initWithString:shortURLString];
-//    [self fillView];
-//}
-//
-//
-//- (void)bitlyURLShortener:(BitlyURLShortener *)shortener didFailForLongURL:(NSURL *)longURL statusCode:(NSInteger)statusCode statusText:(NSString *)statusText 
-//{
-//    DLog(@"Shortening failed for link %@: status code: %d, status text: %@", [longURL absoluteString], statusCode, statusText);
-//    [self fillView];
-//}
 
 
 - (void)fillView
@@ -189,7 +161,6 @@
 
 - (UIColor*)tintForActionButton
 {
-//    return [UIColor colorWithRed:127.f/255.f green:229.f/255.f blue:252.f/255.f alpha:1];
     return [UIColor colorWithRed:95.f/255.f green:192.f/255.f blue:222.f/255.f alpha:1];
 }
 

@@ -99,12 +99,8 @@
     NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
     NSString* message = [_textView.text stringByTrimmingCharactersInSet:space];
     
-//    if (message.length == 0)
-//        return;
-
     [self.delegate bioDidReturn:message];
 
-//    [self.navigationController popViewControllerAnimated:YES];
     [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:[NSNumber numberWithBool:NO]];
 }
