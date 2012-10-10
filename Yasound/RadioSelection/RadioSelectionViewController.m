@@ -315,6 +315,9 @@
         view.view.autoresizesSubviews = YES;
 //        view.view.autoresizingMask = UIViewAutoresizingFlexibleWidth || UIViewAutoresizingFlexibleHeight;
 //        view.view.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
+        CGRect frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
+        view.view.frame = frame;
+
         [self.listContainer addSubview:view.view];
         self.contentsController = view;
         self.contentsView = view.view;
