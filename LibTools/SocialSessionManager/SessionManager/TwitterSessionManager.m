@@ -179,6 +179,13 @@ static TwitterSessionManager* _twitter = nil;
 }
     
 
+- (void)enableUpdatesFor:(NSString *)username
+{
+  if (_iosManager)
+    [_iosManager enableUpdatesFor:username];
+  else
+    [_oauthManager enableUpdatesFor:username];
+}
 
 
 #pragma mark - ActionSheet Delegate

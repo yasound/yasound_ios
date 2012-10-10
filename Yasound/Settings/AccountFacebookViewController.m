@@ -12,6 +12,8 @@
 #import "ConnectionView.h"
 #import "ActivityAlertView.h"
 #import "RootViewController.h"
+#import "WebPageViewController.h"
+#import "YasoundAppDelegate.h"
 
 @interface AccountFacebookViewController ()
 
@@ -31,10 +33,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 
-    _usernameLabel.text = NSLocalizedString(@"AccountsView_username_label", nil);
-    
+  _usernameLabel.text = NSLocalizedString(@"AccountsView_username_label", nil);
+  _likeLabel.text = NSLocalizedString(@"AccountsView_like_label", nil);
+
     [self update];
 }
 
@@ -122,7 +124,7 @@
 
 
 - (void)onConnectionTimeout {
-    
+
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CONNECTION_TIMEOUT object:nil];
 }
 

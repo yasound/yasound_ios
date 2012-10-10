@@ -342,6 +342,7 @@
 "AccountsView_alert_login_success" = "%@ account registered.";
 "AccountsView_alert_logout_success" = "%@ account unregistered.";
 "AccountsView_alert_logout_error" = "Unabled to unregister the account.";
+"AccountsView_like_label" = "Like Yasound on Facebook";
 
 
 
@@ -770,4 +771,6 @@
 
 "SelectAll" = "select all";
 "UnselectAll" = "unselect all";
+
+"TwitterYasoundAccount" = "@YasoundUS";
 
