@@ -8,14 +8,6 @@
 
 #import "OrientedTableView.h"
 
-//typedef enum WheelItemId
-//{
-//    WheelIdFavorites = 0,
-//    WheelIdSelection,
-//    WheelIdFriends,
-//    WheelIdTop
-//} WheelItemId;
-
 @class WheelSelector;
 
 @protocol WheelSelectorDelegate <NSObject>
@@ -38,11 +30,9 @@
 @property (nonatomic) NSInteger currentIndex;
 
 @property (nonatomic, retain) CALayer* indicatorLayer;
-//@property (nonatomic, retain) UIImage* indicatorLayer;
 @property (nonatomic) CGPoint indicatorOffset;
 
 @property (nonatomic, retain) CALayer* shadowLayer;
-//@property (nonatomic, retain) CALayer* shadowLayer;
 @property (nonatomic) CGPoint shadowOffset;
 
 - (void)initWithTheme:(NSString*)theme;

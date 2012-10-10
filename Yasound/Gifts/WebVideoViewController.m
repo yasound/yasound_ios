@@ -72,8 +72,6 @@
     
     DLog(@"%@", htmlString);
 
-//    NSURL* url = [NSURL URLWithString:[APPDELEGATE getServerUrlWith:@"legal/eula.html"]];
-    
     [_webview loadHTMLString:htmlString baseURL:nil];
     
 }

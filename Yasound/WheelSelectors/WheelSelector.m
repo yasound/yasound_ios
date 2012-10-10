@@ -74,7 +74,6 @@
     
     CGFloat fw2 = (firstWidth /2.f);
     CGFloat marginLeft = W2 - fw2;
-//    CGFloat marginRight = (self.frame.size.width /2.f) - ([[[self.items objectAtIndex:(self.items.count-1)] objectAtIndex:ITEM_WIDTH] floatValue]);
     CGFloat marginRight = (self.frame.size.width /2.f);
 
     CGFloat x = marginLeft;
@@ -101,9 +100,6 @@
             // set the "sticky" limit for this item (<=> where the influence of the next item begins)
             CGFloat stickyLimit = (x + width + spacing/2.f);
             [item addObject:[NSNumber numberWithFloat:stickyLimit]];
-            
-             //LBDEBUG
-            //NSLog(@"Item %d : width %.2f,   pos %.2f   limit %.2f", index, width, stickyPos, stickyLimit);
             
             //LBDEBUG
             assert(ITEM_TEXT < item.count);
@@ -212,9 +208,6 @@
 {
     CGFloat currentPost = self.contentOffset.x + self.frame.size.width/2.f;
     
-    //LBDEBUG
-    //NSLog(@"currentPost %.2f", currentPost);
-    
     // compute the index of the sticky item
     NSInteger stickyIndex = 0;
     for (NSArray* item in self.items)
@@ -228,8 +221,6 @@
         
         stickyIndex++;
     }
-    
-    // DLog(@"stickyIndex %d", stickyIndex);
     
     return stickyIndex;
 }
@@ -291,19 +282,8 @@
     [self setScrollEnabled:!set];
 }
 
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//}
 
 
-
-
-
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-//- (void)drawRect:(CGRect)rect
-//{
-//}
 
 
 @end

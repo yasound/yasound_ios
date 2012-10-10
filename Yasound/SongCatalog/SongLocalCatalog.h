@@ -15,25 +15,6 @@
 @property (nonatomic) SEL action;
 
 
-// cache
-
-// list of NSString* genre
-//@property (nonatomic, retain) NSArray* genres;
-//
-//// list of NSString* playlist
-//@property (nonatomic, retain) NSArray* playlists;
-//
-//// list of NSString* genre -> NSArray* [NSString* artists]
-//@property (nonatomic, retain) NSMutableDictionary* artistsForGenre;
-//
-//// list of NSString* genre -> NSArray* [NSString* songs songKey] 
-//@property (nonatomic, retain) NSMutableDictionary* songsForGenre;
-//
-//// list of NSString* playlist -> NSArray* [NSString* artists]
-//@property (nonatomic, retain) NSMutableDictionary* artistsForPlaylist;
-//
-//// list of NSString* playlist -> NSArray* [NSString* songs name]  // take care : songs name is not songKey
-//@property (nonatomic, retain) NSMutableDictionary* songsForPlaylist;
 
 
 + (SongLocalCatalog*)main;
@@ -69,7 +50,6 @@
 - (BOOL)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
 - (BOOL)addSong:(Song*)song forPlaylist:(NSString*)playlist;
 
-//- (BOOL)removeSong:(NSString*)songKey;
 
 - (void)updateSongAddedToProgramming:(Song*)song;
 - (void)updateSongRemovedFromProgramming:(Song*)song;

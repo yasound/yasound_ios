@@ -109,12 +109,6 @@
     return title;
 }
 
-//- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
-//{
-//    return 0;
-//}
-
-
 
 
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex

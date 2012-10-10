@@ -13,18 +13,8 @@
 #import "DataBase.h"
 #import "RootViewController.h"
 #import "SongRadioCatalog.h"
-//LBDEBUG TEMPORARLY
-//#import "PlaylistMoulinor.h"
 
 @implementation SongLocalCatalog
-
-
-//@synthesize genres;
-//@synthesize playlists;
-//@synthesize artistsForGenre;
-//@synthesize songsForGenre;
-//@synthesize artistsForPlaylist;
-//@synthesize songsForPlaylist;
 
 
 static SongLocalCatalog* _main = nil;
@@ -50,7 +40,6 @@ static SongLocalCatalog* _main = nil;
 
 - (void)dealloc {
     
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 
@@ -59,14 +48,6 @@ static SongLocalCatalog* _main = nil;
     
     if (self = [super init]) {
      
-//        self.artistsForGenre = [NSMutableDictionary dictionary];
-//        self.songsForGenre = [NSMutableDictionary dictionary];
-//        self.artistsForPlaylist = [NSMutableDictionary dictionary];
-//        self.songsForPlaylist = [NSMutableDictionary dictionary];
-
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAddToProgramming:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoveFromProgramming:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongUpdated:) name:NOTIF_PROGAMMING_SONG_UPDATED object:nil];
     }
     return self;
 }
@@ -142,20 +123,7 @@ static SongLocalCatalog* _main = nil;
     {
         SongLocal* songLocal = [[SongLocal alloc] initWithMediaItem:item];
         
-//        Song* matchedSong = [songs objectForKey:songLocal.catalogKey];
-        
-        //        // don't include it if it's included in the matched songs already
-        //        if (matchedSong != nil)
-        //            continue;
-        //
-        // we don't do that anymore. We include all the songs, but a visual mark is displayed if the song is
-        // in the radio's programming already
-//        if (matchedSong != nil)
-//            [songLocal setIsProgrammed:YES];
-        
-        
         // REMEMBER THAT HERE, songLocal is SongLocal*
-        
         BOOL res = [self addSong:songLocal forTable:LOCALCATALOG_TABLE songKey:songLocal.catalogKey artistKey:songLocal.artistKey albumKey:songLocal.albumKey];
         nbSongs++;
     }
@@ -198,8 +166,7 @@ static SongLocalCatalog* _main = nil;
     [self commit];
     
     
-//    if (nbSongs > 0)
-        self.isInCache = YES;
+    self.isInCache = YES;
     
     NSMutableDictionary* info = [NSMutableDictionary dictionary];
     [info setObject:[NSNumber numberWithInteger:self.songsDb.count] forKey:@"count"];
@@ -342,8 +309,6 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)genresAll {
     
-//    if (self.genres != nil)
-//        return self.genres;
     NSString* cacheKey = [NSString stringWithFormat:@"genres"];
     NSArray* cache = [self.catalogCache objectForKey:cacheKey];
     if (cache != nil)
@@ -362,7 +327,6 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-//    self.genres = results;
     [self.catalogCache setObject:results forKey:cacheKey];
     
     return results;    
@@ -372,7 +336,6 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)artistsForGenre:(NSString*)genre {
     
-//    NSMutableArray* results = [self.artistsForGenre objectForKey:genre];
     NSString* cacheKey = [NSString stringWithFormat:@"artistsForGenre|%@", genre];
     NSArray* cache = [self.catalogCache objectForKey:cacheKey];
     if (cache != nil)
@@ -390,7 +353,6 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-//    [self.artistsForGenre setObject:results forKey:genre];
     [self.catalogCache setObject:results forKey:cacheKey];
     
     return results;
@@ -399,7 +361,6 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)songsForGenre:(NSString*)genre {
     
-//    NSMutableArray* results = [self.songsForGenre objectForKey:genre];
     NSString* cacheKey = [NSString stringWithFormat:@"songsForGenre|%@", genre];
     NSArray* cache = [self.catalogCache objectForKey:cacheKey];
     if (cache != nil)
@@ -417,7 +378,6 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-//    [self.songsForGenre setObject:results forKey:genre];
     [self.catalogCache setObject:results forKey:cacheKey];
     
     return results;
@@ -428,8 +388,6 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)playlistsAll {
     
-//    if (self.playlists != nil)
-//        return self.playlists;
     NSString* cacheKey = [NSString stringWithFormat:@"playlists"];
     NSArray* cache = [self.catalogCache objectForKey:cacheKey];
     if (cache != nil)
@@ -447,7 +405,6 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-//    self.playlists = results;
     [self.catalogCache setObject:results forKey:cacheKey];
 
     return results;
@@ -457,10 +414,6 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)artistsForPlaylist:(NSString*)playlist {
 
-//    NSMutableArray* results = [self.artistsForPlaylist objectForKey:playlist];
-//    
-//    if (results != nil)
-//        return results;
     NSString* cacheKey = [NSString stringWithFormat:@"artistsForPlaylist|%@", playlist];
     NSArray* cache = [self.catalogCache objectForKey:cacheKey];
     if (cache != nil)
@@ -478,7 +431,6 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-//    [self.artistsForPlaylist setObject:results forKey:playlist];
     [self.catalogCache setObject:results forKey:cacheKey];
     
     return results;
@@ -488,10 +440,6 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)songsForPlaylist:(NSString*)playlist {
     
-//    NSMutableArray* results = [self.songsForPlaylist objectForKey:playlist];
-//    
-//    if (results != nil)
-//        return results;
     NSString* cacheKey = [NSString stringWithFormat:@"songsForPlaylist|%@", playlist];
     NSArray* cache = [self.catalogCache objectForKey:cacheKey];
     if (cache != nil)
@@ -509,7 +457,6 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-//    [self.songsForPlaylist setObject:results forKey:playlist];
     [self.catalogCache setObject:results forKey:cacheKey];
     
     return results;
@@ -535,8 +482,6 @@ static SongLocalCatalog* _main = nil;
     
     assert(song);
     assert([song isKindOfClass:[SongLocal class]]);
-    
-//    [song setIsProgrammed:YES];
 }
 
 
@@ -544,8 +489,6 @@ static SongLocalCatalog* _main = nil;
     
     assert(song);
     assert([song isKindOfClass:[Song class]]);
-
-//    [song setIsProgrammed:NO];
 }
 
 
@@ -555,19 +498,9 @@ static SongLocalCatalog* _main = nil;
     assert([song isKindOfClass:[SongLocal class]]);
 
     Song* matchedSong = [[SongRadioCatalog main].matchedSongs objectForKey:song.catalogKey];
-    
-//    if (matchedSong != nil)
-//        [song setIsProgrammed:YES];
-//    else
-//        [song setIsProgrammed:NO];
 }
 
 
-
-//- (BOOL)removeSong:(NSString*)songKey {
-//    
-//    [self removeSong:songKey forTable:LOCALCATALOG_TABLE];
-//}
 
 
 
