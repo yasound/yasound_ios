@@ -37,5 +37,6 @@
 
 - (BOOL)requestGetInfo:(SessionRequestType)requestType;
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;
+- (void)enableUpdatesFor:(NSString *)username; // friendships/create (follow username)
 
 @end

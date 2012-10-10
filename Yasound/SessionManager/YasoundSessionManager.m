@@ -419,7 +419,10 @@ static YasoundSessionManager* _main = nil;
 }
 
 
-
+- (BOOL)followTwitterUser:(NSString*)username
+{
+  [[TwitterSessionManager twitter] enableUpdatesFor:username];
+}
 
 
 
