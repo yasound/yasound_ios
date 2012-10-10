@@ -42,7 +42,6 @@
     self.headerSubscribers.text = [NSString stringWithFormat:@"%d", [radio.favorites integerValue]];
     self.headerListeners.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
 
-    //    self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.add", nil);
 
     self.headerButton.enabled = NO;
     self.headerButtonLabel.text = @"-";

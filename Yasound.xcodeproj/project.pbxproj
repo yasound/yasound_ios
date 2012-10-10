@@ -1345,14 +1345,6 @@
 		BC23874415D2C09900D1A4C4 /* WallPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23873E15D2C09900D1A4C4 /* WallPostCell.m */; };
 		BC23874515D2C09900D1A4C4 /* WallPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23873E15D2C09900D1A4C4 /* WallPostCell.m */; };
 		BC23874615D2C09900D1A4C4 /* WallPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23873E15D2C09900D1A4C4 /* WallPostCell.m */; };
-		BC23874915D2C14500D1A4C4 /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23874815D2C14500D1A4C4 /* StatusBar.m */; };
-		BC23874A15D2C14500D1A4C4 /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23874815D2C14500D1A4C4 /* StatusBar.m */; };
-		BC23874B15D2C14500D1A4C4 /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23874815D2C14500D1A4C4 /* StatusBar.m */; };
-		BC23874C15D2C14500D1A4C4 /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23874815D2C14500D1A4C4 /* StatusBar.m */; };
-		BC23874D15D2C14500D1A4C4 /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23874815D2C14500D1A4C4 /* StatusBar.m */; };
-		BC23874E15D2C14500D1A4C4 /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23874815D2C14500D1A4C4 /* StatusBar.m */; };
-		BC23874F15D2C14500D1A4C4 /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23874815D2C14500D1A4C4 /* StatusBar.m */; };
-		BC23875015D2C14500D1A4C4 /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23874815D2C14500D1A4C4 /* StatusBar.m */; };
 		BC2387C015D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
 		BC2387C115D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
 		BC2387C215D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
@@ -1361,14 +1353,6 @@
 		BC2387C515D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
 		BC2387C615D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
 		BC2387C715D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
-		BC23881315D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
-		BC23881415D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
-		BC23881515D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
-		BC23881615D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
-		BC23881715D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
-		BC23881815D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
-		BC23881915D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
-		BC23881A15D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
 		BC27F39414BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC27F39514BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC27F39614BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
@@ -3894,9 +3878,7 @@
 		BCC7524015E689EF00CF7F7C /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23871715D2B9D100D1A4C4 /* WallViewController.m */; };
 		BCC7524115E689EF00CF7F7C /* WallHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23873415D2BE6400D1A4C4 /* WallHeaderCell.m */; };
 		BCC7524215E689EF00CF7F7C /* WallPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23873E15D2C09900D1A4C4 /* WallPostCell.m */; };
-		BCC7524315E689EF00CF7F7C /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23874815D2C14500D1A4C4 /* StatusBar.m */; };
 		BCC7524415E689EF00CF7F7C /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
-		BCC7524515E689EF00CF7F7C /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
 		BCC7524615E689EF00CF7F7C /* Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 405A956615D4105300569FE0 /* Show.m */; };
 		BCC7524715E689EF00CF7F7C /* TopBarSaveOrCancel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */; };
 		BCC7524815E689EF00CF7F7C /* SchedulingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C1515D66855008C26AC /* SchedulingViewController.m */; };
@@ -7384,12 +7366,8 @@
 		BC23873415D2BE6400D1A4C4 /* WallHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallHeaderCell.m; sourceTree = "<group>"; };
 		BC23873D15D2C09900D1A4C4 /* WallPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallPostCell.h; sourceTree = "<group>"; };
 		BC23873E15D2C09900D1A4C4 /* WallPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallPostCell.m; sourceTree = "<group>"; };
-		BC23874715D2C14400D1A4C4 /* StatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBar.h; sourceTree = "<group>"; };
-		BC23874815D2C14500D1A4C4 /* StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBar.m; sourceTree = "<group>"; };
 		BC2387BE15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WallViewController+NowPlayingBar.h"; sourceTree = "<group>"; };
 		BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WallViewController+NowPlayingBar.m"; sourceTree = "<group>"; };
-		BC23881115D399C400D1A4C4 /* WallViewController+StatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WallViewController+StatusBar.h"; sourceTree = "<group>"; };
-		BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WallViewController+StatusBar.m"; sourceTree = "<group>"; };
 		BC27F39214BE598700EF1C5F /* YasoundReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundReachability.h; sourceTree = "<group>"; };
 		BC27F39314BE598700EF1C5F /* YasoundReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundReachability.m; sourceTree = "<group>"; };
 		BC2886451604E41900AEEAD7 /* customSizedDarkGray-center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "customSizedDarkGray-center.png"; sourceTree = "<group>"; };
@@ -8875,16 +8853,12 @@
 		BC23871515D2B9D100D1A4C4 /* Wall */ = {
 			isa = PBXGroup;
 			children = (
-				BC23874715D2C14400D1A4C4 /* StatusBar.h */,
-				BC23874815D2C14500D1A4C4 /* StatusBar.m */,
 				BC23873D15D2C09900D1A4C4 /* WallPostCell.h */,
 				BC23873E15D2C09900D1A4C4 /* WallPostCell.m */,
 				BC23873315D2BE6400D1A4C4 /* WallHeaderCell.h */,
 				BC23873415D2BE6400D1A4C4 /* WallHeaderCell.m */,
 				BC2387BE15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.h */,
 				BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */,
-				BC23881115D399C400D1A4C4 /* WallViewController+StatusBar.h */,
-				BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */,
 				BC23871615D2B9D100D1A4C4 /* WallViewController.h */,
 				BC23871715D2B9D100D1A4C4 /* WallViewController.m */,
 				BCC5095A16240F0A0049B69C /* WallViewController.xib */,
@@ -15658,9 +15632,7 @@
 				BC23871F15D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873B15D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874515D2C09900D1A4C4 /* WallPostCell.m in Sources */,
-				BC23874F15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C615D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
-				BC23881915D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956D15D4105300569FE0 /* Show.m in Sources */,
 				BC784E8E15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 				BCE35C1D15D66855008C26AC /* SchedulingViewController.m in Sources */,
@@ -15913,9 +15885,7 @@
 				BC23872015D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873C15D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874615D2C09900D1A4C4 /* WallPostCell.m in Sources */,
-				BC23875015D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C715D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
-				BC23881A15D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956E15D4105300569FE0 /* Show.m in Sources */,
 				BC784E8F15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 				BCE35C1E15D66855008C26AC /* SchedulingViewController.m in Sources */,
@@ -16164,9 +16134,7 @@
 				BC23871E15D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873A15D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874415D2C09900D1A4C4 /* WallPostCell.m in Sources */,
-				BC23874E15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C515D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
-				BC23881815D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956C15D4105300569FE0 /* Show.m in Sources */,
 				BC784E8D15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 				BCE35C1C15D66855008C26AC /* SchedulingViewController.m in Sources */,
@@ -16419,9 +16387,7 @@
 				BC23871B15D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873715D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874115D2C09900D1A4C4 /* WallPostCell.m in Sources */,
-				BC23874B15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C215D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
-				BC23881515D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956915D4105300569FE0 /* Show.m in Sources */,
 				BC784E8A15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 				BCE35C1915D66855008C26AC /* SchedulingViewController.m in Sources */,
@@ -16674,9 +16640,7 @@
 				BC23871A15D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873615D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874015D2C09900D1A4C4 /* WallPostCell.m in Sources */,
-				BC23874A15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C115D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
-				BC23881415D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956815D4105300569FE0 /* Show.m in Sources */,
 				BC784E8915D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 				BCE35C1815D66855008C26AC /* SchedulingViewController.m in Sources */,
@@ -16930,9 +16894,7 @@
 				BC23871D15D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873915D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874315D2C09900D1A4C4 /* WallPostCell.m in Sources */,
-				BC23874D15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C415D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
-				BC23881715D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956B15D4105300569FE0 /* Show.m in Sources */,
 				BC784E8C15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 				BCE35C1B15D66855008C26AC /* SchedulingViewController.m in Sources */,
@@ -17185,9 +17147,7 @@
 				BCC7524015E689EF00CF7F7C /* WallViewController.m in Sources */,
 				BCC7524115E689EF00CF7F7C /* WallHeaderCell.m in Sources */,
 				BCC7524215E689EF00CF7F7C /* WallPostCell.m in Sources */,
-				BCC7524315E689EF00CF7F7C /* StatusBar.m in Sources */,
 				BCC7524415E689EF00CF7F7C /* WallViewController+NowPlayingBar.m in Sources */,
-				BCC7524515E689EF00CF7F7C /* WallViewController+StatusBar.m in Sources */,
 				BCC7524615E689EF00CF7F7C /* Show.m in Sources */,
 				BCC7524715E689EF00CF7F7C /* TopBarSaveOrCancel.m in Sources */,
 				BCC7524815E689EF00CF7F7C /* SchedulingViewController.m in Sources */,
@@ -17440,9 +17400,7 @@
 				BC23871915D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873515D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23873F15D2C09900D1A4C4 /* WallPostCell.m in Sources */,
-				BC23874915D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C015D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
-				BC23881315D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956715D4105300569FE0 /* Show.m in Sources */,
 				BC784E8815D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 				BCE35C1715D66855008C26AC /* SchedulingViewController.m in Sources */,
@@ -17696,9 +17654,7 @@
 				BC23871C15D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873815D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874215D2C09900D1A4C4 /* WallPostCell.m in Sources */,
-				BC23874C15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C315D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
-				BC23881615D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956A15D4105300569FE0 /* Show.m in Sources */,
 				BC784E8B15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 				BCE35C1A15D66855008C26AC /* SchedulingViewController.m in Sources */,

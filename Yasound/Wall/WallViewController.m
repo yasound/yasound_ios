@@ -32,7 +32,6 @@
 #import "LoadingCell.h"
 
 #import "ProfilViewController.h"
-//#import "ProfileMyRadioViewController.h"
 #import "ShareModalViewController.h"
 #import "ShareTwitterModalViewController.h"
 #import "YasoundSessionManager.h"
@@ -92,7 +91,6 @@
 @synthesize nowPlayingButton;
 @synthesize nowPlayingLabel1;
 @synthesize nowPlayingLabel2;
-//@synthesize nowPlayingInteractiveView;
 @synthesize nowPlayingShare;
 @synthesize nowPlayingLike;
 @synthesize nowPlayingBuy;
@@ -146,9 +144,6 @@
         
         _wallEvents = [[NSMutableArray alloc] init];
         _waitingForPreviousEvents = NO;
-//        _connectedUsers = nil;
-//        _usersContainer = nil;
-//        _radioForSelectedUser = nil;
         
         _cellEditing = nil;
         
@@ -180,8 +175,6 @@
     
     _waitingForPreviousEvents = NO;
     
-//    self.cellPostBar.placeholder 
-    
     self.fixedCellPostBar.frame = CGRectMake(self.fixedCellPostBar.frame.origin.x, self.tableview.frame.origin.y, self.fixedCellPostBar.frame.size.width, self.fixedCellPostBar.frame.size.height);
 
     // table view
@@ -195,16 +188,11 @@
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.minHeight" error:nil];
     self.tableview.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
     
-//    [self.cellWallHeader setHeaderRadio:self.radio];
-    
     [self setPause:[AudioStreamManager main].isPaused];
 
     // get the actual data from the server to update the GUI
     [self updatePreviousWall];
     
-    // we want the song info to be displayed when a touch occurs on the labels, the same way the track image is clicked
-//    [self.nowPlayingInteractiveView setTarget:self action:@selector(onTrackImageClicked:)];
-
     
     
     if (![AudioStreamManager main].isPaused)
@@ -275,8 +263,6 @@
 
     if (_serverErrorCount == 0)
     {
-//        [[YasoundDataProvider main] leaveRadioWall:self.radio];
-        
         if ([AudioStreamManager main].isPaused)
             [[AudioStreamManager main] stopRadio];
     }
@@ -292,20 +278,12 @@
     }
     
     // clean running requests
-    //LBDEBUG ICI
-    for (ASIHTTPRequest* req in self.requests)
-    {
-       // [req clearDelegatesAndCancel];
-        [req release];
-    }
-    self.requests = nil;
+//    for (ASIHTTPRequest* req in self.requests)
+//    {
+//        [req release];
+//    }
+//    self.requests = nil;
     
-//    // LBDEBUG hum hum... anti-bug for now
-//    NSInteger retainCount = [self retainCount];
-//    NSLog(@"RETAIN COUNT %d", retainCount);
-//    for (NSInteger i = 0; i < retainCount-4; i++)
-//        [self release];
-        
 }
 
 
@@ -330,9 +308,6 @@
     [_messageFont release];
     [_wallEvents release];
     [_updateLock release];
-    
-    //    if (_ap != nil)
-    //        [_ap release];
     
     [super dealloc];
 }
@@ -385,10 +360,6 @@
         _timerUpdate = nil;
         return;
     }
-    //    if (_ap != nil)
-    //        [_ap release];
-    //
-    //    _ap = [[NSAutoreleasePool alloc] init];
     
     if ([_updateLock tryLock])
     {
@@ -491,13 +462,8 @@
 // received previous wall events
 //
 
-//ICI
 - (void)receivedPreviousWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
-    //LBDEBUG
-    //NSLog(@"%@", info);
-    ///////////////////
-    
     NSDictionary* userData = [info objectForKey:@"userData"];
     ASIHTTPRequest* req = [userData objectForKey:@"request"];
     assert(req);
@@ -570,26 +536,16 @@
     
     NSInteger count = events.count;
     
-    // update _latestEvent
-    
     WallEvent* ev = [events objectAtIndex:0];
     WallEvent* wev = nil;
     
     if (_wallEvents.count > 0)
         wev = [_wallEvents objectAtIndex:0];
     
-    //DLog(@"first event is %@ : %@", [ev wallEventTypeString], ev.start_date);
-    
-    if (wev != nil)
-        //DLog(@"first wallevent is %@ : %@", [wev wallEventTypeString], wev.start_date);
-    
     if ((wev != nil) && [wev.start_date isLaterThan:ev.start_date])
         _latestEvent = wev;
     else
         _latestEvent = ev;
-    
-    //DLog(@"_latestEvent is %@ : %@", [_latestEvent wallEventTypeString], _latestEvent.start_date);
-    //DLog(@"_lastWallEvent is %@ : %@", [_lastWallEvent wallEventTypeString], _lastWallEvent.start_date);
     
     // launch update timer
     if (_firstUpdateRequest)
@@ -667,12 +623,8 @@
 //
 // received current wall events
 //
-//ICI
 - (void)receivedCurrentWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
-    //LBDEBUG
-    //NSLog(@"%@", info);
-    ///////////////////
     NSDictionary* userData = [info objectForKey:@"userData"];
     ASIHTTPRequest* req = [userData objectForKey:@"request"];
     assert(req);
@@ -837,8 +789,6 @@
 {
     if (!status)
         return;
-//    if (_playingNowView)
-//        [_playingNowView setSongStatus:status];
 }
 
 - (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info
@@ -848,8 +798,6 @@
     
     self.radio = r;
     
-    
-//    _favoritesLabel.text = [NSString stringWithFormat:@"%d", [self.radio.favorites integerValue]];
     _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
 }
 
@@ -868,78 +816,6 @@
     DLog(@"userLeft %@", u.name);
     [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", u.name]];
 }
-
-//- (void)receivedCurrentUsers:(NSArray*)users withInfo:(NSDictionary*)info
-//{
-//    if (!users || users.count == 0)
-//        return;
-//    
-//    if (_connectedUsers && _connectedUsers.count > 0)
-//    {
-//        // get diff
-//        NSMutableArray* joined = [NSMutableArray array];
-//        NSMutableArray* left = [NSMutableArray array];
-//        
-//        // user arrays are sorted by id
-//        NSArray* oldUsers = _connectedUsers;
-//        NSArray* newUsers = users;
-//        User* u;
-//        
-//        User* firstNew = [newUsers objectAtIndex:0];
-//        User* lastNew = [newUsers objectAtIndex:newUsers.count - 1];
-//        User* firstOld = [oldUsers objectAtIndex:0];
-//        User* lastOld = [oldUsers objectAtIndex:oldUsers.count - 1];
-//        
-//        
-//        for (u in oldUsers)
-//        {
-//            if ([u.id intValue] >= [firstNew.id intValue])
-//                break;
-//            [left addObject:u];
-//        }
-//        
-//        NSEnumerator* reverseEnumerator = [oldUsers reverseObjectEnumerator];
-//        while (u = [reverseEnumerator nextObject])
-//        {
-//            if ([u.id intValue] <= [lastNew.id intValue])
-//                break;
-//            [left addObject:u];
-//        }
-//        
-//        for (u in newUsers)
-//        {
-//            if ([u.id intValue] >= [firstOld.id intValue])
-//                break;
-//            [joined addObject:u];
-//        }
-//        
-//        reverseEnumerator = [newUsers reverseObjectEnumerator];
-//        while (u = [reverseEnumerator nextObject])
-//        {
-//            if ([u.id intValue] <= [lastOld.id intValue])
-//                break;
-//            [joined addObject:u];
-//        }
-//        
-//        
-//        for (u in joined)
-//            [self userJoined:u];
-//        for (u in left)
-//            [self userLeft:u];
-//    }
-//    
-//    if (_connectedUsers)
-//        [_connectedUsers release];
-//    _connectedUsers = users;
-//    [_connectedUsers retain];
-//    
-//    if (_usersContainer)
-//        [_usersContainer reloadData];
-//}
-
-
-
-
 
 
 
@@ -1065,9 +941,6 @@
     return nil;
 }
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -1143,9 +1016,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (tableView == _usersContainer)
-//        return [self usersContainerCellForRowAtIndexPath:indexPath];
-//
     if ((indexPath.section == SECTION_HEADER) && (indexPath.row == ROW_HEADER))
         return self.cellWallHeader;
 
@@ -1184,7 +1054,6 @@
         RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil)
         {
-            //            cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev indexPath:indexPath target:self action:@selector(onAvatarClickedInWall:)] autorelease];
             cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier ownRadio:self.ownRadio event:ev indexPath:indexPath] autorelease];
             cell.delegate = self;
             cell.actionAvatarClick = @selector(onCellAvatarClick:);
@@ -1410,9 +1279,6 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-//    if (textField != _messageBar)
-//        return NO;
-    
     if ([YasoundSessionManager main].registered)
         return YES;
     
@@ -1509,36 +1375,6 @@
 
 #pragma mark - IBActions
 
-//- (IBAction)onBack:(id)sender
-//{
-//    // I need to check something...
-//    YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
-//    UINavigationController* appController = appDelegate.navigationController;
-//    UINavigationController* thisController = self.navigationController;
-//    
-//    
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
-
-//- (IBAction)onAvatarClicked:(id)sender
-//{
-//    if (self.radio.creator)
-//    {
-//        if (self.ownRadio)
-//        {
-//            ProfileMyRadioViewController* view = [[ProfileMyRadioViewController alloc] initWithNibName:@"ProfileMyRadioViewController" bundle:nil radio:self.radio];
-//            [self.navigationController pushViewController:view animated:YES];
-//            [view release];
-//        }
-//        else
-//        {
-//            ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:self.radio.creator];
-//            [self.navigationController pushViewController:view animated:YES];
-//            [view release];
-//        }
-//    }
-//}
-
 - (void)onCellAvatarClick:(RadioViewCell*)cell
 {
     //    InteractiveView *btn = (InteractiveView *)sender;
@@ -1601,115 +1437,16 @@
 
 
 
-//- (IBAction)onFavorite:(id)sender
-//{
-//    if (_favoritesButtonLocked)
-//        return;
-//    
-//    _favoritesButtonLocked = YES;
-//    
-//    [[ActivityModelessSpinner main] addRef];
-//    
-//    // update the local GUI in advance, and then send the request, and wait for the delayed update
-//    self.favoriteButton.selected = !self.favoriteButton.selected;
-//    NSInteger nbFavorites = [_favoritesLabel.text integerValue];
-//    if (self.favoriteButton.selected)
-//        nbFavorites++;
-//    else
-//        nbFavorites--;
-//    
-//    _favoritesLabel.text = [NSString stringWithFormat:@"%d", nbFavorites];
-//    
-//    // send online request
-//    NSString* url = URL_RADIOS_FAVORITES;
-//    [[YasoundDataCache main] requestRadiosWithUrl:[NSURL URLWithString:url] withGenre:nil target:self action:@selector(onFavoritesRadioReceived:)];
-//    
-//    
-//}
-
-
-
-
-
-//- (void)onSwipeLeft:(UISwipeGestureRecognizer *)recognizer
-//{
-//    CGPoint point = [recognizer locationInView:[self view]];
-//    DLog(@"Swipe left - start location: %f,%f", point.x, point.y);
-//
-//    if (_viewTracksDisplayed)
-//        return;
-//
-//    NSError* error;
-//	if (![[GANTracker sharedTracker] trackEvent:@"swipe" action:@"Go to TracksView" label:nil value:0 withError:&error])
-//    {
-//		        DLog(@"GANTracker Error tracking foreground event: %@", error);
-//	}
-//
-//    [_viewTracks updateView];
-//
-//    CGRect frame = _viewWall.frame;
-//
-//    [UIView beginAnimations:nil context:NULL];
-//	[UIView setAnimationDuration:0.3];
-//    [UIView setAnimationDelay: UIViewAnimationCurveEaseInOut];
-//    _viewWall.frame = CGRectMake(- frame.size.width, 0, frame.size.width, frame.size.height);
-//    _viewTracks.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-//    [UIView commitAnimations];
-//
-//    _viewTracksDisplayed = YES;
-//    _pageControl.currentPage = 1;
-//}
-//
-//
-//- (void)onSwipeRight:(UISwipeGestureRecognizer *)recognizer
-//{
-//    CGPoint point = [recognizer locationInView:[self view]];
-//    DLog(@"Swipe right - start location: %f,%f", point.x, point.y);
-//
-//    if (!_viewTracksDisplayed)
-//        return;
-//
-//    NSError* error;
-//	if (![[GANTracker sharedTracker] trackEvent:@"swipe" action:@"Go back to RadioView" label:nil value:0 withError:&error])
-//    {
-//        DLog(@"GANTracker Error tracking foreground event: %@", error);
-//	}
-//
-//    CGRect frame = _viewWall.frame;
-//
-//    [UIView beginAnimations:nil context:NULL];
-//	[UIView setAnimationDuration:0.3];
-//    [UIView setAnimationDelay: UIViewAnimationCurveEaseInOut];
-//    _viewWall.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-//    _viewTracks.frame = CGRectMake(frame.size.width, 0, frame.size.width, frame.size.height);
-//    [UIView commitAnimations];
-//
-//    _viewTracksDisplayed = NO;
-//    _pageControl.currentPage = 0;
-//}
-
-
-
-
-
-
-
-
-
-
-
 
 
 - (void)playAudio
 {
     [self setPause:NO];
-//    [[AudioStreamManager main] startRadio:self.radio];
 }
 
 - (void)pauseAudio
 {
     [self setPause:YES];
-//    [[AudioStreamManager main] Radio];
 }
 
 
@@ -1792,15 +1529,7 @@
         _stopWall = YES;
         self.topBar.delegate = nil;
         self.tableview.delegate = nil;
-//        self.tableview.dataSource = nil;
 
-        NSLog(@"RETAIN COUNT %d", [self retainCount]);
-
-//        // LBDEBUG hum hum... anti-bug for now
-//        NSInteger retainCount = [self retainCount];
-//        NSLog(@"RETAIN COUNT %d", retainCount);
-//        for (NSInteger i = 0; i < retainCount-3; i++)
-//            [self autorelease];
     }
     
     else if (itemId == TopBarItemSettings)
@@ -1877,14 +1606,6 @@
 }
 
 
-//#pragma mark - WallPostCellDelegate
-//- (void)postCellMoveToSuperview
-//{
-//    NSLog(@"prout");
-//}
-//
-
-
 
  
 - (void)keyboardWillShow:(NSNotification *)note
@@ -1897,34 +1618,6 @@
         [self.tableview setContentOffset:scrollPoint animated:YES];
     }
 
-//    NSDictionary *info = [note userInfo];
-//    NSValue *beginPoint = [info objectForKey:UIKeyboardCenterBeginUserInfoKey];
-//    NSValue *endPoint = [info objectForKey:UIKeyboardCenterEndUserInfoKey];
-//    NSValue *keyBounds = [info objectForKey:UIKeyboardBoundsUserInfoKey];
-//    
-//    CGPoint pntBegin;
-//    CGPoint pntEnd;
-//    CGRect bndKey;
-//    [beginPoint getValue:&pntBegin];
-//    [endPoint getValue:&pntEnd];
-//    [keyBounds getValue:&bndKey];
-    
-//    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-//    
-//    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-//    self.tableview.contentInset = contentInsets;
-//    self.tableview.scrollIndicatorInsets = contentInsets;
-    
-    // If active text field is hidden by keyboard, scroll it so it's visible
-    // Your application might not need or want this behavior.
-//    CGRect aRect = self.view.frame;
-//    aRect.size.height -= kbSize.height;
-//    if (!CGRectContainsPoint(aRect, self.cellPostBar.frame.origin) ) {
-//        CGPoint scrollPoint = CGPointMake(0.0, self.cellPostBar.frame.size.height + 11);
-//        [self.tableview setContentOffset:scrollPoint animated:YES];
-//    }
-    
-    //[self showFixedPostBar];
 }
 
 
@@ -1940,8 +1633,6 @@
 
 
 @end
-
-
 
 
 

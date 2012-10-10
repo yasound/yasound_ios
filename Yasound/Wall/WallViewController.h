@@ -23,8 +23,6 @@
 
 @interface WallViewController : YaViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate, MFMailComposeViewControllerDelegate,TopBarDelegate>
 {
-    //    NSAutoreleasePool* _ap;
-    
     BOOL _updatingPrevious;
     UILabel* _updatingPreviousLabel;
     UIActivityIndicatorView* _updatingPreviousIndicator;
@@ -32,32 +30,18 @@
     UIView* _headerView;
     BOOL _firstUpdateRequest;
     
-//    UILabel* _favoritesLabel;
-//    BOOL _favoritesButtonLocked;
-    
     UIImageView* _listenersIcon;
     UILabel* _listenersLabel;
-    
-//    TouchedTableView* _tableView;
-    
     
     WebImageView* _radioImage;
     
     UIView* _statusBar;
-    //    UIButton* _statusBarButton;
     UIImageView* _statusBarButtonImage;
     BOOL _statusBarButtonToggled;
     
-//    UIButton* _favoriteButton;
-    
-//    UIView* _viewContainer;
     UIPageControl* _pageControl;
     
-//    UIView* _viewWall;
-    //    TracksView* _viewTracks;
     BOOL _viewTracksDisplayed;
-    
-//    UITextField* _messageBar;
     
     WallEvent* _lastWallEvent;
     WallEvent* _latestEvent;
@@ -75,10 +59,6 @@
     BOOL _waitingForPreviousEvents;
     
     NSInteger _serverErrorCount;
-    
-//    NSArray* _connectedUsers;
-//    OrientedTableView* _usersContainer;
-//    Radio* _radioForSelectedUser;
     
     UIActionSheet* _queryShare;
     
@@ -109,7 +89,6 @@
 @property (nonatomic, retain) IBOutlet UIButton* nowPlayingButton;
 @property (nonatomic, retain) IBOutlet UILabel* nowPlayingLabel1;
 @property (nonatomic, retain) IBOutlet UILabel* nowPlayingLabel2;
-//@property (nonatomic, retain) IBOutlet InteractiveView* nowPlayingInteractiveView;
 @property (nonatomic, retain) IBOutlet UIButton* nowPlayingShare;
 @property (nonatomic, retain) IBOutlet UIButton* nowPlayingLike;
 @property (nonatomic, retain) IBOutlet UIButton* nowPlayingBuy;
@@ -124,8 +103,6 @@
 
 
 @property (atomic, retain) NSMutableArray* statusMessages;
-//@property (nonatomic, retain) UIButton* favoriteButton;
-//@property (nonatomic, retain) UIButton* playPauseButton;
 
 
 

@@ -26,8 +26,6 @@ static Song* _gNowPlayingSong = nil;
 {
     assert(song != nil);
     
-//    if (_gNowPlayingSong && ([_gNowPlayingSong.id isEqualToNumber:song.id]))
-//        return;
     
     if (_gNowPlayingSong != nil)
         [_gNowPlayingSong release];
@@ -75,38 +73,6 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-//- (IBAction)onTrackImageTouchDown:(id)sender
-//{
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.Wall.NowPlaying.NowPlayingBarMaskHighlighted" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    [_playingNowView.trackImageMask setImage:[sheet image]];
-//}
-//
-//
-//- (IBAction)onTrackImageClicked:(id)sender
-//{
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.NowPlayingBarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    [_playingNowView.trackImageMask setImage:[sheet image]];
-//    
-//    if (_gNowPlayingSong.isSongRemoved)
-//        return;
-//    
-//    if (self.ownRadio)
-//    {
-//        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:_gNowPlayingSong showNowPlaying:NO forRadio:self.radio];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
-//    }
-//    else
-//    {
-//        SongPublicInfoViewController* view = [[SongPublicInfoViewController alloc] initWithNibName:@"SongPublicInfoViewController" bundle:nil song:_gNowPlayingSong onRadio:self.radio showNowPlaying:NO];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
-//    }
-//    
-//}
-
-
-
 
 - (IBAction)onPlayPauseClicked:(id)sender
 {
@@ -138,16 +104,9 @@ static Song* _gNowPlayingSong = nil;
 - (IBAction)onLikeClicked:(id)sender
 {
     [[YasoundDataProvider main] setMood:eMoodLike forSong:_gNowPlayingSong];
-    //[[ActivityModelessSpinner main] addRefForTimeInterval:SPINNER_DELAY];
 }
 
 
-//
-//- (void)onTrackAdd:(id)sender
-//{
-//    [[YasoundDataProvider main] addSongToUserRadio:_song];
-//    [[ActivityModelessSpinner main] addRefForTimeInterval:SPINNER_DELAY];
-//}
 
 - (NSString *)getUserCountry
 {
