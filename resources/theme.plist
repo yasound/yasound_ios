@@ -1548,9 +1548,9 @@
 			<key>rankBackground</key>
 			<dict>
 				<key>x</key>
-				<integer>110</integer>
+				<integer>104</integer>
 				<key>y</key>
-				<integer>13</integer>
+				<integer>2</integer>
 				<key>type</key>
 				<string>png</string>
 				<key>name</key>

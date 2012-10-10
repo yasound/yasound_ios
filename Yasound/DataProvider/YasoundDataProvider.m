@@ -848,6 +848,9 @@ static YasoundDataProvider* _main = nil;
     [req addPostValue:tokenSecret forKey:@"token_secret"];
     [req addPostValue:email forKey:@"email"];
     
+    //LBDEBUG
+    DLog(@"associateAccountTwitter '%@'", req.url);
+    
     [req startAsynchronous];
 }
 
