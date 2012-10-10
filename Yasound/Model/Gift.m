@@ -12,6 +12,7 @@
 //#import <MediaPlayer/MediaPlayer.h>
 #import "YasoundAppDelegate.h"
 //#import "WebVideoViewController.h"
+#import "TwitterSessionManager.h"
 
 @implementation Gift
 
@@ -123,9 +124,15 @@
     }
     else if ([self.sku isEqualToString:GIFT_SKU_TWITTER_FOLLOW]) {
         
+      [[TwitterSessionManager twitter] enableUpdatesFor:NSLocalizedString(@"TwitterYasoundAccount", nil)];
     }
     else if ([self.sku isEqualToString:GIFT_SKU_FACEBOOK_LIKE]) {
-        
+
+      
+      NSURL* url = [NSURL URLWithString:@"http://on.fb.me/Tgb4lP"];
+      //NSURL* url = [NSURL URLWithString:@"fb://page/184406511594079"];
+
+      [[UIApplication sharedApplication] openURL:url];
     }
     else if ([self.sku isEqualToString:GIFT_SKU_SUBSCRIBE_NEWSLETTER]) {
         

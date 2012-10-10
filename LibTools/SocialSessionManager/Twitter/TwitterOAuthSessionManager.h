@@ -38,6 +38,8 @@
 
 - (BOOL)requestGetInfo:(SessionRequestType)requestType;
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;
+- (void)enableUpdatesFor:(NSString *)username; // friendships/create (follow username)
+
 
 + (NSString*) buildDataFromToken:(NSString*)token token_secret:(NSString*)token_secret user_id:(NSString*)user_id screen_name:(NSString*)screen_name;
 

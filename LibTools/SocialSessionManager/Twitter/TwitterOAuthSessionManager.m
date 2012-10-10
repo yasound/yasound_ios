@@ -223,6 +223,10 @@
 }
 
 
+- (void)enableUpdatesFor:(NSString *)username
+{
+  [_engine enableUpdatesFor:username];
+}
 
 
 
