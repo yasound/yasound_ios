@@ -28,8 +28,6 @@
 @synthesize city;
 @synthesize age;
 
-//@synthesize itemId;
-
 
 enum MyAccountDescription
 {
@@ -71,8 +69,6 @@ enum SectionBio
         self.user = [YasoundDataProvider main].user;
         _imageChanged = NO;
         _changed = NO;
-        
-//        self.itemId = TopBarItemNone;
     }
     return self;
 }
@@ -81,17 +77,6 @@ enum SectionBio
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-//    UIImage* image = [[UserSettings main] objectForKey:@"UIImagePickerControllerOriginalImage"];
-//    if (image != nil) {
-//        [self.userImage setImage:image];
-//        // wait for "save" action to upload the image to the server
-//        _imageChanged = YES;
-//        _changed = YES;
-//        
-//        [[UserSettings main] removeObjectForKey:@"UIImagePickerControllerOriginalImage"];
-//    }
-    
 }
 
 - (void)viewDidUnload
@@ -192,9 +177,6 @@ enum SectionBio
         
         [sheet applyToLabel:self.username class:@"default"];
 
-        //LBDEBUG
-        //NSLog(@"%.2f  x %.2f", cell.frame.size.width, cell.frame.size.height);
-        
         [cell addSubview:self.username];
         
         self.username.text = self.user.name;
@@ -243,21 +225,10 @@ enum SectionBio
         sheet = [[Theme theme] stylesheetForKey:@"TableView.value" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         cell.detailTextLabel.textColor = [sheet fontTextColor];
 
-        //        sheet = [[Theme theme] stylesheetForKey:@"TableView.value" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        self.age = [sheet makeLabel];
-//        self.age.text = [self.user.age stringValue];
-//        if (self.age.text.length == 0)
-//            self.age.text = @"-";
-//        [cell addSubview:self.age];
     }
     
     else if ((indexPath.section == SECTION_PROFIL) && (indexPath.row == ROW_SEXE))
     {
-//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        UILabel* label = [sheet makeLabel];
-//        label.text = NSLocalizedString(@"MyAccount.sexe.label", nil);
-//        [cell addSubview:label];
-        
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         
@@ -296,14 +267,6 @@ enum SectionBio
     
     else if ((indexPath.section == SECTION_BIO) && (indexPath.row == ROW_BIO))
     {
-//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        UILabel* label = [sheet makeLabel];
-//        label.text = NSLocalizedString(@"MyAccount.bio.label", nil);
-//        [cell addSubview:label];
-//        
-//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        cell.selectionStyle = UITableViewCellSelectionStyleGray;        
-
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         
@@ -417,19 +380,7 @@ enum SectionBio
 
 
 
-#pragma mark - TopBarDelegate
 
-//- (BOOL)topBarItemClicked:(TopBarItemId)itemId
-//{
-//    if (_changed || _imageChanged)
-//    {
-//        self.itemId = itemId;
-//        [self save];
-//        return NO;
-//    }
-//   
-//    return YES;
-//}
 
 #pragma mark - TopBarModalDelegate
 
@@ -437,7 +388,6 @@ enum SectionBio
     
     if (_changed || _imageChanged)
     {
-//        self.itemId = itemId;
         [self save];
         return NO;
     }
@@ -449,10 +399,6 @@ enum SectionBio
 
     return YES;
 }
-
-
-//- (NSString*)titleForActionButton;
-//- (UIColor*)tintForActionButton;
 
 
 
@@ -503,8 +449,6 @@ enum SectionBio
 
         picker.view.frame = CGRectMake(0, -20, picker.view.frame.size.width, picker.view.frame.size.height);
         [self.view addSubview:picker.view];
-//        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
-//        [APPDELEGATE.navigationController presentModalViewController:picker animated:NO];
     }
     
 }
@@ -518,9 +462,6 @@ enum SectionBio
 {
     [Picker.view removeFromSuperview];
     [Picker release];
-    
-//    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:[NSNumber numberWithBool:NO]];
 }
 
 - (void)imagePickerController:(UIImagePickerController *) Picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -528,24 +469,9 @@ enum SectionBio
     [Picker.view removeFromSuperview];
     [Picker release];
     
-//    NSLog(@"%@", info);
-    
     UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     if (image == nil)
         return;
-//    {
-//
-//        NSURL* url = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
-////        UIImage* image = [UIImage imageNamed:[url absoluteString]];
-//
-////        ALAssetsLibrary* assetslibrary = [[[ALAssetsLibrary alloc] init] autorelease];
-////        [assetslibrary assetForURL:asseturl
-////                       resultBlock:resultblock
-////                      failureBlock:failureblock];
-////        if (image == nil)
-////            return;
-//    }
-    
     
     if (![image isKindOfClass:[UIImage class]])
         return;
@@ -557,11 +483,6 @@ enum SectionBio
     _imageChanged = YES;
     _changed = YES;
 
-    
-    
-//    
-//    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:[NSNumber numberWithBool:NO]];
 }
 
 
@@ -630,9 +551,6 @@ enum SectionBio
 
         picker.view.frame = CGRectMake(0, -20, picker.view.frame.size.width, picker.view.frame.size.height);
         [self.view addSubview:picker.view];
-
-//        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
-//        [self presentModalViewController:picker animated:YES];
         
         return;
     }
@@ -667,10 +585,6 @@ enum SectionBio
 
 - (void)didUpdateUser:(ASIHTTPRequest*)req success:(BOOL)success
 {
-    // update the YasoundDataProvider's user
-    //LBDEBUG
-  //  [YasoundDataProvider main].user = self.user;
-    
     if (_imageChanged)
     {
         [[YasoundDataProvider main] setPicture:self.userImage.image forUser:self.user target:self action:@selector(onUserImageUpdate:info:)];
@@ -701,11 +615,6 @@ enum SectionBio
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROFIL_UPDATED object:nil];
     
     [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
-
-//    if (self.itemId != TopBarItemNone)
-//        [self.topbar runItem:self.itemId];
-    
-    
 }
 
 

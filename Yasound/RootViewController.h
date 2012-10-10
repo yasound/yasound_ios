@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "MenuViewController.h"
 #import "YaViewController.h"
 #import "User.h"
 #import "RadioSelectionViewController.h"
@@ -26,10 +25,6 @@
 
 #define NOTIF_CONNECTION_TIMEOUT @"NOTIF_CONNECTION_TIMEOUT"
 
-//#define NOTIF_CANCEL_WIZARD @"NOTIF_CancelWizard"
-//#define NOTIF_WIZARD @"NOTIF_Wizard"
-//#define NOTIF_POP_TO_MENU @"NOTIF_PopToMenu"
-//#define NOTIF_PUSH_MENU @"NOTIF_PushMenu"
 #define NOTIF_ERROR_COMMUNICATION_SERVER @"NOTIF_ErrorCommunicationServer"
 
 #define NOTIF_DISMISS_MODAL @"NOTIF_DISMISS_MODAL"
@@ -54,7 +49,6 @@
 #define NOTIF_GOTO_CREATE_RADIO @"NOTIF_GOTO_CREATE_RADIO"
 
 
-//#define NOTIF_GOTO_MENU @"NOTIF_GOTO_MENU"
 #define NOTIF_GOTO_SELECTION @"NOTIF_GOTO_SELECTION"
 #define NOTIF_GOTO_FAVORITES @"NOTIF_GOTO_FAVORITES"
 #define NOTIF_GOTO_MYRADIOS @"NOTIF_GOTO_MYRADIOS"
@@ -91,10 +85,7 @@
 @property (nonatomic, retain) User* user;
 @property (nonatomic, assign) IBOutlet UIImageView* imageBackground;
 
-//@property (nonatomic, retain) MenuViewController* menuView;
 @property (nonatomic, retain) RadioSelectionViewController* radioSelectionViewController;
-
-//+ (BOOL)menuIsCurrentScreen;
 
 - (void)start;
 

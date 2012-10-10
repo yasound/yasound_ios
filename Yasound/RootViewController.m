@@ -24,7 +24,6 @@
 #import "ProgrammingViewController.h"
 #import "RadioSelectionViewController.h"
 #import "MyRadiosViewController.h"
-//#import "GiftsViewController.h"
 #import "ProfilViewController.h"
 #import "AccountTwitterViewController.h"
 #import "AccountFacebookViewController.h"
@@ -57,15 +56,15 @@
 //@end
 
 
-@implementation NSDate (NSDateDebug)
-
-
-- (NSInteger)length
-{
-        DLog(@"SHOULD NOT HAPPEN ");
-        assert(0);
-}
-@end
+//@implementation NSDate (NSDateDebug)
+//
+//
+//- (NSInteger)length
+//{
+//        DLog(@"SHOULD NOT HAPPEN ");
+//        assert(0);
+//}
+//@end
 
 //@implementation NSDictionary (NSDictionaryDebug)
 //- (id)target
@@ -131,20 +130,6 @@
 
 @synthesize user;
 @synthesize radioSelectionViewController;
-//@synthesize menuView;
-
-//static MenuViewController* gMenuView = nil;
-
-
-//+ (BOOL)menuIsCurrentScreen
-//{
-//    UIViewController* tmp = APPDELEGATE.navigationController.topViewController;
-//    NSLog(@"class %@", [tmp class]);
-//    NSLog(@"compare %@   %@", tmp, gMenuView);
-//    
-//    
-//    return (APPDELEGATE.navigationController.topViewController == gMenuView);
-//}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -153,10 +138,6 @@
     if (self) 
     {
         _firstTime = YES;
-        
-//    if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4)
-//        self.imageBackground.image = [UIImage imageNamed:@"Default-568h@2x.png"];
-        
     }
     return self;
 }
@@ -171,8 +152,6 @@
 
 - (void)dealloc
 {
-//    if (gMenuView != nil)
-//        [gMenuView release];
     [super dealloc];
 }
 
@@ -191,14 +170,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDismissModal:) name:NOTIF_DISMISS_MODAL object:nil];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifCancelWizard:) name:NOTIF_CANCEL_WIZARD object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifWizard:) name:NOTIF_WIZARD object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPopToMenu:) name:NOTIF_POP_TO_MENU object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushMenu:) name:NOTIF_PUSH_MENU object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorCommunicationServer:) name:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionChanged:) name:NOTIF_REACHABILITY_CHANGED object:nil];
 
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMenu:) name:NOTIF_GOTO_MENU object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoSelection:) name:NOTIF_GOTO_SELECTION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoFavorites:) name:NOTIF_GOTO_FAVORITES object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadios:) name:NOTIF_GOTO_MYRADIOS object:nil];
@@ -212,7 +186,6 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushLogin:) name:NOTIF_PUSH_LOGIN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoLogin:) name:NOTIF_GOTO_LOGIN object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogout:) name:NOTIF_DID_LOGOUT object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoTwitterAssociation:) name:NOTIF_GOTO_TWITTER_ASSOCIATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoFacebookAssociation:) name:NOTIF_GOTO_FACEBOOK_ASSOCIATION object:nil];
@@ -239,10 +212,6 @@
   [[AVAudioSession sharedInstance] setActive: YES error: nil];  
   [[AVAudioSession sharedInstance] setDelegate: self];
 
-//    // put the menu above the root viewController
-//     MenuViewController* menu = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-//    [self.view addSubview:menu.view];
-    
 }
 
 - (void)viewDidUnload
@@ -271,11 +240,6 @@
 
 - (void)start
 {
-//    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(mydebug) userInfo:nil repeats:NO];
-//}
-//
-//- (void)mydebug{
-    
     if (_firstTime)
     {
         _firstTime = NO;
@@ -318,15 +282,8 @@
         [self automaticLoginProcess];
     }
     else
-        
     {
-        // get the app menu from the server, before you can proceed
-        //[[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
-    
-        // didReceivedMenuDescription will proceed to the app entry
-        
         [self enterTheApp];
-
     }
 }
 
@@ -397,20 +354,13 @@
         // login the other associated accounts as well
         [[YasoundSessionManager main] associateAccountsAutomatic];
         
-        // get the app menu from the server, before you can proceed
-        //[[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
         [self enterTheApp];
-
-    
     }
     else
     {
         NSString* message = nil;
         if (info != nil)
         {
-            //LBDEBUG
-            //DLog(@"DEBUG info %@", info);
-            
             NSString* errorValue = [info objectForKey:@"error"];
             if (errorValue)
             {
@@ -434,22 +384,6 @@
         [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
     }
 }
-
-
-//// you receive the current menu description from the server
-//- (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
-//{
-//    NSString* menuDesc = req.responseString;
-//    
-//    DLog(@"menuDesc : %@", menuDesc);
-//
-//    // be sure to store it in the cache
-//    [[YasoundDataCache main] setMenu:menuDesc];
-//    
-//    
-//    [self enterTheApp];
-//
-//}
 
 
 
@@ -521,8 +455,6 @@
 
 - (void)logoutReturned
 {
-    // once logout done, go back to the home screen
-//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MENU object:nil];
 }
 
 - (void)goToNotificationCenter
@@ -591,9 +523,6 @@
         }
         
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
-
-        // and logout properly
-        //[[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
     }
 
     // Wifi turns on
@@ -690,10 +619,7 @@
 
 - (void)onNotifGotoLogin:(NSNotification *)notification
 {
-//    [self gotoMenuAnimated:NO];
-    
     LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-//    [self.navigationController pushViewController:view animated:YES];
     [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
     [view release];
 }
@@ -701,13 +627,8 @@
 - (void)onNotifPushLogin:(NSNotification *)notification
 {
     LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-//    [self.navigationController pushViewController:view animated:YES];
     [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
-    
-    //LBDEBUG ICI
-//    [APPDELEGATE.navigationController presentViewController:view animated:YES completion:nil];
-    
-  [view release];
+    [view release];
 }
 
 
@@ -736,8 +657,6 @@
 
     DLog(@"onNotifGotoRadio '%@' (ready %@)", r.name, r.ready);
 
-//    [self gotoMenuAnimated:NO];
-    
     [self gotoRadioSelectionAnimated:NO];
     
     [APPDELEGATE.slideController resetTopView];
@@ -759,8 +678,6 @@
     if (nbAnimated)
         animated = [nbAnimated boolValue];
 
-//    [self gotoMenuAnimated:NO];
-    
     RadioSelectionViewController* view = nil;
     if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
         view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController-4inch" bundle:nil withWheelIndex:WheelIdSelection];
@@ -806,8 +723,6 @@
     if (nbAnimated)
         animated = [nbAnimated boolValue];
     
-//    [self gotoMenuAnimated:NO];
-    
     MyRadiosViewController* view = [[MyRadiosViewController alloc] initWithNibName:@"MyRadiosViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:animated];
     [view release];
@@ -821,12 +736,6 @@
     BOOL animated = YES;
     if (nbAnimated)
         animated = [nbAnimated boolValue];
-    
-//    [self gotoMenuAnimated:NO];
-    
-//    GiftsViewController* view = [[GiftsViewController alloc] initWithNibName:@"GiftsViewController" bundle:nil];
-//    [self.navigationController pushViewController:view animated:animated];
-//    [view release];
 }
 
 
@@ -847,8 +756,6 @@
     BOOL animated = YES;
     if (nbAnimated)
         animated = [nbAnimated boolValue];
-    
-//    [self gotoMenuAnimated:NO];
     
     ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:[YasoundDataProvider main].user];
     [self.navigationController pushViewController:view animated:animated];
@@ -1018,7 +925,6 @@
     
     
     [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
-//    [APPDELEGATE.navigationController popViewControllerAnimated:YES];
     
     [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturnedAfterTimeout)];
 }
@@ -1027,7 +933,6 @@
 - (void)logoutReturnedAfterTimeout
 {
     [APPDELEGATE.slideController resetTopView];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:nil];
     
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_title", nil) message:NSLocalizedString(@"Connection.timeout", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
