@@ -16,7 +16,7 @@
 "Navigation_next" = "Next";
 "Navigation.nowPlaying" = "Now\nplaying";
 "Navigation_cancel" = "Cancel";
-"Navigation_confirm" = "I confirme";
+"Navigation_confirm" = "Confirm";
 "Navigation_OK" = "OK";
 "Navigation_Yes" = "Yes";
 "Navigation_Exit" = "Exit";
@@ -56,11 +56,11 @@
 
 
 
-"RateApp_title" = "Evaluez Yasound!";
-"RateApp_message" = "Voulez-vous noter cette app? Cela ne prendra pas plus d'une minute. Merci pour votre soutien!";
-"RateApp_button_rate" = "Noter";
-"RateApp_button_later" = "Plus tard";
-"RateApp_button_no" = "Non, merci";
+"RateApp_title" = "Rate Yasound!";
+"RateApp_message" = "Would you like to rate this application? I takes less than a minute. Thank you for your help!";
+"RateApp_button_rate" = "Rate it";
+"RateApp_button_later" = "Later";
+"RateApp_button_no" = "No, thanks";
 "RateApp_url" = "http://itunes.apple.com/fr/app/yasound/id492680161?mt=8";
 
 
@@ -117,7 +117,7 @@
 "SignupView_email_placeholder" = "enter your email address";
 "SignupView_submit_label" = "Create the account";
 "SignupView_alert_title" = "Account creation";
-"SignupView_alert_message_error" = "E-mail address already exists!";
+"SignupView_alert_message_error" = "This e-mail address already exists!";
 "SignupView_alert_email_not_valid" = "invalid email address!";
 "SignupView_legal_read_label" = "Read the Terms of Use";
 "SignupView_legal_valid_label" = "I have read and agree to the Terms of Use";
@@ -158,10 +158,10 @@
 "PlaylistsView_cell_detail" = "%d tracks";
 
 "PlaylistsView_matchedSongsTitle_zero" = "Warning";
-"PlaylistsView_matchedSongsMessage_zero" = "No song has been automatically synchronized with the server. Your radio doesn't play right now but you can upload your songs choosing the Programming function.";
+"PlaylistsView_matchedSongsMessage_zero" = "We couldn find any song to add to your radio. Your radio doesn't play right now but you can upload your songs choosing the Programming function.";
 "PlaylistsView_matchedSongsTitle_ok" = "Synchronization";
-"PlaylistsView_matchedSongsMessage_ok_1" = "1 song has been synchronized with your radio. You can use the Programming function to upload other songs.";
-"PlaylistsView_matchedSongsMessage_ok_n" = "%d songs have been synchronized with your radio. You can update your radio's contents choosing the Programming function, and upload other songs.";
+"PlaylistsView_matchedSongsMessage_ok_1" = "1 song has been added to your radio. You can use the Programming function to upload other songs.";
+"PlaylistsView_matchedSongsMessage_ok_n" = "%d songs have been added to your radio. You can update your radio's contents choosing the Programming function, and upload other songs.";
 "PlaylistsView_allMusic" = "All my music";
 "PlaylistsView_allMusic_detail" = "%d songs";
 
@@ -181,7 +181,7 @@
 "ProgrammingView_unknownArtist" = "#Unknown artist";
 "ProgrammingView_unknownAlbum" = "Unknown album";
 "ProgrammingView_unknownGenre" = "Unknown genre";
-"ProgrammingView_subtitle_error" = "erreur";
+"ProgrammingView_subtitle_error" = "error";
 
 "Programming.del" = "Remove";
 
@@ -259,7 +259,7 @@
 
 "SongAddView_title" = "Add a song";
 "SongAddView_cant_add_title" = "Unable to add";
-"SongAddView_cant_add_message" = "This file is not available on this device, please get it from iCloud before uploading it.";
+"SongAddView_cant_add_message" = "This file is not available on this device, please get it from iCloud/iTunes Match before uploading it.";
 "SongAddView_alert" = "building list...";
 "SongAddView_added" = "added to the upload pending list!";
 "SongAddView_subtitle" = "loading...";
@@ -274,7 +274,7 @@
 "SongAddView_requestServer" = "Searching the songs";
 "SongAddView_addedError" = "Unabled to add the song.";
 "SongAddView_addedOk" = "This song has been added to your radio";
-"SongAddView_addedAlready" = "Your programmation contains this song already!";
+"SongAddView_addedAlready" = "Your programming contains this song already!";
 
 
 
@@ -337,7 +337,7 @@
 "RadioSelection_update" = "update";
 
 
-"Tutorial_RadioView_title" = "Welcome to your wall";
+"Tutorial_RadioView_title" = "Welcome to a radio wall";
 "Tutorial_RadioView_message" = "Chat with other listeners !";
 
 "Tutorial_TracksView_title" = "This is your radio";
@@ -379,7 +379,7 @@
 "TracksView_no_tracks" = "no tracks found!";
 
 "RadioView_track_share_error_title" = "Sharing";
-"RadioView_track_share_error" = "Error while sharing.";
+"RadioView_track_share_error" = "Error during share operation.";
 "RadioView_track_share_facebook_error" = "Error while sharing on Facebook.";
 "RadioView_track_share_twitter_error" = "Error while sharing on Twitter.";
 
@@ -450,7 +450,7 @@
 "SongsView_cancel" = "Cancel";
 "SongsView_upload_songs" = "Synchronized";
 "SongsView_protected_songs" = "Unable to synchronize the song";
-"SongsView_confirm_upload" = "Synchronize the song ?";
+"SongsView_confirm_upload" = "Synchronize the song?";
 "SongsView_cancel" = "Cancel";
 "SongsView_upload_songs" = "Synchronize";
 "SongsView_songs" = "Songs";
@@ -548,7 +548,7 @@
 "TabBar.profil" = "Profil";
 
 
-"BigMessage.inviteLogin" = "You must be loggued in to access those functions.";
+"BigMessage.inviteLogin" = "You must be logged in to access those functions.";
 "BigMessage.inviteLogin.button" = "log in";
 
 "BigMessage.Messages.favorites" = "Log in to show\nyour favorites.";
@@ -627,7 +627,7 @@
 "Settings.radio.image.label" = "Picture";
 
 "Settings.update.failed.title" = "Oops...";
-"Settings.update.failed.message" = "The radio could not have been updated.";
+"Settings.update.failed.message" = "Unable to update the radio.";
 
 "Wall.header.favorite.button.add" = "Add to favorites";
 "Wall.header.favorite.button.remove" = "Remove from favorites";
@@ -654,7 +654,7 @@
 "Programming.delete.artist.error" = "The artist could not have been deleted";
 
 "Programming.Radio.error.title" = "Oops...";
-"Programming.Radio.error.message" = "The radio's programming could not have been properly downloaded.";
+"Programming.Radio.error.message" = "Unable to get this radio's programming from the servers.";
 
 "Stats.section.month" = "Last 30 days audience";
 "Stats.section.leaderboard" = "Leaderboard";
@@ -666,18 +666,18 @@
 "MyRadios.metric2.sublabel" = "new messages";
 
 "Share.Facebook.button" = "Publish";
-"Share.Twitter.button" = "Twitt";
+"Share.Twitter.button" = "Twit";
 
 "Account.facebook" = "Facebook account";
 "Account.twitter" = "Twitter account";
 "Account.yasound" = "Yasound account";
 
 "Playlists.create.failed.title" = "Oops...";
-"Playlists.create.failed.message" = "The radio could not have been created.";
+"Playlists.create.failed.message" = "Unable to create this radio.";
 
 "MyRadios.delete.title" = "Delete";
-"MyRadios.delete.message" = "Are you sure you want to delete your radio?\nIt only implies your radio on the Yasound servers, and do not deal with your device.";
-"MyRadios.delete.error.message" = "The radio could not have been deleted.";
+"MyRadios.delete.message" = "Are you sure you want to delete your radio?\nIt only implies your radio on the Yasound servers, and doesn't change anything on this device.";
+"MyRadios.delete.error.message" = "Unable to delete this radio.";
 
 "Purchase.transaction.error.title" = "In-App-Purchase Error";
 "Purchase.transaction.error.message" = "There was an error purchasing this item please try again.";
@@ -686,9 +686,9 @@
 "Purchase.subscriptions.error.apple.message" = "There was an error communicating with the Apple's servers. Please try again later.";
 "Purchase.transaction.current.message" = "You have already bought this option.";
 "Purchase.transaction.record.error.title" = "Oops...";
-"Purchase.transaction.record.error.message" = "The transaction could not have been confirmed with the Yasound's servers.";
+"Purchase.transaction.record.error.message" = "Unable to confirm this transaction with Yasound's servers.";
 "Purchase.transaction.completed.title" = "Confirmation";
-"Purchase.transaction.completed.message" = "Your in-purchase has been properly validated by the Yasound's servers.";
+"Purchase.transaction.completed.message" = "Your in-purchase has been confirmed by Yasound's servers.";
 
 "Purchase.service" = "service %@ expires on %@";
 
@@ -699,8 +699,8 @@
 
 "MessageBroadcast.action.button.label" = "Envoyer";
 "MessageBroadcast.title" = "Message";
-"MessageBroadcast.from" = "De : %@";
-"MessageBroadcast.to" = "A : %d abonnés";
+"MessageBroadcast.from" = "From : %@";
+"MessageBroadcast.to" = "To : %d abonnés";
 
 "GiftDone" = "done";
 "GiftDisabled" = "not available";
@@ -726,7 +726,7 @@
 "RadiosSearch.error" = "Oops! Error...";
 "RadiosSearch.noResult" = "No results.";
 
-"AddServerSong.AlreadyInProgramming.Message" = "This song is already in your radio programming";
+"AddServerSong.AlreadyInProgramming.Message" = "This song is already programmed in your radio";
 
 "RefreshIndicator.label.pulled" = "Pull up for more radios...";
 "RefreshIndicator.label.opened" = "Release for more radios...";
@@ -742,13 +742,13 @@
 "InviteFriendsRow.emailLabel" = "email";
 
 "AllowContacts.title" = "Contacts";
-"AllowContacts.message" = "Do you authorize Yasound to access your contacts ?";
+"AllowContacts.message" = "Do you authorize Yasound to access your contacts?";
 "AllowContacts.yes" = "Yes";
 "AllowContacts.no" = "No";
 
 "InviteTwitterFriends.label" = "An invitation tweet will be posted in your timeline.";
 
-"InviteContacts.accessNotGrantedLabel" = "Authorize yasound to access your contacts to invite them.";
+"InviteContacts.accessNotGrantedLabel" = "Authorize Yasound to access your contacts in order to invite them to the service.";
 
 "InviteFriends.WaitingText" = "in progress...";
 
