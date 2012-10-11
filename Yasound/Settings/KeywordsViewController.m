@@ -199,7 +199,10 @@
   }
     
     if ([_keywords count] == 0)
-        [_tableView setEditing:NO];    
+        [_tableView setEditing:NO];
+    
+    [self.delegate onKeywordsChanged:_keywords];
+
 }
 
 
@@ -268,6 +271,7 @@
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
     [_textField becomeFirstResponder];
+        
 }
 
 
@@ -287,6 +291,8 @@
     textField.text = @"";
     textField.placeholder = NSLocalizedString(@"KeywordsView_textfield_placeholder", nil);
     [_tableView reloadData];
+    
+    [self.delegate onKeywordsChanged:_keywords];
     
     return FALSE;
 }

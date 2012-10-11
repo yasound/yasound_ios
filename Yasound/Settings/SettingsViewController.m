@@ -172,7 +172,7 @@
     // update GUI
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
     
-    [self update];
+//    [self update];
     [_tableView reloadData];
     
     if ([ActivityAlertView isRunning])
@@ -387,7 +387,7 @@
     {
         _changed = YES;
         KeywordsViewController* view = [[KeywordsViewController alloc] initWithNibName:@"KeywordsViewController" bundle:nil radio:self.radio];
-        
+        view.delegate = self;
         [self.navigationController pushViewController:view animated:YES];
         [view release];
         return;
@@ -428,31 +428,33 @@
 
 
 #pragma mark - KeywordsDelegate
-//
-//- (void)onKeywordsChanged:(NSArray*)keywords
-//{
-//    if (_keywords)
-//        [_keywords release];
-//    
-//    if ((keywords == nil) || ([keywords count] == 0))
-//    {
-//        _keywords = [NSString stringWithString:NSLocalizedString(@"Settings.keywords.empty", nil)];
-//    }
-//    else
-//    {
-//        _keywords = [NSString stringWithString:[keywords objectAtIndex:0]];
-//        for (int i = 1; i < [keywords count]; i++)
-//        {
-//            NSString* aKeyword = [keywords objectAtIndex:i];
-//            _keywords = [_keywords stringByAppendingFormat:@", %@", aKeyword];
-//        }
-//    }
-//    
-//    [_keywords retain];
-//    
-//    [_tableView reloadData];
-//
-//}
+
+- (void)onKeywordsChanged:(NSArray*)keywords
+{
+    if (_keywords)
+        [_keywords release];
+    
+    if ((keywords == nil) || ([keywords count] == 0))
+    {
+        _keywords = [NSString stringWithString:NSLocalizedString(@"Settings.keywords.empty", nil)];
+    }
+    else
+    {
+        _keywords = [NSString stringWithString:[keywords objectAtIndex:0]];
+        for (int i = 1; i < [keywords count]; i++)
+        {
+            NSString* aKeyword = [keywords objectAtIndex:i];
+            _keywords = [_keywords stringByAppendingFormat:@", %@", aKeyword];
+        }
+    }
+    
+    [_keywords retain];
+    
+    [self.radio setTagsWithArray:keywords];
+    
+    [_tableView reloadData];
+
+}
 
 
 

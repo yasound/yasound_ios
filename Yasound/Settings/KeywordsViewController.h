@@ -13,6 +13,11 @@
 #import "TopBarBackAndTitle.h"
 
 
+@protocol KeywordsDelegate
+- (void)onKeywordsChanged:(NSArray*)keywords;
+@end
+
+
 @interface KeywordsViewController : YaViewController
 {
     Radio* _myRadio;
@@ -35,6 +40,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet TopBarBackAndTitle* topbar;
+@property (nonatomic, assign) id<KeywordsDelegate> delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil radio:(Radio*)radio;
 
