@@ -697,10 +697,10 @@
 "Radio.sheet.button.broadcast" = "Message to subscribers";
 "Radio.sheet.button.settings" = "Settings";
 
-"MessageBroadcast.action.button.label" = "Envoyer";
+"MessageBroadcast.action.button.label" = "Send";
 "MessageBroadcast.title" = "Message";
 "MessageBroadcast.from" = "From : %@";
-"MessageBroadcast.to" = "To : %d abonnés";
+"MessageBroadcast.to" = "To : %d subscribers";
 
 "GiftDone" = "done";
 "GiftDisabled" = "not available";
