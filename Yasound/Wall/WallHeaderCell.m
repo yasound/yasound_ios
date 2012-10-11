@@ -169,6 +169,7 @@
     
     CGRect frame = CGRectMake(0,0, 320, 480);
     RadioListTableViewController* view = [[RadioListTableViewController alloc] initWithNibName:@"WallListenersViewController" bundle:nil listeners:listeners];
+    view.listDelegate = self;
     [APPDELEGATE.navigationController pushViewController:view animated:YES];
 
     [view setListeners:listeners];
@@ -176,6 +177,18 @@
     [view release];
 
 }
+
+
+#pragma mark - RadioListDelegate
+
+- (void)friendListDidSelect:(User*)aFriend {
+    
+    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:aFriend];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
+    [view release];
+
+}
+
 
 
 

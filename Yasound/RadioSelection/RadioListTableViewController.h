@@ -10,6 +10,7 @@
 #import "Radio.h"
 #import "WheelSelectorGenre.h"
 #import "RefreshIndicatorViewController.h"
+#import "TopBar.h"
 
 @protocol RadioListDelegate <NSObject>
 - (void)radioListDidSelect:(Radio*)radio;
@@ -42,6 +43,7 @@
 
 
 @property (nonatomic, retain) IBOutlet UITableView* listenersTableview;
+@property (nonatomic, retain) IBOutlet TopBar* listenersTopbar;
 
 
 - (id)initWithFrame:(CGRect)frame url:(NSURL*)url radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator showGenreSelector:(BOOL)showGenreSelector showRank:(BOOL)showRank;

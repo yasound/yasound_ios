@@ -43,25 +43,25 @@
 						<string key="NSFrameSize">{320, 44}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="137224096"/>
+						<reference key="NSNextKeyView" ref="962544449"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<array class="NSMutableArray" key="IBUIItems"/>
 					</object>
-					<object class="IBUIImageView" id="137224096">
+					<object class="IBUIImageView" id="962544449">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 44}, {320, 416}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="267267421"/>
+						<reference key="NSNextKeyView" ref="228230188"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUITableView" id="267267421">
+					<object class="IBUITableView" id="228230188">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 44}, {320, 416}}</string>
@@ -114,9 +114,17 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">listenersTableview</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="267267421"/>
+						<reference key="destination" ref="228230188"/>
 					</object>
 					<int key="connectionID">31</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">listenersTopbar</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="207074386"/>
+					</object>
+					<int key="connectionID">34</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -129,7 +137,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">dataSource</string>
-						<reference key="source" ref="267267421"/>
+						<reference key="source" ref="228230188"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">32</int>
@@ -137,7 +145,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
-						<reference key="source" ref="267267421"/>
+						<reference key="source" ref="228230188"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">33</int>
@@ -156,8 +164,8 @@
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="207074386"/>
-							<reference ref="137224096"/>
-							<reference ref="267267421"/>
+							<reference ref="962544449"/>
+							<reference ref="228230188"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -180,12 +188,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">29</int>
-						<reference key="object" ref="137224096"/>
+						<reference key="object" ref="962544449"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">30</int>
-						<reference key="object" ref="267267421"/>
+						<reference key="object" ref="228230188"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
@@ -205,24 +213,27 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">33</int>
+			<int key="maxID">34</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">RadioListTableViewController</string>
 					<string key="superclassName">RefreshIndicatorViewController</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">listenersTableview</string>
-						<string key="NS.object.0">UITableView</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">listenersTableview</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="listenersTableview">UITableView</string>
+						<string key="listenersTopbar">TopBar</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="listenersTableview">
 							<string key="name">listenersTableview</string>
 							<string key="candidateClassName">UITableView</string>
 						</object>
-					</object>
+						<object class="IBToOneOutletInfo" key="listenersTopbar">
+							<string key="name">listenersTopbar</string>
+							<string key="candidateClassName">TopBar</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/RadioListTableViewController.h</string>

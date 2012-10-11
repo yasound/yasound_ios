@@ -71,7 +71,10 @@
         
 //        [self commonInit];
         
+        [self.listenersTopbar hideNowPlaying];
         self.tableView = nil;
+        
+        
     }
     
     return self;

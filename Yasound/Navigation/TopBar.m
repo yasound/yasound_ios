@@ -178,6 +178,15 @@
     }
 }
 
+- (void)hideNowPlaying {
+    
+    UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [self.customItems replaceObjectAtIndex:INDEX_NOWPLAYING withObject:flexibleSpace];
+    [self setItems:self.customItems];
+}
+
+
+
 - (void)showSettingsItem:(BOOL)enabled
 {
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemSettings" retainStylesheet:YES overwriteStylesheet:NO error:nil];
