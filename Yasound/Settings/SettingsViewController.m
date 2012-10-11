@@ -704,7 +704,8 @@
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
     DLog(@"receivedUserRadioAfterPictureUpdate AFTER pictureUrl %@", imageURL);
 
-    [[YasoundDataCacheImageManager main] clearItem:imageURL];
+    if (imageURL != nil)
+        [[YasoundDataCacheImageManager main] clearItem:imageURL];
 
 //    imageURL = [[YasoundDataProvider main] urlForPicture:r.creator.picture];
 //    [[YasoundDataCacheImageManager main] clearItem:imageURL];
