@@ -6,6 +6,8 @@
 #import "ProfilViewController.h"
 #import "YasoundAppDelegate.h"
 #import "YasoundSessionManager.h"
+//#import "WallListenersViewController.h"
+#import "RadioListTableViewController.h"
 
 @implementation WallHeaderCell
 
@@ -47,7 +49,7 @@
     [self.headerButtonFavorites setImage:[UIImage imageNamed:@"wallHeaderButtonPressed.png"] forState:(UIControlStateSelected|UIControlStateDisabled)];
 
     self.headerButtonFavorites.enabled = NO;
-    self.headerButtonListeners.enabled = NO;
+    self.headerButtonListeners.enabled = YES;
 //    self.headerButtonLabel.text = @"-";
     self.headerIconFavorite.hidden = YES;
 
@@ -148,7 +150,31 @@
 
 - (IBAction)onListenersClicked:(id)sender {
     
+//    WallListenersViewController* view = [[WallListenersViewController alloc] initWithNibName:@"WallListenersViewController" bundle:nil onRadio:self.radio];
+//    [APPDELEGATE.navigationController pushViewController:view animated:YES];
+//    [view release];
+
+//    CGRect frame = self.view.frame;
     
+    [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(onCurrentUsersReceived:info:)];
+
+}
+
+
+
+- (void)onCurrentUsersReceived:(NSArray*)listeners info:(NSDictionary*)info {
+    
+    if (listeners && (listeners.count == 0))
+        return;
+    
+    CGRect frame = CGRectMake(0,0, 320, 480);
+    RadioListTableViewController* view = [[RadioListTableViewController alloc] initWithNibName:@"WallListenersViewController" bundle:nil listeners:listeners];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
+
+    [view setListeners:listeners];
+
+    [view release];
+
 }
 
 

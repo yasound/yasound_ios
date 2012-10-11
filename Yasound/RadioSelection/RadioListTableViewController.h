@@ -32,6 +32,7 @@
 
 @property (nonatomic, retain) NSArray* friends;
 @property (nonatomic) BOOL friendsMode;
+@property (nonatomic) BOOL listenersMode;
 @property (nonatomic) NSInteger delayTokens;
 @property (nonatomic) CGFloat delay;
 
@@ -40,7 +41,13 @@
 @property (nonatomic) BOOL showGenreSelector;
 
 
+@property (nonatomic, retain) IBOutlet UITableView* listenersTableview;
+
+
 - (id)initWithFrame:(CGRect)frame url:(NSURL*)url radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator showGenreSelector:(BOOL)showGenreSelector showRank:(BOOL)showRank;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil listeners:(NSArray*)listeners;
+
 - (void)setRadios:(NSArray*)radios;
 - (void)setFriends:(NSArray*)friends;
 

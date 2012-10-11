@@ -6904,6 +6904,15 @@
 		BCE66B4015494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE66B3A15494C5D0094B4D0 /* defaultMenuDescription.json.txt */; };
 		BCE66B4115494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE66B3A15494C5D0094B4D0 /* defaultMenuDescription.json.txt */; };
 		BCE66B4215494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE66B3A15494C5D0094B4D0 /* defaultMenuDescription.json.txt */; };
+		BCE6FC4C16271038005C42DB /* WallListenersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE6FC4B16271038005C42DB /* WallListenersViewController.xib */; };
+		BCE6FC4D16271038005C42DB /* WallListenersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE6FC4B16271038005C42DB /* WallListenersViewController.xib */; };
+		BCE6FC4E16271038005C42DB /* WallListenersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE6FC4B16271038005C42DB /* WallListenersViewController.xib */; };
+		BCE6FC4F16271038005C42DB /* WallListenersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE6FC4B16271038005C42DB /* WallListenersViewController.xib */; };
+		BCE6FC5016271038005C42DB /* WallListenersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE6FC4B16271038005C42DB /* WallListenersViewController.xib */; };
+		BCE6FC5116271038005C42DB /* WallListenersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE6FC4B16271038005C42DB /* WallListenersViewController.xib */; };
+		BCE6FC5216271038005C42DB /* WallListenersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE6FC4B16271038005C42DB /* WallListenersViewController.xib */; };
+		BCE6FC5316271038005C42DB /* WallListenersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE6FC4B16271038005C42DB /* WallListenersViewController.xib */; };
+		BCE6FC5416271038005C42DB /* WallListenersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE6FC4B16271038005C42DB /* WallListenersViewController.xib */; };
 		BCE7518914EC1DBF00056916 /* AdaptiveLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */; };
 		BCE7518A14EC1DBF00056916 /* AdaptiveLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */; };
 		BCE7518B14EC1DBF00056916 /* AdaptiveLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */; };
@@ -8214,6 +8223,7 @@
 		BCE36F3115D80068008C26AC /* commonTableViewSection@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonTableViewSection@2x.png"; sourceTree = "<group>"; };
 		BCE66B3215494C410094B4D0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text; name = fr; path = fr.lproj/defaultMenuDescription.json.txt; sourceTree = "<group>"; };
 		BCE66B3B15494C5D0094B4D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/defaultMenuDescription.json.txt; sourceTree = "<group>"; };
+		BCE6FC4B16271038005C42DB /* WallListenersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WallListenersViewController.xib; sourceTree = "<group>"; };
 		BCE7518714EC1DBF00056916 /* AdaptiveLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdaptiveLabel.h; sourceTree = "<group>"; };
 		BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdaptiveLabel.m; sourceTree = "<group>"; };
 		BCF3588314E07A87003594BF /* ScrollingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingLabel.h; sourceTree = "<group>"; };
@@ -8902,6 +8912,7 @@
 				BC23871615D2B9D100D1A4C4 /* WallViewController.h */,
 				BC23871715D2B9D100D1A4C4 /* WallViewController.m */,
 				BCC5095A16240F0A0049B69C /* WallViewController.xib */,
+				BCE6FC4B16271038005C42DB /* WallListenersViewController.xib */,
 			);
 			path = Wall;
 			sourceTree = "<group>";
@@ -11353,6 +11364,7 @@
 				E59E133F16261D5600EBC861 /* twitter.png in Resources */,
 				BC6EACA21626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACAB1626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
+				BCE6FC5316271038005C42DB /* WallListenersViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11871,6 +11883,7 @@
 				E59E134016261D5600EBC861 /* twitter.png in Resources */,
 				BC6EACA31626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACAC1626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
+				BCE6FC5416271038005C42DB /* WallListenersViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12383,6 +12396,7 @@
 				E59E133E16261D5600EBC861 /* twitter.png in Resources */,
 				BC6EACA11626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACAA1626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
+				BCE6FC5216271038005C42DB /* WallListenersViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12900,6 +12914,7 @@
 				E59E133B16261D5600EBC861 /* twitter.png in Resources */,
 				BC6EAC9E1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA71626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
+				BCE6FC4F16271038005C42DB /* WallListenersViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13417,6 +13432,7 @@
 				E59E133916261D5600EBC861 /* twitter.png in Resources */,
 				BC6EAC9C1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA51626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
+				BCE6FC4D16271038005C42DB /* WallListenersViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13934,6 +13950,7 @@
 				E59E133D16261D5600EBC861 /* twitter.png in Resources */,
 				BC6EACA01626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA91626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
+				BCE6FC5116271038005C42DB /* WallListenersViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14452,6 +14469,7 @@
 				E59E133A16261D5600EBC861 /* twitter.png in Resources */,
 				BC6EAC9D1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA61626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
+				BCE6FC4E16271038005C42DB /* WallListenersViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14969,6 +14987,7 @@
 				E59E133816261D5600EBC861 /* twitter.png in Resources */,
 				BC6EAC9B1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA41626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
+				BCE6FC4C16271038005C42DB /* WallListenersViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15486,6 +15505,7 @@
 				E59E133C16261D5600EBC861 /* twitter.png in Resources */,
 				BC6EAC9F1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA81626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
+				BCE6FC5016271038005C42DB /* WallListenersViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

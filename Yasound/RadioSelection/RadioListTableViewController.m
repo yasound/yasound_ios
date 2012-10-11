@@ -44,6 +44,43 @@
 
 #define NB_ROWS_SECTION_INVITE_FRIENDS 1
 
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil listeners:(NSArray*)listeners {
+    
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        
+        self.dragging = NO;
+        _showRank = NO;
+        
+        self.showRefreshIndicator = NO;
+        self.showGenreSelector = NO;
+        
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
+        
+        self.loadingNextPage = NO;
+        _contentsHeight = self.view.frame.size.height;
+        
+        self.delayTokens = 2;
+        self.delay = 0.15;
+        
+        self.url = nil;
+        self.radios = nil;
+        self.radiosPreviousCount = 0;
+        self.friendsMode = YES;
+        self.listenersMode = YES;
+        
+//        [self commonInit];
+        
+        self.tableView = nil;
+    }
+    
+    return self;
+}
+
+
+
+
+
 - (id)initWithFrame:(CGRect)frame url:(NSURL*)url radios:(NSArray*)radios withContentsHeight:(CGFloat)contentsHeight showRefreshIndicator:(BOOL)showRefreshIndicator showGenreSelector:(BOOL)showGenreSelector showRank:(BOOL)showRank
 {
     self = [super init];
@@ -68,40 +105,62 @@
         self.radios = [NSMutableArray arrayWithArray:radios];
         self.radiosPreviousCount = radios.count;
         self.friendsMode = NO;
-        
-        
-        if (self.showGenreSelector) {
-            
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGenreSelected:) name:NOTIF_GENRE_SELECTED object:nil];
-            
-            self.genreSelector = [[WheelSelectorGenre alloc] init];
-            [self.view addSubview:self.genreSelector];
-            [self.genreSelector initWithTheme:@"Genre"];
+        self.listenersMode = NO;
 
 
-        }
-        
-
-        
-        if (self.showRefreshIndicator) {
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifNextPageCancel:) name:NOTIF_NEXTPAGE_CANCEL object:nil];
-            
-            self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:CGRectMake(0, frame.size.height - REFRESH_INDICATOR_HEIGHT, self.view.frame.size.width, REFRESH_INDICATOR_HEIGHT) withStyle:UIActivityIndicatorViewStyleGray];
-            [self.view addSubview:self.refreshIndicator];
-        }
-
-        self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
-        [self.view addSubview:self.tableView];
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
-        self.tableView.backgroundColor = [UIColor clearColor];
-        
-        
+        [self commonInit];
     }
     return self;
 }
+
+
+- (void)commonInit {
+    
+    
+    if (self.showGenreSelector) {
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGenreSelected:) name:NOTIF_GENRE_SELECTED object:nil];
+        
+        self.genreSelector = [[WheelSelectorGenre alloc] init];
+        [self.view addSubview:self.genreSelector];
+        [self.genreSelector initWithTheme:@"Genre"];
+        
+        
+    }
+    
+    
+    
+    if (self.showRefreshIndicator) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifNextPageCancel:) name:NOTIF_NEXTPAGE_CANCEL object:nil];
+        
+        self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - REFRESH_INDICATOR_HEIGHT, self.view.frame.size.width, REFRESH_INDICATOR_HEIGHT) withStyle:UIActivityIndicatorViewStyleGray];
+        [self.view addSubview:self.refreshIndicator];
+    }
+    
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    [self.view addSubview:self.tableView];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    self.tableView.backgroundColor = [UIColor clearColor];
+
+}
+
+
+
+
+
+- (void)viewDidLoad {
+    
+    [super viewDidLoad];
+
+//    if (self.tableView == nil) {
+//        self.tableView = self.listenersTableview;
+//    }
+
+}
+
 
 
 
@@ -169,6 +228,19 @@
 
 
 
+- (void)setListeners:(NSArray*)listeners
+{
+    _friends = listeners;
+    [_friends retain];
+    
+    self.friendsMode = YES;
+    self.tableView = self.listenersTableview;
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
+    [self.listenersTableview reloadData];
+}
+
+
+
 
 - (void)appendRadios:(NSArray*)radios
 {
@@ -181,11 +253,6 @@
 }
 
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-}
 
 
 
@@ -207,10 +274,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (self.listenersMode)
+        return 1;
+    
     if (self.friendsMode)
-    {
         return NB_SECTIONS_FRIENDS;
-    }
+
     return 1;
 }
 
