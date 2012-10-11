@@ -14,8 +14,9 @@
 @property (nonatomic, retain) IBOutlet UILabel* headerTitle;
 @property (nonatomic, retain) IBOutlet UILabel* headerSubscribers;
 @property (nonatomic, retain) IBOutlet UILabel* headerListeners;
-@property (nonatomic, retain) IBOutlet UIButton* headerButton;
-@property (nonatomic, retain) IBOutlet UILabel* headerButtonLabel;
+@property (nonatomic, retain) IBOutlet UIButton* headerButtonFavorites;
+@property (nonatomic, retain) IBOutlet UIButton* headerButtonListeners;
+//@property (nonatomic, retain) IBOutlet UILabel* headerButtonLabel;
 
 - (void)setHeaderRadio:(Radio*)radio;
 - (IBAction)onFavoriteClicked:(id)sender;

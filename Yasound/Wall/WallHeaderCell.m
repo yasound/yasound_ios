@@ -17,8 +17,9 @@
 @synthesize headerTitle;
 @synthesize headerSubscribers;
 @synthesize headerListeners;
-@synthesize headerButton;
-@synthesize headerButtonLabel;
+@synthesize headerButtonFavorites;
+@synthesize headerButtonListeners;
+//@synthesize headerButtonLabel;
 
 
 - (void)awakeFromNib
@@ -43,8 +44,8 @@
     self.headerListeners.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
 
 
-    self.headerButton.enabled = NO;
-    self.headerButtonLabel.text = @"-";
+    self.headerButtonFavorites.enabled = NO;
+//    self.headerButtonLabel.text = @"-";
     self.headerIconFavorite.hidden = YES;
 
     NSString* str = URL_RADIOS_FAVORITES;
@@ -59,17 +60,17 @@
     [[YasoundDataCache main] clearRadios:URL_RADIOS_FAVORITES];
     
     BOOL mustBeFavorite = !self.isFavorite;
-    self.headerButton.enabled = NO;
+    self.headerButtonFavorites.enabled = NO;
 
     if (mustBeFavorite)
     {
         self.headerIconFavorite.hidden = NO;
-        self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.remove", nil);
+//        self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.remove", nil);
     }
     else
     {
         self.headerIconFavorite.hidden = YES;
-        self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.add", nil);
+//        self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.add", nil);
     }
     
     [[YasoundDataProvider main] setRadio:self.radio asFavorite:mustBeFavorite target:self action:@selector(favoriteUpdated:success:)];
@@ -95,22 +96,22 @@
         {
             self.isFavorite = YES;
             self.headerIconFavorite.hidden = NO;
-            self.headerButton.enabled = YES;
-            self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.remove", nil);
+            self.headerButtonFavorites.enabled = YES;
+//            self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.remove", nil);
 
             // and clear the cache for favorites
             NSString* url = URL_RADIOS_FAVORITES;
             [[YasoundDataCache main] clearRadios:url];
 
-            self.headerButton.enabled = YES;
+            self.headerButtonFavorites.enabled = YES;
             return;
         }
     }
 
     self.isFavorite = NO;
-    self.headerButton.enabled = YES;
+    self.headerButtonFavorites.enabled = YES;
     self.headerIconFavorite.hidden = YES;    
-    self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.add", nil);
+//    self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.add", nil);
 }
 
 
