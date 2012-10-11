@@ -60,6 +60,13 @@
 }
 
 
+- (void)setListeners:(NSInteger)nbListeners {
+    
+    self.headerListeners.text = [NSString stringWithFormat:@"%d", nbListeners];
+}
+
+
+
 - (IBAction)onFavoriteClicked:(id)sender
 {
     [[YasoundDataCache main] clearRadios:URL_RADIOS_FAVORITES];

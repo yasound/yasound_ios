@@ -19,6 +19,7 @@
 //@property (nonatomic, retain) IBOutlet UILabel* headerButtonLabel;
 
 - (void)setHeaderRadio:(Radio*)radio;
+- (void)setListeners:(NSInteger)nbListeners;
 - (IBAction)onFavoriteClicked:(id)sender;
 
 @end

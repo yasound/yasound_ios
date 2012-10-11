@@ -377,7 +377,7 @@
         
         [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
         [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
-//        [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
+        [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
         
         [_updateLock unlock];
     }
@@ -800,6 +800,17 @@
     
     _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
 }
+
+
+
+- (void)receivedCurrentUsers:(NSArray*)users withInfo:(NSDictionary*)info
+{
+    if (!users || users.count == 0)
+        return;
+
+    [self.cellWallHeader setListeners:users.count];
+}
+
 
 
 
