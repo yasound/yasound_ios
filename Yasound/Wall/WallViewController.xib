@@ -375,7 +375,7 @@
 								<string key="NSFrame">{{7, 7}, {150, 150}}</string>
 								<reference key="NSSuperview" ref="660981972"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="419779061"/>
+								<reference key="NSNextKeyView" ref="127942921"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -405,7 +405,7 @@
 								<string key="NSFrame">{{168, 23}, {150, 49}}</string>
 								<reference key="NSSuperview" ref="660981972"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="74407120"/>
+								<reference key="NSNextKeyView" ref="419779061"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -456,7 +456,7 @@
 								<string key="NSFrame">{{165, 76}, {142, 34}}</string>
 								<reference key="NSSuperview" ref="660981972"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="127942921"/>
+								<reference key="NSNextKeyView" ref="74407120"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -471,6 +471,10 @@
 								<object class="NSCustomResource" key="IBUIDisabledImage" id="216774344">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">wallHeaderButtonDisabled.png</string>
+								</object>
+								<object class="NSCustomResource" key="IBUISelectedImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">wallHeaderButtonPressed.png</string>
 								</object>
 								<object class="NSCustomResource" key="IBUINormalImage" id="309619681">
 									<string key="NSClassName">NSImage</string>
@@ -1522,7 +1526,7 @@
 				<string key="55.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="56.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="57.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="0.0" key="57.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="2" key="57.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="59.CustomClassName">WallPostCell</string>
 				<string key="59.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="60.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1822,6 +1826,7 @@
 			<string key="wallHeaderBackground.png">{320, 166}</string>
 			<string key="wallHeaderButton.png">{141, 34}</string>
 			<string key="wallHeaderButtonDisabled.png">{141, 34}</string>
+			<string key="wallHeaderButtonPressed.png">{141, 34}</string>
 			<string key="wallHeaderIconListeners.png">{17, 17}</string>
 			<string key="wallHeaderIconSubscribers.png">{17, 17}</string>
 			<string key="wallHeaderMask.png">{165, 165}</string>

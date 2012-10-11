@@ -5,7 +5,7 @@
 #import "InteractiveView.h"
 #import "ProfilViewController.h"
 #import "YasoundAppDelegate.h"
-
+#import "YasoundSessionManager.h"
 
 @implementation WallHeaderCell
 
@@ -43,8 +43,11 @@
     self.headerSubscribers.text = [NSString stringWithFormat:@"%d", [radio.favorites integerValue]];
     self.headerListeners.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
 
+    
+    [self.headerButtonFavorites setImage:[UIImage imageNamed:@"wallHeaderButtonPressed.png"] forState:(UIControlStateSelected|UIControlStateDisabled)];
 
     self.headerButtonFavorites.enabled = NO;
+    self.headerButtonListeners.enabled = NO;
 //    self.headerButtonLabel.text = @"-";
     self.headerIconFavorite.hidden = YES;
 
@@ -65,11 +68,13 @@
     if (mustBeFavorite)
     {
         self.headerIconFavorite.hidden = NO;
+        self.headerButtonFavorites.selected = YES;
 //        self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.remove", nil);
     }
     else
     {
         self.headerIconFavorite.hidden = YES;
+        self.headerButtonFavorites.selected = NO;
 //        self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.add", nil);
     }
     
@@ -96,21 +101,29 @@
         {
             self.isFavorite = YES;
             self.headerIconFavorite.hidden = NO;
-            self.headerButtonFavorites.enabled = YES;
+            
 //            self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.remove", nil);
 
             // and clear the cache for favorites
             NSString* url = URL_RADIOS_FAVORITES;
             [[YasoundDataCache main] clearRadios:url];
 
-            self.headerButtonFavorites.enabled = YES;
+            if ([YasoundSessionManager main].registered) {
+                self.headerButtonFavorites.enabled = YES;
+                self.headerButtonFavorites.selected = YES;
+            }
+
             return;
         }
     }
 
     self.isFavorite = NO;
-    self.headerButtonFavorites.enabled = YES;
-    self.headerIconFavorite.hidden = YES;    
+    if ([YasoundSessionManager main].registered) {
+        self.headerButtonFavorites.enabled = YES;
+        self.headerButtonFavorites.selected = NO;
+    }
+    self.headerIconFavorite.hidden = YES;
+    
 //    self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.add", nil);
 }
 
