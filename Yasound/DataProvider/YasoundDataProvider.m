@@ -2903,6 +2903,18 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
+- (void)sendPostRequestWithURL:(NSString*)url
+{
+  Auth* auth = self.apiKeyAuth;
+
+  //NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
+
+  ASIFormDataRequest* req = [_communicator buildPostRequestToURL:url absolute:NO notifyTarget:self byCalling:@selector(receiveYasoundAssociation:info:) withUserData:nil withAuth:auth];
+
+  [req startAsynchronous];
+}
+
+
 //
 // DEPRECATED
 //

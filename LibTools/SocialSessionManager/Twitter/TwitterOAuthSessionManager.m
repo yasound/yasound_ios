@@ -225,7 +225,8 @@
 
 - (void)enableUpdatesFor:(NSString *)username
 {
-  [_engine enableUpdatesFor:username];
+  NSString* res = [_engine enableUpdatesFor:username];
+  NSLog(@"Follow twitter user %@: %@\n", username, res);
 }
 
 

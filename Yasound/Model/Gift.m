@@ -124,7 +124,7 @@
     }
     else if ([self.sku isEqualToString:GIFT_SKU_TWITTER_FOLLOW]) {
         
-      [[TwitterSessionManager twitter] enableUpdatesFor:NSLocalizedString(@"TwitterYasoundAccount", nil)];
+      //[[TwitterSessionManager twitter] enableUpdatesFor:NSLocalizedString(@"TwitterYasoundAccount", nil)];
     }
     else if ([self.sku isEqualToString:GIFT_SKU_FACEBOOK_LIKE]) {
 
@@ -167,7 +167,7 @@
 //    [[UIApplication sharedApplication] openURL:url];
     
     if (self.completed_url)
-        [[YasoundDataProvider main] sendGetRequestWithURL:self.completed_url];
+        [[YasoundDataProvider main] sendPostRequestWithURL:self.completed_url];
 }
 
 @end
