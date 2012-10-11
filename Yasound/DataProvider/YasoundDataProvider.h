@@ -92,6 +92,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)reloadUserWithUserData:(id)data withTarget:(id)target action:(SEL)selector;
 
 - (void)sendGetRequestWithURL:(NSString*)url;
+- (void)sendPostRequestWithURL:(NSString*)url;
 
 
 // login and accounts
