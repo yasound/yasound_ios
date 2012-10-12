@@ -235,6 +235,8 @@
     
     [self.customItems replaceObjectAtIndex:INDEX_BACK withObject:item];
     [self setItems:self.customItems];
+    
+    [self updateNowPlaying];
 }
 
 
