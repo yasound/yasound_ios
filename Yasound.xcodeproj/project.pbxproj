@@ -18465,7 +18465,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SAS Yasound";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -18488,7 +18487,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = "Radio Yasound";
-				PROVISIONING_PROFILE = "B1A71538-5BCA-4527-AB6A-105BB99E2EF4";
+				PROVISIONING_PROFILE = "C35803D7-2D97-4F78-99CB-665037FC8336";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				WRAPPER_EXTENSION = app;
@@ -18499,7 +18498,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SAS Yasound";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -18520,7 +18518,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = "Radio Yasound";
-				PROVISIONING_PROFILE = "B1A71538-5BCA-4527-AB6A-105BB99E2EF4";
+				PROVISIONING_PROFILE = "C35803D7-2D97-4F78-99CB-665037FC8336";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT)";

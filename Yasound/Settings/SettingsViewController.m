@@ -450,7 +450,7 @@
     
     [_keywords retain];
     
-    [self.radio setTagsWithArray:keywords];1
+    [self.radio setTagsWithArray:keywords];
     
     [_tableView reloadData];
 

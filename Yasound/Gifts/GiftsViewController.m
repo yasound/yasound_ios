@@ -20,8 +20,8 @@
 #import "AudioStreamer.h"
 
 #define SECTION_COUNT 2
-#define SECTION_GIFTS 0
-#define SECTION_PROMO 1
+#define SECTION_GIFTS 1
+#define SECTION_PROMO 0
 
 #define NB_ROWS_PROMO 1
 
