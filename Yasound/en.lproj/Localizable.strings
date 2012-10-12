@@ -728,7 +728,7 @@
 
 "AddServerSong.AlreadyInProgramming.Message" = "This song is already programmed in your radio";
 
-"RefreshIndicator.label.pulled" = "Pull up for more radios...";
+"RefreshIndicator.label.pulled" = "Pull for more radios...";
 "RefreshIndicator.label.opened" = "Release for more radios...";
 "RefreshIndicator.label.openedAndRelease" = "Loading...";
 

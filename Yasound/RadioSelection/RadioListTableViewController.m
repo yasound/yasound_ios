@@ -598,12 +598,6 @@
     [self.tableView reloadData];
     
     NSLog(@"contentOffset.y  %.2f     rame.size.height %.2f => offset %.2f     (contentSize %.2f x %.2f)", self.tableView.contentOffset.y , self.tableView.frame.size.height, self.tableView.contentOffset.y + self.tableView.frame.size.height, self.tableView.contentSize.width, self.tableView.contentSize.height);
-    
-    
-    //    CGFloat newY = self.tableView.contentOffset.y + self.tableView.frame.size.height;
-    CGFloat newY = self.tableView.contentSize.height - self.tableView.frame.size.height;
-    
-    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, newY) animated:YES];
 }
 
 
