@@ -50,6 +50,44 @@
 	<string>MainWindow</string>
 	<key>Resources</key>
 	<dict>
+		<key>genres</key>
+		<dict>
+			<key>en</key>
+			<array>
+				<string>style_all</string>
+				<string>style_pop</string>
+				<string>style_hiphop</string>
+				<string>style_rock</string>
+				<string>style_rnbsoul</string>
+				<string>style_electro</string>
+				<string>style_alternative</string>
+				<string>style_jazz</string>
+				<string>style_classique</string>
+				<string>style_reggae</string>
+				<string>style_world</string>
+				<string>style_metal</string>
+				<string>style_blues</string>
+				<string>style_divers</string>
+			</array>
+			<key>fr</key>
+			<array>
+				<string>style_all</string>
+				<string>style_pop</string>
+				<string>style_hiphop</string>
+				<string>style_rock</string>
+				<string>style_rnbsoul</string>
+				<string>style_electro</string>
+				<string>style_chanson_francaise</string>
+				<string>style_alternative</string>
+				<string>style_jazz</string>
+				<string>style_classique</string>
+				<string>style_reggae</string>
+				<string>style_world</string>
+				<string>style_metal</string>
+				<string>style_blues</string>
+				<string>style_divers</string>
+			</array>
+		</dict>
 		<key>notifications</key>
 		<dict>
 			<key>NotifFriendEnters</key>
@@ -71,24 +109,6 @@
 		</dict>
 		<key>serverURL</key>
 		<string>http://dev.yasound.com/</string>
-		<key>styles</key>
-		<array>
-			<string>style_all</string>
-			<string>style_classique</string>
-			<string>style_blues</string>
-			<string>style_alternative</string>
-			<string>style_electro</string>
-			<string>style_chanson_francaise</string>
-			<string>style_jazz</string>
-			<string>style_pop</string>
-			<string>style_reggae</string>
-			<string>style_rock</string>
-			<string>style_metal</string>
-			<string>style_hiphop</string>
-			<string>style_rnbsoul</string>
-			<string>style_world</string>
-			<string>style_divers</string>
-		</array>
 		<key>stylesheet</key>
 		<dict>
 			<key>ActivityModelessSpinner</key>
@@ -414,33 +434,6 @@
 				<integer>44</integer>
 			</dict>
 		</dict>
-		<key>themes</key>
-		<array>
-			<dict>
-				<key>bundle</key>
-				<string>default</string>
-				<key>description</key>
-				<string>theme_default_description</string>
-				<key>id</key>
-				<string>theme_default</string>
-			</dict>
-			<dict>
-				<key>bundle</key>
-				<string>blues</string>
-				<key>description</key>
-				<string>theme_blues_description</string>
-				<key>id</key>
-				<string>theme_blues</string>
-			</dict>
-			<dict>
-				<key>bundle</key>
-				<string>classic</string>
-				<key>description</key>
-				<string>theme_classic_description</string>
-				<key>id</key>
-				<string>theme_classic</string>
-			</dict>
-		</array>
 	</dict>
 	<key>UIBackgroundModes</key>
 	<array>
