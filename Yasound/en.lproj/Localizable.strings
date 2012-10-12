@@ -618,7 +618,7 @@
 "Settings.pickImage.image" = "Take a picture";
 "Settings.pickImage.camera" = "Choose existing";
 
-"Settings.submit" = "update your radio";
+"Settings.submit" = "updating your radio";
 
 "Settings.radio.title.label" = "Title";
 "Settings.radio.title.placeholder" = "my radio's name";
