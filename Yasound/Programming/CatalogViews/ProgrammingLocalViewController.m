@@ -31,7 +31,7 @@
 #import "DataBase.h"
 
 
-#define TIMEPROFILE_AVAILABLECATALOG_BUILD @"TimeProfileAvailableCatalogBuild"
+//#define TIMEPROFILE_AVAILABLECATALOG_BUILD @"TimeProfileAvailableCatalogBuild"
 
 #define BORDER 8
 
@@ -113,44 +113,65 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
 
-    if (![SongLocalCatalog main].isInCache)
-        [ActivityAlertView showWithTitle: NSLocalizedString(@"SongAddView_alert", nil)];
-    
-    // PROFILE
-    [[TimeProfile main] begin:TIMEPROFILE_AVAILABLECATALOG_BUILD];
-    
-    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(afterBreathing:) userInfo:nil repeats:NO];
-}
-
-
-- (void)afterBreathing:(NSTimer*)timer {
-    
-    [[SongLocalCatalog main] initFromMatchedSongs:[SongRadioCatalog main].matchedSongs  target:self action:@selector(localProgrammingBuilt:)];
-}
-
-
-
-
-- (void)localProgrammingBuilt:(NSDictionary*)info {
-    
-    [ActivityAlertView close];
-
-    BOOL success = [[info objectForKey:@"success"] boolValue];
-    NSString* error = [info objectForKey:@"error"];
-    NSInteger count = [[info objectForKey:@"count"] integerValue];
-    
-    if (!success) {
+    if (![SongLocalCatalog main].isInCache) {
         
-        // display an error dialog
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Radio.error.title", nil) message:error delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];
+        [ActivityAlertView showWithTitle: NSLocalizedString(@"SongAddView_alert", nil)];
+        [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(onCatalogCheckTick:) userInfo:nil repeats:NO];
         return;
     }
+    
+    [self localProgrammingBuilt];
+    
+//    // PROFILE
+//    [[TimeProfile main] begin:TIMEPROFILE_AVAILABLECATALOG_BUILD];
+    
+//    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(afterBreathing:) userInfo:nil repeats:NO];
+//}
+//
+//
+//- (void)afterBreathing:(NSTimer*)timer {
+    
+//    [[SongLocalCatalog main] initFromMatchedSongs:[SongRadioCatalog main].matchedSongs  target:self action:@selector(localProgrammingBuilt:)];
+}
 
-    // PROFILE
-    [[TimeProfile main] end:TIMEPROFILE_AVAILABLECATALOG_BUILD];
-    [[TimeProfile main] logInterval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
+
+
+- (void)onCatalogCheckTick:(NSTimer*)timer {
+
+    if (![SongLocalCatalog main].isInCache) {
+        
+        [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(onCatalogCheckTick:) userInfo:nil repeats:NO];
+        return;
+    }
+    
+    [ActivityAlertView close];
+    [self localProgrammingBuilt];
+}
+
+
+
+- (void)localProgrammingBuilt {
+    
+//    [ActivityAlertView close];
+
+//    BOOL success = [[info objectForKey:@"success"] boolValue];
+//    NSString* error = [info objectForKey:@"error"];
+//    NSInteger count = [[info objectForKey:@"count"] integerValue];
+//    
+//    if (!success) {
+//        
+//        // display an error dialog
+//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Radio.error.title", nil) message:error delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [av show];
+//        [av release];
+//        return;
+//    }
+
+//    // PROFILE
+//    [[TimeProfile main] end:TIMEPROFILE_AVAILABLECATALOG_BUILD];
+//    [[TimeProfile main] logInterval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
+    
+    NSInteger count = [SongLocalCatalog main].songsDb.count;
     
     DLog(@"%d available songs", count);
     

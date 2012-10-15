@@ -35,6 +35,7 @@
 #import "InviteTwitterFriendsViewController.h"
 #import "AccountYasoundViewController.h"
 #import "NotificationCenterViewController.h"
+#import "SongLocalCatalog.h"
 
 
 
@@ -277,6 +278,10 @@
     
 
     [[YasoundReachability main] removeTarget];
+    
+    // launch the local songs catalog building, in a thread
+    [[SongLocalCatalog main] build];
+
     
     // if the user has already signed in, launch the automatic login process
     if ([YasoundSessionManager main].registered)

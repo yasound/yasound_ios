@@ -13,6 +13,9 @@
 #import "DataBase.h"
 #import "RootViewController.h"
 #import "SongRadioCatalog.h"
+#import "TimeProfile.h"
+
+#define TIMEPROFILE_AVAILABLECATALOG_BUILD @"TimeProfileAvailableCatalogBuild"
 
 @implementation SongLocalCatalog
 
@@ -77,33 +80,46 @@ static SongLocalCatalog* _main = nil;
 
 
 
-- (void)initFromMatchedSongs:(NSDictionary*)songs target:(id)aTarget action:(SEL)anAction {
-    
-    self.target = aTarget;
-    self.action = anAction;
-    
-    // return cached data
-    if (self.isInCache)
-    {
-        NSMutableDictionary* info = [NSMutableDictionary dictionary];
-        [info setObject:[NSNumber numberWithInteger:self.songsDb.count] forKey:@"count"];
-        [info setObject:@""  forKey:@"error"];
-        [info setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
-        [self.target performSelector:self.action withObject:info];
-        return;
-    }
+//- (BOOL)initFromMatchedSongs:(NSDictionary*)songs target:(id)aTarget action:(SEL)anAction {
+//    
+//    
+//    self.target = aTarget;
+//    self.action = anAction;
+//
+//    // return cached data
+//    if (self.isInCache)
+//    {
+//        NSMutableDictionary* info = [NSMutableDictionary dictionary];
+//        [info setObject:[NSNumber numberWithInteger:self.songsDb.count] forKey:@"count"];
+//        [info setObject:@""  forKey:@"error"];
+//        [info setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
+//        [self.target performSelector:self.action withObject:info];
+//        return YES;
+//    }
+//
+//    return NO;
+//}
 
-    //[NSThread detachNewThreadSelector:@selector(threadMatchedSongs:) toTarget:self withObject:songs];
+
+
+- (void)build {
+
+
+    [NSThread detachNewThreadSelector:@selector(threadMatchedSongs) toTarget:self withObject:nil];
+    
 //    [self threadMatchedSongs:songs];
-    [self threadMatchedSongs];
+//    [self threadMatchedSongs];
 }
 
 
-//- (void)threadMatchedSongs:(NSDictionary*)songs {
 - (void)threadMatchedSongs {
-    
+//- (void)threadMatchedSongs {
+
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
+    // PROFILE
+    [[TimeProfile main] begin:TIMEPROFILE_AVAILABLECATALOG_BUILD];
+
 	
     
     [[TimeProfile main] begin:@"iTunesQuery"];
@@ -168,11 +184,17 @@ static SongLocalCatalog* _main = nil;
     
     self.isInCache = YES;
     
-    NSMutableDictionary* info = [NSMutableDictionary dictionary];
-    [info setObject:[NSNumber numberWithInteger:self.songsDb.count] forKey:@"count"];
-    [info setObject:@""  forKey:@"error"];
-    [info setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
-    [self.target performSelectorOnMainThread:self.action withObject:info waitUntilDone:false];
+    
+    // PROFILE
+    [[TimeProfile main] end:TIMEPROFILE_AVAILABLECATALOG_BUILD];
+    [[TimeProfile main] logInterval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
+
+    
+//    NSMutableDictionary* info = [NSMutableDictionary dictionary];
+//    [info setObject:[NSNumber numberWithInteger:self.songsDb.count] forKey:@"count"];
+//    [info setObject:@""  forKey:@"error"];
+//    [info setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
+//    [self.target performSelectorOnMainThread:self.action withObject:info waitUntilDone:false];
     
     [pool release];
 }
