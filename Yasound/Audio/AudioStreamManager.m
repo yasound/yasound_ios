@@ -79,9 +79,9 @@ static AudioStreamer* _gAudioStreamer = nil;
     return;
 #endif
     
-#ifdef USE_DEV_SERVER
-    return;
-#endif
+//#ifdef USE_DEV_SERVER
+//    return;
+//#endif
     
     if (!_reseting && (_gAudioStreamer && [radio.id intValue]  == [self.currentRadio.id intValue]))
         return;
@@ -139,28 +139,35 @@ static AudioStreamer* _gAudioStreamer = nil;
 {
     NSURL* radioUrl = (NSURL*)req.userData;
     NSDictionary* responseDict = [req responseDict];
-    NSString* token = [responseDict valueForKey:@"token"];
-    if (!token)
-        return;
-    
+
     NSString* paramStr = radioUrl.parameterString;
     NSString* urlStr = radioUrl.absoluteString;
-    NSString* finalUrlStr;
-    if (paramStr)
-    {
-        finalUrlStr = [urlStr stringByAppendingFormat:@"&token=%@", token];
-    }
-    else
-    {
-        finalUrlStr = [urlStr stringByAppendingFormat:@"/?token=%@", token];
-    }
-    
-    BOOL hdPermission = [[YasoundDataProvider main].user permission:PERM_HD];
-    BOOL hdRequest = [[UserSettings main] boolForKey:USKEYuserWantsHd error:nil];
+    NSString* finalUrlStr = urlStr;
 
-    if (hdPermission && hdRequest)
-    {
-        finalUrlStr = [finalUrlStr stringByAppendingString:@"&hd=1"];
+    NSLog(@"radio origin '%@'", self.currentRadio.origin);
+    
+    if ([self.currentRadio.origin integerValue] == eRadioOriginYasound) {
+        
+        NSString* token = [responseDict valueForKey:@"token"];
+        if (!token)
+            return;
+        
+        if (paramStr)
+        {
+            finalUrlStr = [finalUrlStr stringByAppendingFormat:@"&token=%@", token];
+        }
+        else
+        {
+            finalUrlStr = [finalUrlStr stringByAppendingFormat:@"/?token=%@", token];
+        }
+        
+        BOOL hdPermission = [[YasoundDataProvider main].user permission:PERM_HD];
+        BOOL hdRequest = [[UserSettings main] boolForKey:USKEYuserWantsHd error:nil];
+
+        if (hdPermission && hdRequest)
+        {
+            finalUrlStr = [finalUrlStr stringByAppendingString:@"&hd=1"];
+        }
     }
     
     NSURL* finalRadioUrl = [NSURL URLWithString:finalUrlStr];

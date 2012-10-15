@@ -9,10 +9,17 @@
 #import "Model.h"
 #import "User.h"
 
+
 @interface Radio : Model {
     
     NSInteger _assignedTopRank;
 }
+
+typedef enum {
+    eRadioOriginYasound = 0,
+    eRadioOriginRadiowaves
+} RadioOrigin;
+
 
 @property (retain, nonatomic) NSString* name;
 @property (retain, nonatomic) User* creator;
@@ -20,6 +27,7 @@
 @property (retain, nonatomic) NSString* genre;
 @property (retain, nonatomic) NSString* theme;
 @property (retain, nonatomic) NSString* uuid;
+@property (retain, nonatomic) NSNumber* origin; // 0 <=> yasound, 1 <=> radiowaves
 //@property (retain, nonatomic) NSArray* playlists;
 @property (retain, nonatomic) NSNumber* likes;
 @property (retain, nonatomic) NSNumber* favorites;
