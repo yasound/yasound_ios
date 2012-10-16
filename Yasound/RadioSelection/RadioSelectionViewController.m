@@ -196,7 +196,7 @@
     [super viewDidDisappear:animated];
     
     // optimized DB access
-    [[YasoundDataCacheImageManager main].db commit];    
+    [[YasoundDataCacheImageManager main] commit];
 }
 
 
@@ -336,9 +336,9 @@
 
     
     // optimized DB access
-    [[YasoundDataCacheImageManager main].db commit];
+    [[YasoundDataCacheImageManager main] commit];
     // optimized DB access
-    [[YasoundDataCacheImageManager main].db beginTransaction];
+    [[YasoundDataCacheImageManager main] beginTransaction];
 
     
     CGRect frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
@@ -427,9 +427,9 @@
     
     
     // optimized DB access
-    [[YasoundDataCacheImageManager main].db commit];
+    [[YasoundDataCacheImageManager main] commit];
     // optimized DB access
-    [[YasoundDataCacheImageManager main].db beginTransaction];
+    [[YasoundDataCacheImageManager main] beginTransaction];
     
     
     // request selection radios

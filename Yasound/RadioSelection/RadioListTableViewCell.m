@@ -205,9 +205,6 @@
     if ((self.radioObjects == nil) || (self.radioObjects.count == 0))
         return;
     
-//    // optimized DB access
-//    [[YasoundDataCacheImageManager main].db beginTransaction];
-    
     
     //LBDEBUG ICI
 #ifdef DEBUG_PROFILE
@@ -319,8 +316,6 @@
 #endif
 
 
-//    // optimized DB access
-//    [[YasoundDataCacheImageManager main].db commit];
 
 }
 

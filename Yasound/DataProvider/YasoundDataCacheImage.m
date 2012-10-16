@@ -34,7 +34,7 @@ static YasoundDataCacheImageManager* _main;
     {
         _main = [[YasoundDataCacheImageManager alloc] init];
     }
-        
+    
     return _main;
 }   
 
@@ -43,6 +43,7 @@ static YasoundDataCacheImageManager* _main;
     if (self = [super init])
     {
         [self initDB];
+        _dbTransactionRunning = NO;
             
     }
     return self;
@@ -312,6 +313,28 @@ static YasoundDataCacheImageManager* _main;
 
 
 
+
+// db front-end
+- (void)commit {
+    
+    if (!_dbTransactionRunning)
+        return;
+    
+    _dbTransactionRunning = NO;
+    [self.db commit];
+}
+
+
+- (void)beginTransaction {
+    
+    if (_dbTransactionRunning)
+        return;
+    
+    _dbTransactionRunning = YES;
+    [self.db beginTransaction];
+}
+
+
 @end
 
 
@@ -555,6 +578,10 @@ static YasoundDataCacheImageManager* _main;
     // call for next download
     [[YasoundDataCacheImageManager main] loop];    
 }
+
+
+
+
 
 
 

@@ -13,7 +13,10 @@
 
 @class YasoundDataCacheImage;
 
-@interface YasoundDataCacheImageManager : NSObject
+@interface YasoundDataCacheImageManager : NSObject {
+    
+    BOOL _dbTransactionRunning;
+}
 
 @property (nonatomic, retain) NSMutableArray* fifo;
 @property (nonatomic, retain) FMDatabase* db;
@@ -30,6 +33,11 @@
 // be careful
 - (void)clear;
 - (void)clearItem:(NSURL*)url;
+
+// db front-end
+- (void)commit;
+- (void)beginTransaction;
+
 
 @end
 
