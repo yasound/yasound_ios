@@ -77,6 +77,9 @@ static Song* _gNowPlayingSong = nil;
 - (IBAction)onPlayPauseClicked:(id)sender
 {
     [[AudioStreamManager main] togglePlayPauseRadio];
+    
+    if ([AudioStreamManager main].isPaused)
+        [self resignFirstResponder];
 }
 
 - (IBAction)onShareClicked:(id)sender

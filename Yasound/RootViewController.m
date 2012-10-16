@@ -954,11 +954,11 @@
 #pragma mark - Background Audio Playing
 
 
-//Make sure we can recieve remote control events
-- (BOOL)canBecomeFirstResponder 
-{
-  return YES;
-}
+////Make sure we can recieve remote control events
+//- (BOOL)canBecomeFirstResponder 
+//{
+//  return YES;
+//}
 
 
 

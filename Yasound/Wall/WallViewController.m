@@ -243,10 +243,27 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REFRESH_GUI object:nil];
     
-    
-    
 }
 
+
+
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
+    //if it is a remote control event handle it correctly
+    if (event.type == UIEventTypeRemoteControl)
+    {
+        if (event.subtype == UIEventSubtypeRemoteControlPlay)
+            [[AudioStreamManager main] startRadio:[AudioStreamManager main].currentRadio];
+
+        else if (event.subtype == UIEventSubtypeRemoteControlPause)
+            [[AudioStreamManager main] stopRadio];
+
+        else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause)
+            [[AudioStreamManager main] togglePlayPauseRadio];
+
+    }
+}
 
 
 
@@ -255,9 +272,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear: animated];
-
-    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
-    [self resignFirstResponder];
     
     [[YasoundDataProvider main] leaveRadioWall:self.radio];
 
@@ -1480,15 +1494,27 @@
     }
     else if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_PLAY])
     {
+        [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+        [self becomeFirstResponder];
+
         [self playAudio];
         return;
     }
     else if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_STOP])
     {
+        [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+        
         [self pauseAudio];
         return;
     }  
 }
+
+
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
 
 
 

@@ -91,8 +91,6 @@ void SignalHandler(int sig) {
   _APNsTokenString = @"09a95beae4592774dd36843b9573dd8066a7b59cb135fd3e7e5326606a82c417";
 #endif
   
-  [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-    
     [[UIApplication sharedApplication] setStatusBarHidden:NO animated:NO];
 
     // google analytics launcher
@@ -343,8 +341,6 @@ void SignalHandler(int sig) {
   /*
    Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
    */
-  [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-  [rootViewController becomeFirstResponder];
 
 }
 
@@ -366,22 +362,22 @@ void SignalHandler(int sig) {
 }
 
 
-- (void)remoteControlReceivedWithEvent:(UIEvent *)event 
-{
-  //if it is a remote control event handle it correctly
-  if (event.type == UIEventTypeRemoteControl) 
-  {
-    if (event.subtype == UIEventSubtypeRemoteControlPlay) 
-      [[AudioStreamManager main] startRadio:[AudioStreamManager main].currentRadio];
-    
-    else if (event.subtype == UIEventSubtypeRemoteControlPause) 
-      [[AudioStreamManager main] stopRadio];
-    
-    else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause) 
-      [[AudioStreamManager main] togglePlayPauseRadio];
-    
-  }
-}
+//- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+//{
+//    //if it is a remote control event handle it correctly
+//    if (event.type == UIEventTypeRemoteControl)
+//    {
+//        if (event.subtype == UIEventSubtypeRemoteControlPlay)
+//            [[AudioStreamManager main] startRadio:[AudioStreamManager main].currentRadio];
+//        
+//        else if (event.subtype == UIEventSubtypeRemoteControlPause)
+//            [[AudioStreamManager main] stopRadio];
+//        
+//        else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause)
+//            [[AudioStreamManager main] togglePlayPauseRadio];
+//        
+//    }
+//}
 
 
 
