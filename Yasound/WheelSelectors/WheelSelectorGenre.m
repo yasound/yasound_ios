@@ -64,7 +64,7 @@
 
 
         [CATransaction begin];
-        [CATransaction setValue: (id) kCFBooleanTrue forKey: kCATransactionDisableActions];
+//        [CATransaction setValue: (id) kCFBooleanTrue forKey: kCATransactionDisableActions];
     
     self.shadowLayer.anchorPoint = CGPointMake(0, 0);
     self.indicatorLayer.anchorPoint = CGPointMake(0, 0);
