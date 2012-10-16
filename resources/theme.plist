@@ -1426,6 +1426,13 @@
 		</dict>
 		<key>Radios</key>
 		<dict>
+			<key>rowBackground</key>
+			<dict>
+				<key>name</key>
+				<string>radioListRowBkgSize2</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
 			<key>title</key>
 			<dict>
 				<key>height</key>

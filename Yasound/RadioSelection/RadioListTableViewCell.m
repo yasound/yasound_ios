@@ -45,7 +45,6 @@
 {
     if (self = [super initWithFrame:frame reuseIdentifier:cellIdentifier]) 
     {
-        BundleStylesheet* sheet;
         NSError* error;
         
         _showRank = showRank;
@@ -54,6 +53,11 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.radioObjects = [[NSMutableArray alloc] init];
 
+        
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.rowBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIImageView* rowBackground = [sheet makeImage];
+        [self addSubview:rowBackground];
+        
         CGFloat xOffset = 0;
         
         NSInteger radioIndex = 0;

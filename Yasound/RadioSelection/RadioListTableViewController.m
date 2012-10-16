@@ -342,8 +342,6 @@
 
 
 
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.friendsMode)
@@ -549,7 +547,11 @@
 
     if (self.showGenreSelector) {
         
-        if (self.genreSelector.status == eGenreStatusPulled) {
+        if (self.genreSelector.status == eGenreStatusClosed) {
+            [self.genreSelector close];
+        }
+
+        else if (self.genreSelector.status == eGenreStatusPulled) {
             [self openGenreSelector];
         }
     }
@@ -643,9 +645,10 @@
     
     self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y - self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height + self.genreSelector.frame.size.height);
 
+    [UIView commitAnimations];
+
     [self.genreSelector close];
     
-    [UIView commitAnimations];
     
     
 }
