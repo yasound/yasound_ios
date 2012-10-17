@@ -39,9 +39,6 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    //    if (!self.showRefreshIndicator)
-    //        return;
-    
     //
     // Refresh Indicator
     //
@@ -83,18 +80,6 @@
     
     self.dragging = NO;
 
-//    if (self.showRefreshIndicator)
-//        [self refreshIndicator_scrollViewDidEndDragging:scrollView];
-
-//    if ((self.refreshIndicator.status == eStatusOpened) && !self.loadingNextPage) {
-//
-//
-//        // request next page to the server
-//        self.loadingNextPage = [self.listDelegate listRequestNextPage];
-//    }
-    
-
-    
         if (self.refreshIndicator.status == eStatusWaitingToClose) {
             [self unfreeze];
         }
@@ -108,19 +93,11 @@
             
             BOOL res = [self refreshIndicatorRequest];
             
-            // request next page to the server
-//            self.loadingNextPage = [self.listDelegate listRequestNextPage];
-            
-            //LBDEBUG
-            NSLog(@"loadingNextPage %d : listRequestNextPage", self.loadingNextPage);
-            
             
             if (!res)
                 [self unfreeze];
             
         }
-        
-    
 }
 
 
@@ -146,9 +123,6 @@
     [self.freezeDate retain];
     
     self.freezeTimeout = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(freezeTimeout:) userInfo:nil repeats:NO];
-    
-//    [self.refreshIndicatorDelegate refreshIndicatorFreeze];
-//    [self.tableView setContentSize: CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + self.refreshIndicator.height)];
 }
 
 
@@ -195,41 +169,12 @@
     
     [self.refreshIndicator close];
     
-//    [self.refreshIndicatorDelegate refreshIndicatorUnfreeze];
     [self refreshIndicatorDidUnfreeze];
 }
 
 - (void)refreshIndicatorDidUnfreeze {
 }
 
-
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.2];
-//    [UIView setAnimationDelegate:self];
-//    [UIView setAnimationDidStopSelector:@selector(unfreezeAnimationStoped:finished:context:)];
-//    
-//    self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height - self.refreshIndicator.height);
-//    [UIView commitAnimations];
-//    
-//}
-//
-//
-//- (void)unfreezeAnimationStoped:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
-//    
-//    if (!self.showRefreshIndicator)
-//        return;
-//    
-//    [self.tableView reloadData];
-//    
-//    NSLog(@"contentOffset.y  %.2f     rame.size.height %.2f => offset %.2f     (contentSize %.2f x %.2f)", self.tableView.contentOffset.y , self.tableView.frame.size.height, self.tableView.contentOffset.y + self.tableView.frame.size.height, self.tableView.contentSize.width, self.tableView.contentSize.height);
-//    
-//    
-//    //    CGFloat newY = self.tableView.contentOffset.y + self.tableView.frame.size.height;
-//    CGFloat newY = self.tableView.contentSize.height - self.tableView.frame.size.height;
-//    
-//    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, newY) animated:YES];
-//}
-//
 
 
 

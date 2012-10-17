@@ -141,7 +141,6 @@
     }
   
     
-    //LBDEBUG ICIICI
     if (self.tableViewContainer != nil) {
         [self.tableViewContainer release];
         self.tableViewContainer = nil;
@@ -150,10 +149,7 @@
     self.tableViewContainer = [[UIView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:self.tableViewContainer];
     
-    //LBDEBUG ICIICI
-//    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
-    self.tableView = [[MyTableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
-//    [self.view addSubview:self.tableView];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     [self.tableViewContainer addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -170,22 +166,8 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-
-//    if (self.tableView == nil) {
-//        self.tableView = self.listenersTableview;
-//    }
-
-
 }
 
-
-//- (void)viewDidAppear:(BOOL)animated {
-//    
-//    [super viewDidAppear:animated];
-//    
-//
-//}
-//
 
 
 
@@ -212,11 +194,6 @@
     [self.tableView reloadData];
     
     DLog(@"setRadios verif self.radios.count %d", self.radios.count);
-
-    //LBDEBUG TEST
-//    [self.tableView setContentSize:CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + 200)];
-//    [self.tableView setContentOffset:CGPointMake(0,-200) animated:NO];
-
 }
 
 
@@ -626,7 +603,7 @@
     
     [self.tableView reloadData];
     
-    NSLog(@"contentOffset.y  %.2f     rame.size.height %.2f => offset %.2f     (contentSize %.2f x %.2f)", self.tableView.contentOffset.y , self.tableView.frame.size.height, self.tableView.contentOffset.y + self.tableView.frame.size.height, self.tableView.contentSize.width, self.tableView.contentSize.height);
+//    DLog(@"contentOffset.y  %.2f     rame.size.height %.2f => offset %.2f     (contentSize %.2f x %.2f)", self.tableView.contentOffset.y , self.tableView.frame.size.height, self.tableView.contentOffset.y + self.tableView.frame.size.height, self.tableView.contentSize.width, self.tableView.contentSize.height);
 }
 
 
@@ -651,24 +628,12 @@
     
     CGRect frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height - self.genreSelector.frame.size.height);
     self.tableViewContainer.frame = frame;
-//    CGRect frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height);
-//    self.tableView.frame = frame;
- 
-    //ICIICI
-    
-    NSLog(@"open");
-//    [self.tableView setContentOffset:CGPointMake(0,-200) animated:YES];
-//    [self.tableView setContentOffset:CGPointMake(0,-200) animated:NO];
 
     if (animated) {
         [UIView commitAnimations];
     }
-    
-    
 
     [self.genreSelector open];
-    
-    
 }
 
 
@@ -703,20 +668,13 @@
     if ([genre isEqualToString:@"style_all"])
     {
         [self closeGenreSelector];
-        //[self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
         
-        //LBDEBUG ICIICI
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.33];
         CGRect frame = CGRectMake(0, 0, self.tableViewContainer.frame.size.width, self.tableViewContainer.frame.size.height);
         self.tableViewContainer.frame = frame;
         [UIView commitAnimations];
     }
-    
-    //LBDEBUG ICIICI
-
-
-    
 }
 
 
