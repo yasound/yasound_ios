@@ -8,6 +8,16 @@
 #import "RefreshIndicatorViewController.h"
 
 
+@implementation MyTableView : UITableView
+
+- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated {
+    
+    [super setContentOffset:contentOffset animated:animated];
+}
+
+@end
+
+
 @implementation RefreshIndicatorViewController
 
 

@@ -17,6 +17,12 @@
 //@end
 
 
+@interface MyTableView : UITableView
+
+- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
+    
+@end
+
 
 @interface RefreshIndicatorViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
@@ -28,7 +34,9 @@
 @property (nonatomic, retain) NSDate* freezeDate;
 @property (nonatomic, retain) NSTimer* freezeTimeout;
 
-@property (nonatomic, retain) UITableView* tableView;
+//LBDEBUG ICIICI
+@property (nonatomic, retain) UIView* tableViewContainer;
+@property (nonatomic, retain) MyTableView* tableView;
 
 
 //@property (nonatomic, assign) id<RefreshIndicatorDelegate> refreshIndicatorDelegate;

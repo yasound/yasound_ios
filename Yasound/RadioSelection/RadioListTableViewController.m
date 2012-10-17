@@ -139,9 +139,22 @@
         self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - REFRESH_INDICATOR_HEIGHT, self.view.frame.size.width, REFRESH_INDICATOR_HEIGHT) withStyle:UIActivityIndicatorViewStyleGray];
         [self.view addSubview:self.refreshIndicator];
     }
+  
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
-    [self.view addSubview:self.tableView];
+    //LBDEBUG ICIICI
+    if (self.tableViewContainer != nil) {
+        [self.tableViewContainer release];
+        self.tableViewContainer = nil;
+    }
+    
+    self.tableViewContainer = [[UIView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:self.tableViewContainer];
+    
+    //LBDEBUG ICIICI
+//    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    self.tableView = [[MyTableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+//    [self.view addSubview:self.tableView];
+    [self.tableViewContainer addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -162,8 +175,17 @@
 //        self.tableView = self.listenersTableview;
 //    }
 
+
 }
 
+
+//- (void)viewDidAppear:(BOOL)animated {
+//    
+//    [super viewDidAppear:animated];
+//    
+//
+//}
+//
 
 
 
@@ -190,6 +212,11 @@
     [self.tableView reloadData];
     
     DLog(@"setRadios verif self.radios.count %d", self.radios.count);
+
+    //LBDEBUG TEST
+//    [self.tableView setContentSize:CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + 200)];
+//    [self.tableView setContentOffset:CGPointMake(0,-200) animated:NO];
+
 }
 
 
@@ -623,13 +650,24 @@
     }
     
     CGRect frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height - self.genreSelector.frame.size.height);
-    self.tableView.frame = frame;
+    self.tableViewContainer.frame = frame;
+//    CGRect frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height);
+//    self.tableView.frame = frame;
+ 
+    //ICIICI
     
-    [self.genreSelector open];
-    
+    NSLog(@"open");
+//    [self.tableView setContentOffset:CGPointMake(0,-200) animated:YES];
+//    [self.tableView setContentOffset:CGPointMake(0,-200) animated:NO];
+
     if (animated) {
         [UIView commitAnimations];
     }
+    
+    
+
+    [self.genreSelector open];
+    
     
 }
 
@@ -643,7 +681,8 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.33];
     
-    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y - self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height + self.genreSelector.frame.size.height);
+    CGRect frame = CGRectMake(0, self.tableViewContainer.frame.origin.y - self.genreSelector.frame.size.height, self.tableViewContainer.frame.size.width, self.tableViewContainer.frame.size.height + self.genreSelector.frame.size.height);
+    self.tableViewContainer.frame = frame;
 
     [UIView commitAnimations];
 
@@ -664,10 +703,18 @@
     if ([genre isEqualToString:@"style_all"])
     {
         [self closeGenreSelector];
-        [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
+        //[self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
+        
+        //LBDEBUG ICIICI
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+        CGRect frame = CGRectMake(0, 0, self.tableViewContainer.frame.size.width, self.tableViewContainer.frame.size.height);
+        self.tableViewContainer.frame = frame;
+        [UIView commitAnimations];
     }
-    else
-        [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0) animated:YES];
+    
+    //LBDEBUG ICIICI
+
 
     
 }
