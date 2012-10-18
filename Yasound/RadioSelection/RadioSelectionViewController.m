@@ -27,8 +27,6 @@
 
 @implementation RadioSelectionViewController
 
-//@synthesize nbFriends;
-//@synthesize friendsRadios;
 @synthesize locked;
 @synthesize friends;
 @synthesize url;
@@ -132,25 +130,6 @@
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:swipeLeft];
     
-
-    // temporarly bug fix for iPhone 5 layout to be right
-//    CGRect frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
-//    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithFrame:frame radios:nil withContentsHeight:self.listContainer.frame.size.height showRefreshIndicator:YES];
-//    newTableview.listDelegate = self;
-//    [self.listContainer addSubview:newTableview.view];
-//    
-//    self.contentsController = newTableview;
-//    self.contentsView = newTableview.view;
-    //////////////
-    
-
-
-    //don't do it here, there's a delegate for that
-//    // init wheel selector and on-display screen
-//    [self.wheelSelector stickToItem:_wheelIndex silent:NO];
-
-    
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -229,13 +208,6 @@
     }
 }
 
-#pragma mark - TopBarDelegate
-
-//- (BOOL)topBarItemClicked:(TopBarItemId)itemId
-//{
-//}
-
-
 
 
 
@@ -293,8 +265,6 @@
 
 - (void)loadContentsForItem:(NSInteger)itemIndex {
     
-//    [[YasoundDataProvider main] cancelRequestsForKey:@"radios"];
-    
     NSString* url = nil;
     BOOL showRefreshIndicator = NO;
     BOOL showGenreSelector = NO;
@@ -308,13 +278,9 @@
             [self inviteToLogin:@"myRadios"];
             return;
         }
-
-        //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MYRADIOS object:nil userInfo:nil];
         
         MyRadiosViewController* view = [[MyRadiosViewController alloc] initWithNibName:@"MyRadiosViewController" bundle:nil];
         view.view.autoresizesSubviews = YES;
-//        view.view.autoresizingMask = UIViewAutoresizingFlexibleWidth || UIViewAutoresizingFlexibleHeight;
-//        view.view.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
         CGRect frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
         view.view.frame = frame;
 
@@ -451,9 +417,7 @@
         return;
     }
     
-    
-    //LBDEBUG
-    //DLog(@"RadioSelection url '%@'", self.url);
+
     
 }
 
@@ -485,58 +449,17 @@
         return;
     }
     
-//    self.friendsRadios = nil;
-//    self.friendsRadios = [[NSMutableArray alloc] init];
-    
     Container* container = [req responseObjectsWithClass:[User class]];
     self.friends = container.objects;
-//    self.nbFriends = friends.count;
     
     DLog(@"received %d friends", self.friends.count);
 
     if (![self.contentsController respondsToSelector:@selector(setFriends:)])
         return;
     
-    //LBDEBUG
-//    NSLog(@"URL '%@'", [req.url absoluteString]);
-//    NSLog(@"compare TO RL '%@'", [self.url absoluteString]);
-    
     [self.contentsController setFriends:self.friends];
 
-//    [self fix4inchLayout];
-
-//    for (User* friend in friends)
-//    {
-//        DLog(@"my friend : %@", friend.username);
-//        
-//        [[YasoundDataProvider main] radiosForUser:friend withTarget:self action:@selector(receivedFriendsRadios:success:)];
-//    }
 }
-
-
-// LBDEBUG TODO : FIX BUG
-//- (void)receivedFriendsRadios:(ASIHTTPRequest*)req success:(BOOL)success
-//{
-//    if (!success)
-//    {
-//        DLog(@"RadioSelectionViewController::receivedFriendsRadios failed");
-//        assert(0);
-//        return;
-//    }
-//    
-//    Container* container = [req responseObjectsWithClass:[Radio class]];
-//    NSArray* radios = container.objects;
-//    
-//    [self.friendsRadios addObjectsFromArray:radios];
-//    
-//    self.nbFriends--;
-//    
-//    if (self.nbFriends == 0)
-//        [self.tableview setRadios:self.friendsRadios];
-//    
-//    
-//}
-
 
 
 
@@ -604,13 +527,6 @@
         return;
     }
     
-    //LBDEBUG
-//    DLog(@"received %d radios", radios.count);
-//    for (Radio* r in radios)
-//    {
-//        DLog(@"radio '%@'", r.name);
-//    }
-//    DLog(@"end of list.");
     
     
     NSArray* radios = radioContainer.objects;
@@ -623,8 +539,6 @@
     // store next page url
     self.nextPageUrl = radioContainer.meta.next;
     DLog(@"self.nextPageUrl '%@'", self.nextPageUrl);
-    
-//    [self fix4inchLayout];
 }
 
 
@@ -643,8 +557,6 @@
         return;
     }
     
-    // close the refresh indicator
-    //[contentsController unfreeze];
     if (![self.contentsController respondsToSelector:@selector(appendRadios:)])
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_NEXTPAGE_CANCEL object:nil];
@@ -755,13 +667,11 @@
 
     // refresh GUI
     [self refreshWheelClientForIndex:self.wheelSelector.currentIndex];
-//    [self.wheelSelector stickToItem:self.wheelSelector.currentIndex silent:NO];
 }
 
 
 - (void)onNotifDidLogin:(NSNotification*)notif {
     // refresh GUI
-//    [self.wheelSelector stickToItem:self.wheelSelector.currentIndex silent:NO];
     [self refreshWheelClientForIndex:self.wheelSelector.currentIndex];
     
 }
@@ -769,7 +679,6 @@
 
 - (void)onNotifRefreshGui:(NSNotification*)notif {
     // refresh GUI
-//    [self.wheelSelector stickToItem:self.wheelSelector.currentIndex silent:NO];    
     [self refreshWheelClientForIndex:self.wheelSelector.currentIndex];
 }
 

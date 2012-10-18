@@ -57,52 +57,5 @@ static Theme* _theme = nil;
 
 
 
-//- (id)initWithThemeId:(NSString*)themeId
-//{
-//    NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
-//    NSArray* themes = [resources objectForKey:@"themes"];
-//    for (NSDictionary* theme in themes)
-//    {
-//        NSString* theThemeId = [theme objectForKey:@"id"];
-//        if ([theThemeId isEqualToString:themeId])
-//        {
-//            NSString* bundlePath = [[NSBundle mainBundle] pathForResource:[theme objectForKey:@"bundle"] ofType:@"bundle"];
-//            
-//            if (bundlePath == nil)
-//            {
-//                DLog(@"Theme BundleFileManager Error : could not find bundle %@!", bundlePath);
-//                assert(0);
-//                return nil;
-//            }
-//            
-//            self = [super initWithPath:bundlePath];
-//            return self;
-//        }
-//    }
-//    
-//    return nil;
-//}
-
-
-
-//- (id)initWithBundleName:(NSString*)bundleName;
-//{
-//    NSString* bundlePath = [[NSBundle mainBundle] pathForResource:bundleName ofType:@"bundle"];
-//    
-//    if (bundlePath == nil)
-//    {
-//        DLog(@"Theme BundleFileManager Error : could not find bundle %@!", bundlePath);
-//        assert(0);
-//        return nil;
-//    }
-//    
-//    self = [super initWithPath:bundlePath];
-//    return self;
-//}
-
-
-
-
-
 
 @end

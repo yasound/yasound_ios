@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import <QuartzCore/QuartzCore.h>
 #import "YaViewController.h"
 #import "WheelSelectorRadios.h"
 #import "WheelRadiosSelector.h"
@@ -33,8 +32,6 @@
 @property (nonatomic, retain) NSURL* url;
 @property (nonatomic, retain) IBOutlet TopBar* topbar;
 
-//@property (nonatomic) NSInteger nbFriends;
-//@property (nonatomic, retain) NSMutableArray* friendsRadios;
 @property (nonatomic, retain) NSArray* friends;
 
 @property (nonatomic, retain) IBOutlet WheelSelectorRadios* wheelSelector;
@@ -46,8 +43,6 @@
 @property (nonatomic, retain) MenuViewController* menu;
 
 @property (nonatomic, retain) NSString* currentGenre;
-
-//@property (nonatomic, retain) ASIHTTPRequest* currentRequest;
 
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withWheelIndex:(NSInteger)wheelIndex;

@@ -8,7 +8,6 @@
 
 #import "RadioSearchViewController.h"
 #import "RadioSearchTableViewCell.h"
-//#import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
@@ -43,9 +42,6 @@ typedef enum
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) 
   {
-//    UITabBarItem* theItem = [[UITabBarItem alloc] initWithTabBarSystemItem:tabItem tag:0];
-//    self.tabBarItem = theItem;
-//    [theItem release];
       
       self.delayTokens = 2;
       self.delay = 0.15;
@@ -59,32 +55,8 @@ typedef enum
 }
 
 
-
-
-
-
-//- (void)changeNoResultsText:(NSString *)text {
-//    
-//    if (self.noResultLabel == nil) {
-//        for (id subview in _searchController.searchResultsTableView.subviews) {
-//            
-//            NSLog(@"subview %@", [subview class]);
-//            
-//            if ([subview isKindOfClass:[UILabel class]]) {
-//                if ([((UILabel *)subview).text isEqualToString:@"No Results"]) {
-//                    if (self.noResultLabel == nil)
-//                        self.noResultLabel = subview;
-//                }
-//            }
-//        }
-//    }
-//    
-//    if (self.noResultLabel != nil)
-//        self.noResultLabel.text = text;
-//}
-//
 - (void)searchBarSearchButtonClicked:(UISearchBar *)bar {
-//    [self changeNoResultsText:NSLocalizedString(@"SearchWaitingText", nil)];
+
     [self searchRadios:_searchController    .searchBar.text];
 
 }
@@ -119,9 +91,7 @@ typedef enum
 {
     if (_radios != nil)
         [_radios release];
-//  [_nowPlayingButton release];
   [_searchController release];
-//  [_backgroundColor release];
     [super dealloc];
 }
 
@@ -148,16 +118,9 @@ typedef enum
   _radiosBySong = nil;
   
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
-//  _backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-//  [_backgroundColor retain];
-//  
-//  self.view.backgroundColor = _backgroundColor;
 
-//    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
-    
   _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-//  _searchController.searchResultsTableView.backgroundColor = _backgroundColor;
   _searchController.searchResultsTableView.rowHeight = ROW_HEIGHT;
 
   _searchController.searchBar.placeholder = NSLocalizedString(@"SearchBar_Placeholder", nil);
@@ -213,9 +176,6 @@ typedef enum
     
     Radio* radio = notif.object;
     assert(radio);
-
-    // emitted from the cell unit, now
-//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio userInfo:nil];
 
     [self.popover dismissPopoverAnimated:YES];
     
@@ -363,35 +323,9 @@ typedef enum
     
     RadioSearchTableViewCell* cell = (RadioSearchTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellRadioIdentifier];
     
-    
-    
-//    for (Radio* radio in _items) {
-//        
-//        ProfilCellRadio* cell = [[ProfilCellRadio alloc] initWithRadio:radio];
-//        cell.frame = CGRectMake(posX, 0, cell.frame.size.width, cell.frame.size.height);
-//
-//        [self.scrollview addSubview:cell];
-//        
-//        posX += cell.frame.size.width;
-//        posX += 4;
-//        
-//        // animation to delay the display
-//        [UIView beginAnimations:nil context:NULL];
-//        [UIView setAnimationDelay:delay];
-//        [UIView setAnimationDuration:0.3];
-//        cell.alpha = 1;
-//        [UIView commitAnimations];
-//        
-//        delay += 0.1;
-//    }
-
-    
-    
-    
+        
     NSInteger radioIndex = indexPath.row * 3;
     
-    //LBDEBUG
-//    NSLog(@"radioIndex %d    count %d", radioIndex, radios.count);
     
     Radio* radio1 = [radios objectAtIndex:radioIndex];
     Radio* radio2 = nil;
@@ -405,14 +339,7 @@ typedef enum
     
     if (cell == nil)
     {
-//        CGFloat delay = 0;
-//        if (self.delayTokens > 0)
-//            delay = self.delay;
-//        
         cell = [[RadioSearchTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellRadioIdentifier radios:radiosForRow target:self action:@selector(onRadioClicked:)];
-//        
-//        self.delayTokens--;
-//        self.delay += 0.3;
     }
     else
     {
@@ -426,23 +353,6 @@ typedef enum
 }
 
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    //RadioListTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-//    NSInteger rowIndex = indexPath.row;
-//    NSInteger sectionIndex = indexPath.section;
-//    
-//    NSArray* radios = [self radiosForSection:sectionIndex];
-//    if (!radios)
-//        return;
-//    Radio* radio = [radios objectAtIndex:rowIndex];
-//
-//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
-//    
-////    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
-//}
-
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)onRadioClicked:(Radio*)radio
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
@@ -462,8 +372,8 @@ typedef enum
 {
   _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite; 
-//  _searchController.searchResultsTableView.backgroundColor = _backgroundColor;
-  _searchController.searchResultsTableView.rowHeight = ROW_HEIGHT;
+
+    _searchController.searchResultsTableView.rowHeight = ROW_HEIGHT;
 }
 
 
@@ -491,13 +401,6 @@ typedef enum
   
   [[YasoundDataProvider main] searchRadios:searchText withTarget:self action:@selector(receiveRadios:withInfo:)];
 }
-
-//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-//{
-//    [self searchRadios:searchBar.text];
-//}
-
-
 
 
 
@@ -590,22 +493,6 @@ typedef enum
 }
 
 
-//#pragma mark - IBActions
-//
-//- (IBAction)nowPlayingClicked:(id)sender
-//{
-//    RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
-//}
-//
-//
-//- (IBAction)menuBarItemClicked:(id)sender
-//{
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
-
- 
 
 
 @end

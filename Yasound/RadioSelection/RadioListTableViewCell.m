@@ -15,11 +15,7 @@
 #import "InteractiveView.h"
 #import "YasoundDataCacheImage.h"
 
-//@interface RadioListTableViewCell (internal_update)
-//
-//- (void)onUpdate:(NSTimer*)timer;
-//
-//@end
+
 
 #define RADIO_OBJECT_RADIO 0
 #define RADIO_OBJECT_IMAGE 1
@@ -184,24 +180,6 @@
 
 
 
-//- (void)willMoveToSuperview:(UIView *)newSuperview
-//{
-//    [super willMoveToSuperview:newSuperview];
-//    if(!newSuperview)
-//    {
-//        for (NSArray* objects in self.radioObjects)
-//        {
-//            WebImageView* view = [objects objectAtIndex:RADIO_OBJECT_IMAGE];
-//            if (view)
-//                [view releaseCache];
-//            view = [objects objectAtIndex:RADIO_OBJECT_USER_IMAGE];
-//            if (view)
-//                [view releaseCache];
-//        }
-//    }
-//}
-//
-
 
 
 - (void)updateWithRadios:(NSArray*)radios target:(id)target action:(SEL)action
@@ -251,23 +229,9 @@
         NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
         
         
-        
-//#ifdef DEBUG_PROFILE
-//        //LBDEBUG ICI
-//        [[TimeProfile main] begin:@"updateRadios3c"];
-//#endif
-//
-        
+  
         [view setUrl:imageURL];
 
-        
-//#ifdef DEBUG_PROFILE
-//        //LBDEBUG ICI
-//        [[TimeProfile main] end:@"updateRadios3c"];
-//        [[TimeProfile main] logAverageInterval:@"updateRadios3c" inMilliseconds:YES];
-//#endif
-
-        
         view = [objects objectAtIndex:RADIO_OBJECT_USER_IMAGE];
         assert(view);
         assert([view isKindOfClass:[WebImageView class]]);
@@ -364,67 +328,5 @@
 
 
 
-
-
-//- (void)onUpdate:(NSTimer*)timer
-//{
-//    [[YasoundDataCache main] requestCurrentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
-//}
-//- (void)receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info
-//{
-//    if (!song)
-//        return;
-//    
-//    self.radioSubtitle1.text = song.artist;
-//    self.radioSubtitle2.text = song.name;
-//}
-
-
-
-//- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-//{
-//  [super setSelected:selected animated:animated];
-//
-//  if (selected)
-//  {
-////    self.cellBackground.image = _bkgSelected;
-////    self.radioAvatarMask.image = _maskSelected;
-//   
-////    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionTitle" error:nil];
-////    [sheet applyToLabel:self.radioTitle class:@"selected"];
-////
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle1" error:nil];
-////    [sheet applyToLabel:self.radioSubtitle1 class:@"selected"];
-////
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle2" error:nil];
-////    [sheet applyToLabel:self.radioSubtitle2 class:@"selected"];
-////
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionLikes" error:nil];
-////    [sheet applyToLabel:self.radioLikes class:@"selected"];
-////
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionListeners" error:nil];
-////    [sheet applyToLabel:self.radioListeners class:@"selected"];
-//  }
-//  else
-//  {
-////    self.cellBackground.image = _bkgBackup;
-////    self.radioAvatarMask.image = _maskBackup;
-//
-////    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionTitle" error:nil];
-////    [sheet applyToLabel:self.radioTitle class:nil];
-////    
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle1" error:nil];
-////    [sheet applyToLabel:self.radioSubtitle1 class:nil];
-////    
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle2" error:nil];
-////    [sheet applyToLabel:self.radioSubtitle2 class:nil];
-////    
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionLikes" error:nil];
-////    [sheet applyToLabel:self.radioLikes class:nil];
-////    
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionListeners" error:nil];
-////    [sheet applyToLabel:self.radioListeners class:nil];
-//  }
-//}
 
 @end

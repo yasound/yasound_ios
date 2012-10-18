@@ -24,9 +24,6 @@
 @synthesize date;
 @synthesize user;
 @synthesize message;
-//@synthesize messageBackground;
-//@synthesize separator;
-//@synthesize cellEditView;
 @synthesize wallEvent;
 @synthesize indexPath;
 
@@ -143,35 +140,17 @@
 
         // message background
         BundleStylesheet* messageSheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.message" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        self.messageBackground = [[UIView alloc] initWithFrame:messageSheet.frame];
-//        self.messageBackground.frame = CGRectMake(messageSheet.frame.origin.x, messageSheet.frame.origin.y, messageSheet.frame.size.width, COMPUTED_HEIGHT + 2*MESSAGE_SPACING);
-//        
-//        self.messageBackground.layer.masksToBounds = YES;
-//        self.messageBackground.layer.cornerRadius = 4;
-//        self.messageBackground.layer.borderColor = [UIColor colorWithRed:231.f/255.f green:231.f/255.f blue:231.f/255.f alpha:1].CGColor;
-//        self.messageBackground.layer.borderWidth = 1.0; 
-//        self.messageBackground.layer.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1].CGColor;
-//        [self.cellView addSubview:self.messageBackground];
 
         
         // message
         self.message = [messageSheet makeLabel];
         self.message.text = ev.text;
-//        self.message.frame = CGRectMake(self.message.frame.origin.x + MESSAGE_SPACING, self.message.frame.origin.y + MESSAGE_SPACING, self.message.frame.size.width - 2*MESSAGE_SPACING, COMPUTED_HEIGHT);
         
         [self.message setLineBreakMode:UILineBreakModeWordWrap];
         [self.message setNumberOfLines:0];        
         [self.cellView addSubview:self.message];
         
         self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, COMPUTED_HEIGHT);
-        
-        
-//        sheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        self.separator = [[UIImageView alloc] initWithImage:[sheet image]];
-//        self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - sheet.frame.size.height, sheet.frame.size.width, sheet.frame.size.height);
-//        [self.cellView addSubview:self.separator];
-        
-        
         
         
         
@@ -184,58 +163,10 @@
         swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
         [self addGestureRecognizer:swipeLeft];
 
-//        UIPanGestureRecognizer* pan = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)] autorelease];
-//        pan.maximumNumberOfTouches = 2;
-//        pan.minimumNumberOfTouches = 1;
-//        pan.delegate = self;
-//        [self addGestureRecognizer:pan];
-//
-        
-        
-
     }
     return self;
 }
 
-
-
-
-//- (UIImage *)imageByDrawingCircleOnImage:(UIImage *)image
-//{
-//	// begin a graphics context of sufficient size
-//	UIGraphicsBeginImageContext(image.size);
-//    
-//	// draw original image into the context
-//	[image drawAtPoint:CGPointZero];
-//    
-//	// get the context for CoreGraphics
-//	CGContextRef ctx = UIGraphicsGetCurrentContext();
-//
-//	// set stroking color and draw circle
-//	[[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1] setStroke];
-//    CGContextSetLineWidth(ctx, 3.0);
-//    
-//	// make circle rect 1 px from border
-//	CGRect circleRect = CGRectMake(0, 0,  image.size.width, image.size.height);
-//    
-//	// draw circle
-//	CGContextStrokeEllipseInRect(ctx, circleRect);
-//    
-//	// make image out of bitmap context
-//	UIImage *retImage = UIGraphicsGetImageFromCurrentImageContext();
-//    
-//	// free the context
-//	UIGraphicsEndImageContext();
-//    
-//	return retImage;
-//}
-//
-
-
-//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-//{
-//    
-//}
 
 
 - (void)update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
@@ -256,17 +187,10 @@
     self.user.text = ev.user_name;
     self.message.text = ev.text;
     
-//    self.messageBackground.frame = CGRectMake(self.messageBackground.frame.origin.x, self.messageBackground.frame.origin.y, self.messageBackground.frame.size.width, COMPUTED_HEIGHT + 2 * MESSAGE_SPACING);
-    
     self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, COMPUTED_HEIGHT);
-    
-//    self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - 2, self.separator.frame.size.width, self.separator.frame.size.height);
     
     [self.avatar releaseCache];
     [self.avatar setUrl:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
-    
-//    // draw circle mask
-//    self.avatar.image = [self imageByDrawingCircleOnImage:self.avatar.image];
     
     if ([self.wallEvent editing])
         [self activateEditModeAnimated:NO];
@@ -308,8 +232,6 @@
         
     CGPoint translation = [gesture translationInView:self];
 
-    //DLog(@"%.2f", translation.x);
-
     if ([gesture state] == UIGestureRecognizerStateBegan || [gesture state] == UIGestureRecognizerStateChanged) 
     {
         CGFloat newX = cellViewX + translation.x;
@@ -348,84 +270,26 @@
 
 - (void)initEditView
 {
-//    if (self.cellEditView != nil)
-//        return;
-    
-//    CGRect frame = CGRectMake(self.bounds.size.width, 0, _interactiveZoneSize, self.bounds.size.height);
-//
-//    UIView* view = [[UIView alloc] initWithFrame:frame];
-//    view.backgroundColor = [UIColor clearColor];
-//    [self addSubview:view];
-//    [self bringSubviewToFront:self.cellView];
-//    self.cellEditView = view;
-    
     BundleStylesheet* sheet;
-    
-    
-    // shadow top
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Moderation.CellModerShadowTop" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UIView* shadowTop = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, sheet.frame.size.height)];
-//    shadowTop.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-//    [self.cellEditView addSubview:shadowTop];
-//    [shadowTop release];
-
-    // shadow bottom
-//    sheet = [[Theme theme] stylesheetForKey:@"Wall.Moderation.CellModerShadowBottom" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UIView* shadowBottom = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - sheet.frame.size.height, view.frame.size.width, sheet.frame.size.height)];
-//    shadowBottom.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-//    [self.cellEditView addSubview:shadowBottom];
-//    [shadowBottom release];
-
-//    // shadow left on cellView
-//    sheet = [[Theme theme] stylesheetForKey:@"Wall.Moderation.CellModerShadowLeft" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UIView* shadowLeft = [[UIView alloc] initWithFrame:CGRectMake(self.cellView.frame.size.width, 0, sheet.frame.size.width, self.cellView.frame.size.height)];
-//    shadowLeft.backgroundColor = [UIColor clearColor];
-//    [self.cellView addSubview:shadowLeft];
-//    UIView* imageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, shadowLeft.frame.size.width, shadowLeft.frame.size.height)];
-//    imageView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-//    [shadowTop addSubview:imageView];
-//    [shadowLeft release];
-//    [imageView release];
-    
-    
     
     
     // button spam
     sheet = [[Theme theme] stylesheetForKey:@"Wall.Moderation.CellModerIconSpam" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.buttonSpam = [sheet makeButton];
     CGFloat buttonPos = self.cellView.frame.size.width;
-    //[button addTarget:self action:@selector(onModerSpam:) forControlEvents:UIControlEventTouchUpInside];
-//    button.frame = CGRectMake(self.cellEditView.frame.size.width - INTERACTIVE_ZONE_SIZE + (INTERACTIVE_ZONE_SIZE/2.f - button.frame.size.width/2.f), self.cellEditView.frame.size.height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
     self.buttonSpam.frame = CGRectMake(buttonPos, self.cellView.frame.size.height/2.f - self.buttonSpam.frame.size.height/2.f, self.buttonSpam.frame.size.width, self.buttonSpam.frame.size.height);
     [self.cellView addSubview:self.buttonSpam];
 
-    //[button release];
-    
-    //self.avatarInteractiveView = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onAvatarClicked:)];
-
     buttonPos += self.buttonSpam.frame.size.width;
     
-//    // button kick
-//    sheet = [[Theme theme] stylesheetForKey:@"Wall.Moderation.CellModerIconKick" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    button = [sheet makeButton];
-//    [button addTarget:self action:@selector(onModerKick:) forControlEvents:UIControlEventTouchUpInside];
-//    button.frame = CGRectMake(self.cellEditView.frame.size.width - 2*INTERACTIVE_ZONE_SIZE + (INTERACTIVE_ZONE_SIZE/2.f - button.frame.size.width/2.f), self.cellEditView.frame.size.height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
-//    [self.cellEditView addSubview:button];
-//    [button release];
-
     if (_ownRadio)
     {
         // button trash
         sheet = [[Theme theme] stylesheetForKey:@"Wall.Moderation.CellModerIconTrash" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.buttonTrash = [sheet makeButton];
-        //[button addTarget:self action:@selector(onModerTrash:) forControlEvents:UIControlEventTouchUpInside];
         self.buttonTrash.frame = CGRectMake(buttonPos, self.cellView.frame.size.height/2.f - self.buttonTrash.frame.size.height/2.f, self.buttonTrash.frame.size.width, self.buttonTrash.frame.size.height);
         [self.cellView addSubview:self.buttonTrash];
-//        [button release];
     }
-    
-   // [view release];
-    
     
 }
 
@@ -448,8 +312,6 @@
     if (![self.wallEvent editing])
         return;
 
-    // [self initEditView];
-
     [self deactivateEditModeAnimated:YES];
 }
 
@@ -460,9 +322,6 @@ static const CGFloat kSpringRestingHeight = 4;
 
 - (void)activateEditModeAnimated:(BOOL)animated
 {
-    //    if ([self.wallEvent editing])
-    //        return;
-    
     [self.wallEvent setEditing:YES];
     if ((self.delegate != nil) && (self.actionEditing != nil))
         [self.delegate performSelector:self.actionEditing withObject:self withObject:[NSNumber numberWithBool:YES]];
@@ -495,9 +354,6 @@ static const CGFloat kSpringRestingHeight = 4;
 
 - (void)deactivateEditModeAnimated:(BOOL)animated silent:(BOOL)silent
 {
-    //    if (!self.wallEvent.editing)
-    //        return;
-    
     [self.wallEvent setEditing:NO];
     
     if (!silent && (self.delegate != nil) && (self.actionEditing != nil))
@@ -523,7 +379,6 @@ static const CGFloat kSpringRestingHeight = 4;
 
 
 
-//- (void) bounceAnimationTo:(CGFloat)destX
 - (void) bounceAnimationTo:(CGRect)destFrame endAction:(SEL)endAction
 {
     [UIView beginAnimations:nil context:NULL];
@@ -535,7 +390,6 @@ static const CGFloat kSpringRestingHeight = 4;
         [UIView setAnimationDidStopSelector:endAction];
     }
     self.cellView.frame = destFrame;
-    //self.cellEditView.frame = CGRectMake(destFrame.origin.x + destFrame.size.width, self.cellEditView.frame.origin.y, self.cellEditView.frame.size.width, self.cellEditView.frame.size.height);
     [UIView commitAnimations];
 
     CABasicAnimation *bounceAnimation = [CABasicAnimation animationWithKeyPath:@"position.x"];
@@ -553,30 +407,17 @@ static const CGFloat kSpringRestingHeight = 4;
 
 - (void)bounceAnimationDidEnd:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
-//    if (self.cellEditView != nil)
-//    {
-//        [self.cellEditView removeFromSuperview];
-//        self.cellEditView = nil;
-//    }
 }
 
 
 - (void)onSwipeLeftStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
-//    [self.buttonDelete removeFromSuperview];
-//    self.buttonDelete = nil;
 }
 
 
 
 - (void)onDeleteRequest:(id)sender
 {
-//    [gEditingSongs removeObjectForKey:self.song.name];
-//    
-//    if (_deletingTarget == nil)
-//        return;
-//    
-//    [_deletingTarget performSelector:_deletingAction withObject:self withObject:self.song];
 }
 
 
@@ -643,8 +484,6 @@ static const CGFloat kSpringRestingHeight = 4;
     {
         [[YasoundDataProvider main] moderationReportAbuse:self.wallEvent.id];
         
-        //[self deactivateEditModeAnimated:YES];
-        
         NSString* message = NSLocalizedString(@"RadioViewCell_moderation_spam_confirm", nil);
         [ActivityAlertView showWithTitle:message closeAfterTimeInterval:2];
 
@@ -664,9 +503,6 @@ static const CGFloat kSpringRestingHeight = 4;
 
 - (BOOL)touch:(CGPoint)touchCoordinates
 {
-//    NSLog(@"POINT %.2f %.2f", touchCoordinates.x + self.offset, touchCoordinates.y);
-//    NSLog(@"RECT %.2f, %.2f   %.2fx%.2f",self.buttonSpam.frame.origin.x, self.buttonSpam.frame.origin.y, self.buttonSpam.frame.size.width, self.buttonSpam.frame.size.height);
-
     CGPoint realPoint = CGPointMake(touchCoordinates.x + self.offset, touchCoordinates.y);
     
     BOOL spam = CGRectContainsPoint(self.buttonSpam.frame, realPoint);
@@ -709,19 +545,6 @@ static const CGFloat kSpringRestingHeight = 4;
     
 	// Configure the view for the selected state
 }
-
-
-
-//- (void)willMoveToSuperview:(UIView *)newSuperview 
-//{
-//    [super willMoveToSuperview:newSuperview];
-//    if(!newSuperview) 
-//    {
-//        [self.avatar releaseCache];
-//    }
-//}
-
-
 
 
 

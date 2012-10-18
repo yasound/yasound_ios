@@ -37,11 +37,8 @@
 @property (nonatomic, retain) InteractiveView* avatarInteractiveView;
 @property (nonatomic, retain) UILabel* date;
 @property (nonatomic, retain) UILabel* user;
-//@property (nonatomic, retain) UIView* messageBackground;
 @property (nonatomic, retain) UILabel* message;
-//@property (nonatomic, retain) UIImageView* separator;
 
-//@property (nonatomic, retain) UIView* cellEditView;
 
 @property (nonatomic, retain) id delegate;
 @property (nonatomic) SEL actionAvatarClick;

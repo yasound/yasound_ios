@@ -28,7 +28,7 @@
         sheet = [[Theme theme] stylesheetForKey:@"WaitingView.activityIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         _indicator.frame = sheet.frame;
-//        _indicator.backgroundColor = [UIColor greenColor];
+
         [_indicator startAnimating];
         [self addSubview:_indicator];
         
@@ -38,7 +38,6 @@
             _label = [sheet makeLabel];
             _label.text = text;
             _label.numberOfLines = 2;
-//            _label.backgroundColor = [UIColor redColor];
             [self addSubview:_label];
         }
         else
@@ -58,13 +57,6 @@
     [super dealloc];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+
 
 @end

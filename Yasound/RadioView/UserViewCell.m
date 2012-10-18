@@ -61,37 +61,6 @@
 }
 
 
-//- (UIImage *)imageByDrawingCircleOnImage:(UIImage *)image
-//{
-//	// begin a graphics context of sufficient size
-//	UIGraphicsBeginImageContext(image.size);
-//    
-//	// draw original image into the context
-//	[image drawAtPoint:CGPointZero];
-//    
-//	// get the context for CoreGraphics
-//	CGContextRef ctx = UIGraphicsGetCurrentContext();
-//    
-//	// set stroking color and draw circle
-//	[[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1] setStroke];
-//    CGContextSetLineWidth(ctx, 5.0);
-//    
-//	// make circle rect 1 px from border
-//	CGRect circleRect = CGRectMake(0, 0,  image.size.width, image.size.height);
-//	circleRect = CGRectInset(circleRect, 3, 3);
-//    
-//	// draw circle
-//	CGContextStrokeEllipseInRect(ctx, circleRect);
-//    
-//	// make image out of bitmap context
-//	UIImage *retImage = UIGraphicsGetImageFromCurrentImageContext();
-//    
-//	// free the context
-//	UIGraphicsEndImageContext();
-//    
-//	return retImage;
-//}
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

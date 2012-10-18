@@ -9,22 +9,18 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "WallEvent.h"
-//#import <QuartzCore/QuartzCore.h>
 
 
 @implementation SongViewCell
 
-//@synthesize background;
-//@synthesize avatar;
 @synthesize date;
-//@synthesize user;
 @synthesize message;
 
 - (NSString*) dateToString:(NSDate*)d
 {
   NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
-//  [dateFormat setDateFormat:@"HH:mm"];
-  NSDate* now = [NSDate date];
+
+    NSDate* now = [NSDate date];
   NSDateComponents* todayComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:now];
   NSDateComponents* refComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:d];
   

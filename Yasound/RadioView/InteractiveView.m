@@ -82,10 +82,6 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
 {
-//    UITouch *aTouch = [touches anyObject];
-//    
-//    if (aTouch.tapCount == 2) 
-    
     if (_targetDown == nil)
         return;
     
@@ -100,16 +96,6 @@
             [_targetDown performSelector:_actionDown withObject:_userObjectDown];
     }
 }
-
-
-
-
-//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event 
-//{
-//    
-//}
-
-
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
 {

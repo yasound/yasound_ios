@@ -20,8 +20,6 @@
 #define OBJECT_IMAGE 1
 #define OBJECT_MASK 2
 #define OBJECT_NAME 3
-//#define OBJECT_INTERACTIVE_VIEW 4
-//#define OBJECT_CONTAINER 5
 #define OBJECT_CONTAINER 4
 
 
@@ -115,11 +113,6 @@
     //            InteractiveView* interactiveView = nil;
     sheet = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 
-    // interactive view : catch the "press down" and "press up" actions
-//    InteractiveView* interactiveView0 = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:itemIndex]];
-
-//    [interactiveView0 setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:itemIndex]];
-//    [container addSubview:interactiveView0];
 
     // store objects
     NSMutableArray* objects = [NSMutableArray arrayWithObjects:user, userImage, userButton, name,container, nil];
@@ -130,26 +123,6 @@
             
 }
 
-
-
-
-
-
-
-
-//- (void)willMoveToSuperview:(UIView *)newSuperview 
-//{
-//    [super willMoveToSuperview:newSuperview];
-//    if(!newSuperview) 
-//    {
-//        for (NSArray* objects in self.objects)
-//        {
-//            WebImageView* view = [objects objectAtIndex:OBJECT_IMAGE];
-//            if (view)
-//                [view releaseCache];
-//        }
-//    }
-//}
 
 
 
@@ -183,16 +156,9 @@
         // replace radio
         [objects replaceObjectAtIndex:OBJECT_USER withObject:user];
 
-        // may not be needed, since "objects" is a reference. Check and go back later...
-        //[self.radioObjects replaceObjectAtIndex:radioIndex withObject:objects];
-
         // and update infos and images
         NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:user.picture];
         
-        
-        
-//        BundleStylesheet* sheet = [sheet ]
-//        [view setImage:[UIImage image]]
         
         WebImageView* view = [objects objectAtIndex:OBJECT_IMAGE];
         [view releaseCache];
@@ -233,18 +199,6 @@
 }
 
 
-
-//- (void)onInteractivePressedDown:(NSNumber*)indexNb
-//{
-//    // set the "highlighted" image for the user mask
-//    NSInteger userIndex = [indexNb integerValue];
-//    NSArray* objects = [self.objects objectAtIndex:userIndex];
-//    UIImageView* userMask = [objects objectAtIndex:OBJECT_MASK];
-//    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Users.maskHighlighted" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    [userMask setImage:[sheet image]];
-//}
-
 //- (void)onInteractivePressedUp:(NSNumber*)indexNb
 - (void)onInteractivePressedUp:(id)sender
 {
@@ -253,10 +207,6 @@
     
     // set back the "normal" image for the user mask
     NSArray* objects = [self.objects objectAtIndex:userIndex];
-//    UIImageView* userMask = [objects objectAtIndex:OBJECT_MASK];
-    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    [userMask setImage:[sheet image]];
     
     User* user = [objects objectAtIndex:OBJECT_USER];
 

@@ -10,7 +10,6 @@
 #import "Security/SFHFKeychainUtils.h"
 #import "FacebookSessionManager.h"
 #import "TwitterSessionManager.h"
-//#import "ActivityAlertView.h"
 #import "RootViewController.h"
 
 @implementation YasoundSessionManager
@@ -154,11 +153,6 @@ static YasoundSessionManager* _main = nil;
 
 - (BOOL)loginForYasoundWithTarget:(id)target action:(SEL)action
 {
-//    if (!self.registered)
-//        return NO;
-//    if (![self.loginType isEqualToString:LOGIN_TYPE_YASOUND])
-//        return NO;
-    
     _target = target;
     _action = action;
     _error = NO;
@@ -249,8 +243,7 @@ static YasoundSessionManager* _main = nil;
     {
         assert(_target);
         [self loginError];
-        // callback
-        //[_target performSelector:_action withObject:nil];        
+
         return;
     }
     
@@ -489,10 +482,6 @@ static YasoundSessionManager* _main = nil;
 
 - (void)requestDidFailed:(SessionRequestType)requestType error:(NSError*)error errorMessage:(NSString*)errorMessage
 {
-    // duplicate message, let's act it's no error, just let the dialog spinner die himself
-//    NSRange range = [errorMessage rangeOfString:@"#506"];
-//    if (range.location != NSNotFound)
-//        return;
 
     if (requestType == SRequestInfoUser)
     {
@@ -601,11 +590,7 @@ static YasoundSessionManager* _main = nil;
     DLog(@"token '%@'", token);
     DLog(@"email '%@'", email);
     
-//    // TAG ACTIVITY ALERT
-//    if (![ActivityAlertView isRunning])
-//        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
-    
-    
+
     //
     // associating process
     //
@@ -613,9 +598,6 @@ static YasoundSessionManager* _main = nil;
     {
         DLog(@"facebook social associating request");
         
-//        NSDate* date = [[UserSettings main] objectForKey:USKEYfacebookExpirationDateKey];
-//        NSString* expirationDate = [YasoundSessionManager expirationDateToString:date];
-
         NSString* expirationDate = [[UserSettings main] objectForKey:USKEYfacebookExpirationDateKey];
         
         // request to yasound server
@@ -640,9 +622,6 @@ static YasoundSessionManager* _main = nil;
     else if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
         DLog(@"facebook social login request");
-//      NSString* n = username;
-//      if (!n)
-//        n = name;
         
         NSString* expirationDate = [[UserSettings main] objectForKey:USKEYfacebookExpirationDateKey];
         
@@ -660,8 +639,6 @@ static YasoundSessionManager* _main = nil;
             DLog(@"error Twitter token is nil!");
         if (tokenSecret == nil)
             DLog(@"error Twitter tokenSecret is nil!");
-        
-        // assert(token != nil);
         
         // don't bother asking the server if you don't the requested info at this point
         if ((token == nil) || (tokenSecret == nil))
@@ -737,14 +714,6 @@ static YasoundSessionManager* _main = nil;
         DLog(@"\n Automatic associating account Twitter.");
         [self associateAccountTwitter:self action:@selector(associateAccountsAutomaticReturned:) automatic:YES];
     }
-    
-
-    // don't need to do anything for yasound
-//    if (![self.loginType isEqualToString:LOGIN_TYPE_YASOUND] && [self isAccountAssociated:LOGIN_TYPE_YASOUND])
-//    {
-//        DLog(@"\n Automatic associating account Yasound.");
-//        [self associateAccountYasound:[account objectForKey:@"email"] password:[account objectForKey:@"pword"] target:self action:@selector(associateAccountsAutomaticReturned:) automatic:YES];
-//    }
     
     
 }
@@ -998,8 +967,6 @@ static YasoundSessionManager* _main = nil;
 {
     [[UserSettings main] setObject:facebook_token forKey:USKEYfacebookAccessTokenKey];
 
-//    NSDate* date = [YasoundSessionManager stringToExpirationDate:facebook_expiration_date];
-    
     [[UserSettings main] setObject:facebook_expiration_date forKey:USKEYfacebookExpirationDateKey];
 
     DLog(@"importFacebookData  '%@' '%@'", facebook_token, facebook_expiration_date);
