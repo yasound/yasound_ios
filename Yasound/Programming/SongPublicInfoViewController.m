@@ -58,15 +58,6 @@
 {
     [super viewDidLoad];
 
-//    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
-//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-//    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
-    
-//    if (!_showNowPlaying)
-//    {
-//        [_toolbar setItems:[NSArray arrayWithObjects:_backBtn, nil]];
-//    }
-    
 }
 
 - (void)viewDidUnload
@@ -158,22 +149,6 @@
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         
             cell.selectionStyle  = UITableViewCellSelectionStyleNone;
-      
-            
-//            if (song.cover)
-//            {        
-//                NSURL* url = [[YasoundDataProvider main] urlForPicture:song.cover];
-//                _webImageView = [[WebImageView alloc] initWithImageAtURL:url];
-//                imageView = _webImageView;
-//            }
-//            else
-//            {
-//                // fake image
-//                sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy256" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//                imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-//            }
-//
-//            
             cell.backgroundColor = [UIColor blackColor];
             
             
@@ -208,39 +183,6 @@
             _album = [sheet makeLabel];
             [cell addSubview:_album];
 
-//
-//            NSString* laststr = nil;
-//            if (self.song.last_play_time != nil)
-//                laststr = [NSString stringWithFormat:@"%@", [self dateToString:self.song.last_play_time]];
-//            else
-//                laststr = @"-";
-//
-//            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongPublicView_lastRead" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            UILabel* label = [sheet makeLabel];
-//            label.text = [NSString stringWithFormat:@"%@ : %@", NSLocalizedString(@"SongView_lastRead", nil), laststr];
-//            [cell addSubview:label];
-//            
-//            [cell addSubview:label];
-
-            
-            // track interaction buttons
-//            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongPublicView_trackInteractionView" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            TrackInteractionView* view = [[TrackInteractionView alloc] initWithSong:self.song];
-//            view.frame = sheet.frame;
-////            view.frame = CGRectMake(8, 350, 320, 60);
-//            [view setButtonLikeClickedTarget:self action:@selector(trackInteractionViewLikeButtonCliked)];
-//            [cell addSubview:view];
-//            
-//            [view.shareButton addTarget:self action:@selector(onTrackShare:) forControlEvents:UIControlEventTouchUpInside];
-
-            
-//            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongPublicView_nbLikes" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            _likesLabel = [sheet makeLabel];
-//            _likesLabel.text = [NSString stringWithFormat:@"%@", self.song.likes];
-//            [cell addSubview:_likesLabel];
-                
-            
-            
         }
         
         else
@@ -269,8 +211,6 @@
     int nbLikes = [_likesLabel.text intValue];
     nbLikes++;
     _likesLabel.text = [NSString stringWithFormat:@"%d", nbLikes];
-    
-//    [[YasoundDataProvider main] statusForSongId:song.id target:self action:@selector(receivedCurrentSongStatus:withInfo:)];
 
 }
 
@@ -295,7 +235,6 @@
 - (NSString*) dateToString:(NSDate*)d
 {
     NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
-    //  [dateFormat setDateFormat:@"HH:mm"];
     NSDate* now = [NSDate date];
     NSDateComponents* todayComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:now];
     NSDateComponents* refComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:d];

@@ -14,20 +14,12 @@
 
 @interface SongInfoViewController : YaViewController
 {
-//    IBOutlet UIBarButtonItem* _backBtn;
-//    IBOutlet UILabel* _titleLabel;
     IBOutlet UITableView* _tableView;
-//    IBOutlet UIBarButtonItem* _nowPlayingButton;
-//    IBOutlet UIToolbar* _toolbar;
-    
-//    IBOutlet UITableViewCell* _cellDelete;
-//    IBOutlet UILabel* _cellDeleteLabel;
-//
+
     WebImageView* _imageView;
     UILabel* _name;
     UILabel* _artist;
     UILabel* _album;
-//    UILabel* _enabledLabel;
 
     UISwitch* _switchEnabled;
     UISwitch* _switchFrequency;

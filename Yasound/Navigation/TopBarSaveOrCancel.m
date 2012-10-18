@@ -40,7 +40,6 @@
     CGSize suggestedSizeSave = [strSave sizeWithFont:[sheetLabel makeFont] constrainedToSize:CGSizeMake(FLT_MAX, FLT_MAX) lineBreakMode:UILineBreakModeClip];
 
     NSString* sheetnameBlack;
-//    NSString* sheetnameBlue;
     if (suggestedSizeCancel.width <= 48)
         sheetnameBlack = @"TopBar.itemEmptyBlack1";
     else if (suggestedSizeCancel.width <= 68)
@@ -48,13 +47,6 @@
     else
         sheetnameBlack = @"TopBar.itemEmptyBlack3";
 
-//    if (suggestedSizeSave.width <= 48)
-//        sheetnameBlue = @"TopBar.itemEmptyBlue1";
-//    else if (suggestedSizeSave.width <= 68)
-//        sheetnameBlue = @"TopBar.itemEmptyBlue2";
-//    else
-//        sheetnameBlue = @"TopBar.itemEmptyBlue3";
-    
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:sheetnameBlack retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIButton* btn = [sheet makeButton];
 
@@ -70,17 +62,6 @@
     // flexible space
     UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
-//    sheet = [[Theme theme] stylesheetForKey:sheetnameBlue retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    btn = [sheet makeButton];
-
-//    sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemEmptyLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    label = [sheet makeLabel];
-//    label.text = strSave;
-//    label.frame = CGRectMake(8, -1, btn.frame.size.width-16, btn.frame.size.height);
-//    [btn addSubview:label];
-//
-//    [btn addTarget:self action:@selector(onSave:) forControlEvents:UIControlEventTouchUpInside];
-//    self.actionButton = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.actionButton = [[UIBarButtonItem alloc] initWithTitle:strSave style:UIBarButtonItemStyleBordered target:self action:@selector(onSave:)];
     
     

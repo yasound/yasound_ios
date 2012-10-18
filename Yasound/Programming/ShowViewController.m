@@ -126,14 +126,6 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     NSLog(@"select");
-//    float rate = [[exchangeRates objectAtIndex:row] floatValue];
-//    float dollars = [dollarText.text floatValue];
-//    float result = dollars * rate;
-//    
-//    NSString *resultString = [[NSString alloc] initWithFormat:
-//                              @"%.2f USD = %.2f %@", dollars, result,
-//                              [countryNames objectAtIndex:row]];
-//    resultLabel.text = resultString;
 }
 
 
@@ -162,19 +154,6 @@
     return 1;
 }
 
-
-
-
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if ((indexPath.section == 1) && (indexPath.row == 0))
-//    {
-//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButtonBlue.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        UIImageView* view = [sheet makeImage];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//}
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -261,14 +240,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-    
-//    NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
-//    [self.catalog selectAlbum:albumKey];
-//    
-//    ProgrammingAlbumViewController* view = [[ProgrammingAlbumViewController alloc] initWithNibName:@"ProgrammingAlbumViewController" bundle:nil usingCatalog:self.catalog forRadio:self.radio];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
-    
 }
 
 

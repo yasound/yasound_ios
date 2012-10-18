@@ -20,8 +20,6 @@
 
 typedef enum {
     
-//    eGenreAdd,
-//    ePlaylistAdd,
     eArtistRemove,
     eAlbumRemove
     

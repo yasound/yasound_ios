@@ -13,7 +13,6 @@
 #import "SongCatalog.h"
 #import "ActivityAlertView.h"
 #import "YasoundReachability.h"
-//#import "SongLocalCatalog.h"
 #import "SongRadioCatalog.h"
 #import "SongLocalCatalog.h"
 
@@ -29,55 +28,7 @@
 @synthesize button;
 @synthesize songsToRemove;
 
-//
-//- (void)willMoveToSuperview:(UIView *)newSuperview
-//{
-//    [super willMoveToSuperview:newSuperview];
-//    if(!newSuperview)
-//    {
-//        if (self.image)
-//            [self.image releaseCache];
-//    }
-//}
-//
 
-
-//
-//
-//- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier genre:(NSString*)genre subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog {
-//
-//    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-//    
-//    if (self)
-//    {
-//        self.mode = eGenreAdd;
-//        self.radio = radio;
-//        self.catalog = catalog;
-//        self.collection = genre;
-//        
-//        [self commonInit];
-//        [self updateGenre:genre subtitle:subtitle];
-//    }
-//    return self;
-//}
-
-//
-//- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier playlist:(NSString*)playlist subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog {
-//    
-//    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-//    
-//    if (self)
-//    {
-//        self.mode = ePlaylistAdd;
-//        self.radio = radio;
-//        self.catalog = catalog;
-//        self.collection = playlist;
-//        
-//        [self commonInit];
-//        [self updatePlaylist:playlist subtitle:subtitle];
-//    }
-//    return self;
-//}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier artist:(NSString*)artist subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog {
     
@@ -121,47 +72,33 @@
 
 - (void)commonInit {
 
-        self.selectionStyle = UITableViewCellSelectionStyleGray;
-//    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        
-    
-    
-        // button "del from programming"
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.del" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        self.button = [sheet makeButton];
-        [self.button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:button];
-        
-//    CGFloat offset = self.button.frame.origin.x + self.button.frame.size.width;
+    self.selectionStyle = UITableViewCellSelectionStyleGray;
+
+    // button "del from programming"
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.del" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.button = [sheet makeButton];
+    [self.button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:button];
+
     CGFloat offset = 0;
-        
-        sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        self.label = [sheet makeLabel];
-        self.label.frame = [self updateToRect:sheet.frame withOffset:offset withInset:(offset + 16)];
-        [self addSubview:self.label];
-        
-        
-        sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        self.detailedLabel = [sheet makeLabel];
-        self.detailedLabel.frame = [self updateToRect:sheet.frame withOffset:offset withInset:(offset + 16)];
-        [self addSubview:self.detailedLabel];
-        
-    
+
+    sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.label = [sheet makeLabel];
+    self.label.frame = [self updateToRect:sheet.frame withOffset:offset withInset:(offset + 16)];
+    [self addSubview:self.label];
+
+
+    sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.detailedLabel = [sheet makeLabel];
+    self.detailedLabel.frame = [self updateToRect:sheet.frame withOffset:offset withInset:(offset + 16)];
+    [self addSubview:self.detailedLabel];
+
+
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIImageView* di = [sheet makeImage];
     self.accessoryView = di;
     [di release];
-
-        
-//        if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
-//        {
-//            self.button.enabled = NO;
-//            self.image.alpha = 0.5;
-//            self.label.alpha = 0.5;
-//            self.detailedLabel.alpha = 0.5;
-//        }
-
 }
 
 
@@ -179,44 +116,6 @@
     return newframe;
 }
 
-//
-//- (void)willMoveToSuperview:(UIView *)newSuperview 
-//{
-//    [super willMoveToSuperview:newSuperview];
-//    if(!newSuperview) 
-//    {
-//        self.item.delegate = nil;
-//    }
-//}
-
-
-//- (void)updateGenre:(NSString*)genre subtitle:(NSString*)subtitle
-//{
-//    self.mode = eGenreAdd;
-//    self.collection = genre;
-//    
-//    self.label.text = genre;
-//    self.detailedLabel.text = subtitle;
-//    
-//    NSArray* songs = [self.catalog songsForGenre:self.collection];
-//    
-//    [self updateItemsWithSongs:songs];
-//}
-//
-//
-//- (void)updatePlaylist:(NSString*)playlist subtitle:(NSString*)subtitle
-//{
-//    self.mode = ePlaylistAdd;
-//    self.collection = playlist;
-//    
-//    self.label.text = playlist;
-//    self.detailedLabel.text = subtitle;
-//    
-//    NSArray* songs = [self.catalog songsForPlaylist:self.collection];
-//    
-//    [self updateItemsWithSongs:songs];
-//}
-//
 
 
 - (void)updateArtist:(NSString*)artist subtitle:(NSString*)subtitle
@@ -312,96 +211,12 @@
 {
     self.songsToRemove = nil;
     self.songsToRemove = [NSMutableArray array];
-    
-//    if (self.mode == eGenreAdd)
-//        [self genreAddClicked];
-//    else if (self.mode == ePlaylistAdd)
-//        [self playlistAddClicked];
-//    else
         
     if (self.mode == eArtistRemove)
         [self artistRemoveClicked];
     else if (self.mode == eAlbumRemove)
         [self albumRemoveClicked];
 }
-
-
-//- (void)genreAddClicked {
-// 
-//    NSInteger nbProgrammed = 0;
-//    NSInteger nbCantProgram = 0;
-//    
-//    NSArray* songs = [self.catalog songsForGenre:self.collection];
-//    for (NSString* songKey in songs) {
-//        
-//        Song* song = [self.catalog.songsDb objectForKey:songKey];
-//        assert(song);
-//        
-//        // don't upload if the song is programmed already
-//        if (song.isProgrammed) {
-//            nbProgrammed++;
-//            continue;
-//        }
-//        
-//        // can it be upload?
-//        BOOL can = [[SongUploader main] canUploadSong:song];
-//        if (!can) {
-//            nbCantProgram++;
-//            continue;
-//        }
-//        
-//        // ok, add it to the group of songs to upload
-//        [self.songsToUpload addObject:song];
-//    }
-//
-//    
-//    [self requestUploadsFrom:songs nbProgrammed:nbProgrammed];
-//    
-//}
-
-
-
-
-
-
-
-
-
-//- (void)playlistAddClicked {
-// 
-//    NSInteger nbProgrammed = 0;
-//    NSInteger nbCantProgram = 0;
-//    
-//    NSArray* songs = [self.catalog songsForPlaylist:self.collection];
-//    for (NSString* songKey in songs) {
-//        
-//        Song* song = [self.catalog.songsDb objectForKey:songKey];
-//        assert(song);
-//        
-//        // don't upload if the song is programmed already
-//        if (song.isProgrammed) {
-//            nbProgrammed++;
-//            continue;
-//        }
-//        
-//        // can it be upload?
-//        BOOL can = [[SongUploader main] canUploadSong:song];
-//        if (!can) {
-//            nbCantProgram++;
-//            continue;
-//        }
-//        
-//        // ok, add it to the group of songs to upload
-//        [self.songsToUpload addObject:song];
-//    }
-//    
-//    
-//    [self requestUploadsFrom:songs nbProgrammed:nbProgrammed];
-//
-//}
-//
-
-
 
 
 
@@ -549,13 +364,8 @@
         return;
     }
     
-    //    UITableViewCell* cell = [info objectForKey:@"userData"];
-    //    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
-    
     [[SongRadioCatalog main] updateSongRemovedFromProgramming:song];
     [[SongLocalCatalog main] updateSongRemovedFromProgramming:song];
-    
-    //    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 

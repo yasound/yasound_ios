@@ -69,28 +69,7 @@
     }
     _songs = [[NSArray alloc] initWithArray:songs];
 }
-//    SongUploader *songUploader = [SongUploader main];
-//    
-//    // split data between matched, unmatched, sync in progress songs
-//    for (Song *song in songs) {
-//        if ([song.song isKindOfClass:[NSNumber class]]) {
-//            [_matchedSongs addObject:song];
-//            continue;
-//        }
-//        
-//        if (![songUploader canUploadSong:song.name album:song.album artist:song.artist]) {
-//            [_protectedSongs addObject:song];
-//            continue;
-//        }
-//        
-//        BOOL needSync = [song.need_sync boolValue];
-//        if (needSync) {
-//            [_needSyncSongs addObject:song];
-//            continue;
-//        }
-//
-//        [_unmatchedSongs addObject:song];
-//    }
+
 
 -(void)uploadSongFinished
 {

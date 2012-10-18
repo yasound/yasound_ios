@@ -31,8 +31,6 @@
 #import "DataBase.h"
 
 
-//#define TIMEPROFILE_AVAILABLECATALOG_BUILD @"TimeProfileAvailableCatalogBuild"
-
 #define BORDER 8
 
 @implementation ProgrammingLocalViewController
@@ -122,16 +120,6 @@
     
     [self localProgrammingBuilt];
     
-//    // PROFILE
-//    [[TimeProfile main] begin:TIMEPROFILE_AVAILABLECATALOG_BUILD];
-    
-//    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(afterBreathing:) userInfo:nil repeats:NO];
-//}
-//
-//
-//- (void)afterBreathing:(NSTimer*)timer {
-    
-//    [[SongLocalCatalog main] initFromMatchedSongs:[SongRadioCatalog main].matchedSongs  target:self action:@selector(localProgrammingBuilt:)];
 }
 
 
@@ -151,25 +139,6 @@
 
 
 - (void)localProgrammingBuilt {
-    
-//    [ActivityAlertView close];
-
-//    BOOL success = [[info objectForKey:@"success"] boolValue];
-//    NSString* error = [info objectForKey:@"error"];
-//    NSInteger count = [[info objectForKey:@"count"] integerValue];
-//    
-//    if (!success) {
-//        
-//        // display an error dialog
-//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Radio.error.title", nil) message:error delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [av show];
-//        [av release];
-//        return;
-//    }
-
-//    // PROFILE
-//    [[TimeProfile main] end:TIMEPROFILE_AVAILABLECATALOG_BUILD];
-//    [[TimeProfile main] logInterval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
     
     NSInteger count = [SongLocalCatalog main].songsDb.count;
     

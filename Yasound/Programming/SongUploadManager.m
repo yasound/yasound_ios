@@ -24,7 +24,6 @@
 @synthesize status;
 @synthesize nbFails;
 @synthesize detailedInfo;
-//@synthesize uploader;
 
 - (id)initWithSong:(SongUploading*)aSong
 {
@@ -83,9 +82,6 @@
         _uploader = nil;
     }
 
-    
-//    [self.song setUploading:NO];
-
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL object:self];
 }
 
@@ -94,7 +90,6 @@
     if (self.status != SongUploadItemStatusUploading)
         return;
     
-//    [self.song setUploading:NO];
     self.status = SongUploadItemStatusPending;
 
     if (_uploader)
@@ -122,15 +117,6 @@
     self.detailedInfo = [info objectForKey:@"detailedInfo"];
     
 
-    // LBDEBUG don't release it here, since the Communicator does it automatically (should not though, I think...)
-//    if (self.uploader)
-//    {
-//        [self.uploader cancelSongUpload];
-//       
-//        //[self.uploader release];
-//        //self.uploader = nil;
-//    }
-    
     if ([succeeded boolValue])
     {
         self.status = SongUploadItemStatusCompleted;
@@ -260,8 +246,6 @@ static SongUploadManager* _main;
       songUploading.songLocal.album_client = storedAlbum;
       songUploading.songLocal.catalogKey = storedCatalogKey;
       
-//    [songUploading.songLocal setUploading:YES];
-    
     [songs addObject:songUploading];
   }
   return songs;
@@ -346,24 +330,14 @@ static SongUploadManager* _main;
 
 - (SongUploading*)getUploadingSong:(NSString*)songKey forRadio:(Radio*)radio
 {
-    //LBDEBUG
-//    NSLog(@"getUploadingSong '%@'", songKey);
-    
     for (SongUploadItem* item in self.items)
     {
         if (![item.song.radio_id isEqualToNumber:radio.id])
             continue;
         
-        //LBDEBUG
-//        NSLog(@"compares to '%@'", item.song.songLocal.catalogKey);
-
-        
         NSString* verif = item.song.songLocal.catalogKey;
         if (![verif isEqualToString:songKey])
             continue;
-        
-        //LBDEBUG
-//        NSLog(@"we have a match!");
         
         return item.song;
     }
@@ -371,31 +345,6 @@ static SongUploadManager* _main;
     return nil;
 }
 
-
-//- (SongUploading*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album forRadio:(Radio*)radio
-//{
-//    for (SongUploadItem* item in self.items)
-//    {
-//        if (![item.song.radio_id isEqualToNumber:radio.id])
-//            continue;
-//        
-//        NSString* verif = item.song.songLocal.name;
-//        if (![verif isEqualToString:name])
-//            continue;
-//        
-//        verif = item.song.songLocal.album;
-//        if (![verif isEqualToString:album])
-//            continue;
-//
-//        verif = item.song.songLocal.artist;
-//        if (![verif isEqualToString:artist])
-//            continue;
-//        
-//        return item.song;
-//}
-//    
-//    return nil;
-//}
 
 
 
@@ -424,19 +373,11 @@ static SongUploadManager* _main;
         }
     }
     
-    // nothing else to upload
-//    self.isRunning = NO;
 }
 
 
 - (void)onNotificationFinish:(NSNotification *)notification
 {  
-//    SongUploadItem* item = notification.object;
-//    assert(item);
-//    // if the upload has failed (connection reset for instance), don't remove this item from the local uploading list, we want it to retry at the next session
-//    if (item.status == SongUploadItemStatusCompleted)
-
-        
     [self refreshStoredUploads];
     
     [self loop];  

@@ -82,14 +82,6 @@
 }
 
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//	if (section == SECTION_DEFAULT)
-//        return @"Default";
-//    
-//    return @"Shows";
-//        
-//}
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -131,73 +123,7 @@
     }
     
     return cell;
-    
-    
-    //    RadioListTableViewCell* cell = (RadioListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    //
-    //    NSInteger radioIndex = indexPath.row * 2;
-    //
-    //    Radio* radio1 = [self.radios objectAtIndex:radioIndex];
-    //    Radio* radio2 = nil;
-    //    if (radioIndex+1 < self.radios.count)
-    //        radio2 = [self.radios objectAtIndex:radioIndex+1];
-    //
-    //    NSArray* radiosForRow = [NSArray arrayWithObjects:radio1, radio2, nil];
-    //
-    //    if (cell == nil)
-    //    {
-    //        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier radios:radiosForRow target:self action:@selector(onRadioClicked:)];
-    //    }
-    //    else
-    //    {
-    //        [cell updateWithRadios:radiosForRow target:self action:@selector(onRadioClicked:)];
-    //    }
-    //
-    //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //
-    //    return cell;
 }
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-
 
 
 

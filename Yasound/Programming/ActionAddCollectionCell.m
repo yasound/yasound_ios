@@ -125,46 +125,33 @@
 
 - (void)commonInit {
 
-        self.selectionStyle = UITableViewCellSelectionStyleGray;
-//    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        
-    
-    
-        // button "add to upload list"
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.add" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        self.button = [sheet makeButton];
-        [self.button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:button];
-        
-//    CGFloat offset = self.button.frame.origin.x + self.button.frame.size.width;
+    self.selectionStyle = UITableViewCellSelectionStyleGray;
+
+    // button "add to upload list"
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.add" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.button = [sheet makeButton];
+    [self.button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:button];
+
     CGFloat offset = 0;
-        
-        sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        self.label = [sheet makeLabel];
-        self.label.frame = [self updateToRect:sheet.frame withOffset:offset withInset:(offset + 16)];
-        [self addSubview:self.label];
-        
-        
-        sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        self.detailedLabel = [sheet makeLabel];
-        self.detailedLabel.frame = [self updateToRect:sheet.frame withOffset:offset withInset:(offset + 16)];
-        [self addSubview:self.detailedLabel];
-        
-    
+
+    sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.label = [sheet makeLabel];
+    self.label.frame = [self updateToRect:sheet.frame withOffset:offset withInset:(offset + 16)];
+    [self addSubview:self.label];
+
+
+    sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.detailedLabel = [sheet makeLabel];
+    self.detailedLabel.frame = [self updateToRect:sheet.frame withOffset:offset withInset:(offset + 16)];
+    [self addSubview:self.detailedLabel];
+
+
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIImageView* di = [sheet makeImage];
     self.accessoryView = di;
     [di release];
-
-        
-//        if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
-//        {
-//            self.button.enabled = NO;
-//            self.image.alpha = 0.5;
-//            self.label.alpha = 0.5;
-//            self.detailedLabel.alpha = 0.5;
-//        }
 
 }
 

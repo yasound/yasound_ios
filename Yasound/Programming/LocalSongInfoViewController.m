@@ -21,14 +21,6 @@
 @synthesize song;
 
 
-//@property (nonatomic, retain) NSString* genre;
-//@property (nonatomic) NSTimeInterval playbackDuration; 
-//@property (nonatomic) NSUInteger albumTrackNumber;
-//@property (nonatomic) NSUInteger albumTrackCount;
-//@property (nonatomic, retain) MPMediaItemArtwork* artwork;
-//@property (nonatomic) NSUInteger rating;
-
-
 #define NB_ROWS 4
 #define ROW_COVER 0
 #define ROW_GENRE 1
@@ -55,10 +47,6 @@
 {
     [super viewDidLoad];
 
-//    _titleLabel.text = NSLocalizedString(@"SongAddView_title", nil);
-//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-//    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
-    
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
 }
 

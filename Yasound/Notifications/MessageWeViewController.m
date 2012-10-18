@@ -34,12 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//  BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuBackground" error:nil];    
-//  self.view.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-//  _webView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-  
-  _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+
+    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
     _webView.delegate = self;
   

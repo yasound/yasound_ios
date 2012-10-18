@@ -26,18 +26,6 @@
 @synthesize image;
 
 
-//
-//- (void)willMoveToSuperview:(UIView *)newSuperview
-//{
-//    [super willMoveToSuperview:newSuperview];
-//    if(!newSuperview)
-//    {
-//        if (self.image)
-//            [self.image releaseCache];
-//    }
-//}
-//
-
 
 #define COVER_SIZE 30
 
@@ -92,7 +80,6 @@
         [self addSubview:self.detailedLabel];
         
         
-//        if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
         if (![song isSongEnabled])
         {
             self.button.enabled = NO;
@@ -118,22 +105,11 @@
     return newframe;
 }
 
-//
-//- (void)willMoveToSuperview:(UIView *)newSuperview 
-//{
-//    [super willMoveToSuperview:newSuperview];
-//    if(!newSuperview) 
-//    {
-//        self.item.delegate = nil;
-//    }
-//}
-
 
 - (void)update:(Song*)aSong
 {
     self.song = aSong;
     
-//    if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
     if (![song isSongEnabled])
     {
         self.button.enabled = NO;
@@ -194,89 +170,9 @@
         return;
     }
     
-//    UITableViewCell* cell = [info objectForKey:@"userData"];
-//    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
-    
     [[SongRadioCatalog main] updateSongRemovedFromProgramming:song];
     [[SongLocalCatalog main] updateSongRemovedFromProgramming:song];
-    
-    //    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
-
-
-
-
-//#pragma mark - UIAlertViewDelegate
-//
-//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//    if ((alertView == _legalUploadWarning) && (buttonIndex == 1))
-//    {
-//        [[UserSettings main] setBool:NO forKey:USKEYuploadLegalWarning];
-//        [self requestUpload];
-//        return;
-//    }
-//    
-//    
-//    if ((alertView == _addedUploadWarning) && (buttonIndex == 1))
-//    {
-//        [[UserSettings main] setBool:NO forKey:USKEYuploadAddedWarning];
-//        return;
-//    }
-//}
-
-
-
-//- (void)requestUpload
-//{
-//    BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
-//    
-//    
-//    BOOL startUploadNow = isWifi;
-//    
-//    SongUploading* songUploading = [SongUploading new];
-//    songUploading.songLocal = self.song;
-//    songUploading.radio_id = self.radio.id;
-//    
-//    // add an upload job to the queue
-//    [[SongUploadManager main] addSong:songUploading startUploadNow:startUploadNow];
-//    
-//    // refresh gui
-//    [self update:self.song];
-//    
-//    //    // and flag the current song as "uploading song"
-//    //    [song setProgrammed
-//    //    [self update:song];
-//    
-//    if (!isWifi && ![SongUploadManager main].notified3G)
-//    {
-//        [SongUploadManager main].notified3G = YES;
-//        
-//        _wifiWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_add_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_add_WIFI_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [_wifiWarning show];
-//        [_wifiWarning release];
-//        return;
-//    }
-//    else
-//    {
-//        BOOL error;
-//        BOOL warning = [[UserSettings main] boolForKey:USKEYuploadAddedWarning error:&error];
-//        if (error || warning)
-//        {
-//            _addedUploadWarning = [[UIAlertView alloc] initWithTitle:@"Yasound" message:NSLocalizedString(@"SongAddView_added", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_OK", nil) otherButtonTitles:NSLocalizedString(@"Button_dontShowAgain", nil),nil ];
-//            [_addedUploadWarning show];
-//            [_addedUploadWarning release];
-//        }
-//        
-//        // [ActivityAlertView showWithTitle:NSLocalizedString(@"", nil) closeAfterTimeInterval:1];
-//    }
-//    
-//}
-//
-
-
-
-
 
 
 

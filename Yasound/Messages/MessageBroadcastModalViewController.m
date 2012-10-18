@@ -34,29 +34,6 @@
     {
         self.radio = aRadio;
         self.subscribers = subscribers;
-
-        //LBDEBUG
-//        DLog(@"MessageBroadcastModalViewController subscribers : %@", subscribers);
-//        NSMutableArray* subs = [[NSMutableArray alloc] init];
-//        for (User* sub in subscribers)
-//        {
-//            DLog(@"sub.name %@", sub.name);
-//            
-//            if (  [sub.name isEqualToString:@"meeloo"]
-//                ||[sub.name isEqualToString:@"jbl2024"]
-//                ||[sub.name isEqualToString:@"matthieu.campion"]
-//                ||[sub.name isEqualToString:@"neywen"]
-//                ||[sub.name isEqualToString:@"Jérôme Blondon"]
-//                ||[sub.name isEqualToString:@"Twity 94"])
-//            {
-//                [subs addObject:sub];
-//            }
-//                
-//            
-//        }
-//
-//        self.subscribers = subs;
-        
         
         _target = target;
         _action = action;
@@ -87,11 +64,6 @@
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         [_image setImage:[sheet image]];
     }
-
-//    //mask
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Header.HeaderAvatarMask" error:nil];
-//    [_mask setImage:[sheet image]];
-
 
     [_textView becomeFirstResponder];
 }

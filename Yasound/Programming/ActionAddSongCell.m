@@ -25,19 +25,6 @@
 @synthesize image;
 
 
-//
-//- (void)willMoveToSuperview:(UIView *)newSuperview
-//{
-//    [super willMoveToSuperview:newSuperview];
-//    if(!newSuperview)
-//    {
-//        if (self.image)
-//            [self.image releaseCache];
-//    }
-//}
-//
-
-
 #define COVER_SIZE 30
 
 
@@ -97,7 +84,6 @@
         [self addSubview:self.detailedLabel];
         
         
-//        if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
         if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.catalogKey forRadio:self.radio] != nil))
         {
             self.button.enabled = NO;
@@ -123,22 +109,11 @@
     return newframe;
 }
 
-//
-//- (void)willMoveToSuperview:(UIView *)newSuperview 
-//{
-//    [super willMoveToSuperview:newSuperview];
-//    if(!newSuperview) 
-//    {
-//        self.item.delegate = nil;
-//    }
-//}
-
 
 - (void)update:(SongLocal*)aSong
 {
     self.song = aSong;
     
-//    if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
     if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.catalogKey forRadio:self.radio] != nil))
     {
         self.button.enabled = NO;
@@ -241,10 +216,6 @@
     // refresh gui
     [self update:self.song];
     
-    //    // and flag the current song as "uploading song"
-    //    [song setProgrammed
-    //    [self update:song];
-    
     if (!isWifi && ![SongUploadManager main].notified3G)
     {
         [SongUploadManager main].notified3G = YES;
@@ -264,8 +235,6 @@
             [_addedUploadWarning show];
             [_addedUploadWarning release];
         }
-        
-        // [ActivityAlertView showWithTitle:NSLocalizedString(@"", nil) closeAfterTimeInterval:1];
     }
     
 }

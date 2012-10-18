@@ -89,11 +89,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-//    //LBDEBUG TEMPORARLY
-//    NSData* data = [NSData dataWithContentsOfFile:[DataBase main].dbPath];
-//    [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"catalog.sqlite" controller:self];
-
 }
 
 

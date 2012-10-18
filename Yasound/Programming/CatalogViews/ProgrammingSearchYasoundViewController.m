@@ -37,18 +37,10 @@
 {
     [super viewDidLoad];
     
-//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
     self.view.backgroundColor = [UIColor clearColor];
     
     self.searchDisplayController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
     self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor clearColor];
-    
-//    CGRect frame = self.view.frame;
-//    frame = CGRectMake(0, frame.size.height - REFRESH_INDICATOR_HEIGHT, frame.size.width, REFRESH_INDICATOR_HEIGHT);
-//    self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:frame];
-//    self.refreshIndicator.backgroundColor = [UIColor redColor];
-//    [self.searchDisplayController.searchResultsTableView.superview addSubview:self.refreshIndicator];
 }
 
 - (void)viewDidUnload
@@ -102,7 +94,6 @@
         return nil;
     
     YasoundSong* song = [_searchResults objectAtIndex:indexPath.row];
-    //DLog(@"%d - song   %@, %@, %@", indexPath.row, song.artist_name, song.album_name, song.name);
     
     static NSString* CellIdentifier = @"SearchServerSongCell";
     
@@ -148,14 +139,6 @@
     _searching = YES;
     self.showRefreshIndicator = YES;
     
-//    CGRect frame = self.searchDisplayController.searchResultsTableView.frame;
-//    frame = CGRectMake(0, frame.size.height + self.searchDisplayController.searchBar.frame.size.height - REFRESH_INDICATOR_HEIGHT, frame.size.width, REFRESH_INDICATOR_HEIGHT);
-//    self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:frame];
-//    self.refreshIndicator.backgroundColor = [UIColor redColor];
-////    [self.searchDisplayController.searchResultsTableView.superview addSubview:self.refreshIndicator];
-//    [self.searchDisplayController.searchContentsController.view addSubview:self.refreshIndicator];
-//    [self.searchDisplayController.searchContentsController.view sendSubviewToBack:self.refreshIndicator];
-    
     _searchOffset = 0;
     [[YasoundDataProvider main] searchSong:self.searchText count:25 offset:_searchOffset target:self action:@selector(receivedSongs:info:)];
 }
@@ -174,17 +157,13 @@
     [self.searchDisplayController.searchResultsTableView reloadData];
     
     self.searchDisplayController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
     self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor clearColor];
     
     CGRect frame = self.searchDisplayController.searchResultsTableView.frame;
     frame = CGRectMake(0, frame.size.height + self.searchDisplayController.searchBar.frame.size.height - REFRESH_INDICATOR_HEIGHT, frame.size.width, REFRESH_INDICATOR_HEIGHT);
     self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:frame withStyle:UIActivityIndicatorViewStyleWhite];
-//    self.refreshIndicator.backgroundColor = [UIColor redColor];
-    //    [self.searchDisplayController.searchResultsTableView.superview addSubview:self.refreshIndicator];
     [self.view addSubview:self.refreshIndicator];
     [self.view sendSubviewToBack:self.refreshIndicator];
-//    [self.searchDisplayController.searchContentsController.view sendSubviewToBack:self.refreshIndicator];
     
 }
 
@@ -199,20 +178,6 @@
     [self.searchDisplayController.searchResultsTableView reloadData];
     
     [self unfreeze];
-    
-//    self.searchDisplayController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    //    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
-//    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor clearColor];
-    
-//    CGRect frame = self.searchDisplayController.searchResultsTableView.frame;
-//    frame = CGRectMake(0, frame.size.height + self.searchDisplayController.searchBar.frame.size.height - REFRESH_INDICATOR_HEIGHT, frame.size.width, REFRESH_INDICATOR_HEIGHT);
-//    self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:frame];
-//    self.refreshIndicator.backgroundColor = [UIColor redColor];
-//    //    [self.searchDisplayController.searchResultsTableView.superview addSubview:self.refreshIndicator];
-//    [self.view addSubview:self.refreshIndicator];
-//    [self.view sendSubviewToBack:self.refreshIndicator];
-    //    [self.searchDisplayController.searchContentsController.view sendSubviewToBack:self.refreshIndicator];
-    
 }
 
 
@@ -230,28 +195,6 @@
 
 
 #pragma mark - UIScrollViewDelegate
-
-
-
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    
-//    [super scrollViewDidScroll:scrollView];
-//    
-//}
-//
-//
-//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-//    
-//    [super scrollViewWillBeginDragging:scrollView];
-//    
-//}
-//
-
-
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-//    
-//    [super scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
-//}
 
 
 - (BOOL) refreshIndicatorRequest {
@@ -294,10 +237,8 @@
     
     [self.searchDisplayController.searchResultsTableView reloadData];
     
-    NSLog(@"contentOffset.y  %.2f     rame.size.height %.2f => offset %.2f     (contentSize %.2f x %.2f)", self.searchDisplayController.searchResultsTableView.contentOffset.y , self.searchDisplayController.searchResultsTableView.frame.size.height, self.searchDisplayController.searchResultsTableView.contentOffset.y + self.searchDisplayController.searchResultsTableView.frame.size.height, self.searchDisplayController.searchResultsTableView.contentSize.width, self.searchDisplayController.searchResultsTableView.contentSize.height);
-    
-    
-    //    CGFloat newY = self.searchDisplayController.searchResultsTableView.contentOffset.y + self.searchDisplayController.searchResultsTableView.frame.size.height;
+//    DLog(@"contentOffset.y  %.2f     rame.size.height %.2f => offset %.2f     (contentSize %.2f x %.2f)", self.searchDisplayController.searchResultsTableView.contentOffset.y , self.searchDisplayController.searchResultsTableView.frame.size.height, self.searchDisplayController.searchResultsTableView.contentOffset.y + self.searchDisplayController.searchResultsTableView.frame.size.height, self.searchDisplayController.searchResultsTableView.contentSize.width, self.searchDisplayController.searchResultsTableView.contentSize.height);
+
     CGFloat newY = self.searchDisplayController.searchResultsTableView.contentSize.height - self.searchDisplayController.searchResultsTableView.frame.size.height;
     
     [self.searchDisplayController.searchResultsTableView setContentOffset:CGPointMake(self.searchDisplayController.searchResultsTableView.contentOffset.x, newY) animated:YES];

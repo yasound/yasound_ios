@@ -63,17 +63,6 @@
 {
     [super viewDidLoad];
 
-//    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
-//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-//    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
-    
-//    _cellDeleteLabel.text = NSLocalizedString(@"SongView_delete", nil);
-    
-//    if (!_showNowPlaying)
-//    {
-//        [_toolbar setItems:[NSArray arrayWithObjects:_backBtn, nil]];
-//    }
-    
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
 }
 
@@ -110,7 +99,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    //    return gIndexMap.count;
     return NB_SECTIONS;
 }
 
@@ -359,11 +347,6 @@
     //
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_ENABLE))
     {
-        //sheet = [[Theme theme] stylesheetForKey:@"SongView.SongView_enable_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        //_enabledLabel = [sheet makeLabel];
-        //[cell addSubview:_enabledLabel];
-
-        
         cell.textLabel.text = NSLocalizedString(@"SongView_enable_label", nil);
         
         _switchEnabled.on = [self.song isSongEnabled];
@@ -460,19 +443,6 @@
             // call root to launch the Radio
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_POP_AND_GOTO_UPLOADS object:self.radio];
 
-            //LBDEBUG
-//            UINavigationController* navCont = self.navigationController;
-//
-//            UIViewController* currentView = self;
-//            [currentView retain];
-//
-//            ProgrammingUploadViewController* newView = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
-//
-//            [navCont popViewControllerAnimated:YES];
-//            [navCont pushViewController:newView animated:YES];
-//
-//            [newView release];
-//            [currentView release];
         }
         else
         {
@@ -558,40 +528,6 @@
 
 
          
-
-//- (void)onRejectNotified:(NSDictionary*)info
-//{
-//    BOOL succeeded = NO;
-//    
-//    NSNumber* nb = [info objectForKey:@"succeeded"];
-//    if (nb != nil)
-//        succeeded = [nb boolValue];
-//
-//    [ActivityAlertView close];
-//    
-//    if (!succeeded)
-//        return;
-//    
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_reject_title", nil)
-//                                                    message:NSLocalizedString(@"SongView_reject_message", nil) 
-//                                                   delegate:self 
-//                                          cancelButtonTitle:nil 
-//                                          otherButtonTitles:NSLocalizedString(@"RateApp_button_rate", nil), NSLocalizedString(@"RateApp_button_later", nil), NSLocalizedString(@"RateApp_button_no", nil), nil];
-//    alert.delegate = self;
-//    [alert show];
-//    [alert release];
-//}
-
-
-
-
-
-
-
-
-
-
-
 
 - (NSString*) dateToString:(NSDate*)d
 {

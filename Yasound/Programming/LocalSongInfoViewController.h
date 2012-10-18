@@ -13,10 +13,7 @@
 
 @interface LocalSongInfoViewController : YaViewController
 {
-//    IBOutlet UIBarButtonItem* _backBtn;
-//    IBOutlet UILabel* _titleLabel;
     IBOutlet UITableView* _tableView;
-//    IBOutlet UIBarButtonItem* _nowPlayingButton;
     
     IBOutlet UITableViewCell* _cellDelete;
     IBOutlet UILabel* _cellDeleteLabel;

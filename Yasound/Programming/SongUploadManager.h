@@ -90,7 +90,6 @@ typedef enum SongUploadItemStatus
 @property (nonatomic) NSInteger nbFails;
 @property (nonatomic, retain) NSString* detailedInfo;
 @property (nonatomic, retain) id<SongUploadItemDelegate> delegate;
-//@property (nonatomic, retain) SongUploader* uploader;
 
 
 - (id)initWithSong:(SongUploading*)aSong;
@@ -122,7 +121,6 @@ typedef enum SongUploadItemStatus
 - (void)interruptUploads;
 - (void)resumeUploads;
 
-//- (SongUploading*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album forRadio:(Radio*)radio;
 - (SongUploading*)getUploadingSong:(NSString*)songKey forRadio:(Radio*)radio;
 
 

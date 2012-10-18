@@ -30,9 +30,6 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
-//    BOOL isSongLocal = [aSong isKindOfClass:[SongLocal class]];
-//    assert(isSongLocal);
-    
     if (self)
     {
         self.song = s;

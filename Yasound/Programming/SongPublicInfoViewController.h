@@ -15,10 +15,7 @@
 
 @interface SongPublicInfoViewController : YaViewController
 {
-//    IBOutlet UIBarButtonItem* _backBtn;
-//    IBOutlet UILabel* _titleLabel;
     IBOutlet UITableView* _tableView;
-//    IBOutlet UIBarButtonItem* _nowPlayingButton;
     IBOutlet UIToolbar* _toolbar;
     
     WebImageView* _imageView;

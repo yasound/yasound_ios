@@ -59,9 +59,6 @@
 
     [self.topBar showTrashItem];
   
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Common.gradient" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-  
     [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)  limit:NOTIFICATIONS_LIMIT offset:0];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iOsNotificationReceived:) name:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
@@ -291,16 +288,6 @@
 }
 
 
-//- (void)goToFriendsViewController
-//{
-//    //LBDEBUG TODO : kess kon fait ici maintenant?
-//    assert(0);
-//    
-////  FriendsViewController* view = [[FriendsViewController alloc] initWithNibName:@"FriendsViewController" bundle:nil title:NSLocalizedString(@"selection_tab_friends", nil) tabIcon:@"tabIconFavorites.png"];
-////  [self.navigationController pushViewController:view animated:YES];
-////  [view release];
-//}
-//
 - (void)goToUserProfile:(NSNumber*)user_id
 {
     if (user_id == nil)
@@ -403,14 +390,6 @@
             [self goToRadio:notif.from_radio_id];
         return;
     }
-        
-//    NSNumber* radioID = [notif.params objectForKey:@"radioID"];
-//    if (radioID != nil)
-//    {
-//      DLog(@"go to radio %@", radioID);
-//      [self goToRadio:radioID];
-//    }
-
     
 }
 

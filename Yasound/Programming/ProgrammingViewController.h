@@ -19,11 +19,6 @@
 #define LOCALSEGMENT_INDEX_TITLES 2
 
 
-//#define PROGRAMMING_WHEEL_NB_ITEMS 3
-//#define PROGRAMMING_WHEEL_ITEM_LOCAL 0
-//#define PROGRAMMING_WHEEL_ITEM_RADIO 1
-//#define PROGRAMMING_WHEEL_ITEM_UPLOADS 2
-
 #define PROGRAMMING_WHEEL_NB_ITEMS 4
 #define PROGRAMMING_WHEEL_ITEM_YASOUND_SERVER 0
 #define PROGRAMMING_WHEEL_ITEM_LOCAL 1
@@ -32,19 +27,14 @@
 
 @interface ProgrammingViewController : YaViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate, TopBarBackAndTitleDelegate>
 {
-//    IBOutlet UIBarButtonItem* _synchroBtn;
-    
     IBOutlet UILabel* _titleLabel;
     IBOutlet UILabel* _subtitleLabel;
-//    IBOutlet UIToolbar* _toolbar;
     
     IBOutlet UIView* _containerRadioSegment;
     IBOutlet UIView* _containerLocalSegment;
     IBOutlet UIView* _containerEmptySegment;
     IBOutlet UISegmentedControl* _radioSegment;
     IBOutlet UISegmentedControl* _localSegment;
-    
-//    IBOutlet UITableView* _tableView;
 }
 
 @property (nonatomic, retain) IBOutlet UIView* container;
@@ -53,9 +43,6 @@
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, retain) UIViewController* viewController;
-
-//@property (nonatomic, retain) NSMutableDictionary* sortedSongs;
-//@property (nonatomic, retain) NSMutableDictionary* sortedArtists;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)radio;
 

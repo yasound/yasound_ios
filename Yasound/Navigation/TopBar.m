@@ -123,13 +123,6 @@
     [self updateNowPlaying];
     
     
-//    // init "now playing" button
-//    if ([AudioStreamManager main].currentRadio == nil) {
-//        [self.itemNowPlayingLabel setEnabled:NO];
-//        self.itemNowPlayingButton.alpha = 0.5;
-//    }
-
-
     // flexible space
     UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace, self.itemHd, flexibleSpace, self.itemNotifs, flexibleSpace, self.itemSearch, flexibleSpace, self.itemNowPlaying, nil];
@@ -245,12 +238,6 @@
 
 - (void)showEditItem
 {
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemMenu" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UIButton* btn = [sheet makeButton];
-//    
-//    [btn addTarget:self action:@selector(onMenu:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
     CustomSizedButtonView* editButton = [[CustomSizedButtonView alloc] initWithThemeRef:@"darkGray" title:NSLocalizedString(@"Navigation.edit", nil)];
 
     UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithCustomView:editButton];

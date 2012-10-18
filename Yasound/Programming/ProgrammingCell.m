@@ -31,18 +31,6 @@ static NSMutableDictionary* gEditingSongs = nil;
 
 
 
-//- (void)willMoveToSuperview:(UIView *)newSuperview
-//{
-//    [super willMoveToSuperview:newSuperview];
-//    if(!newSuperview)
-//    {
-//        if (self.image)
-//            [self.image releaseCache];
-//    }
-//}
-
-
-
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withSong:(Song*)aSong atRow:(NSInteger)row deletingTarget:(id)deletingTarget deletingAction:(SEL)deletingAction
 {
