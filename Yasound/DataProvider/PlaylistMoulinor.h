@@ -9,15 +9,6 @@
 
 
 
-//#define PM_ACTION_ADD @"ADD"
-//#define PM_ACTION_DELETE @"DEL"
-//
-//#define PM_TAG_PLAYLIST @"LST"
-//#define PM_TAG_ARTIST @"ART"
-//#define PM_TAG_ALBUM @"ALB"
-//#define PM_TAG_SONG @"SNG"
-
-
 #define PM_TAG_PLAYLIST             @"LIST"
 #define PM_TAG_ARTIST               @"ARTS"
 #define PM_TAG_ALBUM                @"ALBM"
@@ -27,12 +18,6 @@
 #define PM_TAG_REMOTE_PLAYLIST      @"RLST"
 
 #define PM_FIELD_UNKNOWN @""
-
-
-//@protocol PlaylistMoulinorDelegate <NSObject>
-//@required 
-//- (void)didBuildDataWithPlaylist:(NSData*)data compressed:(BOOL)compressed;
-//@end
 
 
 
@@ -47,8 +32,6 @@
     
     UIViewController* _emailController;
 }
-
-//@property (retain, nonatomic) id<PlaylistMoulinorDelegate> delegate;
 
 + (PlaylistMoulinor*)main;
 

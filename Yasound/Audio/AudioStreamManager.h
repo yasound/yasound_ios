@@ -32,7 +32,6 @@
 
 - (void)tryAndRestartOnError;
 
-//- (void)pauseRadio;
 - (void)playRadio;
 - (void)togglePlayPauseRadio;
 

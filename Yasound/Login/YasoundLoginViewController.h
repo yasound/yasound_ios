@@ -12,10 +12,7 @@
 
 @interface YasoundLoginViewController : YaViewController
 {
-//    IBOutlet UIBarButtonItem* _backItem;
-//    IBOutlet UIBarButtonItem* _titleItem;
-    
-    //...............................................
+
     IBOutlet UILabel* _label;
     IBOutlet MyUITextField* _email;
     IBOutlet MyUITextField* _pword;
@@ -29,8 +26,6 @@
 
 
 @property (nonatomic, retain) IBOutlet UIView* container;
-//@property (nonatomic, retain) IBOutlet UITextField* email;
-//@property (nonatomic, retain) IBOutlet UITextField* pword;
 
 
 

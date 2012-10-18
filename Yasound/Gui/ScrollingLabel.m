@@ -124,11 +124,6 @@
             [self.labelFlags replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:YES]];
         }
         
-//        [UIView beginAnimations:nil context:nil];
-//        [UIView setAnimationDuration:0.5];
-//        label.frame = CGRectMake(posx - 10, label.frame.origin.y, label.frame.size.width, label.frame.size.height);
-//        [UIView commitAnimations];
-
         label.frame = CGRectMake(posx - 0.25, label.frame.origin.y, label.frame.size.width, label.frame.size.height);
     }
     

@@ -25,12 +25,6 @@
         
         self.backgroundColor = [UIColor clearColor];
         
-//        sheet = [[Theme theme] stylesheetForKey:@"RefreshIndicator.icon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        self.icon = [sheet makeImage];
-//        [self addSubview:self.icon];
-        
-//        self.hidden = YES;
-        
         self.height = frame.size.height;
         self.status = eStatusClosed;
 
@@ -41,11 +35,6 @@
 }
 
 
-//- (void)dealloc
-//{
-//    [super dealloc];
-//}
-//
 
 - (void)pull {
     
@@ -138,12 +127,9 @@
 
 #pragma mark - CAAnimationDelegate
 
-//- (void)animationDidStart:(CAAnimation *)anim;
-
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     
     self.icon.transform = CGAffineTransformMakeRotation(M_PI);
-//    [anim release];
 }
 
 

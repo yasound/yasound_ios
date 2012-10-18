@@ -70,26 +70,9 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    
     [super viewDidDisappear:animated];
-//    [self release];
-//    [self release];
-//    [self release];
 }
 
-
-//LBDEBUB
-//- (void)retain
-//{
-//    [super retain];
-//    NSLog(@"retainCount %d", self.retainCount);
-//}
-//
-//- (void)release
-//{
-//    [super release];
-//    NSLog(@"retainCount %d", self.retainCount);
-//}
 
 
 
@@ -211,10 +194,6 @@
         
         self.user = user;
         
-        
-//        // get the app menu from the server, before you can proceed
-//        [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
-
         [self enterTheAppAfterProperLogin];
 
 
@@ -252,8 +231,6 @@
           [av release];
         }
         
-        //        // enable the facebook again, to let the user retry
-        //        _facebookButton.enabled = YES;
         // and logout properly
         [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
         
@@ -263,17 +240,6 @@
 
 
 
-//// you receive the current menu description from the server
-//- (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
-//{
-//    NSString* menuDesc = req.responseString;
-//    
-//    // be sure to store it in the cache
-//    [[YasoundDataCache main] setMenu:menuDesc];
-//    
-//    
-//    [self enterTheAppAfterProperLogin];
-//}
 
 
 - (void)enterTheAppAfterProperLogin
@@ -388,19 +354,14 @@
 
 - (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
 {
-    //    assert(radio);
-    
     // account just being create, go to configuration screen
     [[UserSettings main] setBool:YES forKey:USKEYskipRadioCreation];
 
-    //    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
     if (!_dismissed) {
         _dismissed = YES;
         [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
-//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_DISMISS_MODAL object:nil];
     }
     
-//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
     [APPDELEGATE.slideController resetTopView];
 }
 
@@ -408,13 +369,6 @@
 
 
 #pragma mark - IBActions
-
-//- (IBAction)onBack:(id)sender
-//{
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
-
-
 
 
 #pragma mark - TopBarModalDelegate

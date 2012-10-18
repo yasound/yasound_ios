@@ -2625,8 +2625,6 @@ static YasoundDataProvider* _main = nil;
 {
     
     NSString* url = [NSString stringWithFormat:@"api/v1/premium/subscriptions/%@", productId];
-    //LBDEBUG
-    DLog(@"subscriptionComplete : '%@'", url);
 
     ASIFormDataRequest* req = [_communicator buildPostRequestToURL:url absolute:NO notifyTarget:target byCalling:action withUserData:nil withAuth:self.apiKeyAuth];
     
@@ -2634,28 +2632,6 @@ static YasoundDataProvider* _main = nil;
     [req addPostValue:self.user.username forKey:@"username"];
     
     [req startAsynchronous];
-
-    
-//    RequestConfig* conf = [[RequestConfig alloc] init];
-//    conf.url = [NSString stringWithFormat:@"api/v1/premium/subscriptions/%@", productId];
-//    conf.urlIsAbsolute = NO;
-//    conf.auth = self.apiKeyAuth;
-//    conf.method = @"POST";
-//    conf.callbackTarget = target;
-//    conf.callbackAction = action;
-//    
-//    //LBDEBUG
-//    DLog(@"subscriptionComplete : '%@'", conf.url);
-//    
-//    NSMutableArray* params = [NSMutableArray array];
-//    [params addObject:@"format=json"];
-//    [params addObject:[NSString stringWithFormat:@"receipt=%@", appleReceipt]];
-//    [params addObject:[NSString stringWithFormat:@"username=%@", self.user.username]];
-//    conf.params = params;
-//
-//    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-//
-//    [req startAsynchronous];
 }
 
 

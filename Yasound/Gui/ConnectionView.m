@@ -93,12 +93,6 @@ static ConnectionView* _main = nil;
     self = [super initWithFrame:frame];
     if (self) 
     {
-//       self.layer.masksToBounds = YES;
-//        self.layer.cornerRadius = 6;
-//        self.layer.borderColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.2].CGColor;
-//        self.layer.borderWidth = 1.0; 
-//        self.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1].CGColor;
-        
         self.backgroundColor = [UIColor whiteColor];
         self.alpha = 0.25;
         self.frame = CGRectMake(0, -VIEW_HEIGHT, self.frame.size.width, VIEW_HEIGHT);
@@ -113,15 +107,6 @@ static ConnectionView* _main = nil;
         [UIView setAnimationDuration:0.33];
         self.frame = CGRectMake(0, 0, self.frame.size.width, VIEW_HEIGHT);
         [UIView commitAnimations];
-        
-//        UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, frame.size.width, 20)];
-//        label.text = NSLocalizedString(@"Connection", nil);
-//        label.textColor = [UIColor whiteColor];
-//        label.font = [UIFont boldSystemFontOfSize:16];
-//        label.backgroundColor = [UIColor clearColor];
-//        label.textAlignment = UITextAlignmentCenter;
-//        [self addSubview:label];
-        
     }
     return self;
 }

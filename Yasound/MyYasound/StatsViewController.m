@@ -15,19 +15,12 @@
 
 #define SECTION_STATS 0
 #define ROW_STATS_LISTENERS 0
-//#define ROW_STATS_LIKES 1
 
-
-//#define SECTION_WEEKCHART 1
-//#define ROW_WEEKCHART_CONTROL 0
-//#define ROW_WEEKCHART_CHART 1
 
 #define SECTION_MONTHCHART 1
-//#define ROW_MONTHCHART_CONTROL 0
 #define ROW_MONTHCHART_CHART 0
 
 #define SECTION_LEADERBOARD 2
-//#define ROW_LEADERBOARD_CONTROL 0
 
 
 #define GRAPH_X 5
@@ -44,10 +37,6 @@
 @synthesize leaderboard;
 @synthesize radio;
 
-//@synthesize weekGraphView;
-//@synthesize monthGraphView;
-
-
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio
 {
@@ -56,15 +45,10 @@
     {
         
         self.radio = radio;
-        
-//        weekGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
-
         _monthGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
         
         _monthGraphView.plotColor = RGB(200,200,200);
         _monthGraphView.fillColor = RGBA(196,246,254,96);
-      
-//      _leaderboard = nil;
     }
     
     return self;
@@ -96,21 +80,6 @@
 {
     [super viewDidLoad];
 
-//    _titleLabel.text = NSLocalizedString(@"StatsView_title", nil);
-//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-    
-//    _btnNextWeek.enabled = NO;
-//    _btnNextMonth.enabled = NO;
-    
-    // simplify the process for now
-//    [_btnNextWeek removeFromSuperview];
-//    [_btnNextMonth removeFromSuperview];
-//    [_btnPreviousWeek removeFromSuperview];
-//    [_btnPreviousMonth removeFromSuperview];
-    
-//    _cellMonthSelectorLabel.text = NSLocalizedString(@"StatsView_monthselector_label", nil);
-//  _cellLeaderBoardSelectorLabel.text = NSLocalizedString(@"StatsView_leaderboardselector_label", nil);
-    
     [[YasoundDataProvider main] monthListeningStatsForRadio:self.radio withTarget:self action:@selector(receivedMonthStats:withInfo:)];
     [[YasoundDataProvider main] leaderboardForRadio:self.radio withTarget:self action:@selector(receivedLeaderBoard:success:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receivedRadio:withInfo:)];
@@ -178,21 +147,6 @@
 }
 
 
-//- (void)receivedLeaderBoard:(NSArray*)entries withInfo:(NSDictionary*)info
-//{
-//  if (!entries || entries.count == 0)
-//    return;
-//  
-//  DLog(@"%d entries in leaderboard", entries.count);
-////  for (LeaderBoardEntry* entry in entries)
-////  {
-////    DLog(@"LeaderBoardEntry %@ - %@: %@ favorites %@", entry.leaderboard_rank, entry.name, entry.leaderboard_favorites, [entry isUserRadio] ? @"(user's radio)" : @"");
-////  }
-//  
-//  self.leaderboard = entries;
-//  [_tableView reloadData];
-//}
-
 - (void)receivedLeaderBoard:(ASIHTTPRequest*)req success:(BOOL)success
 {
     Container* leaderboardContainer = [req responseObjectsWithClass:[LeaderBoardEntry class]];
@@ -231,19 +185,6 @@
     return view;
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
-//{
-//    if (section == SECTION_STATS)
-//        return nil;
-//    
-//    if (section == SECTION_MONTHCHART)
-//        return NSLocalizedString(@"Stats.section.month", nil);
-//    
-//    if (section == SECTION_LEADERBOARD)
-//        return NSLocalizedString(@"Stats.section.leaderboard", nil);
-//        
-//    return nil;
-//}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -283,44 +224,6 @@
 {
     return 26;
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//    return 22;
-//}
-
-
-
-
-
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    NSString* title = nil;
-//    
-//    if (section == 0)
-//        return nil;
-//    
-//    if (section == SECTION_MONTHCHART)
-//        title = NSLocalizedString(@"StatsView_monthselector_label", nil);
-//    
-//    else if (section == SECTION_LEADERBOARD)
-//        title = NSLocalizedString(@"StatsView_leaderboardselector_label", nil);
-//    
-//    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    
-//    UIImage* image = [sheet image];
-//    CGFloat height = image.size.height;
-//    UIImageView* view = [[UIImageView alloc] initWithImage:image];
-//    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UILabel* label = [sheet makeLabel];
-//    label.text = title;
-//    [view addSubview:label];
-//    
-//    return view;
-//}
 
 
 
@@ -379,10 +282,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-//  if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CONTROL))
-//    return _cellMonthSelector;
-//  if ((indexPath.section == SECTION_LEADERBOARD) && (indexPath.row == ROW_LEADERBOARD_CONTROL))
-//    return _cellLeaderBoardSelector;
   
     UITableViewCell* cell = nil;
     
@@ -455,10 +354,6 @@
 
         BundleStylesheet* sheet = nil;
         
-        
-        // radio rank + name
-//        sheet = [[Theme theme] stylesheetForKey:@"Stats.StatsView_LeaderBoard_Name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        UILabel* label = [[sheet makeLabel] autorelease];
         NSString* title = [NSString stringWithFormat:@"%@ - %@",  entry.leaderboard_rank, entry.name];
         
         if (title.length > TITLE_MAX_LENGTH) {
@@ -468,12 +363,7 @@
         
         
         cell.textLabel.text = title;
-        //[cell.contentView addSubview:label];
 
-        // favorites
-//        sheet = [[Theme theme] stylesheetForKey:@"Stats.StatsView_LeaderBoard_Favorites" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        label = [[sheet makeLabel] autorelease];
-        
         NSString* infos = [NSString stringWithFormat:@"%@", entry.leaderboard_favorites];
         NSLog(@"infos '%@'", infos);
         
@@ -482,20 +372,11 @@
         NSLog(@"NB favorites '%@'", entry.leaderboard_favorites);
         NSLog(@"cell '%@'", cell.detailTextLabel.text);
 
-//        [cell.contentView addSubview:label];
-
         // favorites icon
         sheet = [[Theme theme] stylesheetForKey:@"Stats.iconFavorites" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         cell.accessoryView = [sheet makeImage];
-//        UIImageView* imageView = [[sheet makeImage] autorelease];
-//        [cell.contentView addSubview:imageView];
-        
     }
     
-
-    
-    
-//    DLog(@"cell nil : section %d  row %d", indexPath.section, indexPath.row);
     
   return cell;
 }

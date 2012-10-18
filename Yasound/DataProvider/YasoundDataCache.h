@@ -85,13 +85,6 @@
 
 
 
-// return the most recent menu description, or the default menu description if no other one has been downloaded yet
-//- (NSArray*)menu;
-
-// replace the current menu description in the user settings (does not overwrite the default menu description)
-//- (void)setMenu:(NSString*)JSONdescription;
-
-
 
 #define URL_RADIOS_FAVORITES @"/api/v1/favorite_radio"
 #define URL_RADIOS_SELECTION @"/api/v1/selected_radio"
@@ -99,19 +92,6 @@
 #define URL_LEGAL @"legal/eula.html"
 
 
-//#define MENU_ENTRY_ID_SELECTION @"radioSelection"
-//#define MENU_ENTRY_ID_FAVORITES @"radioMyFavorites"
-//#define MENU_ENTRY_ID_TOP @"radioTop"
-//
-//// return the dictionary description of the current menu, from its given type (for instance, "
-//- (NSDictionary*)menuEntry:(NSString*)entryId;
-////
-////
-//#define MENU_ENTRY_PARAM_URL @"url"
-////#define MENU_ENTRY_PARAM_GENRE_SELECTION @"genre_selection"
-////#define MENU_ENTRY_PARAM_RADIO_ID @"radio_id"
-////
-//- (id)entryParameter:(NSString*)param forEntry:(NSDictionary*)entry;
 
 
 @end

@@ -29,7 +29,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        //self.title =  NSLocalizedString(@"LoginView_title", nil);        
     }
     return self;
 }
@@ -54,16 +53,6 @@
 {
     [super viewDidLoad];
     
-    //    _titleItem.text = NSLocalizedString(@"LoginView_title", nil);
-    
-//    _titleItem.title = NSLocalizedString(@"SignupView_title", nil);
-//    _backItem.title = NSLocalizedString(@"Navigation_back", nil);
-    
-//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    
-    
-//    _container.backgroundColor = [UIColor clearColor];
-
     _username.marginLeft = 12;
     _username.marginRight = 42;
     _email.marginLeft = 12;
@@ -91,15 +80,6 @@
     _pword.delegate = self;
     _confirmPword.delegate = self;
     
-    
-    
-//    UITapGestureRecognizer* gest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapGestureRecognized)];
-//    gest.delegate = self; // we need this to exclude the other controls from the gesture catching system
-//    gest.numberOfTapsRequired = 1;
-//    gest.numberOfTouchesRequired = 1;
-//    [self.view addGestureRecognizer:gest];
-    
-    
 }
 
 
@@ -126,20 +106,6 @@
 
 
 
-
-
-
-//- (void)onTapGestureRecognized
-//{
-//    [self.view endEditing:YES];
-//    
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.3];
-//    self.container.frame = CGRectMake(self.container.frame.origin.x, _posMin, self.container.frame.size.width, self.container.frame.size.height);
-//    [UIView commitAnimations];    
-//}
-
-
 #pragma mark - TextField Delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -161,15 +127,6 @@
         [UIView setAnimationDuration:0.3];
         self.container.frame = CGRectMake(self.container.frame.origin.x, _posMin, self.container.frame.size.width, self.container.frame.size.height);
         [UIView commitAnimations];
-        
-        // activate "submit" button
-        //        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
-        //        NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
-        //        NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
-        //        if ((email.length != 0) && (pword.length != 0))
-        //            _submitButton.enabled = YES;
-        //        else
-        //            _submitButton.enabled = NO;
         
     }
     return YES;
@@ -290,9 +247,6 @@
     // store info for automatic login, for the next sessions
     [[YasoundSessionManager main] registerForYasound:_email withPword:_pword];
     
-    // get the app menu from the server, before you can proceed
-//    [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
-    
     [self enterTheAppAfterProperLogin];
 
     
@@ -300,19 +254,6 @@
 
 
 
-
-
-//// you receive the current menu description from the server
-//- (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
-//{
-//    NSString* menuDesc = req.responseString;
-//    
-//    // be sure to store it in the cache
-//    [[YasoundDataCache main] setMenu:menuDesc];
-//    
-//    
-//    [self enterTheAppAfterProperLogin];
-//}
 
 - (void)enterTheAppAfterProperLogin
 {

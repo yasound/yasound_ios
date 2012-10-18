@@ -199,13 +199,6 @@ static AudioStreamer* _gAudioStreamer = nil;
         return;
 
     _isPaused = YES;
-//    if (_gAudioStreamer.isPlaying)
-
-//    DLog(@"_gAudioStreamer.isPlaying %d", _gAudioStreamer.isPlaying);
-//    DLog(@"_gAudioStreamer.isPaused %d", _gAudioStreamer.isPaused);
-//    DLog(@"_gAudioStreamer.isWaiting %d", _gAudioStreamer.isWaiting);
-//    DLog(@"_gAudioStreamer.isIdle %d", _gAudioStreamer.isIdle);
-
     
     [_gAudioStreamer stop];
     [_gAudioStreamer release];
@@ -225,7 +218,6 @@ static AudioStreamer* _gAudioStreamer = nil;
     
     _isPaused = YES;
 
-    //    [_gAudioStreamer pause];
     [_gAudioStreamer stop];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_STOP object:nil];
 }
@@ -248,8 +240,6 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 - (void)togglePlayPauseRadio
 {
-//  if (_gAudioStreamer == nil)
-//    return;
   if (_gAudioStreamer == nil)
       [self startRadio:self.currentRadio];
        
@@ -313,12 +303,6 @@ static AudioStreamer* _gAudioStreamer = nil;
     Radio* radio = self.currentRadio;
     _reseting = YES;
     
-//    [self pauseRadio];
-    
-    //LBDEBUG AUDIO
-
-//    [self stopRadio];
-//    self.currentRadio = nil;
     [self _startRadio:radio];
 }
 

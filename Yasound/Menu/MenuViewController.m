@@ -81,17 +81,8 @@ enum MenuDescription
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"menuBkg.png"]];
     
-//    // set background
-//    if ([self.searchbar respondsToSelector:@selector(setBackgroundImage:forToolbarPosition:barMetrics:)])
-//        [self.searchbar setBackgroundImage:[UIImage imageNamed:@"topBarBkg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-//    else
-//        [self.searchbar insertSubview:[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topBarBkg.png"]] autorelease] atIndex:0];
-
 }
 
-//- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-//    
-//}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -192,19 +183,15 @@ enum MenuDescription
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:icon retainStylesheet:YES overwriteStylesheet:NO error:nil];
     [cell.imageView setImage:[sheet image]];
-//    [cell.imageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", icon]]];
     
     if ((authenticated && [YasoundSessionManager main].registered) || !authenticated)
     {
-        //cell.textLabel.textColor = [UIColor colorWithRed:195.f/255.f green:205.f/255.f blue:212.f/255.f alpha:1];
         cell.textLabel.alpha = 1;
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         cell.imageView.alpha = 1;
     }
     else
     {
-        //cell.textLabel.textColor = [UIColor colorWithRed:164.f/255.f green:170.f/255.f blue:173.f/255.f alpha:1];
-        //[cell.imageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Disabled.png", icon]]];
         cell.textLabel.alpha = 0.5;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.imageView.alpha = 0.5;
@@ -322,8 +309,6 @@ enum MenuDescription
         self.programmedCommand = indexPath;
         [self runProgrammedCommand];
         
-//        if (row == ROW_LOGIN)
-//            [APPDELEGATE.slideController resetTopView];
     }
     
 }
@@ -351,7 +336,6 @@ enum MenuDescription
     {
         MyAccountViewController* view = [[MyAccountViewController alloc] initWithNibName:@"MyAccountViewController" bundle:nil];
         [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
-//        [APPDELEGATE.menuNavigationController pushViewController:view animated:YES];
         [view release];
     }
     
@@ -359,7 +343,6 @@ enum MenuDescription
     {
         NotificationViewController* view = [[NotificationViewController alloc] initWithNibName:@"NotificationViewController" bundle:nil];
         [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
-//        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     
@@ -367,13 +350,11 @@ enum MenuDescription
     {
         AccountFacebookViewController* view = [[AccountFacebookViewController alloc] initWithNibName:@"AccountFacebookViewController" bundle:nil];
         [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
-//        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     else if (row == ROW_TWITTER)
     {
         AccountTwitterViewController* view = [[AccountTwitterViewController alloc] initWithNibName:@"AccountTwitterViewController" bundle:nil];
-//        [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
         
         [APPDELEGATE.slideController resetTopView];
         [APPDELEGATE.navigationController pushViewController:view animated:YES];
@@ -383,7 +364,6 @@ enum MenuDescription
     {
         AccountYasoundViewController* view = [[AccountYasoundViewController alloc] initWithNibName:@"AccountYasoundViewController" bundle:nil];
         [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
-//        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     
@@ -394,7 +374,6 @@ enum MenuDescription
         
         WebPageViewController* view = [[WebPageViewController alloc] initWithNibName:@"WebPageViewController" bundle:nil withUrl:url andTitle:title];
         [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
-//        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     
@@ -418,11 +397,6 @@ enum MenuDescription
 
 
 #pragma mark - TopBarDelegate
-
-//- (BOOL)topBarItemClicked:(TopBarItemId)itemId
-//{
-//}
-
 
 
 

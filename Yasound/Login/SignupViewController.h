@@ -13,12 +13,6 @@
 
 @interface SignupViewController : YaViewController<UITextFieldDelegate>
 {
-//    IBOutlet UIBarButtonItem* _backItem;
-//    IBOutlet UIBarButtonItem* _titleItem;
-    
-    //...............................................
-//    IBOutlet UIView* _container;
-    
     IBOutlet UILabel* _label;
     IBOutlet MyUITextField* _username;
     IBOutlet MyUITextField* _email;
@@ -37,8 +31,6 @@
 
 @property (nonatomic, retain) IBOutlet UIView* container;
 
-
-//- (IBAction) onSubmit:(id)sender;
 
 @end
 

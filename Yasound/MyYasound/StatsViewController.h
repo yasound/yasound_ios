@@ -35,9 +35,6 @@
     UIView* _monthGraphBoundingBox;
   
   ChartView* _monthGraphView;
-  
-//  UILabel* _listenersLabel;
-  
 }
 
 @property (nonatomic, retain) Radio* radio;

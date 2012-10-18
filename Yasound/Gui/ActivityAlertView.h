@@ -30,7 +30,6 @@
 + (ActivityAlertView*)current;
 
 
-// initWithTitle from UIAlertView
 - (void)close;
 
 @end

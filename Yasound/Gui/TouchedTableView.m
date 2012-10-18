@@ -29,38 +29,9 @@
     if (self.actionTouched != nil)
         [self.delegate performSelector:self.actionTouched withObject:touches withObject:event];
 
-    
-//    [self tableViewTouched:touches withEvent:event];
-//    
     [super touchesBegan:touches withEvent:event];
 }
 
 
-//- (void)scrollViewDidScrollToTopUIScrollView *)scrollView
-//
-// - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-//{
-//    if (self.actionTouched != nil)
-//        [self.delegate performSelector:self.actionTouched withObject:nil withObject:nil];
-//}
-
-
-
-
-//- (void)tableViewTouched:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//
-//}
-
-
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

@@ -26,7 +26,6 @@
 
 -(id)initWithImageFrame:(CGRect)frame
 {
-  //DLog(@"WebImage initWithImageFrame 0x%p", self);
   self = [super init];
   if (self)
   {
@@ -40,7 +39,6 @@
 
 -(id)initWithImageAtURL:(NSURL*)Url
 {
-  //DLog(@"WebImage initWithImageAtURL 0x%p / %@", self, [Url absoluteURL]);
   self = [super init];
   if (self)
   {
@@ -62,20 +60,8 @@
     if (aUrl == nil)
         return;
     
-    
-#ifdef DEBUG_PROFILE
-    //LBDEBUG ICI
-    [[TimeProfile main] begin:@"setUrl1"];
-#endif
-    
     UIImage* image = [[YasoundDataCache main] requestImage:aUrl target:self action:@selector(onImageUpdated:)];
     
-#ifdef DEBUG_PROFILE
-    //LBDEBUG ICI
-    [[TimeProfile main] end:@"setUrl1"];
-    [[TimeProfile main] logAverageInterval:@"setUrl1" inMilliseconds:YES];
-#endif
-
     [self setImage:image];
     
     url = aUrl;
@@ -87,9 +73,6 @@
 {
     if (image == nil)
         return;
-    
-    //LBDEBUG
-    //NSLog(@"onImageUpdated size %.2f x %.2f", image.size.width, image.size.height);
     
     [self setImage:image];
 }

@@ -23,8 +23,6 @@
 
 
 
-//@synthesize email;
-//@synthesize pword;
 @synthesize container;
 
 
@@ -39,7 +37,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        //self.title =  NSLocalizedString(@"LoginView_title", nil);        
     }
     return self;
 }
@@ -65,11 +62,6 @@
 {
     [super viewDidLoad];
     
-//    _titleItem.text = NSLocalizedString(@"LoginView_title", nil);
-    
-//    _titleItem.title = NSLocalizedString(@"YasoundLoginView_title", nil);
-//    _backItem.title = NSLocalizedString(@"Navigation_back", nil);
-
     _label.text =  NSLocalizedString(@"YasoundLoginView_label", nil);
     _email.placeholder = NSLocalizedString(@"YasoundLoginView_email", nil);
     _pword.placeholder = NSLocalizedString(@"YasoundLoginView_password", nil);
@@ -84,11 +76,6 @@
     [_signupButton setTitle:NSLocalizedString(@"LoginView_signup_label", nil) forState:UIControlStateNormal textAlignment:UITextAlignmentLeft];
     [_forgetButton setTitle:NSLocalizedString(@"YasoundLoginView_button_forgot", nil) forState:UIControlStateNormal textAlignment:UITextAlignmentLeft];
 
-//    _loginButton.enabled = NO;
-    
-//    [_email becomeFirstResponder];
-    
-    //_signupButton.titleLabel.text = NSLocalizedString(@"LoginView_signup_label", nil);    
 }
 
 
@@ -125,16 +112,6 @@
     [UIView commitAnimations];
 }
 
-//- (void)textFieldDidEndEditing:(UITextField *)textField
-//{
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.33];
-//    self.container.frame = CGRectMake(0, 44, self.container.frame.size.width, self.container.frame.size.height);
-//    [UIView commitAnimations];
-//}
-
-
-
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -156,11 +133,6 @@
         NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
         NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
         NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
-//        if ((email.length != 0) && (pword.length != 0))
-//            _loginButton.enabled = YES;
-//        else
-//            _loginButton.enabled = NO;
-        
     }
     return YES;
 }
@@ -181,14 +153,6 @@
         [av release];  
         return;    
     }
-    
-//    _email = [NSString stringWithString:email];
-//    _pword = [NSString stringWithString:pword];
-//    [_email retain];
-//    [_pword retain];
-    
-    // TAG ACTIVITY ALERT
-//    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
     
     [self.view addSubview:[ConnectionView startWithTarget:self timeout:@selector(onConnectionTimeout)]];
 
@@ -243,26 +207,9 @@
     [[YasoundSessionManager main] associateAccountsAutomatic];
     
     
-    // get the app menu from the server, before you can proceed
-//    [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
-
     [self enterTheAppAfterProperLogin];
 
 }
-
-
-
-// you receive the current menu description from the server
-//- (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
-//{
-//    NSString* menuDesc = req.responseString;
-//    
-//    // be sure to store it in the cache
-//    [[YasoundDataCache main] setMenu:menuDesc];
-//    
-//    
-//    [self enterTheAppAfterProperLogin];
-//}
 
 
 
@@ -288,13 +235,6 @@
 
 
 #pragma mark - IBActions
-
-
-
-//- (IBAction)onBack:(id)sender
-//{
-//    [self.navigationController popViewControllerAnimated:NO];
-//}
 
 
 - (IBAction)onSignupClicked:(id)sender
@@ -336,7 +276,6 @@
     [APPDELEGATE.navigationController presentModalViewController:viewC animated:NO];
     [viewC release];
 
-//    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
     return NO;
 }
 
