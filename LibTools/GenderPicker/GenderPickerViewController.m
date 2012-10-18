@@ -99,8 +99,6 @@
   NSInteger row = [_pickerView selectedRowInComponent:0];
   NSString* item = [self.items objectAtIndex:row];
   [self.delegate genderDidSelect:item];
-//    UINavigationController* cont = [self.delegate genderNavController];
-//    [cont dismissModalViewControllerAnimated:YES];
 
     [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:[NSNumber numberWithBool:NO]];
@@ -109,7 +107,6 @@
 - (IBAction)onCancelClicked:(id)sender
 {
     UINavigationController* cont = [self.delegate genderNavController];
-//    [cont dismissModalViewControllerAnimated:YES];
 
     [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:[NSNumber numberWithBool:NO]];

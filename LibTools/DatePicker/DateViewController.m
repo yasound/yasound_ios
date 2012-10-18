@@ -19,14 +19,12 @@
 }
 -(IBAction)cancel
 {
-//    [[self.delegate navController] popViewControllerAnimated:YES];
     [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:[NSNumber numberWithBool:NO]];
 }
 -(IBAction)save
 {
     [self.delegate takeNewDate:date];
-//    [[self.delegate navController] popViewControllerAnimated:YES];
     [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:[NSNumber numberWithBool:NO]];
 }
@@ -35,20 +33,10 @@
 {
     UIView *theView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view = theView;
-//    self.view.backgroundColor = [UIColor blackColor];
     [theView release];
     
     UIToolbar* toolbar = [self setToolbar];
     [self.view addSubview:toolbar];
-    
-    
-//    UIImage* image = [UIImage imageNamed:@"commonGradient.png"];
-//    UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
-//    imageView.frame = CGRectMake(0, toolbar.frame.origin.y + toolbar.frame.size.height, image.size.width, 480);
-//    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    [self.view addSubview:imageView];
-//    [imageView release];
-    
     
     UITableView *theTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 44.0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     theTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
@@ -124,15 +112,6 @@
 #pragma mark -
 #pragma mark Table View Methods
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    UIView* view = [[UIView alloc] init];
-//    view.backgroundColor = [UIColor clearColor];
-//    cell.backgroundView = view;
-//}
-
-
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -153,7 +132,6 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     
     NSString* preferredLang = [[NSLocale preferredLanguages] objectAtIndex:0];
-    //NSLog(@"%@", preferredLang);
     
     if ([preferredLang isEqualToString:@"fr"])
         [formatter setDateFormat:@"dd MMMM yyyy"];

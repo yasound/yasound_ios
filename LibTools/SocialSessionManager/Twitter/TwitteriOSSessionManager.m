@@ -44,10 +44,6 @@
 @synthesize accounts = _accounts;
 
 
-// LBDEBUG
-//#define kAccessToken @"409372338-sdDFNhWpVjomGbsAhbIBjAYnBLDeThvajQEKe9I6"
-//#define kAccessTokenSecret @"HjCLrPG60q9FlmPXIwPNx2iAm7EA3KOrGmzu4z08"      
-
 
 - (void)setTarget:(id<SessionDelegate>)delegate
 {
@@ -580,63 +576,6 @@
 
 
 
-
-
-
-#pragma mark - Reverse Auth
-
-
-
-
-//- (void)performReverseAuth
-//{
-//        NSURL *url = [NSURL URLWithString:TW_OAUTH_URL_REQUEST_TOKEN];
-//        
-//        // "reverse_auth" is a required parameter
-//        NSDictionary *dict = [NSDictionary dictionaryWithObject:TW_X_AUTH_MODE_REVERSE_AUTH forKey:TW_X_AUTH_MODE_KEY];
-//        TWSignedRequest *signedRequest = [[TWSignedRequest alloc] initWithURL:url parameters:dict requestMethod:TWSignedRequestMethodPOST];
-//        
-//        [signedRequest performRequestWithHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//            if (!data) 
-//            {
-//                //[self showAlert:@"Unable to receive a request_token." title:@"Yikes"];
-//                [self _handleError:error forResponse:response];
-//            }
-//            else 
-//            {
-//                NSString *signedReverseAuthSignature = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//                
-//                //
-//                //  Step 2)  Ask Twitter for the user's auth token and secret
-//                //           include x_reverse_auth_target=CK2 and x_reverse_auth_parameters=signedReverseAuthSignature parameters
-//                //
-//                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//                    
-//                    NSDictionary *step2Params = [NSDictionary dictionaryWithObjectsAndKeys:[TWSignedRequest consumerKey], TW_X_AUTH_REVERSE_TARGET, signedReverseAuthSignature, TW_X_AUTH_REVERSE_PARMS, nil];
-//                    NSURL *authTokenURL = [NSURL URLWithString:TW_OAUTH_URL_AUTH_TOKEN];
-//                    TWRequest *step2Request = [[TWRequest alloc] initWithURL:authTokenURL parameters:step2Params requestMethod:TWRequestMethodPOST];
-//                    
-//                    //  Obtain the user's permission to access the store
-//                            [step2Request setAccount:self.account];
-//                            [step2Request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) 
-//                    {
-//                                if (!responseData) 
-//                                {
-//                                    //[self showAlert:@"Error occurred in Step 2.  Check console for more info." title:@"Yikes"];
-//                                    [self _handleError:error forResponse:response];
-//                                }
-//                                else 
-//                                {
-//                                    NSString *responseStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-//                                    [self _handleStep2Response:responseStr];
-//                                }
-//                    }];
-//                    
-//                });
-//            }
-//        }];
-//
-//}
 
                                
                                

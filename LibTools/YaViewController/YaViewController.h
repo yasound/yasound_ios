@@ -17,7 +17,6 @@
 
 @interface YaViewController : TrackedUIViewController
 
-//@property (nonatomic, retain) NSString* didLoadCheckpoint;
 @property (nonatomic, retain) NSString* didAppearCheckpoint;
 @property (nonatomic, assign) ECSlidingViewController* slideController;
 

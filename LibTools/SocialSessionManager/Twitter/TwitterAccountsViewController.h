@@ -21,10 +21,8 @@
 @interface TwitterAccountsViewController : YaViewController
 {
   IBOutlet UITableView* _tableView;
-//  NSArray* _accounts;
 }
 
-//@property (strong, nonatomic) ACAccountStore* accountStore; 
 @property (strong, nonatomic) NSArray* accounts;
 @property (retain) id<TwitterAccountsDelegate> delegate;
 

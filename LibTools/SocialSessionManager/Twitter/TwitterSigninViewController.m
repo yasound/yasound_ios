@@ -135,15 +135,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//  ACAccount* account = [self.accounts objectAtIndex:[indexPath row]];
-//  
-//  [self.delegate twitterDidSelectAccount:account];
-//  
-//  [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
-//  
-//  //  TweetsListViewController *tweetsListViewController = [[TweetsListViewController alloc] init];
-//  //  tweetsListViewController.account = [self.accounts objectAtIndex:[indexPath row]];
-//  //  [self.navigationController pushViewController:tweetsListViewController animated:TRUE];
 }
 
 
@@ -157,28 +148,6 @@
 
 - (void)textFieldDone:(UITextField*)textField
 {
-//  if (textField == _textFieldLogin)
-//  {
-//    [Cache cache].username = _textFieldLogin.text;
-//    
-//    NSError* error;
-//    if (_textFieldPword.text != nil)
-//      [Cache cache].password = _textFieldPword.text;
-//  }
-//  else if (textField == _textFieldPword)
-//  {
-//    NSError* error;
-//    if (_textFieldLogin.text != nil)
-//    {
-//      [Cache cache].username = _textFieldLogin.text;
-//      [Cache cache].password = _textFieldPword.text;
-//    }
-//  }
-//  else
-//  {
-//    DLog(@"Settings textField error.");
-//    assert(0);
-//  }
 }
 
 

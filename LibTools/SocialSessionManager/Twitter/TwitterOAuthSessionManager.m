@@ -24,11 +24,6 @@
 #endif
 
 
-//LBDEBUG ICI
-//#define kOAuthConsumerKey @"TdpKTtfEsEfPFXrq9GlQ"         //REPLACE With Twitter App OAuth Key  
-//#define kOAuthConsumerSecret @"JPPj1VXXTYQ6w81CrszFRYxfHkKvPi4BYD6pV9CnGQ"     //REPLACE With Twitter App OAuth Secret  
-
-
 
 @implementation TwitterOAuthSessionManager
 
@@ -78,15 +73,6 @@
 
         _controller.delegate = self;
     
-        //LBDEBUG ICI
-//        [_parent presentModalViewController:_controller animated: YES];  
-
-//        YasoundAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-//        NSArray* viewControllers = appDelegate.navigationController.viewControllers;
-//        UIViewController* viewController = [viewControllers objectAtIndex:(viewControllers.count-1)];
-//
-//        [viewController presentModalViewController:_controller animated: YES];
-        
         [APPDELEGATE.navigationController presentModalViewController:_controller animated:YES];
         
     }
@@ -125,15 +111,6 @@
     [SFHFKeychainUtils deleteItemForUsername:token andServiceName:BundleName error:nil];
     
     
-    
-    //    if (_controller)
-    //    {
-    //        [_controller release];
-    //    }
-    
-    // clean twitter engine
-    
-    
     if (_engine)
     {
         [_engine clearAccessToken];
@@ -161,7 +138,6 @@
 - (BOOL)requestGetInfo:(SessionRequestType)requestType
 {
     if (!_engine || ![_engine isAuthorized]) 
-//        if (!_engine)
     return NO;
   
   if (requestType == SRequestInfoUser)
@@ -295,9 +271,6 @@
     [SFHFKeychainUtils storeUsername:oauth_token andPassword:oauth_token_secret  forServiceName:BundleName updateExisting:YES error:nil];
 
     
-  //  DLog(@"oauth_token %@", oauth_token);
-  //  DLog(@"oauth_token_secret %@", oauth_token_secret);
-  
   
   //.....................................................................
   //
@@ -475,7 +448,7 @@
 
 - (void)credentialFailed:(SA_OAuthTwitterController *) controller
 {
-    // why is this delegate called? I don't know, but everything works if you juste ignore it....
+    // why is this delegate called? I don't know, but everything works if you just ignore it....
     
 //    DLog(@"credentialFailed");
 //    _isLoging = NO;

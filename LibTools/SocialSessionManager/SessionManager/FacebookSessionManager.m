@@ -58,7 +58,6 @@ static FacebookSessionManager* _facebook = nil;
   {
       _logout = NO;
     _facebookConnect = nil;
-//    _facebookPermissions = [[NSArray arrayWithObjects:@"user_about_me", @"publish_stream", @"publish_actions", @"offline_access", nil] retain];    
     _facebookPermissions = [[NSArray arrayWithObjects:@"user_about_me", @"publish_stream", @"offline_access", @"user_likes", nil] retain];
   }
   return self;
@@ -254,27 +253,6 @@ static FacebookSessionManager* _facebook = nil;
 
 #pragma mark - FBRequestDelegate
 
-//- (void)requestLoading:(FBRequest *)request
-//{
-//  DLog(@"requestLoading");
-//}
-//
-
-
-
-//- (void)request:(FBRequest *)request didReceiveResponse:(NSURLResponse *)response {
-//    
-//    // cast the response to NSHTTPURLResponse so we can look for 404 etc
-//    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-//    
-//    if ([httpResponse statusCode] < 400) {
-//        
-//        NSString* url = [request url];
-//        DLog(@"url '%@'", url);
-//        
-//        
-//    }
-//}
 
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error
@@ -398,17 +376,6 @@ static FacebookSessionManager* _facebook = nil;
     friends = [friends substringToIndex:(friends.length - 1)];
         
         
-//    if (users && users.count > 0) {
-//        FacebookFriend* friend = [users objectAtIndex:0];
-//        friends = [NSString stringWithFormat:@"%@", friend.id];
-//        for (NSInteger index = 1; index < users.count; index++) {
-//            friend = [users objectAtIndex:index];
-//            friends = [friends stringByAppendingFormat:@",%@", friend.id];
-//        }
-//    }
-    
-    //DLog(@"friends '%@'", friends);
-    
   NSDictionary* data = [NSDictionary dictionaryWithObject:uid forKey:@"from_user"];
   NSString* dataStr = data.JSONRepresentation;
   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:

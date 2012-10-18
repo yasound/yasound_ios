@@ -26,11 +26,8 @@
 @synthesize originFrame;
 
 - (void)awakeFromNib {
-//    NSLog(@"%.2f %.2f  %.2fx%.2f", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
-    
+
     self.originFrame = self.frame;
-    
-    
 }
 
 - (id)initWithThemeRef:(NSString*)aThemeRef title:(NSString*)title {
@@ -46,8 +43,6 @@
 
 - (void)setThemeRef:(NSString*)aThemeRef title:(NSString*)title {
     
-
-//    NSLog(@"%.2f %.2f  %.2fx%.2f", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
     self.themeRef = aThemeRef;
     
     self.backgroundColor = [UIColor clearColor];
@@ -130,11 +125,6 @@
     
 }
 
-
-//- (CGRect)moveFrame:(CGRect)frame toPos:(CGPoint)point {
-//    CGRect newFrame = CGRectMake(frame.origin.x + point.x, frame.origin.y + point.y, frame.size.width, frame.size.height);
-//    return newFrame;
-//}
 
 - (CGRect)moveFrame:(CGRect)frame toPos:(CGPoint)point {
     return frame;

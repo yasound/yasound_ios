@@ -16,7 +16,6 @@
 
 
 @synthesize delegate = _delegate;
-//@synthesize accountStore = _accountStore; 
 @synthesize accounts = _accounts; 
 
 
@@ -170,10 +169,6 @@
   [self.delegate twitterDidSelectAccount:account];
 
   [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
-
-//  TweetsListViewController *tweetsListViewController = [[TweetsListViewController alloc] init];
-//  tweetsListViewController.account = [self.accounts objectAtIndex:[indexPath row]];
-//  [self.navigationController pushViewController:tweetsListViewController animated:TRUE];
 }
 
 @end

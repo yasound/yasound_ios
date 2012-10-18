@@ -115,9 +115,6 @@ objc_property_t* getPropertyList(Class objectClass, unsigned int* outCount);
 {
   NSDictionary* jsonDict = [json JSONValue];
     
-    //LBDBUG
-   // NSLog(@"%@", jsonDict);
-    
   [self loadPropertiesFromDictionary:jsonDict];
 }
 

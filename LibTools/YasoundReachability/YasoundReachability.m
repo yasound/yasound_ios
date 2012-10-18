@@ -34,7 +34,6 @@ static YasoundReachability* _main = nil;
 - (void)dealloc
 {
     [_reachHost release];
-//    [_reachConnection release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [super dealloc];
@@ -76,17 +75,6 @@ static YasoundReachability* _main = nil;
                                                  name:kReachabilityChangedNotification
                                                object:nil];
 
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(internalChanged:)
-//                                                 name:kInternetConnection
-//                                               object:nil];
-//
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(localWifiChanged:)
-//                                                 name:kLocalWiFiConnection
-//                                               object:nil];
-
-    
     [_reachConnection startNotifier];
     [_reachHost startNotifier];
 }
@@ -98,33 +86,9 @@ static YasoundReachability* _main = nil;
 }
 
 
-// These are the status tests.
-//- (NetworkStatus) currentReachabilityStatus;
-
-
-
-
-
-//- (void)internalChanged
-//{
-//    DLog(@"internalChanged");
-//    
-//}
-//
-//
-//- (void)localWifiChanged
-//{
-//    DLog(@"localWifiChanged");
-//    
-//}
-//
-
-
 
 - (void) reachabilityChanged:(NSNotification*)note
 {
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
-    
     DLog(@"reachabilityChanged");
     
     Reachability* r = [note object];
@@ -190,9 +154,6 @@ static YasoundReachability* _main = nil;
             self.isReachable = YR_NO;
 
             message = NSLocalizedString(@"YasoundReachability_host_no", nil);
-//            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_host", nil) message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//            [av show];
-//            [av release];  
         }
             
             if (_target != nil)

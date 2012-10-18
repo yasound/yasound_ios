@@ -13,7 +13,6 @@
 
 @implementation YaViewController
 
-//@synthesize didLoadCheckpoint = _didLoadCheckpoint;
 @synthesize didAppearCheckpoint = _didAppearCheckpoint;
 @synthesize slideController;
 
@@ -22,7 +21,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-//        self.didLoadCheckpoint =  [NSString stringWithFormat:@"%@ viewDidLoad", [self class]];
         self.slideController = APPDELEGATE.slideController;
         self.didAppearCheckpoint =  [NSString stringWithFormat:@"%@ viewDidAppear", [self class]];
         
@@ -52,14 +50,6 @@
 //#endif
 //}
 
-
-//- (UINavigationController*)navigationController {
-//    
-//    UINavigationController* cont = super.navigationController;
-//    if (cont != nil)
-//        return cont;
-//    return APPDELEGATE.navigationController;
-//}
 
 - (void)viewDidAppear:(BOOL)animated
 {

@@ -8,10 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "BundleStylesheet.h"
 
-#ifdef OPENGL_SPRITE
-#import "BundleAudiosheet.h"
-#import "BundleAnimsheet.h"
-#endif
+
 
 
 //BundleFileManager category for NSBundle
@@ -23,70 +20,18 @@
 
 
 @interface BundleFileManager : NSBundle
-{
-//    NSDictionary* _stylesheetDictionnary;
-//    NSMutableDictionary* _stylesheets;
 
-    
-
-#ifdef OPENGL_SPRITE
-  NSDictionary* _animsheet;
-  NSDictionary* _audiosheet;
-#endif
-}
 
 @property (nonatomic, retain) NSDictionary* stylesheetDictionnary;
 @property (nonatomic, retain, readonly) NSMutableDictionary* stylesheets;
 
-#ifdef OPENGL_SPRITE
-@property (nonatomic, retain) NSDictionary* animsheet;
-@property (nonatomic, retain) NSDictionary* audiosheet;
-#endif
+
 
 
 + (BundleFileManager*) main;
 
 - (id)initWithStylesheet:(NSDictionary*)stylesheet;
 - (id)initWithBundlePath:(NSString *)path;
-
-
-//- (void)staticOptimInit;
-//- (void)staticOptimUninit;
-
-//+ (BundleFileManager*)bundleWithPath:(NSString*)path;
-
-////.............................................................................
-////
-//// generic methods
-////
-//
-//- (NSString*)pathForResource:(NSString*)localPath;
-//- (NSString*)pathForResource:(NSString *)name ofType:(NSString *)ext;
-//- (NSString*)pathForResource:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath;
-//
-//
-//// return true if file exists
-//- (BOOL)fileExistsAtPath:(NSString*)path;
-//// return true if file exists
-//- (BOOL)fileExistsAtPath:(NSString*)name ofType:(NSString*)type;
-//// return true if file exists
-//- (BOOL)fileExistsAtPath:(NSString*)name ofType:(NSString*)type inDirectory:(NSString*)directory;
-//
-//
-//
-//
-//
-//
-//
-////.............................................................................
-////
-//// images
-////
-//
-//// shortcut to get a UIImage from a path
-//// 'path' : is a simple node filename. Should not include "images" directory
-//- (UIImage*) imageNamed:(NSString*)path;
-//- (UIImage*) imageNamed:(NSString*)name ofType:(NSString*)type inDirectory:(NSString*)directory;
 
 
 
@@ -105,37 +50,6 @@
 // - overwriteStylesheet : if YES, and if the stylesheet is in the static stylesheets dictionnary already, force the parsing and overwrite the existing stylesheet
 - (BundleStylesheet*) stylesheetForKey:(NSString*)key retainStylesheet:(BOOL)retainStylesheet overwriteStylesheet:(BOOL)overwriteStylesheet error:(NSError **)anError;
 
-
-
-
-#ifdef OPENGL_SPRITE
-//.............................................................................
-//
-// animsheet
-//
-
-// read info from the animsheet entry from the bundle info.plist,
-- (BundleAnimsheet*) animsheetForKey:(NSString*)key error:(NSError **)anError;
-
-
-
-
-
-
-//.............................................................................
-//
-// audio
-//
-
-// shortcut to get an audio object from a path
-// 'path' : is a simple node filename. Should not include "audio" directory
-- (NSString*) audioNamed:(NSString*)path;
-- (NSString*) audioNamed:(NSString*)name ofType:(NSString*)type inDirectory:(NSString*)directory;
-
-// same thing, but parameter is a key from the info.plist, instead of a direct filepath.
-- (BundleAudiosheet*) audiosheetForKey:(NSString*)key atIndex:(NSInteger)index error:(NSError **)anError;
-
-#endif
 
 
 

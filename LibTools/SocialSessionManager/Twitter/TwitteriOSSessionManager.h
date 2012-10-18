@@ -27,7 +27,6 @@
 @property (retain) ACAccountStore* store;
 @property (retain) ACAccount* account;
 @property (retain) NSArray* accounts;
-//@property (retain) TwitterOAuthSessionManager* oauthManager;
 
 
 - (void)setTarget:(id<SessionDelegate>)delegate;
