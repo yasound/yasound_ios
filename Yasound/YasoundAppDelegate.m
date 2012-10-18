@@ -26,7 +26,6 @@
 
 
 @synthesize window;
-//@synthesize menuNavigationController;
 @synthesize navigationController;
 @synthesize rootViewController;
 @synthesize menuViewController;
@@ -149,14 +148,7 @@ void SignalHandler(int sig) {
     
     [self.rootViewController start];
     
-    
-    
-//    self.menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-//    self.slideController.underLeftViewController = menuViewController;
-    
-    
-    
-    
+        
     
   // Push Notifications:
   DLog(@"Ask for push notification\n");
@@ -360,25 +352,6 @@ void SignalHandler(int sig) {
 {
   [super dealloc];
 }
-
-
-//- (void)remoteControlReceivedWithEvent:(UIEvent *)event
-//{
-//    //if it is a remote control event handle it correctly
-//    if (event.type == UIEventTypeRemoteControl)
-//    {
-//        if (event.subtype == UIEventSubtypeRemoteControlPlay)
-//            [[AudioStreamManager main] startRadio:[AudioStreamManager main].currentRadio];
-//        
-//        else if (event.subtype == UIEventSubtypeRemoteControlPause)
-//            [[AudioStreamManager main] stopRadio];
-//        
-//        else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause)
-//            [[AudioStreamManager main] togglePlayPauseRadio];
-//        
-//    }
-//}
-
 
 
 

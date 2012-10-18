@@ -28,12 +28,9 @@
 
 @property (nonatomic, retain)  IBOutlet UIWindow *window;
 
-//@property (nonatomic, retain)  UINavigationController* menuNavigationController;
 @property (nonatomic, retain)  UINavigationController* navigationController;
 
 
-// slideController is ECSlidingViewController* with iOS >= 5
-// slideController is FakeSlidingController with iOS < 5
 @property (nonatomic, retain) id slideController;
 
 @property (nonatomic, retain) RootViewController* rootViewController;

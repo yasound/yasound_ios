@@ -954,14 +954,6 @@
 #pragma mark - Background Audio Playing
 
 
-////Make sure we can recieve remote control events
-//- (BOOL)canBecomeFirstResponder 
-//{
-//  return YES;
-//}
-
-
-
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
