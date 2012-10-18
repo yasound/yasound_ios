@@ -28,7 +28,6 @@
 
 
 - (BOOL)get:(NSString*)notifIdentifier;
-//- (void)save;
 
 - (void)updateWithAPNsPreferences:(APNsPreferences*)prefs;
 - (APNsPreferences*)APNsPreferences;

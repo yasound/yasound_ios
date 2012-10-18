@@ -62,9 +62,6 @@
 {
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
     {
-//        _usernameLabel.textColor = [UIColor whiteColor];
-//        _usernameValue.textColor = [UIColor whiteColor];
-
         _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
         
         _logoutLabel.hidden = NO;
@@ -80,9 +77,6 @@
     }
     else
     {
-//        _usernameLabel.textColor = [UIColor grayColor];
-//        _usernameValue.textColor = [UIColor grayColor];
-
         _loginLabel.text = NSLocalizedString(@"AccountsView_login_label", nil);    
         
         _loginLabel.hidden = NO;
@@ -104,8 +98,6 @@
 
 - (IBAction)onButtonClicked:(id)sender
 {
-//    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
-
     // logout
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
     {

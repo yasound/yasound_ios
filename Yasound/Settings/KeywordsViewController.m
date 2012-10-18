@@ -87,12 +87,6 @@
 
 
 
-//- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-//{
-//  [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];  
-//}
-
-
 
 
 
@@ -230,14 +224,12 @@
     {
         cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TableViews/TableViewDisclosure.png"]];
         cell.textLabel.text = NSLocalizedString(@"KeywordsView_add_label", nil);
-//        cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.backgroundColor = [UIColor clearColor];
 
     }
     else
     {
         cell.textLabel.text = [_keywords objectAtIndex:indexPath.row];
-//        cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }

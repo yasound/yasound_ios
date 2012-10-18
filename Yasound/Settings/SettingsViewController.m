@@ -34,12 +34,6 @@
 #define SECTION_IMAGE 1
 #define ROW_IMAGE 0
 
-//#define SECTION_PROG 2
-//#define ROW_PROG 0
-//#define ROW_SHOWS 1
-
-
-
 
 
 @implementation SettingsViewController
@@ -61,22 +55,6 @@
     
     return self;
 }
-
-//- (id) createWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
-//{
-//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    if (self)
-//    {
-//        self.radio = nil;
-//        self.createMode = YES;
-//    }
-//    
-//    return self;
-//}
-//
-//
-
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -223,9 +201,6 @@
     if (section == SECTION_IMAGE)
         return 1;
 
-//    if (section == SECTION_PROG)
-//        return 2;
-
 
     return 0;
 }
@@ -341,25 +316,7 @@
         cell.detailTextLabel.text = _keywords;
 
     }
-//    else if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
-//    {
-//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        cell.textLabel.text = NSLocalizedString(@"Settings.prog.label", nil);
-//        cell.detailTextLabel.text = @"";
-//    }
-//    else if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_SHOWS))
-//    {
-//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        cell.textLabel.text = NSLocalizedString(@"Settings.shows.label", nil);
-//        cell.detailTextLabel.text = @"";
-//        
-////        //LBDEBUG TEMPORARLY CODE
-//        cell.textLabel.alpha = 0.5;
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    }
-    
-    
-    
+
     return cell;
 }
 
@@ -368,13 +325,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-    
-//    //LBDEBUG TEMPORARLY CODE
-//    if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_SHOWS))
-//    {
-//        return;
-//    }
-
     
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
     {
@@ -402,25 +352,6 @@
         return;
     }
 
-//    if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
-//    {
-//        //LBDEBUG
-//        NSLog(@"CALL PROG FOR RADIO :%@", self.radio.name);
-//        
-//        ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:self.radio];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
-//        return;
-//    }
-
-//    if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_SHOWS))
-//    {        
-//        SchedulingViewController* view = [[SchedulingViewController alloc] initWithNibName:@"SchedulingViewController" bundle:nil];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
-//        return;
-//    }
-    
     
 }
 
@@ -511,7 +442,6 @@
 - (void)openStyleSelector
 {
     StyleSelectorViewController* view = [[StyleSelectorViewController alloc] initWithNibName:@"StyleSelectorViewController" bundle:nil currentStyle:self.radio.genre target:self];
-    //  self.navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self.navigationController presentModalViewController:view animated:YES];
 }
@@ -528,10 +458,6 @@
     // set radio genre
     self.radio.genre = style;
     
-    /*
-     [self.navigationController dismissModalViewControllerAnimated:YES];
-     _settingsGenreTitle.text = NSLocalizedString(style, nil);
-     */
 }
 
 - (void)closeSelectStyleController
@@ -578,19 +504,6 @@
 
 
 #pragma mark - IBActions
-
-//- (IBAction)onCancel:(id)sender
-//{
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
-//
-//
-//- (IBAction)onSave:(id)sender
-//{
-//    [self save];
-//}
-//
-
 
 
 #pragma mark - ActionSheet Delegate
@@ -709,10 +622,6 @@
     if (imageURL != nil)
         [[YasoundDataCacheImageManager main] clearItem:imageURL];
 
-//    imageURL = [[YasoundDataProvider main] urlForPicture:r.creator.picture];
-//    [[YasoundDataCacheImageManager main] clearItem:imageURL];
-    
-    
 
   
     // if the settings have been called through a "radio creation" process, go directly to the new radio's wall.

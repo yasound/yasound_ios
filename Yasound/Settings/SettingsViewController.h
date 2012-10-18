@@ -41,7 +41,6 @@
 
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio createMode:(BOOL)createMode;
-//- (id) createWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil;
 
 
 @end

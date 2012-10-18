@@ -131,8 +131,6 @@
     // refresh
     [self refreshView];
     
-//    [ActivityAlertView close];
-    
     if (_songs.count == 0)
     {
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:YES error:nil];
@@ -253,10 +251,6 @@
         [av show];
         [av release];
         return;
-        
-//        [_tableView removeFromSuperview];
-//        _itunesConnectLabel.text = NSLocalizedString(@"PlaylistsView_empty_message", nil);
-//        [_container addSubview:_itunesConnectView];
         
         self.topbar.actionButton.enabled = NO;
 

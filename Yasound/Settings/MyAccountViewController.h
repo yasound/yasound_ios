@@ -31,7 +31,5 @@
 @property (nonatomic, retain) UITextField* city;
 @property (nonatomic, retain) UILabel* age;
 
-//@property (nonatomic) TopBarItemId itemId;
-
 
 @end

@@ -15,7 +15,6 @@
 }
 
 @property (nonatomic, retain) IBOutlet TopBarModal* topbar;
-//@property (nonatomic) TopBarItemId itemId;
 
 
 

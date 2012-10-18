@@ -141,10 +141,6 @@
         NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
         NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
         NSString* pwordConfirm = [_pwordConfirm.text stringByTrimmingCharactersInSet:space];
-        //        if ((email.length != 0) && (pword.length != 0))
-        //            _loginButton.enabled = YES;
-        //        else
-        //            _loginButton.enabled = NO;
         
     }
     return YES;
