@@ -17,8 +17,6 @@
 @synthesize label;
 @synthesize description;
 @synthesize date;
-//@synthesize count;
-//@synthesize done;
 @synthesize disabledLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -51,14 +49,6 @@
         sheet = [[Theme theme] stylesheetForKey:@"Gift.date" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.date = [sheet makeLabel];
         [self addSubview:self.date];
-        
-//        sheet = [[Theme theme] stylesheetForKey:@"Gift.count" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        self.count = [sheet makeLabel];
-//        [self addSubview:self.count];
-//        
-//        sheet = [[Theme theme] stylesheetForKey:@"Gift.done" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        self.done = [sheet makeLabel];
-//        [self addSubview:self.done];
         
         sheet = [[Theme theme] stylesheetForKey:@"Gift.disabled" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.disabledLabel = [sheet makeLabel];
@@ -113,8 +103,6 @@
     self.description.text = self.gift.description;
     self.image.url = [NSURL URLWithString:self.gift.picture_url];
     self.date.text = dateString;
-//    self.count.text = countString;
-//    self.done.text = doneString;
     self.disabledLabel.text = disabledString;
     
     if ([self.gift canBeWon])

@@ -43,15 +43,10 @@
 {
     self.ffriend = facebookFriend;
     
-//    NSLog(@"facebookFriend id '%@'", self.ffriend.id);
-//    NSLog(@"facebookFriend name '%@'", self.ffriend.name);
-//    NSLog(@"facebookFriend picture '%@'", self.ffriend.picture);
-    
     self.nameLabel.text = self.ffriend.name;
 
     NSDictionary* data = [self.ffriend.picture objectForKey:@"data"];
     NSString* urlstr = [data objectForKey:@"url"];
-    //DLog(@"class '%@' '%@'", [urlstr class], urlstr);
     
     NSURL* url = [NSURL URLWithString:urlstr];
     [self.image setUrl:url];

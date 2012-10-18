@@ -22,8 +22,6 @@
 @property (nonatomic, retain) UILabel* label;
 @property (nonatomic, retain) UILabel* description;
 @property (nonatomic, retain) UILabel* date;
-//@property (nonatomic, retain) UILabel* count;
-//@property (nonatomic, retain) UILabel* done;
 @property (nonatomic, retain) UILabel* disabledLabel;
 
 - (void)setGift:(Gift*)gift;

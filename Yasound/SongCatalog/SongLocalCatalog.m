@@ -78,42 +78,13 @@ static SongLocalCatalog* _main = nil;
 
 
 
-
-
-//- (BOOL)initFromMatchedSongs:(NSDictionary*)songs target:(id)aTarget action:(SEL)anAction {
-//    
-//    
-//    self.target = aTarget;
-//    self.action = anAction;
-//
-//    // return cached data
-//    if (self.isInCache)
-//    {
-//        NSMutableDictionary* info = [NSMutableDictionary dictionary];
-//        [info setObject:[NSNumber numberWithInteger:self.songsDb.count] forKey:@"count"];
-//        [info setObject:@""  forKey:@"error"];
-//        [info setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
-//        [self.target performSelector:self.action withObject:info];
-//        return YES;
-//    }
-//
-//    return NO;
-//}
-
-
-
 - (void)build {
 
-
     [NSThread detachNewThreadSelector:@selector(threadMatchedSongs) toTarget:self withObject:nil];
-    
-//    [self threadMatchedSongs:songs];
-//    [self threadMatchedSongs];
 }
 
 
 - (void)threadMatchedSongs {
-//- (void)threadMatchedSongs {
 
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
@@ -188,13 +159,6 @@ static SongLocalCatalog* _main = nil;
     // PROFILE
     [[TimeProfile main] end:TIMEPROFILE_AVAILABLECATALOG_BUILD];
     [[TimeProfile main] logInterval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
-
-    
-//    NSMutableDictionary* info = [NSMutableDictionary dictionary];
-//    [info setObject:[NSNumber numberWithInteger:self.songsDb.count] forKey:@"count"];
-//    [info setObject:@""  forKey:@"error"];
-//    [info setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
-//    [self.target performSelectorOnMainThread:self.action withObject:info waitUntilDone:false];
     
     [pool release];
 }
