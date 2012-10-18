@@ -44,8 +44,6 @@
 @property (nonatomic, retain) IBOutlet UILabel* profil;
 @property (nonatomic, retain) IBOutlet UIImageView* hd;
 
-//@property (nonatomic, retain) IBOutlet UIButton* buttonGray;
-//@property (nonatomic, retain) IBOutlet UILabel* buttonGrayLabel;
 @property (nonatomic, retain) IBOutlet CustomSizedButtonView* buttonFollow;
 @property (nonatomic, retain) IBOutlet UIButton* buttonBlue;
 @property (nonatomic, retain) IBOutlet UILabel* buttonBlueLabel;

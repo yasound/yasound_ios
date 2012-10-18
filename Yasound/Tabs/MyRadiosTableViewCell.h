@@ -23,7 +23,6 @@
 
 @interface MyRadiosTableViewCell : UITableViewCell
 {
-//    UIActionSheet* _sheetTools;
 }
 
 @property (nonatomic, retain) id<MyRadiosTableViewCellDelegate> delegate;
@@ -40,14 +39,9 @@
 @property (nonatomic, retain) IBOutlet UILabel* metric2;
 @property (nonatomic, retain) IBOutlet UILabel* metric1sub;
 @property (nonatomic, retain) IBOutlet UIImageView* metric2Background;
-//@property (nonatomic, retain) IBOutlet UILabel* metric2sub;
-
-//@property (nonatomic, retain) IBOutlet UIButton* buttonSettings;
 
 @property (nonatomic, retain) IBOutlet UIButton* buttonDelete;
 
-//+ (NSString *)reuseIdentifier;
-//- (id)initWithOwner:(id)owner target:(id)target radio:(Radio*)radio;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)reuseIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
 

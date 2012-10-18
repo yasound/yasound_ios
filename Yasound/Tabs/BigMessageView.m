@@ -15,8 +15,6 @@
 @synthesize target;
 @synthesize action;
 @synthesize button;
-//@synthesize buttonLeft;
-//@synthesize buttonRight;
 @synthesize message;
 @synthesize buttonLabel;
 
@@ -70,20 +68,6 @@
 
 - (void)onButtonClicked:(id)sender
 {
-
-//    // stylesheet
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"BigMessage.button" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    self.button.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"BigMessage.buttonLeft" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    self.buttonLeft.image = [sheet image];
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"BigMessage.buttonRight" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    self.buttonRight.image = [sheet image];
-//
-//    sheet = [[Theme theme] stylesheetForKey:@"BigMessage.buttonLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    [sheet applyToLabel:self.buttonLabel class:@"default"];
-    
     // call delegate
     if (self.target)
         [self.target performSelector:self.action];

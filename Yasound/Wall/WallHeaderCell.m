@@ -6,7 +6,6 @@
 #import "ProfilViewController.h"
 #import "YasoundAppDelegate.h"
 #import "YasoundSessionManager.h"
-//#import "WallListenersViewController.h"
 #import "RadioListTableViewController.h"
 
 @implementation WallHeaderCell
@@ -21,7 +20,6 @@
 @synthesize headerListeners;
 @synthesize headerButtonFavorites;
 @synthesize headerButtonListeners;
-//@synthesize headerButtonLabel;
 
 
 - (void)awakeFromNib
@@ -50,7 +48,6 @@
 
     self.headerButtonFavorites.enabled = NO;
     self.headerButtonListeners.enabled = YES;
-//    self.headerButtonLabel.text = @"-";
     self.headerIconFavorite.hidden = YES;
 
     NSString* str = URL_RADIOS_FAVORITES;
@@ -78,13 +75,11 @@
     {
         self.headerIconFavorite.hidden = NO;
         self.headerButtonFavorites.selected = YES;
-//        self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.remove", nil);
     }
     else
     {
         self.headerIconFavorite.hidden = YES;
         self.headerButtonFavorites.selected = NO;
-//        self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.add", nil);
     }
     
     [[YasoundDataProvider main] setRadio:self.radio asFavorite:mustBeFavorite target:self action:@selector(favoriteUpdated:success:)];
@@ -111,8 +106,6 @@
             self.isFavorite = YES;
             self.headerIconFavorite.hidden = NO;
             
-//            self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.remove", nil);
-
             // and clear the cache for favorites
             NSString* url = URL_RADIOS_FAVORITES;
             [[YasoundDataCache main] clearRadios:url];
@@ -132,8 +125,6 @@
         self.headerButtonFavorites.selected = NO;
     }
     self.headerIconFavorite.hidden = YES;
-    
-//    self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.add", nil);
 }
 
 
@@ -156,12 +147,6 @@
 
 
 - (IBAction)onListenersClicked:(id)sender {
-    
-//    WallListenersViewController* view = [[WallListenersViewController alloc] initWithNibName:@"WallListenersViewController" bundle:nil onRadio:self.radio];
-//    [APPDELEGATE.navigationController pushViewController:view animated:YES];
-//    [view release];
-
-//    CGRect frame = self.view.frame;
     
     [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(onCurrentUsersReceived:info:)];
 

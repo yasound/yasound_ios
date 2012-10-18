@@ -16,12 +16,6 @@
 #import "YasoundSessionManager.h"
 
 
-//#define SECTIONS_COUNT 4
-//#define SECTION_PROFIL 0
-//#define SECTION_MYRADIOS 1
-//#define SECTION_FAVORITES 2
-//#define SECTION_FRIENDS 3
-
 @interface ProfilViewController ()
 
 @end
@@ -47,9 +41,7 @@
 @synthesize profil;
 @synthesize hd;
 
-//@synthesize buttonGray;
 @synthesize buttonBlue;
-//@synthesize buttonGrayLabel;
 @synthesize buttonFollow;
 @synthesize buttonBlueLabel;
 @synthesize followed;
@@ -161,17 +153,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-//    if (self.user)
-//    {
-//        [self userReceived:self.user info:nil];
-//        return;
-//    }
-//    
-//    if ([YasoundSessionManager main].registered)
-//        [[YasoundDataProvider main] userWithId:self.userId target:self action:@selector(userReceived:info:)];
-//    else
-//        [[YasoundDataProvider main] userWithUsername:self.modelUsername target:self action:@selector(publicUserReceived:success:)];
 }
 
 
@@ -281,7 +262,6 @@
     if (!enable)
         alpha = 0.5;
     self.buttonFollow.alpha = alpha;
-//    self.buttonGrayLabel.alpha = alpha;
 }
 
 - (void)enableSendMessage:(BOOL)enable
@@ -297,14 +277,11 @@
 - (void)setFollowButtonToFollow
 {
     [self.buttonFollow setThemeRef:@"darkGray" title:NSLocalizedString(@"Profil.follow", nil)];
-//    self.buttonFollowLabel.text = NSLocalizedString(@"Profil.follow", nil);
 }
 
 - (void)setFollowButtonToUnfollow
 {
     [self.buttonFollow setThemeRef:@"darkGray" title:NSLocalizedString(@"Profil.unfollow", nil)];
-
-//    self.buttonGrayLabel.text = NSLocalizedString(@"Profil.unfollow", nil);
 }
 
 
@@ -395,174 +372,6 @@
 
 
 
-//
-//
-//
-//#pragma mark - Table view data source
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return SECTIONS_COUNT;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return 1;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//    if (section == SECTION_PROFIL)
-//        return 0;
-//    
-//    return 33;
-//}
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    if (section == SECTION_PROFIL)
-//        return nil;
-//    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Profil.section" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UIImageView* view = [sheet makeImage];
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"Profil.sectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UILabel* label = [sheet makeLabel];
-//    [view addSubview:label];
-//
-//
-//    if (section == SECTION_MYRADIOS)
-//        label.text = NSLocalizedString(@"Profil.section.myRadios", nil);
-//    else if (section == SECTION_FAVORITES)
-//        label.text = NSLocalizedString(@"Profil.section.favorites", nil);
-//    else if (section == SECTION_FRIENDS)
-//        label.text = NSLocalizedString(@"Profil.section.friends", nil);
-//    
-//    if ((section == SECTION_FAVORITES) || (section == SECTION_FRIENDS))
-//        if (![YasoundSessionManager main].registered)
-//            view.alpha = 0.5;
-//    
-//    return view;
-//}
-//
-//
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (indexPath.section == SECTION_PROFIL)
-//        return;
-//
-//    UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"profilRowBkg.png"]];
-//    cell.backgroundView = view;
-//    [view release];
-//}
-//
-//
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (indexPath.section == SECTION_PROFIL)
-//        return 91.f;
-//    return 104.f;
-//}
-//
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (indexPath.section == SECTION_PROFIL)
-//        return self.cellProfil;
-//    
-//    static NSString* cellIdentifier = @"ProfilTableViewCell";
-//    
-//    NSArray* items = nil;
-//    
-//    if (indexPath.section == SECTION_MYRADIOS)
-//        items = self.radios;
-//    else if (indexPath.section == SECTION_FAVORITES)
-//        items = self.favorites;
-//    else if (indexPath.section == SECTION_FRIENDS)
-//        items = self.friends;
-//    
-//    
-//    ProfilTableViewCell* cell = (ProfilTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//    
-//    if (cell == nil)
-//    {    
-//        cell = [[ProfilTableViewCell alloc] initWithFrame:CGRectMake(0,0, 320, 104) reuseIdentifier:cellIdentifier items:items target:self action:@selector(onItemClicked:)];
-//    }
-//    else
-//    {
-//        [cell updateWithItems:items];
-//    }
-//    
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    
-//    return cell;
-//}
-//
-//- (void)onItemClicked:(id)item
-//{
-//    if ([item isKindOfClass:[Radio class]])
-//    {
-//        Radio* radio = item;
-//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
-//        return;
-//    }
-//
-//    if ([item isKindOfClass:[User class]])
-//    {
-//        User* user = item;
-//        //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_PROFIL object:user];
-//        return;
-//    }
-//}
-//
-///*
-// // Override to support conditional editing of the table view.
-// - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-// {
-// // Return NO if you do not want the specified item to be editable.
-// return YES;
-// }
-// */
-//
-///*
-// // Override to support editing the table view.
-// - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-// {
-// if (editingStyle == UITableViewCellEditingStyleDelete) {
-// // Delete the row from the data source
-// [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-// }   
-// else if (editingStyle == UITableViewCellEditingStyleInsert) {
-// // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-// }   
-// }
-// */
-//
-///*
-// // Override to support rearranging the table view.
-// - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-// {
-// }
-// */
-//
-///*
-// // Override to support conditional rearranging of the table view.
-// - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-// {
-// // Return NO if you do not want the item to be re-orderable.
-// return YES;
-// }
-// */
-//
-
-
-
-
-
-
-
-
 - (IBAction)onButtonGrayClicked:(id)sender
 {
     [self.buttonFollow setEnabled:NO];
@@ -622,11 +431,6 @@
 
 
 #pragma mark - TopBarDelegate
-
-//- (BOOL)topBarItemClicked:(TopBarItemId)itemId
-//{
-//}
-
 
 
 

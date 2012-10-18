@@ -16,7 +16,6 @@
 @property (nonatomic, retain) IBOutlet UILabel* headerListeners;
 @property (nonatomic, retain) IBOutlet UIButton* headerButtonFavorites;
 @property (nonatomic, retain) IBOutlet UIButton* headerButtonListeners;
-//@property (nonatomic, retain) IBOutlet UILabel* headerButtonLabel;
 
 - (void)setHeaderRadio:(Radio*)radio;
 - (void)setListeners:(NSInteger)nbListeners;

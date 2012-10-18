@@ -219,19 +219,6 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
         [cell updateWithRadio:radio target:self editing:editing];
         
-//        if (_tokens < NB_TOKENS) {
-//            _tokens++;
-
-//        if (_firstTime)
-//            cell.alpha = 0;
-//            [UIView beginAnimations:nil context:NULL];
-//            [UIView setAnimationDelay:_tokens * 0.2];
-//            [UIView setAnimationDelay:0.33];
-//            cell.alpha = 1;
-//            [UIView commitAnimations];
-//            
-//        }
-        
         return cell;
     }
     
@@ -244,8 +231,6 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-            //LBDEBUG TEMPORARLY
-//            BOOL perm_geo_create_radio = [[YasoundDataProvider main].user permission:PERM_GEOCREATERADIO];
             BOOL perm_geo_create_radio = YES;
             if (perm_geo_create_radio)
             {
@@ -278,68 +263,11 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
             
         }
         
-//        if ((self.radios.count < 3) && (_tokens < NB_TOKENS)) {
-//            _tokens++;
-//            
-//            cell.alpha = 0;
-//            [UIView beginAnimations:nil context:NULL];
-//            [UIView setAnimationDelay:_tokens * 0.2];
-//            [UIView setAnimationDelay:0.33];
-//            cell.alpha = 1;
-//            [UIView commitAnimations];
-//            
-//        }
-
-        
         return cell;
     }
     
     return nil;
 }
-
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-
-
-
 
 
 
@@ -412,18 +340,10 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 #pragma mark - TopBarDelegate
 
-//- (BOOL)topBarItemClicked:(TopBarItemId)itemId
-//{
-//}
-
 
 
 - (void)onCreateButtonClicked:(id)sender
 {
-//    SettingsViewController* view = [[SettingsViewController alloc] createWithNibName:@"SettingsViewController" bundle:nil];
-//    [APPDELEGATE.navigationController pushViewController:view animated:YES];
-//    [view release];
-    
     CreateRadioViewController* view = [[CreateRadioViewController alloc] initWithNibName:@"CreateRadioViewController" bundle:nil];
     [APPDELEGATE.navigationController pushViewController:view animated:YES];
     [view release];

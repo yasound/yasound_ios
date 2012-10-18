@@ -30,69 +30,15 @@
 @synthesize metric1;
 @synthesize metric2;
 @synthesize metric1sub;
-//@synthesize metric2sub;
-//@synthesize buttonSettings;
 @synthesize metric2Background;
 @synthesize buttonDelete;
 
 
 
-//+ (UINib*)nib
-//{
-////    // singleton implementation to get a UINib object
-////    static dispatch_once_t pred = 0;
-////    __strong static UINib* _sharedNibObject = nil;
-////    dispatch_once(&pred, ^{
-////        _sharedNibObject = [UINib nibWithNibName:NSStringFromClass([self class]) bundle:nil];
-////    });
-////    return _sharedNibObject;
-//    
-//    static UINib *nib;
-//    static dispatch_once_t once;
-//    dispatch_once(&once, ^{
-//        nib = [UINib nibWithNibName:@"MyRadiosTableViewCell" bundle:nil];
-//    });
-//    return nib;
-//}
-//
-//- (NSString *)reuseIdentifier
-//{
-//    return [[self class] reuseIdentifier];
-//}
-//
-//+ (NSString *)reuseIdentifier
-//{
-//    // return any identifier you like, in this case the class name
-////    return NSStringFromClass([self class]);
-//    return (NSString *)@"MyRadiosTableViewCell";
-//}
-
-//- (id)initWithOwner:(id)owner target:(id)target radio:(Radio*)radio;
-//{
-//    UINib* myNib = [[self class] nib];
-//    
-//    
-//    NSArray* myArray = [myNib instantiateWithOwner:owner options:nil];
-//    NSLog(@"%@", myArray);
-//    id object =  [myArray objectAtIndex:0];
-//    
-//
-//    [self updateWithRadio:radio];
-//    
-//    return object;
-//}
-
-
-//- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)reuseIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
-//{
-//    if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier])
-//    {
 - (void)awakeFromNib
 {
         self.metric1sub.text = NSLocalizedString(@"MyRadios.metric1.sublabel", nil);
-//        self.metric2sub.text = NSLocalizedString(@"MyRadios.metric2.sublabel", nil);
     
-        
         UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight)] autorelease];
         swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
         [self.container addGestureRecognizer:swipeRight];
@@ -102,10 +48,6 @@
         [self.container addGestureRecognizer:swipeLeft];
     
 }
-//    }
-//
-//    return self;
-//}
 
 
 
@@ -151,21 +93,6 @@
 
 
 
-
-//- (void)willMoveToSuperview:(UIView *)newSuperview 
-//{
-//    [super willMoveToSuperview:newSuperview];
-//    if(!newSuperview) 
-//    {
-//        if (self.image)
-//            [self.image releaseCache];
-//    }
-//}
-
-
-
-
-
 - (void)dealloc
 {
   [super dealloc];
@@ -187,13 +114,6 @@
 
 - (IBAction)onSettingsClicked:(id)sender
 {
-//    DLog(@"settings clicked for radio : %@", [self.radio toString]);
-//    
-//
-//    _sheetTools = [[UIActionSheet alloc] initWithTitle:self.radio.name delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Radio.sheet.button.programming", nil), NSLocalizedString(@"Radio.sheet.button.broadcast", nil), NSLocalizedString(@"Radio.sheet.button.settings", nil), nil];
-//    _sheetTools.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-//    [_sheetTools showInView:self.superview];
-//    [_sheetTools release];
     [self.delegate myRadioRequestedSettings:self.radio];
 }
 
@@ -210,61 +130,6 @@
 }
 
 
-
-
-
-//#pragma mark - ActionSheet Delegate
-//
-//
-//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//    if (actionSheet == _sheetTools)
-//    {
-//        if (buttonIndex == 0)
-//        {
-//            [self.delegate myRadioRequestedProgramming:self.radio];
-//            return;
-//        }
-//        else if (buttonIndex == 1)
-//        {
-//            [self.delegate myRadioRequestedBroadcast:self.radio];
-//            return;
-//        }
-//        else if (buttonIndex == 2)
-//        {
-//            [self.delegate myRadioRequestedSettings:self.radio];
-//            return;
-//        }
-//    }
-//}
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-//- (void)initEditView
-//{
-//    BundleStylesheet* sheet;
-//    
-//    // button delete
-//    sheet = [[Theme theme] stylesheetForKey:@"MyRadios.delete" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    self.buttonDelete = [sheet makeButton];
-//    self.buttonDelete.frame = CGRectMake(self.frame.size.width, self.buttonSettings.frame.origin.y, self.buttonDelete.frame.size.width, self.buttonDelete.frame.size.height);
-//    [self.container addSubview:self.buttonDelete];
-//
-//    [self.buttonDelete addTarget:self action:@selector(onButtonDeleteClicked:) forControlEvents:UIControlEventTouchUpInside];
-//    
-//}
 
 
 
@@ -289,11 +154,6 @@ static const CGFloat kSpringRestingHeight = 4;
 
 - (void)activateEditModeAnimated:(BOOL)animated
 {
-    //    if ([self.wallEvent editing])
-    //        return;
-    
-//    [self initEditView];
-    
     self.offset = 80;
     
     CGRect cellFrameDst = CGRectMake(0 - offset, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
@@ -319,9 +179,6 @@ static const CGFloat kSpringRestingHeight = 4;
 
 - (void)deactivateEditModeAnimated:(BOOL)animated silent:(BOOL)silent
 {
-    //    if (!self.wallEvent.editing)
-    //        return;
-    
     CGRect cellFrameDst = CGRectMake(0, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
     
     
@@ -341,7 +198,6 @@ static const CGFloat kSpringRestingHeight = 4;
 
 #define ANIMATION_DURATION 0.1
 
-//- (void) bounceAnimationTo:(CGFloat)destX
 - (void) bounceAnimationTo:(CGRect)destFrame endAction:(SEL)endAction
 {
     [UIView beginAnimations:nil context:NULL];
@@ -353,7 +209,6 @@ static const CGFloat kSpringRestingHeight = 4;
         [UIView setAnimationDidStopSelector:endAction];
     }
     self.container.frame = destFrame;
-    //self.cellEditView.frame = CGRectMake(destFrame.origin.x + destFrame.size.width, self.cellEditView.frame.origin.y, self.cellEditView.frame.size.width, self.cellEditView.frame.size.height);
     [UIView commitAnimations];
     
     CABasicAnimation *bounceAnimation = [CABasicAnimation animationWithKeyPath:@"position.x"];
@@ -372,18 +227,11 @@ static const CGFloat kSpringRestingHeight = 4;
 - (void)bounceAnimationDidEnd:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
     [self.buttonDelete addTarget:self action:@selector(onDeleteClicked:) forControlEvents:UIControlEventTouchUpInside];
-    //    if (self.cellEditView != nil)
-    //    {
-    //        [self.cellEditView removeFromSuperview];
-    //        self.cellEditView = nil;
-    //    }
 }
 
 
 - (void)onSwipeLeftStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
-    //    [self.buttonDelete removeFromSuperview];
-    //    self.buttonDelete = nil;
 }
 
 

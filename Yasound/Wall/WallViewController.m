@@ -291,13 +291,6 @@
         _timerUpdate = nil;
     }
     
-    // clean running requests
-//    for (ASIHTTPRequest* req in self.requests)
-//    {
-//        [req release];
-//    }
-//    self.requests = nil;
-    
 }
 
 
