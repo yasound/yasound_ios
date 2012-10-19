@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1536</int>
-		<string key="IBDocument.SystemVersion">12C54</string>
+		<string key="IBDocument.SystemVersion">12C60</string>
 		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
@@ -443,41 +443,49 @@
 						<int key="objectID">137</int>
 						<reference key="object" ref="87830494"/>
 						<reference key="parent" ref="620316837"/>
+						<string key="objectName">facebook button</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">140</int>
 						<reference key="object" ref="979615432"/>
 						<reference key="parent" ref="620316837"/>
+						<string key="objectName">background image</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">141</int>
 						<reference key="object" ref="925192010"/>
 						<reference key="parent" ref="620316837"/>
+						<string key="objectName">facebook button label</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">142</int>
 						<reference key="object" ref="120389532"/>
 						<reference key="parent" ref="620316837"/>
+						<string key="objectName">twitter Button</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">145</int>
 						<reference key="object" ref="741069440"/>
 						<reference key="parent" ref="620316837"/>
+						<string key="objectName">yasound button label</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">146</int>
 						<reference key="object" ref="162292384"/>
 						<reference key="parent" ref="620316837"/>
+						<string key="objectName">no account yet?</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">143</int>
 						<reference key="object" ref="94336076"/>
 						<reference key="parent" ref="620316837"/>
+						<string key="objectName">twitter button label</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">144</int>
 						<reference key="object" ref="814006387"/>
 						<reference key="parent" ref="620316837"/>
+						<string key="objectName">yasound button</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">196</int>
@@ -489,6 +497,7 @@
 						<int key="objectID">197</int>
 						<reference key="object" ref="599785467"/>
 						<reference key="parent" ref="620316837"/>
+						<string key="objectName">yasound logo</string>
 					</object>
 				</array>
 			</object>

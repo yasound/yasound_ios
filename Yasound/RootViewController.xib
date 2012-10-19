@@ -41,7 +41,6 @@
 						<string key="NSFrameSize">{320, 460}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:567</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -114,6 +113,7 @@
 						<int key="objectID">4</int>
 						<reference key="object" ref="438911950"/>
 						<reference key="parent" ref="191373211"/>
+						<string key="objectName">background image</string>
 					</object>
 				</array>
 			</object>
