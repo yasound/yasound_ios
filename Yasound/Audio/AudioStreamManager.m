@@ -89,7 +89,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     if (radio == nil)
         return;
 
-    if (!_reseting && (_gAudioStreamer && [radio.id intValue]  == [self.currentRadio.id intValue]))
+    if (!_reseting && (_gAudioStreamer && ([radio.id intValue]  == [self.currentRadio.id intValue])))
         return;
     
     _isPaused = NO;
