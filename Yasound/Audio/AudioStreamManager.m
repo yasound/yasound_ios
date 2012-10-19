@@ -63,6 +63,9 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 - (void)startRadio:(Radio*)radio
 {
+    if (radio == nil)
+        return;
+
     if ((_streamErrorTimer != nil) && [_streamErrorTimer isValid])
     {
         [_streamErrorTimer invalidate];
@@ -83,6 +86,9 @@ static AudioStreamer* _gAudioStreamer = nil;
 //    return;
 //#endif
     
+    if (radio == nil)
+        return;
+
     if (!_reseting && (_gAudioStreamer && [radio.id intValue]  == [self.currentRadio.id intValue]))
         return;
     
@@ -301,6 +307,9 @@ static AudioStreamer* _gAudioStreamer = nil;
     DLog(@"onAudioStreamMyReset");
     
     Radio* radio = self.currentRadio;
+    if (radio == nil)
+        return;
+    
     _reseting = YES;
     
     [self _startRadio:radio];
