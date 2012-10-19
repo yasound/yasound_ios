@@ -298,9 +298,22 @@
 
     for (NSString* songKey in songs) {
         
+        
         SongLocal* song = [[SongLocalCatalog main].songsDb objectForKey:songKey];
-        assert(song);
-        assert([song isKindOfClass:[SongLocal class]]);
+        if (song == nil) {
+            
+            DLog(@"updateItemsWithSongs error : could not find any song with songKey '%@'", songKey);
+            assert(0);
+            continue;
+        }
+        
+        if (![song isKindOfClass:[SongLocal class]]) {
+            
+            DLog(@"updateItemsWithSongs error : song is not of expected class SongLocal '%@'", songKey);
+            assert(0);
+            continue;
+        }
+
         
         Song* matchedSong = [[SongRadioCatalog main].matchedSongs objectForKey:songKey];
         
