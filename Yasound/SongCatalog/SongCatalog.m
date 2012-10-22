@@ -209,8 +209,6 @@
             assert(songKey);
             Song* song = [self.songsDb objectForKey:songKey];
             
-            //LBDEBUG ICI ANTIBUG POSSIBLE
-            
             assert(song);
             [results addObject:song];
         }
@@ -313,12 +311,6 @@
         // get cache
         NSString* cacheKey = [NSString stringWithFormat:@"albumsForArtist|%@|withGenre|%@", artist, genre];
 
-        //LBDEBUG ICI
-        DLog(@"\n\n\n\nCACHEKEY '%@'", cacheKey);
-        DLog(@"self.catalogCache.count %d", self.catalogCache.count);
-//        DLog(@"%@", self.catalogCache);
-        ////////////////////
-        
         NSArray* cache = [self.catalogCache objectForKey:cacheKey];
         if (cache != nil)
             return cache;
@@ -353,12 +345,6 @@
 
         // get cache
         NSString* cacheKey = [NSString stringWithFormat:@"albumsForArtist|%@|withPlaylist|%@", artist, playlist];
-
-        //LBDEBUG ICI
-        DLog(@"\n\n\n\nCACHEKEY '%@'", cacheKey);
-        DLog(@"self.catalogCache.count %d", self.catalogCache.count);
-//        DLog(@"%@", self.catalogCache);
-        ////////////////////
 
         NSArray* cache = [self.catalogCache objectForKey:cacheKey];
         if (cache != nil)

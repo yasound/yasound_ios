@@ -210,9 +210,7 @@
         nbSongs = songs.count;
         
         //LBDEBUG ICI
-        if (nbSongs == 0)
-            DLog(@"assert");
-            ///////////////////
+        assert(nbSongs != 0);
         
     }
 
@@ -228,9 +226,7 @@
         nbSongs = songs.count;
 
         //LBDEBUG ICI
-        if (nbSongs == 0)
-            DLog(@"assert");
-        ///////////////////
+        assert(nbSongs != 0);
 
     }
     
@@ -246,9 +242,7 @@
         nbSongs = songs.count;
 
         //LBDEBUG ICI
-        if (nbSongs == 0)
-            DLog(@"assert");
-        ///////////////////
+        assert(nbSongs != 0);
     }
     
     
