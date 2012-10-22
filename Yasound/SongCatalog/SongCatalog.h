@@ -36,24 +36,24 @@ typedef enum {
 
 
 
-@property (nonatomic) BOOL isInCache;
+@property (atomic) BOOL isInCache;
 
-@property (nonatomic, retain) NSMutableArray* indexMap; // "-", "A", "B", ...
+@property (atomic, retain) NSMutableArray* indexMap; // "-", "A", "B", ...
 
 
 // cache
 
-@property (nonatomic, retain) NSMutableDictionary* songsDb;
-@property (nonatomic, retain) NSMutableDictionary* catalogCache;
+@property (atomic, retain) NSMutableDictionary* songsDb;
+@property (atomic, retain) NSMutableDictionary* catalogCache;
 
 
 
-@property (nonatomic, retain) NSString* selectedArtist;
-@property (nonatomic, retain) NSString* selectedArtistIndexChar;
-@property (nonatomic, retain) NSString* selectedAlbum;
+@property (atomic, retain) NSString* selectedArtist;
+@property (atomic, retain) NSString* selectedArtistIndexChar;
+@property (atomic, retain) NSString* selectedAlbum;
 
-@property (nonatomic, retain) NSString* selectedGenre;
-@property (nonatomic, retain) NSString* selectedPlaylist;
+@property (atomic, retain) NSString* selectedGenre;
+@property (atomic, retain) NSString* selectedPlaylist;
 
 
 + (NSString*)catalogKeyOfSong:(NSString*)name artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;

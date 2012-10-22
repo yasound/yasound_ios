@@ -11,8 +11,8 @@
 
 @interface SongLocalCatalog : SongCatalog
 
-@property (nonatomic, assign) id target;
-@property (nonatomic) SEL action;
+@property (atomic, assign) id target;
+@property (atomic) SEL action;
 
 
 
