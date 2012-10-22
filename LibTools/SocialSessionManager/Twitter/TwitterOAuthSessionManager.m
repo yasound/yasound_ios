@@ -413,8 +413,10 @@
 {
     if (data == nil)
         DLog(@"onTwitterCredentialsRetrieved data nil!");
+    else if (data.length == 0)
+        DLog(@"onTwitterCredentialsRetrieved data empty!");
     
-    BOOL res = (data != nil);
+    BOOL res = ((data != nil) && (data.length > 0));
     [self.delegate sessionDidLogin:res];
 }
 

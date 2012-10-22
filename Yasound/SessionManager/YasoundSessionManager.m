@@ -935,10 +935,11 @@ static YasoundSessionManager* _main = nil;
     NSString* twitter_screen_name = [dico objectForKey:@"twitter_screen_name"];
     NSString* twitter_uid = [dico objectForKey:@"twitter_uid"];
     
-    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
-    NSString* twitter_data = [SFHFKeychainUtils getPasswordForUsername:twitter_username andServiceName:BundleName error:nil];
-    if (twitter_username != nil)
+    if ((twitter_username != nil) && (twitter_screen_name != nil) && (twitter_uid != nil)) {
+        NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+        NSString* twitter_data = [SFHFKeychainUtils getPasswordForUsername:twitter_username andServiceName:BundleName error:nil];
         [self importTwitterData:twitter_username screen_name:twitter_screen_name uid:twitter_uid withData:twitter_data];
+    }
     
     // import yasound
     dico = [_dico objectForKey:@"yasound"];
@@ -953,8 +954,9 @@ static YasoundSessionManager* _main = nil;
     DLog(@"writeUserIdentity from user");
     if (user.facebook_token)
         [self importFacebookData:user.facebook_token facebook_expiration_date:user.facebook_expiration_date];
-    if (user.twitter_token)
+    if ((user.twitter_token != nil) && (user.twitter_token_secret != nil) && (user.twitter_uid != nil) && (user.twitter_username != nil)) {
         [self importTwitterData:user.twitter_token token_secret:user.twitter_token_secret user_id:user.twitter_uid screen_name:user.twitter_username];
+    }
     if (user.yasound_email)
         [self importYasoundData:user.yasound_email];
     

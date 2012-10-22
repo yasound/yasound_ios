@@ -281,6 +281,8 @@
 
 - (void)onMessagePosted:(NSHTTPURLResponse*)urlResponse
 {
+    DLog(@"onMessagePoste : statusCode %d", [urlResponse statusCode]);
+    
   if ([urlResponse statusCode] == 200)
     [self.delegate requestDidLoad:SRequestPostMessage data:nil];
   else

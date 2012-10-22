@@ -14,7 +14,6 @@
 #import "Version.h"
 #import "ActivityAlertView.h"
 
-// the following is activated, 'til we get the reverse auth enabled by twitter
 #define FORCE_OAUTH_LIB 1
 
 

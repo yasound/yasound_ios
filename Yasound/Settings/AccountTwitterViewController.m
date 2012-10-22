@@ -161,10 +161,11 @@
         else
             message = NSLocalizedString(@"AccountsView_alert_user_incorrect", nil);
         
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];  
-        return;    
+        //LBDEBUG ICI
+//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [av show];
+//        [av release];  
+        return;
     }
     
     
