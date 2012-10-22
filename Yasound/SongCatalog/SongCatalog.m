@@ -11,7 +11,7 @@
 #import "DataBase.h"
 
 
-#define DB_LOG 1
+//#define DB_LOG 1
 
 @implementation SongCatalog
 
@@ -402,20 +402,13 @@
     @synchronized(self) {
         NSMutableArray* results = [NSMutableArray array];
         
-    //#ifdef DB_LOG
-    //    DLog(@"\n\nDB table '%@'  param '%@' (%@)    param '%@' (%@)", table, artist, [artist class], genre, [genre class]);
-    //#endif
-
-        //LBDEBUG ICI
        FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT songKey FROM localCatalog WHERE artistKey=? AND genre=? ORDER BY name", artist, genre];
-       //FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT songKey FROM localCatalog WHERE artistKey=? AND genre=? ORDER BY name", @"TEST", @"TEST"];
         
         
-        
-    //#ifdef DB_LOG
-    //    DLog(@"\nDB songsForArtist cacheKey '%@'", cacheKey);
-    //    DLog(@"DB request '%@'   param '%@' (%@)    param '%@' (%@)", [s query], artist, [artist class], genre, [genre class]);
-    //#endif
+    #ifdef DB_LOG
+        DLog(@"\nDB songsForArtist cacheKey '%@'", cacheKey);
+        DLog(@"DB request '%@'   param '%@' (%@)    param '%@' (%@)", [s query], artist, [artist class], genre, [genre class]);
+    #endif
         
         while ([s next])
         {
