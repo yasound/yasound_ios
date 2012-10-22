@@ -80,6 +80,26 @@
 }
 
 
+- (void)setTitle {
+    
+    NSInteger nb = [SongLocalCatalog main].songsDb.count;
+    
+    NSString* str = nil;
+    
+    if (nb == 0)
+        str = NSLocalizedString(@"ProgrammingLocal_subtitle_count_0", nil);
+    else if (nb == 1)
+        str = NSLocalizedString(@"ProgrammingLocal_subtitle_count_1", nil);
+    else {
+        str = NSLocalizedString(@"ProgrammingLocal_subtitle_count_n", nil);
+        str = [NSString stringWithFormat:str, nb];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGRAMMING_TITLE object:str];
+}
+
+
+
 
 - (void)viewDidUnload
 {
@@ -143,6 +163,8 @@
     NSInteger count = [SongLocalCatalog main].songsDb.count;
     
     DLog(@"%d available songs", count);
+    
+    [self setTitle];
     
     if (count == 0) {
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:NO error:nil];

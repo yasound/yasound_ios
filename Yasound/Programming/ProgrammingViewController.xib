@@ -350,7 +350,6 @@
 								<string key="NSFrame">{{276, 5}, {32, 32}}</string>
 								<reference key="NSSuperview" ref="21500177"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -469,6 +468,22 @@
 						<reference key="destination" ref="102279078"/>
 					</object>
 					<int key="connectionID">102</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">topbarTitle</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="807291950"/>
+					</object>
+					<int key="connectionID">103</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">topbarSubtitle</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="411100301"/>
+					</object>
+					<int key="connectionID">104</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -696,7 +711,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">102</int>
+			<int key="maxID">104</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -713,6 +728,8 @@
 						<string key="_titleLabel">UILabel</string>
 						<string key="container">UIView</string>
 						<string key="topbar">TopBarBackAndTitle</string>
+						<string key="topbarSubtitle">UILabel</string>
+						<string key="topbarTitle">UILabel</string>
 						<string key="wheelSelector">WheelSelectorRadios</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -751,6 +768,14 @@
 						<object class="IBToOneOutletInfo" key="topbar">
 							<string key="name">topbar</string>
 							<string key="candidateClassName">TopBarBackAndTitle</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="topbarSubtitle">
+							<string key="name">topbarSubtitle</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="topbarTitle">
+							<string key="name">topbarTitle</string>
+							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="wheelSelector">
 							<string key="name">wheelSelector</string>

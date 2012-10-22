@@ -184,11 +184,26 @@
 
 "PlaylistsViewController_FetchingPlaylists" = "Chargement";
 
+//"ProgrammingRadio_subtitle_count_0" = "aucun morceau programmé";
+//"ProgrammingRadio_subtitle_count_1" = "1 morceau programmé";
+//"ProgrammingRadio_subtitle_count_n" = "%d morceaux programmés";
+//
+//"ProgrammingLocal_subtitle_count_0" = "pas de morceau disponible";
+//"ProgrammingLocal_subtitle_count_1" = "1 morceau disponible";
+//"ProgrammingLocal_subtitle_count_n" = "%d morceaux disponibles";
+
+
+"ProgrammingRadio_subtitle_count_0" = "aucun morceau";
+"ProgrammingRadio_subtitle_count_1" = "1 morceau";
+"ProgrammingRadio_subtitle_count_n" = "%d morceaux";
+
+"ProgrammingLocal_subtitle_count_0" = "pas de morceau";
+"ProgrammingLocal_subtitle_count_1" = "1 morceau";
+"ProgrammingLocal_subtitle_count_n" = "%d morceaux";
+
+
 "ProgrammingView_title" = "Programmation";
 "ProgrammingView_subtitle" = "synchronisation...";
-"ProgrammingView_subtitled_count_0" = "aucun morceau";
-"ProgrammingView_subtitled_count_1" = "1 morceau";
-"ProgrammingView_subtitled_count_n" = "%d morceaux";
 "ProgrammingView_error_title" = "Synchronisation";
 "ProgrammingView_error_message" = "une erreur est survenue pendant la synchronisation.";
 "ProgrammingView_error_no_playlist_message" = "une erreur est survenue : aucune playlist n'a été détectée.";
@@ -275,9 +290,6 @@
 "SongAddView_alert" = "Chargement";
 "SongAddView_added" = "Ajouté à la file de téléchargement";
 "SongAddView_subtitle" = "chargement...";
-"SongAddView_subtitled_count_0" = "pas de morceau disponible";
-"SongAddView_subtitled_count_1" = "1 morceau disponible";
-"SongAddView_subtitled_count_n" = "%d morceaux disponibles";
 "SongAddView_segment_titles" = "Titres";
 "SongAddView_segment_artists" = "Artistes";
 "SongAddView_segment_server" = "Serveur";

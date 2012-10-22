@@ -170,11 +170,30 @@
 
 "PlaylistsViewController_FetchingPlaylists" = "Synchronizing playlists";
 
+
+//"ProgrammingRadio_subtitle_count_0" = "no programmed song";
+//"ProgrammingRadio_subtitle_count_1" = "1 programmed song";
+//"ProgrammingRadio_subtitle_count_n" = "%d programmed songs";
+//
+//"ProgrammingLocal_subtitle_count_0" = "no song available";
+//"ProgrammingLocal_subtitle_count_1" = "1 song available";
+//"ProgrammingLocal_subtitle_count_n" = "%d songs available";
+
+
+
+
+
+"ProgrammingRadio_subtitle_count_0" = "no song";
+"ProgrammingRadio_subtitle_count_1" = "1 song";
+"ProgrammingRadio_subtitle_count_n" = "%d songs";
+
+"ProgrammingLocal_subtitle_count_0" = "no song";
+"ProgrammingLocal_subtitle_count_1" = "1 song";
+"ProgrammingLocal_subtitle_count_n" = "%d songs";
+
+
 "ProgrammingView_title" = "Programming";
 "ProgrammingView_subtitle" = "synchronization...";
-"ProgrammingView_subtitled_count_0" = "no song";
-"ProgrammingView_subtitled_count_1" = "1 song";
-"ProgrammingView_subtitled_count_n" = "%d songs";
 "ProgrammingView_error_title" = "Synchronization";
 "ProgrammingView_error_message" = "An error happened during the synchronization.";
 "ProgrammingView_error_no_playlist_message" = "An error happened: no playlist has been downloaded.";
@@ -263,9 +282,6 @@
 "SongAddView_alert" = "building list...";
 "SongAddView_added" = "added to the upload pending list!";
 "SongAddView_subtitle" = "loading...";
-"SongAddView_subtitled_count_0" = "no song available";
-"SongAddView_subtitled_count_1" = "1 song available";
-"SongAddView_subtitled_count_n" = "%d songs available";
 "SongAddView_segment_titles" = "titles";
 "SongAddView_segment_artists" = "artists";
 "SongAddView_segment_server" = "server";

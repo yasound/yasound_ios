@@ -79,6 +79,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoved:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifProgrammingTitle:) name:NOTIF_PROGRAMMING_TITLE object:nil];
     
     [_radioSegment setTitle:NSLocalizedString(@"Programming.segment.titles", nil) forSegmentAtIndex:0];
     [_radioSegment setTitle:NSLocalizedString(@"Programming.segment.artists", nil) forSegmentAtIndex:1];
@@ -162,7 +163,11 @@
 }
 
 
-
+- (void)onNotifProgrammingTitle:(NSNotification*)notif {
+    
+    NSString* title = notif.object;
+    self.topbarSubtitle.text = title;
+}
 
 
 
@@ -214,6 +219,10 @@
         [self.viewController release];
         self.viewController = nil;
     }
+    
+    self.topbarTitle.text = @"";
+    self.topbarSubtitle.text = @"";
+    
 
     if (itemIndex == PROGRAMMING_WHEEL_ITEM_LOCAL)
     {
@@ -223,6 +232,9 @@
         
         ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio withSegmentIndex:_localSegment.selectedSegmentIndex];
         self.viewController = view;
+        
+//        self.topbarTitle.text = @"";
+//        self.topbarSubtitle.text = [view title];
     }
     else if (itemIndex == PROGRAMMING_WHEEL_ITEM_RADIO)
     {
@@ -232,6 +244,9 @@
 
         ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
         self.viewController = view;
+
+//        self.topbarTitle.text = @"";
+//        self.topbarSubtitle.text = [view title];
     }
     else if (itemIndex == PROGRAMMING_WHEEL_ITEM_UPLOADS)
     {
@@ -241,6 +256,9 @@
 
         ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
         self.viewController = view;
+
+//        self.topbarTitle.text = @"";
+//        self.topbarSubtitle.text = @"";
     }
     else if (itemIndex == PROGRAMMING_WHEEL_ITEM_YASOUND_SERVER)
     {
@@ -250,7 +268,10 @@
         
         ProgrammingSearchYasoundViewController* view = [[ProgrammingSearchYasoundViewController alloc] initWithNibName:@"ProgrammingSearchYasoundViewController" bundle:nil andRadio:self.radio];
         self.viewController = view;
-    }
+
+//        self.topbarTitle.text = @"";
+//        self.topbarSubtitle.text = @"";
+}
     
     
     if ([self.viewController isKindOfClass:[UITableViewController class]])

@@ -88,6 +88,25 @@
 }
 
 
+- (void)setTitle {
+    
+    NSInteger nb = [SongRadioCatalog main].matchedSongs.count;
+    
+    NSString* str = nil;
+    
+    if (nb == 0)
+        str = NSLocalizedString(@"ProgrammingRadio_subtitle_count_0", nil);
+    else if (nb == 1)
+        str = NSLocalizedString(@"ProgrammingRadio_subtitle_count_1", nil);
+    else {
+        str = NSLocalizedString(@"ProgrammingRadio_subtitle_count_n", nil);
+        str = [NSString stringWithFormat:str, nb];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGRAMMING_TITLE object:str];
+}
+
+
 
 
 
@@ -135,11 +154,14 @@
         return;
     }
     
+    
     // PROFILE
     [[TimeProfile main] end:TIMEPROFILE_BUILD];
     [[TimeProfile main] logInterval:TIMEPROFILE_BUILD inMilliseconds:NO];
 
     DLog(@"%d matched songs", count);
+    
+    [self setTitle];
     
     // now that the synchronization is been done,
     [self.tableView reloadData];

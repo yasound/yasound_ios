@@ -27,9 +27,6 @@
 
 @interface ProgrammingViewController : YaViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate, TopBarBackAndTitleDelegate>
 {
-    IBOutlet UILabel* _titleLabel;
-    IBOutlet UILabel* _subtitleLabel;
-    
     IBOutlet UIView* _containerRadioSegment;
     IBOutlet UIView* _containerLocalSegment;
     IBOutlet UIView* _containerEmptySegment;
@@ -40,6 +37,9 @@
 @property (nonatomic, retain) IBOutlet UIView* container;
 @property (nonatomic, retain) IBOutlet WheelSelectorRadios* wheelSelector;
 @property (nonatomic, retain) IBOutlet TopBarBackAndTitle* topbar;
+
+@property (nonatomic, retain) IBOutlet UILabel* topbarTitle;
+@property (nonatomic, retain) IBOutlet UILabel* topbarSubtitle;
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, retain) UIViewController* viewController;
