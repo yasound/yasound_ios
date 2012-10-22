@@ -170,36 +170,39 @@ static SongLocalCatalog* _main = nil;
 
 - (BOOL)doesDeviceContainSong:(Song*)song
 {
-    [[TimeProfile main] begin:@"doesDeviceContainSong"];
-    
-    MPMediaQuery* allSongsQuery = [MPMediaQuery songsQuery];
-    
-    NSArray* items = [allSongsQuery items];
-    if (items.count == 0)
-        return NO;
-    
-    for (MPMediaItem* item in items)
-    {
-        NSString* song = [item valueForProperty:MPMediaItemPropertyTitle];
-        NSString* artist = [item valueForProperty:MPMediaItemPropertyArtist];
-        NSString* album  = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
-        DLog(@"catalog local.name %@   local.artist '%@'   local.album '%@'", song, artist, album);
+    @synchronized(self) {
+        
+        [[TimeProfile main] begin:@"doesDeviceContainSong"];
+        
+        MPMediaQuery* allSongsQuery = [MPMediaQuery songsQuery];
+        
+        NSArray* items = [allSongsQuery items];
+        if (items.count == 0)
+            return NO;
+        
+        for (MPMediaItem* item in items)
+        {
+            NSString* song = [item valueForProperty:MPMediaItemPropertyTitle];
+            NSString* artist = [item valueForProperty:MPMediaItemPropertyArtist];
+            NSString* album  = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
+            DLog(@"catalog local.name %@   local.artist '%@'   local.album '%@'", song, artist, album);
+        }
+        
+        
+        [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.artist_client forProperty:MPMediaItemPropertyArtist comparisonType:MPMediaPredicateComparisonEqualTo]];
+        [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.album_client forProperty:MPMediaItemPropertyAlbumTitle comparisonType:MPMediaPredicateComparisonEqualTo]];
+        [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.name_client forProperty:MPMediaItemPropertyTitle comparisonType:MPMediaPredicateComparisonEqualTo]];
+        
+        NSArray* songsArray = [allSongsQuery items];
+        
+        [[TimeProfile main] end:@"doesDeviceContainSong"];
+        [[TimeProfile main] logInterval:@"doesDeviceContainSong" inMilliseconds:YES];
+        
+        
+        BOOL doesContain = (songsArray.count > 0);
+        
+        return doesContain;
     }
-    
-    
-    [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.artist_client forProperty:MPMediaItemPropertyArtist comparisonType:MPMediaPredicateComparisonEqualTo]];
-    [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.album_client forProperty:MPMediaItemPropertyAlbumTitle comparisonType:MPMediaPredicateComparisonEqualTo]];
-    [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.name_client forProperty:MPMediaItemPropertyTitle comparisonType:MPMediaPredicateComparisonEqualTo]];
-    
-    NSArray* songsArray = [allSongsQuery items];
-    
-    [[TimeProfile main] end:@"doesDeviceContainSong"];
-    [[TimeProfile main] logInterval:@"doesDeviceContainSong" inMilliseconds:YES];
-    
-    
-    BOOL doesContain = (songsArray.count > 0);
-    
-    return doesContain;
 }
 
 
@@ -278,15 +281,18 @@ static SongLocalCatalog* _main = nil;
 
 - (BOOL)addSong:(NSString*)songKey forPlaylist:(NSString*)playlist {
     
-    assert(songKey);
-    assert(playlist);
-    
-    BOOL res = [[DataBase main].db executeUpdate:@"INSERT INTO playlistCatalog VALUES (?,?)", songKey, playlist];
-    
-    if (!res)
-        DLog(@"addSongForPlaylist, %d:%@", [[DataBase main].db lastErrorCode], [[DataBase main].db lastErrorMessage]);
-    
-    return res;    
+    @synchronized(self) {
+        
+        assert(songKey);
+        assert(playlist);
+        
+        BOOL res = [[DataBase main].db executeUpdate:@"INSERT INTO playlistCatalog VALUES (?,?)", songKey, playlist];
+        
+        if (!res)
+            DLog(@"addSongForPlaylist, %d:%@", [[DataBase main].db lastErrorCode], [[DataBase main].db lastErrorMessage]);
+        
+        return res;
+    }
 }
 
 
@@ -301,21 +307,24 @@ static SongLocalCatalog* _main = nil;
         return cache;
 
     
-    NSMutableArray* results = [NSMutableArray array];
-    
-    FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT DISTINCT genre FROM %@ ORDER BY genre", LOCALCATALOG_TABLE]];
-    
-    while ([s next])
-    {
-        NSString* genre = [s stringForColumnIndex:0];
-        assert(genre);
-        [results addObject:genre];
+    @synchronized(self) {
+            
+        NSMutableArray* results = [NSMutableArray array];
+        
+        FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT DISTINCT genre FROM %@ ORDER BY genre", LOCALCATALOG_TABLE]];
+        
+        while ([s next])
+        {
+            NSString* genre = [s stringForColumnIndex:0];
+            assert(genre);
+            [results addObject:genre];
+        }
+        
+        // set cache
+        [self.catalogCache setObject:results forKey:cacheKey];
+        
+        return results;
     }
-    
-    // set cache
-    [self.catalogCache setObject:results forKey:cacheKey];
-    
-    return results;    
 }
 
 
@@ -327,21 +336,24 @@ static SongLocalCatalog* _main = nil;
     if (cache != nil)
         return cache;
     
-    NSMutableArray* results = [NSMutableArray array];
-    
-    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT DISTINCT artistKey FROM localCatalog WHERE genre=? ORDER BY artistKey", genre];
-    
-    while ([s next])
-    {
-        NSString* artist = [s stringForColumnIndex:0];
-        assert(artist);
-        [results addObject:artist];
+    @synchronized(self) {
+        
+        NSMutableArray* results = [NSMutableArray array];
+        
+        FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT DISTINCT artistKey FROM localCatalog WHERE genre=? ORDER BY artistKey", genre];
+        
+        while ([s next])
+        {
+            NSString* artist = [s stringForColumnIndex:0];
+            assert(artist);
+            [results addObject:artist];
+        }
+        
+        // set cache
+        [self.catalogCache setObject:results forKey:cacheKey];
+        
+        return results;
     }
-    
-    // set cache
-    [self.catalogCache setObject:results forKey:cacheKey];
-    
-    return results;
 }
 
 
@@ -352,21 +364,24 @@ static SongLocalCatalog* _main = nil;
     if (cache != nil)
         return cache;
     
-    NSMutableArray* results = [NSMutableArray array];
-    
-    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT songKey FROM localCatalog WHERE genre=? ORDER BY name", genre];
-    
-    while ([s next])
-    {
-        NSString* songKey = [s stringForColumnIndex:0];
-        assert(songKey);
-        [results addObject:songKey];
+    @synchronized(self) {
+        
+        NSMutableArray* results = [NSMutableArray array];
+        
+        FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT songKey FROM localCatalog WHERE genre=? ORDER BY name", genre];
+        
+        while ([s next])
+        {
+            NSString* songKey = [s stringForColumnIndex:0];
+            assert(songKey);
+            [results addObject:songKey];
+        }
+        
+        // set cache
+        [self.catalogCache setObject:results forKey:cacheKey];
+        
+        return results;
     }
-    
-    // set cache
-    [self.catalogCache setObject:results forKey:cacheKey];
-    
-    return results;
 }
 
 
@@ -379,21 +394,24 @@ static SongLocalCatalog* _main = nil;
     if (cache != nil)
         return cache;
     
-    NSMutableArray* results = [NSMutableArray array];
-    
-    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT DISTINCT playlist FROM playlistCatalog ORDER BY playlist"];
-    
-    while ([s next])
-    {
-        NSString* playlist = [s stringForColumnIndex:0];
-        assert(playlist);
-        [results addObject:playlist];
-    }
-    
-    // set cache
-    [self.catalogCache setObject:results forKey:cacheKey];
+    @synchronized(self) {
+        
+        NSMutableArray* results = [NSMutableArray array];
+        
+        FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT DISTINCT playlist FROM playlistCatalog ORDER BY playlist"];
+        
+        while ([s next])
+        {
+            NSString* playlist = [s stringForColumnIndex:0];
+            assert(playlist);
+            [results addObject:playlist];
+        }
+        
+        // set cache
+        [self.catalogCache setObject:results forKey:cacheKey];
 
-    return results;
+        return results;
+    }
     
 }
 
@@ -405,21 +423,24 @@ static SongLocalCatalog* _main = nil;
     if (cache != nil)
         return cache;
     
-    NSMutableArray* results = [NSMutableArray array];
-    
-    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT DISTINCT localCatalog.artistKey FROM localCatalog JOIN playlistCatalog WHERE localCatalog.songKey = playlistCatalog.songKey  AND playlistCatalog.playlist = ? ORDER BY localCatalog.artistKey", playlist];
-    
-    while ([s next])
-    {
-        NSString* artist = [s stringForColumnIndex:0];
-        assert(artist);
-        [results addObject:artist];
+    @synchronized(self) {
+        
+        NSMutableArray* results = [NSMutableArray array];
+        
+        FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT DISTINCT localCatalog.artistKey FROM localCatalog JOIN playlistCatalog WHERE localCatalog.songKey = playlistCatalog.songKey  AND playlistCatalog.playlist = ? ORDER BY localCatalog.artistKey", playlist];
+        
+        while ([s next])
+        {
+            NSString* artist = [s stringForColumnIndex:0];
+            assert(artist);
+            [results addObject:artist];
+        }
+        
+        // set cache
+        [self.catalogCache setObject:results forKey:cacheKey];
+        
+        return results;
     }
-    
-    // set cache
-    [self.catalogCache setObject:results forKey:cacheKey];
-    
-    return results;
 
 }
 
@@ -431,22 +452,24 @@ static SongLocalCatalog* _main = nil;
     if (cache != nil)
         return cache;
     
-    NSMutableArray* results = [NSMutableArray array];
-    
-    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT localCatalog.songKey FROM localCatalog JOIN playlistCatalog WHERE localCatalog.songKey = playlistCatalog.songKey  AND playlistCatalog.playlist = ? ORDER BY localCatalog.name", playlist];
-    
-    while ([s next])
-    {
-        NSString* songKey = [s stringForColumnIndex:0];
-        assert(songKey);
-        [results addObject:songKey];
+    @synchronized(self) {
+        
+        NSMutableArray* results = [NSMutableArray array];
+        
+        FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT localCatalog.songKey FROM localCatalog JOIN playlistCatalog WHERE localCatalog.songKey = playlistCatalog.songKey  AND playlistCatalog.playlist = ? ORDER BY localCatalog.name", playlist];
+        
+        while ([s next])
+        {
+            NSString* songKey = [s stringForColumnIndex:0];
+            assert(songKey);
+            [results addObject:songKey];
+        }
+        
+        // set cache
+        [self.catalogCache setObject:results forKey:cacheKey];
+        
+        return results;
     }
-    
-    // set cache
-    [self.catalogCache setObject:results forKey:cacheKey];
-    
-    return results;
-    
 }
 
 

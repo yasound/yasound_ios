@@ -159,7 +159,8 @@ static SongRadioCatalog* _main = nil;
         DLog(@"matchedSongsReceveived : REQUEST FAILED for playlist nb %d", _nbReceivedData);
         DLog(@"info %@", info);
         
-        [self.target performSelector:self.action withObject:actionInfo];
+        if ([self.target respondsToSelector:self.action])
+            [self.target performSelector:self.action withObject:actionInfo];
         return;
         
     }
@@ -204,7 +205,8 @@ static SongRadioCatalog* _main = nil;
     [actionInfo setObject:@""  forKey:@"error"];
     [actionInfo setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
 
-    [self.target performSelector:self.action withObject:actionInfo];
+    if ([self.target respondsToSelector:self.action])
+        [self.target performSelector:self.action withObject:actionInfo];
     
 }
 
@@ -364,8 +366,7 @@ static SongRadioCatalog* _main = nil;
     [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
     
     // clear related cache
-    self.catalogCache = nil;
-    self.catalogCache = [NSMutableDictionary dictionary];
+    [self clearCatalogCache];
     
     // and call for a GUI refresh
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:song];
@@ -403,8 +404,7 @@ static SongRadioCatalog* _main = nil;
     [self removeSong:songKey forTable:RADIOCATALOG_TABLE];
 
     // clear related cache
-    self.catalogCache = nil;
-    self.catalogCache = [NSMutableDictionary dictionary];
+    [self clearCatalogCache];
     
     DLog(@"send delete update notification");
 

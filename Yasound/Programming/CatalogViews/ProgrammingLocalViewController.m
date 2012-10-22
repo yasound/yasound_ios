@@ -75,6 +75,9 @@
         self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
         
         [self load];
+        
+        if ([SongLocalCatalog main].isInCache)
+            [self setTitle];
     }
     return self;
 }

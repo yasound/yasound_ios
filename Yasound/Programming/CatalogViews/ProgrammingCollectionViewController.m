@@ -181,6 +181,9 @@
 {
     static NSString* CellIdentifier = @"CellArtist";
     
+    //LBDEBUG
+    assert(self.artists.count > indexPath.row);
+
     NSString* artist = [self.artists objectAtIndex:indexPath.row];
     
     ActionAddCollectionCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -217,6 +220,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
+    //LBDEBUG
+    assert(self.artists.count > indexPath.row);
     
     NSString* artist = [self.artists objectAtIndex:indexPath.row];
     

@@ -201,26 +201,56 @@
     // sort with a selected genre
     if (self.catalog.selectedGenre) {
         albums = [self.catalog albumsForArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+        
+        //LBDEBUG
+        assert(albums.count > indexPath.row);
+               
         album = [albums objectAtIndex:indexPath.row];
         songs = [self.catalog songsForAlbum:album fromArtist:self.catalog.selectedArtist  withGenre:self.catalog.selectedGenre];
         nbSongs = songs.count;
+        
+        //LBDEBUG ICI
+        if (nbSongs == 0)
+            DLog(@"assert");
+            ///////////////////
+        
     }
 
     // sort with a selected playlist
     else if (self.catalog.selectedPlaylist) {
         albums = [self.catalog albumsForArtist:self.catalog.selectedArtist  withPlaylist:self.catalog.selectedPlaylist];
+        
+        //LBDEBUG
+        assert(albums.count > indexPath.row);
+        
         album = [albums objectAtIndex:indexPath.row];
         songs = [self.catalog songsForAlbum:album fromArtist:self.catalog.selectedArtist  withPlaylist:self.catalog.selectedPlaylist];
         nbSongs = songs.count;
+
+        //LBDEBUG ICI
+        if (nbSongs == 0)
+            DLog(@"assert");
+        ///////////////////
+
     }
     
     // no sort
     else {
         albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
+        
+        //LBDEBUG
+        assert(albums.count > indexPath.row);
+        
         album = [albums objectAtIndex:indexPath.row];
         songs = [self.catalog songsForAlbum:album fromArtist:self.catalog.selectedArtist];
         nbSongs = songs.count;
+
+        //LBDEBUG ICI
+        if (nbSongs == 0)
+            DLog(@"assert");
+        ///////////////////
     }
+    
     
     NSString* subtitle;
     if (nbSongs == 1)
@@ -230,6 +260,9 @@
     
     subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];
     
+    //LBDEBUG
+    assert(songs.count > 0);
+
     id firstSong = [songs objectAtIndex:0];
     UIImage* customImage = nil;
     if ([firstSong isKindOfClass:[SongLocal class]])
@@ -304,6 +337,8 @@
         albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
     }
 
+    //LBDEBUG
+    assert(albums.count > indexPath.row);
     
     NSString* albumKey = [albums objectAtIndex:indexPath.row];
 

@@ -83,6 +83,9 @@
         }
         
         [self load];
+        
+        if ([SongRadioCatalog main].isInCache)
+            [self setTitle];
     }
     return self;
 }
