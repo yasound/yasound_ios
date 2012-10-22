@@ -295,6 +295,8 @@
 - (void)updateItemsWithSongs:(NSArray*)songs {
 
     BOOL areAllDisabled = YES;
+    if (songs.count == 0)
+        areAllDisabled = NO;
 
     for (NSString* songKey in songs) {
         
