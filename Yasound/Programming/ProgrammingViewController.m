@@ -56,7 +56,7 @@
         if (([SongRadioCatalog main].radio.id != nil) && ![catalogId isEqualToString:newId])
         {
             [SongRadioCatalog releaseCatalog];
-            [DataBase releaseDataBase];
+//            [DataBase releaseDataBase];
         }
     }
     return self;
@@ -138,15 +138,20 @@
 
 
 - (IBAction)onReloadClicked:(id)sender {
-    
+
+
     // reset catalogs
-    [SongLocalCatalog releaseCatalog];
     [SongRadioCatalog releaseCatalog];
-    [DataBase releaseDataBase];
+//    [SongLocalCatalog releaseCatalog];
+//    [DataBase releaseDataBase];
+
+    [self.wheelSelector stickToItem:PROGRAMMING_WHEEL_ITEM_RADIO silent:NO];
+
+
     
     // refresh catalog and gui
-    if ([self.viewController respondsToSelector:@selector(load)])
-        [self.viewController load];
+//    if ([self.viewController respondsToSelector:@selector(load)])
+//        [self.viewController load];
     
     
 }

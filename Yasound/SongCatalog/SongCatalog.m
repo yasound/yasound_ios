@@ -183,15 +183,16 @@
 
 - (NSArray*)songsForLetter:(NSString*)charIndex fromTable:(NSString*)table
 {
-    charIndex = [charIndex uppercaseString];
-    
-    // get cache
-    NSString* cacheKey = [NSString stringWithFormat:@"songsForLetter|%@", charIndex];
-    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
-    if (cache != nil)
-        return cache;
-    
     @synchronized(self) {
+
+        charIndex = [charIndex uppercaseString];
+    
+        // get cache
+        NSString* cacheKey = [NSString stringWithFormat:@"songsForLetter|%@", charIndex];
+        NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+        if (cache != nil)
+            return cache;
+    
         NSMutableArray* results = [NSMutableArray array];
         
         FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT songKey FROM %@ WHERE nameLetter=? ORDER BY name", table], charIndex];
@@ -207,6 +208,9 @@
             NSString* songKey = [s stringForColumnIndex:0];
             assert(songKey);
             Song* song = [self.songsDb objectForKey:songKey];
+            
+            //LBDEBUG ICI ANTIBUG POSSIBLE
+            
             assert(song);
             [results addObject:song];
         }
@@ -221,15 +225,16 @@
 
 - (NSArray*)artistsForLetter:(NSString*)charIndex fromTable:(NSString*)table
 {
-    charIndex = [charIndex uppercaseString];
-    
-    // get cache
-    NSString* cacheKey = [NSString stringWithFormat:@"artistsForLetter|%@", charIndex];
-    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
-    if (cache != nil)
-        return cache;
-    
     @synchronized(self) {
+
+        charIndex = [charIndex uppercaseString];
+    
+        // get cache
+        NSString* cacheKey = [NSString stringWithFormat:@"artistsForLetter|%@", charIndex];
+        NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+        if (cache != nil)
+            return cache;
+    
         NSMutableArray* results = [NSMutableArray array];
         
         FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT DISTINCT artistKey FROM %@ WHERE artistLetter=? GROUP BY artistKey ORDER BY artistKey", table], charIndex];
@@ -266,15 +271,16 @@
 
 - (NSArray*)albumsForArtist:(NSString*)artist fromTable:(NSString*)table {
 
-    // get cache
-    NSString* cacheKey = [NSString stringWithFormat:@"albumsForArtist|%@", artist];
-    
-    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
-    if (cache != nil)
-        return cache;
-    
-    
     @synchronized(self) {
+
+        // get cache
+        NSString* cacheKey = [NSString stringWithFormat:@"albumsForArtist|%@", artist];
+        
+        NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+        if (cache != nil)
+            return cache;
+    
+    
         NSMutableArray* results = [NSMutableArray array];
         
         FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT DISTINCT albumKey FROM %@ WHERE artistKey=? ORDER BY albumKey", table], artist];
@@ -302,20 +308,21 @@
 
 - (NSArray*)albumsForArtist:(NSString*)artist withGenre:genre fromTable:(NSString*)table {
     
-    // get cache
-    NSString* cacheKey = [NSString stringWithFormat:@"albumsForArtist|%@|withGenre|%@", artist, genre];
-
-    //LBDEBUG ICI
-    DLog(@"\n\n\n\nCACHEKEY '%@'", cacheKey);
-    DLog(@"self.catalogCache.count %d", self.catalogCache.count);
-    DLog(@"%@", self.catalogCache);
-    ////////////////////
-    
-    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
-    if (cache != nil)
-        return cache;
-    
     @synchronized(self) {
+
+        // get cache
+        NSString* cacheKey = [NSString stringWithFormat:@"albumsForArtist|%@|withGenre|%@", artist, genre];
+
+        //LBDEBUG ICI
+        DLog(@"\n\n\n\nCACHEKEY '%@'", cacheKey);
+        DLog(@"self.catalogCache.count %d", self.catalogCache.count);
+//        DLog(@"%@", self.catalogCache);
+        ////////////////////
+        
+        NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+        if (cache != nil)
+            return cache;
+    
         NSMutableArray* results = [NSMutableArray array];
         
         FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT DISTINCT albumKey FROM %@ WHERE artistKey=? AND genre=? ORDER BY albumKey", table], artist, genre];
@@ -342,20 +349,21 @@
 
 - (NSArray*)albumsForArtist:(NSString*)artist withPlaylist:playlist fromTable:(NSString*)table {
     
-    // get cache
-    NSString* cacheKey = [NSString stringWithFormat:@"albumsForArtist|%@|withPlaylist|%@", artist, playlist];
-
-    //LBDEBUG ICI
-    DLog(@"\n\n\n\nCACHEKEY '%@'", cacheKey);
-    DLog(@"self.catalogCache.count %d", self.catalogCache.count);
-    DLog(@"%@", self.catalogCache);
-    ////////////////////
-    
-    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
-    if (cache != nil)
-        return cache;
-    
     @synchronized(self) {
+
+        // get cache
+        NSString* cacheKey = [NSString stringWithFormat:@"albumsForArtist|%@|withPlaylist|%@", artist, playlist];
+
+        //LBDEBUG ICI
+        DLog(@"\n\n\n\nCACHEKEY '%@'", cacheKey);
+        DLog(@"self.catalogCache.count %d", self.catalogCache.count);
+//        DLog(@"%@", self.catalogCache);
+        ////////////////////
+
+        NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+        if (cache != nil)
+            return cache;
+    
         NSMutableArray* results = [NSMutableArray array];
         
         FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT DISTINCT localCatalog.albumKey FROM %@ JOIN playlistCatalog WHERE localCatalog.songKey = playlistCatalog.songKey AND localCatalog.artistKey=? AND playlistCatalog.playlist=? ORDER BY localCatalog.albumKey", table], artist, playlist];
@@ -384,12 +392,13 @@
 
 - (NSArray*)songsForArtist:(NSString*)artist fromTable:(NSString*)table {
     
-    NSString* cacheKey = [NSString stringWithFormat:@"songsForArtist|%@", artist];
-    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
-    if (cache != nil)
-        return cache;
-    
     @synchronized(self) {
+
+        NSString* cacheKey = [NSString stringWithFormat:@"songsForArtist|%@", artist];
+        NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+        if (cache != nil)
+            return cache;
+    
         NSMutableArray* results = [NSMutableArray array];
         
         FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT songKey FROM %@ WHERE artistKey=? ORDER BY name", table], artist];
@@ -416,12 +425,13 @@
 
 - (NSArray*)songsForArtist:(NSString*)artist withGenre:(NSString*)genre fromTable:(NSString*)table {
 
-    NSString* cacheKey = [NSString stringWithFormat:@"songsForArtist|%@|withGenre|%@", artist, genre];
-    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
-    if (cache != nil)
-        return cache;
-    
     @synchronized(self) {
+
+        NSString* cacheKey = [NSString stringWithFormat:@"songsForArtist|%@|withGenre|%@", artist, genre];
+        NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+        if (cache != nil)
+            return cache;
+    
         NSMutableArray* results = [NSMutableArray array];
         
        FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT songKey FROM localCatalog WHERE artistKey=? AND genre=? ORDER BY name", artist, genre];
@@ -449,12 +459,13 @@
 
 - (NSArray*)songsForArtist:(NSString*)artist withPlaylist:(NSString*)playlist fromTable:(NSString*)table {
     
-    NSString* cacheKey = [NSString stringWithFormat:@"songsForArtist|%@|withPlaylist|%@", artist, playlist];
-    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
-    if (cache != nil)
-        return cache;
-    
     @synchronized(self) {
+
+        NSString* cacheKey = [NSString stringWithFormat:@"songsForArtist|%@|withPlaylist|%@", artist, playlist];
+        NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+        if (cache != nil)
+            return cache;
+    
         NSMutableArray* results = [NSMutableArray array];
         
         FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT localCatalog.songKey FROM %@ JOIN playlistCatalog WHERE localCatalog.artistKey=? AND localCatalog.songKey=playlistCatalog.songKey AND playlistCatalog.playlist=? ORDER BY name", table], artist, playlist];
@@ -483,12 +494,13 @@
 
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist fromTable:(NSString*)table {
     
-    NSString* cacheKey = [NSString stringWithFormat:@"songsForAlbum|%@|fromArtist|%@", album, artist];
-    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
-    if (cache != nil)
-        return cache;
-        
     @synchronized(self) {
+
+        NSString* cacheKey = [NSString stringWithFormat:@"songsForAlbum|%@|fromArtist|%@", album, artist];
+        NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+        if (cache != nil)
+            return cache;
+        
         NSMutableArray* results = [NSMutableArray array];
         
         FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT songKey FROM %@ WHERE albumKey=? AND artistKey=? ORDER BY name", table], album, artist];
@@ -514,12 +526,13 @@
 
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist withGenre:(NSString*)genre fromTable:(NSString*)table {
     
-    NSString* cacheKey = [NSString stringWithFormat:@"songsForAlbum|%@|fromArtist|%@|withGenre|%@", album, artist, genre];
-    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
-    if (cache != nil)
-        return cache;
-    
     @synchronized(self) {
+
+        NSString* cacheKey = [NSString stringWithFormat:@"songsForAlbum|%@|fromArtist|%@|withGenre|%@", album, artist, genre];
+        NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+        if (cache != nil)
+            return cache;
+    
         NSMutableArray* results = [NSMutableArray array];
         
         FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT songKey FROM %@ WHERE albumKey=? AND artistKey=? AND genre=? ORDER BY name", table], album, artist, genre];
@@ -545,12 +558,13 @@
 
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist withPlaylist:(NSString*)playlist fromTable:(NSString*)table {
     
-    NSString* cacheKey = [NSString stringWithFormat:@"songsForAlbum|%@|fromArtist|%@", album, artist];
-    NSArray* cache = [self.catalogCache objectForKey:cacheKey];
-    if (cache != nil)
-        return cache;
-    
     @synchronized(self) {
+
+        NSString* cacheKey = [NSString stringWithFormat:@"songsForAlbum|%@|fromArtist|%@", album, artist];
+        NSArray* cache = [self.catalogCache objectForKey:cacheKey];
+        if (cache != nil)
+            return cache;
+    
         NSMutableArray* results = [NSMutableArray array];
         
         FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT localCatalog.songKey FROM %@ JOIN playlistCatalog WHERE localCatalog.albumKey=? AND localCatalog.artistKey=? AND localCatalog.songKey = playlistCatalog.songKey AND playlistCatalog.playlist=? ORDER BY localCatalog.name", table], album, artist, playlist];

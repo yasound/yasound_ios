@@ -21,5 +21,8 @@
 + (DataBase*)main;
 + (void)releaseDataBase;
 
+- (void)deleteRadioCatalog;
+- (void)createRadioCatalog;
+
 
 @end

@@ -39,6 +39,16 @@ static SongRadioCatalog* _main = nil;
     if (_main == nil)
         return;
     
+    // first reset database for this catalog
+    [[DataBase main] deleteRadioCatalog];
+
+    [[DataBase main].db beginTransaction];
+    [[DataBase main] createRadioCatalog];
+    [[DataBase main].db commit];
+
+    
+    
+    // then, reset the catalog itself
     [_main release];
     _main = nil;
 }

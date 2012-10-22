@@ -63,19 +63,10 @@ static DataBase* _main = nil;
         }
         else
         {
-            // radioCatalog
-            BOOL res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE TABLE %@ (songKey TEXT, name VARCHAR(255), nameLetter VARCHAR(1), artistKey VARCHAR(255), artistLetter VARCHAR(1), albumKey VARCHAR(255), genre VARCHAR(255))", RADIOCATALOG_TABLE]];
-            if (!res)
-                NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
-            else
-            {
-                res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE INDEX radioCatalogKeyIndex ON %@ (songKey)", RADIOCATALOG_TABLE]];
-                if (!res)
-                    NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
-            }
+            [self createRadioCatalog];
             
             // localCatalog
-            res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE TABLE %@ (songKey TEXT, name VARCHAR(255), nameLetter VARCHAR(1), artistKey VARCHAR(255), artistLetter VARCHAR(1), albumKey VARCHAR(255), genre VARCHAR(255))", LOCALCATALOG_TABLE]];
+            BOOL res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE TABLE %@ (songKey TEXT, name VARCHAR(255), nameLetter VARCHAR(1), artistKey VARCHAR(255), artistLetter VARCHAR(1), albumKey VARCHAR(255), genre VARCHAR(255))", LOCALCATALOG_TABLE]];
             if (!res)
                 NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
             else
@@ -96,8 +87,37 @@ static DataBase* _main = nil;
 }
 
 
+- (void)deleteRadioCatalog {
+
+    [self.db beginTransaction];
+    
+    BOOL res = [self.db executeUpdate:[NSString stringWithFormat:@"DROP TABLE %@", RADIOCATALOG_TABLE]];
+    if (!res)
+        NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
+
+    [self.db commit];
+}
+
+
+- (void)createRadioCatalog {
+    
+    // radioCatalog
+    BOOL res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE TABLE %@ (songKey TEXT, name VARCHAR(255), nameLetter VARCHAR(1), artistKey VARCHAR(255), artistLetter VARCHAR(1), albumKey VARCHAR(255), genre VARCHAR(255))", RADIOCATALOG_TABLE]];
+    if (!res)
+        NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
+    else
+    {
+        res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE INDEX radioCatalogKeyIndex ON %@ (songKey)", RADIOCATALOG_TABLE]];
+        if (!res)
+            NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
+    }
+
+}
 
 + (void)releaseDataBase {
+    
+    //LBDEBUG
+    assert(0);
     
     if (_main) {
     
