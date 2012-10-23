@@ -401,7 +401,7 @@ static SongUploadManager* _main;
         }
     }
     
-    assert(found == YES);
+    //assert(found == YES);
     if (!found)
         return;
     
