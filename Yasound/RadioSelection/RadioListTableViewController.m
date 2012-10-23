@@ -636,9 +636,6 @@
     
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onGenreSelectorOpened:) userInfo:nil repeats:NO];
 
-//    frame = CGRectMake(0,0, frame.size.width, frame.size.height);
-//    self.tableView.frame = frame;
-
     [self.genreSelector open];
 }
 
@@ -670,20 +667,10 @@
 
     [UIView commitAnimations];
 
-//    frame = CGRectMake(0,0, frame.size.width, frame.size.height);
-//    self.tableView.frame = frame;
-
-//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onGenreSelectorClosed:) userInfo:nil repeats:NO];
-
     [self.genreSelector close];
 }
 
 
-//- (void)onGenreSelectorClosed:(NSTimer*)timer {
-//
-//    CGRect frame = CGRectMake(0,0, self.tableViewContainer.frame.size.width, self.tableViewContainer.frame.size.height);
-//    self.tableView.frame = frame;
-//}
 
 
 
