@@ -402,6 +402,8 @@ static SongUploadManager* _main;
     }
     
     assert(found == YES);
+    if (!found)
+        return;
     
     [self.items removeObjectAtIndex:itemIndex];
 
