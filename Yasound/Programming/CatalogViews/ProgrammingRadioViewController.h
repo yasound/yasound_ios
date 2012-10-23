@@ -16,6 +16,7 @@
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, retain) NSMutableDictionary* songToIndexPath;
+@property (nonatomic, retain) NSString* title;
 
 
 @property (nonatomic) NSInteger selectedSegmentIndex;

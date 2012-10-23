@@ -76,32 +76,50 @@
         
         [self load];
         
-        if ([SongLocalCatalog main].isInCache)
-            [self setTitle];
+        if ([SongLocalCatalog main].isInCache) {
+            [self updateTitle];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGRAMMING_TITLE object:self.title];
+        }
     }
     return self;
 }
 
 
-- (void)setTitle {
+- (void)updateTitle {
     
     NSInteger nb = [SongLocalCatalog main].songsDb.count;
     
-    NSString* str = nil;
+    self.title = nil;
     
     if (nb == 0)
-        str = NSLocalizedString(@"ProgrammingLocal_subtitle_count_0", nil);
+        self.title = NSLocalizedString(@"ProgrammingLocal_subtitle_count_0", nil);
     else if (nb == 1)
-        str = NSLocalizedString(@"ProgrammingLocal_subtitle_count_1", nil);
+        self.title = NSLocalizedString(@"ProgrammingLocal_subtitle_count_1", nil);
     else {
-        str = NSLocalizedString(@"ProgrammingLocal_subtitle_count_n", nil);
-        str = [NSString stringWithFormat:str, nb];
+        self.title = NSLocalizedString(@"ProgrammingLocal_subtitle_count_n", nil);
+        self.title = [NSString stringWithFormat:self.title, nb];
     }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGRAMMING_TITLE object:str];
 }
 
 
+
+- (void)viewDidLoad {
+    
+    [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoved:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
+}
+
+
+- (void)onNotifSongAdded:(NSNotification*)notif {
+
+    [self updateTitle];
+}
+- (void)onNotifSongRemoved:(NSNotification*)notif {
+    
+    [self updateTitle];
+}
 
 
 - (void)viewDidUnload
@@ -167,7 +185,8 @@
     
     DLog(@"%d available songs", count);
     
-    [self setTitle];
+    [self updateTitle];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGRAMMING_TITLE object:self.title];
     
     if (count == 0) {
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:NO error:nil];

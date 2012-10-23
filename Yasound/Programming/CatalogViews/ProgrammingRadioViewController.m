@@ -84,29 +84,30 @@
         
         [self load];
         
-        if ([SongRadioCatalog main].isInCache)
-            [self setTitle];
+        if ([SongRadioCatalog main].isInCache) {
+            [self updateTitle];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGRAMMING_TITLE object:self.title];
+        }
     }
     return self;
 }
 
 
-- (void)setTitle {
+- (void)updateTitle {
     
-    NSInteger nb = [SongRadioCatalog main].matchedSongs.count;
+    NSInteger nb = [SongRadioCatalog main].songsDb.count;
     
-    NSString* str = nil;
+    self.title = nil;
     
     if (nb == 0)
-        str = NSLocalizedString(@"ProgrammingRadio_subtitle_count_0", nil);
+        self.title = NSLocalizedString(@"ProgrammingRadio_subtitle_count_0", nil);
     else if (nb == 1)
-        str = NSLocalizedString(@"ProgrammingRadio_subtitle_count_1", nil);
+        self.title = NSLocalizedString(@"ProgrammingRadio_subtitle_count_1", nil);
     else {
-        str = NSLocalizedString(@"ProgrammingRadio_subtitle_count_n", nil);
-        str = [NSString stringWithFormat:str, nb];
+        self.title = NSLocalizedString(@"ProgrammingRadio_subtitle_count_n", nil);
+        self.title = [NSString stringWithFormat:self.title, nb];
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGRAMMING_TITLE object:str];
 }
 
 
@@ -164,7 +165,8 @@
 
     DLog(@"%d matched songs", count);
     
-    [self setTitle];
+    [self updateTitle];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGRAMMING_TITLE object:self.title];
     
     // now that the synchronization is been done,
     [self.tableView reloadData];
@@ -512,6 +514,7 @@
 - (void)onNotifSongAdded:(NSNotification*)notif
 {
     [self.tableView reloadData];
+    [self updateTitle];
 }
 
 
@@ -525,6 +528,7 @@
     [self.songToIndexPath removeObjectForKey:song];
     
     [self.tableView reloadData];
+    [self updateTitle];
 }
 
 

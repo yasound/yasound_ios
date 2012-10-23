@@ -16,6 +16,7 @@
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic) NSInteger selectedSegmentIndex;
+@property (nonatomic, retain) NSString* title;
 
 @property (nonatomic, retain) ProgrammingCollectionViewController* collectionVC;
 
