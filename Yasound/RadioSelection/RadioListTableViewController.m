@@ -628,13 +628,27 @@
     
     CGRect frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.genreSelector.frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height - self.genreSelector.frame.size.height);
     self.tableViewContainer.frame = frame;
+    
 
     if (animated) {
         [UIView commitAnimations];
     }
+    
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onGenreSelectorOpened:) userInfo:nil repeats:NO];
+
+//    frame = CGRectMake(0,0, frame.size.width, frame.size.height);
+//    self.tableView.frame = frame;
 
     [self.genreSelector open];
 }
+
+
+- (void)onGenreSelectorOpened:(NSTimer*)timer {
+
+    CGRect frame = CGRectMake(0,0, self.tableViewContainer.frame.size.width, self.tableViewContainer.frame.size.height);
+    self.tableView.frame = frame;
+}
+
 
 
 
@@ -643,19 +657,35 @@
     
     self.genreSelector.status = eGenreStatusClosed;
     
+    
+    CGRect frame = CGRectMake(0,0, self.tableViewContainer.frame.size.width, self.tableViewContainer.frame.size.height + self.genreSelector.frame.size.height);
+    self.tableView.frame = frame;
+
+    
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.33];
     
-    CGRect frame = CGRectMake(0, self.tableViewContainer.frame.origin.y - self.genreSelector.frame.size.height, self.tableViewContainer.frame.size.width, self.tableViewContainer.frame.size.height + self.genreSelector.frame.size.height);
+     frame = CGRectMake(0, self.tableViewContainer.frame.origin.y - self.genreSelector.frame.size.height, self.tableViewContainer.frame.size.width, self.tableViewContainer.frame.size.height + self.genreSelector.frame.size.height);
     self.tableViewContainer.frame = frame;
 
     [UIView commitAnimations];
 
+//    frame = CGRectMake(0,0, frame.size.width, frame.size.height);
+//    self.tableView.frame = frame;
+
+//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onGenreSelectorClosed:) userInfo:nil repeats:NO];
+
     [self.genreSelector close];
-    
-    
-    
 }
+
+
+//- (void)onGenreSelectorClosed:(NSTimer*)timer {
+//
+//    CGRect frame = CGRectMake(0,0, self.tableViewContainer.frame.size.width, self.tableViewContainer.frame.size.height);
+//    self.tableView.frame = frame;
+//}
+
+
 
 
 
