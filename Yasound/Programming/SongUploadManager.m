@@ -314,6 +314,20 @@ static SongUploadManager* _main;
 }
 
 
+- (NSInteger)countUploads {
+    
+    NSInteger count = 0;
+    for (SongUploadItem* item in self.items) {
+        
+        if ((item.status == SongUploadItemStatusPending) || (item.status == SongUploadItemStatusUploading))
+            count++;
+
+    }
+    return count;
+}
+
+
+
 
 
 - (void)addSong:(SongUploading*)song startUploadNow:(BOOL)startUploadNow

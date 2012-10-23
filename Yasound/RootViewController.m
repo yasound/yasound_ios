@@ -432,7 +432,8 @@
             // restart song uploads not completed on last application shutdown
             [[SongUploadManager main] resumeUploads];
         
-        else if ([SongUploadManager main].items.count > 0)
+        else if ([[SongUploadManager main] countUploads] > 0)
+
         {
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_restart_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_restart_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [av show];
@@ -551,9 +552,11 @@
         
         if ([SongUploadManager main].isRunning)
         {
+            NSInteger nbUploads = [[SongUploadManager main] countUploads];
+            
             [[SongUploadManager main] interruptUploads];
             
-            if (_alertWifiInterrupted == nil)
+            if ((nbUploads > 0) && (_alertWifiInterrupted == nil))
             {
                 // show alert message for connection error
                 _alertWifiInterrupted = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

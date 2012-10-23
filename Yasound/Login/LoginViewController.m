@@ -268,7 +268,8 @@
         if ([YasoundReachability main].networkStatus == kReachableViaWiFi)
             // restart song uploads not completed on last application shutdown
             [[SongUploadManager main] resumeUploads];
-        else if ([SongUploadManager main].items.count > 0)
+        else if ([[SongUploadManager main] countUploads] > 0)
+
         {
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_restart_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_restart_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [av show];
