@@ -1,6 +1,6 @@
-Google Analytics iPhone SDK.
+Google Analytics iOS SDK version 1.5.1
 
-Copyright 2011 Google, Inc. All rights reserved.
+Copyright 2009 - 2012 Google, Inc. All rights reserved.
 
 ================================================================================
 DESCRIPTION:
@@ -22,37 +22,14 @@ You must indicate to your users, either in the app itself or in your terms of
 service, that you reserve the right to anonymously track and report a user's
 activity inside of your app.
 
-AdSense Reporting:
-
-To report AdSense information when used in conjunction with the Google
-Ads SDK (see http://www.google.com/ads/mobileapps/), you need to first
-link your AdSense and Analytics accounts (see Google Analytics help
-for more information). You must call startTrackerWithAccountID *before*
-calling loadGoogleAd in the Ads SDK. In addition, you need to add the
-linker option -ObjC to your project (in XCode, go to Project ->
-Edit Project Settings -> Build -> Linking, and add -ObjC to
-Other Linker Flags).
-
-NoThumb Support:
-
-This version of the SDK provides a NoThumb library as well as the standard
-Library.  You should use only one of the library files provided.  Use the file
-libGoogleAnalytics_NoThumb.a if you need NoThumb support.  Otherwise, you should
-use the file libGoogleAnalytics.a.
-
 Implementation Details:
 
 Pageviews and events are stored in an SQLite database and dispatched to the
 Google Analytics servers either periodically at a rate determined by the
 developer or manually. A battery efficient strategy may be to "piggy-back"
-a dispatch just after the application needs to perform network activity. 
+a dispatch just after the application needs to perform network activity.
 Dispatching happens by pipelining HTTP requests down a single connection
 (one request per pageview/event with a maximum of 30 per dispatch).
-
-Caveats:
-
-Google Analytics currently does not honor timestamp information and hence
-the time (day) of dispatch of the pageview/event is used instead.
 
 ================================================================================
 BUILD REQUIREMENTS:
@@ -67,17 +44,38 @@ Mac OS X v10.6+, iPhone OS 3.0+
 ================================================================================
 PACKAGING LIST:
 
-Library
+Library/
   GANTracker.h
   libGoogleAnalytics.a
-  libGoogleAnalytics_NoThumb.a
 
-Examples/BasicExample
-  BasicExample.xcodeproj
-  BasicExampleDelegate.h
-  BasicExampleDelegate.m
-  info.plist
-  main.m
-  MainWindow.xib
+Examples/
+  BasicExample/
+    BasicExample-Info.plist
+    BasicExample.xcodeproj/
+      project.pbxproj
+    BasicExample_Prefix.pch
+    Classes/
+      BasicExampleAppDelegate.h
+      BasicExampleAppDelegate.m
+      FirstViewController.h
+      FirstViewController.m
+      SecondViewController.h
+      SecondViewController.m
+    FirstView.xib
+    MainWindow.xib
+    main.m
+    SecondView.xib
+
+Documentation/
+  Classes/
+    GANTracker/
+      index.html
+      toc.html
+  index.html
+  Protocols/
+    GANTrackerDelegate/
+      index.html
+      toc.html
+  toc.html
 
 ================================================================================
