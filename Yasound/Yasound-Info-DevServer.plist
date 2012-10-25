@@ -108,7 +108,7 @@
 			<true/>
 		</dict>
 		<key>serverURL</key>
-		<string>http://dev.yasound.com/</string>
+		<string>http://yas-dev-01.ig-1.net/</string>
 		<key>stylesheet</key>
 		<dict>
 			<key>ActivityModelessSpinner</key>
