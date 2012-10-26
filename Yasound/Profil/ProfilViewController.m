@@ -90,7 +90,7 @@
     self.buttonBlueLabel.hidden = YES;
     
     // update top bar with an edit button
-    if (self.user && [self.user.id isEqualToNumber:[YasoundDataProvider main].user.id]) {
+    if (self.user && [self.user.id isEqualToNumber:[YasoundDataProvider user_id]]) {
         [self.topbar showEditItem];
     }
     

@@ -523,7 +523,6 @@
 		40B40A13152EFC630050D334 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		40B40A14152EFC630050D334 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		40B40A15152EFC630050D334 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		40B40A16152EFC630050D334 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		40B40A17152EFC630050D334 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		40B40A1A152EFC630050D334 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		40B40A1B152EFC630050D334 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
@@ -776,7 +775,6 @@
 		40D53C191554280F001EB0C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		40D53C1A1554280F001EB0C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		40D53C1B1554280F001EB0C5 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		40D53C1C1554280F001EB0C5 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		40D53C1D1554280F001EB0C5 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		40D53C201554280F001EB0C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		40D53C211554280F001EB0C5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
@@ -1843,7 +1841,6 @@
 		BC3FA6F914E93B660055AB4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		BC3FA6FA14E93B660055AB4A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		BC3FA6FB14E93B660055AB4A /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		BC3FA6FC14E93B660055AB4A /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		BC3FA6FD14E93B660055AB4A /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		BC3FA70014E93B660055AB4A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		BC3FA70114E93B660055AB4A /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
@@ -2624,7 +2621,6 @@
 		BC56F522152486AF005D1B40 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		BC56F523152486AF005D1B40 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		BC56F524152486AF005D1B40 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		BC56F525152486AF005D1B40 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		BC56F526152486AF005D1B40 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		BC56F529152486AF005D1B40 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		BC56F52A152486AF005D1B40 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
@@ -3278,7 +3274,6 @@
 		BC93CD4B14CF3F7A007C723F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		BC93CD4C14CF3F7A007C723F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		BC93CD4D14CF3F7A007C723F /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		BC93CD4E14CF3F7A007C723F /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		BC93CD5214CF3F7A007C723F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		BC93CD5514CF3F7A007C723F /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC93CD5614CF3F7A007C723F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
@@ -3938,7 +3933,6 @@
 		BCC7526F15E689EF00CF7F7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		BCC7527015E689EF00CF7F7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		BCC7527115E689EF00CF7F7C /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		BCC7527215E689EF00CF7F7C /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		BCC7527315E689EF00CF7F7C /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		BCC7527515E689EF00CF7F7C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
 		BCC7527715E689EF00CF7F7C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
@@ -4748,9 +4742,6 @@
 		BCDC96D914AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
 		BCDC96DA14AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
 		BCDC96DB14AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		BCDC96DC14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
-		BCDC96DD14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
-		BCDC96DE14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		BCDC96DF14AB7D8A00D54631 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
 		BCDC96E014AB7D8A00D54631 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
 		BCDC96E114AB7D8A00D54631 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
@@ -7907,7 +7898,6 @@
 		BCDC968C14AB7D8900D54631 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		BCDC969A14AB7D8900D54631 /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
 		BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
-		BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics_NoThumb.a; sourceTree = "<group>"; };
 		BCDC969D14AB7D8900D54631 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		BCDC96E914AB7D9000D54631 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
@@ -8298,7 +8288,6 @@
 				40B40A13152EFC630050D334 /* Foundation.framework in Frameworks */,
 				40B40A14152EFC630050D334 /* CoreGraphics.framework in Frameworks */,
 				40B40A15152EFC630050D334 /* libGoogleAnalytics.a in Frameworks */,
-				40B40A16152EFC630050D334 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				40B40A17152EFC630050D334 /* libOAuth.a in Frameworks */,
 				E561068915874EC400FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD1521B160C6976009E3604 /* libTestFlight.a in Frameworks */,
@@ -8331,7 +8320,6 @@
 				40D53C191554280F001EB0C5 /* Foundation.framework in Frameworks */,
 				40D53C1A1554280F001EB0C5 /* CoreGraphics.framework in Frameworks */,
 				40D53C1B1554280F001EB0C5 /* libGoogleAnalytics.a in Frameworks */,
-				40D53C1C1554280F001EB0C5 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				40D53C1D1554280F001EB0C5 /* libOAuth.a in Frameworks */,
 				E561068415874E7B00FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD1521C160C6976009E3604 /* libTestFlight.a in Frameworks */,
@@ -8364,7 +8352,6 @@
 				BC3FA6F914E93B660055AB4A /* Foundation.framework in Frameworks */,
 				BC3FA6FA14E93B660055AB4A /* CoreGraphics.framework in Frameworks */,
 				BC3FA6FB14E93B660055AB4A /* libGoogleAnalytics.a in Frameworks */,
-				BC3FA6FC14E93B660055AB4A /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC3FA6FD14E93B660055AB4A /* libOAuth.a in Frameworks */,
 				E561068815874EC300FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD1521A160C6976009E3604 /* libTestFlight.a in Frameworks */,
@@ -8397,7 +8384,6 @@
 				BC56F522152486AF005D1B40 /* Foundation.framework in Frameworks */,
 				BC56F523152486AF005D1B40 /* CoreGraphics.framework in Frameworks */,
 				BC56F524152486AF005D1B40 /* libGoogleAnalytics.a in Frameworks */,
-				BC56F525152486AF005D1B40 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC56F526152486AF005D1B40 /* libOAuth.a in Frameworks */,
 				E561068715874EC100FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD15217160C6976009E3604 /* libTestFlight.a in Frameworks */,
@@ -8431,7 +8417,6 @@
 				BC71F5E1147FEC6F00DAE4BD /* Foundation.framework in Frameworks */,
 				BC71F5E2147FEC6F00DAE4BD /* CoreGraphics.framework in Frameworks */,
 				BCDC96DA14AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
-				BCDC96DD14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1314CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				E561068615874EC100FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD15215160C6976009E3604 /* libTestFlight.a in Frameworks */,
@@ -8463,7 +8448,6 @@
 				BC93CD4B14CF3F7A007C723F /* Foundation.framework in Frameworks */,
 				BC93CD4C14CF3F7A007C723F /* CoreGraphics.framework in Frameworks */,
 				BC93CD4D14CF3F7A007C723F /* libGoogleAnalytics.a in Frameworks */,
-				BC93CD4E14CF3F7A007C723F /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1514CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				E51907401582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD15219160C6976009E3604 /* libTestFlight.a in Frameworks */,
@@ -8496,7 +8480,6 @@
 				BCC7526F15E689EF00CF7F7C /* Foundation.framework in Frameworks */,
 				BCC7527015E689EF00CF7F7C /* CoreGraphics.framework in Frameworks */,
 				BCC7527115E689EF00CF7F7C /* libGoogleAnalytics.a in Frameworks */,
-				BCC7527215E689EF00CF7F7C /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BCC7527315E689EF00CF7F7C /* libOAuth.a in Frameworks */,
 				BCC7527515E689EF00CF7F7C /* Crashlytics.framework in Frameworks */,
 				BCD15216160C6976009E3604 /* libTestFlight.a in Frameworks */,
@@ -8529,7 +8512,6 @@
 				E5A9A3B01454DC0500EA374C /* Foundation.framework in Frameworks */,
 				E5A9A3B21454DC0500EA374C /* CoreGraphics.framework in Frameworks */,
 				BCDC96D914AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
-				BCDC96DC14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1214CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				E519073C1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD15214160C6976009E3604 /* libTestFlight.a in Frameworks */,
@@ -8562,7 +8544,6 @@
 				E5F3B8971498B88D008DD607 /* Foundation.framework in Frameworks */,
 				E5F3B8981498B88D008DD607 /* CoreGraphics.framework in Frameworks */,
 				BCDC96DB14AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
-				BCDC96DE14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1414CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				E519073F1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD15218160C6976009E3604 /* libTestFlight.a in Frameworks */,
@@ -9777,7 +9758,6 @@
 			children = (
 				BCDC969A14AB7D8900D54631 /* GANTracker.h */,
 				BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */,
-				BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -18507,6 +18487,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"APNS_PRODUCTION_TARGET=1",
 					TESTFLIGHT_SDK,
+					"NDEBUG=1",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
@@ -18697,7 +18678,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
@@ -18758,6 +18739,7 @@
 					"APNS_PRODUCTION_TARGET=1",
 					"TESTFLIGHT_SDK=1",
 					"TESTFLIGHT_SDK_BETATEST=1",
+					"NDEBUG=1",
 					"$(inherited)",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;

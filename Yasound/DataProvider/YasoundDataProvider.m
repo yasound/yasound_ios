@@ -2718,6 +2718,7 @@ static YasoundDataProvider* _main = nil;
     conf.callbackAction = action;
     
     NSString* dataStr = [contacts JSONRepresentation];
+  NSLog(@"Contacts:\n%@", dataStr);
     NSData* data = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
     
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];

@@ -30,13 +30,9 @@ static UserSettings* _main;
 
 - (void)setObject:(id)value forKey:(NSString*)key
 {
-    if (value == nil)
-    {
-        DLog(@"setObject ERROR : value is nil for Key '%@'", key);
-        assert(0);
-        return;
-    }
-    
+  assert(value != nil);
+  assert(key != nil);
+
     [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];        
 }
@@ -107,8 +103,9 @@ static UserSettings* _main;
     //LBDEBUG
     if (![nb isKindOfClass:[NSNumber class]])
     {
-        DLog(@"UserSettings integerForKey error : NSNumber* nb is class : %@", [nb class]);
-        assert(0);
+      NSAssert(0,@"UserSettings integerForKey error : NSNumber* nb is class : %@", [nb class]);
+      if (error != nil)
+        *error = YES;
     }
     
     

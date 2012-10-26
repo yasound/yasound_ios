@@ -765,6 +765,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "InviteTwitterFriends.label" = "Un tweet d'invitation va être posté sur votre fil.";
 
 "InviteContacts.accessNotGrantedLabel" = "Autorisez Yasound à accéder à vos contacts pour les inviter.";
+"InviteContacts.sending_invitations" = "Invitations en cours d'envoie";
 
 "InviteFriends.WaitingText" = "envoi en cours...";
 

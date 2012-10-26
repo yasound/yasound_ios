@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TopBarModal.h"
 #import "Contact.h"
+#import "MBProgressHUD.h"
 
 @interface InviteContactsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TopBarModalDelegate>
 {
@@ -19,9 +20,12 @@
     IBOutlet UILabel* _accessNotGrantedLabel;
     
     UIImage* _checkmarkImage;
-    
+  UIImage* _defaultImage;
+
     BOOL _accessGranted;
-    
+  BOOL _inSave;
+  MBProgressHUD* _hud;
+
     IBOutlet UIBarButtonItem* _selectAllButton;
     IBOutlet UIBarButtonItem* _unselectAllButton;
 }

@@ -238,11 +238,11 @@
     
     
     // trim space
-    unichar c = [self.name characterAtIndex:firstRelevantIndex];
-    while (c == ' ')
+    unichar c = ' ';
+    while (c == ' ' && firstRelevantIndex < self.name.length)
     {
-        firstRelevantIndex++;
-        c = [self.name characterAtIndex:firstRelevantIndex];
+      c = [self.name characterAtIndex:firstRelevantIndex];
+      firstRelevantIndex++;
     }
 
     // find end of token
