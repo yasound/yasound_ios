@@ -6999,6 +6999,24 @@
 		E5A9A3B21454DC0500EA374C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		E5A9A3B81454DC0500EA374C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		E5A9A3BA1454DC0500EA374C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
+		E5CC4E6F164512BF0018C484 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E6E164512BF0018C484 /* MainWindow-iPad.xib */; };
+		E5CC4E701645140F0018C484 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E6E164512BF0018C484 /* MainWindow-iPad.xib */; };
+		E5CC4E71164514100018C484 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E6E164512BF0018C484 /* MainWindow-iPad.xib */; };
+		E5CC4E72164514110018C484 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E6E164512BF0018C484 /* MainWindow-iPad.xib */; };
+		E5CC4E73164514110018C484 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E6E164512BF0018C484 /* MainWindow-iPad.xib */; };
+		E5CC4E74164514120018C484 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E6E164512BF0018C484 /* MainWindow-iPad.xib */; };
+		E5CC4E75164514130018C484 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E6E164512BF0018C484 /* MainWindow-iPad.xib */; };
+		E5CC4E76164514140018C484 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E6E164512BF0018C484 /* MainWindow-iPad.xib */; };
+		E5CC4E77164514140018C484 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E6E164512BF0018C484 /* MainWindow-iPad.xib */; };
+		E5CC4E7916451E280018C484 /* theme-ipad.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E7816451E280018C484 /* theme-ipad.plist */; };
+		E5CC4E7A16451E280018C484 /* theme-ipad.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E7816451E280018C484 /* theme-ipad.plist */; };
+		E5CC4E7B16451E280018C484 /* theme-ipad.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E7816451E280018C484 /* theme-ipad.plist */; };
+		E5CC4E7C16451E280018C484 /* theme-ipad.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E7816451E280018C484 /* theme-ipad.plist */; };
+		E5CC4E7D16451E280018C484 /* theme-ipad.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E7816451E280018C484 /* theme-ipad.plist */; };
+		E5CC4E7E16451E280018C484 /* theme-ipad.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E7816451E280018C484 /* theme-ipad.plist */; };
+		E5CC4E7F16451E280018C484 /* theme-ipad.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E7816451E280018C484 /* theme-ipad.plist */; };
+		E5CC4E8016451E280018C484 /* theme-ipad.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E7816451E280018C484 /* theme-ipad.plist */; };
+		E5CC4E8116451E280018C484 /* theme-ipad.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CC4E7816451E280018C484 /* theme-ipad.plist */; };
 		E5E497631625873200F7C81E /* facebook_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E497621625873200F7C81E /* facebook_logo.png */; };
 		E5E497641625873200F7C81E /* facebook_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E497621625873200F7C81E /* facebook_logo.png */; };
 		E5E497651625873200F7C81E /* facebook_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E497621625873200F7C81E /* facebook_logo.png */; };
@@ -8258,6 +8276,8 @@
 		E5A9A3B71454DC0500EA374C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E5A9A3B91454DC0500EA374C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E5A9A3BB1454DC0500EA374C /* Yasound-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yasound-Prefix.pch"; sourceTree = "<group>"; };
+		E5CC4E6E164512BF0018C484 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Yasound/iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		E5CC4E7816451E280018C484 /* theme-ipad.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "theme-ipad.plist"; sourceTree = "<group>"; };
 		E5E497621625873200F7C81E /* facebook_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_logo.png; sourceTree = "<group>"; };
 		E5F3B8F01498B88D008DD607 /* Radio Yasound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Radio Yasound.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -10405,6 +10425,7 @@
 				BCE3602215D7FD2F008C26AC /* TableView */,
 				BCE3604515D7FD2F008C26AC /* TableViewPlain */,
 				BCE3604815D7FD2F008C26AC /* theme.plist */,
+				E5CC4E7816451E280018C484 /* theme-ipad.plist */,
 				BC46385B1611F1D9008CE52F /* WheelSelectors */,
 				BCE3604915D7FD2F008C26AC /* Themes */,
 				BCE3604A15D7FD2F008C26AC /* TopBar */,
@@ -10468,6 +10489,7 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
+				E5CC4E6D164512BD0018C484 /* iPad */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				BCDC963A14AB7D3500D54631 /* Third Parties */,
 				BCA2CCD6149A95460000637E /* LibTools */,
@@ -10579,6 +10601,14 @@
 			);
 			name = "Supporting Files";
 			path = Yasound;
+			sourceTree = "<group>";
+		};
+		E5CC4E6D164512BD0018C484 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				E5CC4E6E164512BF0018C484 /* MainWindow-iPad.xib */,
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 		E5E497611625873200F7C81E /* Icons */ = {
@@ -11345,6 +11375,8 @@
 				BC6EACA21626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACAB1626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5316271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E5CC4E76164514140018C484 /* MainWindow-iPad.xib in Resources */,
+				E5CC4E8016451E280018C484 /* theme-ipad.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11864,6 +11896,8 @@
 				BC6EACA31626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACAC1626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5416271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E5CC4E77164514140018C484 /* MainWindow-iPad.xib in Resources */,
+				E5CC4E8116451E280018C484 /* theme-ipad.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12377,6 +12411,8 @@
 				BC6EACA11626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACAA1626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5216271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E5CC4E75164514130018C484 /* MainWindow-iPad.xib in Resources */,
+				E5CC4E7F16451E280018C484 /* theme-ipad.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12895,6 +12931,8 @@
 				BC6EAC9E1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA71626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC4F16271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E5CC4E73164514110018C484 /* MainWindow-iPad.xib in Resources */,
+				E5CC4E7C16451E280018C484 /* theme-ipad.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13413,6 +13451,8 @@
 				BC6EAC9C1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA51626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC4D16271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E5CC4E71164514100018C484 /* MainWindow-iPad.xib in Resources */,
+				E5CC4E7A16451E280018C484 /* theme-ipad.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13931,6 +13971,8 @@
 				BC6EACA01626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA91626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5116271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E5CC4E6F164512BF0018C484 /* MainWindow-iPad.xib in Resources */,
+				E5CC4E7E16451E280018C484 /* theme-ipad.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14450,6 +14492,8 @@
 				BC6EAC9D1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA61626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC4E16271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E5CC4E72164514110018C484 /* MainWindow-iPad.xib in Resources */,
+				E5CC4E7B16451E280018C484 /* theme-ipad.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14968,6 +15012,8 @@
 				BC6EAC9B1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA41626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC4C16271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E5CC4E701645140F0018C484 /* MainWindow-iPad.xib in Resources */,
+				E5CC4E7916451E280018C484 /* theme-ipad.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15486,6 +15532,8 @@
 				BC6EAC9F1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA81626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5016271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E5CC4E74164514120018C484 /* MainWindow-iPad.xib in Resources */,
+				E5CC4E7D16451E280018C484 /* theme-ipad.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -18153,7 +18201,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18162,6 +18209,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -18179,7 +18227,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18188,6 +18235,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -18211,7 +18259,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Yasound/Yasound-Info-techtour.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18221,6 +18268,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Yasound TechTour";
 				PROVISIONING_PROFILE = "42805030-9A5B-4EF3-BC59-D86F2F430121";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -18240,7 +18288,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Yasound/Yasound-Info-techtour.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18250,6 +18297,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Yasound TechTour";
 				PROVISIONING_PROFILE = "42805030-9A5B-4EF3-BC59-D86F2F430121";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -18270,7 +18318,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18278,6 +18325,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = YasoundD;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -18295,7 +18343,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18303,6 +18350,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
 				);
 				PRODUCT_NAME = YasoundD;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -18323,7 +18371,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Yasound/Yasound-Info-DevServer.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18332,6 +18379,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD DEV SERVER";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -18349,7 +18397,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Yasound/Yasound-Info-DevServer.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18358,6 +18405,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD DEV SERVER";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -18388,7 +18436,6 @@
 					"$(SDKROOT)/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18399,6 +18446,7 @@
 				PRODUCT_NAME = "Radio Yasound D";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -18426,7 +18474,6 @@
 					"$(SDKROOT)/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18437,6 +18484,7 @@
 				PRODUCT_NAME = "Radio Yasound D";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -18459,7 +18507,6 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18468,7 +18515,7 @@
 				);
 				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "C35803D7-2D97-4F78-99CB-665037FC8336";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -18491,7 +18538,6 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18501,7 +18547,7 @@
 				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "C35803D7-2D97-4F78-99CB-665037FC8336";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -18524,7 +18570,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Yasound/YasoundtestD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18533,6 +18578,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = YasoundtestD;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -18551,7 +18597,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Yasound/YasoundtestD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18560,6 +18605,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = YasoundtestD;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -18712,7 +18758,6 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18721,6 +18766,7 @@
 				);
 				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "97D2B527-58D4-420D-911E-9D903C238924";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -18744,7 +18790,6 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
@@ -18753,6 +18798,7 @@
 				);
 				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "97D2B527-58D4-420D-911E-9D903C238924";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -70,7 +70,7 @@
 #define ROW_POST_BAR 1
 #define SECTION_EVENTS 1
 
-#define MESSAGE_WIDTH 248
+#define MESSAGE_WIDTH (self.view.frame.size.width - 72)
 
 @implementation WallViewController
 
@@ -137,8 +137,9 @@
         _messageFont = [sheet makeFont];
         [_messageFont retain];
         
-        _messageWidth = sheet.frame.size.width;
-        
+      //_messageWidth = sheet.frame.size.width;
+      _messageWidth = self.view.frame.size.width;
+
         sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.minHeight" error:nil];
         _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
         

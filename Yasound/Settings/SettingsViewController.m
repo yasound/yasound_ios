@@ -225,7 +225,7 @@
     else
         title = NSLocalizedString(@"Settings.section.programming", nil);
     
-    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 26)];
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.superview.frame.size.width, 26)];
     view.backgroundColor = [UIColor clearColor];
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.viewForHeader" retainStylesheet:YES overwriteStylesheet:YES error:nil];

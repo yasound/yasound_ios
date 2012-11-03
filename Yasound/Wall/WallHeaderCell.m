@@ -159,7 +159,7 @@
     if (listeners && (listeners.count == 0))
         return;
     
-    CGRect frame = CGRectMake(0,0, 320, 480);
+    CGRect frame = CGRectMake(0,0, self.superview.frame.size.width, self.superview.frame.size.height);
     RadioListTableViewController* view = [[RadioListTableViewController alloc] initWithNibName:@"WallListenersViewController" bundle:nil listeners:listeners];
     view.listDelegate = self;
     [APPDELEGATE.navigationController pushViewController:view animated:YES];

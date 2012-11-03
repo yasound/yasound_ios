@@ -22,7 +22,7 @@
         assert(self.genres != nil);
         
         self.wheelDelegate = self;
-        self.frame = CGRectMake(0, -44, 320, 44);
+        self.frame = CGRectMake(0, -44, self.superview.frame.size.width, 44);
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         
         self.status = eGenreStatusClosed;

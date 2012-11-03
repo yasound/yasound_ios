@@ -177,7 +177,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, ROW_CREATE_HEIGHT)];
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.superview.frame.size.width, ROW_CREATE_HEIGHT)];
     view.backgroundColor = [UIColor clearColor];
     cell.backgroundView = view;
     [view release];

@@ -18,8 +18,16 @@ static Theme* _theme = nil;
 {
     if (_theme == nil)
     {
-        NSString* bundlePath = [[NSBundle mainBundle] pathForResource:@"theme" ofType:@"plist"];
-                
+        NSString* bundlePath = NULL;
+        if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
+        {
+          bundlePath = [[NSBundle mainBundle] pathForResource:@"theme-ipad" ofType:@"plist"];
+        }
+        else
+        {
+          bundlePath = [[NSBundle mainBundle] pathForResource:@"theme" ofType:@"plist"];
+        }
+
         if (bundlePath == nil)
         {
             DLog(@"Theme BundleFileManager Error : could not find bundle %@!", bundlePath);

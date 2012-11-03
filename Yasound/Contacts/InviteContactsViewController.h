@@ -13,21 +13,21 @@
 
 @interface InviteContactsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TopBarModalDelegate>
 {
-    NSArray* _contacts;
-    NSMutableSet* _selectedContacts;
-    
-    IBOutlet UITableView* _tableview;
-    IBOutlet UILabel* _accessNotGrantedLabel;
-    
-    UIImage* _checkmarkImage;
+  NSArray* _contacts;
+  NSMutableSet* _selectedContacts;
+
+  IBOutlet UITableView* _tableview;
+  IBOutlet UILabel* _accessNotGrantedLabel;
+
+  UIImage* _checkmarkImage;
   UIImage* _defaultImage;
 
-    BOOL _accessGranted;
+  BOOL _accessGranted;
   BOOL _inSave;
   MBProgressHUD* _hud;
 
-    IBOutlet UIBarButtonItem* _selectAllButton;
-    IBOutlet UIBarButtonItem* _unselectAllButton;
+  IBOutlet UIBarButtonItem* _selectAllButton;
+  IBOutlet UIBarButtonItem* _unselectAllButton;
 }
 
 - (IBAction)selectAllClicked:(id)sender;
