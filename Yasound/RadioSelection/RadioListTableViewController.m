@@ -274,7 +274,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 #pragma mark - Table view data source
@@ -321,9 +321,10 @@
 
 
 - (NSInteger)numberOfRowsFromRadios:(NSInteger)radiosCount {
-    
-    NSInteger nbRows = radiosCount / 2;
-    if ((radiosCount % 2) != 0)
+
+  NSInteger cols = 6;
+    NSInteger nbRows = radiosCount / cols;
+    if ((radiosCount % cols) != 0)
         nbRows++;
     return nbRows;
 }

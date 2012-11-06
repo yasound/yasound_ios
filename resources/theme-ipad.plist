@@ -1862,6 +1862,8 @@
 					<integer>0</integer>
 					<key>y</key>
 					<integer>0</integer>
+					<key>width</key>
+					<integer>768</integer>
 					<key>name</key>
 					<string>wallCellLike</string>
 					<key>type</key>
@@ -1881,7 +1883,7 @@
 					<key>height</key>
 					<integer>30</integer>
 					<key>width</key>
-					<integer>200</integer>
+					<integer>703</integer>
 					<key>x</key>
 					<integer>65</integer>
 					<key>y</key>
@@ -1980,7 +1982,7 @@
 					<key>height</key>
 					<integer>12</integer>
 					<key>width</key>
-					<integer>250</integer>
+					<integer>703</integer>
 					<key>x</key>
 					<integer>63</integer>
 					<key>y</key>
@@ -1992,6 +1994,8 @@
 					<integer>0</integer>
 					<key>y</key>
 					<integer>0</integer>
+					<key>width</key>
+					<integer>768</integer>
 					<key>name</key>
 					<string>wallCellMessage</string>
 					<key>type</key>
@@ -2014,7 +2018,7 @@
 					<key>height</key>
 					<integer>30</integer>
 					<key>width</key>
-					<integer>240</integer>
+					<integer>703</integer>
 					<key>x</key>
 					<integer>65</integer>
 					<key>y</key>
@@ -2046,6 +2050,8 @@
 					<integer>0</integer>
 					<key>y</key>
 					<integer>0</integer>
+					<key>width</key>
+					<integer>768</integer>
 					<key>name</key>
 					<string>wallCellSong</string>
 					<key>type</key>
