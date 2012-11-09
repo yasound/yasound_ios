@@ -80,7 +80,7 @@ taskStatus stringToStatus(NSString* str);
 + (NSNumber*) user_id;
 + (NSString*) username;
 + (NSString*) user_apikey;
-
++ (BOOL) isAuthenticated;
 
 
 

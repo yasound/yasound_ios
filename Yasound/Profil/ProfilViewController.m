@@ -90,10 +90,12 @@
     self.buttonBlueLabel.hidden = YES;
     
     // update top bar with an edit button
-    if (self.user && [self.user.id isEqualToNumber:[YasoundDataProvider user_id]]) {
-        [self.topbar showEditItem];
+    if ([YasoundDataProvider isAuthenticated])
+    {
+        if (self.user && [self.user.id isEqualToNumber:[YasoundDataProvider user_id]]) {
+            [self.topbar showEditItem];
+        }
     }
-    
     
     // build scrollview
     CGFloat posY = 0;

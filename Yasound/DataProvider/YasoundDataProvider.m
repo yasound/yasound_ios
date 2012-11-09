@@ -178,6 +178,13 @@ static YasoundDataProvider* _main = nil;
 }
 
 
++ (BOOL) isAuthenticated {
+    if ([YasoundDataProvider main].user == nil)
+    {
+        return NO;
+    }
+    return YES;
+}
 
 
 
