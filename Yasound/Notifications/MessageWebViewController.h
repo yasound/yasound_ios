@@ -1,5 +1,5 @@
 //
-//  MessageWeViewController.h
+//  MessageWebViewController.h
 //  Yasound
 //
 //  Created by matthieu campion on 4/5/12.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MessageWeViewController : YaViewController
+@interface MessageWebViewController : YaViewController
 {
   NSString* _url;
   

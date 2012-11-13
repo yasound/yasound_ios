@@ -10,7 +10,7 @@
 #import "Theme.h"
 #import "AudioStreamManager.h"
 #import "NotificationCenterTableViewcCell.h"
-#import "MessageWeViewController.h"
+#import "MessageWebViewController.h"
 #import "ProfilViewController.h"
 #import "NotificationMessageViewController.h"
 #import "RootViewController.h"
@@ -306,7 +306,7 @@
 
 - (void)goToMessageWebView:(NSString*)url
 {
-  MessageWeViewController* view = [[MessageWeViewController alloc] initWithNibName:@"MessageWeViewController" bundle:nil url:url];
+  MessageWebViewController* view = [[MessageWebViewController alloc] initWithNibName:@"MessageWebViewController" bundle:nil url:url];
   [self.navigationController pushViewController:view animated:YES];
   [view release];
 }

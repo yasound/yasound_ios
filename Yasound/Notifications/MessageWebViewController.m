@@ -1,15 +1,15 @@
 //
-//  MessageWeViewController.m
+//  MessageWebViewController.m
 //  Yasound
 //
 //  Created by matthieu campion on 4/5/12.
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "MessageWeViewController.h"
+#import "MessageWebViewController.h"
 #import "AudioStreamManager.h"
 
-@implementation MessageWeViewController
+@implementation MessageWebViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil url:(NSString*)url
 {
