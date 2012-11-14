@@ -70,14 +70,24 @@
 {
     [super viewDidLoad];  
   
-  
-    _textView.text = [NSString stringWithFormat:@"%@: %@\n%@: %@\n%@\n\n%@",
-                      NSLocalizedString(@"NotificationMessage.from", nil),
-                      self.notification.from_user_name,
-                      NSLocalizedString(@"NotificationMessage.from.radio", nil),
-                      self.notification.from_radio_name,
-                       [self dateToString:self.notification.date],
-                      self.notification.text];
+    if (self.notification.from_radio_name == nil)
+    {
+        _textView.text = [NSString stringWithFormat:@"%@: %@\n%@\n\n%@",
+                          NSLocalizedString(@"NotificationMessage.from", nil),
+                          self.notification.from_user_name,
+                          [self dateToString:self.notification.date],
+                          self.notification.text];
+    }
+    else
+    {
+        _textView.text = [NSString stringWithFormat:@"%@: %@\n%@: %@\n%@\n\n%@",
+                          NSLocalizedString(@"NotificationMessage.from", nil),
+                          self.notification.from_user_name,
+                          NSLocalizedString(@"NotificationMessage.from.radio", nil),
+                          self.notification.from_radio_name,
+                          [self dateToString:self.notification.date],
+                          self.notification.text];
+    }
 
 }
 
