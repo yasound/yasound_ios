@@ -398,28 +398,21 @@
 - (void)enterTheApp
 {
     
-    if (APPDELEGATE.mustGoToNotificationCenter)
+    NSNumber* radioId = [[UserSettings main] objectForKey:USKEYnowPlaying];
+    
+    if (radioId == nil)
     {
-        [self goToNotificationCenter];
-        [APPDELEGATE setMustGoToNotificationCenter:NO];
+        //LBDEBUG TODO ICI : own_radio pas bon
+        Radio* myRadio = self.user.own_radio;
+        if (myRadio && myRadio.ready)
+            [self launchRadio:myRadio.id];
+        else
+            // default screen is Selection
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
     }
     else
-    {
-        NSNumber* radioId = [[UserSettings main] objectForKey:USKEYnowPlaying];
-        
-        if (radioId == nil)
-        {
-            //LBDEBUG TODO ICI : own_radio pas bon
-            Radio* myRadio = self.user.own_radio;
-            if (myRadio && myRadio.ready)
-                [self launchRadio:myRadio.id];
-            else
-                // default screen is Selection
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
-        }
-        else
-            [self launchRadio:radioId];
-    }
+        [self launchRadio:radioId];
+    
 
     BOOL error;
     NSInteger lastUserID = [[UserSettings main] integerForKey:USKEYuserId error:&error];
@@ -447,6 +440,12 @@
     
     if (self.user)
         [[UserSettings main] setObject:self.user.id forKey:USKEYuserId];
+    
+    if (APPDELEGATE.mustGoToNotificationCenter)
+    {
+        [self goToNotificationCenter];
+        [APPDELEGATE setMustGoToNotificationCenter:NO];
+    }    
 }
 
 
