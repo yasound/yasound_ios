@@ -535,6 +535,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "NotificationCenterView_alert_title" = "Notifications";
 "NotificationCenterView_alert_message" = "Voulez-vous vraiment supprimer toutes vos notifications?";
 
+"NotificationCenterView_goToLogin_title" = "Identification nécessaire";
+"NotificationCenterView_goToLogin_message" = "Vous devez vous identifier pour lire vos notifications.";
+
 
 "YasoundMessage_title" = "Message de Yasound";
 

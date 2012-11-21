@@ -534,6 +534,9 @@
 "NotificationCenterView_alert_title" = "Notifications";
 "NotificationCenterView_alert_message" = "Do you really want to delete all your notifications?";
 
+"NotificationCenterView_goToLogin_title" = "Login needed";
+"NotificationCenterView_goToLogin_message" = "You must be logged in to view your notifications.";
+
 
 "YasoundMessage_title" = "Message from Yasound";
 

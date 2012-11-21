@@ -15,6 +15,7 @@
     
     BOOL _waitingForPreviousEvents;
     UIAlertView* _alertTrash;
+    UIAlertView* _alertGoToLogin;
 }
 
 @property (nonatomic, retain) IBOutlet TopBar* topBar;

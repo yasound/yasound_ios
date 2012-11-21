@@ -16,6 +16,7 @@
 #import "RootViewController.h"
 #import "LoadingCell.h"
 #import "YasoundDataProvider.h"
+#import "YasoundSessionManager.h"
 
 @implementation NotificationCenterViewController
 
@@ -54,6 +55,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];  
+    if (![YasoundSessionManager main].registered)
+    {
+        _alertGoToLogin = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"NotificationCenterView_goToLogin_title", nil) message:NSLocalizedString(@"NotificationCenterView_goToLogin_message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation_OK", nil),nil];
+        [_alertGoToLogin show];
+        [_alertGoToLogin release];
+    }
+    
     
     _waitingForPreviousEvents = NO;
 
@@ -469,7 +477,15 @@
     {
         [[YasoundDataProvider main] deleteAllUserNotificationsWithTarget:self action:@selector(deletedAllNotifications:success:)];
         return;
+    } else if ( (alertView == _alertGoToLogin)  && (buttonIndex == 1))
+    {
+        if (buttonIndex == 1)
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:nil];
+            return;
+        }
     }
+    
 }
 
 
@@ -536,7 +552,6 @@
     
     return YES;
 }
-
 
 
 @end
