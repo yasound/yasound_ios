@@ -1385,7 +1385,7 @@ static YasoundDataProvider* _main = nil;
   Auth* auth = self.apiKeyAuth;
   NSNumber* radioID = radio.id;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/current_user", radioID];
-  NSArray* params = [NSArray arrayWithObject:@"limit=0"];
+  NSArray* params = [NSArray arrayWithObject:@"limit=200"];
   [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 
 }
