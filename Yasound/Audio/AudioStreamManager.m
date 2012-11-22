@@ -107,20 +107,14 @@ static AudioStreamer* _gAudioStreamer = nil;
     // to retrieve it when the app starts
     [[UserSettings main] setObject:self.currentRadio.id forKey:USKEYnowPlaying];
 
-#if USE_FAKE_RADIO_URL || USE_YASOUND_LOCAL_SERVER
-//    NSURL* radiourl = [NSURL URLWithString:@"http://api.yasound.com:8001/fakeid"];
-    NSURL* radiourl = [NSURL URLWithString:@"http://localhost:8888/test.mp3"];
-#else
-  NSString* url = radio.stream_url;
+    NSString* url = radio.stream_url;
     
     // add HD param if it's requested
     BOOL hdPermission = [[YasoundDataProvider main].user permission:PERM_HD];
     BOOL hdRequest = [[UserSettings main] boolForKey:USKEYuserWantsHd error:nil];
-
-    
+  
     NSURL* radiourl = [NSURL URLWithString:url];
-#endif
-    
+  
     if ([YasoundSessionManager main].registered)
     {
         [[YasoundDataProvider main] streamingAuthenticationTokenWithTarget:self action:@selector(receivedStreamingAuthToken:success:) userData:radiourl];
