@@ -92,7 +92,8 @@ static Song* _gNowPlayingSong = nil;
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
         [_queryShare addButtonWithTitle:@"Twitter"];
     
-    [_queryShare addButtonWithTitle:NSLocalizedString(@"Share.email", nil)];
+    if ([MFMailComposeViewController canSendMail])
+        [_queryShare addButtonWithTitle:NSLocalizedString(@"Share.email", nil)];
     
     [_queryShare addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
     _queryShare.cancelButtonIndex = _queryShare.numberOfButtons-1;
@@ -200,6 +201,20 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)shareWithMail
 {
+    if (![MFMailComposeViewController canSendMail])
+    {
+        UIAlertView *av = nil;
+        av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Cannot_share_with_mail", nil)
+                                        message:NSLocalizedString(@"Cannot_share_with_mail_message", nil)
+                                       delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        
+        [av show];
+        [av release];
+        return;
+    }
+        
     NSString* message = NSLocalizedString(@"ShareModalView_share_message", nil);
     NSString* fullMessage = [NSString stringWithFormat:message, _gNowPlayingSong.name, _gNowPlayingSong.artist, self.radio.name];
     NSString* fullLink = [[NSURL alloc] initWithString:self.radio.web_url];

@@ -777,3 +777,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "TwitterYasoundAccount" = "YasoundSAS";
 
+"Cannot_share_with_mail" = "Impossible de partager par email";
+"Cannot_share_with_mail_message" = "Aucun compte email disponible";
+
