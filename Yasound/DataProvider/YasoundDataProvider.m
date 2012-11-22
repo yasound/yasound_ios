@@ -375,7 +375,7 @@ static YasoundDataProvider* _main = nil;
     return;
   }
   
-  NSArray* params = [NSArray arrayWithObject:[NSString stringWithFormat:@"creator=%@", _user.id]];
+  NSArray* params = [NSArray arrayWithObjects:[NSString stringWithFormat:@"creator=%@", _user.id], @"limit=1", nil];
   Auth* auth = self.apiKeyAuth;
   
   NSMutableDictionary* data;
@@ -385,7 +385,7 @@ static YasoundDataProvider* _main = nil;
     data = [NSMutableDictionary dictionary];
   [data setValue:target forKey:@"clientTarget"];
   [data setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
-  
+    
   [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:self byCalling:@selector(didReceiveUserRadios:withInfo:) withUserData:data withAuth:auth];
 }
 
@@ -420,7 +420,7 @@ static YasoundDataProvider* _main = nil;
   NSDictionary* userData = [info valueForKey:@"userData"];
   id target = [userData valueForKey:@"clientTarget"];
   SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-  
+    
   if (target && selector)
   {
       if ([target respondsToSelector:selector])
@@ -591,14 +591,8 @@ static YasoundDataProvider* _main = nil;
     _apiKey = u.api_key;
     }
 
-
-    NSMutableDictionary* data = [NSMutableDictionary dictionaryWithDictionary:finalInfo];
-    [data setValue:target forKey:@"finalTarget"];
-    [data setValue:NSStringFromSelector(selector) forKey:@"finalSelector"];
-    if (clientData)
-    [data setValue:clientData forKey:@"clientData"];
-
-    [self userRadioWithTarget:self action:@selector(didReceiveLoggedUserRadio:withInfo:) andData:data];
+    if ([target respondsToSelector:selector])
+      [target performSelector:selector withObject:_user withObject:finalInfo];
 
     // send Apple Push Notification service device token
     [self sendAPNsDeviceTokenWhenLogged];
@@ -658,18 +652,16 @@ static YasoundDataProvider* _main = nil;
     _apiKey = u.api_key;
   }
   
+  
   NSDictionary* userData = [info valueForKey:@"userData"];
   id target = [userData valueForKey:@"clientTarget"];
   SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-  NSDictionary* clientData = [userData valueForKey:@"clientData"];
+
+  if ([target respondsToSelector:selector])
+    [target performSelector:selector withObject:_user withObject:finalInfo];
   
-  NSMutableDictionary* data = [NSMutableDictionary dictionary];
-  [data setValue:target forKey:@"finalTarget"];
-  [data setValue:NSStringFromSelector(selector) forKey:@"finalSelector"];
-  if (clientData)
-    [data setValue:clientData forKey:@"clientData"];
-  
-  [self userRadioWithTarget:self action:@selector(didReceiveLoggedUserRadio:withInfo:) andData:data];
+
+//  [self userRadioWithTarget:self action:@selector(didReceiveLoggedUserRadio:withInfo:) andData:data];
   
   // send Apple Push Notification service device token
   [self sendAPNsDeviceTokenWhenLogged];
