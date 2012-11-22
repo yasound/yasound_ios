@@ -53,12 +53,18 @@
     [super dealloc];
 }
 
-- (void)setName:(NSString*)name
+- (void)setName:(NSString*)n
 {
     if (_name != nil)
         [_name release];
-    _name = [NSString stringWithString:name];
-    [_name retain];
+    
+    if (n)
+    {
+        _name = [NSString stringWithString:n];
+        [_name retain];
+    }
+    else
+        _name = nil;
     
     if (_nameWithoutArticle != nil)
         [_nameWithoutArticle release];
