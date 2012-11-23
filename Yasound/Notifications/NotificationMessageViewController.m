@@ -11,7 +11,7 @@
 #import "AudioStreamManager.h"
 #import "NotificationCenterTableViewcCell.h"
 #import "MessageWeViewController.h"
-
+#import "RootViewController.h"
 
 
 
@@ -68,7 +68,7 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];  
+    [super viewDidLoad];
   
     if (self.notification.from_radio_name == nil)
     {
@@ -113,8 +113,6 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
 
 
 

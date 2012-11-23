@@ -18,8 +18,4 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil notification:(UserNotification*)notif;
 
-
-- (IBAction)onNowPlayingClicked:(id)sender;
-- (IBAction)onMenuBarItemClicked:(id)sender;
-
 @end

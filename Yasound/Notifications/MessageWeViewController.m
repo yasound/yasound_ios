@@ -8,6 +8,7 @@
 
 #import "MessageWeViewController.h"
 #import "AudioStreamManager.h"
+#import "RootViewController.h"
 
 @implementation MessageWeViewController
 
@@ -35,7 +36,8 @@
 {
     [super viewDidLoad];
 
-    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+    _nowPlayingButton.title = NSLocalizedString(@"Navigation.nowPlaying", nil);
+    _backButton.title = NSLocalizedString(@"Navigation_back", nil);
     
     _webView.delegate = self;
   
@@ -62,6 +64,11 @@
 - (IBAction)onMenuBarItemClicked:(id)sender
 {
   [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)onNowPlayingClicked:(id)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:[AudioStreamManager main].currentRadio];
 }
 
 

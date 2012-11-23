@@ -12,6 +12,7 @@
 {
   NSString* _url;
   
+    IBOutlet UIBarButtonItem* _backButton;
   IBOutlet UIBarButtonItem* _nowPlayingButton;
   IBOutlet UIWebView* _webView;
 }
