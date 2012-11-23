@@ -904,7 +904,10 @@
     NSError* error = nil;
     if (!succeeded)
     {
-        error = [NSError errorWithDomain:response code:request.responseStatusCode userInfo:nil];
+        NSString* domain = response;
+        if (!domain)
+            domain = @"no response";
+        error = [NSError errorWithDomain:domain code:request.responseStatusCode userInfo:nil];
         [data setValue:error forKey:@"error"];
     }
     
