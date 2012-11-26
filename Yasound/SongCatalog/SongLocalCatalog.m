@@ -180,17 +180,16 @@ static SongLocalCatalog* _main = nil;
         if (items.count == 0)
             return NO;
         
-        for (MPMediaItem* item in items)
+        if (song.artist_client)
         {
-            NSString* song = [item valueForProperty:MPMediaItemPropertyTitle];
-            NSString* artist = [item valueForProperty:MPMediaItemPropertyArtist];
-            NSString* album  = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
-            DLog(@"catalog local.name %@   local.artist '%@'   local.album '%@'", song, artist, album);
+            [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.artist_client forProperty:MPMediaItemPropertyArtist comparisonType:MPMediaPredicateComparisonEqualTo]];
         }
-        
-        
-        [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.artist_client forProperty:MPMediaItemPropertyArtist comparisonType:MPMediaPredicateComparisonEqualTo]];
-        [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.album_client forProperty:MPMediaItemPropertyAlbumTitle comparisonType:MPMediaPredicateComparisonEqualTo]];
+        if (song.album_client)
+        {
+            [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.album_client forProperty:MPMediaItemPropertyAlbumTitle comparisonType:MPMediaPredicateComparisonEqualTo]];
+        }
+        if (song.name_client == nil)
+            return NO;
         [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.name_client forProperty:MPMediaItemPropertyTitle comparisonType:MPMediaPredicateComparisonEqualTo]];
         
         NSArray* songsArray = [allSongsQuery items];
