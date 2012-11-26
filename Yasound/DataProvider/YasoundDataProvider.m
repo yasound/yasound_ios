@@ -274,7 +274,8 @@ static YasoundDataProvider* _main = nil;
   if (!_communicator || !picturePath)
     return nil;
   
-  NSURL* url = [_communicator urlWithURL:picturePath absolute:NO addTrailingSlash:NO params:nil];
+  BOOL absolute = [picturePath hasPrefix:@"http"];
+  NSURL* url = [_communicator urlWithURL:picturePath absolute:absolute addTrailingSlash:NO params:nil];
     
   return url;
 }
