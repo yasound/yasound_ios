@@ -99,6 +99,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     {
         [_gAudioStreamer stop];
         [_gAudioStreamer release];
+        _gAudioStreamer = nil;
     }
 
     self.currentRadio = radio;
