@@ -11,6 +11,8 @@
 #import "YasoundSessionManager.h"
 #import "RootViewController.h"
 
+#import "TapjoyConnect.h"
+
 @implementation PromoCodeCell
 @synthesize promoCodeDelegate;
 
@@ -85,6 +87,8 @@
         return NO;
     
     [textField resignFirstResponder];
+
+[TapjoyConnect showOffers];
     return YES;
 }
 

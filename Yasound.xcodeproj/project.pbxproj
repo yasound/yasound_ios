@@ -402,18 +402,6 @@
 		40B40978152EFC630050D334 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965114AB7D6E00D54631 /* ASINetworkQueue.m */; };
 		40B40979152EFC630050D334 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
 		40B4097A152EFC630050D334 /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
-		40B4097B152EFC630050D334 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
-		40B4097C152EFC630050D334 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
-		40B4097D152EFC630050D334 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
-		40B4097E152EFC630050D334 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F114AB7D9000D54631 /* SBJsonStreamParserAccumulator.m */; };
-		40B4097F152EFC630050D334 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F314AB7D9000D54631 /* SBJsonStreamParserAdapter.m */; };
-		40B40980152EFC630050D334 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F514AB7D9000D54631 /* SBJsonStreamParserState.m */; };
-		40B40981152EFC630050D334 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F714AB7D9000D54631 /* SBJsonStreamWriter.m */; };
-		40B40982152EFC630050D334 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F914AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m */; };
-		40B40983152EFC630050D334 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FB14AB7D9000D54631 /* SBJsonStreamWriterState.m */; };
-		40B40984152EFC630050D334 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
-		40B40985152EFC630050D334 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
-		40B40986152EFC630050D334 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
 		40B40989152EFC630050D334 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		40B4098A152EFC630050D334 /* FacebookSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979714AB7DD100D54631 /* FacebookSessionManager.m */; };
 		40B4098B152EFC630050D334 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979914AB7DD100D54631 /* SessionManager.m */; };
@@ -523,7 +511,6 @@
 		40B40A13152EFC630050D334 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		40B40A14152EFC630050D334 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		40B40A15152EFC630050D334 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		40B40A17152EFC630050D334 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		40B40A1A152EFC630050D334 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		40B40A1B152EFC630050D334 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		40B40A1C152EFC630050D334 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
@@ -648,18 +635,6 @@
 		40D53B7D1554280F001EB0C5 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965114AB7D6E00D54631 /* ASINetworkQueue.m */; };
 		40D53B7E1554280F001EB0C5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
 		40D53B7F1554280F001EB0C5 /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
-		40D53B801554280F001EB0C5 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
-		40D53B811554280F001EB0C5 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
-		40D53B821554280F001EB0C5 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
-		40D53B831554280F001EB0C5 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F114AB7D9000D54631 /* SBJsonStreamParserAccumulator.m */; };
-		40D53B841554280F001EB0C5 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F314AB7D9000D54631 /* SBJsonStreamParserAdapter.m */; };
-		40D53B851554280F001EB0C5 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F514AB7D9000D54631 /* SBJsonStreamParserState.m */; };
-		40D53B861554280F001EB0C5 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F714AB7D9000D54631 /* SBJsonStreamWriter.m */; };
-		40D53B871554280F001EB0C5 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F914AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m */; };
-		40D53B881554280F001EB0C5 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FB14AB7D9000D54631 /* SBJsonStreamWriterState.m */; };
-		40D53B891554280F001EB0C5 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
-		40D53B8A1554280F001EB0C5 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
-		40D53B8B1554280F001EB0C5 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
 		40D53B8E1554280F001EB0C5 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		40D53B8F1554280F001EB0C5 /* FacebookSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979714AB7DD100D54631 /* FacebookSessionManager.m */; };
 		40D53B901554280F001EB0C5 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979914AB7DD100D54631 /* SessionManager.m */; };
@@ -775,7 +750,6 @@
 		40D53C191554280F001EB0C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		40D53C1A1554280F001EB0C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		40D53C1B1554280F001EB0C5 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		40D53C1D1554280F001EB0C5 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		40D53C201554280F001EB0C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		40D53C211554280F001EB0C5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		40D53C221554280F001EB0C5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
@@ -1750,18 +1724,6 @@
 		BC3FA68C14E93B660055AB4A /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965114AB7D6E00D54631 /* ASINetworkQueue.m */; };
 		BC3FA68D14E93B660055AB4A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
 		BC3FA68E14E93B660055AB4A /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
-		BC3FA68F14E93B660055AB4A /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
-		BC3FA69014E93B660055AB4A /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
-		BC3FA69114E93B660055AB4A /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
-		BC3FA69214E93B660055AB4A /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F114AB7D9000D54631 /* SBJsonStreamParserAccumulator.m */; };
-		BC3FA69314E93B660055AB4A /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F314AB7D9000D54631 /* SBJsonStreamParserAdapter.m */; };
-		BC3FA69414E93B660055AB4A /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F514AB7D9000D54631 /* SBJsonStreamParserState.m */; };
-		BC3FA69514E93B660055AB4A /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F714AB7D9000D54631 /* SBJsonStreamWriter.m */; };
-		BC3FA69614E93B660055AB4A /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F914AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m */; };
-		BC3FA69714E93B660055AB4A /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FB14AB7D9000D54631 /* SBJsonStreamWriterState.m */; };
-		BC3FA69814E93B660055AB4A /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
-		BC3FA69914E93B660055AB4A /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
-		BC3FA69A14E93B660055AB4A /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
 		BC3FA69D14E93B660055AB4A /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		BC3FA69E14E93B660055AB4A /* FacebookSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979714AB7DD100D54631 /* FacebookSessionManager.m */; };
 		BC3FA69F14E93B660055AB4A /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979914AB7DD100D54631 /* SessionManager.m */; };
@@ -1841,7 +1803,6 @@
 		BC3FA6F914E93B660055AB4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		BC3FA6FA14E93B660055AB4A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		BC3FA6FB14E93B660055AB4A /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		BC3FA6FD14E93B660055AB4A /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		BC3FA70014E93B660055AB4A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		BC3FA70114E93B660055AB4A /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC3FA70214E93B660055AB4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
@@ -1979,10 +1940,6 @@
 		BC40CC0F14CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */; };
 		BC40CC1014CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */; };
 		BC40CC1114CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */; };
-		BC40CC1214CF64B100DF0950 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
-		BC40CC1314CF64B100DF0950 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
-		BC40CC1414CF64B100DF0950 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
-		BC40CC1514CF64B100DF0950 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		BC40CC1614CF64B100DF0950 /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE514CF64B100DF0950 /* MGTwitterEngine.m */; };
 		BC40CC1714CF64B100DF0950 /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE514CF64B100DF0950 /* MGTwitterEngine.m */; };
 		BC40CC1814CF64B100DF0950 /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE514CF64B100DF0950 /* MGTwitterEngine.m */; };
@@ -2511,18 +2468,6 @@
 		BC56F49A152486AF005D1B40 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965114AB7D6E00D54631 /* ASINetworkQueue.m */; };
 		BC56F49B152486AF005D1B40 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
 		BC56F49C152486AF005D1B40 /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
-		BC56F49D152486AF005D1B40 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
-		BC56F49E152486AF005D1B40 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
-		BC56F49F152486AF005D1B40 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
-		BC56F4A0152486AF005D1B40 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F114AB7D9000D54631 /* SBJsonStreamParserAccumulator.m */; };
-		BC56F4A1152486AF005D1B40 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F314AB7D9000D54631 /* SBJsonStreamParserAdapter.m */; };
-		BC56F4A2152486AF005D1B40 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F514AB7D9000D54631 /* SBJsonStreamParserState.m */; };
-		BC56F4A3152486AF005D1B40 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F714AB7D9000D54631 /* SBJsonStreamWriter.m */; };
-		BC56F4A4152486AF005D1B40 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F914AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m */; };
-		BC56F4A5152486AF005D1B40 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FB14AB7D9000D54631 /* SBJsonStreamWriterState.m */; };
-		BC56F4A6152486AF005D1B40 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
-		BC56F4A7152486AF005D1B40 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
-		BC56F4A8152486AF005D1B40 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
 		BC56F4AB152486AF005D1B40 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		BC56F4AC152486AF005D1B40 /* FacebookSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979714AB7DD100D54631 /* FacebookSessionManager.m */; };
 		BC56F4AD152486AF005D1B40 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979914AB7DD100D54631 /* SessionManager.m */; };
@@ -2621,7 +2566,6 @@
 		BC56F522152486AF005D1B40 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		BC56F523152486AF005D1B40 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		BC56F524152486AF005D1B40 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		BC56F526152486AF005D1B40 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		BC56F529152486AF005D1B40 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		BC56F52A152486AF005D1B40 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC56F52B152486AF005D1B40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
@@ -3219,18 +3163,6 @@
 		BC93CCF514CF3F7A007C723F /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965114AB7D6E00D54631 /* ASINetworkQueue.m */; };
 		BC93CCF614CF3F7A007C723F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
 		BC93CCF714CF3F7A007C723F /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
-		BC93CCF814CF3F7A007C723F /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
-		BC93CCF914CF3F7A007C723F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
-		BC93CCFA14CF3F7A007C723F /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
-		BC93CCFB14CF3F7A007C723F /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F114AB7D9000D54631 /* SBJsonStreamParserAccumulator.m */; };
-		BC93CCFC14CF3F7A007C723F /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F314AB7D9000D54631 /* SBJsonStreamParserAdapter.m */; };
-		BC93CCFD14CF3F7A007C723F /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F514AB7D9000D54631 /* SBJsonStreamParserState.m */; };
-		BC93CCFE14CF3F7A007C723F /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F714AB7D9000D54631 /* SBJsonStreamWriter.m */; };
-		BC93CCFF14CF3F7A007C723F /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F914AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m */; };
-		BC93CD0014CF3F7A007C723F /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FB14AB7D9000D54631 /* SBJsonStreamWriterState.m */; };
-		BC93CD0114CF3F7A007C723F /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
-		BC93CD0214CF3F7A007C723F /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
-		BC93CD0314CF3F7A007C723F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
 		BC93CD0614CF3F7A007C723F /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		BC93CD1714CF3F7A007C723F /* FacebookSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979714AB7DD100D54631 /* FacebookSessionManager.m */; };
 		BC93CD1814CF3F7A007C723F /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979914AB7DD100D54631 /* SessionManager.m */; };
@@ -3760,18 +3692,6 @@
 		BCC751B215E689EF00CF7F7C /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965114AB7D6E00D54631 /* ASINetworkQueue.m */; };
 		BCC751B315E689EF00CF7F7C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
 		BCC751B415E689EF00CF7F7C /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
-		BCC751B515E689EF00CF7F7C /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
-		BCC751B615E689EF00CF7F7C /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
-		BCC751B715E689EF00CF7F7C /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
-		BCC751B815E689EF00CF7F7C /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F114AB7D9000D54631 /* SBJsonStreamParserAccumulator.m */; };
-		BCC751B915E689EF00CF7F7C /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F314AB7D9000D54631 /* SBJsonStreamParserAdapter.m */; };
-		BCC751BA15E689EF00CF7F7C /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F514AB7D9000D54631 /* SBJsonStreamParserState.m */; };
-		BCC751BB15E689EF00CF7F7C /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F714AB7D9000D54631 /* SBJsonStreamWriter.m */; };
-		BCC751BC15E689EF00CF7F7C /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F914AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m */; };
-		BCC751BD15E689EF00CF7F7C /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FB14AB7D9000D54631 /* SBJsonStreamWriterState.m */; };
-		BCC751BE15E689EF00CF7F7C /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
-		BCC751BF15E689EF00CF7F7C /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
-		BCC751C015E689EF00CF7F7C /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
 		BCC751C115E689EF00CF7F7C /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		BCC751C215E689EF00CF7F7C /* FacebookSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979714AB7DD100D54631 /* FacebookSessionManager.m */; };
 		BCC751C315E689EF00CF7F7C /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979914AB7DD100D54631 /* SessionManager.m */; };
@@ -3933,7 +3853,6 @@
 		BCC7526F15E689EF00CF7F7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		BCC7527015E689EF00CF7F7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		BCC7527115E689EF00CF7F7C /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
-		BCC7527315E689EF00CF7F7C /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
 		BCC7527515E689EF00CF7F7C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
 		BCC7527715E689EF00CF7F7C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		BCC7527815E689EF00CF7F7C /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
@@ -4745,42 +4664,6 @@
 		BCDC96DF14AB7D8A00D54631 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
 		BCDC96E014AB7D8A00D54631 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
 		BCDC96E114AB7D8A00D54631 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
-		BCDC970614AB7D9000D54631 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
-		BCDC970714AB7D9000D54631 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
-		BCDC970814AB7D9000D54631 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
-		BCDC970914AB7D9000D54631 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
-		BCDC970A14AB7D9000D54631 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
-		BCDC970B14AB7D9000D54631 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
-		BCDC970C14AB7D9000D54631 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
-		BCDC970D14AB7D9000D54631 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
-		BCDC970E14AB7D9000D54631 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
-		BCDC970F14AB7D9000D54631 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F114AB7D9000D54631 /* SBJsonStreamParserAccumulator.m */; };
-		BCDC971014AB7D9000D54631 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F114AB7D9000D54631 /* SBJsonStreamParserAccumulator.m */; };
-		BCDC971114AB7D9000D54631 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F114AB7D9000D54631 /* SBJsonStreamParserAccumulator.m */; };
-		BCDC971214AB7D9000D54631 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F314AB7D9000D54631 /* SBJsonStreamParserAdapter.m */; };
-		BCDC971314AB7D9000D54631 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F314AB7D9000D54631 /* SBJsonStreamParserAdapter.m */; };
-		BCDC971414AB7D9000D54631 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F314AB7D9000D54631 /* SBJsonStreamParserAdapter.m */; };
-		BCDC971514AB7D9000D54631 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F514AB7D9000D54631 /* SBJsonStreamParserState.m */; };
-		BCDC971614AB7D9000D54631 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F514AB7D9000D54631 /* SBJsonStreamParserState.m */; };
-		BCDC971714AB7D9000D54631 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F514AB7D9000D54631 /* SBJsonStreamParserState.m */; };
-		BCDC971814AB7D9000D54631 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F714AB7D9000D54631 /* SBJsonStreamWriter.m */; };
-		BCDC971914AB7D9000D54631 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F714AB7D9000D54631 /* SBJsonStreamWriter.m */; };
-		BCDC971A14AB7D9000D54631 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F714AB7D9000D54631 /* SBJsonStreamWriter.m */; };
-		BCDC971B14AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F914AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m */; };
-		BCDC971C14AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F914AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m */; };
-		BCDC971D14AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F914AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m */; };
-		BCDC971E14AB7D9000D54631 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FB14AB7D9000D54631 /* SBJsonStreamWriterState.m */; };
-		BCDC971F14AB7D9000D54631 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FB14AB7D9000D54631 /* SBJsonStreamWriterState.m */; };
-		BCDC972014AB7D9000D54631 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FB14AB7D9000D54631 /* SBJsonStreamWriterState.m */; };
-		BCDC972114AB7D9000D54631 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
-		BCDC972214AB7D9000D54631 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
-		BCDC972314AB7D9000D54631 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
-		BCDC972414AB7D9000D54631 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
-		BCDC972514AB7D9000D54631 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
-		BCDC972614AB7D9000D54631 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
-		BCDC972714AB7D9000D54631 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
-		BCDC972814AB7D9000D54631 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
-		BCDC972914AB7D9000D54631 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
 		BCDC973314AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		BCDC973414AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		BCDC973514AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
@@ -6985,6 +6868,35 @@
 		E561068715874EC100FB8264 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
 		E561068815874EC300FB8264 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
 		E561068915874EC400FB8264 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
+		E585079C16651CDD007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E585079816651CDD007F0C62 /* TapjoyPublisherLibrary.a */; };
+		E585079D16651CDD007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E585079816651CDD007F0C62 /* TapjoyPublisherLibrary.a */; };
+		E585079E16651CDD007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E585079816651CDD007F0C62 /* TapjoyPublisherLibrary.a */; };
+		E585079F16651CDD007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E585079816651CDD007F0C62 /* TapjoyPublisherLibrary.a */; };
+		E58507A016651CDE007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E585079816651CDD007F0C62 /* TapjoyPublisherLibrary.a */; };
+		E58507A116651CDE007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E585079816651CDD007F0C62 /* TapjoyPublisherLibrary.a */; };
+		E58507A216651CDE007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E585079816651CDD007F0C62 /* TapjoyPublisherLibrary.a */; };
+		E58507A316651CDE007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E585079816651CDD007F0C62 /* TapjoyPublisherLibrary.a */; };
+		E58507A416651CDE007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E585079816651CDD007F0C62 /* TapjoyPublisherLibrary.a */; };
+		E58507A516651CDE007F0C62 /* TapjoyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E585079916651CDD007F0C62 /* TapjoyResources.bundle */; };
+		E58507A616651CDE007F0C62 /* TapjoyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E585079916651CDD007F0C62 /* TapjoyResources.bundle */; };
+		E58507A716651CDE007F0C62 /* TapjoyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E585079916651CDD007F0C62 /* TapjoyResources.bundle */; };
+		E58507A816651CDE007F0C62 /* TapjoyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E585079916651CDD007F0C62 /* TapjoyResources.bundle */; };
+		E58507A916651CDE007F0C62 /* TapjoyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E585079916651CDD007F0C62 /* TapjoyResources.bundle */; };
+		E58507AA16651CDE007F0C62 /* TapjoyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E585079916651CDD007F0C62 /* TapjoyResources.bundle */; };
+		E58507AB16651CDE007F0C62 /* TapjoyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E585079916651CDD007F0C62 /* TapjoyResources.bundle */; };
+		E58507AC16651CDE007F0C62 /* TapjoyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E585079916651CDD007F0C62 /* TapjoyResources.bundle */; };
+		E58507AD16651CDE007F0C62 /* TapjoyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E585079916651CDD007F0C62 /* TapjoyResources.bundle */; };
+		E58507AF16652A91007F0C62 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58507AE16652A91007F0C62 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E58507B016652AA6007F0C62 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58507AE16652A91007F0C62 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E58507B116652AB4007F0C62 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58507AE16652A91007F0C62 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E58507B216652AC6007F0C62 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58507AE16652A91007F0C62 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E58507B316652AD1007F0C62 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58507AE16652A91007F0C62 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E58507B416652ADD007F0C62 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58507AE16652A91007F0C62 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E58507B516652AE9007F0C62 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58507AE16652A91007F0C62 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E58507B616652AF6007F0C62 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58507AE16652A91007F0C62 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E58507B716652B02007F0C62 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58507AE16652A91007F0C62 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E58507B91665327B007F0C62 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58507B81665327B007F0C62 /* CoreTelephony.framework */; };
+		E58507BA1665328C007F0C62 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58507B81665327B007F0C62 /* CoreTelephony.framework */; };
 		E59E133816261D5600EBC861 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = E59E133716261D5600EBC861 /* twitter.png */; };
 		E59E133916261D5600EBC861 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = E59E133716261D5600EBC861 /* twitter.png */; };
 		E59E133A16261D5600EBC861 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = E59E133716261D5600EBC861 /* twitter.png */; };
@@ -8249,6 +8161,14 @@
 		E53A7AF61456FA6800B74F84 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		E53A7AFE1456FAB800B74F84 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E546DB431556657B0005AB8D /* Yasound-Info-TechTour.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Yasound-Info-TechTour.plist"; sourceTree = "<group>"; };
+		E585079616651CDD007F0C62 /* TapjoyConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapjoyConnect.h; sourceTree = "<group>"; };
+		E585079716651CDD007F0C62 /* TapjoyConnectConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapjoyConnectConstants.h; sourceTree = "<group>"; };
+		E585079816651CDD007F0C62 /* TapjoyPublisherLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = TapjoyPublisherLibrary.a; sourceTree = "<group>"; };
+		E585079916651CDD007F0C62 /* TapjoyResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TapjoyResources.bundle; sourceTree = "<group>"; };
+		E585079A16651CDD007F0C62 /* TJCAdDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJCAdDelegateProtocol.h; sourceTree = "<group>"; };
+		E585079B16651CDD007F0C62 /* TJCVideoAdProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJCVideoAdProtocol.h; sourceTree = "<group>"; };
+		E58507AE16652A91007F0C62 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		E58507B81665327B007F0C62 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E59E133716261D5600EBC861 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		E5A9A3A91454DC0500EA374C /* Yasound Radio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yasound Radio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A9A3AD1454DC0500EA374C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -8267,6 +8187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58507B616652AF6007F0C62 /* AdSupport.framework in Frameworks */,
 				BCC7518715E686E600CF7F7C /* StoreKit.framework in Frameworks */,
 				40B40A02152EFC630050D334 /* QuartzCore.framework in Frameworks */,
 				40B40A03152EFC630050D334 /* libOAuthConsumer_iPhone.a in Frameworks */,
@@ -8288,10 +8209,10 @@
 				40B40A13152EFC630050D334 /* Foundation.framework in Frameworks */,
 				40B40A14152EFC630050D334 /* CoreGraphics.framework in Frameworks */,
 				40B40A15152EFC630050D334 /* libGoogleAnalytics.a in Frameworks */,
-				40B40A17152EFC630050D334 /* libOAuth.a in Frameworks */,
 				E561068915874EC400FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD1521B160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				4031983B1610951A00DD54F0 /* AddressBook.framework in Frameworks */,
+				E58507A316651CDE007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8299,6 +8220,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58507B716652B02007F0C62 /* AdSupport.framework in Frameworks */,
 				BCC7518815E686ED00CF7F7C /* StoreKit.framework in Frameworks */,
 				40D53C081554280F001EB0C5 /* QuartzCore.framework in Frameworks */,
 				40D53C091554280F001EB0C5 /* libOAuthConsumer_iPhone.a in Frameworks */,
@@ -8320,10 +8242,10 @@
 				40D53C191554280F001EB0C5 /* Foundation.framework in Frameworks */,
 				40D53C1A1554280F001EB0C5 /* CoreGraphics.framework in Frameworks */,
 				40D53C1B1554280F001EB0C5 /* libGoogleAnalytics.a in Frameworks */,
-				40D53C1D1554280F001EB0C5 /* libOAuth.a in Frameworks */,
 				E561068415874E7B00FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD1521C160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				4031983C1610951B00DD54F0 /* AddressBook.framework in Frameworks */,
+				E58507A416651CDE007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8331,6 +8253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58507B516652AE9007F0C62 /* AdSupport.framework in Frameworks */,
 				BCC7518615E686E100CF7F7C /* StoreKit.framework in Frameworks */,
 				BC3FA6E814E93B660055AB4A /* QuartzCore.framework in Frameworks */,
 				BC3FA6E914E93B660055AB4A /* libOAuthConsumer_iPhone.a in Frameworks */,
@@ -8352,10 +8275,10 @@
 				BC3FA6F914E93B660055AB4A /* Foundation.framework in Frameworks */,
 				BC3FA6FA14E93B660055AB4A /* CoreGraphics.framework in Frameworks */,
 				BC3FA6FB14E93B660055AB4A /* libGoogleAnalytics.a in Frameworks */,
-				BC3FA6FD14E93B660055AB4A /* libOAuth.a in Frameworks */,
 				E561068815874EC300FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD1521A160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				4031983A1610951900DD54F0 /* AddressBook.framework in Frameworks */,
+				E58507A216651CDE007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8363,6 +8286,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58507B216652AC6007F0C62 /* AdSupport.framework in Frameworks */,
 				BCC7518415E686D700CF7F7C /* StoreKit.framework in Frameworks */,
 				BC56F511152486AF005D1B40 /* QuartzCore.framework in Frameworks */,
 				BC56F512152486AF005D1B40 /* libOAuthConsumer_iPhone.a in Frameworks */,
@@ -8384,10 +8308,10 @@
 				BC56F522152486AF005D1B40 /* Foundation.framework in Frameworks */,
 				BC56F523152486AF005D1B40 /* CoreGraphics.framework in Frameworks */,
 				BC56F524152486AF005D1B40 /* libGoogleAnalytics.a in Frameworks */,
-				BC56F526152486AF005D1B40 /* libOAuth.a in Frameworks */,
 				E561068715874EC100FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD15217160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				403198371610951800DD54F0 /* AddressBook.framework in Frameworks */,
+				E585079F16651CDD007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8395,6 +8319,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58507BA1665328C007F0C62 /* CoreTelephony.framework in Frameworks */,
+				E58507B016652AA6007F0C62 /* AdSupport.framework in Frameworks */,
 				403198341610941900DD54F0 /* AddressBook.framework in Frameworks */,
 				BCC7518315E686D200CF7F7C /* StoreKit.framework in Frameworks */,
 				BC40CC8414D010BD00DF0950 /* QuartzCore.framework in Frameworks */,
@@ -8417,9 +8343,9 @@
 				BC71F5E1147FEC6F00DAE4BD /* Foundation.framework in Frameworks */,
 				BC71F5E2147FEC6F00DAE4BD /* CoreGraphics.framework in Frameworks */,
 				BCDC96DA14AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
-				BC40CC1314CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				E561068615874EC100FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD15215160C6976009E3604 /* libTestFlight.a in Frameworks */,
+				E585079D16651CDD007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8427,6 +8353,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58507B416652ADD007F0C62 /* AdSupport.framework in Frameworks */,
 				BCC7518515E686DC00CF7F7C /* StoreKit.framework in Frameworks */,
 				BC40CC8614D010E500DF0950 /* QuartzCore.framework in Frameworks */,
 				BC40CC6814CF64EC00DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */,
@@ -8448,10 +8375,10 @@
 				BC93CD4B14CF3F7A007C723F /* Foundation.framework in Frameworks */,
 				BC93CD4C14CF3F7A007C723F /* CoreGraphics.framework in Frameworks */,
 				BC93CD4D14CF3F7A007C723F /* libGoogleAnalytics.a in Frameworks */,
-				BC40CC1514CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				E51907401582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD15219160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				403198381610951800DD54F0 /* AddressBook.framework in Frameworks */,
+				E58507A116651CDE007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8459,6 +8386,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58507B116652AB4007F0C62 /* AdSupport.framework in Frameworks */,
 				BCC7525D15E689EF00CF7F7C /* StoreKit.framework in Frameworks */,
 				BCC7525E15E689EF00CF7F7C /* QuartzCore.framework in Frameworks */,
 				BCC7525F15E689EF00CF7F7C /* libOAuthConsumer_iPhone.a in Frameworks */,
@@ -8480,10 +8408,10 @@
 				BCC7526F15E689EF00CF7F7C /* Foundation.framework in Frameworks */,
 				BCC7527015E689EF00CF7F7C /* CoreGraphics.framework in Frameworks */,
 				BCC7527115E689EF00CF7F7C /* libGoogleAnalytics.a in Frameworks */,
-				BCC7527315E689EF00CF7F7C /* libOAuth.a in Frameworks */,
 				BCC7527515E689EF00CF7F7C /* Crashlytics.framework in Frameworks */,
 				BCD15216160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				403198361610951700DD54F0 /* AddressBook.framework in Frameworks */,
+				E585079E16651CDD007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8491,6 +8419,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58507B91665327B007F0C62 /* CoreTelephony.framework in Frameworks */,
+				E58507AF16652A91007F0C62 /* AdSupport.framework in Frameworks */,
 				BCC7518215E686CC00CF7F7C /* StoreKit.framework in Frameworks */,
 				BC9522A514B70FF2001E1ACE /* AVFoundation.framework in Frameworks */,
 				BC40CC8714D010EB00DF0950 /* QuartzCore.framework in Frameworks */,
@@ -8512,10 +8442,10 @@
 				E5A9A3B01454DC0500EA374C /* Foundation.framework in Frameworks */,
 				E5A9A3B21454DC0500EA374C /* CoreGraphics.framework in Frameworks */,
 				BCDC96D914AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
-				BC40CC1214CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				E519073C1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD15214160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				403198351610951600DD54F0 /* AddressBook.framework in Frameworks */,
+				E585079C16651CDD007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8523,6 +8453,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58507B316652AD1007F0C62 /* AdSupport.framework in Frameworks */,
 				BCC7518115E686C400CF7F7C /* StoreKit.framework in Frameworks */,
 				BC40CC8514D010DD00DF0950 /* QuartzCore.framework in Frameworks */,
 				BC40CC6914CF64F100DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */,
@@ -8544,10 +8475,10 @@
 				E5F3B8971498B88D008DD607 /* Foundation.framework in Frameworks */,
 				E5F3B8981498B88D008DD607 /* CoreGraphics.framework in Frameworks */,
 				BCDC96DB14AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
-				BC40CC1414CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				E519073F1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD15218160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				403198391610951900DD54F0 /* AddressBook.framework in Frameworks */,
+				E58507A016651CDE007F0C62 /* TapjoyPublisherLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9646,6 +9577,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				E585079516651CDD007F0C62 /* TapjoyPublisherLibrary */,
 				BC325FD8161038B300BA38C9 /* UIDevice+Resolutions */,
 				BCD1520F160C6976009E3604 /* TestFlightSDK1 */,
 				BC209EE515EBABFF00A0E7DB /* Base64 */,
@@ -10465,9 +10397,25 @@
 			path = Yasound;
 			sourceTree = "<group>";
 		};
+		E585079516651CDD007F0C62 /* TapjoyPublisherLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				E585079616651CDD007F0C62 /* TapjoyConnect.h */,
+				E585079716651CDD007F0C62 /* TapjoyConnectConstants.h */,
+				E585079816651CDD007F0C62 /* TapjoyPublisherLibrary.a */,
+				E585079916651CDD007F0C62 /* TapjoyResources.bundle */,
+				E585079A16651CDD007F0C62 /* TJCAdDelegateProtocol.h */,
+				E585079B16651CDD007F0C62 /* TJCVideoAdProtocol.h */,
+			);
+			name = TapjoyPublisherLibrary;
+			path = ThirdParties/TapjoyPublisherLibrary;
+			sourceTree = "<group>";
+		};
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
+				E58507B81665327B007F0C62 /* CoreTelephony.framework */,
+				E58507AE16652A91007F0C62 /* AdSupport.framework */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				BCDC963A14AB7D3500D54631 /* Third Parties */,
 				BCA2CCD6149A95460000637E /* LibTools */,
@@ -11345,6 +11293,7 @@
 				BC6EACA21626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACAB1626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5316271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E58507AC16651CDE007F0C62 /* TapjoyResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11864,6 +11813,7 @@
 				BC6EACA31626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACAC1626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5416271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E58507AD16651CDE007F0C62 /* TapjoyResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12377,6 +12327,7 @@
 				BC6EACA11626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACAA1626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5216271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E58507AB16651CDE007F0C62 /* TapjoyResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12895,6 +12846,7 @@
 				BC6EAC9E1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA71626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC4F16271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E58507A816651CDE007F0C62 /* TapjoyResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13413,6 +13365,7 @@
 				BC6EAC9C1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA51626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC4D16271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E58507A616651CDE007F0C62 /* TapjoyResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13931,6 +13884,7 @@
 				BC6EACA01626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA91626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5116271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E58507AA16651CDE007F0C62 /* TapjoyResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14450,6 +14404,7 @@
 				BC6EAC9D1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA61626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC4E16271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E58507A716651CDE007F0C62 /* TapjoyResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14968,6 +14923,7 @@
 				BC6EAC9B1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA41626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC4C16271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E58507A516651CDE007F0C62 /* TapjoyResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15486,6 +15442,7 @@
 				BC6EAC9F1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA81626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5016271038005C42DB /* WallListenersViewController.xib in Resources */,
+				E58507A916651CDE007F0C62 /* TapjoyResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15589,18 +15546,6 @@
 				40B40978152EFC630050D334 /* ASINetworkQueue.m in Sources */,
 				40B40979152EFC630050D334 /* Reachability.m in Sources */,
 				40B4097A152EFC630050D334 /* EasyTracker.m in Sources */,
-				40B4097B152EFC630050D334 /* NSObject+SBJson.m in Sources */,
-				40B4097C152EFC630050D334 /* SBJsonParser.m in Sources */,
-				40B4097D152EFC630050D334 /* SBJsonStreamParser.m in Sources */,
-				40B4097E152EFC630050D334 /* SBJsonStreamParserAccumulator.m in Sources */,
-				40B4097F152EFC630050D334 /* SBJsonStreamParserAdapter.m in Sources */,
-				40B40980152EFC630050D334 /* SBJsonStreamParserState.m in Sources */,
-				40B40981152EFC630050D334 /* SBJsonStreamWriter.m in Sources */,
-				40B40982152EFC630050D334 /* SBJsonStreamWriterAccumulator.m in Sources */,
-				40B40983152EFC630050D334 /* SBJsonStreamWriterState.m in Sources */,
-				40B40984152EFC630050D334 /* SBJsonTokeniser.m in Sources */,
-				40B40985152EFC630050D334 /* SBJsonUTF8Stream.m in Sources */,
-				40B40986152EFC630050D334 /* SBJsonWriter.m in Sources */,
 				40B40989152EFC630050D334 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				40B4098A152EFC630050D334 /* FacebookSessionManager.m in Sources */,
 				40B4098B152EFC630050D334 /* SessionManager.m in Sources */,
@@ -15842,18 +15787,6 @@
 				40D53B7D1554280F001EB0C5 /* ASINetworkQueue.m in Sources */,
 				40D53B7E1554280F001EB0C5 /* Reachability.m in Sources */,
 				40D53B7F1554280F001EB0C5 /* EasyTracker.m in Sources */,
-				40D53B801554280F001EB0C5 /* NSObject+SBJson.m in Sources */,
-				40D53B811554280F001EB0C5 /* SBJsonParser.m in Sources */,
-				40D53B821554280F001EB0C5 /* SBJsonStreamParser.m in Sources */,
-				40D53B831554280F001EB0C5 /* SBJsonStreamParserAccumulator.m in Sources */,
-				40D53B841554280F001EB0C5 /* SBJsonStreamParserAdapter.m in Sources */,
-				40D53B851554280F001EB0C5 /* SBJsonStreamParserState.m in Sources */,
-				40D53B861554280F001EB0C5 /* SBJsonStreamWriter.m in Sources */,
-				40D53B871554280F001EB0C5 /* SBJsonStreamWriterAccumulator.m in Sources */,
-				40D53B881554280F001EB0C5 /* SBJsonStreamWriterState.m in Sources */,
-				40D53B891554280F001EB0C5 /* SBJsonTokeniser.m in Sources */,
-				40D53B8A1554280F001EB0C5 /* SBJsonUTF8Stream.m in Sources */,
-				40D53B8B1554280F001EB0C5 /* SBJsonWriter.m in Sources */,
 				40D53B8E1554280F001EB0C5 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				40D53B8F1554280F001EB0C5 /* FacebookSessionManager.m in Sources */,
 				40D53B901554280F001EB0C5 /* SessionManager.m in Sources */,
@@ -16095,18 +16028,6 @@
 				BC3FA68C14E93B660055AB4A /* ASINetworkQueue.m in Sources */,
 				BC3FA68D14E93B660055AB4A /* Reachability.m in Sources */,
 				BC3FA68E14E93B660055AB4A /* EasyTracker.m in Sources */,
-				BC3FA68F14E93B660055AB4A /* NSObject+SBJson.m in Sources */,
-				BC3FA69014E93B660055AB4A /* SBJsonParser.m in Sources */,
-				BC3FA69114E93B660055AB4A /* SBJsonStreamParser.m in Sources */,
-				BC3FA69214E93B660055AB4A /* SBJsonStreamParserAccumulator.m in Sources */,
-				BC3FA69314E93B660055AB4A /* SBJsonStreamParserAdapter.m in Sources */,
-				BC3FA69414E93B660055AB4A /* SBJsonStreamParserState.m in Sources */,
-				BC3FA69514E93B660055AB4A /* SBJsonStreamWriter.m in Sources */,
-				BC3FA69614E93B660055AB4A /* SBJsonStreamWriterAccumulator.m in Sources */,
-				BC3FA69714E93B660055AB4A /* SBJsonStreamWriterState.m in Sources */,
-				BC3FA69814E93B660055AB4A /* SBJsonTokeniser.m in Sources */,
-				BC3FA69914E93B660055AB4A /* SBJsonUTF8Stream.m in Sources */,
-				BC3FA69A14E93B660055AB4A /* SBJsonWriter.m in Sources */,
 				BC3FA69D14E93B660055AB4A /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BC3FA69E14E93B660055AB4A /* FacebookSessionManager.m in Sources */,
 				BC3FA69F14E93B660055AB4A /* SessionManager.m in Sources */,
@@ -16344,18 +16265,6 @@
 				BC56F49A152486AF005D1B40 /* ASINetworkQueue.m in Sources */,
 				BC56F49B152486AF005D1B40 /* Reachability.m in Sources */,
 				BC56F49C152486AF005D1B40 /* EasyTracker.m in Sources */,
-				BC56F49D152486AF005D1B40 /* NSObject+SBJson.m in Sources */,
-				BC56F49E152486AF005D1B40 /* SBJsonParser.m in Sources */,
-				BC56F49F152486AF005D1B40 /* SBJsonStreamParser.m in Sources */,
-				BC56F4A0152486AF005D1B40 /* SBJsonStreamParserAccumulator.m in Sources */,
-				BC56F4A1152486AF005D1B40 /* SBJsonStreamParserAdapter.m in Sources */,
-				BC56F4A2152486AF005D1B40 /* SBJsonStreamParserState.m in Sources */,
-				BC56F4A3152486AF005D1B40 /* SBJsonStreamWriter.m in Sources */,
-				BC56F4A4152486AF005D1B40 /* SBJsonStreamWriterAccumulator.m in Sources */,
-				BC56F4A5152486AF005D1B40 /* SBJsonStreamWriterState.m in Sources */,
-				BC56F4A6152486AF005D1B40 /* SBJsonTokeniser.m in Sources */,
-				BC56F4A7152486AF005D1B40 /* SBJsonUTF8Stream.m in Sources */,
-				BC56F4A8152486AF005D1B40 /* SBJsonWriter.m in Sources */,
 				BC56F4AB152486AF005D1B40 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BC56F4AC152486AF005D1B40 /* FacebookSessionManager.m in Sources */,
 				BC56F4AD152486AF005D1B40 /* SessionManager.m in Sources */,
@@ -16597,18 +16506,6 @@
 				BCDC966D14AB7D6E00D54631 /* ASINetworkQueue.m in Sources */,
 				BCDC967014AB7D6E00D54631 /* Reachability.m in Sources */,
 				BCDC96C814AB7D8900D54631 /* EasyTracker.m in Sources */,
-				BCDC970714AB7D9000D54631 /* NSObject+SBJson.m in Sources */,
-				BCDC970A14AB7D9000D54631 /* SBJsonParser.m in Sources */,
-				BCDC970D14AB7D9000D54631 /* SBJsonStreamParser.m in Sources */,
-				BCDC971014AB7D9000D54631 /* SBJsonStreamParserAccumulator.m in Sources */,
-				BCDC971314AB7D9000D54631 /* SBJsonStreamParserAdapter.m in Sources */,
-				BCDC971614AB7D9000D54631 /* SBJsonStreamParserState.m in Sources */,
-				BCDC971914AB7D9000D54631 /* SBJsonStreamWriter.m in Sources */,
-				BCDC971C14AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m in Sources */,
-				BCDC971F14AB7D9000D54631 /* SBJsonStreamWriterState.m in Sources */,
-				BCDC972214AB7D9000D54631 /* SBJsonTokeniser.m in Sources */,
-				BCDC972514AB7D9000D54631 /* SBJsonUTF8Stream.m in Sources */,
-				BCDC972814AB7D9000D54631 /* SBJsonWriter.m in Sources */,
 				BCDC973414AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BCDC97AE14AB7DD100D54631 /* FacebookSessionManager.m in Sources */,
 				BCDC97B114AB7DD100D54631 /* SessionManager.m in Sources */,
@@ -16851,18 +16748,6 @@
 				BC93CCF514CF3F7A007C723F /* ASINetworkQueue.m in Sources */,
 				BC93CCF614CF3F7A007C723F /* Reachability.m in Sources */,
 				BC93CCF714CF3F7A007C723F /* EasyTracker.m in Sources */,
-				BC93CCF814CF3F7A007C723F /* NSObject+SBJson.m in Sources */,
-				BC93CCF914CF3F7A007C723F /* SBJsonParser.m in Sources */,
-				BC93CCFA14CF3F7A007C723F /* SBJsonStreamParser.m in Sources */,
-				BC93CCFB14CF3F7A007C723F /* SBJsonStreamParserAccumulator.m in Sources */,
-				BC93CCFC14CF3F7A007C723F /* SBJsonStreamParserAdapter.m in Sources */,
-				BC93CCFD14CF3F7A007C723F /* SBJsonStreamParserState.m in Sources */,
-				BC93CCFE14CF3F7A007C723F /* SBJsonStreamWriter.m in Sources */,
-				BC93CCFF14CF3F7A007C723F /* SBJsonStreamWriterAccumulator.m in Sources */,
-				BC93CD0014CF3F7A007C723F /* SBJsonStreamWriterState.m in Sources */,
-				BC93CD0114CF3F7A007C723F /* SBJsonTokeniser.m in Sources */,
-				BC93CD0214CF3F7A007C723F /* SBJsonUTF8Stream.m in Sources */,
-				BC93CD0314CF3F7A007C723F /* SBJsonWriter.m in Sources */,
 				BC93CD0614CF3F7A007C723F /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BC93CD1714CF3F7A007C723F /* FacebookSessionManager.m in Sources */,
 				BC93CD1814CF3F7A007C723F /* SessionManager.m in Sources */,
@@ -17104,18 +16989,6 @@
 				BCC751B215E689EF00CF7F7C /* ASINetworkQueue.m in Sources */,
 				BCC751B315E689EF00CF7F7C /* Reachability.m in Sources */,
 				BCC751B415E689EF00CF7F7C /* EasyTracker.m in Sources */,
-				BCC751B515E689EF00CF7F7C /* NSObject+SBJson.m in Sources */,
-				BCC751B615E689EF00CF7F7C /* SBJsonParser.m in Sources */,
-				BCC751B715E689EF00CF7F7C /* SBJsonStreamParser.m in Sources */,
-				BCC751B815E689EF00CF7F7C /* SBJsonStreamParserAccumulator.m in Sources */,
-				BCC751B915E689EF00CF7F7C /* SBJsonStreamParserAdapter.m in Sources */,
-				BCC751BA15E689EF00CF7F7C /* SBJsonStreamParserState.m in Sources */,
-				BCC751BB15E689EF00CF7F7C /* SBJsonStreamWriter.m in Sources */,
-				BCC751BC15E689EF00CF7F7C /* SBJsonStreamWriterAccumulator.m in Sources */,
-				BCC751BD15E689EF00CF7F7C /* SBJsonStreamWriterState.m in Sources */,
-				BCC751BE15E689EF00CF7F7C /* SBJsonTokeniser.m in Sources */,
-				BCC751BF15E689EF00CF7F7C /* SBJsonUTF8Stream.m in Sources */,
-				BCC751C015E689EF00CF7F7C /* SBJsonWriter.m in Sources */,
 				BCC751C115E689EF00CF7F7C /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BCC751C215E689EF00CF7F7C /* FacebookSessionManager.m in Sources */,
 				BCC751C315E689EF00CF7F7C /* SessionManager.m in Sources */,
@@ -17357,18 +17230,6 @@
 				BCDC966C14AB7D6E00D54631 /* ASINetworkQueue.m in Sources */,
 				BCDC966F14AB7D6E00D54631 /* Reachability.m in Sources */,
 				BCDC96C714AB7D8900D54631 /* EasyTracker.m in Sources */,
-				BCDC970614AB7D9000D54631 /* NSObject+SBJson.m in Sources */,
-				BCDC970914AB7D9000D54631 /* SBJsonParser.m in Sources */,
-				BCDC970C14AB7D9000D54631 /* SBJsonStreamParser.m in Sources */,
-				BCDC970F14AB7D9000D54631 /* SBJsonStreamParserAccumulator.m in Sources */,
-				BCDC971214AB7D9000D54631 /* SBJsonStreamParserAdapter.m in Sources */,
-				BCDC971514AB7D9000D54631 /* SBJsonStreamParserState.m in Sources */,
-				BCDC971814AB7D9000D54631 /* SBJsonStreamWriter.m in Sources */,
-				BCDC971B14AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m in Sources */,
-				BCDC971E14AB7D9000D54631 /* SBJsonStreamWriterState.m in Sources */,
-				BCDC972114AB7D9000D54631 /* SBJsonTokeniser.m in Sources */,
-				BCDC972414AB7D9000D54631 /* SBJsonUTF8Stream.m in Sources */,
-				BCDC972714AB7D9000D54631 /* SBJsonWriter.m in Sources */,
 				BCDC973314AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BCDC97AD14AB7DD100D54631 /* FacebookSessionManager.m in Sources */,
 				BCDC97B014AB7DD100D54631 /* SessionManager.m in Sources */,
@@ -17611,18 +17472,6 @@
 				BCDC966E14AB7D6E00D54631 /* ASINetworkQueue.m in Sources */,
 				BCDC967114AB7D6E00D54631 /* Reachability.m in Sources */,
 				BCDC96C914AB7D8900D54631 /* EasyTracker.m in Sources */,
-				BCDC970814AB7D9000D54631 /* NSObject+SBJson.m in Sources */,
-				BCDC970B14AB7D9000D54631 /* SBJsonParser.m in Sources */,
-				BCDC970E14AB7D9000D54631 /* SBJsonStreamParser.m in Sources */,
-				BCDC971114AB7D9000D54631 /* SBJsonStreamParserAccumulator.m in Sources */,
-				BCDC971414AB7D9000D54631 /* SBJsonStreamParserAdapter.m in Sources */,
-				BCDC971714AB7D9000D54631 /* SBJsonStreamParserState.m in Sources */,
-				BCDC971A14AB7D9000D54631 /* SBJsonStreamWriter.m in Sources */,
-				BCDC971D14AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m in Sources */,
-				BCDC972014AB7D9000D54631 /* SBJsonStreamWriterState.m in Sources */,
-				BCDC972314AB7D9000D54631 /* SBJsonTokeniser.m in Sources */,
-				BCDC972614AB7D9000D54631 /* SBJsonUTF8Stream.m in Sources */,
-				BCDC972914AB7D9000D54631 /* SBJsonWriter.m in Sources */,
 				BCDC973514AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BCDC97AF14AB7DD100D54631 /* FacebookSessionManager.m in Sources */,
 				BCDC97B214AB7DD100D54631 /* SessionManager.m in Sources */,
@@ -18159,6 +18008,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
@@ -18185,6 +18035,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
@@ -18217,6 +18068,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Yasound TechTour";
@@ -18246,6 +18098,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Yasound TechTour";
@@ -18276,6 +18129,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
@@ -18301,6 +18155,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
@@ -18329,6 +18184,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD DEV SERVER";
@@ -18355,6 +18211,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD DEV SERVER";
@@ -18394,6 +18251,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Radio Yasound D";
@@ -18432,6 +18290,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Radio Yasound D";
@@ -18465,6 +18324,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "C35803D7-2D97-4F78-99CB-665037FC8336";
@@ -18497,6 +18357,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "C35803D7-2D97-4F78-99CB-665037FC8336";
@@ -18530,6 +18391,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = YasoundtestD;
@@ -18557,6 +18419,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = YasoundtestD;
@@ -18600,6 +18463,10 @@
 					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/LibTools/SocialSessionManager/deps\"",
 				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2 ./ThirdParties/facebook-ios-sdk/src \"./ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\" \"./ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"";
@@ -18636,6 +18503,10 @@
 					"\"$(SRCROOT)/LibTools/SocialSessionManager/deps\"",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2 ./ThirdParties/facebook-ios-sdk/src \"./ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\" \"./ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"";
@@ -18661,6 +18532,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				PRODUCT_NAME = "Yasound Radio";
 				WARNING_CFLAGS = "$(inherited)";
@@ -18687,6 +18559,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				PRODUCT_NAME = "Yasound Radio";
 				WARNING_CFLAGS = "$(inherited)";
@@ -18718,6 +18591,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "97D2B527-58D4-420D-911E-9D903C238924";
@@ -18750,6 +18624,7 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/TapjoyPublisherLibrary\"",
 				);
 				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "97D2B527-58D4-420D-911E-9D903C238924";

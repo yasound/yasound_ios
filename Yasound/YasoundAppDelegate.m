@@ -21,6 +21,7 @@
 #import "Version.h"
 #import "YasoundAppURLHandler.h"
 
+#import "TapjoyConnect.h"
 
 @implementation YasoundAppDelegate
 
@@ -163,7 +164,8 @@ void SignalHandler(int sig) {
     _mustGoToNotificationCenter = YES;
   }
     
-    
+  [TapjoyConnect requestTapjoyConnect:@"f3fd7683-f9fa-41af-a085-9ad6f95da6d0" secretKey:@"H3n1bc5zfqYk9nirZPSE"];
+
     [self rateApp];
   
   return YES;
