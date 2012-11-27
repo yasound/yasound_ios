@@ -10,19 +10,30 @@
 #import "YaRequestConfig.h"
 #import "Model.h"
 #import "Container.h"
+#import "ASIHTTPRequest.h"
 
-typedef void (^YaRequestCompletionBlock)(int, NSString*); // params: (int status_code, NSString* response)
+typedef void (^YaRequestCompletionBlock)(int, NSString*, NSError*); // params: (int status_code, NSString* response, NSError* error)
+typedef void (^YaRequestProgressBlock)(unsigned long long size, unsigned long long total);
+
 
 
 @interface YaRequest : NSObject
+{
+    YaRequestConfig* _config;
+    ASIHTTPRequest* _request;
+}
+
++ (void)globalInit;
++ (void)setBaseURL:(NSString*)url;
++ (NSString*)baseURL;
 
 - (id)initWithConfig:(YaRequestConfig*)config;
 
-- (void)addRequestHeader:(NSString*)header value:(NSString*)value;
-- (void)appendPostData:(NSData*)data;
+- (BOOL)start:(YaRequestCompletionBlock)completionBlock;
+- (BOOL)start:(YaRequestCompletionBlock)completionBlock progressBlock:(YaRequestProgressBlock) progressBlock;
 
-- (void)startAsynchronous;
+- (void)cancel;
++ (void)cancelWithKey:(NSString*)key;
 
-@property (nonatomic, copy) YaRequestCompletionBlock completionBlock;
 
 @end

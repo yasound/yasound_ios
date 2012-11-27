@@ -16,6 +16,8 @@
 #import "FacebookFriend.h"
 #import "Contact.h"
 
+#import "YaRequest.h"
+
 #define LOCAL_URL @"http://127.0.0.1:8000"
 
 #define APP_KEY_COOKIE_NAME @"app_key"
@@ -210,6 +212,10 @@ static YasoundDataProvider* _main = nil;
       baseUrl = APPDELEGATE.serverURL;
     DLog(@"use PROD SERVER '%@'", baseUrl);
 #endif
+      
+      [YaRequest globalInit];
+      [YaRequest setBaseURL:baseUrl];
+      
     _communicator = [[Communicator alloc] initWithBaseURL:baseUrl];
     _communicator.appCookie = self.appCookie;
     

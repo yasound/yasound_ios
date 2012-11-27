@@ -14,10 +14,14 @@
 @property (retain, nonatomic) NSString* url;
 @property BOOL urlIsAbsolute;
 @property (retain, nonatomic) NSString* method;
+
 @property (retain, nonatomic) NSDictionary* params;
+@property (retain, nonatomic) NSData* payload;
 
 @property (retain, nonatomic) Auth* auth;
 
-@property (retain, nonatomic) NSString* key;
+@property (retain, nonatomic) NSString* groupKey;
+
+- (BOOL)isValid;
 
 @end

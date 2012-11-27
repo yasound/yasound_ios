@@ -281,15 +281,6 @@
 		4083FE931663C1550016BA9B /* NSString+JsonLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 4083FE8C1663C1550016BA9B /* NSString+JsonLoading.m */; };
 		4083FE941663C1550016BA9B /* NSString+JsonLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 4083FE8C1663C1550016BA9B /* NSString+JsonLoading.m */; };
 		4083FE951663C1550016BA9B /* NSString+JsonLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 4083FE8C1663C1550016BA9B /* NSString+JsonLoading.m */; };
-		4083FE981663C7BB0016BA9B /* YaFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4083FE971663C7BB0016BA9B /* YaFormDataRequest.m */; };
-		4083FE991663C7BB0016BA9B /* YaFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4083FE971663C7BB0016BA9B /* YaFormDataRequest.m */; };
-		4083FE9A1663C7BB0016BA9B /* YaFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4083FE971663C7BB0016BA9B /* YaFormDataRequest.m */; };
-		4083FE9B1663C7BB0016BA9B /* YaFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4083FE971663C7BB0016BA9B /* YaFormDataRequest.m */; };
-		4083FE9C1663C7BB0016BA9B /* YaFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4083FE971663C7BB0016BA9B /* YaFormDataRequest.m */; };
-		4083FE9D1663C7BB0016BA9B /* YaFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4083FE971663C7BB0016BA9B /* YaFormDataRequest.m */; };
-		4083FE9E1663C7BB0016BA9B /* YaFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4083FE971663C7BB0016BA9B /* YaFormDataRequest.m */; };
-		4083FE9F1663C7BB0016BA9B /* YaFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4083FE971663C7BB0016BA9B /* YaFormDataRequest.m */; };
-		4083FEA01663C7BB0016BA9B /* YaFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4083FE971663C7BB0016BA9B /* YaFormDataRequest.m */; };
 		408507DC1601DEBB009DC246 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507DB1601DEBB009DC246 /* WaitingView.m */; };
 		408507DD1601DEBB009DC246 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507DB1601DEBB009DC246 /* WaitingView.m */; };
 		408507DE1601DEBB009DC246 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408507DB1601DEBB009DC246 /* WaitingView.m */; };
@@ -7289,8 +7280,6 @@
 		4083FE811663B7CA0016BA9B /* YaRequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YaRequestConfig.m; path = YaRequest/YaRequestConfig.m; sourceTree = "<group>"; };
 		4083FE8B1663C1550016BA9B /* NSString+JsonLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+JsonLoading.h"; path = "YaRequest/NSString+JsonLoading.h"; sourceTree = "<group>"; };
 		4083FE8C1663C1550016BA9B /* NSString+JsonLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+JsonLoading.m"; path = "YaRequest/NSString+JsonLoading.m"; sourceTree = "<group>"; };
-		4083FE961663C7BB0016BA9B /* YaFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YaFormDataRequest.h; path = YaRequest/YaFormDataRequest.h; sourceTree = "<group>"; };
-		4083FE971663C7BB0016BA9B /* YaFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YaFormDataRequest.m; path = YaRequest/YaFormDataRequest.m; sourceTree = "<group>"; };
 		408507DA1601DEBB009DC246 /* WaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaitingView.h; path = RadioSelection/WaitingView.h; sourceTree = "<group>"; };
 		408507DB1601DEBB009DC246 /* WaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaitingView.m; path = RadioSelection/WaitingView.m; sourceTree = "<group>"; };
 		408507E5160231C9009DC246 /* PromoCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PromoCodeCell.h; path = Gifts/PromoCodeCell.h; sourceTree = "<group>"; };
@@ -8687,8 +8676,6 @@
 				4083FE811663B7CA0016BA9B /* YaRequestConfig.m */,
 				4083FE751663B74C0016BA9B /* YaRequest.h */,
 				4083FE761663B74C0016BA9B /* YaRequest.m */,
-				4083FE961663C7BB0016BA9B /* YaFormDataRequest.h */,
-				4083FE971663C7BB0016BA9B /* YaFormDataRequest.m */,
 				4083FE8B1663C1550016BA9B /* NSString+JsonLoading.h */,
 				4083FE8C1663C1550016BA9B /* NSString+JsonLoading.m */,
 			);
@@ -15860,7 +15847,6 @@
 				4083FE7E1663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE891663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE941663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
-				4083FE9F1663C7BB0016BA9B /* YaFormDataRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16117,7 +16103,6 @@
 				4083FE7F1663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE8A1663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE951663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
-				4083FEA01663C7BB0016BA9B /* YaFormDataRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16370,7 +16355,6 @@
 				4083FE7D1663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE881663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE931663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
-				4083FE9E1663C7BB0016BA9B /* YaFormDataRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16627,7 +16611,6 @@
 				4083FE7A1663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE851663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE901663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
-				4083FE9B1663C7BB0016BA9B /* YaFormDataRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16884,7 +16867,6 @@
 				4083FE781663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE831663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE8E1663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
-				4083FE991663C7BB0016BA9B /* YaFormDataRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17142,7 +17124,6 @@
 				4083FE7C1663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE871663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE921663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
-				4083FE9D1663C7BB0016BA9B /* YaFormDataRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17399,7 +17380,6 @@
 				4083FE791663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE841663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE8F1663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
-				4083FE9A1663C7BB0016BA9B /* YaFormDataRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17656,7 +17636,6 @@
 				4083FE771663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE821663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE8D1663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
-				4083FE981663C7BB0016BA9B /* YaFormDataRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17914,7 +17893,6 @@
 				4083FE7B1663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE861663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE911663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
-				4083FE9C1663C7BB0016BA9B /* YaFormDataRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

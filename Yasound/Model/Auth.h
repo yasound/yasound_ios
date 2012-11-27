@@ -37,6 +37,7 @@
 - (id)initWithUsername:(NSString *)name andApiKey:(NSString*)key;
 
 - (NSArray*)urlParams;
+- (NSDictionary*)urlParamsDict;
 @end
 
 
@@ -56,6 +57,7 @@
 - (void)fillAccountType:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret andEmail:(NSString*)email;
 
 - (NSArray*)urlParams;
+- (NSDictionary*)urlParamsDict;
 @end
 
 
