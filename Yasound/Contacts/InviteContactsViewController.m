@@ -11,6 +11,7 @@
 #import "UserSettings.h"
 #import "YasoundDataProvider.h"
 #import "YasoundAppDelegate.h"
+#import "NSString+JsonLoading.h"
 
 @implementation InviteContactsViewController
 
@@ -311,28 +312,39 @@
   _hud.mode = MBProgressHUDModeDeterminate;
 
   _hud.labelText = NSLocalizedString(@"InviteContacts.sending_invitations", nil);
+    _hud.removeFromSuperViewOnHide = YES;
 
   [_hud show:YES];
 
-
-  [[YasoundDataProvider main] inviteContacts:contactData target:self action:@selector(contactsInvited:success:)];
+    [[YasoundDataProvider main] inviteContacts:contactData withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"invite contacts error: %d - %@", error.code, error.domain);
+        }
+        if (status != 200)
+        {
+            DLog(@"invite contacts error: response status %d", status);
+        }
+        NSDictionary* dict = [response jsonToDictionary];
+        if (dict == nil)
+        {
+            DLog(@"invite contacts error: cannot parse response %@", response);
+        }
+        NSNumber* ok = [dict valueForKey:@"success"];
+        if (ok == nil)
+        {
+            DLog(@"invite contacts error: bad response %@", response);
+        }
+        if ([ok boolValue] == NO)
+        {
+            DLog(@"invite contacts failed: error %@", [dict valueForKey:@"error"]);
+        }
+        
+        [_hud hide:YES];
+        [_hud release];
+        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+    }];
   return NO;
-}
-
-- (void)contactsInvited:(ASIHTTPRequest*)req success:(BOOL)success
-{
-  [_hud hide:YES];
-  [_hud release];
-
-  NSDictionary* resp = [req responseDict];
-  NSNumber* ok = [resp valueForKey:@"success"];
-  if (!success || ok == nil || [ok boolValue] == NO)
-  {
-    DLog(@"contacts invitation failed   error: %@", [resp valueForKey:@"error"]);
-  }
-
-  [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
-  //  _inSave = NO;
 }
 
 - (BOOL)topBarCancel

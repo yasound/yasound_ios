@@ -281,7 +281,9 @@ taskStatus stringToStatus(NSString* str);
 - (void)streamingAuthenticationTokenWithTarget:(id)target action:(SEL)action userData:(id)userData;
 
 // invite friends
-- (void)inviteContacts:(NSArray*)contacts target:(id)target action:(SEL)action;
+//- (void)inviteContacts:(NSArray*)contacts target:(id)target action:(SEL)action;
+- (void)inviteContacts:(NSArray*)contacts withCompletionBlock:(YaRequestCompletionBlock)block;
+
 - (void)inviteFacebookFriends:(NSArray*)friends target:(id)target action:(SEL)action;
 - (void)inviteTwitterFriendsWithTarget:(id)target action:(SEL)action;
 

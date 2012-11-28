@@ -2450,23 +2450,36 @@ static YasoundDataProvider* _main = nil;
 }
 
 #pragma mark - friends invitation
-- (void)inviteContacts:(NSArray*)contacts target:(id)target action:(SEL)action
-{    
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/invite_ios_contacts";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
+//- (void)inviteContacts:(NSArray*)contacts target:(id)target action:(SEL)action
+//{    
+//    RequestConfig* conf = [[RequestConfig alloc] init];
+//    conf.url = @"api/v1/invite_ios_contacts";
+//    conf.urlIsAbsolute = NO;
+//    conf.auth = self.apiKeyAuth;
+//    conf.method = @"POST";
+//    conf.callbackTarget = target;
+//    conf.callbackAction = action;
+//    
+//    NSString* dataStr = [contacts JSONRepresentation];
+//  NSLog(@"Contacts:\n%@", dataStr);
+//    NSData* data = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
+//    
+//    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+//    [req appendPostData:data];
+//    [req startAsynchronous];
+//}
+
+- (void)inviteContacts:(NSArray*)contacts withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/invite_ios_contacts";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[contacts JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSString* dataStr = [contacts JSONRepresentation];
-  NSLog(@"Contacts:\n%@", dataStr);
-    NSData* data = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req appendPostData:data];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 - (void)inviteFacebookFriends:(NSArray*)friends target:(id)target action:(SEL)action
