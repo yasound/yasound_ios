@@ -120,7 +120,6 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)friendsForUser:(User*)user withTarget:(id)target action:(SEL)selector;
 
-- (void)radioForUser:(User*)u withTarget:(id)target action:(SEL)selector;
 - (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector;
 - (void)createRadioWithTarget:(id)target action:(SEL)selector;
 - (void)deleteRadio:(Radio*)radio target:(id)target action:(SEL)selector;
@@ -131,24 +130,6 @@ taskStatus stringToStatus(NSString* str);
 
 
 - (void)radioWithId:(NSNumber*)radioId withCompletionBlock:(YaRequestCompletionBlock)block;
-
-// .........................................................................................
-// deprecated methods
-//
-- (void)radiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)topRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)selectedRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)newRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)favoriteRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-
-- (void)radiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-- (void)topRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-- (void)selectedRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-- (void)newRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-- (void)favoriteRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-//
-//..............................................................................................
-
 
 
 
@@ -209,16 +190,6 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)userWithId:(NSNumber*)userId target:(id)target action:(SEL)selector;
 - (void)userWithUsername:(NSString*)username target:(id)target action:(SEL)selector;
-
-//
-//  NextSong editing
-//
-//  all the callback functions for these actions give an array with the NextSong objects with the right 'order' values
-//  since an action on one object affects the 'order' values of all the others
-//
-- (void)moveNextSong:(NextSong*)nextSong toPosition:(int)position target:(id)target action:(SEL)selector;   // didMoveNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
-- (void)deleteNextSong:(NextSong*)nextSong target:(id)target action:(SEL)selector;                          // didDeleteNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
-- (void)addSongToNextSongs:(Song*)song atPosition:(int)position target:(id)target action:(SEL)selector;     // didAddNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
 
 
 - (void)enterRadioWall:(Radio*)radio;
