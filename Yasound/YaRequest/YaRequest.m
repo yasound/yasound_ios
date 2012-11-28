@@ -106,7 +106,8 @@ static NSString* sBaseURL = nil;
         {
             urlStr = [urlStr stringByAppendingString:@"&"];
         }
-        urlStr = [urlStr stringByAppendingString:value];
+        NSString* str = [NSString stringWithFormat:@"%@=%@", key, value];
+        urlStr = [urlStr stringByAppendingString:str];
     }
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL* new = [NSURL URLWithString:urlStr];
@@ -175,6 +176,10 @@ static NSString* sBaseURL = nil;
 
 
 
++ (YaRequest*)requestWithConfig:(YaRequestConfig*)config
+{
+    return [[[YaRequest alloc] initWithConfig:config] autorelease];
+}
 
 - (id)initWithConfig:(YaRequestConfig*)config
 {

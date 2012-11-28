@@ -40,4 +40,9 @@
     return YES;
 }
 
++ (YaRequestConfig*)requestConfig
+{
+    return [[[YaRequestConfig alloc] init] autorelease];
+}
+
 @end

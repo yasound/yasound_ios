@@ -16,8 +16,6 @@
 #import "FacebookFriend.h"
 #import "Contact.h"
 
-#import "YaRequest.h"
-
 #define LOCAL_URL @"http://127.0.0.1:8000"
 
 #define APP_KEY_COOKIE_NAME @"app_key"
@@ -945,6 +943,19 @@ static YasoundDataProvider* _main = nil;
 }
 
 
+- (void)radioWithId:(NSNumber*)radioId withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"/api/v1/radio/%@/", radioId];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+
 //
 // friends
 //
@@ -1869,29 +1880,32 @@ static YasoundDataProvider* _main = nil;
 // 
 // Radio listening stats
 //
-- (void)monthListeningStatsWithTarget:(id)target action:(SEL)selector
+
+- (void)monthListeningStatsForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    [self monthListeningStatsForRadio:self.radio withTarget:target action:selector];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/listening_stats/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.params = [NSDictionary dictionaryWithObject:[radio.id stringValue] forKey:@"radio"];
+    config.auth = self.apiKeyAuth;
+
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)monthListeningStatsForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
+- (void)leaderboardForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    Auth* auth = self.apiKeyAuth;
-    NSString* url = @"/api/v1/listening_stats/";
-    NSMutableArray* params = [[NSMutableArray alloc] init];
-    [params addObject:[NSString stringWithFormat:@"radio=%@", radio.id]];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v2/radio/%@/leaderboard", radio.uuid];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    [_communicator getObjectsWithClass:[RadioListeningStat class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-    
-    [params release];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)leaderboardWithTarget:(id)target action:(SEL)selector
-{
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = @"/api/v1/leaderboard/";
-  [_communicator getObjectsWithClass:[LeaderBoardEntry class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
 
 // Playlists
 - (void)playlistsForRadio:(Radio*)radio target:(id)target action:(SEL)selector
@@ -2769,24 +2783,6 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
-
-
-
-
-
-
-- (void)leaderboardForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
-{
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v2/radio/%@/leaderboard", radio.uuid];
-    conf.urlIsAbsolute = NO;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
-}
 
 
 

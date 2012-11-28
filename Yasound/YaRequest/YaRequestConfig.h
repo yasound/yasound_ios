@@ -24,4 +24,6 @@
 
 - (BOOL)isValid;
 
++ (YaRequestConfig*)requestConfig;
+
 @end

@@ -28,6 +28,7 @@
 #import "FacebookSharePreferences.h"
 #import "CityInfo.h"
 #import "Show.h"
+#import "YaRequest.h"
 
 typedef NSString* taskID;
 
@@ -127,6 +128,9 @@ taskStatus stringToStatus(NSString* str);
 - (void)favoriteRadiosForUser:(User*)u withTarget:(id)target action:(SEL)selector;
 
 - (void)radiosForUser:(User*)u withTarget:(id)target action:(SEL)selector;
+
+
+- (void)radioWithId:(NSNumber*)radioId withCompletionBlock:(YaRequestCompletionBlock)block;
 
 // .........................................................................................
 // deprecated methods
@@ -231,9 +235,8 @@ taskStatus stringToStatus(NSString* str);
 - (void)taskStatus:(taskID)task_id target:(id)target action:(SEL)selector;
 
 
-- (void)monthListeningStatsWithTarget:(id)target action:(SEL)selector;
-- (void)monthListeningStatsForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
-- (void)leaderboardWithTarget:(id)target action:(SEL)selector;
+- (void)monthListeningStatsForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)leaderboardForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 
 // Playlist
@@ -333,13 +336,5 @@ taskStatus stringToStatus(NSString* str);
 - (void)testV2;
 
 - (void)citySuggestionsWithCityName:(NSString*)city target:(id)target action:(SEL)selector;
-
-
-
-//
-// Server API v2
-//
-
-- (void)leaderboardForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
 
 @end
