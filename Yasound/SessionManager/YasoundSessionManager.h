@@ -45,7 +45,7 @@
 
 // return YES if an account has already been created.
 // ! LOCAL TEST ON THE DEVICE, NOT ON THE SERVER
-- (BOOL)getAccount:(User*)user;
+- (BOOL)isUser:(User*)user;
 
 // register the user account LOCALLY, ON THE DEVICE
 - (void)addAccount:(User*)user;

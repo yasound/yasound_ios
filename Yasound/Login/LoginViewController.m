@@ -246,8 +246,8 @@
 {
 
     
-    // check if local account has been setted (<=> radio full configured)
-    if ([[YasoundSessionManager main] getAccount:self.user])
+    // check if local account has been set (<=> radio full configured)
+    if ([[YasoundSessionManager main] isUser:self.user])
         // call root to launch the Radio
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LAUNCH_RADIO object:nil];
     else

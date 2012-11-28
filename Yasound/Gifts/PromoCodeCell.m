@@ -88,8 +88,16 @@
     
     [textField resignFirstResponder];
 
+[TapjoyConnect setUserID: [YasoundDataProvider username]];
 [TapjoyConnect showOffers];
-    return YES;
+[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(offerwallClosed:) name:TJC_VIEW_CLOSED_NOTIFICATION object:nil];
+
+  return YES;
+}
+
+-(void)offerwallClosed:(NSNotification*)notifyObj
+{
+  NSLog(@"Offerwall closed");
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField

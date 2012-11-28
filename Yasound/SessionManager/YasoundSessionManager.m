@@ -73,7 +73,7 @@ static YasoundSessionManager* _main = nil;
 
 // return YES if an account has already been created.
 // ! LOCAL TEST ON THE DEVICE, NOT ON THE SERVER
-- (BOOL)getAccount:(User*)user
+- (BOOL)isUser:(User*)user
 {
     int user_id_value = [user.id intValue];
     NSNumber* user_id = [NSNumber numberWithInt:user_id_value];

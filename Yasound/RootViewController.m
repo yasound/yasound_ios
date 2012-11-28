@@ -37,8 +37,6 @@
 #import "NotificationCenterViewController.h"
 #import "SongLocalCatalog.h"
 
-
-
 @class CreateRadioViewController;
 @class MyAccountViewController;
 @class StatsViewController;
@@ -347,20 +345,20 @@
 }
 
 
-- (void)loginReturned:(User*)user info:(NSDictionary*)info
+- (void)loginReturned:(User*)usr info:(NSDictionary*)info
 {
     // show connection alert
     [ConnectionView stop];
     
-    if (user != nil)
+    if (usr != nil)
     {
-        [[YasoundSessionManager main] writeUserIdentity:user];
+        [[YasoundSessionManager main] writeUserIdentity:usr];
         
-        self.user = user;
+        self.user = usr;
         
         // login the other associated accounts as well
         [[YasoundSessionManager main] associateAccountsAutomatic];
-        
+
         [self enterTheApp];
     }
     else
