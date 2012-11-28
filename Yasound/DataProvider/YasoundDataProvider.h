@@ -134,15 +134,10 @@ taskStatus stringToStatus(NSString* str);
 
 
 
-- (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-
 - (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
 
 - (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector;
 
-- (void)radioUserForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-- (void)setMood:(UserMood)mood forRadio:(Radio*)radio;
 - (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType;
 
 - (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite;
@@ -155,7 +150,6 @@ taskStatus stringToStatus(NSString* str);
 - (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector;
 
 - (void)setMood:(UserMood)mood forSong:(Song*)song;
-- (void)songUserForSong:(Song*)song target:(id)target action:(SEL)selector;
 
 - (void)followUser:(User*)user target:(id)target action:(SEL)selector;
 - (void)unfollowUser:(User*)user target:(id)target action:(SEL)selector;
