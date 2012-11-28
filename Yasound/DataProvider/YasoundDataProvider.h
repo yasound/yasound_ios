@@ -279,7 +279,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)activatePromoCode:(NSString*)code withTarget:(id)target action:(SEL)action;
 
 // streamer authentication
-- (void)streamingAuthenticationTokenWithTarget:(id)target action:(SEL)action userData:(id)userData;
+- (void)streamingAuthenticationTokenWithCompletionBlock:(YaRequestCompletionBlock)block;
 
 // invite friends
 - (void)inviteContacts:(NSArray*)contacts withCompletionBlock:(YaRequestCompletionBlock)block;

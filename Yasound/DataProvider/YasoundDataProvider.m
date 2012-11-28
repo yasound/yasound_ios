@@ -2416,22 +2416,17 @@ static YasoundDataProvider* _main = nil;
 }
 
 #pragma mark - streaming authentication token
-- (void)streamingAuthenticationTokenWithTarget:(id)target action:(SEL)action userData:(id)userData
+- (void)streamingAuthenticationTokenWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/streamer_auth_token/";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
-    conf.userData = userData;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/streamer_auth_token/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
-
 
 
 
