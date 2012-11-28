@@ -10,6 +10,9 @@
 #import "AudioStreamer.h"
 #import "YasoundDataProvider.h"
 #import "YasoundSessionManager.h"
+#import "Radio.h"
+#import "HTTPRadio.h"
+#import "MMSRadio.h"
 
 //#define USE_FAKE_RADIO_URL 1
 
@@ -30,8 +33,7 @@
 
 static AudioStreamManager* _main = nil;
 
-static AudioStreamer* _gAudioStreamer = nil;
-
+static Radio *_gRadio = nil;
 
 + (AudioStreamManager*) main
 {
@@ -89,17 +91,17 @@ static AudioStreamer* _gAudioStreamer = nil;
     if (radio == nil)
         return;
 
-    if (!_reseting && (_gAudioStreamer && ([radio.id intValue]  == [self.currentRadio.id intValue])))
+    if (!_reseting && (_gRadio && ([radio.id intValue]  == [self.currentRadio.id intValue])))
         return;
     
     _isPaused = NO;
     _reseting = NO;
     
-    if (_gAudioStreamer != nil)
+    if (_gRadio != nil)
     {
-        [_gAudioStreamer stop];
-        [_gAudioStreamer release];
-        _gAudioStreamer = nil;
+        [_gRadio shutdown];
+        [_gRadio release];
+        _gRadio = nil;
     }
 
     self.currentRadio = radio;
@@ -111,9 +113,6 @@ static AudioStreamer* _gAudioStreamer = nil;
     NSString* url = radio.stream_url;
     
     // add HD param if it's requested
-    BOOL hdPermission = [[YasoundDataProvider main].user permission:PERM_HD];
-    BOOL hdRequest = [[UserSettings main] boolForKey:USKEYuserWantsHd error:nil];
-  
     NSURL* radiourl = [NSURL URLWithString:url];
   
     if ([YasoundSessionManager main].registered)
@@ -129,10 +128,22 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 - (void)startStreamerWithURL:(NSURL*)radioUrl
 {
-    NSString* cookie = [NSString stringWithFormat:@"username=%@; api_key=%@", [YasoundDataProvider username], [YasoundDataProvider user_apikey]];
-    _gAudioStreamer = [[AudioStreamer alloc] initWithURL:radioUrl andCookie:cookie];
-    [_gAudioStreamer start];
+    NSString *radioUrlString = [radioUrl absoluteString];
+    if([radioUrlString hasPrefix:@"mms"])
+    {
+        _gRadio = [[MMSRadio alloc] initWithURL:radioUrl];
+    }
+    else
+    {
+        _gRadio = [[HTTPRadio alloc] initWithURL:radioUrl];
+    }
     
+    if(_gRadio)
+    {
+        [_gRadio setDelegate:self];
+        [_gRadio play];
+    }
+
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_PLAY object:nil];
 }
 
@@ -196,30 +207,32 @@ static AudioStreamer* _gAudioStreamer = nil;
     return;
 #endif
     
-    if (_gAudioStreamer == nil)
+    if (_gRadio == nil)
         return;
 
     _isPaused = YES;
     
-    [_gAudioStreamer stop];
-    [_gAudioStreamer release];
-    _gAudioStreamer = nil;
+    [_gRadio shutdown];
+    [_gRadio release];
+    _gRadio = nil;
     
     if (withNotif)
+    {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_STOP object:nil];
-
+    }
 }
 
 
 
 - (void)pauseRadio
 {
-    if (_gAudioStreamer == nil)
+    if (_gRadio == nil)
         return;
     
     _isPaused = YES;
 
-    [_gAudioStreamer stop];
+    [_gRadio pause];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_STOP object:nil];
 }
 
@@ -231,25 +244,31 @@ static AudioStreamer* _gAudioStreamer = nil;
     return;
 #endif
     
-    if (_gAudioStreamer == nil)
+    if (_gRadio == nil)
         return;
 
     _isPaused = NO;
-    [_gAudioStreamer start];
+    [_gRadio play];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_PLAY object:nil];
 }
 
 - (void)togglePlayPauseRadio
 {
-  if (_gAudioStreamer == nil)
+    if (_gRadio == nil)
+    {
       [self startRadio:self.currentRadio];
-       
-  else
-  
-  if (_gAudioStreamer.state != AS_PLAYING)
-      [self playRadio];
-  else
-    [self pauseRadio];
+      return;
+    }
+
+    RadioState state = [_gRadio radioState];
+    if(state == kRadioStatePlaying)
+    {
+        [self pauseRadio];
+    }
+    else
+    {
+        [self playRadio];
+    }
 }
 
 
@@ -322,6 +341,65 @@ static AudioStreamer* _gAudioStreamer = nil;
     
     _streamErrorTimer = nil;
 }
+
+#pragma mark -
+#pragma mark RadioDelegate Methods
+- (void)radioStateChanged:(Radio *)radio
+{
+    RadioState state = [_gRadio radioState];
+    if(state == kRadioStateConnecting) {
+    } else if(state == kRadioStateBuffering) {
+    } else if(state == kRadioStatePlaying) {
+    } else if(state == kRadioStateStopped) {
+    } else if(state == kRadioStateError) {
+        RadioError error = [_gRadio radioError];
+        if(error == kRadioErrorAudioQueueBufferCreate) {
+            NSLog(@"Audio buffers could not be created.");
+        } else if(error == kRadioErrorAudioQueueCreate) {
+            NSLog(@"Audio queue could not be created.");
+        } else if(error == kRadioErrorAudioQueueEnqueue) {
+            NSLog(@"Audio queue enqueue failed.");
+        } else if(error == kRadioErrorAudioQueueStart) {
+            NSLog(@"Audio queue could not be started.");
+        } else if(error == kRadioErrorFileStreamGetProperty) {
+            NSLog(@"File stream get property failed.");
+        } else if(error == kRadioErrorFileStreamOpen) {
+            NSLog(@"File stream could not be opened.");
+        } else if(error == kRadioErrorPlaylistParsing) {
+            NSLog(@"Playlist could not be parsed.");
+        } else if(error == kRadioErrorDecoding) {
+            NSLog(@"Audio decoding error.");
+        } else if(error == kRadioErrorHostNotReachable) {
+            NSLog(@"Radio host not reachable.");
+        } else if(error == kRadioErrorNetworkError) {
+            NSLog(@"Network connection error.");
+        }
+    }
+}
+
+- (void)radioMetadataReady:(Radio *)radio
+{
+    NSString *radioName = [radio radioName];
+    NSString *radioGenre = [radio radioGenre];
+    NSString *radioUrl = [radio radioUrl];
+    
+    if(radioName) {
+        NSLog(@"Radio name: %@", radioName);
+    }
+    
+    if(radioGenre) {
+        NSLog(@"Radio genre: %@", radioGenre);
+    }
+    
+    if(radioUrl) {
+        NSLog(@"Radio url: %@", radioUrl);
+    }
+}
+
+- (void)radioTitleChanged:(Radio *)radio
+{
+}
+
 
 
 
