@@ -270,8 +270,8 @@ taskStatus stringToStatus(NSString* str);
 
 
 // APNs (Apple Push Notification service) preferences
-- (void)apnsPreferencesWithTarget:(id)target action:(SEL)selector;
-- (void)setApnsPreferences:(APNsPreferences*)prefs target:(id)target action:(SEL)selector;
+- (void)apnsPreferencesWithCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)setApnsPreferences:(APNsPreferences*)prefs withCompletionBlock:(YaRequestCompletionBlock)block;
 
 // Facebook share preferences
 - (void)facebookSharePreferencesWithTarget:(id)target action:(SEL)selector; // didReceivePrefs:(ASIHTTPRequest*)req success:(BOOL)success

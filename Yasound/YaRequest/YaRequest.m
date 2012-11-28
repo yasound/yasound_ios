@@ -286,6 +286,7 @@ static NSString* sBaseURL = nil;
     if (_config.groupKey)
         [YaRequest addRequest:self forKey:_config.groupKey];
     
+    DLog(@"url: %@", _request.url);
     [_request startAsynchronous];
     return YES;
 

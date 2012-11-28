@@ -2228,18 +2228,29 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)apnsPreferencesWithTarget:(id)target action:(SEL)selector
+- (void)apnsPreferencesWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-  Auth* auth = self.apiKeyAuth;
-  NSString* relativeURL = @"/api/v1/notifications_preferences";
-  [_communicator getObjectWithClass:[APNsPreferences class] withURL:relativeURL absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/notifications_preferences";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)setApnsPreferences:(APNsPreferences*)prefs target:(id)target action:(SEL)selector
+- (void)setApnsPreferences:(APNsPreferences*)prefs withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  Auth* auth = self.apiKeyAuth;
-  NSString* relativeURL = @"/api/v1/set_notifications_preferences";
-  [_communicator postNewObject:prefs withURL:relativeURL absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/set_notifications_preferences";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[prefs JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 - (void)facebookSharePreferencesWithTarget:(id)target action:(SEL)selector
