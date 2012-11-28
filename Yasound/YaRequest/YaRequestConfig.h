@@ -22,6 +22,8 @@
 
 @property (retain, nonatomic) NSString* groupKey;
 
+@property BOOL external; // YES if the request is not destinated to yaapp
+
 - (BOOL)isValid;
 
 + (YaRequestConfig*)requestConfig;

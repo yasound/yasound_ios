@@ -670,6 +670,7 @@ static YasoundDataProvider* _main = nil;
   
   // send Apple Push Notification service device token
   [self sendAPNsDeviceTokenWhenLogged];
+    
 }
 
 - (void)didReceiveLoggedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
@@ -2435,22 +2436,17 @@ static YasoundDataProvider* _main = nil;
 
 
 #pragma mark - city suggestions
-- (void)citySuggestionsWithCityName:(NSString*)city target:(id)target action:(SEL)selector
+- (void)citySuggestionsWithCityName:(NSString*)city andCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"http://nominatim.openstreetmap.org/search";
-    conf.urlIsAbsolute = YES;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"http://nominatim.openstreetmap.org/search";
+    config.urlIsAbsolute = YES;
+    config.method = @"GET";
+    config.params = [NSDictionary dictionaryWithObjectsAndKeys:@"json", @"format", city, @"q", nil];
+    config.external = YES;
     
-    NSMutableArray* params = [NSMutableArray array];
-    [params addObject:@"format=json"];
-    [params addObject:[NSString stringWithFormat:@"q=%@", city]];
-    conf.params = params;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 #pragma mark - friends invitation

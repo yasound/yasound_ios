@@ -22,6 +22,7 @@
         self.payload = nil;
         self.auth = nil;
         self.groupKey = nil;
+        self.external = NO;
     }
     return self;
 }
@@ -30,6 +31,8 @@
 {
     if (self.url == nil)
         return NO;
+    if (self.external)
+        return YES;
     BOOL get = [self.method isEqualToString:@"GET"];
     BOOL post = [self.method isEqualToString:@"POST"];
     BOOL put = [self.method isEqualToString:@"PUT"];

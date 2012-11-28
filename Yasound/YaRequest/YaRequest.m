@@ -243,23 +243,27 @@ static NSString* sBaseURL = nil;
     // method
     _request.requestMethod = _config.method;
     
-    // json
-    [_request addRequestHeader:@"Accept" value:@"application/json"];
-    [_request addRequestHeader:@"Content-Type" value:@"application/json"];
+    if (_config.external == NO) // yaapp request
+    {
+        // json
+        [_request addRequestHeader:@"Accept" value:@"application/json"];
+        [_request addRequestHeader:@"Content-Type" value:@"application/json"];
+        
+        // language
+        // TODO: get locale of device in order to send appropriated headers
+        [_request addRequestHeader:@"Accept-Language" value:NSLocalizedString(@"ACCEPT_LANGUAGE", @"")];
+        
+        // cookie
+        NSDictionary* properties = [[[NSMutableDictionary alloc] init] autorelease];
+        [properties setValue:APP_KEY_IPHONE forKey:NSHTTPCookieValue];
+        [properties setValue:APP_KEY_COOKIE_NAME forKey:NSHTTPCookieName];
+        [properties setValue:@"yasound.com" forKey:NSHTTPCookieDomain];
+        [properties setValue:[NSDate dateWithTimeIntervalSinceNow:60*60] forKey:NSHTTPCookieExpires];
+        [properties setValue:@"/yasound/app_auth" forKey:NSHTTPCookiePath];
+        NSHTTPCookie* cookie = [NSHTTPCookie cookieWithProperties:properties];
+        [_request.requestCookies addObject:cookie];
+    }
     
-    // language
-    // TODO: get locale of device in order to send appropriated headers
-    [_request addRequestHeader:@"Accept-Language" value:NSLocalizedString(@"ACCEPT_LANGUAGE", @"")];
-    
-    // cookie
-    NSDictionary* properties = [[[NSMutableDictionary alloc] init] autorelease];
-    [properties setValue:APP_KEY_IPHONE forKey:NSHTTPCookieValue];
-    [properties setValue:APP_KEY_COOKIE_NAME forKey:NSHTTPCookieName];
-    [properties setValue:@"yasound.com" forKey:NSHTTPCookieDomain];
-    [properties setValue:[NSDate dateWithTimeIntervalSinceNow:60*60] forKey:NSHTTPCookieExpires];
-    [properties setValue:@"/yasound/app_auth" forKey:NSHTTPCookiePath];
-    NSHTTPCookie* cookie = [NSHTTPCookie cookieWithProperties:properties];
-    [_request.requestCookies addObject:cookie];
     
     // progress
     if (progressBlock != nil)

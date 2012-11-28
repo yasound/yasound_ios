@@ -288,6 +288,6 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)testV2;
 
-- (void)citySuggestionsWithCityName:(NSString*)city target:(id)target action:(SEL)selector;
+- (void)citySuggestionsWithCityName:(NSString*)city andCompletionBlock:(YaRequestCompletionBlock)block;
 
 @end
