@@ -241,7 +241,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)connectedUsersWithLimit:(int)limit skip:(int)skip completionBlock:(YaRequestCompletionBlock)block;
 
 // User Notifications
-- (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
+- (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)userNotificationsWithTarget:(id)target action:(SEL)selector limit:(NSInteger)limit offset:(NSInteger)offset;
 - (void)userNotificationWithId:(NSString*)notifId target:(id)target action:(SEL)selector;

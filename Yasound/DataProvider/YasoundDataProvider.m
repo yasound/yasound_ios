@@ -2021,22 +2021,17 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - User Notifications   
 
-- (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
+- (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/broadcast_message/", radio.uuid];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-
-    ASIFormDataRequest* req =  [_communicator buildFormDataRequestWithConfig:conf];
-//    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-
-    [req addPostValue:message forKey:@"message"];
-
-    [req startAsynchronous];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/broadcast_message/", radio.uuid];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObject:message forKey:@"message"];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 

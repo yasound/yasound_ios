@@ -102,24 +102,24 @@
     
     [ActivityAlertView showWithTitle:nil];
     
-    [[YasoundDataProvider main] broadcastMessage:message fromRadio:self.radio withTarget:self action:@selector(onPostMessageFinished:withInfo:)];
+    [[YasoundDataProvider main] broadcastMessage:message fromRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"broadcast message error: %d - %@", error.code, error. domain);
+        }
+        if (status != 200)
+        {
+            DLog(@"broadcast message error: response status %d", status);
+        }
+        
+        [ActivityAlertView close];
+        if (_target == nil)
+            return;
+        
+        [_target performSelector:_action];
+    }];
     
     return NO;
-}
-
-
-
-
-
-- (void)onPostMessageFinished:(NSNumber*)finished withInfo:(NSDictionary*)infos
-{
-    //DLog(@"info %@", infos);
-    [ActivityAlertView close];
-    
-    if (_target == nil)
-        return;
-    
-    [_target performSelector:_action];
 }
 
 
