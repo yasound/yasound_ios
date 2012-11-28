@@ -2400,19 +2400,17 @@ static YasoundDataProvider* _main = nil;
 }
 
 #pragma mark - promo code
-- (void)activatePromoCode:(NSString*)code withTarget:(id)target action:(SEL)action
+- (void)activatePromoCode:(NSString*)code withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/premium/activate_promocode/";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/premium/activate_promocode/";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObject:code forKey:@"code"];
     
-    ASIFormDataRequest* req = [_communicator buildFormDataRequestWithConfig:conf];
-    [req addPostValue:code forKey:@"code"];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 #pragma mark - streaming authentication token

@@ -228,20 +228,40 @@
 
 - (void)promoCodeEntered:(NSString*)promoCode
 {
-    [[YasoundDataProvider main] activatePromoCode:promoCode withTarget:self action:@selector(promoCodeActivated:success:)];
+    [[YasoundDataProvider main] activatePromoCode:promoCode withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"promo code activation error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"promo code activation error: response status %d", status);
+            return;
+        }
+        NSDictionary* dict = [response jsonToDictionary];
+        if (dict == nil)
+        {
+            DLog(@"promo code activation error: cannot parse response %@", response);
+            return;
+        }
+        NSNumber* ok  = [dict valueForKey:@"success"];
+        if (ok == nil)
+        {
+            DLog(@"promo code activation error: bad response (no 'success' key) %@", response);
+            return;
+        }
+        if ([ok boolValue])
+        {
+            [self reloadHdExpirationDate];
+            [[YasoundDataProvider main] reloadUserWithUserData:nil withTarget:nil action:nil]; // reload user to have permissions up to date
+        }
+        else
+        {
+            DLog(@"promo code activation failed");
+        }
+    }];
 }
-
-- (void)promoCodeActivated:(ASIFormDataRequest*)req success:(BOOL)success
-{
-    NSDictionary* dict = [req responseDict];
-    NSNumber* ok  = [dict valueForKey:@"success"];
-    if ([ok boolValue])
-    {
-        [self reloadHdExpirationDate];
-        [[YasoundDataProvider main] reloadUserWithUserData:nil withTarget:nil action:nil]; // reload user to have permissions up to date
-    }
-}
-
 
 #pragma mark - Table view data source
 

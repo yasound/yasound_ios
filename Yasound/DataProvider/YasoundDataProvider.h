@@ -276,7 +276,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)giftsWithTarget:(id)target action:(SEL)action;
 
 // promo code
-- (void)activatePromoCode:(NSString*)code withTarget:(id)target action:(SEL)action;
+- (void)activatePromoCode:(NSString*)code withCompletionBlock:(YaRequestCompletionBlock)block;
 
 // streamer authentication
 - (void)streamingAuthenticationTokenWithCompletionBlock:(YaRequestCompletionBlock)block;
