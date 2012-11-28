@@ -156,7 +156,6 @@ taskStatus stringToStatus(NSString* str);
 
 
 - (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector withUserData:(id)userData;
-- (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)currentUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 
@@ -170,17 +169,11 @@ taskStatus stringToStatus(NSString* str);
 
 
 - (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector;
-- (void)songWithId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)moderationDeleteWallMessage:(NSNumber*)messageId;
 - (void)moderationReportAbuse:(NSNumber*)messageId;
-
-
-- (void)addSongToUserRadio:(Song*)song;
-
-- (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector;
 
 - (void)userWithId:(NSNumber*)userId target:(id)target action:(SEL)selector;
 - (void)userWithUsername:(NSString*)username target:(id)target action:(SEL)selector;
@@ -241,11 +234,6 @@ taskStatus stringToStatus(NSString* str);
 // Facebook share preferences
 - (void)facebookSharePreferencesWithTarget:(id)target action:(SEL)selector; // didReceivePrefs:(ASIHTTPRequest*)req success:(BOOL)success
 - (void)setFacebookSharePreferences:(FacebookSharePreferences*)prefs target:(id)target action:(SEL)selector; // didSetPrefs:(ASIHTTPRequest*)req success:(BOOL)success
-
-// Menu description
-- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector; // didReceiveMenu:(ASIHTTPRequest*)req
-- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector userData:(id)data; // didReceiveMenu:(ASIHTTPRequest*)req
-
 
 - (void)connectedUsersWithTarget:(id)target action:(SEL)selector; // users connected to the app ordered by distance from the sender
 - (void)connectedUsersWithLimit:(int)limit skip:(int)skip target:(id)target action:(SEL)selector;

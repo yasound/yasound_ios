@@ -1313,18 +1313,6 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 
-
-- (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
-{
-  if (!radio || !radio.id)
-    return;
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/like_user", radioID];
-  NSArray* params = [NSArray arrayWithObject:@"limit=0"];
-  [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
 - (void)currentUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
   if (radio == nil || !radio.id)
@@ -1362,26 +1350,6 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectWithClass:[SongStatus class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
-- (void)songWithId:(NSNumber*)songId target:(id)target action:(SEL)selector
-{
-  if (!songId)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  [_communicator getObjectWithClass:[Song class] andID:songId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
-- (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector
-{
-  if (!self.radio || !self.radio.id)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = self.radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/next_songs", radioID];
-  [_communicator getObjectsWithClass:[NextSong class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
 - (void)userWithId:(NSNumber*)userId target:(id)target action:(SEL)selector
 {
     if (!userId)
@@ -1410,20 +1378,6 @@ static YasoundDataProvider* _main = nil;
     
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
     [req startAsynchronous];
-}
-
-
-- (void)addSongToUserRadio:(Song*)song
-{
-  if (!song || !song.id || !self.radio || !self.radio.id)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* songID = song.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/favorite_song", self.radio.id];
-  NSString* data = [NSString stringWithFormat:@"{\"id\":\"%@\"}", songID];
-  
-  [_communicator postToURL:relativeUrl absolute:NO withStringData:data objectClass:[Song class] notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
 - (void)followUser:(User*)user target:(id)target action:(SEL)selector
@@ -2067,29 +2021,6 @@ static YasoundDataProvider* _main = nil;
     NSString* stringData = [prefs JSONRepresentation];
     [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
     
-    [req startAsynchronous];
-}
-
-
-#pragma mark - Menu Descriptions
-
-- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector
-{
-    [self menuDescriptionWithTarget:target action:selector userData:nil];
-}
-
-- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector  userData:(id)data
-{    
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/app_menu";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    conf.userData = data;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
     [req startAsynchronous];
 }
 
