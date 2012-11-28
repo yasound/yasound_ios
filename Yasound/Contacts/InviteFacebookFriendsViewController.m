@@ -161,6 +161,9 @@
 
 - (BOOL)topBarSave
 {
+    if (_selectedFriends.count == 0)
+        return NO;
+        
     NSArray* array =[_selectedFriends allObjects];
     [[FacebookSessionManager facebook] inviteFriends:array withTarget:self action:@selector(inviteCallback)];
     return NO;
@@ -168,18 +171,31 @@
 
 - (void)inviteCallback {
     
-    [[YasoundDataProvider main] inviteFacebookFriends:_friends target:self action:@selector(friendsInvited:success:)];
-}
-
-- (void) friendsInvited:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    NSDictionary* resp = [req responseDict];
-    NSNumber* ok = [resp valueForKey:@"success"];
-    if (!success || ok == nil || [ok boolValue] == NO)
-    {
-        DLog(@"facebook friends invitation failed   error: %@", [resp valueForKey:@"error"]);
-    }
-    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+    [[YasoundDataProvider main] inviteFacebookFriends:_friends withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"invite facebook friends error: %d - %@", error.code, error.domain);
+        }
+        if (status != 200)
+        {
+            DLog(@"invite facebook friends error: response status %d", status);
+        }
+        NSDictionary* dict = [response jsonToDictionary];
+        if (dict == nil)
+        {
+            DLog(@"invite facebook friends error: cannot parse response %@", response);
+        }
+        NSNumber* ok = [dict valueForKey:@"success"];
+        if (ok == nil)
+        {
+            DLog(@"invite facebook friends error: bad response %@", response);
+        }
+        if ([ok boolValue] == NO)
+        {
+            DLog(@"invite facebook friends failed: error %@", [dict valueForKey:@"error"]);
+        }
+        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+    }];
 }
 
 - (BOOL)topBarCancel

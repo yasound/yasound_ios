@@ -2450,24 +2450,6 @@ static YasoundDataProvider* _main = nil;
 }
 
 #pragma mark - friends invitation
-//- (void)inviteContacts:(NSArray*)contacts target:(id)target action:(SEL)action
-//{    
-//    RequestConfig* conf = [[RequestConfig alloc] init];
-//    conf.url = @"api/v1/invite_ios_contacts";
-//    conf.urlIsAbsolute = NO;
-//    conf.auth = self.apiKeyAuth;
-//    conf.method = @"POST";
-//    conf.callbackTarget = target;
-//    conf.callbackAction = action;
-//    
-//    NSString* dataStr = [contacts JSONRepresentation];
-//  NSLog(@"Contacts:\n%@", dataStr);
-//    NSData* data = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
-//    
-//    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-//    [req appendPostData:data];
-//    [req startAsynchronous];
-//}
 
 - (void)inviteContacts:(NSArray*)contacts withCompletionBlock:(YaRequestCompletionBlock)block
 {
@@ -2482,16 +2464,8 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)inviteFacebookFriends:(NSArray*)friends target:(id)target action:(SEL)action
+- (void)inviteFacebookFriends:(NSArray*)friends withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/invite_facebook_friends";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
-    
     NSMutableArray* facebook_ids = [NSMutableArray array];
     for (FacebookFriend* f in friends)
     {
@@ -2500,23 +2474,27 @@ static YasoundDataProvider* _main = nil;
     NSString* dataStr = [facebook_ids JSONRepresentation];
     NSData* data = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req appendPostData:data];
-    [req startAsynchronous];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/invite_facebook_friends";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = data;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)inviteTwitterFriendsWithTarget:(id)target action:(SEL)action
+- (void)inviteTwitterFriendsWithTarget:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/invite_twitter_friends";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/invite_twitter_friends";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 

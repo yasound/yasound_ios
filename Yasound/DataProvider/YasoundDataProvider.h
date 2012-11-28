@@ -29,6 +29,7 @@
 #import "CityInfo.h"
 #import "Show.h"
 #import "YaRequest.h"
+#import "NSString+JsonLoading.h"
 
 typedef NSString* taskID;
 
@@ -281,11 +282,9 @@ taskStatus stringToStatus(NSString* str);
 - (void)streamingAuthenticationTokenWithTarget:(id)target action:(SEL)action userData:(id)userData;
 
 // invite friends
-//- (void)inviteContacts:(NSArray*)contacts target:(id)target action:(SEL)action;
 - (void)inviteContacts:(NSArray*)contacts withCompletionBlock:(YaRequestCompletionBlock)block;
-
-- (void)inviteFacebookFriends:(NSArray*)friends target:(id)target action:(SEL)action;
-- (void)inviteTwitterFriendsWithTarget:(id)target action:(SEL)action;
+- (void)inviteFacebookFriends:(NSArray*)friends withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)inviteTwitterFriendsWithTarget:(YaRequestCompletionBlock)block;
 
 
 - (void)testV2;
