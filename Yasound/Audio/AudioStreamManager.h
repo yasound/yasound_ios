@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import "Radio.h"
+#import "YasoundRadio.h"
 
 #define NOTIF_AUDIOSTREAM_PLAY @"NOTIF_AudioStream_play"
 #define NOTIF_AUDIOSTREAM_STOP @"NOTIF_AudioStream_stop"
@@ -22,12 +22,12 @@
     BOOL _reseting;
 }
 
-@property (retain) Radio* currentRadio;
+@property (retain) YasoundRadio* currentRadio;
 @property (nonatomic, readonly) BOOL isPaused;
 
 + (AudioStreamManager*) main;
 
-- (void)startRadio:(Radio*)radio;
+- (void)startRadio:(YasoundRadio*)radio;
 - (void)stopRadio;
 
 - (void)tryAndRestartOnError;

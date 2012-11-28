@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Song.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 #import "WebImageView.h"
 @interface ActionRemoveSongCell : UITableViewCell
 {
@@ -19,14 +19,14 @@
 }
 
 @property (nonatomic, assign) Song* song;
-@property (nonatomic, assign) Radio* radio;
+@property (nonatomic, assign) YasoundRadio* radio;
 
 @property (nonatomic, retain) WebImageView* image;
 @property (nonatomic, retain) UILabel* label;
 @property (nonatomic, retain) UILabel* detailedLabel;
 @property (nonatomic, retain) UIButton* button;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(Song*)song forRadio:(Radio*)radio;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(Song*)song forRadio:(YasoundRadio*)radio;
 
 - (void)update:(Song*)song;
 

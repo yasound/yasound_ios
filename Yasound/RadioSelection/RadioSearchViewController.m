@@ -174,7 +174,7 @@ typedef enum
 
 - (void)onSearchRadioClicked:(NSNotification*)notif {
     
-    Radio* radio = notif.object;
+    YasoundRadio* radio = notif.object;
     assert(radio);
 
     [self.popover dismissPopoverAnimated:YES];
@@ -327,9 +327,9 @@ typedef enum
     NSInteger radioIndex = indexPath.row * 3;
     
     
-    Radio* radio1 = [radios objectAtIndex:radioIndex];
-    Radio* radio2 = nil;
-    Radio* radio3 = nil;
+    YasoundRadio* radio1 = [radios objectAtIndex:radioIndex];
+    YasoundRadio* radio2 = nil;
+    YasoundRadio* radio3 = nil;
     if (radioIndex+1 < radios.count)
         radio2 = [radios objectAtIndex:radioIndex+1];
     if (radioIndex+2 < radios.count)
@@ -353,7 +353,7 @@ typedef enum
 }
 
 
-- (void)onRadioClicked:(Radio*)radio
+- (void)onRadioClicked:(YasoundRadio*)radio
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
 }

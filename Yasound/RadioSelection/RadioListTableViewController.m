@@ -366,9 +366,9 @@
     //LBDEBUG
     assert(radioIndex < self.radios.count);
     
-    Radio* radio1 = [self.radios objectAtIndex:radioIndex];
+    YasoundRadio* radio1 = [self.radios objectAtIndex:radioIndex];
     [radio1 setAssignedTopRank:radioIndex+1];
-    Radio* radio2 = nil;
+    YasoundRadio* radio2 = nil;
     if (radioIndex+1 < self.radios.count) {
         radio2 = [self.radios objectAtIndex:radioIndex+1];
         [radio2 setAssignedTopRank:radioIndex+2];
@@ -495,7 +495,7 @@
 #pragma mark - Table view delegate
 
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-- (void)onRadioClicked:(Radio*)radio
+- (void)onRadioClicked:(YasoundRadio*)radio
 {
     // call delegate with selected radio
     [self.listDelegate radioListDidSelect:radio];

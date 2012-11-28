@@ -8,7 +8,7 @@
 
 #import "ProgrammingRadioViewController.h"
 #import "ActivityAlertView.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 #import "YasoundDataProvider.h"
 #import "SongInfoViewController.h"
 #import "ProgrammingUploadViewController.h"
@@ -56,7 +56,7 @@
 }
 
 
-- (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio
+- (id)initWithStyle:(UITableViewStyle)style forRadio:(YasoundRadio*)radio
 {
     self = [super initWithStyle:style];
     if (self)

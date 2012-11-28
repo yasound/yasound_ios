@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Radio.h"
+#import "YasoundRadio.h"
 #import "YasoundDataCacheImage.h"
 
 
@@ -74,7 +74,7 @@
 //
 // - (void)selector:(Song*)song withInfo:(NSDictionnary*)info
 //
-- (void)requestCurrentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)requestCurrentSongForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector;
 
 
 - (void)requestFriendsWithTarget:(id)target action:(SEL)selector;

@@ -642,7 +642,7 @@
     
     [ActivityAlertView close];
     
-    self.radio = [req responseObjectWithClass:[Radio class]];
+    self.radio = [req responseObjectWithClass:[YasoundRadio class]];
     
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:@"..."];
@@ -776,7 +776,7 @@
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receivedUserRadioAfterPlaylistsUpdate:withInfo:)];
 }
 
-- (void)receivedUserRadioAfterPlaylistsUpdate:(Radio*)r withInfo:(NSDictionary*)info
+- (void)receivedUserRadioAfterPlaylistsUpdate:(YasoundRadio*)r withInfo:(NSDictionary*)info
 {
     assert(r != nil);
     self.radio = r;

@@ -218,7 +218,7 @@ static YasoundDataProvider* _main = nil;
 
     
     NSMutableDictionary* resourceNames = [Model resourceNames];
-    [resourceNames setObject:@"radio" forKey:[Radio class]];
+    [resourceNames setObject:@"radio" forKey:[YasoundRadio class]];
     [resourceNames setObject:@"user" forKey:[User class]];
     [resourceNames setObject:@"wall_event" forKey:[WallEvent class]];
     //        [resourceNames setObject:@"metadata" forKey:[SongMetadata class]];
@@ -387,7 +387,7 @@ static YasoundDataProvider* _main = nil;
   [data setValue:target forKey:@"clientTarget"];
   [data setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
     
-  [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:self byCalling:@selector(didReceiveUserRadios:withInfo:) withUserData:data withAuth:auth];
+  [_communicator getObjectsWithClass:[YasoundRadio class] withParams:params notifyTarget:self byCalling:@selector(didReceiveUserRadios:withInfo:) withUserData:data withAuth:auth];
 }
 
 - (void)userRadioWithTarget:(id)target action:(SEL)selector
@@ -399,7 +399,7 @@ static YasoundDataProvider* _main = nil;
 {
   NSMutableDictionary* finalInfo = [NSMutableDictionary dictionaryWithDictionary:info];
   
-  Radio* r = nil;
+  YasoundRadio* r = nil;
   if (!radios || [radios count] == 0)
   {
       NSString* str = [NSString stringWithFormat:@"no radio for user '%@'", _user.username];
@@ -436,7 +436,7 @@ static YasoundDataProvider* _main = nil;
   [self userRadioWithTarget:self action:@selector(reloadedUserRadio:withInfo:)];
 }
 
-- (void)reloadedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
+- (void)reloadedUserRadio:(YasoundRadio*)r withInfo:(NSDictionary*)info
 {
   if (!r)
     return;
@@ -668,7 +668,7 @@ static YasoundDataProvider* _main = nil;
   [self sendAPNsDeviceTokenWhenLogged];
 }
 
-- (void)didReceiveLoggedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
+- (void)didReceiveLoggedUserRadio:(YasoundRadio*)r withInfo:(NSDictionary*)info
 {
   NSMutableDictionary* finalInfo = [NSMutableDictionary dictionary];
   
@@ -900,14 +900,14 @@ static YasoundDataProvider* _main = nil;
   NSArray* params = [NSArray arrayWithObject:[NSString stringWithFormat:@"creator=%@", u.id]];
   Auth* auth = self.apiKeyAuth;
   NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
-  [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:self byCalling:@selector(didReceiveRadios:withInfo:) withUserData:data withAuth:auth];
+  [_communicator getObjectsWithClass:[YasoundRadio class] withParams:params notifyTarget:self byCalling:@selector(didReceiveRadios:withInfo:) withUserData:data withAuth:auth];
 }
 
 - (void)didReceiveRadios:(NSArray*)radios withInfo:(NSDictionary*)info
 {
   NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] init];
   
-  Radio* r = nil;
+  YasoundRadio* r = nil;
   if (!radios || [radios count] == 0)
   {
     NSError* err = [NSError errorWithDomain:[NSString stringWithFormat:@"no radio for user '%@'", _user.username] code:1 userInfo:nil];
@@ -935,7 +935,7 @@ static YasoundDataProvider* _main = nil;
 - (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector
 {
   Auth* auth = self.apiKeyAuth;
-  [_communicator getObjectWithClass:[Radio class] andID:radioId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+  [_communicator getObjectWithClass:[YasoundRadio class] andID:radioId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 
@@ -986,7 +986,7 @@ static YasoundDataProvider* _main = nil;
   if (genre)
     [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
   
-  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/friend_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+  [_communicator getObjectsWithClass:[YasoundRadio class] withURL:@"/api/v1/friend_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 
 
@@ -1023,7 +1023,7 @@ static YasoundDataProvider* _main = nil;
     
     NSString *url = [NSString stringWithFormat:@"/api/v1/user/%@/favorite_radio", u.id];
     
-    [_communicator getObjectsWithClass:[Radio class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth withKey:@"radios"];
+    [_communicator getObjectsWithClass:[YasoundRadio class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth withKey:@"radios"];
 }
 
 - (void)radiosForUser:(User*)u withTarget:(id)target action:(SEL)selector
@@ -1062,7 +1062,7 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
-- (void)deleteRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)deleteRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"/api/v1/my_radios/%@/", radio.uuid];
@@ -1094,11 +1094,11 @@ static YasoundDataProvider* _main = nil;
   NSMutableArray* params = [NSMutableArray array];
   [params addObject:[NSString stringWithFormat:@"q=%@", search]];
 
-  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/search/radios" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+  [_communicator getObjectsWithClass:[YasoundRadio class] withURL:@"/api/v1/search/radios" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 
-- (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)updateRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector
 {
   Auth* auth = self.apiKeyAuth;
   [_communicator updateObject:radio notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
@@ -1127,7 +1127,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)setPicture:(UIImage*)img forRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector
 {
   DLog(@"img %f, %f", img.size.width, img.size.height);
   UIImage* resizedImg = [self resizeImage:img];
@@ -1213,7 +1213,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 // get wall events
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector
+- (ASIHTTPRequest*)wallEventsForRadio:(YasoundRadio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector
 {
   if (radio == nil)
       return nil;
@@ -1237,7 +1237,7 @@ static YasoundDataProvider* _main = nil;
     return req;
 }
 
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector
+- (ASIHTTPRequest*)wallEventsForRadio:(YasoundRadio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector
 {
   if (!radio || !radio.id)
       return nil;
@@ -1257,7 +1257,7 @@ static YasoundDataProvider* _main = nil;
     return req;
 }
 
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector
+- (ASIHTTPRequest*)wallEventsForRadio:(YasoundRadio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector
 {
     if (!radio || !radio.id)
         return nil;
@@ -1277,7 +1277,7 @@ static YasoundDataProvider* _main = nil;
 
 }
 
-- (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)postWallMessage:(NSString*)message toRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector
 {
   if (!message || !_user || !radio)
     return;
@@ -1327,7 +1327,7 @@ static YasoundDataProvider* _main = nil;
 
 
 
-- (void)enterRadioWall:(Radio*)radio
+- (void)enterRadioWall:(YasoundRadio*)radio
 {
   if (!_user || !radio || !radio.id)
     return;
@@ -1337,7 +1337,7 @@ static YasoundDataProvider* _main = nil;
   [_communicator postToURL:relativeUrl absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];  
 }
 
-- (void)leaveRadioWall:(Radio*)radio
+- (void)leaveRadioWall:(YasoundRadio*)radio
 {
   if (!_user || !radio || !radio.id)
     return;
@@ -1348,7 +1348,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector withUserData:(id)userData;
+- (void)favoriteUsersForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector withUserData:(id)userData;
 {
   if (!radio || !radio.id)
     return;
@@ -1360,7 +1360,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)likersForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector
 {
   if (!radio || !radio.id)
     return;
@@ -1371,7 +1371,7 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
-- (void)currentUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)currentUsersForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector
 {
   if (radio == nil || !radio.id)
     return;
@@ -1383,12 +1383,12 @@ static YasoundDataProvider* _main = nil;
 
 }
 
-- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)currentSongForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector
 {
   [self currentSongForRadio:radio target:target action:selector userData:nil];
 }
 
-- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector userData:(id)userData
+- (void)currentSongForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector userData:(id)userData
 {
   if (radio == nil || !radio.id)
     return;
@@ -1574,7 +1574,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)radioUserForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)radioUserForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector
 {
   if (!radio || !radio.id)
     return;
@@ -1583,7 +1583,7 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectWithClass:[RadioUser class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
-- (void)setMood:(UserMood)mood forRadio:(Radio*)radio
+- (void)setMood:(UserMood)mood forRadio:(YasoundRadio*)radio
 {
   if (!radio || !radio.id)
     return;
@@ -1655,12 +1655,12 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite
+- (void)setRadio:(YasoundRadio*)radio asFavorite:(BOOL)favorite
 {
     [self setRadio:radio asFavorite:favorite target:nil action:nil];
 }
 
-- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite target:(id)target action:(SEL)selector
+- (void)setRadio:(YasoundRadio*)radio asFavorite:(BOOL)favorite target:(id)target action:(SEL)selector
 {
     NSString* favoriteStr;
     if (favorite)
@@ -1682,7 +1682,7 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
-- (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType
+- (void)radioHasBeenShared:(YasoundRadio*)radio with:(NSString*)shareType
 {
   if (!radio || !radio.id)
     return;
@@ -1735,7 +1735,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)updatePlaylists:(NSData*)data forRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector
 {
   if (radio == nil)
     return;
@@ -1868,7 +1868,7 @@ static YasoundDataProvider* _main = nil;
     [self monthListeningStatsForRadio:self.radio withTarget:target action:selector];
 }
 
-- (void)monthListeningStatsForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
+- (void)monthListeningStatsForRadio:(YasoundRadio*)radio withTarget:(id)target action:(SEL)selector
 {
     Auth* auth = self.apiKeyAuth;
     NSString* url = @"/api/v1/listening_stats/";
@@ -1888,7 +1888,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 // Playlists
-- (void)playlistsForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)playlistsForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector
 {
   NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/all_playlist/", radio.id];
   Auth* auth = self.apiKeyAuth;
@@ -1909,7 +1909,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (ASIFormDataRequest*)uploadSong:(NSData*)song forRadioId:(Radio*)radio_id title:(NSString*)title album:(NSString*)album artist:(NSString*)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
+- (ASIFormDataRequest*)uploadSong:(NSData*)song forRadioId:(YasoundRadio*)radio_id title:(NSString*)title album:(NSString*)album artist:(NSString*)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
 {
     if ((song == nil) || (radio_id == nil))
     {
@@ -2018,7 +2018,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)deleteAllSongsFromRadio:(Radio*)radio target:(id)target action:(SEL)action
+- (void)deleteAllSongsFromRadio:(YasoundRadio*)radio target:(id)target action:(SEL)action
 {
     if (!radio)
         return;
@@ -2040,7 +2040,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)deleteArtist:(NSString*)artist fromRadio:(Radio*)radio target:(id)target action:(SEL)action
+- (void)deleteArtist:(NSString*)artist fromRadio:(YasoundRadio*)radio target:(id)target action:(SEL)action
 {
     if (!artist || !radio)
         return;
@@ -2070,7 +2070,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)deleteAlbum:(NSString*)album fromRadio:(Radio*)radio target:(id)target action:(SEL)action
+- (void)deleteAlbum:(NSString*)album fromRadio:(YasoundRadio*)radio target:(id)target action:(SEL)action
 {
     if (!album || !radio)
         return;
@@ -2138,7 +2138,7 @@ static YasoundDataProvider* _main = nil;
     
 }
 
-- (void)addSong:(YasoundSong*)yasoundSong inRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)addSong:(YasoundSong*)yasoundSong inRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector
 {
     if (!yasoundSong)
         return;
@@ -2280,7 +2280,7 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - User Notifications   
 
-- (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
+- (void)broadcastMessage:(NSString*)message fromRadio:(YasoundRadio*)radio withTarget:(id)target action:(SEL)selector
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/broadcast_message/", radio.uuid];
@@ -2397,12 +2397,12 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - shows
 
-- (void)showsForRadio:(Radio*)r withTarget:(id)target action:(SEL)selector
+- (void)showsForRadio:(YasoundRadio*)r withTarget:(id)target action:(SEL)selector
 {
     [self showsForRadio:r limit:0 offset:0 withTarget:target action:selector];
 }
 
-- (void)showsForRadio:(Radio*)r limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector
+- (void)showsForRadio:(YasoundRadio*)r limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/shows/", r.uuid];
@@ -2472,12 +2472,12 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
-- (void)createShow:(Show*)show inRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
+- (void)createShow:(Show*)show inRadio:(YasoundRadio*)radio withTarget:(id)target action:(SEL)selector
 {
     [self createShow:show inRadio:radio withYasoundSongs:nil withTarget:target action:selector];
 }
 
-- (void)createShow:(Show*)show inRadio:(Radio*)radio withYasoundSongs:(NSArray*)yasoundSongs withTarget:(id)target action:(SEL)selector
+- (void)createShow:(Show*)show inRadio:(YasoundRadio*)radio withYasoundSongs:(NSArray*)yasoundSongs withTarget:(id)target action:(SEL)selector
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/create_show", radio.uuid];
@@ -2769,7 +2769,7 @@ static YasoundDataProvider* _main = nil;
 
 
 
-- (void)leaderboardForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
+- (void)leaderboardForRadio:(YasoundRadio*)radio withTarget:(id)target action:(SEL)selector
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v2/radio/%@/leaderboard", radio.uuid];
@@ -2826,7 +2826,7 @@ static YasoundDataProvider* _main = nil;
         [params addObject:@"ready=true"];
         if (genre)
             [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
-        [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+        [_communicator getObjectsWithClass:[YasoundRadio class] withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
     }
 }
 - (void)topRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
@@ -2836,7 +2836,7 @@ static YasoundDataProvider* _main = nil;
     if (genre)
         [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
     
-    [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/top_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+    [_communicator getObjectsWithClass:[YasoundRadio class] withURL:@"/api/v1/top_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 
 - (void)selectedRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
@@ -2846,7 +2846,7 @@ static YasoundDataProvider* _main = nil;
     if (genre)
         [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
     
-    [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/selected_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+    [_communicator getObjectsWithClass:[YasoundRadio class] withURL:@"/api/v1/selected_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 
 - (void)newRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
@@ -2857,7 +2857,7 @@ static YasoundDataProvider* _main = nil;
     if (genre)
         [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
     
-    [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+    [_communicator getObjectsWithClass:[YasoundRadio class] withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 - (void)favoriteRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
 {
@@ -2866,7 +2866,7 @@ static YasoundDataProvider* _main = nil;
     if (genre)
         [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
     
-    [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/favorite_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+    [_communicator getObjectsWithClass:[YasoundRadio class] withURL:@"/api/v1/favorite_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 
 - (void)sendGetRequestWithURL:(NSString*)url

@@ -314,7 +314,7 @@
         return;
     }
     
-    Container* container = [req responseObjectsWithClass:[Radio class]];
+    Container* container = [req responseObjectsWithClass:[YasoundRadio class]];
     self.radios = container.objects;
     
     if (self.radios == nil)

@@ -29,7 +29,7 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forSong:(Song*)aSong onRadio:(Radio*)aRadio target:(id)target action:(SEL)action
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forSong:(Song*)aSong onRadio:(YasoundRadio*)aRadio target:(id)target action:(SEL)action
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
@@ -67,7 +67,7 @@
     }
 
     // format messages
-    Radio* currentRadio = [AudioStreamManager main].currentRadio;
+    YasoundRadio* currentRadio = [AudioStreamManager main].currentRadio;
     
     NSString* message = NSLocalizedString(@"ShareModalView_share_message", nil);
     NSString* fullMessage = [NSString stringWithFormat:message, self.song.name, self.song.artist, currentRadio.name];

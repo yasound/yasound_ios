@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "YasoundSong.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 #import "WebImageView.h"
 
 @interface ActionAddServerSongCell : UITableViewCell
 
 @property (nonatomic, assign) YasoundSong* song;
-@property (nonatomic, assign) Radio* radio;
+@property (nonatomic, assign) YasoundRadio* radio;
 
 @property (nonatomic, retain) WebImageView* image;
 @property (nonatomic, retain) UILabel* label;
@@ -22,7 +22,7 @@
 @property (nonatomic, retain) UIButton* button;
 @property (nonatomic, retain) UIActivityIndicatorView* activityView;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(YasoundSong*)s forRadio:(Radio*)r;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(YasoundSong*)s forRadio:(YasoundRadio*)r;
 
 - (void)update:(YasoundSong*)song;
 

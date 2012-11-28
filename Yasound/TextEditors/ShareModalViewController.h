@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Song.h"
 #import "WebImageView.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 
 @interface ShareModalViewController : YaViewController<UITextFieldDelegate>
 {
@@ -27,11 +27,11 @@
 }
 
 @property (nonatomic, retain) Song* song;
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YasoundRadio* radio;
 @property (nonatomic, retain) NSURL* pictureUrl;
 @property (nonatomic, retain) NSURL* fullLink;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forSong:(Song*)aSong onRadio:(Radio*)aRadio target:(id)target action:(SEL)action;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forSong:(Song*)aSong onRadio:(YasoundRadio*)aRadio target:(id)target action:(SEL)action;
 
 
 @end

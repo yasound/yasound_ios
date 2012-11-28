@@ -319,7 +319,7 @@
   [view release];
 }
 
-- (void)receivedRadio:(Radio*)radio withInfo:(NSDictionary*)info
+- (void)receivedRadio:(YasoundRadio*)radio withInfo:(NSDictionary*)info
 {
   if (!radio)
     return;

@@ -8,7 +8,7 @@
 
 #import "ProgrammingViewController.h"
 #import "ActivityAlertView.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 #import "YasoundDataProvider.h"
 #import "SongInfoViewController.h"
 #import "ProgrammingRadioViewController.h"
@@ -41,7 +41,7 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)radio
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(YasoundRadio*)radio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 

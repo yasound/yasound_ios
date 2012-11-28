@@ -1,11 +1,11 @@
 
 #import "UIKit/UIKit.h"
 #import "WebImageView.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 
 @interface WallHeaderCell : UITableViewCell
 
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YasoundRadio* radio;
 @property (nonatomic) BOOL isFavorite;
 
 @property (nonatomic, retain) IBOutlet WebImageView* headerImage;
@@ -17,7 +17,7 @@
 @property (nonatomic, retain) IBOutlet UIButton* headerButtonFavorites;
 @property (nonatomic, retain) IBOutlet UIButton* headerButtonListeners;
 
-- (void)setHeaderRadio:(Radio*)radio;
+- (void)setHeaderRadio:(YasoundRadio*)radio;
 - (void)setListeners:(NSInteger)nbListeners;
 - (IBAction)onFavoriteClicked:(id)sender;
 

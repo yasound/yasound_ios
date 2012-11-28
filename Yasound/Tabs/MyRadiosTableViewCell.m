@@ -51,7 +51,7 @@
 
 
 
-- (void)updateWithRadio:(Radio*)radio target:(id)target editing:(BOOL)editing
+- (void)updateWithRadio:(YasoundRadio*)radio target:(id)target editing:(BOOL)editing
 {
     self.radio = radio;
     self.delegate = target;

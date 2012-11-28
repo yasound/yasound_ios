@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Song.h"
 #import "WebImageView.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 #import "TopBarSaveOrCancel.h"
 
 #define BIO_LENGTH_MAX 190.f

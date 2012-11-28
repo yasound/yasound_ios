@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SongLocal.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 
 @interface ActionAddSongCell : UITableViewCell
 {
@@ -19,14 +19,14 @@
 }
 
 @property (nonatomic, assign) SongLocal* song;
-@property (nonatomic, assign) Radio* radio;
+@property (nonatomic, assign) YasoundRadio* radio;
 
 @property (nonatomic, retain) UIImageView* image;
 @property (nonatomic, retain) UILabel* label;
 @property (nonatomic, retain) UILabel* detailedLabel;
 @property (nonatomic, retain) UIButton* button;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(SongLocal*)song forRadio:(Radio*)radio;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(SongLocal*)song forRadio:(YasoundRadio*)radio;
 
 - (void)update:(SongLocal*)song;
 

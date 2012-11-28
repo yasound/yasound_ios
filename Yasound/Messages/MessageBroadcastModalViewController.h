@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Song.h"
 #import "WebImageView.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 #import "TopBarSaveOrCancel.h"
 
 @interface MessageBroadcastModalViewController : YaViewController<UITextFieldDelegate, TopBarSaveOrCancelDelegate>
@@ -26,10 +26,10 @@
     SEL _action;
 }
 
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YasoundRadio* radio;
 @property (nonatomic, assign) NSArray* subscribers;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)aRadio subscribers:(NSArray*)subscribers target:(id)target action:(SEL)action;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(YasoundRadio*)aRadio subscribers:(NSArray*)subscribers target:(id)target action:(SEL)action;
 
 
 @end

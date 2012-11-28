@@ -38,7 +38,7 @@
 @synthesize radio;
 
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(YasoundRadio*)radio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
@@ -98,7 +98,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)receivedRadio:(Radio*)r withInfo:(NSDictionary*)info
+- (void)receivedRadio:(YasoundRadio*)r withInfo:(NSDictionary*)info
 {
   if (!r)
     return;

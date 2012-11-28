@@ -33,14 +33,14 @@
 
 }
 
-@property (nonatomic, retain) Radio* radioBackup;
+@property (nonatomic, retain) YasoundRadio* radioBackup;
 @property (nonatomic, retain) IBOutlet TopBarSaveOrCancel* topbar;
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YasoundRadio* radio;
 @property (nonatomic) BOOL createMode;
 
 
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio createMode:(BOOL)createMode;
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(YasoundRadio*)radio createMode:(BOOL)createMode;
 
 
 @end

@@ -27,7 +27,7 @@
     self.headerImageHighlight.hidden = YES;
 }
 
-- (void)setHeaderRadio:(Radio*)radio
+- (void)setHeaderRadio:(YasoundRadio*)radio
 {
     self.radio = radio;
     self.isFavorite = NO;
@@ -99,7 +99,7 @@
 {
     NSInteger currentRadioId = [self.radio.id integerValue];
     NSArray* radios = radioContainer.objects;
-    for (Radio* aRadio in radios)
+    for (YasoundRadio* aRadio in radios)
     {
         if ([aRadio.id integerValue] == currentRadioId)
         {

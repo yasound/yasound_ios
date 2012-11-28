@@ -41,7 +41,7 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong onRadio:(Radio*)aRadio showNowPlaying:(BOOL)showNowPlaying
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong onRadio:(YasoundRadio*)aRadio showNowPlaying:(BOOL)showNowPlaying
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 

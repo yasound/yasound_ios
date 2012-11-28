@@ -64,7 +64,7 @@
     
     id item = [items objectAtIndex:0];
     
-    if ([item isKindOfClass:[Radio class]]) {
+    if ([item isKindOfClass:[YasoundRadio class]]) {
         
         [self setRadios:items];
         return;
@@ -83,7 +83,7 @@
     CGFloat posX = 0;
     CGFloat delay = 0.1;
 
-    for (Radio* radio in _items) {
+    for (YasoundRadio* radio in _items) {
         
         ProfilCellRadio* cell = [[ProfilCellRadio alloc] initWithRadio:radio];
         cell.frame = CGRectMake(posX, 0, cell.frame.size.width, cell.frame.size.height);

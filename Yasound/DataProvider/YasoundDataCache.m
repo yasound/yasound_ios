@@ -157,7 +157,7 @@ static YasoundDataCache* _main = nil;
     id target = op.target;
     SEL action = op.action;
     
-    Container* radioContainer = [req responseObjectsWithClass:[Radio class]];
+    Container* radioContainer = [req responseObjectsWithClass:[YasoundRadio class]];
     
     if (radioContainer == nil)
     {
@@ -302,7 +302,7 @@ static YasoundDataCache* _main = nil;
 // return local data from cache, using a request key, and a specific genre
 //
 
-- (Song*)cachedSongForRadio:(Radio*)radio
+- (Song*)cachedSongForRadio:(YasoundRadio*)radio
 {
     // get cache
     NSDictionary* requestCache = [_cacheSongs objectForKey:[NSNumber numberWithInteger:radio]];
@@ -327,7 +327,7 @@ static YasoundDataCache* _main = nil;
 //
 // - (void)selector:(Song*)song withInfo:(NSDictionnary*)info
 //
-- (void)requestCurrentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)requestCurrentSongForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector
 {
     Song* data = [self cachedSongForRadio:radio];
     
@@ -362,7 +362,7 @@ static YasoundDataCache* _main = nil;
     
     id target = op.target;
     SEL action = op.action;
-    Radio* radio = op.object;
+    YasoundRadio* radio = op.object;
     
     // the radio may be empty
     if (song == nil)

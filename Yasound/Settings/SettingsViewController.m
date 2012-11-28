@@ -43,7 +43,7 @@
 @synthesize createMode;
 @synthesize topbar;
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio createMode:(BOOL)createMode
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(YasoundRadio*)radio createMode:(BOOL)createMode
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
@@ -561,7 +561,7 @@
     [[YasoundDataProvider main] updateRadio:self.radio target:self action:@selector(onRadioUpdated:info:)];
 }
 
-- (void)onRadioUpdated:(Radio*)radio info:(NSDictionary*)info
+- (void)onRadioUpdated:(YasoundRadio*)radio info:(NSDictionary*)info
 {
     DLog(@"onRadioUpdated '%@', info %@", radio.name, info);
     
@@ -609,7 +609,7 @@
   [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receivedUserRadioAfterPictureUpdate:withInfo:)];
 }
 
-- (void)receivedUserRadioAfterPictureUpdate:(Radio*)r withInfo:(NSDictionary*)info
+- (void)receivedUserRadioAfterPictureUpdate:(YasoundRadio*)r withInfo:(NSDictionary*)info
 {
   [ActivityAlertView close];
     

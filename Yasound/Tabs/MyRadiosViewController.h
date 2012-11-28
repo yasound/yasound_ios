@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TopBar.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 
 @interface MyRadiosViewController : YaViewController<TopBarDelegate, UITableViewDelegate>
 {
@@ -17,7 +17,7 @@
     BOOL _firstTime;
 }
 
-@property (nonatomic, retain) Radio* radioToBroadcast;
+@property (nonatomic, retain) YasoundRadio* radioToBroadcast;
 
 @property (nonatomic, retain) UINib* cellLoader;
 

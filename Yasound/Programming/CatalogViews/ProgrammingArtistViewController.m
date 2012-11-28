@@ -8,7 +8,7 @@
 
 #import "ProgrammingArtistViewController.h"
 #import "ActivityAlertView.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 #import "YasoundDataProvider.h"
 #import "SongInfoViewController.h"
 #import "ProgrammingUploadViewController.h"
@@ -32,7 +32,7 @@
 @synthesize catalog;
 @synthesize albumVC;
 
-- (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio
+- (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(YasoundRadio*)radio
 {
     self = [super initWithStyle:style];
     if (self)

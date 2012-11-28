@@ -3,7 +3,7 @@
 // from https://github.com/mikeho/QSUtilities
 //
 
-#import "Base64.h"
+#import "YaBase64.h"
 
 
 @implementation Base64

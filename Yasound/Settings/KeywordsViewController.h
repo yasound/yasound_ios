@@ -20,7 +20,7 @@
 
 @interface KeywordsViewController : YaViewController
 {
-    Radio* _myRadio;
+    YasoundRadio* _myRadio;
     
     IBOutlet UIBarButtonItem* _editBtn;
     
@@ -36,7 +36,7 @@
 @property (nonatomic, retain) IBOutlet TopBarBackAndTitle* topbar;
 @property (nonatomic, assign) id<KeywordsDelegate> delegate;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil radio:(Radio*)radio;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil radio:(YasoundRadio*)radio;
 
 
 @end

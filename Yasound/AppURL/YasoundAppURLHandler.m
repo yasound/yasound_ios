@@ -239,11 +239,11 @@ static YasoundAppURLHandler* _main = nil;
     if (!success)
         return;
     
-    Container* container = [req responseObjectsWithClass:[Radio class]];
+    Container* container = [req responseObjectsWithClass:[YasoundRadio class]];
     NSArray* radios = container.objects;
     if (radios.count > 0)
     {
-        Radio* radio = [radios objectAtIndex:0];
+        YasoundRadio* radio = [radios objectAtIndex:0];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO_PROGRAMMING object:radio];
     }
 }
@@ -261,11 +261,11 @@ static YasoundAppURLHandler* _main = nil;
     if (!success)
         return;
     
-    Container* container = [req responseObjectsWithClass:[Radio class]];
+    Container* container = [req responseObjectsWithClass:[YasoundRadio class]];
     NSArray* radios = container.objects;
     if (radios.count > 0)
     {
-        Radio* radio = [radios objectAtIndex:0];
+        YasoundRadio* radio = [radios objectAtIndex:0];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO_STATS object:radio];
     }
 }

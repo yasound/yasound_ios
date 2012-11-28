@@ -28,7 +28,7 @@
 #import "AccountTwitterViewController.h"
 #import "AccountFacebookViewController.h"
 #import "WebPageViewController.h"
-#import "Version.h"
+#import "DeviceVersion.h"
 #import "UIDevice+Resolutions.h"
 #import "InviteContactsViewController.h"
 #import "InviteFacebookFriendsViewController.h"
@@ -403,7 +403,7 @@
     if (radioId == nil)
     {
         //LBDEBUG TODO ICI : own_radio pas bon
-        Radio* myRadio = self.user.own_radio;
+        YasoundRadio* myRadio = self.user.own_radio;
         if (myRadio && myRadio.ready)
             [self launchRadio:myRadio.id];
         else
@@ -486,7 +486,7 @@
 {
     [self gotoRadioSelectionAnimated:NO];
     
-    Radio* radio = notification.object;
+    YasoundRadio* radio = notification.object;
     
     ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:radio];
     [self.navigationController pushViewController:view animated:YES];
@@ -586,7 +586,7 @@
 
 
 
-- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
+- (void)onGetRadio:(YasoundRadio*)radio info:(NSDictionary*)info
 {
     [ActivityAlertView close];
 
@@ -645,7 +645,7 @@
 
 - (void)onNotifPushRadio:(NSNotification*)notification
 {
-    Radio* r = notification.object;
+    YasoundRadio* r = notification.object;
     if (r == nil)
     {
         DLog(@"ERROR radio is nil in RootViewController:onNotifPushRadio");
@@ -661,7 +661,7 @@
 
 - (void)onNotifGotoRadio:(NSNotification*)notification
 {
-    Radio* r = notification.object;
+    YasoundRadio* r = notification.object;
     assert(r != nil);
 
     DLog(@"onNotifGotoRadio '%@' (ready %@)", r.name, r.ready);
@@ -781,7 +781,7 @@
 
 - (void)onNotifGotoMyRadio:(NSNotification *)notification
 {
-    Radio* r = [YasoundDataProvider main].radio;
+    YasoundRadio* r = [YasoundDataProvider main].radio;
     DLog(@"go to my radio '%@' (%@)", r.name, r.ready);
 
     if (![r.ready boolValue])
@@ -830,7 +830,7 @@
 
 - (void)onNotifGotoRadioProgramming:(NSNotification *)notification
 {
-    Radio* radio = notification.object;
+    YasoundRadio* radio = notification.object;
     ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:radio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
@@ -838,7 +838,7 @@
 
 - (void)onNotifGotoRadioStats:(NSNotification *)notification
 {
-    Radio* radio = notification.object;
+    YasoundRadio* radio = notification.object;
     StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil forRadio:radio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];

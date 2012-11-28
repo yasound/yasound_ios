@@ -115,7 +115,7 @@
     [[TimeProfile main] begin:@"Playlists_download"];
     
     
-    Radio* radio = [YasoundDataProvider main].radio;
+    YasoundRadio* radio = [YasoundDataProvider main].radio;
     [[YasoundDataProvider main] playlistsForRadio:radio
                                            target:self
                                            action:@selector(receivePlaylists:withInfo:)
@@ -670,7 +670,7 @@
     
     [ActivityAlertView close];
     
-    self.radio = [req responseObjectWithClass:[Radio class]];
+    self.radio = [req responseObjectWithClass:[YasoundRadio class]];
     
     //LBDEBUG
     DLog(@"radio created : %p", self.radio);
@@ -808,7 +808,7 @@
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receivedUserRadioAfterPlaylistsUpdate:withInfo:)];
 }
 
-- (void)receivedUserRadioAfterPlaylistsUpdate:(Radio*)r withInfo:(NSDictionary*)info
+- (void)receivedUserRadioAfterPlaylistsUpdate:(YasoundRadio*)r withInfo:(NSDictionary*)info
 {
     assert(r != nil);
     self.radio = r;

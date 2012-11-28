@@ -7,7 +7,7 @@
 //
 
 #import "SongCatalog.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 
 @interface SongRadioCatalog : SongCatalog
 {
@@ -17,7 +17,7 @@
 }
 
 
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YasoundRadio* radio;
 @property (nonatomic, assign) id target;
 @property (nonatomic) SEL action;
 
@@ -29,7 +29,7 @@
 
 - (void)dump;
 
-- (void)initForRadio:(Radio*)radio target:(id)aTarget action:(SEL)anAction;
+- (void)initForRadio:(YasoundRadio*)radio target:(id)aTarget action:(SEL)anAction;
 
 - (NSDictionary*)songsAll;
 - (NSArray*)songsForLetter:(NSString*)charIndex;

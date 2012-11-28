@@ -22,7 +22,7 @@
 #import "YasoundSessionManager.h"
 #import "ActivityAlertView.h"
 #import "YasoundAppDelegate.h"
-#import "Version.h"
+#import "DeviceVersion.h"
 
 
 

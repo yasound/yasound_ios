@@ -9,7 +9,7 @@
 #import "Model.h"
 #import <objc/runtime.h>
 #import "WallEvent.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 
 @implementation Model
 

@@ -58,7 +58,7 @@
         
         NSInteger radioIndex = 0;
 
-        for (Radio* radio in radios)
+        for (YasoundRadio* radio in radios)
         {
             [self addRadioGui:radio radioIndex:radioIndex xOffset:xOffset];
             radioIndex++;
@@ -85,7 +85,7 @@
 
 
 
-- (void)addRadioGui:(Radio*)radio radioIndex:(NSInteger)radioIndex xOffset:(CGFloat)xOffset
+- (void)addRadioGui:(YasoundRadio*)radio radioIndex:(NSInteger)radioIndex xOffset:(CGFloat)xOffset
 {
     BundleStylesheet* sheetContainer = [[Theme theme] stylesheetForKey:@"Radios.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     sheetContainer.frame = CGRectMake(sheetContainer.frame.origin.x + xOffset, sheetContainer.frame.origin.y, sheetContainer.frame.size.width, sheetContainer.frame.size.height);
@@ -196,7 +196,7 @@
     NSInteger radioIndex = 0;
     CGFloat xOffset = 0;
     
-    for (Radio* radio in radios)
+    for (YasoundRadio* radio in radios)
     {
         // there's only one radio on this row. we need another one
         if (self.radioObjects.count <= radioIndex)
@@ -320,7 +320,7 @@
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     [radioMask setImage:[sheet image]];
     
-    Radio* radio = [objects objectAtIndex:RADIO_OBJECT_RADIO];
+    YasoundRadio* radio = [objects objectAtIndex:RADIO_OBJECT_RADIO];
 
     // and call external action to delegate the radio selection
     [self.target performSelector:self.action withObject:radio];

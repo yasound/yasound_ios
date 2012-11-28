@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Radio.h"
+#import "YasoundRadio.h"
 #import "WheelSelectorGenre.h"
 #import "RefreshIndicatorViewController.h"
 #import "TopBar.h"
 
 @protocol RadioListDelegate <NSObject>
-- (void)radioListDidSelect:(Radio*)radio;
+- (void)radioListDidSelect:(YasoundRadio*)radio;
 - (void)friendListDidSelect:(User*)aFriend;
 - (BOOL)listRequestNextPage;
 @end

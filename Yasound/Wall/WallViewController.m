@@ -105,7 +105,7 @@
 
 
 
-- (id)initWithRadio:(Radio*)radio
+- (id)initWithRadio:(YasoundRadio*)radio
 {
     self = [super init];
     if (self)
@@ -798,7 +798,7 @@
         return;
 }
 
-- (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info
+- (void)receiveRadio:(YasoundRadio*)r withInfo:(NSDictionary*)info
 {
     if (!r)
         return;

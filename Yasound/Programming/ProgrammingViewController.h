@@ -8,7 +8,7 @@
 
 #import "YaViewController.h"
 #import "WheelSelectorRadios.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 #import "TopBarBackAndTitle.h"
 
 #define RADIOSEGMENT_INDEX_TITLES 0
@@ -41,10 +41,10 @@
 @property (nonatomic, retain) IBOutlet UILabel* topbarTitle;
 @property (nonatomic, retain) IBOutlet UILabel* topbarSubtitle;
 
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YasoundRadio* radio;
 @property (nonatomic, retain) UIViewController* viewController;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)radio;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(YasoundRadio*)radio;
 
 
 @end

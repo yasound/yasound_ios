@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Communicator.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 #import "WallEvent.h"
 #import "WallMessagePost.h"
 #import "ApiKey.h"
@@ -63,7 +63,7 @@ taskStatus stringToStatus(NSString* str);
 {
   Communicator* _communicator;
   User* _user;
-  Radio* _radio;
+  YasoundRadio* _radio;
   NSString* _apiKey;
   NSString* _password;
 }
@@ -73,7 +73,7 @@ taskStatus stringToStatus(NSString* str);
 @property (readonly) NSHTTPCookie* appCookie;
 
 @property (readonly) User* user;
-@property (readonly) Radio* radio;
+@property (readonly) YasoundRadio* radio;
 
 + (YasoundDataProvider*) main;
 
@@ -122,7 +122,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)radioForUser:(User*)u withTarget:(id)target action:(SEL)selector;
 - (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector;
 - (void)createRadioWithTarget:(id)target action:(SEL)selector;
-- (void)deleteRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)deleteRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector;
 
 - (void)favoriteRadiosForUser:(User*)u withTarget:(id)target action:(SEL)selector;
 
@@ -156,15 +156,15 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector;
 
-- (void)radioUserForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-- (void)setMood:(UserMood)mood forRadio:(Radio*)radio;
-- (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType;
+- (void)radioUserForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector;
+- (void)setMood:(UserMood)mood forRadio:(YasoundRadio*)radio;
+- (void)radioHasBeenShared:(YasoundRadio*)radio with:(NSString*)shareType;
 
-- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite;
-- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite target:(id)target action:(SEL)selector;
+- (void)setRadio:(YasoundRadio*)radio asFavorite:(BOOL)favorite;
+- (void)setRadio:(YasoundRadio*)radio asFavorite:(BOOL)favorite target:(id)target action:(SEL)selector;
 
-- (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)updateRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector;
+- (void)setPicture:(UIImage*)img forRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector;
 
 - (BOOL)updateUser:(User*)user target:(id)target action:(SEL)selector; // - (void)didUpdateUser:(ASIHTTPRequest*)req success:(BOOL)success
 - (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector;
@@ -176,25 +176,25 @@ taskStatus stringToStatus(NSString* str);
 - (void)unfollowUser:(User*)user target:(id)target action:(SEL)selector;
 
 
-- (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector withUserData:(id)userData;
-- (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-- (void)currentUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)favoriteUsersForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector withUserData:(id)userData;
+- (void)likersForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector;
+- (void)currentUsersForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector;
 
 
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector;
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector;
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector;
+- (ASIHTTPRequest*)wallEventsForRadio:(YasoundRadio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector;
+- (ASIHTTPRequest*)wallEventsForRadio:(YasoundRadio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector;
+- (ASIHTTPRequest*)wallEventsForRadio:(YasoundRadio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector;
 
 
-- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector userData:(id)userData;
+- (void)currentSongForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector;
+- (void)currentSongForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector userData:(id)userData;
 
 
 - (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 - (void)songWithId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 
 
-- (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)postWallMessage:(NSString*)message toRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector;
 - (void)moderationDeleteWallMessage:(NSNumber*)messageId;
 - (void)moderationReportAbuse:(NSNumber*)messageId;
 
@@ -217,13 +217,13 @@ taskStatus stringToStatus(NSString* str);
 - (void)addSongToNextSongs:(Song*)song atPosition:(int)position target:(id)target action:(SEL)selector;     // didAddNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
 
 
-- (void)enterRadioWall:(Radio*)radio;
-- (void)leaveRadioWall:(Radio*)radio;
+- (void)enterRadioWall:(YasoundRadio*)radio;
+- (void)leaveRadioWall:(YasoundRadio*)radio;
 
 - (NSURL*)urlForPicture:(NSString*)picturePath;
 - (NSURL*)urlForSongCover:(Song*)song;
 
-- (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)updatePlaylists:(NSData*)data forRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector;
 
 - (void)radioRecommendationsWithArtistList:(NSData*)data genre:(NSString*)genre target:(id)target action:(SEL)selector userData:(id)userData; // artist list is built with PlaylistMoulinor buildArtistDataBinary: compressed: target: action:
 // returns concatenation of 'selection' and 'similar radios'
@@ -232,16 +232,16 @@ taskStatus stringToStatus(NSString* str);
 
 
 - (void)monthListeningStatsWithTarget:(id)target action:(SEL)selector;
-- (void)monthListeningStatsForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
+- (void)monthListeningStatsForRadio:(YasoundRadio*)radio withTarget:(id)target action:(SEL)selector;
 - (void)leaderboardWithTarget:(id)target action:(SEL)selector;
 
 
 // Playlist
-- (void)playlistsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)playlistsForRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector;
 
 - (void)songsForPlaylist:(NSInteger)playlistId target:(id)target action:(SEL)selector;
 
-- (ASIFormDataRequest*)uploadSong:(NSData*)song forRadioId:(Radio*)radio_id title:(NSString*)title album:(NSString*)album artist:(NSString*)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
+- (ASIFormDataRequest*)uploadSong:(NSData*)song forRadioId:(YasoundRadio*)radio_id title:(NSString*)title album:(NSString*)album artist:(NSString*)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
 
 // Get matched songs for a playlist. Returns a NSArray of Song objects
 - (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector;  // didReceiveMatchedSongs:(NSArray*)matched_songs info:(NSDictionary*)info
@@ -252,9 +252,9 @@ taskStatus stringToStatus(NSString* str);
                                                                                             // - data for key @"userData"
                                                                                             // - a NSNumber (boolean) for key @"success"
 
-- (void)deleteAllSongsFromRadio:(Radio*)radio target:(id)target action:(SEL)action;
-- (void)deleteArtist:(NSString*)artist fromRadio:(Radio*)radio target:(id)target action:(SEL)action;
-- (void)deleteAlbum:(NSString*)album fromRadio:(Radio*)radio target:(id)target action:(SEL)action;
+- (void)deleteAllSongsFromRadio:(YasoundRadio*)radio target:(id)target action:(SEL)action;
+- (void)deleteArtist:(NSString*)artist fromRadio:(YasoundRadio*)radio target:(id)target action:(SEL)action;
+- (void)deleteAlbum:(NSString*)album fromRadio:(YasoundRadio*)radio target:(id)target action:(SEL)action;
 
 - (void)rejectSong:(Song*)song target:(id)target action:(SEL)selector; // didRejectSong:(ASIHTTPRequest*)req succeeded:(NSNumber*)success
 
@@ -262,7 +262,7 @@ taskStatus stringToStatus(NSString* str);
 // Get searched songs. Returns a NSArray of YasoundSong objects
 - (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector; // didReceiveSearchedSongs:(NSArray*)songs info:(NSDictionary*)info
 
-- (void)addSong:(YasoundSong*)yasoundSong inRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)addSong:(YasoundSong*)yasoundSong inRadio:(YasoundRadio*)radio target:(id)target action:(SEL)selector;
 - (void)addSong:(YasoundSong*)yasoundSong target:(id)target action:(SEL)selector;  // didReceiveAddedSong:(Song*)addedSong info:(NSDictionary*)info and info contains a dictionary for key 'status' with 2 NSNumber* (boolean) 'success' (true if the request succeeded) and 'created' (true if a song has been added, false if this song was already in the playlist)
 
 
@@ -283,7 +283,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)connectedUsersWithLimit:(int)limit skip:(int)skip target:(id)target action:(SEL)selector;
 
 // User Notifications
-- (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
+- (void)broadcastMessage:(NSString*)message fromRadio:(YasoundRadio*)radio withTarget:(id)target action:(SEL)selector;
 
 - (void)userNotificationsWithTarget:(id)target action:(SEL)selector limit:(NSInteger)limit offset:(NSInteger)offset;
 - (void)userNotificationWithId:(NSString*)notifId target:(id)target action:(SEL)selector;
@@ -294,15 +294,15 @@ taskStatus stringToStatus(NSString* str);
 
 
 // Shows
-- (void)showsForRadio:(Radio*)r withTarget:(id)target action:(SEL)selector;
-- (void)showsForRadio:(Radio*)r limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector;
+- (void)showsForRadio:(YasoundRadio*)r withTarget:(id)target action:(SEL)selector;
+- (void)showsForRadio:(YasoundRadio*)r limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector;
 
 - (void)showWithId:(NSString*)showId withTarget:(id)target action:(SEL)selector;
 - (void)updateShow:(Show*)show withTarget:(id)target action:(SEL)selector;
 - (void)deleteShow:(Show*)show withTarget:(id)target action:(SEL)selector;
 - (void)duplicateShow:(Show*)show withTarget:(id)target action:(SEL)selector;
-- (void)createShow:(Show*)show inRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
-- (void)createShow:(Show*)show inRadio:(Radio*)radio withYasoundSongs:(NSArray*)yasoundSongs withTarget:(id)target action:(SEL)selector;
+- (void)createShow:(Show*)show inRadio:(YasoundRadio*)radio withTarget:(id)target action:(SEL)selector;
+- (void)createShow:(Show*)show inRadio:(YasoundRadio*)radio withYasoundSongs:(NSArray*)yasoundSongs withTarget:(id)target action:(SEL)selector;
 
 // Show Songs
 - (void)songsForShow:(Show*)show withTarget:(id)target action:(SEL)selector;
@@ -340,6 +340,6 @@ taskStatus stringToStatus(NSString* str);
 // Server API v2
 //
 
-- (void)leaderboardForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
+- (void)leaderboardForRadio:(YasoundRadio*)radio withTarget:(id)target action:(SEL)selector;
 
 @end

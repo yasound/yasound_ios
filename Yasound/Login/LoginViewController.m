@@ -353,7 +353,7 @@
 
 #pragma mark - YasoundDataProvider
 
-- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
+- (void)onGetRadio:(YasoundRadio*)radio info:(NSDictionary*)info
 {
     // account just being create, go to configuration screen
     [[UserSettings main] setBool:YES forKey:USKEYskipRadioCreation];

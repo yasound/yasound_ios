@@ -7,12 +7,12 @@
 //
 
 #import "Model.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 #import "User.h"
 
 @interface RadioUser : Model
 
-@property (retain) Radio* radio;
+@property (retain) YasoundRadio* radio;
 @property (retain) User* user;
 @property (retain) NSString* mood;
 @property (retain) NSNumber* favorite;

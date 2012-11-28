@@ -19,7 +19,7 @@
 #import "ProfilViewController.h"
 #import "YasoundAppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
-#import "Version.h"
+#import "DeviceVersion.h"
 #import "MyRadiosViewController.h"
 #import "UIDevice+Resolutions.h"
 
@@ -591,7 +591,7 @@
 
 #pragma mark - RadioListDelegate
 
-- (void)radioListDidSelect:(Radio*)radio
+- (void)radioListDidSelect:(YasoundRadio*)radio
 {
     if (self.locked)
         return;

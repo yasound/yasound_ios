@@ -45,7 +45,7 @@
         
         NSInteger radioIndex = 0;
 
-        for (Radio* radio in radios)
+        for (YasoundRadio* radio in radios)
         {
             [self addRadioGui:radio radioIndex:radioIndex xOffset:xOffset];
             radioIndex++;
@@ -60,7 +60,7 @@
 
 
 
-- (void)addRadioGui:(Radio*)radio radioIndex:(NSInteger)radioIndex xOffset:(CGFloat)xOffset
+- (void)addRadioGui:(YasoundRadio*)radio radioIndex:(NSInteger)radioIndex xOffset:(CGFloat)xOffset
 {
     ProfilCellRadio* cell = [[ProfilCellRadio alloc] initWithRadio:radio];
     cell.frame = CGRectMake(xOffset, 0, cell.frame.size.width, cell.frame.size.height);
@@ -89,7 +89,7 @@
     NSInteger radioIndex = 0;
     CGFloat xOffset = 0;
     
-    for (Radio* radio in radios)
+    for (YasoundRadio* radio in radios)
     {
         // there's only one radio on this row. we need another one
         if (self.radioObjects.count <= radioIndex)

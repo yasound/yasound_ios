@@ -24,7 +24,7 @@
 
 
 
-- (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio
+- (id)initWithStyle:(UITableViewStyle)style forRadio:(YasoundRadio*)radio
 {
     self = [super initWithStyle:style];
     if (self)

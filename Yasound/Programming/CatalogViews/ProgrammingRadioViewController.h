@@ -7,14 +7,14 @@
 //
 
 #import "ProgrammingCatalogViewController.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 #import "ProgrammingViewController.h"
 #import "ProgrammingArtistViewController.h"
 #import "ObjectButton.h"
 
 @interface ProgrammingRadioViewController : ProgrammingCatalogViewController <UIActionSheetDelegate>
 
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YasoundRadio* radio;
 @property (nonatomic, retain) NSMutableDictionary* songToIndexPath;
 @property (nonatomic, retain) NSString* title;
 
@@ -23,7 +23,7 @@
 
 @property (nonatomic, retain) ProgrammingArtistViewController* artistVC;
 
-- (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio;
+- (id)initWithStyle:(UITableViewStyle)style forRadio:(YasoundRadio*)radio;
 - (void)setSegment:(NSInteger)index;
 - (BOOL)onBackClicked;
 

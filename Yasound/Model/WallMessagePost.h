@@ -8,7 +8,7 @@
 
 #import "Model.h"
 #import "User.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 
 @interface WallMessagePost : Model
 
@@ -16,7 +16,7 @@
 @property (retain, nonatomic) NSString* text;
 @property (retain, nonatomic) NSNumber* animated_emoticon;
 @property (retain, nonatomic) User* user;
-@property (retain, nonatomic) Radio* radio;
+@property (retain, nonatomic) YasoundRadio* radio;
 
 @end
 

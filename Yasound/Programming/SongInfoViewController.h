@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Song.h"
 #import "WebImageView.h"
-#import "Radio.h"
+#import "YasoundRadio.h"
 
 
 @interface SongInfoViewController : YaViewController
@@ -34,9 +34,9 @@
 }
 
 @property (nonatomic, retain) Song* song;
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YasoundRadio* radio;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong showNowPlaying:(BOOL)showNowPlaying forRadio:(Radio*)radio;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong showNowPlaying:(BOOL)showNowPlaying forRadio:(YasoundRadio*)radio;
 
 - (IBAction)onBack:(id)sender;
 

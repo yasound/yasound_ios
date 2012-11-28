@@ -18,7 +18,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "UserSettings.h"
 #import "FakeSlidingController.h"
-#import "Version.h"
+#import "DeviceVersion.h"
 #import "YasoundAppURLHandler.h"
 
 
@@ -430,7 +430,7 @@ void SignalHandler(int sig) {
 
 - (void)goToMyRadioStatsFromViewController:(UIViewController*)sourceController
 {
-  Radio* r = [YasoundDataProvider main].radio;
+  YasoundRadio* r = [YasoundDataProvider main].radio;
   
   UIViewController* controller = nil;
   if ([r.ready boolValue])
@@ -447,7 +447,7 @@ void SignalHandler(int sig) {
 
 - (void)goToMyRadioPlaylistsFromViewController:(UIViewController*)sourceController
 {
-  Radio* r = [YasoundDataProvider main].radio;
+  YasoundRadio* r = [YasoundDataProvider main].radio;
   
   UIViewController* controller = nil;
   if ([r.ready boolValue])
