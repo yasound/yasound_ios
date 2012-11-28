@@ -233,11 +233,12 @@ taskStatus stringToStatus(NSString* str);
 - (void)setApnsPreferences:(APNsPreferences*)prefs withCompletionBlock:(YaRequestCompletionBlock)block;
 
 // Facebook share preferences
-- (void)facebookSharePreferencesWithTarget:(id)target action:(SEL)selector; // didReceivePrefs:(ASIHTTPRequest*)req success:(BOOL)success
-- (void)setFacebookSharePreferences:(FacebookSharePreferences*)prefs target:(id)target action:(SEL)selector; // didSetPrefs:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)facebookSharePreferencesWithCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)setFacebookSharePreferences:(FacebookSharePreferences*)prefs withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)connectedUsersWithTarget:(id)target action:(SEL)selector; // users connected to the app ordered by distance from the sender
-- (void)connectedUsersWithLimit:(int)limit skip:(int)skip target:(id)target action:(SEL)selector;
+// users in the app
+- (void)connectedUsersWithCompletionBlock:(YaRequestCompletionBlock)block; // users connected to the app ordered by distance from the sender
+- (void)connectedUsersWithLimit:(int)limit skip:(int)skip completionBlock:(YaRequestCompletionBlock)block;
 
 // User Notifications
 - (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;

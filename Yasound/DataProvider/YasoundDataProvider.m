@@ -1584,42 +1584,39 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
-- (void)connectedUsersWithLimitNumber:(NSNumber*)limit skipNumber:(NSNumber*)skip target:(id)target action:(SEL)selector
+
+#pragma mark - users in the app
+
+- (void)connectedUsersWithLimitNumber:(NSNumber*)limit skipNumber:(NSNumber*)skip completionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/connected_users/"];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    NSMutableArray* params = [NSMutableArray array];
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
     if (limit)
-        [params addObject:[NSString stringWithFormat:@"limit=%@", limit]];
+        [params setValue:[limit stringValue] forKey:@"limit"];
     if (skip)
-        [params addObject:[NSString stringWithFormat:@"skip=%@", skip]];
-    if (params.count > 0)
-        conf.params = params;
+        [params setValue:[skip stringValue] forKey:@"skip"];
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/connected_users/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.params = params;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)connectedUsersWithTarget:(id)target action:(SEL)selector
+- (void)connectedUsersWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-    [self connectedUsersWithLimitNumber:nil skipNumber:nil target:target action:selector];
+    [self connectedUsersWithLimitNumber:nil skipNumber:nil completionBlock:block];
 }
 
-- (void)connectedUsersWithLimit:(int)limit skip:(int)skip target:(id)target action:(SEL)selector
+- (void)connectedUsersWithLimit:(int)limit skip:(int)skip completionBlock:(YaRequestCompletionBlock)block
 {
-    [self connectedUsersWithLimitNumber:[NSNumber numberWithInt:limit] skipNumber:[NSNumber numberWithInt:skip] target:target action:selector];
+    [self connectedUsersWithLimitNumber:[NSNumber numberWithInt:limit] skipNumber:[NSNumber numberWithInt:skip] completionBlock:block];
 }
 
-
-// 
-// Radio listening stats
-//
+#pragma mark - Radio stats
 
 - (void)monthListeningStatsForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
@@ -1967,6 +1964,7 @@ static YasoundDataProvider* _main = nil;
   }
 }
 
+#pragma mark - notifications preferences
 
 - (void)apnsPreferencesWithCompletionBlock:(YaRequestCompletionBlock)block
 {
@@ -1993,38 +1991,33 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)facebookSharePreferencesWithTarget:(id)target action:(SEL)selector
+
+#pragma mark - facebook share preferences
+
+- (void)facebookSharePreferencesWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/facebook_share_preferences";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/facebook_share_preferences";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)setFacebookSharePreferences:(FacebookSharePreferences*)prefs target:(id)target action:(SEL)selector
+- (void)setFacebookSharePreferences:(FacebookSharePreferences*)prefs withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/set_facebook_share_preferences";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/set_facebook_share_preferences";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[prefs JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    
-    NSString* stringData = [prefs JSONRepresentation];
-    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
-
 
 #pragma mark - User Notifications   
 
