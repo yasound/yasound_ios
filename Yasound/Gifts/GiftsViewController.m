@@ -130,17 +130,26 @@
 
 - (void)reloadGifts
 {
-    // ask for gifts
-    [[YasoundDataProvider main] giftsWithTarget:self action:@selector(onGiftsReceived:success:)];
-}
-
-- (void)onGiftsReceived:(ASIHTTPRequest*)request success:(BOOL)succeeded
-{
-    if (!succeeded)
-        return;
-    
-    self.gifts = [request responseObjectsWithClass:[Gift class]].objects;
-    [self.tableView reloadData];
+    [[YasoundDataProvider main] giftsWithCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"get gifts error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"get gifts error: response status %d", status);
+            return;
+        }
+        Container* giftContainer = [response jsonToContainer:[Gift class]];
+        if (giftContainer == nil)
+        {
+            DLog(@"get gifts error: cannot parse response %@", response);
+            return;
+        }
+        self.gifts = giftContainer.objects;
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)reloadHdExpirationDate

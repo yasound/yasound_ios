@@ -273,7 +273,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)servicesWithTarget:(id)target action:(SEL)action;
 
 // gifts
-- (void)giftsWithTarget:(id)target action:(SEL)action;
+- (void)giftsWithCompletionBlock:(YaRequestCompletionBlock)block;
 
 // promo code
 - (void)activatePromoCode:(NSString*)code withCompletionBlock:(YaRequestCompletionBlock)block;

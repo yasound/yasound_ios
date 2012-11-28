@@ -2385,21 +2385,21 @@ static YasoundDataProvider* _main = nil;
 
 
 #pragma mark - gifts
-- (void)giftsWithTarget:(id)target action:(SEL)action
+
+- (void)giftsWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/premium/gifts/";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/premium/gifts/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 #pragma mark - promo code
+
 - (void)activatePromoCode:(NSString*)code withCompletionBlock:(YaRequestCompletionBlock)block
 {
     YaRequestConfig* config = [YaRequestConfig requestConfig];
@@ -2414,6 +2414,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 #pragma mark - streaming authentication token
+
 - (void)streamingAuthenticationTokenWithCompletionBlock:(YaRequestCompletionBlock)block
 {
     YaRequestConfig* config = [YaRequestConfig requestConfig];
@@ -2429,6 +2430,7 @@ static YasoundDataProvider* _main = nil;
 
 
 #pragma mark - city suggestions
+
 - (void)citySuggestionsWithCityName:(NSString*)city andCompletionBlock:(YaRequestCompletionBlock)block
 {
     YaRequestConfig* config = [YaRequestConfig requestConfig];
