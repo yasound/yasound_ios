@@ -140,8 +140,6 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType;
 
-- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite;
-- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite target:(id)target action:(SEL)selector;
 - (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector;

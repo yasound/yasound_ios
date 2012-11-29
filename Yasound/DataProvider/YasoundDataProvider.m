@@ -1439,33 +1439,6 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite
-{
-    [self setRadio:radio asFavorite:favorite target:nil action:nil];
-}
-
-- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite target:(id)target action:(SEL)selector
-{
-    NSString* favoriteStr;
-    if (favorite)
-        favoriteStr = @"favorite";
-    else
-        favoriteStr = @"not_favorite";
-    
-    NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/%@", radio.id, favoriteStr];
-
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = url;
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
-}
-
 - (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (!radio || !radio.id)
