@@ -395,8 +395,6 @@
         }
         
         [self setNowPlaying:song];
-        
-        [[YasoundDataProvider main] statusForSongId:song.id target:self action:@selector(receivedCurrentSongStatus:withInfo:)];
     }];
 }
 
@@ -849,18 +847,6 @@
     
     [_wallEvents insertObject:ev atIndex:0];
     [self insertLike];
-}
-
-
-
-//
-// Current Song
-//
-
-- (void)receivedCurrentSongStatus:(SongStatus*)status withInfo:(NSDictionary*)info
-{
-    if (!status)
-        return;
 }
 
 

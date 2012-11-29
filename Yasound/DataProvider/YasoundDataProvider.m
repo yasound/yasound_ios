@@ -1376,16 +1376,6 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector
-{
-  if (!songId)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/song/%@/status", songId];
-  [_communicator getObjectWithClass:[SongStatus class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
 - (void)userWithId:(NSNumber*)userId target:(id)target action:(SEL)selector
 {
     if (!userId)
