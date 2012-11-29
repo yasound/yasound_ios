@@ -406,7 +406,31 @@
         
         [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
         [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
-        [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
+
+        [[YasoundDataProvider main] currentUsersForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+            if (error)
+            {
+                DLog(@"radio current users error: %d - %@", error.code, error. domain);
+                return;
+            }
+            if (status != 200)
+            {
+                DLog(@"radio current users error: response status %d", status);
+                return;
+            }
+            Container* usersContainer = [response jsonToContainer:[User class]];
+            if (usersContainer == nil)
+            {
+                DLog(@"radio current users error: cannot parse response %@", response);
+                return;
+            }
+            if (usersContainer.objects == nil)
+            {
+                DLog(@"radio current users error: bad response %@", response);
+                return;
+            }
+            [self.cellWallHeader setListeners:usersContainer.objects.count];
+        }];
         
         [_updateLock unlock];
     }
@@ -829,19 +853,6 @@
     
     _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
 }
-
-
-
-- (void)receivedCurrentUsers:(NSArray*)users withInfo:(NSDictionary*)info
-{
-    if (!users || users.count == 0)
-        return;
-
-    [self.cellWallHeader setListeners:users.count];
-}
-
-
-
 
 
 - (void)userJoined:(User*)u

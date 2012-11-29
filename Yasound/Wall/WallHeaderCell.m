@@ -146,30 +146,44 @@
 
 
 
-- (IBAction)onListenersClicked:(id)sender {
-    
-    [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(onCurrentUsersReceived:info:)];
+- (IBAction)onListenersClicked:(id)sender
+{
+    [[YasoundDataProvider main] currentUsersForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radio current users error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radio current users error: response status %d", status);
+            return;
+        }
+        Container* usersContainer = [response jsonToContainer:[User class]];
+        if (usersContainer == nil)
+        {
+            DLog(@"radio current users error: cannot parse response %@", response);
+            return;
+        }
+        NSArray* listeners = usersContainer.objects;
+        if (listeners == nil)
+        {
+            DLog(@"radio current users error: bad response %@", response);
+            return;
+        }
+        if (listeners.count == 0)
+            return;
+        
+        RadioListTableViewController* view = [[RadioListTableViewController alloc] initWithNibName:@"WallListenersViewController" bundle:nil listeners:listeners];
+        view.listDelegate = self;
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+        
+        [view setListeners:listeners];
+        
+        [view release];
+    }];
 
 }
-
-
-
-- (void)onCurrentUsersReceived:(NSArray*)listeners info:(NSDictionary*)info {
-    
-    if (listeners && (listeners.count == 0))
-        return;
-    
-    CGRect frame = CGRectMake(0,0, 320, 480);
-    RadioListTableViewController* view = [[RadioListTableViewController alloc] initWithNibName:@"WallListenersViewController" bundle:nil listeners:listeners];
-    view.listDelegate = self;
-    [APPDELEGATE.navigationController pushViewController:view animated:YES];
-
-    [view setListeners:listeners];
-
-    [view release];
-
-}
-
 
 #pragma mark - RadioListDelegate
 

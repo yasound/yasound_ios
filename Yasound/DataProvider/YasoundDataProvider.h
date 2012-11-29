@@ -157,7 +157,8 @@ taskStatus stringToStatus(NSString* str);
 
 
 - (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector withUserData:(id)userData;
-- (void)currentUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+
+- (void)currentUsersForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 
 - (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector;

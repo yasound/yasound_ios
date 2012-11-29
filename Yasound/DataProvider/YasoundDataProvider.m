@@ -1333,16 +1333,24 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 
-- (void)currentUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)currentUsersForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  if (radio == nil || !radio.id)
-    return;
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/current_user", radioID];
-  NSArray* params = [NSArray arrayWithObject:@"limit=200"];
-  [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-
+    if (radio == nil || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/current_user", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObject:@"200" forKey:@"limit"];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 - (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector
