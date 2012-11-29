@@ -447,13 +447,16 @@
         if (_wallEvents.count > 0)
         {
             NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
-            ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
-            [self.requests setObject:req forKey:req];
+            [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID withCompletionBlock:^(int status, NSString* response, NSError* error){
+                [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
+            }];
         }
         else
         {
-            ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
-            [self.requests setObject:req forKey:req];
+            [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 withCompletionBlock:^(int status, NSString* response, NSError* error){
+                [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
+            }];
+            
         }
         
         [self refreshCurrentSong];
@@ -468,8 +471,9 @@
 {
     _updatingPrevious = YES;
     
-    ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_FIRST_PAGESIZE target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
-    [self.requests setObject:req  forKey:req];
+    [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_FIRST_PAGESIZE withCompletionBlock:^(int status, NSString* response, NSError* error){
+        [self previousWallEventsRequestReturnedWithStatus:status response:response error:error];
+    }];
     
     [self refreshCurrentSong];
 }
@@ -479,13 +483,16 @@
     if (_wallEvents.count > 0)
     {
         NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
-        ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
-        [self.requests setObject:req  forKey:req];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
+        }];
+        
     }
     else
     {
-        ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
-        [self.requests setObject:req  forKey:req];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
+        }];
     }
 }
 
@@ -541,47 +548,46 @@
 // received previous wall events
 //
 
-- (void)receivedPreviousWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
+- (void)previousWallEventsRequestReturnedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
 {
-    NSDictionary* userData = [info objectForKey:@"userData"];
-    ASIHTTPRequest* req = [userData objectForKey:@"request"];
-    assert(req);
-    [self.requests removeObjectForKey:req];
-    
     [self removeWaitingEventRow];
+    BOOL ok = YES;
+    if (error)
+    {
+        DLog(@"previous wall events error: %d - %@", error.code, error. domain);
+        ok = NO;
+    }
+    if (status != 200)
+    {
+        DLog(@"previous wall events error: response status %d", status);
+        ok = NO;
+    }
+    Container* eventsContainer = [response jsonToContainer:[WallEvent class]];
+    if (eventsContainer == nil)
+    {
+        DLog(@"previous wall events error: cannot parse response %@", response);
+        ok = NO;
+    }
+    if (eventsContainer.objects == nil)
+    {
+        DLog(@"previous wall events error: bad response %@", response);
+        ok = NO;
+    }
     
-    Meta* meta = [info valueForKey:@"meta"];
-    NSError* err = [info valueForKey:@"error"];
-    
-    if (err)
+    if (ok == NO)
     {
         if (_serverErrorCount == 3)
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
         else
             _serverErrorCount++;
-        
-        DLog(@"receivedPreviousWallEvents ERROR!");
         return;
     }
     
-    if (!meta)
-    {
-        if (_serverErrorCount == 3)
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
-        else
-            _serverErrorCount++;
-        
-        DLog(@"receivedPreviousWallEvents : ERROR no meta data!");
-        return;
-    }
-    
-    // reset error count
     _serverErrorCount = 0;
+    NSArray* events = eventsContainer.objects;
     
     if (!events || events.count == 0)
-    {
-        // DLog(@"NO MORE EVENTS. end receivedPreviousWallEvents\n");
-        
+    {       
         _updatingPrevious = NO;
         
         if (_firstUpdateRequest)
@@ -613,8 +619,6 @@
         
     }
     
-    NSInteger count = events.count;
-    
     WallEvent* ev = [events objectAtIndex:0];
     WallEvent* wev = nil;
     
@@ -639,9 +643,11 @@
     
     // ask for more previous messages
     if (_countMessageEvent < NB_MAX_EVENTMESSAGE)
-    {
-        ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_SECOND_PAGESIZE olderThanEventWithID:_lastWallEvent.id target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
-        [self.requests setObject:req forKey:req];
+    {        
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_SECOND_PAGESIZE olderThanEventWithID:_lastWallEvent.id withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self previousWallEventsRequestReturnedWithStatus:status response:response error:error];
+        }];
+        
     }
     else
     {
@@ -651,6 +657,7 @@
     
     //DLog(@"end receivedPreviousWAllEvents\n");
 }
+
 
 
 - (void)receivedPreviousSongEvent:(WallEvent*)ev
@@ -687,63 +694,51 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 //.......................................................................................................
 //
 // received current wall events
 //
-- (void)receivedCurrentWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
+- (void)currentWallEventsRequestReturnedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
 {
-    NSDictionary* userData = [info objectForKey:@"userData"];
-    ASIHTTPRequest* req = [userData objectForKey:@"request"];
-    assert(req);
-    [self.requests removeObjectForKey:req];
-
-
-    Meta* meta = [info valueForKey:@"meta"];
-    NSError* err = [info valueForKey:@"error"];
+    BOOL ok = YES;
+    if (error)
+    {
+        DLog(@"current wall events error: %d - %@", error.code, error. domain);
+        ok = NO;
+    }
+    if (status != 200)
+    {
+        DLog(@"current wall events error: response status %d", status);
+        ok = NO;
+    }
+    Container* eventsContainer = [response jsonToContainer:[WallEvent class]];
+    if (eventsContainer == nil)
+    {
+        DLog(@"current wall events error: cannot parse response %@", response);
+        ok = NO;
+    }
+    if (eventsContainer.objects == nil)
+    {
+        DLog(@"current wall events error: bad response %@", response);
+        ok = NO;
+    }
     
-    if (err)
+    if (ok == NO)
     {
         if (_serverErrorCount == 3)
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
         else
             _serverErrorCount++;
-        
-        DLog(@"receivedCurrentWallEvents ERROR!");
         return;
     }
     
-    if (!meta)
-    {
-        if (_serverErrorCount == 3)
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
-        else
-            _serverErrorCount++;
-        
-        DLog(@"receivedCurrentWallEvents : ERROR no meta data!");
-        return;
-    }
-    
-    // reset error count
     _serverErrorCount = 0;
-    
+    NSArray* events = eventsContainer.objects;
     if (!events || events.count == 0)
     {
         //DLog(@"NO MORE EVENTS. end receivedCurrentWallEvents\n");
         return;
-    }
-    
+    }    
     
     DLog(@"\nreceivedCurrentWallEvents %d events", events.count);
     
@@ -1163,13 +1158,15 @@
     if (_wallEvents.count > 0)
     {
         NSNumber* lastEventID = ((WallEvent*)[_wallEvents objectAtIndex:_wallEvents.count - 1]).id;
-        ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE olderThanEventWithID:lastEventID target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
-        [self.requests setObject:req forKey:req];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE olderThanEventWithID:lastEventID withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self previousWallEventsRequestReturnedWithStatus:status response:response error:error];
+        }];
     }
     else
     {
-        ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
-        [self.requests setObject:req  forKey:req];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self previousWallEventsRequestReturnedWithStatus:status response:response error:error];
+        }];
     }
     
     [self showWaitingEventRow];

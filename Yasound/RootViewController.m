@@ -578,23 +578,25 @@
 {
     if (radioId != nil)
     {
+        Radio* newRadio = nil;
         [[YasoundDataProvider main] radioWithId:radioId withCompletionBlock:^(int status, NSString* response, NSError* error){
             if (error)
             {
                 DLog(@"radio with id error: %d - %@", error.code, error. domain);
-                return;
             }
-            if (status != 200)
+            else if (status != 200)
             {
                 DLog(@"radio with id error: response status %d", status);
-                return;
             }
-            Radio* newRadio = (Radio*)[response jsonToModel:[Radio class]];
-            if (!newRadio)
+            else
             {
-                DLog(@"radio with id error: cannot parse response: %@", response);
-                return;
+                Radio* newRadio = (Radio*)[response jsonToModel:[Radio class]];
+                if (!newRadio)
+                {
+                    DLog(@"radio with id error: cannot parse response: %@", response);
+                }
             }
+            
             [self gotoRadio:newRadio];
         }];
     }

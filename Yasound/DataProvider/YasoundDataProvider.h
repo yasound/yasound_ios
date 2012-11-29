@@ -158,18 +158,19 @@ taskStatus stringToStatus(NSString* str);
 - (void)favoriteUsersForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 - (void)currentUsersForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
+// Wall events
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector;
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector;
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector;
-
-
-- (void)currentSongForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)cancelWallEventsRequestsForRadio:(Radio*)radio;
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio withCompletionBLock:(YaRequestCompletionBlock)block;
 
 - (void)moderationDeleteWallMessage:(NSNumber*)messageId;
 - (void)moderationReportAbuse:(NSNumber*)messageId;
+
+- (void)currentSongForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)userWithId:(NSNumber*)userId target:(id)target action:(SEL)selector;
 - (void)userWithUsername:(NSString*)username target:(id)target action:(SEL)selector;

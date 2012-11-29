@@ -1160,69 +1160,69 @@ static YasoundDataProvider* _main = nil;
   [_communicator postData:UIImagePNGRepresentation(resizedImg) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
-// get wall events
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector
-{
-  if (radio == nil)
-      return nil;
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = radio.id;
-    
-    // it happens once in a crash lytics report, let's to find out why
-    if (radioID == nil) {
-        assert(0);
-        return nil;
-    }
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
-    
-    NSMutableArray* params = [[NSMutableArray alloc] init];
-    
-  [params addObject:[NSString stringWithFormat:@"limit=%d", pageSize]];
-  ASIHTTPRequest* req = [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-    
-    [params release];
-    
-    return req;
-}
+#pragma mark - Wall events
 
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector
-{
-  if (!radio || !radio.id)
-      return nil;
-  if (!lastEventID)
-      return nil;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
-  NSMutableArray* params = [[NSMutableArray alloc] init];
-  [params addObject:[NSString stringWithFormat:@"id__lt=%@", lastEventID]];
-  [params addObject:[NSString stringWithFormat:@"limit=%d", pageSize]];
-  ASIHTTPRequest* req = [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-    
-    [params release];
-    
-    return req;
-}
-
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector
+- (NSString*)wallEventsRequestgroupKeyForRadio:(Radio*)radio
 {
     if (!radio || !radio.id)
         return nil;
-    if (!eventID)
-        return nil;
-    
-    Auth* auth = self.apiKeyAuth;
-    NSNumber* radioID = radio.id;
-    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
-    NSMutableArray* params = [[NSMutableArray alloc] init];
-    [params addObject:[NSString stringWithFormat:@"id__gt=%@", eventID]];
-    ASIHTTPRequest* req = [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-    
-    [params release];
-    
-    return req;
+    NSString* key = [NSString stringWithFormat:@"%@-%@", @"get_wall_events_group_key", radio.id];
+    return key;
+}
 
+- (void)cancelWallEventsRequestsForRadio:(Radio*)radio
+{
+    NSString* key = [self wallEventsRequestgroupKeyForRadio:radio];
+    if (!key)
+        return;
+    [YaRequest cancelWithKey:key];
+}
+
+- (void)wallEventsForRadio:(Radio*)radio olderThanEventWithID:(NSNumber*)lastEventID newerThanEventWithID:(NSNumber*)firstEventID pageSizeNumber:(NSNumber*)pageSize withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    if (!radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    if (pageSize)
+        [params setValue:[pageSize stringValue] forKey:@"limit"];
+    if (lastEventID)
+        [params setValue:[lastEventID stringValue] forKey:@"id__lt"];
+    if (firstEventID)
+        [params setValue:[firstEventID stringValue] forKey:@"id__gt"];
+    
+    NSString* groupKey = [self wallEventsRequestgroupKeyForRadio:radio];
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.params = params;
+    if (groupKey)
+        config.groupKey = groupKey;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    [self wallEventsForRadio:radio olderThanEventWithID:nil newerThanEventWithID:nil pageSizeNumber:[NSNumber numberWithInt:pageSize] withCompletionBlock:block];
+}
+
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    [self wallEventsForRadio:radio olderThanEventWithID:lastEventID newerThanEventWithID:nil pageSizeNumber:[NSNumber numberWithInt:pageSize] withCompletionBlock:block];
+}
+
+- (void)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    [self wallEventsForRadio:radio olderThanEventWithID:nil newerThanEventWithID:eventID pageSizeNumber:nil withCompletionBlock:block];
 }
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio withCompletionBLock:(YaRequestCompletionBlock)block
