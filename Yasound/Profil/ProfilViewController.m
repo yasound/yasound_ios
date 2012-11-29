@@ -381,24 +381,28 @@
     if (self.followed)
     {
         self.followed = NO;
-        [[YasoundDataProvider main] unfollowUser:self.user target:self action:@selector(onFollowAcknowledge:success:)];
         [self setFollowButtonToFollow];
+        
+        [[YasoundDataProvider main] unfollowUser:self.user withCompletionBlock:^(int status, NSString* response, NSError* error){
+            BOOL success = (error == nil) && (status == 200);
+            [self onFollowAcknowledge:success];
+        }];
     }
     else
     {
         self.followed = YES;
-        [[YasoundDataProvider main] followUser:self.user target:self action:@selector(onFollowAcknowledge:success:)];
         [self setFollowButtonToUnfollow];
+        
+        [[YasoundDataProvider main] followUser:self.user withCompletionBlock:^(int status, NSString* response, NSError* error){
+            BOOL success = (error == nil) && (status == 200);
+            [self onFollowAcknowledge:success];
+        }];
     }
     
 }
 
-
-- (void)onFollowAcknowledge:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)onFollowAcknowledge:(BOOL)success
 {
-    DLog(@"onFollowAcknowledge %d", success);
-    
-    // rollback
     if (!success)
     {
         if (self.followed)
@@ -417,8 +421,6 @@
     
     // refresh
     [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(myFriendsReceived:success:)];
-    
-        
 }
 
 

@@ -1415,46 +1415,31 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
-- (void)followUser:(User*)user target:(id)target action:(SEL)selector
+#pragma mark - follow user
+
+- (void)followUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    if (!user)
-        return;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/user/%@/friends/%@", self.user.username, user.username];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
     
-    NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/friends/%@", self.user.username, user.username];
-    
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = url;
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)unfollowUser:(User*)user target:(id)target action:(SEL)selector
+- (void)unfollowUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    if (!user)
-        return;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/user/%@/friends/%@", self.user.username, user.username];
+    config.urlIsAbsolute = NO;
+    config.method = @"DELETE";
+    config.auth = self.apiKeyAuth;
     
-    NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/friends/%@", self.user.username, user.username];
-    
-    DLog(@"unfollow url : %@", url);
-    
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = url;
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"DELETE";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
-
 
 - (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite
 {
