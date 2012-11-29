@@ -1481,10 +1481,14 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)setMood:(UserMood)mood forSong:(Song*)song
+- (void)setMood:(UserMood)mood forSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block
 {
   if (!song || !song.id)
-    return;
+  {
+      if (block)
+          block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+      return;
+  }
   
   NSString* moodStr;
   switch (mood) 
@@ -1505,10 +1509,15 @@ static YasoundDataProvider* _main = nil;
     default:
       return;
   }
-  
-  NSString* url = [NSString stringWithFormat:@"api/v1/song/%@/%@", song.id, moodStr];
-  Auth* auth = self.apiKeyAuth;
-  [_communicator postToURL:url absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/song/%@/%@", song.id, moodStr];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 - (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio target:(id)target action:(SEL)selector

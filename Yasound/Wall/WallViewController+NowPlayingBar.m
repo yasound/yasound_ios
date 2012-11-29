@@ -107,7 +107,12 @@ static Song* _gNowPlayingSong = nil;
 
 - (IBAction)onLikeClicked:(id)sender
 {
-    [[YasoundDataProvider main] setMood:eMoodLike forSong:_gNowPlayingSong];
+    [[YasoundDataProvider main] setMood:eMoodLike forSong:_gNowPlayingSong withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error != nil)
+            DLog(@"like song error: %d - %@", error.code, error.domain);
+        else if (status != 200)
+            DLog(@"like song error: response status %d", status);
+    }];
 }
 
 
