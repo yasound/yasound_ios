@@ -1225,22 +1225,31 @@ static YasoundDataProvider* _main = nil;
 
 }
 
-- (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio withCompletionBLock:(YaRequestCompletionBlock)block
 {
-  if (!message || !_user || !radio)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  
-  WallMessagePost* msg = [[WallMessagePost alloc] init];
-  msg.user = _user;
-  msg.radio = radio;
-  msg.type = @"M";
-  msg.text = message;
-  NSString* relativeURL = @"/api/v1/wall_event";
-  [_communicator postNewObject:msg withURL:relativeURL absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
+    if (!message || !_user || !radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    WallMessagePost* msg = [[WallMessagePost alloc] init];
+    msg.user = _user;
+    msg.radio = radio;
+    msg.type = @"M";
+    msg.text = message;
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/wall_event";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[msg JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
-
 
 - (void)moderationDeleteWallMessage:(NSNumber*)messageId
 {

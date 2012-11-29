@@ -1380,23 +1380,22 @@
 - (void)sendMessage:(NSString *)message
 {
     [[ActivityModelessSpinner main] addRef];
-    [[YasoundDataProvider main] postWallMessage:message toRadio:self.radio target:self action:@selector(wallMessagePosted:withInfo:)];
+    [[YasoundDataProvider main] postWallMessage:message toRadio:self.radio withCompletionBLock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"post wall message error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"post wall message error: response status %d", status);
+            return;
+        }
+        
+        [[ActivityModelessSpinner main] removeRef];        
+        [self updateCurrentWall];
+    }];
 }
-
-- (void)wallMessagePosted:(NSString*)eventURL withInfo:(NSDictionary*)info
-{
-    [[ActivityModelessSpinner main] removeRef];
-    
-    NSError* error = [info valueForKey:@"error"];
-    if (error)
-    {
-        DLog(@"wall message can't be posted: %@", error.domain);
-        return;
-    }
-    
-    [self updateCurrentWall];
-}
-
 
 
 

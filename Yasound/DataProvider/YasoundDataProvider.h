@@ -166,7 +166,8 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)currentSongForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio withCompletionBLock:(YaRequestCompletionBlock)block;
+
 - (void)moderationDeleteWallMessage:(NSNumber*)messageId;
 - (void)moderationReportAbuse:(NSNumber*)messageId;
 
