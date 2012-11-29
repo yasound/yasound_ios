@@ -891,13 +891,6 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - requests about radios
 
-- (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector
-{
-  Auth* auth = self.apiKeyAuth;
-  [_communicator getObjectWithClass:[Radio class] andID:radioId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
-
 - (void)radioWithId:(NSNumber*)radioId withCompletionBlock:(YaRequestCompletionBlock)block
 {
     YaRequestConfig* config = [YaRequestConfig requestConfig];

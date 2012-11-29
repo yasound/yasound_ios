@@ -577,26 +577,46 @@
 - (void)launchRadio:(NSNumber*)radioId
 {
     if (radioId != nil)
-        [[YasoundDataProvider main] radioWithId:(NSNumber*)radioId target:self action:@selector(onGetRadio:info:)];
-
+    {
+        [[YasoundDataProvider main] radioWithId:radioId withCompletionBlock:^(int status, NSString* response, NSError* error){
+            if (error)
+            {
+                DLog(@"radio with id error: %d - %@", error.code, error. domain);
+                return;
+            }
+            if (status != 200)
+            {
+                DLog(@"radio with id error: response status %d", status);
+                return;
+            }
+            Radio* newRadio = (Radio*)[response jsonToModel:[Radio class]];
+            if (!newRadio)
+            {
+                DLog(@"radio with id error: cannot parse response: %@", response);
+                return;
+            }
+            [self gotoRadio:newRadio];
+        }];
+    }
     else
         // ask for radio contents to the provider
         [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
 }
 
-
-
-- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
+- (void)gotoRadio:(Radio*)radio
 {
     [ActivityAlertView close];
-
     if (radio == nil)
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
         return;
     }
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:radio];
+}
+
+- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
+{
+    [self gotoRadio:radio];
 }
 
 

@@ -121,7 +121,6 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)friendsForUser:(User*)user withTarget:(id)target action:(SEL)selector;
 
-- (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector;
 - (void)createRadioWithTarget:(id)target action:(SEL)selector;
 - (void)deleteRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 

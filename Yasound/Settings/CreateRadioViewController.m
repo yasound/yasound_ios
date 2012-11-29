@@ -772,19 +772,29 @@
 - (void)finalize
 {
     // be sure to get updated radio (with correct 'ready' flag)
-   // [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPlaylistsUpdate:withInfo:)];
-    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receivedUserRadioAfterPlaylistsUpdate:withInfo:)];
-}
-
-- (void)receivedUserRadioAfterPlaylistsUpdate:(Radio*)r withInfo:(NSDictionary*)info
-{
-    assert(r != nil);
-    self.radio = r;
-    
-    // now, ask for registered playlists, we want to check how many songs have been synchrpnized
-    [[YasoundDataProvider main] playlistsForRadio:r target:self action:@selector(receivePlaylistsForChecking:withInfo:)];
-}
-    
+    [[YasoundDataProvider main] radioWithId:self.radio.id withCompletionBlock:^(int status, NSString* response, NSError* error) {
+        if (error)
+        {
+            DLog(@"radio with id error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radio with id error: response status %d", status);
+            return;
+        }
+        Radio* newRadio = (Radio*)[response jsonToModel:[Radio class]];
+        if (!newRadio)
+        {
+            DLog(@"radio with id error: cannot parse response: %@", response);
+            return;
+        }
+        self.radio = newRadio;
+        
+        // now, ask for registered playlists, we want to check how many songs have been synchrpnized
+        [[YasoundDataProvider main] playlistsForRadio:newRadio target:self action:@selector(receivePlaylistsForChecking:withInfo:)];
+    }];
+}    
     
 - (void)receivePlaylistsForChecking:(NSArray*)playlists withInfo:(NSDictionary*)info
 {

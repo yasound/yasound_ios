@@ -606,47 +606,50 @@
     DLog(@"onRadioImageUpdate info %@", info);
     
   // be sure to get updated radio (with correct picture)
-  [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receivedUserRadioAfterPictureUpdate:withInfo:)];
+    [[YasoundDataProvider main] radioWithId:self.radio.id withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radio with id error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radio with id error: response status %d", status);
+            return;
+        }
+        Radio* newRadio = (Radio*)[response jsonToModel:[Radio class]];
+        if (!newRadio)
+        {
+            DLog(@"radio with id error: cannot parse response: %@", response);
+            return;
+        }
+        
+        [ActivityAlertView close];
+        
+        self.radio = newRadio;
+        
+        // clean image cache
+        NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
+        DLog(@"receivedUserRadioAfterPictureUpdate AFTER pictureUrl %@", imageURL);
+        
+        if (imageURL != nil)
+            [[YasoundDataCacheImageManager main] clearItem:imageURL];
+        
+        
+        
+        // if the settings have been called through a "radio creation" process, go directly to the new radio's wall.
+        if (self.createMode)
+        {
+            DLog(@"radio '%@' created. Go to the Wall now.", self.radio.name);
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:self.radio];
+            return;
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REFRESH_GUI object:nil];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
-
-- (void)receivedUserRadioAfterPictureUpdate:(Radio*)r withInfo:(NSDictionary*)info
-{
-  [ActivityAlertView close];
-    
-    self.radio = r;
-
-    // clean image cache
-    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
-    DLog(@"receivedUserRadioAfterPictureUpdate AFTER pictureUrl %@", imageURL);
-
-    if (imageURL != nil)
-        [[YasoundDataCacheImageManager main] clearItem:imageURL];
-
-
-  
-    // if the settings have been called through a "radio creation" process, go directly to the new radio's wall.
-    if (self.createMode)
-    {
-        DLog(@"radio '%@' created. Go to the Wall now.", self.radio.name);
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:self.radio];
-        return;
-    }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REFRESH_GUI object:nil];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-
-
-
-
-
-
-
-
-
 
 #pragma mark - TopBarSaveOrCancelDelegate
 
