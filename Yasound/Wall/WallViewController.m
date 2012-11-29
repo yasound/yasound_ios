@@ -400,6 +400,34 @@
     }];
 }
 
+- (void)refreshCurrentUsers
+{
+    [[YasoundDataProvider main] currentUsersForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radio current users error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radio current users error: response status %d", status);
+            return;
+        }
+        Container* usersContainer = [response jsonToContainer:[User class]];
+        if (usersContainer == nil)
+        {
+            DLog(@"radio current users error: cannot parse response %@", response);
+            return;
+        }
+        if (usersContainer.objects == nil)
+        {
+            DLog(@"radio current users error: bad response %@", response);
+            return;
+        }
+        [self.cellWallHeader setListeners:usersContainer.objects.count];
+    }];
+}
+
 //....................................................................
 //
 // onTimerUpdate
@@ -431,32 +459,7 @@
         }
         
         [self refreshCurrentSong];
-        [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
-
-        [[YasoundDataProvider main] currentUsersForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
-            if (error)
-            {
-                DLog(@"radio current users error: %d - %@", error.code, error. domain);
-                return;
-            }
-            if (status != 200)
-            {
-                DLog(@"radio current users error: response status %d", status);
-                return;
-            }
-            Container* usersContainer = [response jsonToContainer:[User class]];
-            if (usersContainer == nil)
-            {
-                DLog(@"radio current users error: cannot parse response %@", response);
-                return;
-            }
-            if (usersContainer.objects == nil)
-            {
-                DLog(@"radio current users error: bad response %@", response);
-                return;
-            }
-            [self.cellWallHeader setListeners:usersContainer.objects.count];
-        }];
+        [self refreshCurrentUsers];
         
         [_updateLock unlock];
     }
@@ -471,8 +474,6 @@
     [self.requests setObject:req  forKey:req];
     
     [self refreshCurrentSong];
-    
-    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
 }
 
 - (void)updateCurrentWall
@@ -855,30 +856,11 @@
 //
 // Current Song
 //
-//- (void) receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info
-//{
-//    if (!song)
-//        return;
-//    
-//    [self setNowPlaying:song];
-//    
-//    [[YasoundDataProvider main] statusForSongId:song.id target:self action:@selector(receivedCurrentSongStatus:withInfo:)];
-//}
 
 - (void)receivedCurrentSongStatus:(SongStatus*)status withInfo:(NSDictionary*)info
 {
     if (!status)
         return;
-}
-
-- (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info
-{
-    if (!r)
-        return;
-    
-    self.radio = r;
-    
-    _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
 }
 
 
