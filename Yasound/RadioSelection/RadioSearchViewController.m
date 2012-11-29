@@ -399,43 +399,52 @@ typedef enum
     self.searchDisplayController.searchBar.text = searchText;
     [self.searchDisplayController.searchResultsTableView reloadData];
   
-  [[YasoundDataProvider main] searchRadios:searchText withTarget:self action:@selector(receiveRadios:withInfo:)];
-}
-
-
-
-- (void)receiveRadios:(NSArray*)radios withInfo:(NSDictionary*)info
-{
-  if (!_viewVisible)
-    return;
-  
-    NSError* error = [info valueForKey:@"error"];
-    if (error)
-    {
-        [self changeNoResultsText:NSLocalizedString(@"RadiosSearch.error", nil)];
-
-        DLog(@"can't get radios: %@", error.domain);
-        return;
-    }
-    
-    if (_radios != nil)
-    {
-        [_radios release];
-      _radios = nil;
-    }
-    
-  if (radios.count > 0)
-  {
-    _radios = radios;
-    [_radios retain];
-  }
-    else
-    {
-        [self changeNoResultsText:NSLocalizedString(@"RadiosSearch.noResult", nil)];
-    }
-    
-    
-    [self.searchDisplayController.searchResultsTableView reloadData];
+    [[YasoundDataProvider main] searchRadios:searchText withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (!_viewVisible)
+            return;
+        
+        BOOL success = YES;
+        if (error)
+        {
+            DLog(@"search radio error: %d - %@", error.code, error. domain);
+            success = NO;
+        }
+        if (status != 200)
+        {
+            DLog(@"search radio error: response status %d", status);
+            success = NO;
+        }
+        Container* radioContainer = [response jsonToContainer:[Radio class]];
+        if (!radioContainer)
+        {
+            DLog(@"search radio error: cannot parse response %@", response);
+            success = NO;
+        }
+        
+        if (success == NO)
+        {
+            [self changeNoResultsText:NSLocalizedString(@"RadiosSearch.error", nil)];
+            return;
+        }
+        
+        if (_radios != nil)
+        {
+            [_radios release];
+            _radios = nil;
+        }
+        
+        NSArray* radios = radioContainer.objects;
+        if (radios.count > 0)
+        {
+            _radios = radios;
+            [_radios retain];
+        }
+        else
+        {
+            [self changeNoResultsText:NSLocalizedString(@"RadiosSearch.noResult", nil)];
+        }
+        [self.searchDisplayController.searchResultsTableView reloadData];
+    }];
 }
 
 - (void)receiveRadiosSearchedByCreator:(NSArray*)radios withInfo:(NSDictionary*)info

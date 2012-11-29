@@ -1029,22 +1029,20 @@ static YasoundDataProvider* _main = nil;
 
 
 
-//
+#pragma mark - search radios
 
-
-//
-// search radios
-//
-
-- (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector
+- (void)searchRadios:(NSString*)search withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  Auth* auth = self.apiKeyAuth;
-  NSMutableArray* params = [NSMutableArray array];
-  [params addObject:[NSString stringWithFormat:@"q=%@", search]];
-
-  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/search/radios" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/search/radios";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObject:search forKey:@"q"];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
-
 
 - (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {

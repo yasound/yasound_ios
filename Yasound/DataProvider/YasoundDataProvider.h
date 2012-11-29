@@ -136,7 +136,7 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
 
-- (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector;
+- (void)searchRadios:(NSString*)search withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType;
 
