@@ -1636,7 +1636,35 @@
         else if (buttonIndex == 1)
         {
             [ActivityAlertView showWithTitle:nil];
-            [[YasoundDataProvider main] favoriteUsersForRadio:self.radio target:self action:@selector(onSubscribersReceived:withInfo:) withUserData:nil];
+            [[YasoundDataProvider main] favoriteUsersForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+                if (error)
+                {
+                    DLog(@"radio favorite users error: %d - %@", error.code, error. domain);
+                    return;
+                }
+                if (status != 200)
+                {
+                    DLog(@"radio favorite users error: response status %d", status);
+                    return;
+                }
+                Container* usersContainer = [response jsonToContainer:[User class]];
+                if (usersContainer == nil)
+                {
+                    DLog(@"radio favorite users error: cannot parse response %@", response);
+                    return;
+                }
+                if (usersContainer.objects == nil)
+                {
+                    DLog(@"radio favorite users error: bad response %@", response);
+                    return;
+                }
+                
+                [ActivityAlertView close];
+                
+                MessageBroadcastModalViewController* view = [[MessageBroadcastModalViewController alloc] initWithNibName:@"MessageBroadcastModalViewController" bundle:nil forRadio:self.radio subscribers:usersContainer.objects target:self action:@selector(onModalReturned)];
+                [self.navigationController presentModalViewController:view animated:YES];
+                [view release];
+            }];
             return;
         }
         else if (buttonIndex == 2)
@@ -1650,18 +1678,6 @@
     
     }
 }
-
-
-- (void)onSubscribersReceived:(NSArray*)subscribers withInfo:(NSDictionary*)info
-{
-    [ActivityAlertView close];
-    
-    MessageBroadcastModalViewController* view = [[MessageBroadcastModalViewController alloc] initWithNibName:@"MessageBroadcastModalViewController" bundle:nil forRadio:self.radio subscribers:subscribers target:self action:@selector(onModalReturned)];
-    [self.navigationController presentModalViewController:view animated:YES];
-    [view release];
-}
-
-
 
 - (void)onModalReturned
 {

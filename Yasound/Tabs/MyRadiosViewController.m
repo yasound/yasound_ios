@@ -37,7 +37,6 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 @synthesize radios;
 @synthesize tableview;
 @synthesize editing;
-@synthesize radioToBroadcast;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -299,23 +298,36 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 - (void)myRadioRequestedBroadcast:(Radio*)radio
 {
     [ActivityAlertView showWithTitle:nil];
-    self.radioToBroadcast = radio;
-    [[YasoundDataProvider main] favoriteUsersForRadio:radio target:self action:@selector(onSubscribersReceived:withInfo:) withUserData:radio];
-}
-
-
-
-
-- (void)onSubscribersReceived:(NSArray*)subscribers withInfo:(NSDictionary*)info
-{
-    [ActivityAlertView close];
     
-    Radio* radio = self.radioToBroadcast;
-    self.radioToBroadcast = nil;
-    
-    MessageBroadcastModalViewController* view = [[MessageBroadcastModalViewController alloc] initWithNibName:@"MessageBroadcastModalViewController" bundle:nil forRadio:radio subscribers:subscribers target:self action:@selector(onModalReturned)];
-    [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
-    [view release];
+    [[YasoundDataProvider main] favoriteUsersForRadio:radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radio favorite users error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radio favorite users error: response status %d", status);
+            return;
+        }
+        Container* usersContainer = [response jsonToContainer:[User class]];
+        if (usersContainer == nil)
+        {
+            DLog(@"radio favorite users error: cannot parse response %@", response);
+            return;
+        }
+        if (usersContainer.objects == nil)
+        {
+            DLog(@"radio favorite users error: bad response %@", response);
+            return;
+        }
+        
+        [ActivityAlertView close];
+        
+        MessageBroadcastModalViewController* view = [[MessageBroadcastModalViewController alloc] initWithNibName:@"MessageBroadcastModalViewController" bundle:nil forRadio:radio subscribers:usersContainer.objects target:self action:@selector(onModalReturned)];
+        [APPDELEGATE.navigationController presentModalViewController:view animated:YES];
+        [view release];
+    }];
 }
 
 - (void)onModalReturned
