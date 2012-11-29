@@ -179,9 +179,9 @@ taskStatus stringToStatus(NSString* str);
 - (void)userWithId:(NSNumber*)userId target:(id)target action:(SEL)selector;
 - (void)userWithUsername:(NSString*)username target:(id)target action:(SEL)selector;
 
-
-- (void)enterRadioWall:(Radio*)radio;
-- (void)leaveRadioWall:(Radio*)radio;
+// Connection to the wall
+- (void)enterRadioWall:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)leaveRadioWall:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (NSURL*)urlForPicture:(NSString*)picturePath;
 - (NSURL*)urlForSongCover:(Song*)song;

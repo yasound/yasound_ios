@@ -202,7 +202,18 @@
     else
         [AudioStreamManager main].currentRadio = self.radio;
     
-    [[YasoundDataProvider main] enterRadioWall:self.radio];
+    [[YasoundDataProvider main] enterRadioWall:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"enter wall error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"enter wall error: response status %d", status);
+            return;
+        }
+    }];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_DISPLAY_AUDIOSTREAM_ERROR object:nil];
@@ -273,7 +284,18 @@
 {
     [super viewWillDisappear: animated];
     
-    [[YasoundDataProvider main] leaveRadioWall:self.radio];
+    [[YasoundDataProvider main] leaveRadioWall:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"leave wall error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"leave wall error: response status %d", status);
+            return;
+        }
+    }];
 
     if (_serverErrorCount == 0)
     {

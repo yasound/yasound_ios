@@ -1282,26 +1282,45 @@ static YasoundDataProvider* _main = nil;
 
 
 
-- (void)enterRadioWall:(Radio*)radio
+#pragma mark - connection to the wall
+
+- (void)enterRadioWall:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  if (!_user || !radio || !radio.id)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/connect", radio.id];
-  [_communicator postToURL:relativeUrl absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];  
+    if (!_user || !radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+        
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/connect", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)leaveRadioWall:(Radio*)radio
+- (void)leaveRadioWall:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  if (!_user || !radio || !radio.id)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/disconnect", radio.id];
-  [_communicator postToURL:relativeUrl absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];  
+    if (!_user || !radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/disconnect", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
-
 
 - (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector withUserData:(id)userData;
 {
