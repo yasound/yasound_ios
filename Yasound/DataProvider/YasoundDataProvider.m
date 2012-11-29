@@ -1466,6 +1466,33 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
+- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    if (!radio || !radio.id)
+    {
+        block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    NSString* favoriteStr;
+    if (favorite)
+        favoriteStr = @"favorite";
+    else
+        favoriteStr = @"not_favorite";
+    
+    NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/%@", radio.id, favoriteStr];
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = url;
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+
+}
+
 - (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType
 {
   if (!radio || !radio.id)
