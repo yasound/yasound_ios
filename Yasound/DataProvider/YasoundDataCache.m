@@ -7,7 +7,6 @@
 //
 #import "YasoundDataCache.h"
 #import "DateAdditions.h"
-#import "YasoundDataProvider.h"
 #import "NSObject+SBJSON.h"
 #import "PlaylistMoulinor.h"
 #import "TimeProfile.h"
@@ -304,8 +303,11 @@ static YasoundDataCache* _main = nil;
 
 - (Song*)cachedSongForRadio:(Radio*)radio
 {
+    if (!radio || !radio.id)
+        return nil;
+    
     // get cache
-    NSDictionary* requestCache = [_cacheSongs objectForKey:[NSNumber numberWithInteger:radio]];
+    NSDictionary* requestCache = [_cacheSongs objectForKey:[radio.id stringValue]];
     if (requestCache == nil)
         return nil;
     
@@ -320,90 +322,67 @@ static YasoundDataCache* _main = nil;
     return data;
 }
 
-
 //
 // return local cache , if it's available, using the radio ID
 // request for an update to server if local cache is not available or expired
 //
-// - (void)selector:(Song*)song withInfo:(NSDictionnary*)info
-//
-- (void)requestCurrentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)requestCurrentSongForRadio:(Radio*)radio withCompletionBlock:(YasoundDataCacheResultBlock)block
 {
     Song* data = [self cachedSongForRadio:radio];
+    if (data)
+    {
+        if (block)
+            block(data);
+        return;
+    }
     
     // there is no cached data yet for that request, OR it's expired
     // => request update from server
-    if (data == nil)
-    {
-        YasoundDataCachePendingOp* op = [[YasoundDataCachePendingOp alloc] init];
-        [op retain];
-        op.object = radio;
-        op.info = nil;
-        op.target = target;
-        op.action = selector;
+    [[YasoundDataProvider main] currentSongForRadio:radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"YasoundDataCache requestCurrentSong error: %d - %@", error.code, error.domain);
+            if (block)
+                block(nil);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"YasoundDataCache requestCurrentSong error: response status %d", status);
+            if (block)
+                block(nil);
+            return;
+        }
+        Song* song = (Song*)[response jsonToModel:[Song class]];
+        if (!song)
+        {
+            DLog(@"YasoundDataCache requestCurrentSong error: cannot parse response: %@", response);
+            if (block)
+                block(nil);
+            return;
+        }
         
-        [[YasoundDataProvider main] currentSongForRadio:radio target:self action:@selector(receivedCurrentSong:withInfo:) userData:op];
-        return;
-    }
-    
-    // we got the cached data. Return to client, now.
-    NSDictionary* infoDico = nil;
-    //DLog(@"YasoundDataCache requestCurrentSongForRadio : return local cached data"); // don't display it all the time, too much of it :)
-    [target performSelector:selector withObject:data withObject:infoDico];    
-}
-
-
-
-
-- (void)receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info
-{
-    YasoundDataCachePendingOp* op = [info objectForKey:@"userData"]; 
-    assert(op != nil);
-    
-    id target = op.target;
-    SEL action = op.action;
-    Radio* radio = op.object;
-    
-    // the radio may be empty
-    if (song == nil)
-    {
-        DLog(@"YasoundDataCache requestCurrentSong : the server returned nil!");
-        [target performSelector:action withObject:nil withObject:info];
-        return;
-    }
-    
-
-    
-    
-    // expiration date for the newly received data
-    NSDate* date = [NSDate date];
-    NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_CURRENTSONGS];
-    
-    // get/create dico for request
-    NSMutableDictionary* requestCache = [_cacheSongs objectForKey:radio.id];
-    if (requestCache == nil)
-    {
-        requestCache = [[NSMutableDictionary alloc] init];
-        [_cacheSongs setObject:requestCache forKey:radio.id];
-    }
-    
-    // cache data 
-    [requestCache setObject:timeout forKey:@"timeout"];
-    
-    [requestCache setObject:song forKey:@"data"];
-    
-    
-    // pending operation cleaning
-    [op release];
-    //    [_pendingRadios removeObjectAtIndex:0];
-    
-    // return results to pending client
-    //DLog(@"YasoundDataCache requestRadios : return server's updated data");
-    [target performSelector:action withObject:song withObject:info];
-    
-    //    // process the next pending operation, if any
-    //    if (_pendingRadios.count > 0)
-    //        [self loop];    
+        // expiration date for the newly received data
+        NSDate* date = [NSDate date];
+        NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_CURRENTSONGS];
+        
+        // get/create dico for request
+        NSMutableDictionary* requestCache = [_cacheSongs objectForKey:[radio.id stringValue]];
+        if (requestCache == nil)
+        {
+            requestCache = [[NSMutableDictionary alloc] init];
+            [_cacheSongs setObject:requestCache forKey:[radio.id stringValue]];
+        }
+        
+        // cache data
+        [requestCache setObject:timeout forKey:@"timeout"];
+        
+        [requestCache setObject:song forKey:@"data"];
+        
+        // send song to caller
+        if (block)
+            block(song);
+    }];
 }
 
 

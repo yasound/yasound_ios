@@ -374,6 +374,32 @@
 
 #pragma mark - Data
 
+- (void)refreshCurrentSong
+{    
+    [[YasoundDataProvider main] currentSongForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radio current song error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radio current song error: response status %d", status);
+            return;
+        }
+        Song* song = (Song*)[response jsonToModel:[Song class]];
+        if (song == nil)
+        {
+            DLog(@"radio current song error: cannot parse response %@", response);
+            return;
+        }
+        
+        [self setNowPlaying:song];
+        
+        [[YasoundDataProvider main] statusForSongId:song.id target:self action:@selector(receivedCurrentSongStatus:withInfo:)];
+    }];
+}
+
 //....................................................................
 //
 // onTimerUpdate
@@ -404,7 +430,7 @@
             [self.requests setObject:req forKey:req];
         }
         
-        [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
+        [self refreshCurrentSong];
         [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
 
         [[YasoundDataProvider main] currentUsersForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
@@ -444,7 +470,8 @@
     ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_FIRST_PAGESIZE target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
     [self.requests setObject:req  forKey:req];
     
-    [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
+    [self refreshCurrentSong];
+    
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
 }
 
@@ -828,15 +855,15 @@
 //
 // Current Song
 //
-- (void) receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info
-{
-    if (!song)
-        return;
-    
-    [self setNowPlaying:song];
-    
-    [[YasoundDataProvider main] statusForSongId:song.id target:self action:@selector(receivedCurrentSongStatus:withInfo:)];
-}
+//- (void) receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info
+//{
+//    if (!song)
+//        return;
+//    
+//    [self setNowPlaying:song];
+//    
+//    [[YasoundDataProvider main] statusForSongId:song.id target:self action:@selector(receivedCurrentSongStatus:withInfo:)];
+//}
 
 - (void)receivedCurrentSongStatus:(SongStatus*)status withInfo:(NSDictionary*)info
 {

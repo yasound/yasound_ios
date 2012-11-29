@@ -1364,19 +1364,23 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)currentSongForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  [self currentSongForRadio:radio target:target action:selector userData:nil];
-}
-
-- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector userData:(id)userData
-{
-  if (radio == nil || !radio.id)
-    return;
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/current_song", radioID];
-  [_communicator getObjectWithClass:[Song class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+    if (radio == nil || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/current_song", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 - (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector

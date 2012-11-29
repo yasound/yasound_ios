@@ -165,8 +165,7 @@ taskStatus stringToStatus(NSString* str);
 - (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector;
 
 
-- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector userData:(id)userData;
+- (void)currentSongForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 
 - (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector;
