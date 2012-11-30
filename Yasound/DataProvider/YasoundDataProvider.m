@@ -1466,16 +1466,24 @@ static YasoundDataProvider* _main = nil;
 
 }
 
-- (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType
+- (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  if (!radio || !radio.id)
-    return;
+    if (!radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
     
-    Auth* auth = self.apiKeyAuth;
-    NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/shared", radio.id];
-    NSString* data = [NSString stringWithFormat:@"{\"type\":\"%@\"}", shareType];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/shared", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[NSString stringWithFormat:@"{\"type\":\"%@\"}", shareType] dataUsingEncoding:NSUTF8StringEncoding];
     
-    [_communicator postToURL:url absolute:NO withStringData:data objectClass:nil notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 

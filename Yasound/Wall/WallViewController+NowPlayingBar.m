@@ -255,7 +255,19 @@ static Song* _gNowPlayingSong = nil;
     {
 		case MFMailComposeResultSent:
         {
-            [[YasoundDataProvider main] radioHasBeenShared:self.radio with:@"email"];
+            [[YasoundDataProvider main] radioHasBeenShared:self.radio with:@"email" withCompletionBlock:^(int status, NSString* response, NSError* eror){
+                    if (error)
+                    {
+                        DLog(@"radio share with email error: %d - %@", error.code, error. domain);
+                        return;
+                    }
+                    if (status != 200)
+                    {
+                        DLog(@"radio share with email error: response status %d", status);
+                        return;
+                    }
+            }];
+            
             break;
         }
 		case MFMailComposeResultFailed: mailError = @"Failed sending media, please try again...";

@@ -138,7 +138,7 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)searchRadios:(NSString*)search withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType;
+- (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite withCompletionBlock:(YaRequestCompletionBlock)block;
 
