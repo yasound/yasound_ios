@@ -120,8 +120,8 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)friendsForUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)createRadioWithTarget:(id)target action:(SEL)selector;
-- (void)deleteRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)createRadioWithCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)deleteRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)favoriteRadiosForUser:(User*)u withCompletionBlock:(YaRequestCompletionBlock)block;
 

@@ -999,38 +999,29 @@ static YasoundDataProvider* _main = nil;
 
 
 
-- (void)createRadioWithTarget:(id)target action:(SEL)selector
+- (void)createRadioWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"/api/v1/my_radios/";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/my_radios/";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
     
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    conf.userData = nil;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)deleteRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)deleteRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"/api/v1/my_radios/%@/", radio.uuid];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"DELETE";
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"/api/v1/my_radios/%@/", radio.uuid];
+    config.urlIsAbsolute = NO;
+    config.method = @"DELETE";
+    config.auth = self.apiKeyAuth;
     
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    conf.userData = nil;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
-
 
 
 

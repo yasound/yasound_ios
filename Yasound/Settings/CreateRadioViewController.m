@@ -623,49 +623,61 @@
 {
     [ActivityAlertView showWithTitle:nil];
     
-    [[YasoundDataProvider main] createRadioWithTarget:self action:@selector(onRadioCreated:success:)];
-}
-
-
-- (void)onRadioCreated:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    if (!success)
-    {
+    [[YasoundDataProvider main] createRadioWithCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = YES;
+        Radio* newRadio = nil;
+        if (error)
+        {
+            DLog(@"create radio error: %d - %@", error.code, error.domain);
+            success = NO;
+        }
+        else if (status != 200)
+        {
+            DLog(@"cerate radio error: response status %d", status);
+            success = NO;
+        }
+        else
+        {
+            newRadio = (Radio*)[response jsonToModel:[Radio class]];
+            if (!newRadio)
+            {
+                DLog(@"create radio error: cannot parse response %@", response);
+                success = NO;
+            }
+        }
         [ActivityAlertView close];
         
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Playlists.create.failed.title", nil) message:NSLocalizedString(@"Playlists.create.failed.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-  
-        return;
-    }
-    
-    [ActivityAlertView close];
-    
-    self.radio = [req responseObjectWithClass:[Radio class]];
-    
-    //fake commnunication
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:@"..."];
-    
-    if (_switchAllMyMusic.on)
-    {
-        [[PlaylistMoulinor main] buildDataWithSongs:_songs
-                                                 binary:YES 
-                                             compressed:YES 
-                                                 target:self 
+        if (!success)
+        {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Playlists.create.failed.title", nil) message:NSLocalizedString(@"Playlists.create.failed.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            
+            return;
+        }
+        self.radio = newRadio;
+        //fake commnunication
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:@"..."];
+        
+        if (_switchAllMyMusic.on)
+        {
+            [[PlaylistMoulinor main] buildDataWithSongs:_songs
+                                                 binary:YES
+                                             compressed:YES
+                                                 target:self
                                                  action:@selector(didBuildDataWithPlaylist:)];
-    }
-    else
-    {
-        [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists
-                                       removedPlaylists:_unselectedPlaylists
-                                                 binary:YES 
-                                             compressed:YES 
-                                                 target:self 
-                                                 action:@selector(didBuildDataWithPlaylist:)];
-    }
+        }
+        else
+        {
+            [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists
+                                           removedPlaylists:_unselectedPlaylists
+                                                     binary:YES
+                                                 compressed:YES
+                                                     target:self
+                                                     action:@selector(didBuildDataWithPlaylist:)];
+        }
+    }];
 }
-
 
 
 - (void) didBuildDataWithPlaylist:(NSData*)data

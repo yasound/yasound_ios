@@ -256,27 +256,46 @@ static const CGFloat kSpringRestingHeight = 4;
     
     DLog(@"deleteRadio forRadio '%@' name '%@'", self.radio.id, self.radio.name);
     
-    [[YasoundDataProvider main] deleteRadio:self.radio target:self action:@selector(onRadioDeleted:success:)];
-}
-
-
-
-
-- (void)onRadioDeleted:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    if (!success)
-    {
-        [ActivityAlertView close];
+    [[YasoundDataProvider main] deleteRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = YES;
+        if (error)
+        {
+            DLog(@"delete radio error: %d - %@", error.code, error.domain);
+            success = NO;
+        }
+        else if (status != 200)
+        {
+            DLog(@"delete radio error: response status %d", status);
+            success = NO;
+        }
+        else
+        {
+            NSDictionary* dict = [response jsonToDictionary];
+            if (!dict || ![dict valueForKey:@"success"])
+            {
+                DLog(@"delete radio error: bad response %@", response);
+                success = NO;
+            }
+            else
+            {
+                success = [[dict valueForKey:@"success"] boolValue];
+            }
+            
+        }
+        if (!success)
+        {
+            [ActivityAlertView close];
+            
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.delete.title", nil) message:NSLocalizedString(@"MyRadios.delete.error.message", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            return;
+        }
         
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.delete.title", nil) message:NSLocalizedString(@"MyRadios.delete.error.message", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-        return;
-    }
-    
-    DLog(@"onRadioDelete. server response : %@", req.responseString);
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_MYRADIO_DELETED object:nil];
+        DLog(@"onRadioDelete. server response : %@", response);
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_MYRADIO_DELETED object:nil];
+    }];
 }
 
 
