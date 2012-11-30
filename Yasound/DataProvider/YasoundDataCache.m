@@ -436,71 +436,62 @@ static YasoundDataCache* _main = nil;
 // return local cache , if it's available, 
 // request for an update to server if local cache is not available or expired
 //
-// - (void)selector:(NSArray*)friends info:(NSDictionnary*)info
-//
-- (void)requestFriendsWithTarget:(id)target action:(SEL)selector
+- (void)requestFriendsWithCompletionBlock:(YasoundDataCacheResultBlock)block
 {
     NSArray* data = [self cachedFriends];
-    
+    if (data)
+    {
+        if (block)
+            block(data);
+        return;
+    }
+        
     // there is no cached data yet for that request, OR it's expired
     // => request update from server
-    if (data == nil)
-    {
-        YasoundDataCachePendingOp* op = [[YasoundDataCachePendingOp alloc] init];
-        [op retain];
-        op.object = nil;
-        op.info = nil;
-        op.target = target;
-        op.action = selector;
+    [[YasoundDataProvider main] friendsWithCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = YES;
+        Container* friendsContainer = nil;
+        if (error)
+        {
+            DLog(@"friends error: %d - %@", error.code, error. domain);
+            success = NO;
+        }
+        else if (status != 200)
+        {
+            DLog(@"friends error: response status %d", status);
+            success = NO;
+        }
+        else
+        {
+            friendsContainer = [response jsonToContainer:[User class]];
+            if (!friendsContainer || !friendsContainer.objects)
+            {
+                DLog(@"friends error: cannot parse response %@", response);
+                success = NO;
+            }
+        }
         
-        [[YasoundDataProvider main] friendsWithTarget:self action:@selector(receiveFriends:info:) userData:op];
-        return;
-    }
-    
-    // we got the cached data. Return to client, now.
-    NSDictionary* infoDico = nil;
-    //DLog(@"YasoundDataCache requestFriendsWithTarget : return local cached data");
-    [target performSelector:selector withObject:data withObject:infoDico];    
-}
-
-
-
-
-- (void)receiveFriends:(NSArray*)friends info:(NSDictionary*)info
-{
-    YasoundDataCachePendingOp* op = [info objectForKey:@"userData"]; 
-    assert(op != nil);
-
-    id target = op.target;
-    SEL action = op.action;
-
-    if (friends == nil)
-    {
-        DLog(@"YasoundDataCache requestFriendsWithTarget : the server returned nil!");
-        [target performSelector:action withObject:nil withObject:info];
-        return;
-    }
+        if (!success)
+        {
+            if (block)
+                block(nil);
+            return;
+        }
         
-    
-    
-    // expiration date for the newly received data
-    NSDate* date = [NSDate date];
-    NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_FRIENDS];
-    
-    // cache data 
-    [_cacheFriends setObject:timeout forKey:@"timeout"];
-    
-    [_cacheFriends setObject:friends forKey:@"data"];
-    
-    
-    // pending operation cleaning
-    [op release];
-    
-    // return results to pending client
-    //DLog(@"YasoundDataCache requestFriendsWithTarget : return server's updated data");
-    [target performSelector:action withObject:friends withObject:info];
+        NSArray* friends = friendsContainer.objects;
+        
+        // expiration date for the newly received data
+        NSDate* date = [NSDate date];
+        NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_FRIENDS];
+        
+        // cache data
+        [_cacheFriends setObject:timeout forKey:@"timeout"];
+        [_cacheFriends setObject:friends forKey:@"data"];
+        
+        if (block)
+            block(friends);
+    }];
 }
-
 
 
 - (void)clearFriends

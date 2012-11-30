@@ -731,43 +731,37 @@
 - (void)checkPlaylistTask:(NSTimer*)timer
 {
     taskID task = timer.userInfo;
-    [[YasoundDataProvider main] taskStatus:task target:self action:@selector(receiveTaskStatus:error:)];
+    [[YasoundDataProvider main] taskStatus:task withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"task status error: %d - %@", error.code, error.domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"task status error: response http status %d", status);
+            return;
+        }
+        TaskInfo* taskInfo = [TaskInfo taskInfoWithString:response];
+        if (taskInfo.status == eTaskSuccess)
+        {
+            if ([self.taskTimer isValid])
+                [self.taskTimer invalidate];
+            [self finalize];
+        }
+        else if (taskInfo.status == eTaskFailure)
+        {
+            [self finalize];
+        }
+        else if (taskInfo.status == eTaskPending)
+        {
+            NSString* msg = [NSString stringWithFormat:@"%d%%", (int)(taskInfo.progress * 100)];
+            if (taskInfo.message)
+                msg = [msg stringByAppendingFormat:@" - %@", taskInfo.message];
+            [ActivityAlertView current].message = msg;
+        }
+    }];
 }
-
-
-
-- (void)receiveTaskStatus:(TaskInfo*)taskInfo error:(NSError*) error
-{
-    if (taskInfo.status == eTaskSuccess)
-    {
-        if ([self.taskTimer isValid])
-            [self.taskTimer invalidate];
-        [self finalize];
-    }
-    else if (taskInfo.status == eTaskFailure)
-    {
-        [self finalize];
-    }
-  else if (taskInfo.status == eTaskPending)
-  {
-    NSString* msg = [NSString stringWithFormat:@"%d%%", (int)(taskInfo.progress * 100)];
-    if (taskInfo.message)
-      msg = [msg stringByAppendingFormat:@" - %@", taskInfo.message];
-    [ActivityAlertView current].message = msg;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 - (void)finalize
 {

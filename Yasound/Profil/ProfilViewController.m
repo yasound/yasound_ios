@@ -249,7 +249,10 @@
         }];
         
         // is he one of my friends? (<=> I need to know to enable and set the follow/unfollow button properly)
-        [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(myFriendsReceived:success:)];
+//        [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(myFriendsReceived:success:)];
+        [[YasoundDataCache main] requestFriendsWithCompletionBlock:^(NSArray* myfriends){
+            [self myFriendsReceived:myfriends];
+        }];
 
     }
     
@@ -342,12 +345,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-
-- (void)myFriendsReceived:(NSArray*)myFriends success:(BOOL)success
+- (void)myFriendsReceived:(NSArray*)friends
 {
-    DLog(@"%d friends", myFriends.count);
+    DLog(@"%d friends", friends.count);
     
-    for (User* user in myFriends)
+    for (User* user in friends)
     {
         DLog(@"my friend : %@", user.username);
         
@@ -367,6 +369,32 @@
     [self enableFollow:YES];
     [self setFollowButtonToFollow];
 }
+
+
+//- (void)myFriendsReceived:(NSArray*)myFriends success:(BOOL)success
+//{
+//    DLog(@"%d friends", myFriends.count);
+//    
+//    for (User* user in myFriends)
+//    {
+//        DLog(@"my friend : %@", user.username);
+//        
+//        if ([user.id isEqualToNumber:self.user.id])
+//        {
+//            // it's one of my friend.
+//            // follow button becomes unfollow
+//            self.followed = YES;
+//            [self enableFollow:YES];
+//            [self setFollowButtonToUnfollow];
+//            return;
+//        }
+//    }
+//    
+//    // follow
+//    self.followed = NO;
+//    [self enableFollow:YES];
+//    [self setFollowButtonToFollow];
+//}
 
 - (void)friendsReceivedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
 {
@@ -442,7 +470,10 @@
     [[YasoundDataCache main] clearFriends];
     
     // refresh
-    [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(myFriendsReceived:success:)];
+//    [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(myFriendsReceived:success:)];
+    [[YasoundDataCache main] requestFriendsWithCompletionBlock:^(NSArray* myfriends){
+        [self myFriendsReceived:myfriends];
+    }];
 }
 
 

@@ -916,20 +916,18 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-//
-// friends
-//
+#pragma mark - Friends
 
-- (void)friendsWithTarget:(id)target action:(SEL)selector
+- (void)friendsWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-    [self friendsWithTarget:target action:selector userData:nil];
-}
-
-
-- (void)friendsWithTarget:(id)target action:(SEL)selector userData:(id)userData
-{
-    Auth* auth = self.apiKeyAuth;
-    [_communicator getObjectsWithClass:[User class] withURL:@"/api/v1/friend" absolute:NO notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/friend";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 - (void)friendsForUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block
@@ -1575,31 +1573,16 @@ static YasoundDataProvider* _main = nil;
           [target performSelector:selector withObject:task_id withObject:nil];
 }
 
-- (void)taskStatus:(taskID)task_id target:(id)target action:(SEL)selector
+- (void)taskStatus:(taskID)task_id withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  if (task_id == nil)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = [NSString stringWithFormat:@"api/v1/task/%@", task_id];
-  NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", nil];
-  [_communicator getURL:url absolute:NO notifyTarget:self byCalling:@selector(receiveTaskStatus:withInfo:) withUserData:userData withAuth:auth];
-}
-
-
-
-- (void)receiveTaskStatus:(NSString*)response withInfo:(NSDictionary*)info
-{
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"target"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"selector"]);
-  NSError* error = [info valueForKey:@"error"];
-  
-  TaskInfo* taskInfo = [TaskInfo taskInfoWithString:response];
-  
-  if (target && selector)
-      if ([target respondsToSelector:selector])
-          [target performSelector:selector withObject:taskInfo withObject:error];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/task/%@", task_id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 

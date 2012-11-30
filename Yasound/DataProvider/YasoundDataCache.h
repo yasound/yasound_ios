@@ -77,8 +77,7 @@ typedef void (^YasoundDataCacheResultBlock)(id);
 //
 - (void)requestCurrentSongForRadio:(Radio*)radio withCompletionBlock:(YasoundDataCacheResultBlock)block;
 
-
-- (void)requestFriendsWithTarget:(id)target action:(SEL)selector;
+- (void)requestFriendsWithCompletionBlock:(YasoundDataCacheResultBlock)block;
 
 
 - (UIImage*)requestImage:(NSURL*)url target:(id)target action:(SEL)selector;

@@ -116,8 +116,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)userRadioWithTargetWithCompletionBlock:(void (^) (Radio*))block;
 - (void)reloadUserRadio;
 
-- (void)friendsWithTarget:(id)target action:(SEL)selector;
-- (void)friendsWithTarget:(id)target action:(SEL)selector userData:(id)userData;
+- (void)friendsWithCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)friendsForUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block;
 
@@ -187,7 +186,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)radioRecommendationsWithArtistList:(NSData*)data genre:(NSString*)genre target:(id)target action:(SEL)selector userData:(id)userData; // artist list is built with PlaylistMoulinor buildArtistDataBinary: compressed: target: action:
 // returns concatenation of 'selection' and 'similar radios'
 
-- (void)taskStatus:(taskID)task_id target:(id)target action:(SEL)selector;
+- (void)taskStatus:(taskID)task_id withCompletionBlock:(YaRequestCompletionBlock)block;
 
 
 - (void)monthListeningStatsForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
