@@ -368,85 +368,97 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-
-- (void)userRadioWithTarget:(id)target action:(SEL)selector andData:(NSDictionary*)userData
+- (void)userRadioWithTargetWithCompletionBlock:(void (^) (Radio*))block
 {
-  if (!_user)
-  {
-    NSDictionary* info = [NSDictionary dictionaryWithObject:[NSError errorWithDomain:@"no logged user" code:1 userInfo:nil] forKey:@"error"];
-    if (target && selector)
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:nil withObject:info];
-    return;
-  }
-  
-  NSArray* params = [NSArray arrayWithObjects:[NSString stringWithFormat:@"creator=%@", _user.id], @"limit=1", nil];
-  Auth* auth = self.apiKeyAuth;
-  
-  NSMutableDictionary* data;
-  if (userData)
-    data = [NSMutableDictionary dictionaryWithDictionary:userData];
-  else
-    data = [NSMutableDictionary dictionary];
-  [data setValue:target forKey:@"clientTarget"];
-  [data setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
+    if (!_user)
+    {
+        if (block)
+            block(nil);
+        return;
+    }
     
-  [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:self byCalling:@selector(didReceiveUserRadios:withInfo:) withUserData:data withAuth:auth];
-}
-
-- (void)userRadioWithTarget:(id)target action:(SEL)selector
-{
-  [self userRadioWithTarget:target action:selector andData:nil];
-}
-
-- (void)didReceiveUserRadios:(NSArray*)radios withInfo:(NSDictionary*)info
-{
-  NSMutableDictionary* finalInfo = [NSMutableDictionary dictionaryWithDictionary:info];
-  
-  Radio* r = nil;
-  if (!radios || [radios count] == 0)
-  {
-      NSString* str = [NSString stringWithFormat:@"no radio for user '%@'", _user.username];
-      DLog(@"didReceiveUserRadios : %@", str);
-      
-    NSError* err = [NSError errorWithDomain:str code:1 userInfo:nil];
-    [finalInfo setValue:err forKey:@"error"];
-  }
-  else
-  {
-    r = [radios objectAtIndex:0];
-  }
-  
-  if (r)
-  {
-    _radio = r;
-  }
-  
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"clientTarget"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/radio/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObjectsAndKeys:[_user.id stringValue], @"creator", @"1", @"limit", nil];
     
-  if (target && selector)
-  {
-      if ([target respondsToSelector:selector])
-          [target performSelector:selector withObject:_radio withObject:finalInfo];
-  }
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:^(int status, NSString* response, NSError* error){
+        Radio* radio = nil;
+        if (error)
+            radio = nil;
+        else if (status != 200)
+            radio = nil;
+        else
+        {
+            Container* radioContainer = [response jsonToContainer:[Radio class]];
+            if (!radioContainer)
+                radio = nil;
+            else if (radioContainer.objects.count == 0)
+                radio = nil;
+            else
+                radio = [radioContainer.objects objectAtIndex:0];
+        }
+        
+        // store radio
+        if (radio)
+            _radio = radio;
+        //send it
+        if (block)
+            block(radio);
+    }];
 }
+
+//- (void)didReceiveUserRadios:(NSArray*)radios withInfo:(NSDictionary*)info
+//{
+//  NSMutableDictionary* finalInfo = [NSMutableDictionary dictionaryWithDictionary:info];
+//  
+//  Radio* r = nil;
+//  if (!radios || [radios count] == 0)
+//  {
+//      NSString* str = [NSString stringWithFormat:@"no radio for user '%@'", _user.username];
+//      DLog(@"didReceiveUserRadios : %@", str);
+//      
+//    NSError* err = [NSError errorWithDomain:str code:1 userInfo:nil];
+//    [finalInfo setValue:err forKey:@"error"];
+//  }
+//  else
+//  {
+//    r = [radios objectAtIndex:0];
+//  }
+//  
+//  if (r)
+//  {
+//    _radio = r;
+//  }
+//  
+//  NSDictionary* userData = [info valueForKey:@"userData"];
+//  id target = [userData valueForKey:@"clientTarget"];
+//  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+//    
+//  if (target && selector)
+//  {
+//      if ([target respondsToSelector:selector])
+//          [target performSelector:selector withObject:_radio withObject:finalInfo];
+//  }
+//}
 
 
 
 - (void)reloadUserRadio
 {
-  [self userRadioWithTarget:self action:@selector(reloadedUserRadio:withInfo:)];
+    [self userRadioWithTargetWithCompletionBlock:nil];
 }
 
-- (void)reloadedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
-{
-  if (!r)
-    return;
-  
-  _radio = r;
-}
+//- (void)reloadedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
+//{
+//  if (!r)
+//    return;
+//  
+//  _radio = r;
+//}
 
 //
 //

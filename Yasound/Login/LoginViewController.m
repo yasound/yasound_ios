@@ -255,7 +255,17 @@
         [[YasoundSessionManager main] addAccount:self.user];
         
         // ask for radio contents to the provider, in order to launch the radio configuration
-        [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
+        [[YasoundDataProvider main] userRadioWithTargetWithCompletionBlock:^(Radio* userRadio){
+            // account just being create, go to configuration screen
+            [[UserSettings main] setBool:YES forKey:USKEYskipRadioCreation];
+            
+            if (!_dismissed) {
+                _dismissed = YES;
+                [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+            }
+            
+            [APPDELEGATE.slideController resetTopView];
+        }];
     }
     
     BOOL error;
@@ -346,28 +356,6 @@
     _signupButton.alpha = alpha;
     [UIView commitAnimations];   
 }
-
-
-
-
-
-#pragma mark - YasoundDataProvider
-
-- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
-{
-    // account just being create, go to configuration screen
-    [[UserSettings main] setBool:YES forKey:USKEYskipRadioCreation];
-
-    if (!_dismissed) {
-        _dismissed = YES;
-        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
-    }
-    
-    [APPDELEGATE.slideController resetTopView];
-}
-
-
-
 
 #pragma mark - IBActions
 

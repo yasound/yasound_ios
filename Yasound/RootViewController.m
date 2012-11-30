@@ -601,8 +601,12 @@
         }];
     }
     else
-        // ask for radio contents to the provider
-        [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
+    {
+        // ask for radio contents to the provider        
+        [[YasoundDataProvider main] userRadioWithTargetWithCompletionBlock:^(Radio* userRadio){
+            [self gotoRadio:userRadio];
+        }];
+    }
 }
 
 - (void)gotoRadio:(Radio*)radio
@@ -614,11 +618,6 @@
         return;
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:radio];
-}
-
-- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
-{
-    [self gotoRadio:radio];
 }
 
 
