@@ -269,7 +269,26 @@
         self.viewMyRadios.items = self.radios;
     }];
     
-    [[YasoundDataProvider main] favoriteRadiosForUser:self.user withTarget:self action:@selector(favoritesRadioReceived:withInfo:)];
+    [[YasoundDataProvider main] favoriteRadiosForUser:self.user withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"favorite radios for user error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"favorite radios for user error: response status %d", status);
+            return;
+        }
+        Container* radioContainer = [response jsonToContainer:[Radio class]];
+        if (!radioContainer || !radioContainer.objects)
+        {
+            DLog(@"favorite radios for user error: cannot parse response %@", response);
+            return;
+        }
+        self.favorites = radioContainer.objects;
+        self.viewFavorites.items = self.favorites;
+    }];
 }
 
 
@@ -317,16 +336,6 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
-
-- (void)favoritesRadioReceived:(NSArray*)radios withInfo:(NSDictionary*)info
-{
-    self.favorites = radios;
-    
-    self.viewFavorites.items = self.favorites;
-}
-
 
 
 - (void)myFriendsReceived:(NSArray*)myFriends success:(BOOL)success

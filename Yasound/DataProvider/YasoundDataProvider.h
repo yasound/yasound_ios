@@ -124,7 +124,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)createRadioWithTarget:(id)target action:(SEL)selector;
 - (void)deleteRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
-- (void)favoriteRadiosForUser:(User*)u withTarget:(id)target action:(SEL)selector;
+- (void)favoriteRadiosForUser:(User*)u withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)radiosForUser:(User*)u withCompletionBlock:(YaRequestCompletionBlock)block;
 

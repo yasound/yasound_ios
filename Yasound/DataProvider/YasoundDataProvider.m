@@ -964,14 +964,16 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
-- (void)favoriteRadiosForUser:(User*)u withTarget:(id)target action:(SEL)selector
+- (void)favoriteRadiosForUser:(User*)u withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    Auth* auth = self.apiKeyAuth;
-    NSMutableArray* params = [NSMutableArray array];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"/api/v1/user/%@/favorite_radio", u.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    NSString *url = [NSString stringWithFormat:@"/api/v1/user/%@/favorite_radio", u.id];
-    
-    [_communicator getObjectsWithClass:[Radio class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth withKey:@"radios"];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 - (void)radiosForUser:(User*)u withCompletionBlock:(YaRequestCompletionBlock)block
