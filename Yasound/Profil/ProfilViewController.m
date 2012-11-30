@@ -235,13 +235,18 @@
     {
         [self enableFollow:NO];
         [self enableSendMessage:NO];
-        [[YasoundDataProvider main] friendsForUser:self.user withTarget:self action:@selector(friendsReceived:success:)];
+        [[YasoundDataProvider main] friendsForUser:self.user withCompletionBlock:^(int status, NSString* response, NSError* erorr){
+            [self friendsReceivedWithStatus:status response:response error:erorr];
+        }];
+        
     }
     // someone else
     else
     {
         [self enableFollow:NO];
-        [[YasoundDataProvider main] friendsForUser:self.user withTarget:self action:@selector(friendsReceived:success:)];
+        [[YasoundDataProvider main] friendsForUser:self.user withCompletionBlock:^(int status, NSString* response, NSError* erorr){
+            [self friendsReceivedWithStatus:status response:response error:erorr];
+        }];
         
         // is he one of my friends? (<=> I need to know to enable and set the follow/unfollow button properly)
         [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(myFriendsReceived:success:)];
@@ -363,11 +368,26 @@
     [self setFollowButtonToFollow];
 }
 
-- (void)friendsReceived:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)friendsReceivedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
 {
-    Container* container = [req responseObjectsWithClass:[User class]];
-    self.friends = container.objects;
+    if (error)
+    {
+        DLog(@"friends error: %d - %@", error.code, error. domain);
+        return;
+    }
+    if (status != 200)
+    {
+        DLog(@"friends error: response status %d", status);
+        return;
+    }
+    Container* friendsContainer = [response jsonToContainer:[User class]];
+    if (!friendsContainer || !friendsContainer.objects)
+    {
+        DLog(@"friends error: cannot parse response %@", response);
+        return;
+    }
     
+    self.friends = friendsContainer.objects;
     self.viewFriends.items = self.friends;
 }
 

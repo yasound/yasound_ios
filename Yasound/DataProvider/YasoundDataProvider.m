@@ -685,24 +685,24 @@ static YasoundDataProvider* _main = nil;
     
 }
 
-- (void)didReceiveLoggedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
-{
-  NSMutableDictionary* finalInfo = [NSMutableDictionary dictionary];
-  
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"finalTarget"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"finalSelector"]);
-  NSDictionary* clientData = [userData valueForKey:@"clientData"];
-  
-  if (clientData)
-    [finalInfo setValue:clientData forKey:@"userData"];
-  
-  if (target && selector)
-  {
-      if ([target respondsToSelector:selector])
-          [target performSelector:selector withObject:_user withObject:finalInfo];
-  }  
-}
+//- (void)didReceiveLoggedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
+//{
+//  NSMutableDictionary* finalInfo = [NSMutableDictionary dictionary];
+//  
+//  NSDictionary* userData = [info valueForKey:@"userData"];
+//  id target = [userData valueForKey:@"finalTarget"];
+//  SEL selector = NSSelectorFromString([userData valueForKey:@"finalSelector"]);
+//  NSDictionary* clientData = [userData valueForKey:@"clientData"];
+//  
+//  if (clientData)
+//    [finalInfo setValue:clientData forKey:@"userData"];
+//  
+//  if (target && selector)
+//  {
+//      if ([target respondsToSelector:selector])
+//          [target performSelector:selector withObject:_user withObject:finalInfo];
+//  }  
+//}
 
 
 
@@ -932,18 +932,16 @@ static YasoundDataProvider* _main = nil;
     [_communicator getObjectsWithClass:[User class] withURL:@"/api/v1/friend" absolute:NO notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 
-- (void)friendsForUser:(User*)user withTarget:(id)target action:(SEL)selector
+- (void)friendsForUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/user/%@/friends", user.username];
-    conf.urlIsAbsolute = NO;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    conf.key = @"radios";
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/user/%@/friends", user.username];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 //
