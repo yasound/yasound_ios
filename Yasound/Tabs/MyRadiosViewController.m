@@ -71,33 +71,41 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifRefreshGui:) name:NOTIF_REFRESH_GUI object:nil];
     
-    
-    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withTarget:self action:@selector(radiosReceived:success:)];
+    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withCompletionBlock:^(int status, NSString* response, NSError* error){        
+        [self radiosRequestReturnedWithStatus:status response:response error:error];
+    }];
 }
 
-
-- (void)radiosReceived:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)radiosRequestReturnedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
 {
-    [ActivityAlertView close];
-    
-    if (!success)
+    BOOL success = YES;
+    if (error)
     {
-        DLog(@"MyRadiosViewController::radiosReceived failed");
-        assert(0);
-        return;
+        DLog(@"radios for user error: %d - %@", error.code, error. domain);
+        success = NO;
     }
+    if (status != 200)
+    {
+        DLog(@"radios for user error: response status %d", status);
+        success = NO;
+    }
+    Container* radioContainer = [response jsonToContainer:[Radio class]];
+    if (!radioContainer || !radioContainer.objects)
+    {
+        DLog(@"radios for user error: cannot parse response %@", response);
+        success = NO;
+    }
+    [ActivityAlertView close];
+    if (!success)
+        return;
     
     [self.editing removeAllObjects];
     
-    Container* container = [req responseObjectsWithClass:[Radio class]];
-    self.radios = container.objects;
-    
+    self.radios = radioContainer.objects;
     for (Radio* radio in self.radios)
     {
         [self.editing setObject:[NSNumber numberWithBool:NO] forKey:radio.id];
     }
-    
-    
     [self.tableview reloadData];
 }
 
@@ -132,7 +140,9 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 - (void)onNotifMyRadioDeleted:(NSNotification*)notification
 {
     // refresh data
-    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withTarget:self action:@selector(radiosReceived:success:)];
+    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withCompletionBlock:^(int status, NSString* response, NSError* error){
+        [self radiosRequestReturnedWithStatus:status response:response error:error];
+    }];
 }
 
 - (void)onNotifMyRadioEdited:(NSNotification*)notification

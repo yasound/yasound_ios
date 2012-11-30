@@ -230,44 +230,68 @@ static YasoundAppURLHandler* _main = nil;
 {
     if (![YasoundSessionManager main].registered)
         return [self gotoLogin];
-    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withTarget:self action:@selector(radiosReceivedForProgramming:success:)];
-    return YES;
-}
-
-- (void)radiosReceivedForProgramming:(ASIHTTPRequest*)req success:(BOOL)success
-{    
-    if (!success)
-        return;
     
-    Container* container = [req responseObjectsWithClass:[Radio class]];
-    NSArray* radios = container.objects;
-    if (radios.count > 0)
-    {
-        Radio* radio = [radios objectAtIndex:0];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO_PROGRAMMING object:radio];
-    }
+    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"gotoRadioProgramming: radios for user error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"gotoRadioProgramming: radios for user error: response status %d", status);
+            return;
+        }
+        Container* radioContainer = [response jsonToContainer:[Radio class]];
+        if (!radioContainer || !radioContainer.objects)
+        {
+            DLog(@"gotoRadioProgramming: radios for user error: cannot parse response %@", response);
+            return;
+        }
+        
+        NSArray* radios = radioContainer.objects;
+        if (radios.count > 0)
+        {
+            Radio* radio = [radios objectAtIndex:0];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO_PROGRAMMING object:radio];
+        }
+    }];
+    
+    return YES;
 }
 
 - (BOOL)gotoRadioStats
 {
     if (![YasoundSessionManager main].registered)
         return [self gotoLogin];
-    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withTarget:self action:@selector(radiosReceivedForStats:success:)];
-    return YES;
-}
-
-- (void)radiosReceivedForStats:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    if (!success)
-        return;
     
-    Container* container = [req responseObjectsWithClass:[Radio class]];
-    NSArray* radios = container.objects;
-    if (radios.count > 0)
-    {
-        Radio* radio = [radios objectAtIndex:0];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO_STATS object:radio];
-    }
+    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"gotoRadioStats: radios for user error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"gotoRadioStats: radios for user error: response status %d", status);
+            return;
+        }
+        Container* radioContainer = [response jsonToContainer:[Radio class]];
+        if (!radioContainer || !radioContainer.objects)
+        {
+            DLog(@"gotoRadioStats: radios for user error: cannot parse response %@", response);
+            return;
+        }
+        
+        NSArray* radios = radioContainer.objects;
+        if (radios.count > 0)
+        {
+            Radio* radio = [radios objectAtIndex:0];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO_STATS object:radio];
+        }
+    }];
+    
+    return YES;
 }
 
 

@@ -248,9 +248,27 @@
 
     }
     
-
-
-    [[YasoundDataProvider main] radiosForUser:self.user withTarget:self action:@selector(radiosReceived:success:)];
+    [[YasoundDataProvider main] radiosForUser:self.user withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radios for user error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radios for user error: response status %d", status);
+            return;
+        }
+        Container* radioContainer = [response jsonToContainer:[Radio class]];
+        if (!radioContainer || !radioContainer.objects)
+        {
+            DLog(@"radios for user error: cannot parse response %@", response);
+            return;
+        }
+        self.radios = radioContainer.objects;
+        self.viewMyRadios.items = self.radios;
+    }];
+    
     [[YasoundDataProvider main] favoriteRadiosForUser:self.user withTarget:self action:@selector(favoritesRadioReceived:withInfo:)];
 }
 
@@ -300,31 +318,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-
-
-
-
-
-
-- (void)radiosReceived:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    if (!success)
-    {
-        DLog(@"ProfilViewController::radiosReceived failed");
-        return;
-    }
-    
-    Container* container = [req responseObjectsWithClass:[Radio class]];
-    self.radios = container.objects;
-    
-    if (self.radios == nil)
-    {
-        DLog(@"ProfilViewController::radiosReceived error : radios is nil!");
-        assert(0);
-    }
-    
-    self.viewMyRadios.items = self.radios;
-}
 
 
 - (void)favoritesRadioReceived:(NSArray*)radios withInfo:(NSDictionary*)info
