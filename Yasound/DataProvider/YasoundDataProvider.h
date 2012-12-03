@@ -145,11 +145,15 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite withCompletionBlock:(YaRequestCompletionBlock)block;
 
+#pragma  mark - update radio
+
 - (void)updateRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 - (void)setPicture:(UIImage*)img forRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (BOOL)updateUser:(User*)user target:(id)target action:(SEL)selector; // - (void)didUpdateUser:(ASIHTTPRequest*)req success:(BOOL)success
-- (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector;
+#pragma  mark - update user
+
+- (BOOL)updateUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)setPicture:(UIImage*)img forUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)setMood:(UserMood)mood forSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
 

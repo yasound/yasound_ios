@@ -1000,12 +1000,13 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-
-- (BOOL)updateUser:(User*)user target:(id)target action:(SEL)selector
+- (BOOL)updateUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (user == nil)
     {
         DLog(@"YasoundDataProvider:updateUser user is nil!");
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return NO;
     }
     
@@ -1014,27 +1015,57 @@ static YasoundDataProvider* _main = nil;
     {
         [self updateUserIsNotNumber:user];
         assert(0);
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return NO;
     }
+
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/user/%@/", user.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"PUT";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[user JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
     
-    
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/user/%@/", user.id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"PUT";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    
-    NSString* stringData = [user JSONRepresentation];
-    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
-    [req addRequestHeader:@"Content-Type" value:@"application/json"];
-    
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
     return YES;
 }
+
+//- (BOOL)updateUser:(User*)user target:(id)target action:(SEL)selector
+//{
+//    if (user == nil)
+//    {
+//        DLog(@"YasoundDataProvider:updateUser user is nil!");
+//        return NO;
+//    }
+//    
+//    //LBDEBUG
+//    if (![user.id isKindOfClass:[NSNumber class]])
+//    {
+//        [self updateUserIsNotNumber:user];
+//        assert(0);
+//        return NO;
+//    }
+//    
+//    
+//    RequestConfig* conf = [[RequestConfig alloc] init];
+//    conf.url = [NSString stringWithFormat:@"api/v1/user/%@/", user.id];
+//    conf.urlIsAbsolute = NO;
+//    conf.auth = self.apiKeyAuth;
+//    conf.method = @"PUT";
+//    conf.callbackTarget = target;
+//    conf.callbackAction = selector;
+//    
+//    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+//    
+//    NSString* stringData = [user JSONRepresentation];
+//    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
+//    [req addRequestHeader:@"Content-Type" value:@"application/json"];
+//    
+//    [req startAsynchronous];
+//    return YES;
+//}
 
 
 - (void)updateUserIsNotNumber:(User*)user {
@@ -1066,12 +1097,35 @@ static YasoundDataProvider* _main = nil;
 //////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////
 
-- (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector
+//- (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector
+//{
+//  UIImage* resizedImg = [self resizeImage:img];
+//  Auth* auth = self.apiKeyAuth;
+//  NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/picture", user.id];
+//  [_communicator postData:UIImagePNGRepresentation(resizedImg) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+//}
+
+- (void)setPicture:(UIImage*)img forUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  UIImage* resizedImg = [self resizeImage:img];
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/picture", user.id];
-  [_communicator postData:UIImagePNGRepresentation(resizedImg) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    if (!user || !user.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    DLog(@"img %f, %f", img.size.width, img.size.height);
+    UIImage* resizedImg = [self resizeImage:img];
+    DLog(@"resized img %f, %f", resizedImg.size.width, resizedImg.size.height);
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/user/%@/picture", user.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.fileData = [NSDictionary dictionaryWithObject:UIImagePNGRepresentation(resizedImg) forKey:@"picture"];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 #pragma mark - Wall events
@@ -1168,33 +1222,36 @@ static YasoundDataProvider* _main = nil;
 - (void)moderationDeleteWallMessage:(NSNumber*)messageId
 {
     if (!messageId)
+    {
         return;
+    }
     
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/delete_message/%@", messageId];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"DELETE";
-//    conf.callbackTarget = self;
-//    conf.callbackAction = @selector(didDeleteSong:);
-//    conf.userData = dict;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/delete_message/%@", messageId];
+    config.urlIsAbsolute = NO;
+    config.method = @"DELETE";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:nil];
 }
-
 
 - (void)moderationReportAbuse:(NSNumber*)messageId;
 {
     if (!messageId)
         return;
-
-    Auth* auth = self.apiKeyAuth;
-    NSString* url = [NSString stringWithFormat:@"api/v1/report_message/%@", messageId];
     
-    [_communicator postToURL:url absolute:NO withStringData:nil objectClass:nil notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/report_message/%@", messageId];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:^(int status, NSString* response, NSError* error){
+        DLog(@"response: %@", response);
+    }];
 }
-
 
 
 
