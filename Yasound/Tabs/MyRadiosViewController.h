@@ -17,8 +17,6 @@
     BOOL _firstTime;
 }
 
-@property (nonatomic, retain) Radio* radioToBroadcast;
-
 @property (nonatomic, retain) UINib* cellLoader;
 
 @property (nonatomic, retain) NSArray* radios;

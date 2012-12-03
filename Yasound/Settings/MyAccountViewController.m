@@ -574,7 +574,25 @@ enum SectionBio
 {
     [ActivityAlertView showWithTitle:nil];
 
-    BOOL res = [[YasoundDataProvider main] updateUser:self.user target:self action:@selector(didUpdateUser:success:)];
+    BOOL res = [[YasoundDataProvider main] updateUser:self.user withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"update user error: %d - %@", error.code, error.domain);
+        }
+        else if (status != 204)
+        {
+            DLog(@"update user error: response status %d", status);
+        }
+        if (_imageChanged)
+        {
+            [[YasoundDataProvider main] setPicture:self.userImage.image forUser:self.user withCompletionBlock:^(int status, NSString* response, NSError* error){
+                [self userImageOk];
+            }];
+        }
+        else
+            [self userImageOk];
+    }];
+    
     if (!res)
     {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyAccount.error.save.title", nil) message:NSLocalizedString(@"MyAccount.error.save.message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -583,27 +601,19 @@ enum SectionBio
     }
 }
 
-- (void)didUpdateUser:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)userImageOk
 {
-    if (_imageChanged)
-    {
-        [[YasoundDataProvider main] setPicture:self.userImage.image forUser:self.user target:self action:@selector(onUserImageUpdate:info:)];
-    }
-    else
-        [self onUserImageUpdate:nil info:nil];
-    
-}
-
-- (void)onUserImageUpdate:(NSString*)msg info:(NSDictionary*)info
-{
-    DLog(@"onUserImageUpdate info %@", info);
-    
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.user.picture];
     [[YasoundDataCacheImageManager main] clearItem:imageURL];
     
-
+    
     // reload user
-    [[YasoundDataProvider main] reloadUserWithUserData:nil withTarget:self action:@selector(didReloadUser:info:)];
+    [[YasoundDataProvider main] reloadUserWithCompletionBlock:^(User* u){
+        self.user = u;
+        [ActivityAlertView close];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROFIL_UPDATED object:nil];
+        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+    }];
 }
 
 - (void)didReloadUser:(User*)u info:(id)info

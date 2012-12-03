@@ -52,6 +52,12 @@
   return self;
 }
 
+- (NSDictionary*)urlParamsDict
+{
+    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:username, @"username", apiKey, @"api_key", nil];
+    return dict;
+}
+
 - (NSArray*)urlParams
 {
   NSString* u = [NSString stringWithFormat:@"username=%@", username];
@@ -95,6 +101,21 @@
     _expirationDate = expirationDate;
   _tokenSecret = tokenSecret;
   _email = email;
+}
+
+- (NSDictionary*)urlParamsDict
+{
+    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+    [dict setValue:_accountType forKey:@"account_type"];
+    [dict setValue:_uid forKey:@"uid"];
+    [dict setValue:_token forKey:@"token"];
+    [dict setValue:username forKey:@"name"];
+    [dict setValue:_email forKey:@"email"];
+    if (_expirationDate)
+        [dict setValue:_expirationDate forKey:@"expiration_date"];
+    if (_tokenSecret)
+        [dict setValue:_tokenSecret forKey:@"token_secret"];
+    return dict;
 }
 
 - (NSArray*)urlParams

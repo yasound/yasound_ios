@@ -12,6 +12,7 @@
 #import "YasoundDataProvider.h"
 #import "Theme.h"
 #import "YasoundAppDelegate.h"
+#import "NSString+JsonLoading.h"
 
 #define SECTION_COUNT 2
 #define SECTION_GENERAL 0
@@ -64,7 +65,46 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
-  [[YasoundDataProvider main] apnsPreferencesWithTarget:self action:@selector(receivedAPNsPreferences:withInfo:)];
+    [self getPrefs];
+}
+
+- (void)getPrefs
+{
+    [[YasoundDataProvider main] apnsPreferencesWithCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"notifications preferences error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"notifications preferences error: response status %d", status);
+            return;
+        }
+        APNsPreferences* prefs = (APNsPreferences*)[response jsonToModel:[APNsPreferences class]];
+        if (!prefs)
+        {
+            DLog(@"notifications preferences error: cannot parse response: %@", response);
+            return;
+        }
+        [[NotificationManager main] updateWithAPNsPreferences:prefs];
+        [_tableView reloadData];
+    }];
+}
+
+- (void)setPrefs:(APNsPreferences*)prefs
+{
+    [[YasoundDataProvider main] setApnsPreferences:prefs withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"set notifications preferences error: %d - %@", error.code, error. domain);
+        }
+        if (status != 200)
+        {
+            DLog(@"set notifications preferences error: response status %d", status);
+        }
+        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+    }];
 }
 
 - (void)viewDidUnload
@@ -77,17 +117,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-
-
-- (void)receivedAPNsPreferences:(APNsPreferences*)prefs withInfo:(NSDictionary*)info
-{
-  if (!prefs)
-    return;
-  
-  [[NotificationManager main] updateWithAPNsPreferences:prefs];
-  [_tableView reloadData];
 }
 
 
@@ -235,15 +264,9 @@
 - (BOOL)topBarSave {
     
     APNsPreferences* prefs = [[NotificationManager main] APNsPreferences];
-    [[YasoundDataProvider main] setApnsPreferences:prefs target:self action:@selector(onAcknowledge:obj:)];
+    [self setPrefs:prefs];
 
     return YES;
 }
-
-- (void)onAcknowledge:(id)obj1 obj2:(id)obj2
-{
-    [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
-}
-
 
 @end

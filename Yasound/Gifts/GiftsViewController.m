@@ -61,17 +61,14 @@
     if (registered)
     {
         // reload user to have permissions up to date
-        [[YasoundDataProvider main] reloadUserWithUserData:nil withTarget:self action:@selector(onUserReloaded:info:)];
+        [[YasoundDataProvider main] reloadUserWithCompletionBlock:^(User* u){
+            [self resetWithUserRegistered:YES];
+        }];
     }
     else
     {
         [self resetWithUserRegistered:NO];
     }
-}
-
-- (void) onUserReloaded:(User*)u info:(NSDictionary*)info
-{
-    [self resetWithUserRegistered:YES];
 }
 
 - (void)resetWithUserRegistered:(BOOL)registered
@@ -130,17 +127,26 @@
 
 - (void)reloadGifts
 {
-    // ask for gifts
-    [[YasoundDataProvider main] giftsWithTarget:self action:@selector(onGiftsReceived:success:)];
-}
-
-- (void)onGiftsReceived:(ASIHTTPRequest*)request success:(BOOL)succeeded
-{
-    if (!succeeded)
-        return;
-    
-    self.gifts = [request responseObjectsWithClass:[Gift class]].objects;
-    [self.tableView reloadData];
+    [[YasoundDataProvider main] giftsWithCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"get gifts error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"get gifts error: response status %d", status);
+            return;
+        }
+        Container* giftContainer = [response jsonToContainer:[Gift class]];
+        if (giftContainer == nil)
+        {
+            DLog(@"get gifts error: cannot parse response %@", response);
+            return;
+        }
+        self.gifts = giftContainer.objects;
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)reloadHdExpirationDate
@@ -228,20 +234,40 @@
 
 - (void)promoCodeEntered:(NSString*)promoCode
 {
-    [[YasoundDataProvider main] activatePromoCode:promoCode withTarget:self action:@selector(promoCodeActivated:success:)];
+    [[YasoundDataProvider main] activatePromoCode:promoCode withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"promo code activation error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"promo code activation error: response status %d", status);
+            return;
+        }
+        NSDictionary* dict = [response jsonToDictionary];
+        if (dict == nil)
+        {
+            DLog(@"promo code activation error: cannot parse response %@", response);
+            return;
+        }
+        NSNumber* ok  = [dict valueForKey:@"success"];
+        if (ok == nil)
+        {
+            DLog(@"promo code activation error: bad response (no 'success' key) %@", response);
+            return;
+        }
+        if ([ok boolValue])
+        {
+            [self reloadHdExpirationDate];
+            [[YasoundDataProvider main] reloadUserWithCompletionBlock:nil];
+        }
+        else
+        {
+            DLog(@"promo code activation failed");
+        }
+    }];
 }
-
-- (void)promoCodeActivated:(ASIFormDataRequest*)req success:(BOOL)success
-{
-    NSDictionary* dict = [req responseDict];
-    NSNumber* ok  = [dict valueForKey:@"success"];
-    if ([ok boolValue])
-    {
-        [self reloadHdExpirationDate];
-        [[YasoundDataProvider main] reloadUserWithUserData:nil withTarget:nil action:nil]; // reload user to have permissions up to date
-    }
-}
-
 
 #pragma mark - Table view data source
 

@@ -138,16 +138,25 @@
     
     if (self.user)
     {
-        [self userReceived:self.user info:nil];
+        [self userReceived:self.user];
         return;
     }
     
     if ([YasoundSessionManager main].registered)
-        [[YasoundDataProvider main] userWithId:self.userId target:self action:@selector(userReceived:info:)];
+    {
+        [[YasoundDataProvider main] userWithId:self.userId withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self userReceivedWithStatus:status response:response error:error];
+        }];
+        
+    }
     else
-        [[YasoundDataProvider main] userWithUsername:self.modelUsername target:self action:@selector(publicUserReceived:success:)];
-
-    
+    {
+        [[YasoundDataProvider main] userWithUsername:self.modelUsername withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self publicUserReceivedWithStatus:status response:response error:error];
+        }];
+        
+    }
+   
 }
 
 
@@ -157,37 +166,38 @@
     [super viewDidAppear:animated];
 }
 
-
-- (void)publicUserReceived:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)userReceivedWithStatus:(int)status response:(NSString*)response error: (NSError*)error
 {
-    if (!success)
+    BOOL success = YES;
+    User* u = nil;
+    if (error)
     {
-        DLog(@"ProfilViewController::publicUserReceived error : userWithUsername failed using '%@'", self.user.username);
-
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error.generic.title", nil) message:NSLocalizedString(@"Error.generic.message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-        return;
+        DLog(@"get user error: %d - %@", error.code, error.domain);
+        success = NO;
     }
-    
-    self.user = [req responseObjectWithClass:[User class]];
-    
-    [self update];
-
+    else if (status != 200)
+    {
+        DLog(@"get user radio error: response status %d", status);
+        success = NO;
+    }
+    else
+    {
+        u = (User*)[response jsonToModel:[User class]];
+        if (!u)
+        {
+            DLog(@"get user radio error: cannot parse response %@", response);
+            success = NO;
+        }
+    }
+    [self userReceived:u];
 }
 
-
-
-- (void)userReceived:(User*)user info:(NSDictionary*)info
+- (void)userReceived:(User*)u
 {
-    DLog(@"userReceived from id '%@' : %p", self.userId, user);
-    DLog(@"info : %@", info);
-    self.user = user;
-    
+    self.user = u;
     if (self.user == nil)
     {
         DLog(@"ProfilViewController::userReceived error : userWithId failed using '%@'",  self.userId);
-
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error.generic.title", nil) message:NSLocalizedString(@"Error.generic.message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles:nil];
         [alert show];
         [alert release];
@@ -197,6 +207,43 @@
     [self update];
 }
 
+- (void)publicUserReceivedWithStatus:(int)status response:(NSString*)response error: (NSError*)error
+{
+    BOOL success = YES;
+    User* u = nil;
+    if (error)
+    {
+        DLog(@"get user error: %d - %@", error.code, error.domain);
+        success = NO;
+    }
+    else if (status != 200)
+    {
+        DLog(@"get user radio error: response status %d", status);
+        success = NO;
+    }
+    else
+    {
+        u = (User*)[response jsonToModel:[User class]];
+        if (!u)
+        {
+            DLog(@"get user radio error: cannot parse response %@", response);
+            success = NO;
+        }
+    }
+    if (!success)
+    {
+        DLog(@"ProfilViewController::publicUserReceived error : userWithUsername failed using '%@'", self.user.username);
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error.generic.title", nil) message:NSLocalizedString(@"Error.generic.message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        return;
+    }
+    
+    self.user = u;
+    
+    [self update];
+}
 
 - (void)update
 {
@@ -235,23 +282,67 @@
     {
         [self enableFollow:NO];
         [self enableSendMessage:NO];
-        [[YasoundDataProvider main] friendsForUser:self.user withTarget:self action:@selector(friendsReceived:success:)];
+        [[YasoundDataProvider main] friendsForUser:self.user withCompletionBlock:^(int status, NSString* response, NSError* erorr){
+            [self friendsReceivedWithStatus:status response:response error:erorr];
+        }];
+        
     }
     // someone else
     else
     {
         [self enableFollow:NO];
-        [[YasoundDataProvider main] friendsForUser:self.user withTarget:self action:@selector(friendsReceived:success:)];
+        [[YasoundDataProvider main] friendsForUser:self.user withCompletionBlock:^(int status, NSString* response, NSError* erorr){
+            [self friendsReceivedWithStatus:status response:response error:erorr];
+        }];
         
         // is he one of my friends? (<=> I need to know to enable and set the follow/unfollow button properly)
-        [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(myFriendsReceived:success:)];
+        [[YasoundDataCache main] requestFriendsWithCompletionBlock:^(NSArray* myfriends){
+            [self myFriendsReceived:myfriends];
+        }];
 
     }
     
-
-
-    [[YasoundDataProvider main] radiosForUser:self.user withTarget:self action:@selector(radiosReceived:success:)];
-    [[YasoundDataProvider main] favoriteRadiosForUser:self.user withTarget:self action:@selector(favoritesRadioReceived:withInfo:)];
+    [[YasoundDataProvider main] radiosForUser:self.user withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radios for user error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radios for user error: response status %d", status);
+            return;
+        }
+        Container* radioContainer = [response jsonToContainer:[Radio class]];
+        if (!radioContainer || !radioContainer.objects)
+        {
+            DLog(@"radios for user error: cannot parse response %@", response);
+            return;
+        }
+        self.radios = radioContainer.objects;
+        self.viewMyRadios.items = self.radios;
+    }];
+    
+    [[YasoundDataProvider main] favoriteRadiosForUser:self.user withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"favorite radios for user error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"favorite radios for user error: response status %d", status);
+            return;
+        }
+        Container* radioContainer = [response jsonToContainer:[Radio class]];
+        if (!radioContainer || !radioContainer.objects)
+        {
+            DLog(@"favorite radios for user error: cannot parse response %@", response);
+            return;
+        }
+        self.favorites = radioContainer.objects;
+        self.viewFavorites.items = self.favorites;
+    }];
 }
 
 
@@ -300,47 +391,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-
-
-
-
-
-
-- (void)radiosReceived:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)myFriendsReceived:(NSArray*)friends
 {
-    if (!success)
-    {
-        DLog(@"ProfilViewController::radiosReceived failed");
-        return;
-    }
+    DLog(@"%d friends", friends.count);
     
-    Container* container = [req responseObjectsWithClass:[Radio class]];
-    self.radios = container.objects;
-    
-    if (self.radios == nil)
-    {
-        DLog(@"ProfilViewController::radiosReceived error : radios is nil!");
-        assert(0);
-    }
-    
-    self.viewMyRadios.items = self.radios;
-}
-
-
-- (void)favoritesRadioReceived:(NSArray*)radios withInfo:(NSDictionary*)info
-{
-    self.favorites = radios;
-    
-    self.viewFavorites.items = self.favorites;
-}
-
-
-
-- (void)myFriendsReceived:(NSArray*)myFriends success:(BOOL)success
-{
-    DLog(@"%d friends", myFriends.count);
-    
-    for (User* user in myFriends)
+    for (User* user in friends)
     {
         DLog(@"my friend : %@", user.username);
         
@@ -361,11 +416,27 @@
     [self setFollowButtonToFollow];
 }
 
-- (void)friendsReceived:(ASIHTTPRequest*)req success:(BOOL)success
+
+- (void)friendsReceivedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
 {
-    Container* container = [req responseObjectsWithClass:[User class]];
-    self.friends = container.objects;
+    if (error)
+    {
+        DLog(@"friends error: %d - %@", error.code, error. domain);
+        return;
+    }
+    if (status != 200)
+    {
+        DLog(@"friends error: response status %d", status);
+        return;
+    }
+    Container* friendsContainer = [response jsonToContainer:[User class]];
+    if (!friendsContainer || !friendsContainer.objects)
+    {
+        DLog(@"friends error: cannot parse response %@", response);
+        return;
+    }
     
+    self.friends = friendsContainer.objects;
     self.viewFriends.items = self.friends;
 }
 
@@ -381,24 +452,28 @@
     if (self.followed)
     {
         self.followed = NO;
-        [[YasoundDataProvider main] unfollowUser:self.user target:self action:@selector(onFollowAcknowledge:success:)];
         [self setFollowButtonToFollow];
+        
+        [[YasoundDataProvider main] unfollowUser:self.user withCompletionBlock:^(int status, NSString* response, NSError* error){
+            BOOL success = (error == nil) && (status == 200);
+            [self onFollowAcknowledge:success];
+        }];
     }
     else
     {
         self.followed = YES;
-        [[YasoundDataProvider main] followUser:self.user target:self action:@selector(onFollowAcknowledge:success:)];
         [self setFollowButtonToUnfollow];
+        
+        [[YasoundDataProvider main] followUser:self.user withCompletionBlock:^(int status, NSString* response, NSError* error){
+            BOOL success = (error == nil) && (status == 200);
+            [self onFollowAcknowledge:success];
+        }];
     }
     
 }
 
-
-- (void)onFollowAcknowledge:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)onFollowAcknowledge:(BOOL)success
 {
-    DLog(@"onFollowAcknowledge %d", success);
-    
-    // rollback
     if (!success)
     {
         if (self.followed)
@@ -416,9 +491,9 @@
     [[YasoundDataCache main] clearFriends];
     
     // refresh
-    [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(myFriendsReceived:success:)];
-    
-        
+    [[YasoundDataCache main] requestFriendsWithCompletionBlock:^(NSArray* myfriends){
+        [self myFriendsReceived:myfriends];
+    }];
 }
 
 
@@ -450,7 +525,11 @@
 
     //refresh
     if ([YasoundSessionManager main].registered)
-        [[YasoundDataProvider main] userWithId:self.user.id target:self action:@selector(userReceived:info:)];
+    {        
+        [[YasoundDataProvider main] userWithId:self.userId withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self userReceivedWithStatus:status response:response error:error];
+        }];
+    }
 
 }
 

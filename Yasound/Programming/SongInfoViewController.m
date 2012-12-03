@@ -573,8 +573,18 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_UPDATED object:nil];
 
+    [[YasoundDataProvider main] updateSong:song withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"song update error: %d - %@", error.code, error.domain);
+        }
+        else if (status != 204)
+        {
+            DLog(@"song update error: response status %d", status);
+        }
+        [self songUpdated];
+    }];
     
-    [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(onSongUpdated:info:)];
 }
 
 
@@ -584,13 +594,21 @@
   SongFrequencyType freq = highFreq ? eSongFrequencyTypeHigh : eSongFrequencyTypeNormal;
   [self.song setFrequencyType:freq];
   
-  [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(onSongUpdated:info:)];
+    [[YasoundDataProvider main] updateSong:self.song withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"song update error: %d - %@", error.code, error.domain);
+        }
+        else if (status != 204)
+        {
+            DLog(@"song update error: response status %d", status);
+        }
+        [self songUpdated];
+    }];
 }
 
-
-- (void)onSongUpdated:(Song*)song info:(NSDictionary*)info
+- (void)songUpdated
 {
-    self.song = song;
     [_tableView reloadData];
 }
 
@@ -605,41 +623,29 @@
     [ActivityAlertView showWithTitle:nil];
 
     // request to server
-    [[YasoundDataProvider main] deleteSong:self.song target:self action:@selector(onSongDeleted:info:) userData:nil];
+    [[YasoundDataProvider main] deleteSong:self.song withCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = YES;
+        if (error)
+        {
+            DLog(@"delete song error: %d - %@", error.code, error.domain);
+            success = NO;
+        }
+        else if (status != 200)
+        {
+            DLog(@"delete song error: response status %d", status);
+            success = NO;
+        }
+        if (!success)
+        {
+            [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_delete_failed", nil) closeAfterTimeInterval:2];
+            return;
+        }
+        [[SongRadioCatalog main] updateSongRemovedFromProgramming:self.song];
+        [[SongLocalCatalog main] updateSongRemovedFromProgramming:self.song];
+        
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_delete_confirm_message", nil) closeAfterTimeInterval:2];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
-
-
-// server's callback
-- (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
-{
-    DLog(@"onSongDeleted for Song %@", song.name);  
-    DLog(@"info %@", info);
-    
-    BOOL success = NO;
-    NSNumber* nbsuccess = [info objectForKey:@"success"];
-    if (nbsuccess != nil)
-        success = [nbsuccess boolValue];
-    
-    DLog(@"success %d", success);
-    
-    if (!success)
-    {
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_delete_failed", nil) closeAfterTimeInterval:2];
-        return;
-    }
-    
-    [self.song removeSong:YES];
-    
-
-    [[SongRadioCatalog main] updateSongRemovedFromProgramming:self.song];
-    [[SongLocalCatalog main] updateSongRemovedFromProgramming:self.song];
-    
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_delete_confirm_message", nil) closeAfterTimeInterval:2];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-
 
 @end

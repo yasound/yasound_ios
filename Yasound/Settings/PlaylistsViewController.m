@@ -115,11 +115,74 @@
     [[TimeProfile main] begin:@"Playlists_download"];
     
     
-    Radio* radio = [YasoundDataProvider main].radio;
-    [[YasoundDataProvider main] playlistsForRadio:radio
-                                           target:self
-                                           action:@selector(receivePlaylists:withInfo:)
-     ];
+    Radio* r = [YasoundDataProvider main].radio;
+    [[YasoundDataProvider main] playlistsForRadio:r withCompletionBlock:^(int status, NSString* response, NSError* error){
+        NSArray* playlists = nil;
+        if (error)
+        {
+            DLog(@"playlists for radio error: %d - %@", error.code, error.domain);
+            playlists = nil;
+        }
+        else if (status != 200)
+        {
+            DLog(@"playlists for radio error: resposne status %d", status);
+            playlists = nil;
+        }
+        else
+        {
+            Container* playlistContainer = [response jsonToContainer:[Playlist class]];
+            if (!playlistContainer || !playlistContainer.objects)
+                playlists = nil;
+            else
+            {
+                playlists = playlistContainer.objects;
+            }
+        }
+        [[TimeProfile main] end:@"Playlists_download"];
+        [[TimeProfile main] logInterval:@"Playlists_download" inMilliseconds:NO];
+        
+        [[TimeProfile main] begin:@"Playlists_buildPlaylists"];
+        
+        // build playlist
+        [self buildPlaylistData:_playlists withRemotePlaylists:playlists];
+        
+        [[TimeProfile main] end:@"Playlists_buildPlaylists"];
+        [[TimeProfile main] logInterval:@"Playlists_buildPlaylists" inMilliseconds:NO];
+        
+        [[TimeProfile main] begin:@"Playlists_catalogSongs"];
+        
+        // build global songs catalog
+        MPMediaQuery* query = [MPMediaQuery songsQuery];
+        _songs = [query items];
+        [_songs retain];
+        
+        [[TimeProfile main] end:@"Playlists_catalogSongs"];
+        [[TimeProfile main] logInterval:@"Playlists_catalogSongs" inMilliseconds:NO];
+        
+        
+        // refresh
+        [self refreshView];
+        
+        [ActivityAlertView close];
+        
+        if (_songs.count == 0)
+        {
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:YES error:nil];
+            UIImageView* view = [sheet makeImage];
+            [_tableView addSubview:view];
+            [view release];
+            
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.local", nil) message:NSLocalizedString(@"Programming.empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];
+            return;
+        }
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.create", nil) message:NSLocalizedString(@"MyRadios.create.howto", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+
+    }];
     
     _selectedPlaylists = [[NSMutableArray alloc] init];
     [_selectedPlaylists retain];
@@ -231,54 +294,54 @@
     }
 }
 
-- (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
-{
-    [[TimeProfile main] end:@"Playlists_download"];
-    [[TimeProfile main] logInterval:@"Playlists_download" inMilliseconds:NO];
-    
-    [[TimeProfile main] begin:@"Playlists_buildPlaylists"];
-
-    // build playlist
-    [self buildPlaylistData:_playlists withRemotePlaylists:playlists];
-
-     [[TimeProfile main] end:@"Playlists_buildPlaylists"];
-     [[TimeProfile main] logInterval:@"Playlists_buildPlaylists" inMilliseconds:NO];
-
-     [[TimeProfile main] begin:@"Playlists_catalogSongs"];
-
-    // build global songs catalog
-    MPMediaQuery* query = [MPMediaQuery songsQuery];
-    _songs = [query items];
-    [_songs retain];
-     
-     [[TimeProfile main] end:@"Playlists_catalogSongs"];
-     [[TimeProfile main] logInterval:@"Playlists_catalogSongs" inMilliseconds:NO];
-
-    
-    // refresh
-    [self refreshView];
-
-    [ActivityAlertView close];
-    
-    if (_songs.count == 0)
-    {
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:YES error:nil];
-        UIImageView* view = [sheet makeImage];
-        [_tableView addSubview:view];
-        [view release];
-        
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.local", nil) message:NSLocalizedString(@"Programming.empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];
-        return;
-    }
-    
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.create", nil) message:NSLocalizedString(@"MyRadios.create.howto", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-    [alert release];
-    
-    
-}
+//- (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
+//{
+//    [[TimeProfile main] end:@"Playlists_download"];
+//    [[TimeProfile main] logInterval:@"Playlists_download" inMilliseconds:NO];
+//    
+//    [[TimeProfile main] begin:@"Playlists_buildPlaylists"];
+//
+//    // build playlist
+//    [self buildPlaylistData:_playlists withRemotePlaylists:playlists];
+//
+//     [[TimeProfile main] end:@"Playlists_buildPlaylists"];
+//     [[TimeProfile main] logInterval:@"Playlists_buildPlaylists" inMilliseconds:NO];
+//
+//     [[TimeProfile main] begin:@"Playlists_catalogSongs"];
+//
+//    // build global songs catalog
+//    MPMediaQuery* query = [MPMediaQuery songsQuery];
+//    _songs = [query items];
+//    [_songs retain];
+//     
+//     [[TimeProfile main] end:@"Playlists_catalogSongs"];
+//     [[TimeProfile main] logInterval:@"Playlists_catalogSongs" inMilliseconds:NO];
+//
+//    
+//    // refresh
+//    [self refreshView];
+//
+//    [ActivityAlertView close];
+//    
+//    if (_songs.count == 0)
+//    {
+//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:YES error:nil];
+//        UIImageView* view = [sheet makeImage];
+//        [_tableView addSubview:view];
+//        [view release];
+//        
+//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.local", nil) message:NSLocalizedString(@"Programming.empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [av show];
+//        [av release];
+//        return;
+//    }
+//    
+//    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.create", nil) message:NSLocalizedString(@"MyRadios.create.howto", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [alert show];
+//    [alert release];
+//    
+//    
+//}
 
                                                                                       
 
@@ -651,53 +714,65 @@
 {
     [ActivityAlertView showWithTitle:nil];
     
-    [[YasoundDataProvider main] createRadioWithTarget:self action:@selector(onRadioCreated:success:)];
-}
-
-
-- (void)onRadioCreated:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    if (!success)
-    {
+    [[YasoundDataProvider main] createRadioWithCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = YES;
+        Radio* newRadio = nil;
+        if (error)
+        {
+            DLog(@"create radio error: %d - %@", error.code, error.domain);
+            success = NO;
+        }
+        else if (status != 200)
+        {
+            DLog(@"cerate radio error: response status %d", status);
+            success = NO;
+        }
+        else
+        {
+            newRadio = (Radio*)[response jsonToModel:[Radio class]];
+            if (!newRadio)
+            {
+                DLog(@"create radio error: cannot parse response %@", response);
+                success = NO;
+            }
+        }
         [ActivityAlertView close];
         
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Playlists.create.failed.title", nil) message:NSLocalizedString(@"Playlists.create.failed.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-  
-        return;
-    }
-    
-    [ActivityAlertView close];
-    
-    self.radio = [req responseObjectWithClass:[Radio class]];
-    
-    //LBDEBUG
-    DLog(@"radio created : %p", self.radio);
-    DLog(@"radio name : %@", self.radio.name);
-
-    //fake commnunication
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:@"..."];
-    
-    if (_switchAllMyMusic.on)
-    {
-        [[PlaylistMoulinor main] buildDataWithSongs:_songs
-                                                 binary:YES 
-                                             compressed:YES 
-                                                 target:self 
+        if (!success)
+        {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Playlists.create.failed.title", nil) message:NSLocalizedString(@"Playlists.create.failed.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            return;
+        }
+        self.radio = newRadio;
+        
+        //LBDEBUG
+        DLog(@"radio created : %p", self.radio);
+        DLog(@"radio name : %@", self.radio.name);
+        
+        //fake commnunication
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:@"..."];
+        
+        if (_switchAllMyMusic.on)
+        {
+            [[PlaylistMoulinor main] buildDataWithSongs:_songs
+                                                 binary:YES
+                                             compressed:YES
+                                                 target:self
                                                  action:@selector(didBuildDataWithPlaylist:)];
-    }
-    else
-    {
-        [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists
-                                       removedPlaylists:_unselectedPlaylists
-                                                 binary:YES 
-                                             compressed:YES 
-                                                 target:self 
-                                                 action:@selector(didBuildDataWithPlaylist:)];
-    }
+        }
+        else
+        {
+            [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists
+                                           removedPlaylists:_unselectedPlaylists
+                                                     binary:YES
+                                                 compressed:YES
+                                                     target:self
+                                                     action:@selector(didBuildDataWithPlaylist:)];
+        }
+    }];
 }
-
 
 
 - (void) didBuildDataWithPlaylist:(NSData*)data
@@ -710,8 +785,19 @@
     DLog(@"Playlists data package has been built.");
     
     
-        DLog(@"For radio %@", self.radio.name);
-        [[YasoundDataProvider main] updatePlaylists:data forRadio:self.radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
+        DLog(@"For radio %@", self.radio.name);    
+    [[YasoundDataProvider main] updatePlaylists:data forRadio:self.radio withCompletionBlock:^(taskID task){
+        if (task == nil)
+        {
+            [ActivityAlertView close];
+            
+            UIAlertView* av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:NSLocalizedString(@"PlaylistsView_submit_error_creating_radio", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];            
+            return;
+        }
+        self.taskTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkPlaylistTask:) userInfo:task repeats:YES];
+    }];
 }
     
 
@@ -728,34 +814,6 @@
     }
 }
 
-    
-    
-    
-
-
-- (void)receiveUpdatePLaylistsResponse:(taskID)task_id error:(NSError*)error
-{
-  if (error)
-  {
-      DLog(@"update playlists error %d", error.code);
-      DLog(@"error %@", error);
-      
-      [ActivityAlertView close];
-      
-      UIAlertView* av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:NSLocalizedString(@"PlaylistsView_submit_error_creating_radio", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-      [av show];
-      [av release];  
-
-      
-      return;
-  }
-    
-    DLog(@"playlists updated  task: %@", task_id);
-    
-    self.taskTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkPlaylistTask:) userInfo:task_id repeats:YES];
-    
-}
-
 
 
 
@@ -763,60 +821,109 @@
 - (void)checkPlaylistTask:(NSTimer*)timer
 {
     taskID task = timer.userInfo;
-    [[YasoundDataProvider main] taskStatus:task target:self action:@selector(receiveTaskStatus:error:)];
+    [[YasoundDataProvider main] taskStatus:task withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"task status error: %d - %@", error.code, error.domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"task status error: response http status %d", status);
+            return;
+        }
+        TaskInfo* taskInfo = [TaskInfo taskInfoWithString:response];
+        if (taskInfo.status == eTaskSuccess)
+        {
+            if ([self.taskTimer isValid])
+                [self.taskTimer invalidate];
+            [self finalize];
+        }
+        else if (taskInfo.status == eTaskFailure)
+        {
+            [self finalize];
+        }
+        else if (taskInfo.status == eTaskPending)
+        {
+            NSString* msg = [NSString stringWithFormat:@"%d%%", (int)(taskInfo.progress * 100)];
+            if (taskInfo.message)
+                msg = [msg stringByAppendingFormat:@" - %@", taskInfo.message];
+            [ActivityAlertView current].message = msg;
+        }
+    }];
 }
-
-
-
-- (void)receiveTaskStatus:(TaskInfo*)taskInfo error:(NSError*) error
-{
-    if (taskInfo.status == eTaskSuccess)
-    {
-        if ([self.taskTimer isValid])
-            [self.taskTimer invalidate];
-        [self finalize];
-    }
-    else if (taskInfo.status == eTaskFailure)
-    {
-        [self finalize];
-    }
-  else if (taskInfo.status == eTaskPending)
-  {
-    NSString* msg = [NSString stringWithFormat:@"%d%%", (int)(taskInfo.progress * 100)];
-    if (taskInfo.message)
-      msg = [msg stringByAppendingFormat:@" - %@", taskInfo.message];
-    [ActivityAlertView current].message = msg;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 - (void)finalize
 {
     // be sure to get updated radio (with correct 'ready' flag)
-   // [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPlaylistsUpdate:withInfo:)];
-    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receivedUserRadioAfterPlaylistsUpdate:withInfo:)];
+    [[YasoundDataProvider main] radioWithId:self.radio.id withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radio with id error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radio with id error: response status %d", status);
+            return;
+        }
+        Radio* newRadio = (Radio*)[response jsonToModel:[Radio class]];
+        if (!newRadio)
+        {
+            DLog(@"radio with id error: cannot parse response: %@", response);
+            return;
+        }
+        
+        self.radio = newRadio;
+        
+        // now, ask for registered playlists, we want to check how many songs have been synchrpnized        
+        [[YasoundDataProvider main] playlistsForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+            NSArray* playlists = nil;
+            if (error)
+            {
+                DLog(@"playlists for radio error: %d - %@", error.code, error.domain);
+                playlists = nil;
+            }
+            else if (status != 200)
+            {
+                DLog(@"playlists for radio error: resposne status %d", status);
+                playlists = nil;
+            }
+            else
+            {
+                Container* playlistContainer = [response jsonToContainer:[Playlist class]];
+                if (!playlistContainer || !playlistContainer.objects)
+                    playlists = nil;
+                else
+                {
+                    playlists = playlistContainer.objects;
+                }
+            }
+            
+            if (playlists)
+            {
+                self.nbPlaylistsForChecking = playlists.count;
+                self.nbParsedPlaylistsForChecking = 0;
+                self.nbMatchedSongs = 0;
+                
+                
+                for (Playlist* playlist in playlists)
+                {
+                    [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)];
+                }
+            }
+            else
+            {
+                self.nbPlaylistsForChecking = 0;
+                self.nbParsedPlaylistsForChecking = 0;
+                self.nbMatchedSongs = 0;
+                
+                [self matchedSongsReceveived:nil info:nil];
+            }
+        }];
+    }];
 }
 
-- (void)receivedUserRadioAfterPlaylistsUpdate:(Radio*)r withInfo:(NSDictionary*)info
-{
-    assert(r != nil);
-    self.radio = r;
-    
-    // now, ask for registered playlists, we want to check how many songs have been synchrpnized
-    [[YasoundDataProvider main] playlistsForRadio:r target:self action:@selector(receivePlaylistsForChecking:withInfo:)];
-}
-    
     
 - (void)receivePlaylistsForChecking:(NSArray*)playlists withInfo:(NSDictionary*)info
 {

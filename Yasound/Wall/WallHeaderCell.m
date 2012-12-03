@@ -27,21 +27,21 @@
     self.headerImageHighlight.hidden = YES;
 }
 
-- (void)setHeaderRadio:(Radio*)radio
+- (void)setHeaderRadio:(Radio*)aRadio
 {
-    self.radio = radio;
+    self.radio = aRadio;
     self.isFavorite = NO;
 
-    NSURL* url = [[YasoundDataProvider main] urlForPicture:radio.picture];
+    NSURL* url = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
     [self.headerImage setUrl:url];
     
     InteractiveView* intView = [[InteractiveView alloc] initWithFrame:self.headerImage.frame target:self action:@selector(onHeaderImageClicked)];
     [intView setTargetOnTouchDown:self action:@selector(onHeaderImagePressed)];
     [self addSubview:intView];
     
-    self.headerTitle.text = radio.name;
-    self.headerSubscribers.text = [NSString stringWithFormat:@"%d", [radio.favorites integerValue]];
-    self.headerListeners.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
+    self.headerTitle.text = self.radio.name;
+    self.headerSubscribers.text = [NSString stringWithFormat:@"%d", [self.radio.favorites integerValue]];
+    self.headerListeners.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
 
     
     [self.headerButtonFavorites setImage:[UIImage imageNamed:@"wallHeaderButtonPressed.png"] forState:(UIControlStateSelected|UIControlStateDisabled)];
@@ -75,14 +75,62 @@
     {
         self.headerIconFavorite.hidden = NO;
         self.headerButtonFavorites.selected = YES;
+        
+        int newFav = [self.radio.favorites integerValue] + 1;
+        self.headerSubscribers.text = [NSString stringWithFormat:@"%d", newFav];
     }
     else
     {
         self.headerIconFavorite.hidden = YES;
         self.headerButtonFavorites.selected = NO;
+        int newFav = [self.radio.favorites integerValue] - 1;
+        self.headerSubscribers.text = [NSString stringWithFormat:@"%d", newFav];
     }
     
-    [[YasoundDataProvider main] setRadio:self.radio asFavorite:mustBeFavorite target:self action:@selector(favoriteUpdated:success:)];
+    [[YasoundDataProvider main] setRadio:self.radio asFavorite:mustBeFavorite withCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = YES;
+        int newFavoriteCount = [self.radio.favorites intValue];
+        if (error != nil)
+        {
+            DLog(@"set favorite error: %d - %@", error.code, error.domain);
+            success = NO;
+        }
+        else if (status != 200)
+        {
+            DLog(@"set favorite error: response status %d", status);
+            success = NO;
+        }
+        else
+        {
+            NSDictionary* dict = [response jsonToDictionary];
+            if (dict == nil)
+            {
+                DLog(@"set favorite error: cannot parse response %@", response);
+                success = NO;
+            }
+            if ([dict valueForKey:@"success"] == NO)
+            {
+                DLog(@"set favorite failed: response %@", response);
+                success = NO;
+            }
+            else
+            {
+                NSNumber* newFav = [dict valueForKey:@"favorites"];
+                if (newFav == nil)
+                    success = NO;
+                else
+                    newFavoriteCount = [newFav intValue];
+            }
+        }
+        
+        if (success)
+        {
+            self.radio.favorites = [NSNumber numberWithInt:newFavoriteCount];
+            
+            NSString* str = URL_RADIOS_FAVORITES;
+            [[YasoundDataCache main] requestRadiosWithUrl:[NSURL URLWithString:str] withGenre:nil target:self action:@selector(onFavoritesRadioReceived:)];
+        }
+    }];
 }
 
 
@@ -125,6 +173,8 @@
         self.headerButtonFavorites.selected = NO;
     }
     self.headerIconFavorite.hidden = YES;
+    
+    self.headerSubscribers.text = [NSString stringWithFormat:@"%d", [self.radio.favorites integerValue]];
 }
 
 
@@ -146,30 +196,44 @@
 
 
 
-- (IBAction)onListenersClicked:(id)sender {
-    
-    [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(onCurrentUsersReceived:info:)];
+- (IBAction)onListenersClicked:(id)sender
+{
+    [[YasoundDataProvider main] currentUsersForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radio current users error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radio current users error: response status %d", status);
+            return;
+        }
+        Container* usersContainer = [response jsonToContainer:[User class]];
+        if (usersContainer == nil)
+        {
+            DLog(@"radio current users error: cannot parse response %@", response);
+            return;
+        }
+        NSArray* listeners = usersContainer.objects;
+        if (listeners == nil)
+        {
+            DLog(@"radio current users error: bad response %@", response);
+            return;
+        }
+        if (listeners.count == 0)
+            return;
+        
+        RadioListTableViewController* view = [[RadioListTableViewController alloc] initWithNibName:@"WallListenersViewController" bundle:nil listeners:listeners];
+        view.listDelegate = self;
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+        
+        [view setListeners:listeners];
+        
+        [view release];
+    }];
 
 }
-
-
-
-- (void)onCurrentUsersReceived:(NSArray*)listeners info:(NSDictionary*)info {
-    
-    if (listeners && (listeners.count == 0))
-        return;
-    
-    CGRect frame = CGRectMake(0,0, 320, 480);
-    RadioListTableViewController* view = [[RadioListTableViewController alloc] initWithNibName:@"WallListenersViewController" bundle:nil listeners:listeners];
-    view.listDelegate = self;
-    [APPDELEGATE.navigationController pushViewController:view animated:YES];
-
-    [view setListeners:listeners];
-
-    [view release];
-
-}
-
 
 #pragma mark - RadioListDelegate
 

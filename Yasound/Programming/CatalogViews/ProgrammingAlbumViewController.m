@@ -240,38 +240,54 @@
 
 
 
-
+//#FIXME: useles ? never called?
 - (void)onSongDeleteRequested:(UITableViewCell*)cell song:(Song*)song
 {
     DLog(@"onSongDeleteRequested for Song %@", song.name);   
     
     // request to server
-    [[YasoundDataProvider main] deleteSong:song target:self action:@selector(onSongDeleted:info:) userData:cell];
+    [[YasoundDataProvider main] deleteSong:song withCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = YES;
+        if (error)
+        {
+            DLog(@"delete song error: %d - %@", error.code, error.domain);
+            success = NO;
+        }
+        else if (status != 200)
+        {
+            DLog(@"delete song error: response status %d", status);
+            success = NO;
+        }
+        if (!success)
+            return;
+        
+        // ???
+    }];
     
 }
 
 
 // server's callback
-- (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
-{
-    DLog(@"onSongDeleted for Song %@", song.name);  
-    DLog(@"info %@", info);
-    
-    BOOL success = NO;
-    NSNumber* nbsuccess = [info objectForKey:@"success"];
-    if (nbsuccess != nil)
-        success = [nbsuccess boolValue];
-    
-    DLog(@"success %d", success);
-    
-    UITableViewCell* cell = [info objectForKey:@"userData"];
-    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
-
-    
-    // clean catalogs and wait for the refresh notifs
-    [[SongRadioCatalog main] updateSongRemovedFromProgramming:song];
-    [[SongLocalCatalog main] updateSongRemovedFromProgramming:song];
-}
+//- (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
+//{
+//    DLog(@"onSongDeleted for Song %@", song.name);
+//    DLog(@"info %@", info);
+//    
+//    BOOL success = NO;
+//    NSNumber* nbsuccess = [info objectForKey:@"success"];
+//    if (nbsuccess != nil)
+//        success = [nbsuccess boolValue];
+//    
+//    DLog(@"success %d", success);
+//    
+//    UITableViewCell* cell = [info objectForKey:@"userData"];
+//    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+//
+//    
+//    // clean catalogs and wait for the refresh notifs
+//    [[SongRadioCatalog main] updateSongRemovedFromProgramming:song];
+//    [[SongLocalCatalog main] updateSongRemovedFromProgramming:song];
+//}
 
 
 

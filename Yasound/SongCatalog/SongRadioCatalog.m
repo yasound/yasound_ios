@@ -117,39 +117,50 @@ static SongRadioCatalog* _main = nil;
     
     self.matchedSongs = [NSMutableDictionary dictionary];
     
-    [[YasoundDataProvider main] playlistsForRadio:radio target:self action:@selector(receivePlaylists:withInfo:)];
-}
-
-
-
-
-- (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
-{
-    if (playlists == nil)
-        _nbPlaylists = 0;
+    [[YasoundDataProvider main] playlistsForRadio:radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        NSArray* playlists = nil;
+        if (error)
+        {
+            DLog(@"playlists for radio error: %d - %@", error.code, error.domain);
+            playlists = nil;
+        }
+        else if (status != 200)
+        {
+            DLog(@"playlists for radio error: resposne status %d", status);
+            playlists = nil;
+        }
+        else
+        {
+            Container* playlistContainer = [response jsonToContainer:[Playlist class]];
+            if (!playlistContainer || !playlistContainer.objects)
+                playlists = nil;
+            else
+            {
+                playlists = playlistContainer.objects;
+            }
+        }
+        if (playlists == nil)
+            _nbPlaylists = 0;
         else
             _nbPlaylists = playlists.count;
-            
-            
-            DLog(@"received %d playlists", _nbPlaylists);
-            
-            if (_nbPlaylists == 0)
-            {
-                NSMutableDictionary* info = [NSMutableDictionary dictionary];
-                [info setObject:[NSNumber numberWithInteger:0] forKey:@"count"];
-                [info setObject:NSLocalizedString(@"ProgrammingView_error_no_playlist_message", nil)  forKey:@"error"];
-                [info setObject:[NSNumber numberWithBool:NO]  forKey:@"success"];
-                [self.target performSelector:self.action withObject:info];
-
-                return;
-            }
-    
-    for (Playlist* playlist in playlists)
-    {
-        DLog(@"playlist %@ :", playlist.name);
         
-        [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)];
-    }
+        DLog(@"received %d playlists", _nbPlaylists);
+        if (_nbPlaylists == 0)
+        {
+            NSMutableDictionary* info = [NSMutableDictionary dictionary];
+            [info setObject:[NSNumber numberWithInteger:0] forKey:@"count"];
+            [info setObject:NSLocalizedString(@"ProgrammingView_error_no_playlist_message", nil)  forKey:@"error"];
+            [info setObject:[NSNumber numberWithBool:NO]  forKey:@"success"];
+            [self.target performSelector:self.action withObject:info];
+            return;
+        }
+        
+        for (Playlist* playlist in playlists)
+        {
+            DLog(@"playlist %@ :", playlist.name);
+            [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)];
+        }
+    }];
 }
 
 

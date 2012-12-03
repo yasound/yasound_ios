@@ -190,7 +190,18 @@
         return;    
     }
     
-    [[YasoundDataProvider main] radioHasBeenShared:self.radio with:@"twitter"];
+    [[YasoundDataProvider main] radioHasBeenShared:self.radio with:@"twitter" withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radio share via twitter error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radio share via twitter error: response status %d", status);
+            return;
+        }
+    }];
     
     [_target performSelector:_action];
 }

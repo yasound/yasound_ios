@@ -201,7 +201,18 @@
     else
         [AudioStreamManager main].currentRadio = self.radio;
     
-    [[YasoundDataProvider main] enterRadioWall:self.radio];
+    [[YasoundDataProvider main] enterRadioWall:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"enter wall error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"enter wall error: response status %d", status);
+            return;
+        }
+    }];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_DISPLAY_AUDIOSTREAM_ERROR object:nil];
@@ -270,7 +281,18 @@
 {
     [super viewWillDisappear: animated];
     
-    [[YasoundDataProvider main] leaveRadioWall:self.radio];
+    [[YasoundDataProvider main] leaveRadioWall:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"leave wall error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"leave wall error: response status %d", status);
+            return;
+        }
+    }];
 
     if (_serverErrorCount == 0)
     {
@@ -349,6 +371,58 @@
 
 #pragma mark - Data
 
+- (void)refreshCurrentSong
+{    
+    [[YasoundDataProvider main] currentSongForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radio current song error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radio current song error: response status %d", status);
+            return;
+        }
+        Song* song = (Song*)[response jsonToModel:[Song class]];
+        if (song == nil)
+        {
+            DLog(@"radio current song error: cannot parse response %@", response);
+            return;
+        }
+        
+        [self setNowPlaying:song];
+    }];
+}
+
+- (void)refreshCurrentUsers
+{
+    [[YasoundDataProvider main] currentUsersForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radio current users error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radio current users error: response status %d", status);
+            return;
+        }
+        Container* usersContainer = [response jsonToContainer:[User class]];
+        if (usersContainer == nil)
+        {
+            DLog(@"radio current users error: cannot parse response %@", response);
+            return;
+        }
+        if (usersContainer.objects == nil)
+        {
+            DLog(@"radio current users error: bad response %@", response);
+            return;
+        }
+        [self.cellWallHeader setListeners:usersContainer.objects.count];
+    }];
+}
+
 //....................................................................
 //
 // onTimerUpdate
@@ -370,16 +444,19 @@
         if (_wallEvents.count > 0)
         {
             NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
-            [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+            [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID withCompletionBlock:^(int status, NSString* response, NSError* error){
+                [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
+            }];
         }
         else
         {
-            [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+            [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 withCompletionBlock:^(int status, NSString* response, NSError* error){
+                [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
+            }];
         }
         
-        [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
-        [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
-        [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
+        [self refreshCurrentSong];
+        [self refreshCurrentUsers];
         
         [_updateLock unlock];
     }
@@ -390,10 +467,10 @@
 {
     _updatingPrevious = YES;
     
-    [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_FIRST_PAGESIZE target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
-    
-    [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
-    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
+    [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_FIRST_PAGESIZE withCompletionBlock:^(int status, NSString* response, NSError* error){
+        [self previousWallEventsRequestReturnedWithStatus:status response:response error:error];
+    }];    
+    [self refreshCurrentSong];
 }
 
 - (void)updateCurrentWall
@@ -401,11 +478,16 @@
     if (_wallEvents.count > 0)
     {
         NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
+        }];
+        
     }
     else
     {
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
+        }];
     }
 }
 
@@ -461,44 +543,46 @@
 // received previous wall events
 //
 
-- (void)receivedPreviousWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
+- (void)previousWallEventsRequestReturnedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
 {
-    NSDictionary* userData = [info objectForKey:@"userData"];
-    
     [self removeWaitingEventRow];
+    BOOL ok = YES;
+    if (error)
+    {
+        DLog(@"previous wall events error: %d - %@", error.code, error. domain);
+        ok = NO;
+    }
+    if (status != 200)
+    {
+        DLog(@"previous wall events error: response status %d", status);
+        ok = NO;
+    }
+    Container* eventsContainer = [response jsonToContainer:[WallEvent class]];
+    if (eventsContainer == nil)
+    {
+        DLog(@"previous wall events error: cannot parse response %@", response);
+        ok = NO;
+    }
+    if (eventsContainer.objects == nil)
+    {
+        DLog(@"previous wall events error: bad response %@", response);
+        ok = NO;
+    }
     
-    Meta* meta = [info valueForKey:@"meta"];
-    NSError* err = [info valueForKey:@"error"];
-    
-    if (err)
+    if (ok == NO)
     {
         if (_serverErrorCount == 3)
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
         else
             _serverErrorCount++;
-        
-        DLog(@"receivedPreviousWallEvents ERROR!");
         return;
     }
     
-    if (!meta)
-    {
-        if (_serverErrorCount == 3)
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
-        else
-            _serverErrorCount++;
-        
-        DLog(@"receivedPreviousWallEvents : ERROR no meta data!");
-        return;
-    }
-    
-    // reset error count
     _serverErrorCount = 0;
+    NSArray* events = eventsContainer.objects;
     
     if (!events || events.count == 0)
-    {
-        // DLog(@"NO MORE EVENTS. end receivedPreviousWallEvents\n");
-        
+    {       
         _updatingPrevious = NO;
         
         if (_firstUpdateRequest)
@@ -530,8 +614,6 @@
         
     }
     
-    NSInteger count = events.count;
-    
     WallEvent* ev = [events objectAtIndex:0];
     WallEvent* wev = nil;
     
@@ -556,8 +638,10 @@
     
     // ask for more previous messages
     if (_countMessageEvent < NB_MAX_EVENTMESSAGE)
-    {
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_SECOND_PAGESIZE olderThanEventWithID:_lastWallEvent.id target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+    {        
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_SECOND_PAGESIZE olderThanEventWithID:_lastWallEvent.id withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self previousWallEventsRequestReturnedWithStatus:status response:response error:error];
+        }];
     }
     else
     {
@@ -567,6 +651,7 @@
     
     //DLog(@"end receivedPreviousWAllEvents\n");
 }
+
 
 
 - (void)receivedPreviousSongEvent:(WallEvent*)ev
@@ -603,59 +688,51 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 //.......................................................................................................
 //
 // received current wall events
 //
-- (void)receivedCurrentWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
+- (void)currentWallEventsRequestReturnedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
 {
-    NSDictionary* userData = [info objectForKey:@"userData"];
-
-    Meta* meta = [info valueForKey:@"meta"];
-    NSError* err = [info valueForKey:@"error"];
+    BOOL ok = YES;
+    if (error)
+    {
+        DLog(@"current wall events error: %d - %@", error.code, error. domain);
+        ok = NO;
+    }
+    if (status != 200)
+    {
+        DLog(@"current wall events error: response status %d", status);
+        ok = NO;
+    }
+    Container* eventsContainer = [response jsonToContainer:[WallEvent class]];
+    if (eventsContainer == nil)
+    {
+        DLog(@"current wall events error: cannot parse response %@", response);
+        ok = NO;
+    }
+    if (eventsContainer.objects == nil)
+    {
+        DLog(@"current wall events error: bad response %@", response);
+        ok = NO;
+    }
     
-    if (err)
+    if (ok == NO)
     {
         if (_serverErrorCount == 3)
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
         else
             _serverErrorCount++;
-        
-        DLog(@"receivedCurrentWallEvents ERROR!");
         return;
     }
     
-    if (!meta)
-    {
-        if (_serverErrorCount == 3)
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
-        else
-            _serverErrorCount++;
-        
-        DLog(@"receivedCurrentWallEvents : ERROR no meta data!");
-        return;
-    }
-    
-    // reset error count
     _serverErrorCount = 0;
-    
+    NSArray* events = eventsContainer.objects;
     if (!events || events.count == 0)
     {
         //DLog(@"NO MORE EVENTS. end receivedCurrentWallEvents\n");
         return;
-    }
-    
+    }    
     
     DLog(@"\nreceivedCurrentWallEvents %d events", events.count);
     
@@ -760,50 +837,6 @@
     [_wallEvents insertObject:ev atIndex:0];
     [self insertLike];
 }
-
-
-
-//
-// Current Song
-//
-- (void) receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info
-{
-    if (!song)
-        return;
-    
-    [self setNowPlaying:song];
-    
-    [[YasoundDataProvider main] statusForSongId:song.id target:self action:@selector(receivedCurrentSongStatus:withInfo:)];
-}
-
-- (void)receivedCurrentSongStatus:(SongStatus*)status withInfo:(NSDictionary*)info
-{
-    if (!status)
-        return;
-}
-
-- (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info
-{
-    if (!r)
-        return;
-    
-    self.radio = r;
-    
-    _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
-}
-
-
-
-- (void)receivedCurrentUsers:(NSArray*)users withInfo:(NSDictionary*)info
-{
-    if (!users || users.count == 0)
-        return;
-
-    [self.cellWallHeader setListeners:users.count];
-}
-
-
-
 
 
 - (void)userJoined:(User*)u
@@ -1119,11 +1152,15 @@
     if (_wallEvents.count > 0)
     {
         NSNumber* lastEventID = ((WallEvent*)[_wallEvents objectAtIndex:_wallEvents.count - 1]).id;
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE olderThanEventWithID:lastEventID target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE olderThanEventWithID:lastEventID withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self previousWallEventsRequestReturnedWithStatus:status response:response error:error];
+        }];
     }
     else
     {
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self previousWallEventsRequestReturnedWithStatus:status response:response error:error];
+        }];
     }
     
     [self showWaitingEventRow];
@@ -1334,23 +1371,22 @@
 - (void)sendMessage:(NSString *)message
 {
     [[ActivityModelessSpinner main] addRef];
-    [[YasoundDataProvider main] postWallMessage:message toRadio:self.radio target:self action:@selector(wallMessagePosted:withInfo:)];
+    [[YasoundDataProvider main] postWallMessage:message toRadio:self.radio withCompletionBLock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"post wall message error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"post wall message error: response status %d", status);
+            return;
+        }
+        
+        [[ActivityModelessSpinner main] removeRef];        
+        [self updateCurrentWall];
+    }];
 }
-
-- (void)wallMessagePosted:(NSString*)eventURL withInfo:(NSDictionary*)info
-{
-    [[ActivityModelessSpinner main] removeRef];
-    
-    NSError* error = [info valueForKey:@"error"];
-    if (error)
-    {
-        DLog(@"wall message can't be posted: %@", error.domain);
-        return;
-    }
-    
-    [self updateCurrentWall];
-}
-
 
 
 
@@ -1585,7 +1621,35 @@
         else if (buttonIndex == 1)
         {
             [ActivityAlertView showWithTitle:nil];
-            [[YasoundDataProvider main] favoriteUsersForRadio:self.radio target:self action:@selector(onSubscribersReceived:withInfo:) withUserData:nil];
+            [[YasoundDataProvider main] favoriteUsersForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+                if (error)
+                {
+                    DLog(@"radio favorite users error: %d - %@", error.code, error. domain);
+                    return;
+                }
+                if (status != 200)
+                {
+                    DLog(@"radio favorite users error: response status %d", status);
+                    return;
+                }
+                Container* usersContainer = [response jsonToContainer:[User class]];
+                if (usersContainer == nil)
+                {
+                    DLog(@"radio favorite users error: cannot parse response %@", response);
+                    return;
+                }
+                if (usersContainer.objects == nil)
+                {
+                    DLog(@"radio favorite users error: bad response %@", response);
+                    return;
+                }
+                
+                [ActivityAlertView close];
+                
+                MessageBroadcastModalViewController* view = [[MessageBroadcastModalViewController alloc] initWithNibName:@"MessageBroadcastModalViewController" bundle:nil forRadio:self.radio subscribers:usersContainer.objects target:self action:@selector(onModalReturned)];
+                [self.navigationController presentModalViewController:view animated:YES];
+                [view release];
+            }];
             return;
         }
         else if (buttonIndex == 2)
@@ -1599,18 +1663,6 @@
     
     }
 }
-
-
-- (void)onSubscribersReceived:(NSArray*)subscribers withInfo:(NSDictionary*)info
-{
-    [ActivityAlertView close];
-    
-    MessageBroadcastModalViewController* view = [[MessageBroadcastModalViewController alloc] initWithNibName:@"MessageBroadcastModalViewController" bundle:nil forRadio:self.radio subscribers:subscribers target:self action:@selector(onModalReturned)];
-    [self.navigationController presentModalViewController:view animated:YES];
-    [view release];
-}
-
-
 
 - (void)onModalReturned
 {

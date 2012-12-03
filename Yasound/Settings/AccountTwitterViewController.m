@@ -101,13 +101,13 @@
     // logout
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
     {
-        [[YasoundSessionManager main] dissociateAccount:LOGIN_TYPE_TWITTER target:self action:@selector(dissociateReturned:info:)];
+        [[YasoundSessionManager main] dissociateAccount:LOGIN_TYPE_TWITTER target:self action:@selector(dissociateReturned:)];
     }
     
     // login
     else
     {
-        [[YasoundSessionManager main] associateAccountTwitter:self action:@selector(associateReturned:info:) automatic:NO];
+        [[YasoundSessionManager main] associateAccountTwitter:self action:@selector(associateReturned:) automatic:NO];
         
         // show a connection alert
         [self.view addSubview:[ConnectionView startWithFrame:self.view.frame]];
@@ -125,49 +125,24 @@
 }
 
 
-
-
-
-- (void)associateReturned:(User*)user info:(NSDictionary*)info
+- (void)associateReturned:(User*)user
 {
-    DLog(@"associateReturned :%@", info);
-    
     // close the connection alert
     [ConnectionView stop];
     
-    BOOL succeeded = NO;
-    
-    NSNumber* nb = [info objectForKey:@"succeeded"];
-    
-    if (nb == nil)
-    {
-        NSDictionary* userData = [info objectForKey:@"userData"];
-        nb = [userData objectForKey:@"succeeded"];
-    }
-    
-    succeeded = [nb boolValue];
-    
+    BOOL succeeded = (user != nil);
     if (!succeeded)
     {
         NSString* title =  NSLocalizedString(@"AccountsView_alert_title", nil);
         title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Twitter"];
         
-        NSDictionary* userData = [info objectForKey:@"userData"];
-        NSInteger statusCode = [[userData objectForKey:@"responseStatusCode"] intValue];
+        NSString* message = NSLocalizedString(@"AccountsView_alert_user_incorrect", nil);
         
-        NSString* message = nil;
-        if (statusCode == 400)
-            message = [info objectForKey:@"response"];
-        else
-            message = NSLocalizedString(@"AccountsView_alert_user_incorrect", nil);
-        
-        //LBDEBUG ICI
-//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [av show];
-//        [av release];  
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];
         return;
     }
-    
     
     // success
     NSString* title =  NSLocalizedString(@"AccountsView_alert_login_success", nil);
@@ -178,38 +153,22 @@
     
 }
 
-
-
-- (void)dissociateReturned:(User*)user info:(NSDictionary*)info
+- (void)dissociateReturned:(User*)user
 {
-    DLog(@"dissociateReturned :%@", info);
-    
     // close the connection alert
     [ConnectionView stop];
     
-    BOOL succeeded = NO;
-    
-    NSNumber* nb = [info objectForKey:@"succeeded"];
-    
-    if (nb == nil)
-    {
-        NSDictionary* userData = [info objectForKey:@"userData"];
-        nb = [userData objectForKey:@"succeeded"];
-    }
-    
-    succeeded = [nb boolValue];
-    
-    if (!succeeded)
+    BOOL success = (user != nil);
+    if (!success)
     {
         NSString* title =  NSLocalizedString(@"AccountsView_alert_title", nil);
         title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Twitter"];
         
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:NSLocalizedString(@"AccountsView_alert_logout_error", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
-        [av release];  
-        return;    
+        [av release];
+        return;
     }
-    
     
     // success
     NSString* title =  NSLocalizedString(@"AccountsView_alert_logout_success", nil);
@@ -217,9 +176,7 @@
     [ActivityAlertView showWithTitle:title closeAfterTimeInterval:2];
     
     [self update];
-    
 }
-
 
 
 #pragma mark - TopBarModalDelegate

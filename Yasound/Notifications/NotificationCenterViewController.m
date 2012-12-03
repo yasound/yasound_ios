@@ -309,7 +309,25 @@
 
 - (void)goToRadio:(NSNumber*)radioID
 {
-  [[YasoundDataProvider main] radioWithId:radioID target:self action:@selector(receivedRadio:withInfo:)];
+    [[YasoundDataProvider main] radioWithId:radioID withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radio with id error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radio with id error: response status %d", status);
+            return;
+        }
+        Radio* newRadio = (Radio*)[response jsonToModel:[Radio class]];
+        if (!newRadio)
+        {
+            DLog(@"radio with id error: cannot parse response: %@", response);
+            return;
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:newRadio];
+    }];
 }
 
 - (void)goToMessageWebView:(NSString*)url
@@ -319,13 +337,13 @@
   [view release];
 }
 
-- (void)receivedRadio:(Radio*)radio withInfo:(NSDictionary*)info
-{
-  if (!radio)
-    return;
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
-}
+//- (void)receivedRadio:(Radio*)radio withInfo:(NSDictionary*)info
+//{
+//  if (!radio)
+//    return;
+//
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -551,102 +551,107 @@
     [ActivityAlertView showWithTitle:NSLocalizedString(@"Settings.submit", nil)];
 
     // empty the cache for radios (to let the change on name / genre appear)
-    [[YasoundDataCache main] clearRadiosAll];
-
-    DLog(@"send update request for radio '%@'", self.radio.name);
-    
-    DLog(@"settings clicked for radio : %@", [self.radio toString]);
-
-    
-    [[YasoundDataProvider main] updateRadio:self.radio target:self action:@selector(onRadioUpdated:info:)];
+    [[YasoundDataCache main] clearRadiosAll];    
+    [[YasoundDataProvider main] updateRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = YES;
+        if (error)
+        {
+            DLog(@"update radio error: %d - %@", error.code, error.domain);
+            success = NO;
+        }
+        else if (status != 204)
+        {
+            DLog(@"update radio error: response status %d", status);
+            success = NO;
+        }
+        
+        if (!success)
+        {
+            [ActivityAlertView close];
+            
+            // backup
+            self.radio = self.radioBackup;
+            [self update];
+            [_tableView reloadData];
+            
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Settings.update.failed.title", nil) message:NSLocalizedString(@"Settings.update.failed.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            return;
+        }
+        
+        //LBDEBUG : TODO :l voir le bug de changement de photo
+        if (_settingsImageChanged)
+        {
+            [self updatePicture];
+        }
+        else
+            [self pictureOk];
+    }];
 }
 
-- (void)onRadioUpdated:(Radio*)radio info:(NSDictionary*)info
+- (void)updatePicture
 {
-    DLog(@"onRadioUpdated '%@', info %@", radio.name, info);
-    
-    NSNumber* nb = [info objectForKey:@"succeeded"];
-    BOOL success = [nb boolValue];
-    
-    if (!success)
-    {
+    [[YasoundDataProvider main] setPicture:_settingsImageImage.image forRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"set radio picture error: %d - %@", error.code, error.domain);
+        }
+        else if (status != 200)
+        {
+            DLog(@"set radio picture error: response status %d", status);
+        }
+        [self pictureOk];
+    }];
+}
+
+- (void)pictureOk
+{
+    // be sure to get updated radio (with correct picture)
+    [[YasoundDataProvider main] radioWithId:self.radio.id withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radio with id error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radio with id error: response status %d", status);
+            return;
+        }
+        Radio* newRadio = (Radio*)[response jsonToModel:[Radio class]];
+        if (!newRadio)
+        {
+            DLog(@"radio with id error: cannot parse response: %@", response);
+            return;
+        }
+        
         [ActivityAlertView close];
-        DLog(@"radio update failed.");
         
-        // backup
-        self.radio = self.radioBackup;
-        [self update];
-        [_tableView reloadData];
+        self.radio = newRadio;
         
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Settings.update.failed.title", nil) message:NSLocalizedString(@"Settings.update.failed.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-        
-        return;
-    }
-    
-    self.radio = radio;
-    
-    
-    //LBDEBUG : TODO :l voir le bug de changement de photo
-    if (_settingsImageChanged)
-    {
+        // clean image cache
         NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
-        DLog(@"receivedUserRadioAfterPictureUpdate BEFORE pictureUrl %@", imageURL);
+        DLog(@"receivedUserRadioAfterPictureUpdate AFTER pictureUrl %@", imageURL);
         
-        [[YasoundDataProvider main] setPicture:_settingsImageImage.image forRadio:self.radio target:self action:@selector(onRadioImageUpdate:info:)];
-    }
-    else
-        [self onRadioImageUpdate:nil info:nil];
-
+        if (imageURL != nil)
+            [[YasoundDataCacheImageManager main] clearItem:imageURL];
+        
+        
+        
+        // if the settings have been called through a "radio creation" process, go directly to the new radio's wall.
+        if (self.createMode)
+        {
+            DLog(@"radio '%@' created. Go to the Wall now.", self.radio.name);
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:self.radio];
+            return;
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REFRESH_GUI object:nil];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
-
-- (void)onRadioImageUpdate:(NSString*)msg info:(NSDictionary*)info
-{
-    DLog(@"onRadioImageUpdate info %@", info);
-    
-  // be sure to get updated radio (with correct picture)
-  [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receivedUserRadioAfterPictureUpdate:withInfo:)];
-}
-
-- (void)receivedUserRadioAfterPictureUpdate:(Radio*)r withInfo:(NSDictionary*)info
-{
-  [ActivityAlertView close];
-    
-    self.radio = r;
-
-    // clean image cache
-    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
-    DLog(@"receivedUserRadioAfterPictureUpdate AFTER pictureUrl %@", imageURL);
-
-    if (imageURL != nil)
-        [[YasoundDataCacheImageManager main] clearItem:imageURL];
-
-
-  
-    // if the settings have been called through a "radio creation" process, go directly to the new radio's wall.
-    if (self.createMode)
-    {
-        DLog(@"radio '%@' created. Go to the Wall now.", self.radio.name);
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:self.radio];
-        return;
-    }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REFRESH_GUI object:nil];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-
-
-
-
-
-
-
-
-
 
 #pragma mark - TopBarSaveOrCancelDelegate
 

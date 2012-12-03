@@ -108,17 +108,64 @@ static AudioStreamer* _gAudioStreamer = nil;
     // to retrieve it when the app starts
     [[UserSettings main] setObject:self.currentRadio.id forKey:USKEYnowPlaying];
 
-    NSString* url = radio.stream_url;
-    
-    // add HD param if it's requested
-    BOOL hdPermission = [[YasoundDataProvider main].user permission:PERM_HD];
-    BOOL hdRequest = [[UserSettings main] boolForKey:USKEYuserWantsHd error:nil];
-  
+    NSString* url = radio.stream_url;    
     NSURL* radiourl = [NSURL URLWithString:url];
   
     if ([YasoundSessionManager main].registered)
     {
-        [[YasoundDataProvider main] streamingAuthenticationTokenWithTarget:self action:@selector(receivedStreamingAuthToken:success:) userData:radiourl];
+        [[YasoundDataProvider main] streamingAuthenticationTokenWithCompletionBlock:^(int status, NSString* response, NSError* error){
+            if (error)
+            {
+                DLog(@"streaming auth token error: %d - %@", error.code, error. domain);
+                return;
+            }
+            if (status != 200)
+            {
+                DLog(@"streaming auth token error: response status %d", status);
+                return;
+            }
+            NSDictionary* dict = [response jsonToDictionary];
+            if (dict == nil)
+            {
+                DLog(@"streaming auth token error: cannot parse response %@", response);
+                return;
+            }
+            NSString* token = [dict valueForKey:@"token"];
+            if (token == nil)
+            {
+                DLog(@"streaming auth token error: bad response %@", response);
+                return;
+            }
+            
+            NSString* paramStr = radiourl.parameterString;
+            NSString* urlStr = radiourl.absoluteString;
+            NSString* finalUrlStr = urlStr;
+            
+            NSLog(@"radio origin '%@'", self.currentRadio.origin);
+            
+            if ([self.currentRadio.origin integerValue] == eRadioOriginYasound)
+            {    
+                if (paramStr)
+                {
+                    finalUrlStr = [finalUrlStr stringByAppendingFormat:@"&token=%@", token];
+                }
+                else
+                {
+                    finalUrlStr = [finalUrlStr stringByAppendingFormat:@"/?token=%@", token];
+                }
+                
+                BOOL hdPermission = [[YasoundDataProvider main].user permission:PERM_HD];
+                BOOL hdRequest = [[UserSettings main] boolForKey:USKEYuserWantsHd error:nil];
+                
+                if (hdPermission && hdRequest)
+                {
+                    finalUrlStr = [finalUrlStr stringByAppendingString:@"&hd=1"];
+                }
+            }
+            NSURL* finalRadioUrl = [NSURL URLWithString:finalUrlStr];
+            DLog(@"radio authenticated url: %@\n", finalRadioUrl);
+            [self startStreamerWithURL:finalRadioUrl];
+        }];
     }
     else
     {
@@ -134,48 +181,6 @@ static AudioStreamer* _gAudioStreamer = nil;
     [_gAudioStreamer start];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_PLAY object:nil];
-}
-
-- (void)receivedStreamingAuthToken:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    NSURL* radioUrl = (NSURL*)req.userData;
-    NSDictionary* responseDict = [req responseDict];
-
-    NSString* paramStr = radioUrl.parameterString;
-    NSString* urlStr = radioUrl.absoluteString;
-    NSString* finalUrlStr = urlStr;
-
-    NSLog(@"radio origin '%@'", self.currentRadio.origin);
-    
-    if ([self.currentRadio.origin integerValue] == eRadioOriginYasound) {
-        
-        NSString* token = [responseDict valueForKey:@"token"];
-        if (!token)
-            return;
-        
-        if (paramStr)
-        {
-            finalUrlStr = [finalUrlStr stringByAppendingFormat:@"&token=%@", token];
-        }
-        else
-        {
-            finalUrlStr = [finalUrlStr stringByAppendingFormat:@"/?token=%@", token];
-        }
-        
-        BOOL hdPermission = [[YasoundDataProvider main].user permission:PERM_HD];
-        BOOL hdRequest = [[UserSettings main] boolForKey:USKEYuserWantsHd error:nil];
-
-        if (hdPermission && hdRequest)
-        {
-            finalUrlStr = [finalUrlStr stringByAppendingString:@"&hd=1"];
-        }
-    }
-    
-    NSURL* finalRadioUrl = [NSURL URLWithString:finalUrlStr];
-    
-    DLog(@"radio authenticated url: %@\n", finalRadioUrl);
-
-    [self startStreamerWithURL:finalRadioUrl];
 }
 
 - (void)stopRadio

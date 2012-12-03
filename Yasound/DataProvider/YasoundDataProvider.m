@@ -210,6 +210,10 @@ static YasoundDataProvider* _main = nil;
       baseUrl = APPDELEGATE.serverURL;
     DLog(@"use PROD SERVER '%@'", baseUrl);
 #endif
+      
+      [YaRequest globalInit];
+      [YaRequest setBaseURL:baseUrl];
+      
     _communicator = [[Communicator alloc] initWithBaseURL:baseUrl];
     _communicator.appCookie = self.appCookie;
     
@@ -230,12 +234,6 @@ static YasoundDataProvider* _main = nil;
   }
   
   return self;
-}
-
-- (int)cancelRequestsForTarget:(id)target
-{
-    int count = [_communicator cancelRequestsForTarget:target];
-    return count;
 }
 
 - (int)cancelRequestsForKey:(NSString*)key
@@ -301,60 +299,80 @@ static YasoundDataProvider* _main = nil;
     _password = nil;
 }
 
-- (void)reloadUserWithUserData:(id)data withTarget:(id)target action:(SEL)selector
+- (void)userLogged
 {
-    if (!self.user)
-        return;
-    NSMutableDictionary* userData = [NSMutableDictionary dictionary];
-    [userData setValue:target forKey:@"clientTarget"];
-    [userData setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
-    [userData setValue:data forKey:@"clientData"];
-    NSNumber* userId = self.user.id;
-    Auth* auth = self.apiKeyAuth;
-    [_communicator getObjectWithClass:[User class] andID:userId notifyTarget:self byCalling:@selector(didReloadUser:withInfo:) withUserData:userData withAuth:auth];
+    [self sendAPNsDeviceTokenWhenLogged];
 }
 
-- (void)didReloadUser:(User*)user withInfo:(NSDictionary*)info
+- (void)reloadUserWithCompletionBlock:(void (^) (User*))block
 {
-    NSDictionary* userData = [info valueForKey:@"userData"];
-    id target = [userData valueForKey:@"clientTarget"];
-    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-    id clientData = [userData valueForKey:@"clientData"];
-    
-    _user = user;
-    
-    if (target && selector)
+    if (self.user == nil || self.user.id == nil)
     {
-        NSMutableDictionary* dict = [NSMutableDictionary dictionary];
-        [dict setValue:clientData forKey:@"userData"];
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:_user withObject:dict];
+        if (block)
+            block(nil);
+        return;
     }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"/api/v1/user/%@/", self.user.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:^(int status, NSString* response, NSError* error){
+        User* u = nil;
+        if (error)
+            u = nil;
+        else if (status != 200)
+            u = nil;
+        else
+            u = (User*)[response jsonToModel:[User class]];
+        
+        _user = u;
+        if (block)
+            block(u);
+    }];
 }
 
 
-//
-// APNs device token
-//
+#pragma mark - APNs device token
+
 - (BOOL)sendAPNsDeviceToken:(NSString*)deviceToken isSandbox:(BOOL)sandbox
 {
-  if (!self.user || !deviceToken)
-    return NO;
-  
-  APNsDeviceToken* token = [[APNsDeviceToken alloc] init];
-  token.device_token = deviceToken;
-  if (sandbox)
-    [token setSandbox];
-  else
-    [token setProduction];
-  
-  NSString* uuid = [[UIDevice currentDevice] uniqueDeviceIdentifier];
-  token.uuid = uuid;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSString* relativeURL = @"/api/v1/ios_push_notif_token";
-  [_communicator postNewObject:token withURL:relativeURL absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
-  return YES;
+    if (!self.user || !deviceToken)
+        return NO;
+    
+    APNsDeviceToken* token = [[APNsDeviceToken alloc] init];
+    token.device_token = deviceToken;
+    if (sandbox)
+        [token setSandbox];
+    else
+        [token setProduction];
+    
+    NSString* uuid = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+    token.uuid = uuid;
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/ios_push_notif_token";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[token JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"send APNs device token error: %d - %@", error.code, error.domain);
+        }
+        else if (status != 200)
+        {
+            DLog(@"send APNs device token error: response status %d", status);
+        }
+    }];
+
+    return YES;
 }
 
 - (void)sendAPNsDeviceTokenWhenLogged
@@ -364,85 +382,97 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-
-- (void)userRadioWithTarget:(id)target action:(SEL)selector andData:(NSDictionary*)userData
+- (void)userRadioWithTargetWithCompletionBlock:(void (^) (Radio*))block
 {
-  if (!_user)
-  {
-    NSDictionary* info = [NSDictionary dictionaryWithObject:[NSError errorWithDomain:@"no logged user" code:1 userInfo:nil] forKey:@"error"];
-    if (target && selector)
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:nil withObject:info];
-    return;
-  }
-  
-  NSArray* params = [NSArray arrayWithObjects:[NSString stringWithFormat:@"creator=%@", _user.id], @"limit=1", nil];
-  Auth* auth = self.apiKeyAuth;
-  
-  NSMutableDictionary* data;
-  if (userData)
-    data = [NSMutableDictionary dictionaryWithDictionary:userData];
-  else
-    data = [NSMutableDictionary dictionary];
-  [data setValue:target forKey:@"clientTarget"];
-  [data setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
+    if (!_user)
+    {
+        if (block)
+            block(nil);
+        return;
+    }
     
-  [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:self byCalling:@selector(didReceiveUserRadios:withInfo:) withUserData:data withAuth:auth];
-}
-
-- (void)userRadioWithTarget:(id)target action:(SEL)selector
-{
-  [self userRadioWithTarget:target action:selector andData:nil];
-}
-
-- (void)didReceiveUserRadios:(NSArray*)radios withInfo:(NSDictionary*)info
-{
-  NSMutableDictionary* finalInfo = [NSMutableDictionary dictionaryWithDictionary:info];
-  
-  Radio* r = nil;
-  if (!radios || [radios count] == 0)
-  {
-      NSString* str = [NSString stringWithFormat:@"no radio for user '%@'", _user.username];
-      DLog(@"didReceiveUserRadios : %@", str);
-      
-    NSError* err = [NSError errorWithDomain:str code:1 userInfo:nil];
-    [finalInfo setValue:err forKey:@"error"];
-  }
-  else
-  {
-    r = [radios objectAtIndex:0];
-  }
-  
-  if (r)
-  {
-    _radio = r;
-  }
-  
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"clientTarget"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/radio/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObjectsAndKeys:[_user.id stringValue], @"creator", @"1", @"limit", nil];
     
-  if (target && selector)
-  {
-      if ([target respondsToSelector:selector])
-          [target performSelector:selector withObject:_radio withObject:finalInfo];
-  }
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:^(int status, NSString* response, NSError* error){
+        Radio* radio = nil;
+        if (error)
+            radio = nil;
+        else if (status != 200)
+            radio = nil;
+        else
+        {
+            Container* radioContainer = [response jsonToContainer:[Radio class]];
+            if (!radioContainer)
+                radio = nil;
+            else if (radioContainer.objects.count == 0)
+                radio = nil;
+            else
+                radio = [radioContainer.objects objectAtIndex:0];
+        }
+        
+        // store radio
+        if (radio)
+            _radio = radio;
+        //send it
+        if (block)
+            block(radio);
+    }];
 }
+
+//- (void)didReceiveUserRadios:(NSArray*)radios withInfo:(NSDictionary*)info
+//{
+//  NSMutableDictionary* finalInfo = [NSMutableDictionary dictionaryWithDictionary:info];
+//  
+//  Radio* r = nil;
+//  if (!radios || [radios count] == 0)
+//  {
+//      NSString* str = [NSString stringWithFormat:@"no radio for user '%@'", _user.username];
+//      DLog(@"didReceiveUserRadios : %@", str);
+//      
+//    NSError* err = [NSError errorWithDomain:str code:1 userInfo:nil];
+//    [finalInfo setValue:err forKey:@"error"];
+//  }
+//  else
+//  {
+//    r = [radios objectAtIndex:0];
+//  }
+//  
+//  if (r)
+//  {
+//    _radio = r;
+//  }
+//  
+//  NSDictionary* userData = [info valueForKey:@"userData"];
+//  id target = [userData valueForKey:@"clientTarget"];
+//  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+//    
+//  if (target && selector)
+//  {
+//      if ([target respondsToSelector:selector])
+//          [target performSelector:selector withObject:_radio withObject:finalInfo];
+//  }
+//}
 
 
 
 - (void)reloadUserRadio
 {
-  [self userRadioWithTarget:self action:@selector(reloadedUserRadio:withInfo:)];
+    [self userRadioWithTargetWithCompletionBlock:nil];
 }
 
-- (void)reloadedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
-{
-  if (!r)
-    return;
-  
-  _radio = r;
-}
+//- (void)reloadedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
+//{
+//  if (!r)
+//    return;
+//  
+//  _radio = r;
+//}
 
 //
 //
@@ -595,8 +625,8 @@ static YasoundDataProvider* _main = nil;
     if ([target respondsToSelector:selector])
       [target performSelector:selector withObject:_user withObject:finalInfo];
 
-    // send Apple Push Notification service device token
-    [self sendAPNsDeviceTokenWhenLogged];
+    
+    [self userLogged];
 }
 
 
@@ -665,211 +695,91 @@ static YasoundDataProvider* _main = nil;
 //  [self userRadioWithTarget:self action:@selector(didReceiveLoggedUserRadio:withInfo:) andData:data];
   
   // send Apple Push Notification service device token
-  [self sendAPNsDeviceTokenWhenLogged];
+  [self userLogged];
+    
 }
 
-- (void)didReceiveLoggedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
+//- (void)didReceiveLoggedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
+//{
+//  NSMutableDictionary* finalInfo = [NSMutableDictionary dictionary];
+//  
+//  NSDictionary* userData = [info valueForKey:@"userData"];
+//  id target = [userData valueForKey:@"finalTarget"];
+//  SEL selector = NSSelectorFromString([userData valueForKey:@"finalSelector"]);
+//  NSDictionary* clientData = [userData valueForKey:@"clientData"];
+//  
+//  if (clientData)
+//    [finalInfo setValue:clientData forKey:@"userData"];
+//  
+//  if (target && selector)
+//  {
+//      if ([target respondsToSelector:selector])
+//          [target performSelector:selector withObject:_user withObject:finalInfo];
+//  }  
+//}
+
+
+
+
+
+
+#pragma mark - Accounts Association
+
+- (void)associateAccountYasound:(NSString*)email password:(NSString*)pword withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  NSMutableDictionary* finalInfo = [NSMutableDictionary dictionary];
-  
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"finalTarget"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"finalSelector"]);
-  NSDictionary* clientData = [userData valueForKey:@"clientData"];
-  
-  if (clientData)
-    [finalInfo setValue:clientData forKey:@"userData"];
-  
-  if (target && selector)
-  {
-      if ([target respondsToSelector:selector])
-          [target performSelector:selector withObject:_user withObject:finalInfo];
-  }  
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/account/association";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObjectsAndKeys:@"yasound", @"account_type", email, @"email", pword, @"password", nil];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-
-
-
-
-
-#pragma mark - Yasound Account Association
-
-
-
-- (void)associateAccountYasound:(NSString*)email password:(NSString*)pword target:(id)target action:(SEL)selector
+- (void)associateAccountFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token  expirationDate:(NSString*)expirationDate email:(NSString*)email withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    Auth* auth = self.apiKeyAuth;
-
-    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/account/association";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObjectsAndKeys:@"facebook", @"account_type", username, @"social_username", uid, @"uid", token, @"token", expirationDate, @"expiration_date", email, @"email", nil];
     
-    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveYasoundAssociation:info:) withUserData:data withAuth:auth];
-
-    [req addPostValue:@"yasound" forKey:@"account_type"];
-    [req addPostValue:email forKey:@"email"];
-    [req addPostValue:pword forKey:@"password"];
-    
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-
-- (void)receiveYasoundAssociation:(NSString*)response info:(NSDictionary*)info
+- (void)associateAccountTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    DLog(@"YasoundDataProvider receiveYasoundAssociation : info %@", info);
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/account/association";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObjectsAndKeys:@"twitter", @"account_type", username, @"social_username", uid, @"uid", token, @"token", tokenSecret, @"token_secret", email, @"email", nil];
     
-    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
-    
-    if (response != nil)
-        [finalInfo setObject:response forKey:@"response"];
-    
-    NSDictionary* userData = [info valueForKey:@"userData"];
-    id target = [userData valueForKey:@"clientTarget"];
-    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-    NSDictionary* clientData = [userData valueForKey:@"clientData"];
-    if (clientData)
-        [finalInfo setValue:clientData forKey:@"userData"];
-    
-    if (target && selector)
-    {
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:finalInfo];
-    }
-}
-
-- (void)receiveFacebookAssociation:(NSString*)response info:(NSDictionary*)info
-{
-    DLog(@"YasoundDataProvider receiveFacebookAssociation : info %@  %@", info, response);
-    
-    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
-    
-    if (response != nil)
-        [finalInfo setObject:response forKey:@"response"];
-    
-    NSDictionary* userData = [info valueForKey:@"userData"];
-    id target = [userData valueForKey:@"clientTarget"];
-    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-    NSDictionary* clientData = [userData valueForKey:@"clientData"];
-    if (clientData)
-        [finalInfo setValue:clientData forKey:@"userData"];
-    
-    if (target && selector)
-    {
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:finalInfo];
-    }
-}
-
-- (void)receiveTwitterAssociation:(NSString*)response info:(NSDictionary*)info
-{
-    DLog(@"YasoundDataProvider receiveTwitterAssociation : info %@", info);
-    
-    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
-    
-    if (response != nil)
-        [finalInfo setObject:response forKey:@"response"];
-    
-    NSDictionary* userData = [info valueForKey:@"userData"];
-    id target = [userData valueForKey:@"clientTarget"];
-    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-    NSDictionary* clientData = [userData valueForKey:@"clientData"];
-    if (clientData)
-        [finalInfo setValue:clientData forKey:@"userData"];
-    
-    if (target && selector)
-    {
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:finalInfo];
-    }
-}
-
-- (void)receiveDissociation:(id)obj info:(NSDictionary*)info
-{
-    DLog(@"YasoundDataProvider receiveDissociation : info %@", info);
-    
-    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
-    
-    NSDictionary* userData = [info valueForKey:@"userData"];
-    id target = [userData valueForKey:@"clientTarget"];
-    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-    NSDictionary* clientData = [userData valueForKey:@"clientData"];
-    if (clientData)
-        [finalInfo setValue:clientData forKey:@"userData"];
-    
-    if (target && selector)
-    {
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:finalInfo];
-    }
-}
-
-
-
-#pragma mark - Facebook Account Association
-
-
-- (void)associateAccountFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token  expirationDate:(NSString*)expirationDate email:(NSString*)email target:(id)target action:(SEL)selector
-{
-    Auth* auth = self.apiKeyAuth;
-    
-    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
-    
-    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveFacebookAssociation:info:) withUserData:data withAuth:auth];
-    
-    [req addPostValue:username forKey:@"social_username"];
-    [req addPostValue:@"facebook" forKey:@"account_type"];
-    [req addPostValue:uid forKey:@"uid"];
-    [req addPostValue:token forKey:@"token"];
-    [req addPostValue:expirationDate forKey:@"expiration_date"];
-    [req addPostValue:email forKey:@"email"];
-    
-    [req startAsynchronous];
-}
-
-
-
-
-
-
-#pragma mark - Twitter Account Association
-
-
-
-- (void)associateAccountTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector
-{
-    Auth* auth = self.apiKeyAuth;
-    
-    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
-    
-    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveTwitterAssociation:info:) withUserData:data withAuth:auth];
-    
-    [req addPostValue:username forKey:@"social_username"];
-    [req addPostValue:@"twitter" forKey:@"account_type"];
-    [req addPostValue:uid forKey:@"uid"];
-    [req addPostValue:token forKey:@"token"];
-    [req addPostValue:tokenSecret forKey:@"token_secret"];
-    [req addPostValue:email forKey:@"email"];
-    
-    //LBDEBUG
-    //DLog(@"associateAccountTwitter '%@'", req.url);
-    
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 
 #pragma mark - Accounts Dissociation
 
-- (void)dissociateAccount:(NSString*)accountTypeIdentifier  target:(id)target action:(SEL)selector
+- (void)dissociateAccount:(NSString*)accountTypeIdentifier withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    Auth* auth = self.apiKeyAuth;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/account/dissociation";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObject:accountTypeIdentifier forKey:@"account_type"];
     
-    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
-    
-    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/dissociation" absolute:NO notifyTarget:self byCalling:@selector(receiveDissociation:info:) withUserData:data withAuth:auth];
-    
-    [req addPostValue:accountTypeIdentifier forKey:@"account_type"];
-    
-    [req startAsynchronous];
-
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
+
 
 
 
@@ -886,109 +796,48 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - requests about radios
 
-- (void)radioForUser:(User*)u withTarget:(id)target action:(SEL)selector
+- (void)radioWithId:(NSNumber*)radioId withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  if (!u)
-  {
-    NSDictionary* info = [NSDictionary dictionaryWithObject:[NSError errorWithDomain:@"no user" code:1 userInfo:nil] forKey:@"error"];
-    if (target && selector)
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:nil withObject:info];
-    return;
-  }
-  
-  NSArray* params = [NSArray arrayWithObject:[NSString stringWithFormat:@"creator=%@", u.id]];
-  Auth* auth = self.apiKeyAuth;
-  NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
-  [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:self byCalling:@selector(didReceiveRadios:withInfo:) withUserData:data withAuth:auth];
-}
-
-- (void)didReceiveRadios:(NSArray*)radios withInfo:(NSDictionary*)info
-{
-  NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] init];
-  
-  Radio* r = nil;
-  if (!radios || [radios count] == 0)
-  {
-    NSError* err = [NSError errorWithDomain:[NSString stringWithFormat:@"no radio for user '%@'", _user.username] code:1 userInfo:nil];
-    [finalInfo setValue:err forKey:@"error"];
-  }
-  else
-  {
-    r = [radios objectAtIndex:0];
-  }
-  
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"clientTarget"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-  
-  if (target && selector)
-  {
-      if ([target respondsToSelector:selector])
-        [target performSelector:selector withObject:r withObject:finalInfo];
-  }
-}
-
-
-
-
-- (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector
-{
-  Auth* auth = self.apiKeyAuth;
-  [_communicator getObjectWithClass:[Radio class] andID:radioId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
-
-//
-// friends
-//
-
-- (void)friendsWithTarget:(id)target action:(SEL)selector
-{
-    [self friendsWithTarget:target action:selector userData:nil];
-}
-
-
-- (void)friendsWithTarget:(id)target action:(SEL)selector userData:(id)userData
-{
-    Auth* auth = self.apiKeyAuth;
-    [_communicator getObjectsWithClass:[User class] withURL:@"/api/v1/friend" absolute:NO notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-}
-
-- (void)friendsForUser:(User*)user withTarget:(id)target action:(SEL)selector
-{
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/user/%@/friends", user.username];
-    conf.urlIsAbsolute = NO;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    conf.key = @"radios";
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"/api/v1/radio/%@/", radioId];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+
+#pragma mark - Friends
+
+- (void)friendsWithCompletionBlock:(YaRequestCompletionBlock)block
+{
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/friend";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+- (void)friendsForUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/user/%@/friends", user.username];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 //
 // radios lists
 //
-
-- (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
-{
-  [self friendsRadiosWithGenre:genre withTarget:target action:selector userData:nil];
-}
-
-
-- (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
-{
-  Auth* auth = self.apiKeyAuth;
-  NSMutableArray* params = [NSMutableArray array];
-  if (genre)
-    [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
-  
-  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/friend_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-}
-
 
 
 - (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
@@ -1016,92 +865,94 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
-- (void)favoriteRadiosForUser:(User*)u withTarget:(id)target action:(SEL)selector
+- (void)favoriteRadiosForUser:(User*)u withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    Auth* auth = self.apiKeyAuth;
-    NSMutableArray* params = [NSMutableArray array];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"/api/v1/user/%@/favorite_radio", u.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    NSString *url = [NSString stringWithFormat:@"/api/v1/user/%@/favorite_radio", u.id];
-    
-    [_communicator getObjectsWithClass:[Radio class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth withKey:@"radios"];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)radiosForUser:(User*)u withTarget:(id)target action:(SEL)selector
+- (void)radiosForUser:(User*)u withCompletionBlock:(YaRequestCompletionBlock)block
 {
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/user/%@/radios", u.username];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.groupKey = @"radios";
     
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/user/%@/radios", u.username];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    
-    conf.callbackTarget = target;
-    conf.key = @"radios";
-    conf.callbackAction = selector;
-    conf.userData = nil;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 
 
-- (void)createRadioWithTarget:(id)target action:(SEL)selector
+- (void)createRadioWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"/api/v1/my_radios/";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/my_radios/";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
     
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    conf.userData = nil;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)deleteRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)deleteRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"/api/v1/my_radios/%@/", radio.uuid];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"DELETE";
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"/api/v1/my_radios/%@/", radio.uuid];
+    config.urlIsAbsolute = NO;
+    config.method = @"DELETE";
+    config.auth = self.apiKeyAuth;
     
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    conf.userData = nil;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 
 
+#pragma mark - search radios
 
-//
-
-
-//
-// search radios
-//
-
-- (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector
+- (void)searchRadios:(NSString*)search withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  Auth* auth = self.apiKeyAuth;
-  NSMutableArray* params = [NSMutableArray array];
-  [params addObject:[NSString stringWithFormat:@"q=%@", search]];
-
-  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/search/radios" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/search/radios";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObject:search forKey:@"q"];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
+#pragma mark - update radio
 
-- (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)updateRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  Auth* auth = self.apiKeyAuth;
-  [_communicator updateObject:radio notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    if (!radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"/api/v1/radio/%@/", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"PUT";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[radio JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 
@@ -1126,24 +977,36 @@ static YasoundDataProvider* _main = nil;
   return newImg;
 }
 
-
-- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  DLog(@"img %f, %f", img.size.width, img.size.height);
-  UIImage* resizedImg = [self resizeImage:img];
-  DLog(@"resized img %f, %f", resizedImg.size.width, resizedImg.size.height);
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/picture", radio.id];
-  [_communicator postData:UIImagePNGRepresentation(resizedImg) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    if (!radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    DLog(@"img %f, %f", img.size.width, img.size.height);
+    UIImage* resizedImg = [self resizeImage:img];
+    DLog(@"resized img %f, %f", resizedImg.size.width, resizedImg.size.height);
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/picture", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.fileData = [NSDictionary dictionaryWithObject:UIImagePNGRepresentation(resizedImg) forKey:@"picture"];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-
-
-- (BOOL)updateUser:(User*)user target:(id)target action:(SEL)selector
+- (BOOL)updateUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (user == nil)
     {
         DLog(@"YasoundDataProvider:updateUser user is nil!");
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return NO;
     }
     
@@ -1152,27 +1015,57 @@ static YasoundDataProvider* _main = nil;
     {
         [self updateUserIsNotNumber:user];
         assert(0);
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return NO;
     }
+
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/user/%@/", user.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"PUT";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[user JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
     
-    
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/user/%@/", user.id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"PUT";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    
-    NSString* stringData = [user JSONRepresentation];
-    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
-    [req addRequestHeader:@"Content-Type" value:@"application/json"];
-    
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
     return YES;
 }
+
+//- (BOOL)updateUser:(User*)user target:(id)target action:(SEL)selector
+//{
+//    if (user == nil)
+//    {
+//        DLog(@"YasoundDataProvider:updateUser user is nil!");
+//        return NO;
+//    }
+//    
+//    //LBDEBUG
+//    if (![user.id isKindOfClass:[NSNumber class]])
+//    {
+//        [self updateUserIsNotNumber:user];
+//        assert(0);
+//        return NO;
+//    }
+//    
+//    
+//    RequestConfig* conf = [[RequestConfig alloc] init];
+//    conf.url = [NSString stringWithFormat:@"api/v1/user/%@/", user.id];
+//    conf.urlIsAbsolute = NO;
+//    conf.auth = self.apiKeyAuth;
+//    conf.method = @"PUT";
+//    conf.callbackTarget = target;
+//    conf.callbackAction = selector;
+//    
+//    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+//    
+//    NSString* stringData = [user JSONRepresentation];
+//    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
+//    [req addRequestHeader:@"Content-Type" value:@"application/json"];
+//    
+//    [req startAsynchronous];
+//    return YES;
+//}
 
 
 - (void)updateUserIsNotNumber:(User*)user {
@@ -1204,464 +1097,337 @@ static YasoundDataProvider* _main = nil;
 //////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////
 
-- (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector
-{
-  UIImage* resizedImg = [self resizeImage:img];
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/picture", user.id];
-  [_communicator postData:UIImagePNGRepresentation(resizedImg) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
+//- (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector
+//{
+//  UIImage* resizedImg = [self resizeImage:img];
+//  Auth* auth = self.apiKeyAuth;
+//  NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/picture", user.id];
+//  [_communicator postData:UIImagePNGRepresentation(resizedImg) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+//}
 
-// get wall events
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector
+- (void)setPicture:(UIImage*)img forUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  if (radio == nil)
-      return nil;
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = radio.id;
-    
-    // it happens once in a crash lytics report, let's to find out why
-    if (radioID == nil) {
-        assert(0);
-        return nil;
+    if (!user || !user.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
     }
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
+    DLog(@"img %f, %f", img.size.width, img.size.height);
+    UIImage* resizedImg = [self resizeImage:img];
+    DLog(@"resized img %f, %f", resizedImg.size.width, resizedImg.size.height);
     
-    NSMutableArray* params = [[NSMutableArray alloc] init];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/user/%@/picture", user.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.fileData = [NSDictionary dictionaryWithObject:UIImagePNGRepresentation(resizedImg) forKey:@"picture"];
     
-  [params addObject:[NSString stringWithFormat:@"limit=%d", pageSize]];
-  ASIHTTPRequest* req = [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-    
-    [params release];
-    
-    return req;
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector
-{
-  if (!radio || !radio.id)
-      return nil;
-  if (!lastEventID)
-      return nil;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
-  NSMutableArray* params = [[NSMutableArray alloc] init];
-  [params addObject:[NSString stringWithFormat:@"id__lt=%@", lastEventID]];
-  [params addObject:[NSString stringWithFormat:@"limit=%d", pageSize]];
-  ASIHTTPRequest* req = [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-    
-    [params release];
-    
-    return req;
-}
+#pragma mark - Wall events
 
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector
+- (NSString*)wallEventsRequestgroupKeyForRadio:(Radio*)radio
 {
     if (!radio || !radio.id)
         return nil;
-    if (!eventID)
-        return nil;
-    
-    Auth* auth = self.apiKeyAuth;
-    NSNumber* radioID = radio.id;
-    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
-    NSMutableArray* params = [[NSMutableArray alloc] init];
-    [params addObject:[NSString stringWithFormat:@"id__gt=%@", eventID]];
-    ASIHTTPRequest* req = [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-    
-    [params release];
-    
-    return req;
-
+    NSString* key = [NSString stringWithFormat:@"%@-%@", @"get_wall_events_group_key", radio.id];
+    return key;
 }
 
-- (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)cancelWallEventsRequestsForRadio:(Radio*)radio
 {
-  if (!message || !_user || !radio)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  
-  WallMessagePost* msg = [[WallMessagePost alloc] init];
-  msg.user = _user;
-  msg.radio = radio;
-  msg.type = @"M";
-  msg.text = message;
-  NSString* relativeURL = @"/api/v1/wall_event";
-  [_communicator postNewObject:msg withURL:relativeURL absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
+    NSString* key = [self wallEventsRequestgroupKeyForRadio:radio];
+    if (!key)
+        return;
+    [YaRequest cancelWithKey:key];
 }
 
+- (void)wallEventsForRadio:(Radio*)radio olderThanEventWithID:(NSNumber*)lastEventID newerThanEventWithID:(NSNumber*)firstEventID pageSizeNumber:(NSNumber*)pageSize withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    if (!radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    if (pageSize)
+        [params setValue:[pageSize stringValue] forKey:@"limit"];
+    if (lastEventID)
+        [params setValue:[lastEventID stringValue] forKey:@"id__lt"];
+    if (firstEventID)
+        [params setValue:[firstEventID stringValue] forKey:@"id__gt"];
+    
+    NSString* groupKey = [self wallEventsRequestgroupKeyForRadio:radio];
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.params = params;
+    if (groupKey)
+        config.groupKey = groupKey;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    [self wallEventsForRadio:radio olderThanEventWithID:nil newerThanEventWithID:nil pageSizeNumber:[NSNumber numberWithInt:pageSize] withCompletionBlock:block];
+}
+
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    [self wallEventsForRadio:radio olderThanEventWithID:lastEventID newerThanEventWithID:nil pageSizeNumber:[NSNumber numberWithInt:pageSize] withCompletionBlock:block];
+}
+
+- (void)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    [self wallEventsForRadio:radio olderThanEventWithID:nil newerThanEventWithID:eventID pageSizeNumber:nil withCompletionBlock:block];
+}
+
+- (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio withCompletionBLock:(YaRequestCompletionBlock)block
+{
+    if (!message || !_user || !radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    WallMessagePost* msg = [[WallMessagePost alloc] init];
+    msg.user = _user;
+    msg.radio = radio;
+    msg.type = @"M";
+    msg.text = message;
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/wall_event";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[msg JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
 
 - (void)moderationDeleteWallMessage:(NSNumber*)messageId
 {
     if (!messageId)
+    {
         return;
+    }
     
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/delete_message/%@", messageId];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"DELETE";
-//    conf.callbackTarget = self;
-//    conf.callbackAction = @selector(didDeleteSong:);
-//    conf.userData = dict;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/delete_message/%@", messageId];
+    config.urlIsAbsolute = NO;
+    config.method = @"DELETE";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:nil];
 }
-
 
 - (void)moderationReportAbuse:(NSNumber*)messageId;
 {
     if (!messageId)
         return;
-
-    Auth* auth = self.apiKeyAuth;
-    NSString* url = [NSString stringWithFormat:@"api/v1/report_message/%@", messageId];
     
-    [_communicator postToURL:url absolute:NO withStringData:nil objectClass:nil notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/report_message/%@", messageId];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:^(int status, NSString* response, NSError* error){
+        DLog(@"response: %@", response);
+    }];
 }
 
 
 
+#pragma mark - connection to the wall
 
-- (void)enterRadioWall:(Radio*)radio
+- (void)enterRadioWall:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  if (!_user || !radio || !radio.id)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/connect", radio.id];
-  [_communicator postToURL:relativeUrl absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];  
-}
-
-- (void)leaveRadioWall:(Radio*)radio
-{
-  if (!_user || !radio || !radio.id)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/disconnect", radio.id];
-  [_communicator postToURL:relativeUrl absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];  
-}
-
-
-- (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector withUserData:(id)userData;
-{
-  if (!radio || !radio.id)
-    return;
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/favorite_user", radioID];
-  NSArray* params = [NSArray arrayWithObject:@"limit=0"];
-  [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-}
-
-
-- (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
-{
-  if (!radio || !radio.id)
-    return;
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/like_user", radioID];
-  NSArray* params = [NSArray arrayWithObject:@"limit=0"];
-  [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
-- (void)currentUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
-{
-  if (radio == nil || !radio.id)
-    return;
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/current_user", radioID];
-  NSArray* params = [NSArray arrayWithObject:@"limit=200"];
-  [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-
-}
-
-- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector
-{
-  [self currentSongForRadio:radio target:target action:selector userData:nil];
-}
-
-- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector userData:(id)userData
-{
-  if (radio == nil || !radio.id)
-    return;
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/current_song", radioID];
-  [_communicator getObjectWithClass:[Song class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-}
-
-- (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector
-{
-  if (!songId)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/song/%@/status", songId];
-  [_communicator getObjectWithClass:[SongStatus class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
-- (void)songWithId:(NSNumber*)songId target:(id)target action:(SEL)selector
-{
-  if (!songId)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  [_communicator getObjectWithClass:[Song class] andID:songId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
-- (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector
-{
-  if (!self.radio || !self.radio.id)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = self.radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/next_songs", radioID];
-  [_communicator getObjectsWithClass:[NextSong class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
-- (void)userWithId:(NSNumber*)userId target:(id)target action:(SEL)selector
-{
-    if (!userId)
+    if (!_user || !radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return;
+    }
+        
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/connect", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
     
-    Auth* auth = self.apiKeyAuth;
-    [_communicator getObjectWithClass:[User class] andID:userId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)userWithUsername:(NSString*)username target:(id)target action:(SEL)selector
+- (void)leaveRadioWall:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    if (!username)
+    if (!_user || !radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return;
+    }
     
-    Auth* auth = self.apiKeyAuth;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/disconnect", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
     
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/public_user/%@", username];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    conf.userData = nil;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
+#pragma radio users
 
-
-- (void)moveNextSong:(NextSong*)nextSong toPosition:(int)position target:(id)target action:(SEL)selector
+- (void)favoriteUsersForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  if (!nextSong || !nextSong.id)
-    return;
-  
-  NSNumber* oldOrder = nextSong.order;
-  Auth* auth = self.apiKeyAuth;
-  int order = position + 1;
-  nextSong.order = [NSNumber numberWithInt:order];
-  NSMutableDictionary* userData = [[NSMutableDictionary alloc] init];
-  [userData setValue:target forKey:@"clientTarget"];
-  [userData setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
-  
-  [_communicator updateObject:nextSong notifyTarget:self byCalling:@selector(didUpdateNextSong:withInfo:) withUserData:userData withAuth:auth];
-}
-
-- (void)didUpdateNextSong:(NextSong*)nextSong withInfo:(NSDictionary*)info
-{
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"clientTarget"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-  
-  NSError* error = [info valueForKey:@"error"];
-  if (error)
-  {
-    if (target && selector)
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:nil withObject:[NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil]];
-    return;
-  }
-  
-  [self nextSongsForUserRadioWithTarget:target action:selector];
-}
-
-- (void)deleteNextSong:(NextSong*)nextSong target:(id)target action:(SEL)selector
-{
-  if (!nextSong || !nextSong.id)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSMutableDictionary* userData = [[NSMutableDictionary alloc] init];
-  [userData setValue:target forKey:@"clientTarget"];
-  [userData setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
-  [_communicator deleteObject:nextSong notifyTarget:self byCalling:@selector(didDeleteNextSong:withInfo:) withUserData:userData withAuth:auth];
-}
-
-- (void)didDeleteNextSong:(NextSong*)nextSong withInfo:(NSDictionary*)info
-{
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"clientTarget"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-  
-  NSError* error = [info valueForKey:@"error"];
-  if (error)
-  {
-    if (target && selector)
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:nil withObject:[NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil]];
-    return;
-  }
-  
-  [self nextSongsForUserRadioWithTarget:target action:selector];
-}
-
-
-- (void)addSongToNextSongs:(Song*)song atPosition:(int)position target:(id)target action:(SEL)selector
-{
-  if (!song || !song.id)
-    return;
-  
-  NextSong* nextSong = [[NextSong alloc] init];
-  nextSong.radio = self.radio;
-  nextSong.song = song;
-  nextSong.order = [NSNumber numberWithInt:position];
-  
-  Auth* auth = self.apiKeyAuth;
-  NSMutableDictionary* userData = [[NSMutableDictionary alloc] init];
-  [userData setValue:target forKey:@"clientTarget"];
-  [userData setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
-  [_communicator postNewObject:nextSong notifyTarget:self byCalling:@selector(didCreateNextSong:withInfo:) withUserData:userData withAuth:auth returnNewObject:NO withAuthForGET:nil];
-}
-
-- (void)didCreateNextSong:(NSString*)location withInfo:(NSDictionary*)info
-{
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"clientTarget"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-  
-  NSError* error = [info valueForKey:@"error"];
-  if (error)
-  {
-    if (target && selector)
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:nil withObject:[NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil]];
-    return;
-  }
-  
-  [self nextSongsForUserRadioWithTarget:target action:selector];
-}
-
-- (void)addSongToUserRadio:(Song*)song
-{
-  if (!song || !song.id || !self.radio || !self.radio.id)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* songID = song.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/favorite_song", self.radio.id];
-  NSString* data = [NSString stringWithFormat:@"{\"id\":\"%@\"}", songID];
-  
-  [_communicator postToURL:relativeUrl absolute:NO withStringData:data objectClass:[Song class] notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
-}
-
-
-- (void)radioUserForRadio:(Radio*)radio target:(id)target action:(SEL)selector
-{
-  if (!radio || !radio.id)
-    return;
-  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/radio_user", radio.id];
-  Auth* auth = self.apiKeyAuth;
-  [_communicator getObjectWithClass:[RadioUser class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
-- (void)setMood:(UserMood)mood forRadio:(Radio*)radio
-{
-  if (!radio || !radio.id)
-    return;
-  
-  NSString* moodStr;
-  switch (mood) 
-  {
-    case eMoodLike:
-      moodStr = @"liker";
-      break;
-      
-    case eMoodNeutral:
-      moodStr = @"neutral";
-      break;
-      
-    case eMoodDislike:
-      moodStr = @"disliker";
-      break;
-      
-    case eMoodInvalid:
-    default:
-      return;
-  }
-  
-  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/%@", radio.id, moodStr];
-  Auth* auth = self.apiKeyAuth;
-  [_communicator postToURL:url absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];
-}
-
-
-- (void)followUser:(User*)user target:(id)target action:(SEL)selector
-{
-    if (!user)
+    if (radio == nil || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return;
+    }
     
-    NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/friends/%@", self.user.username, user.username];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/favorite_user", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObject:@"0" forKey:@"limit"];
     
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = url;
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)unfollowUser:(User*)user target:(id)target action:(SEL)selector
+- (void)currentUsersForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    if (!user)
+    if (radio == nil || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return;
+    }
     
-    NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/friends/%@", self.user.username, user.username];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/current_user", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObject:@"200" forKey:@"limit"];
     
-    DLog(@"unfollow url : %@", url);
-    
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = url;
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"DELETE";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-
-- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite
+- (void)currentSongForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    [self setRadio:radio asFavorite:favorite target:nil action:nil];
+    if (radio == nil || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/current_song", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite target:(id)target action:(SEL)selector
+- (void)userWithId:(NSNumber*)userId withCompletionBlock:(YaRequestCompletionBlock)block
 {
+    if (userId == nil)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/user/%@/", userId];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+- (void)userWithUsername:(NSString*)username withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    if (username == nil)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/public_user/%@", username];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+#pragma mark - follow user
+
+- (void)followUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/user/%@/friends/%@", self.user.username, user.username];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+- (void)unfollowUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/user/%@/friends/%@", self.user.username, user.username];
+    config.urlIsAbsolute = NO;
+    config.method = @"DELETE";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    if (!radio || !radio.id)
+    {
+        block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
     NSString* favoriteStr;
     if (favorite)
         favoriteStr = @"favorite";
@@ -1669,36 +1435,47 @@ static YasoundDataProvider* _main = nil;
         favoriteStr = @"not_favorite";
     
     NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/%@", radio.id, favoriteStr];
-
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = url;
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = url;
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+
 }
 
-- (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType
+- (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  if (!radio || !radio.id)
-    return;
+    if (!radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
     
-    Auth* auth = self.apiKeyAuth;
-    NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/shared", radio.id];
-    NSString* data = [NSString stringWithFormat:@"{\"type\":\"%@\"}", shareType];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/shared", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[NSString stringWithFormat:@"{\"type\":\"%@\"}", shareType] dataUsingEncoding:NSUTF8StringEncoding];
     
-    [_communicator postToURL:url absolute:NO withStringData:data objectClass:nil notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 
-- (void)setMood:(UserMood)mood forSong:(Song*)song
+- (void)setMood:(UserMood)mood forSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block
 {
   if (!song || !song.id)
-    return;
+  {
+      if (block)
+          block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+      return;
+  }
   
   NSString* moodStr;
   switch (mood) 
@@ -1719,89 +1496,73 @@ static YasoundDataProvider* _main = nil;
     default:
       return;
   }
-  
-  NSString* url = [NSString stringWithFormat:@"api/v1/song/%@/%@", song.id, moodStr];
-  Auth* auth = self.apiKeyAuth;
-  [_communicator postToURL:url absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/song/%@/%@", song.id, moodStr];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)songUserForSong:(Song*)song target:(id)target action:(SEL)selector
+- (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio withCompletionBlock:(void (^) (taskID))block
 {
-  if (!song || !song.id)
-    return;
-  NSString* url = [NSString stringWithFormat:@"api/v1/song/%@/song_user", song.id];
-  Auth* auth = self.apiKeyAuth;
-  [_communicator getObjectWithClass:[SongUser class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    if (!radio || !radio.id)
+    {
+        if (block)
+            block(nil);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/playlists_update", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.fileData = [NSDictionary dictionaryWithObject:data forKey:@"playlists_data"];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:^(int status, NSString* response, NSError* error){
+        BOOL success = YES;
+        if (error)
+        {
+            DLog(@"update playlists error: %d - %@", error.code, error.domain);
+            success = NO;
+        }
+        else if (status != 200)
+        {
+            DLog(@"update playlist error: response status %d", status);
+            success = NO;
+        }
+        else if (response == nil)
+        {
+            DLog(@"update playlist error: response nil");
+            success = NO;
+        }
+        if (!success)
+        {
+            if (block)
+                block(nil);
+            return;
+        }
+        taskID task_id = response;
+        if (block)
+            block(task_id);
+    }];
 }
 
-
-- (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)taskStatus:(taskID)task_id withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  if (radio == nil)
-    return;
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/playlists_update", radioID];
-  NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", nil];
-  [_communicator postData:data withKey:@"playlists_data" toURL:relativeUrl absolute:NO notifyTarget:self byCalling:@selector(receiveUpdatePlaylistsResponse:withInfo:) withUserData:userData withAuth:auth];
-  
-}
-
-- (void)receiveUpdatePlaylistsResponse:(NSString*)response withInfo:(NSDictionary*)info
-{
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"target"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"selector"]);
-  NSError* error = [info valueForKey:@"error"];
-  
-  if (error)
-  {
-    if (target && selector)
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:nil withObject:error];
-    return;
-  }
-  
-  taskID task_id = response;
-  if (!task_id)
-  {
-    error = [NSError errorWithDomain:@"can't retrieve task ID from request response" code:1 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:response, @"response", nil]];
-    if (target && selector)
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:nil withObject:error];
-    return;
-  }
-  
-  if (target && selector)
-      if ([target respondsToSelector:selector])
-          [target performSelector:selector withObject:task_id withObject:nil];
-}
-
-- (void)taskStatus:(taskID)task_id target:(id)target action:(SEL)selector
-{
-  if (task_id == nil)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = [NSString stringWithFormat:@"api/v1/task/%@", task_id];
-  NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", nil];
-  [_communicator getURL:url absolute:NO notifyTarget:self byCalling:@selector(receiveTaskStatus:withInfo:) withUserData:userData withAuth:auth];
-}
-
-
-
-- (void)receiveTaskStatus:(NSString*)response withInfo:(NSDictionary*)info
-{
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"target"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"selector"]);
-  NSError* error = [info valueForKey:@"error"];
-  
-  TaskInfo* taskInfo = [TaskInfo taskInfoWithString:response];
-  
-  if (target && selector)
-      if ([target respondsToSelector:selector])
-          [target performSelector:selector withObject:taskInfo withObject:error];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/task/%@", task_id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 
@@ -1827,72 +1588,85 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
-- (void)connectedUsersWithLimitNumber:(NSNumber*)limit skipNumber:(NSNumber*)skip target:(id)target action:(SEL)selector
+
+#pragma mark - users in the app
+
+- (void)connectedUsersWithLimitNumber:(NSNumber*)limit skipNumber:(NSNumber*)skip completionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/connected_users/"];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    NSMutableArray* params = [NSMutableArray array];
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
     if (limit)
-        [params addObject:[NSString stringWithFormat:@"limit=%@", limit]];
+        [params setValue:[limit stringValue] forKey:@"limit"];
     if (skip)
-        [params addObject:[NSString stringWithFormat:@"skip=%@", skip]];
-    if (params.count > 0)
-        conf.params = params;
+        [params setValue:[skip stringValue] forKey:@"skip"];
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
-}
-
-- (void)connectedUsersWithTarget:(id)target action:(SEL)selector
-{
-    [self connectedUsersWithLimitNumber:nil skipNumber:nil target:target action:selector];
-}
-
-- (void)connectedUsersWithLimit:(int)limit skip:(int)skip target:(id)target action:(SEL)selector
-{
-    [self connectedUsersWithLimitNumber:[NSNumber numberWithInt:limit] skipNumber:[NSNumber numberWithInt:skip] target:target action:selector];
-}
-
-
-// 
-// Radio listening stats
-//
-- (void)monthListeningStatsWithTarget:(id)target action:(SEL)selector
-{
-    [self monthListeningStatsForRadio:self.radio withTarget:target action:selector];
-}
-
-- (void)monthListeningStatsForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
-{
-    Auth* auth = self.apiKeyAuth;
-    NSString* url = @"/api/v1/listening_stats/";
-    NSMutableArray* params = [[NSMutableArray alloc] init];
-    [params addObject:[NSString stringWithFormat:@"radio=%@", radio.id]];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/connected_users/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.params = params;
     
-    [_communicator getObjectsWithClass:[RadioListeningStat class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+- (void)connectedUsersWithCompletionBlock:(YaRequestCompletionBlock)block
+{
+    [self connectedUsersWithLimitNumber:nil skipNumber:nil completionBlock:block];
+}
+
+- (void)connectedUsersWithLimit:(int)limit skip:(int)skip completionBlock:(YaRequestCompletionBlock)block
+{
+    [self connectedUsersWithLimitNumber:[NSNumber numberWithInt:limit] skipNumber:[NSNumber numberWithInt:skip] completionBlock:block];
+}
+
+#pragma mark - Radio stats
+
+- (void)monthListeningStatsForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/listening_stats/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.params = [NSDictionary dictionaryWithObject:[radio.id stringValue] forKey:@"radio"];
+    config.auth = self.apiKeyAuth;
+
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+- (void)leaderboardForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v2/radio/%@/leaderboard", radio.uuid];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    [params release];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)leaderboardWithTarget:(id)target action:(SEL)selector
-{
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = @"/api/v1/leaderboard/";
-  [_communicator getObjectsWithClass:[LeaderBoardEntry class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
 
-// Playlists
-- (void)playlistsForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+#pragma mark - playlists
+
+- (void)playlistsForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/all_playlist/", radio.id];
-  Auth* auth = self.apiKeyAuth;
-  [_communicator getObjectsWithClass:[Playlist class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    if (!radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/all_playlist/", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 - (void)songsForPlaylist:(NSInteger)playlistId target:(id)target action:(SEL)selector
@@ -1948,73 +1722,43 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[Song class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
-- (void)updateSong:(Song*)song target:(id)target action:(SEL)selector
+- (void)updateSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    if (!song)
-        return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
-    
-
-    //LBDEBUG
-//    DLog(@"edit url '%@'", url);
-//    if ([url isEqualToString:@"api/v1/edit_song/0"])
-//    {
-//        DLog(@"OK");
-//        DLog(@"song.id  0x%p", song.id);
-//        DLog(@"%d", [song.id integerValue]);
-//        assert(0);
-//    }
-    //////////////
-        
-  [_communicator updateObject:song withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
-- (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector userData:(id)data
-{
-    if (!song)
-        return;
-    
-    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
-    [dict setValue:target forKey:@"clientTarget"];
-    [dict setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
-    [dict setValue:song forKey:@"song"];
-    [dict setValue:data forKey:@"clientData"];
-    
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/delete_song/%@", song.id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"DELETE";
-    conf.callbackTarget = self;
-    conf.callbackAction = @selector(didDeleteSong:);
-    conf.userData = dict;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
-}
-
-- (void)didDeleteSong:(ASIHTTPRequest*)req
-{
-    int resCode = req.responseStatusCode;
-    NSDictionary* response = [req responseDict];
-    BOOL success = resCode == 200 && response != nil;
-    
-    NSDictionary* dict = (NSDictionary*)[req userData];
-    id target = [dict valueForKey:@"clientTarget"];
-    SEL action = NSSelectorFromString([dict valueForKey:@"clientSelector"]);
-    id data = [dict valueForKey:@"clientData"];
-    Song* song = (Song*)[dict valueForKey:@"song"];
-    
-    if (target && action)
+    if (!song || !song.id)
     {
-        NSMutableDictionary* info = [NSMutableDictionary dictionary];
-        [info setValue:data forKey:@"userData"];
-        [info setValue:[NSNumber numberWithBool:success] forKey:@"success"];
-        if ([target respondsToSelector:action])
-            [target performSelector:action withObject:song withObject:info];
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
     }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"PUT";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[song JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+- (void)deleteSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    if (!song || !song.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/delete_song/%@", song.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"DELETE";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 
@@ -2022,8 +1766,6 @@ static YasoundDataProvider* _main = nil;
 {
     if (!radio)
         return;
-    
-    Auth* auth = self.apiKeyAuth;
     
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/programming/", radio.id];
@@ -2207,95 +1949,74 @@ static YasoundDataProvider* _main = nil;
   }
 }
 
+#pragma mark - notifications preferences
 
-- (void)apnsPreferencesWithTarget:(id)target action:(SEL)selector
+- (void)apnsPreferencesWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-  Auth* auth = self.apiKeyAuth;
-  NSString* relativeURL = @"/api/v1/notifications_preferences";
-  [_communicator getObjectWithClass:[APNsPreferences class] withURL:relativeURL absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/notifications_preferences";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)setApnsPreferences:(APNsPreferences*)prefs target:(id)target action:(SEL)selector
+- (void)setApnsPreferences:(APNsPreferences*)prefs withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  Auth* auth = self.apiKeyAuth;
-  NSString* relativeURL = @"/api/v1/set_notifications_preferences";
-  [_communicator postNewObject:prefs withURL:relativeURL absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/set_notifications_preferences";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[prefs JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)facebookSharePreferencesWithTarget:(id)target action:(SEL)selector
+
+#pragma mark - facebook share preferences
+
+- (void)facebookSharePreferencesWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/facebook_share_preferences";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/facebook_share_preferences";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)setFacebookSharePreferences:(FacebookSharePreferences*)prefs target:(id)target action:(SEL)selector
+- (void)setFacebookSharePreferences:(FacebookSharePreferences*)prefs withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/set_facebook_share_preferences";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/set_facebook_share_preferences";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[prefs JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    
-    NSString* stringData = [prefs JSONRepresentation];
-    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
-
-
-#pragma mark - Menu Descriptions
-
-- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector
-{
-    [self menuDescriptionWithTarget:target action:selector userData:nil];
-}
-
-- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector  userData:(id)data
-{    
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/app_menu";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    conf.userData = data;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
-}
-
 
 #pragma mark - User Notifications   
 
-- (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
+- (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/broadcast_message/", radio.uuid];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-
-    ASIFormDataRequest* req =  [_communicator buildFormDataRequestWithConfig:conf];
-//    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-
-    [req addPostValue:message forKey:@"message"];
-
-    [req startAsynchronous];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/broadcast_message/", radio.uuid];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObject:message forKey:@"message"];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 
@@ -2637,105 +2358,82 @@ static YasoundDataProvider* _main = nil;
 
 
 #pragma mark - gifts
-- (void)giftsWithTarget:(id)target action:(SEL)action
+
+- (void)giftsWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/premium/gifts/";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/premium/gifts/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 #pragma mark - promo code
-- (void)activatePromoCode:(NSString*)code withTarget:(id)target action:(SEL)action
+
+- (void)activatePromoCode:(NSString*)code withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/premium/activate_promocode/";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/premium/activate_promocode/";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObject:code forKey:@"code"];
     
-    ASIFormDataRequest* req = [_communicator buildFormDataRequestWithConfig:conf];
-    [req addPostValue:code forKey:@"code"];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 #pragma mark - streaming authentication token
-- (void)streamingAuthenticationTokenWithTarget:(id)target action:(SEL)action userData:(id)userData
-{
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/streamer_auth_token/";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
-    conf.userData = userData;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    
-    [req startAsynchronous];
-}
 
+- (void)streamingAuthenticationTokenWithCompletionBlock:(YaRequestCompletionBlock)block
+{
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/streamer_auth_token/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
 
 
 
 #pragma mark - city suggestions
-- (void)citySuggestionsWithCityName:(NSString*)city target:(id)target action:(SEL)selector
+
+- (void)citySuggestionsWithCityName:(NSString*)city andCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"http://nominatim.openstreetmap.org/search";
-    conf.urlIsAbsolute = YES;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"http://nominatim.openstreetmap.org/search";
+    config.urlIsAbsolute = YES;
+    config.method = @"GET";
+    config.params = [NSDictionary dictionaryWithObjectsAndKeys:@"json", @"format", city, @"q", nil];
+    config.external = YES;
     
-    NSMutableArray* params = [NSMutableArray array];
-    [params addObject:@"format=json"];
-    [params addObject:[NSString stringWithFormat:@"q=%@", city]];
-    conf.params = params;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 #pragma mark - friends invitation
-- (void)inviteContacts:(NSArray*)contacts target:(id)target action:(SEL)action
-{    
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/invite_ios_contacts";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
+
+- (void)inviteContacts:(NSArray*)contacts withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/invite_ios_contacts";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[contacts JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSString* dataStr = [contacts JSONRepresentation];
-  NSLog(@"Contacts:\n%@", dataStr);
-    NSData* data = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req appendPostData:data];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)inviteFacebookFriends:(NSArray*)friends target:(id)target action:(SEL)action
+- (void)inviteFacebookFriends:(NSArray*)friends withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/invite_facebook_friends";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
-    
     NSMutableArray* facebook_ids = [NSMutableArray array];
     for (FacebookFriend* f in friends)
     {
@@ -2744,43 +2442,29 @@ static YasoundDataProvider* _main = nil;
     NSString* dataStr = [facebook_ids JSONRepresentation];
     NSData* data = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req appendPostData:data];
-    [req startAsynchronous];
-}
-
-- (void)inviteTwitterFriendsWithTarget:(id)target action:(SEL)action
-{
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/invite_twitter_friends";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/invite_facebook_friends";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = data;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-
-
-
-
-
-
-- (void)leaderboardForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
+- (void)inviteTwitterFriendsWithTarget:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v2/radio/%@/leaderboard", radio.uuid];
-    conf.urlIsAbsolute = NO;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/invite_twitter_friends";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
+
 
 
 
@@ -2790,84 +2474,6 @@ static YasoundDataProvider* _main = nil;
 // DEPRECATED
 //
 
-
-- (void)radiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector
-{
-    [self radiosWithGenre_deprecated:genre withTarget:target action:selector userData:nil];
-}
-
-- (void)topRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector
-{
-    [self topRadiosWithGenre_deprecated:genre withTarget:target action:selector userData:nil];
-}
-
-- (void)selectedRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector
-{
-    [self selectedRadiosWithGenre_deprecated:genre withTarget:target action:selector userData:nil];
-}
-
-- (void)newRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector
-{
-    [self newRadiosWithGenre_deprecated:genre withTarget:target action:selector userData:nil];
-}
-
-
-- (void)favoriteRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector
-{
-    [self favoriteRadiosWithGenre_deprecated:genre withTarget:target action:selector userData:nil];
-}
-
-//
-- (void)radiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
-{
-    {
-        Auth* auth = self.apiKeyAuth;
-        NSMutableArray* params = [NSMutableArray array];
-        [params addObject:@"ready=true"];
-        if (genre)
-            [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
-        [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-    }
-}
-- (void)topRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
-{
-    Auth* auth = self.apiKeyAuth;
-    NSMutableArray* params = [NSMutableArray array];
-    if (genre)
-        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
-    
-    [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/top_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-}
-
-- (void)selectedRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
-{
-    Auth* auth = self.apiKeyAuth;
-    NSMutableArray* params = [NSMutableArray array];
-    if (genre)
-        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
-    
-    [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/selected_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-}
-
-- (void)newRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
-{
-    Auth* auth = self.apiKeyAuth;
-    NSMutableArray* params = [NSMutableArray arrayWithObject:@"order_by=-created"];
-    [params addObject:@"ready=true"];
-    if (genre)
-        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
-    
-    [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-}
-- (void)favoriteRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
-{
-    Auth* auth = self.apiKeyAuth;
-    NSMutableArray* params = [NSMutableArray array];
-    if (genre)
-        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
-    
-    [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/favorite_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-}
 
 - (void)sendGetRequestWithURL:(NSString*)url
 {

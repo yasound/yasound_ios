@@ -327,8 +327,11 @@
             [self inviteToLogin:@"friends"];
         else
         {
-            [[YasoundDataProvider main] friendsForUser:[YasoundDataProvider main].user withTarget:self action:@selector(friendsReceived:success:)];
             [self showWaitingViewWithText:NSLocalizedString(@"FriendsWaitingText", nil)];
+            
+            [[YasoundDataProvider main] friendsForUser:[YasoundDataProvider main].user withCompletionBlock:^(int status, NSString* response, NSError* error){
+                [self friendsReceivedWithStatus:status response:response error:error];
+            }];
         }
         return;
     }
@@ -423,23 +426,30 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- (void)friendsReceived:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)friendsReceivedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
 {
+    BOOL success = YES;
+    Container* friendsContainer = nil;
+    if (error)
+    {
+        DLog(@"friends error: %d - %@", error.code, error. domain);
+        success = NO;
+    }
+    else if (status != 200)
+    {
+        DLog(@"friends error: response status %d", status);
+        success = NO;
+    }
+    else
+    {
+        friendsContainer = [response jsonToContainer:[User class]];
+        if (!friendsContainer || !friendsContainer.objects)
+        {
+            DLog(@"friends error: cannot parse response %@", response);
+            success = NO;
+        }
+    }
+    
     [self hideWaitingView];
     
     if (!success)
@@ -449,18 +459,14 @@
         return;
     }
     
-    Container* container = [req responseObjectsWithClass:[User class]];
-    self.friends = container.objects;
-    
+    self.friends = friendsContainer.objects;
     DLog(@"received %d friends", self.friends.count);
-
+    
     if (![self.contentsController respondsToSelector:@selector(setFriends:)])
         return;
     
     [self.contentsController setFriends:self.friends];
-
 }
-
 
 
 

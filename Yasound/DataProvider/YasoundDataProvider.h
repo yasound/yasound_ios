@@ -28,6 +28,8 @@
 #import "FacebookSharePreferences.h"
 #import "CityInfo.h"
 #import "Show.h"
+#import "YaRequest.h"
+#import "NSString+JsonLoading.h"
 
 typedef NSString* taskID;
 
@@ -85,159 +87,122 @@ taskStatus stringToStatus(NSString* str);
 
 
 
-- (int)cancelRequestsForTarget:(id)target;
 - (int)cancelRequestsForKey:(NSString *)key;
 
 - (void)resetUser;
-- (void)reloadUserWithUserData:(id)data withTarget:(id)target action:(SEL)selector;
+- (void)reloadUserWithCompletionBlock:(void (^) (User*))block;
 
 - (void)sendGetRequestWithURL:(NSString*)url;
 - (void)sendPostRequestWithURL:(NSString*)url;
 
 
-// login and accounts
+#pragma mark - signup/login
+
 - (void)signup:(NSString*)email password:(NSString*)pwd username:(NSString*)username target:(id)target action:(SEL)selector;
 - (void)login:(NSString*)email password:(NSString*)pwd target:(id)target action:(SEL)selector;
 
 - (void)loginFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token expirationDate:(NSString*)expirationDate email:(NSString*)email target:(id)target action:(SEL)selector;
 - (void)loginTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector;
 
+#pragma mark - Account association/dissociation
+
+- (void)associateAccountYasound:(NSString*)email password:(NSString*)pword withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)associateAccountFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token  expirationDate:(NSString*)expirationDate email:(NSString*)email withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)associateAccountTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email withCompletionBlock:(YaRequestCompletionBlock)block;
+
+- (void)dissociateAccount:(NSString*)accountTypeIdentifier withCompletionBlock:(YaRequestCompletionBlock)block;
+
+#pragma mark - APNs token
+
 - (BOOL)sendAPNsDeviceToken:(NSString*)deviceToken isSandbox:(BOOL)sandbox;
 
-- (void)associateAccountYasound:(NSString*)email password:(NSString*)pword target:(id)target action:(SEL)selector;
-- (void)associateAccountFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token  expirationDate:(NSString*)expirationDate email:(NSString*)email target:(id)target action:(SEL)selector;
-- (void)associateAccountTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector;
-- (void)dissociateAccount:(NSString*)accountTypeIdentifier  target:(id)target action:(SEL)selector;
 
-
-
-- (void)userRadioWithTarget:(id)target action:(SEL)selector;
+- (void)userRadioWithTargetWithCompletionBlock:(void (^) (Radio*))block;
 - (void)reloadUserRadio;
 
-- (void)friendsWithTarget:(id)target action:(SEL)selector;
-- (void)friendsWithTarget:(id)target action:(SEL)selector userData:(id)userData;
+- (void)friendsWithCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)friendsForUser:(User*)user withTarget:(id)target action:(SEL)selector;
+- (void)friendsForUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)radioForUser:(User*)u withTarget:(id)target action:(SEL)selector;
-- (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector;
-- (void)createRadioWithTarget:(id)target action:(SEL)selector;
-- (void)deleteRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)createRadioWithCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)deleteRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)favoriteRadiosForUser:(User*)u withTarget:(id)target action:(SEL)selector;
+- (void)favoriteRadiosForUser:(User*)u withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)radiosForUser:(User*)u withTarget:(id)target action:(SEL)selector;
+- (void)radiosForUser:(User*)u withCompletionBlock:(YaRequestCompletionBlock)block;
 
-// .........................................................................................
-// deprecated methods
-//
-- (void)radiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)topRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)selectedRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)newRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)favoriteRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 
-- (void)radiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-- (void)topRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-- (void)selectedRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-- (void)newRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-- (void)favoriteRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-//
-//..............................................................................................
+- (void)radioWithId:(NSNumber*)radioId withCompletionBlock:(YaRequestCompletionBlock)block;
 
 
 
-
-
-- (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
 
 - (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
 
-- (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector;
+- (void)searchRadios:(NSString*)search withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)radioUserForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-- (void)setMood:(UserMood)mood forRadio:(Radio*)radio;
-- (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType;
+- (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite;
-- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite target:(id)target action:(SEL)selector;
+- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+#pragma  mark - update radio
 
-- (BOOL)updateUser:(User*)user target:(id)target action:(SEL)selector; // - (void)didUpdateUser:(ASIHTTPRequest*)req success:(BOOL)success
-- (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector;
+- (void)updateRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)setMood:(UserMood)mood forSong:(Song*)song;
-- (void)songUserForSong:(Song*)song target:(id)target action:(SEL)selector;
+#pragma  mark - update user
 
-- (void)followUser:(User*)user target:(id)target action:(SEL)selector;
-- (void)unfollowUser:(User*)user target:(id)target action:(SEL)selector;
+- (BOOL)updateUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)setPicture:(UIImage*)img forUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block;
 
+- (void)setMood:(UserMood)mood forSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector withUserData:(id)userData;
-- (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-- (void)currentUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+// follow user
+- (void)followUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)unfollowUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block;
 
+// Radio users
+- (void)favoriteUsersForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)currentUsersForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector;
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector;
-- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector;
+// Wall events
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID withCompletionBlock:(YaRequestCompletionBlock)block;
 
+- (void)cancelWallEventsRequestsForRadio:(Radio*)radio;
 
-- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector userData:(id)userData;
+- (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio withCompletionBLock:(YaRequestCompletionBlock)block;
 
-
-- (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector;
-- (void)songWithId:(NSNumber*)songId target:(id)target action:(SEL)selector;
-
-
-- (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)moderationDeleteWallMessage:(NSNumber*)messageId;
 - (void)moderationReportAbuse:(NSNumber*)messageId;
 
+- (void)currentSongForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)addSongToUserRadio:(Song*)song;
+- (void)userWithId:(NSNumber*)userId withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)userWithUsername:(NSString*)username withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector;
-
-- (void)userWithId:(NSNumber*)userId target:(id)target action:(SEL)selector;
-- (void)userWithUsername:(NSString*)username target:(id)target action:(SEL)selector;
-
-//
-//  NextSong editing
-//
-//  all the callback functions for these actions give an array with the NextSong objects with the right 'order' values
-//  since an action on one object affects the 'order' values of all the others
-//
-- (void)moveNextSong:(NextSong*)nextSong toPosition:(int)position target:(id)target action:(SEL)selector;   // didMoveNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
-- (void)deleteNextSong:(NextSong*)nextSong target:(id)target action:(SEL)selector;                          // didDeleteNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
-- (void)addSongToNextSongs:(Song*)song atPosition:(int)position target:(id)target action:(SEL)selector;     // didAddNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
-
-
-- (void)enterRadioWall:(Radio*)radio;
-- (void)leaveRadioWall:(Radio*)radio;
+// Connection to the wall
+- (void)enterRadioWall:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)leaveRadioWall:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (NSURL*)urlForPicture:(NSString*)picturePath;
 - (NSURL*)urlForSongCover:(Song*)song;
 
-- (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio withCompletionBlock:(void (^) (taskID))block;
 
 - (void)radioRecommendationsWithArtistList:(NSData*)data genre:(NSString*)genre target:(id)target action:(SEL)selector userData:(id)userData; // artist list is built with PlaylistMoulinor buildArtistDataBinary: compressed: target: action:
 // returns concatenation of 'selection' and 'similar radios'
 
-- (void)taskStatus:(taskID)task_id target:(id)target action:(SEL)selector;
+- (void)taskStatus:(taskID)task_id withCompletionBlock:(YaRequestCompletionBlock)block;
 
 
-- (void)monthListeningStatsWithTarget:(id)target action:(SEL)selector;
-- (void)monthListeningStatsForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
-- (void)leaderboardWithTarget:(id)target action:(SEL)selector;
+- (void)monthListeningStatsForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)leaderboardForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 
 // Playlist
-- (void)playlistsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)playlistsForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)songsForPlaylist:(NSInteger)playlistId target:(id)target action:(SEL)selector;
 
@@ -246,11 +211,8 @@ taskStatus stringToStatus(NSString* str);
 // Get matched songs for a playlist. Returns a NSArray of Song objects
 - (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector;  // didReceiveMatchedSongs:(NSArray*)matched_songs info:(NSDictionary*)info
 
-- (void)updateSong:(Song*)song target:(id)target action:(SEL)selector; // didUpdateSong:(Song*)song info:(NSDictionary*)info
-- (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector userData:(id)data;    // didDeleteSong:(Song*)song info:(NSDictionary*)info
-                                                                                            // info dictionary contains: 
-                                                                                            // - data for key @"userData"
-                                                                                            // - a NSNumber (boolean) for key @"success"
+- (void)updateSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)deleteSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)deleteAllSongsFromRadio:(Radio*)radio target:(id)target action:(SEL)action;
 - (void)deleteArtist:(NSString*)artist fromRadio:(Radio*)radio target:(id)target action:(SEL)action;
@@ -267,23 +229,19 @@ taskStatus stringToStatus(NSString* str);
 
 
 // APNs (Apple Push Notification service) preferences
-- (void)apnsPreferencesWithTarget:(id)target action:(SEL)selector;
-- (void)setApnsPreferences:(APNsPreferences*)prefs target:(id)target action:(SEL)selector;
+- (void)apnsPreferencesWithCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)setApnsPreferences:(APNsPreferences*)prefs withCompletionBlock:(YaRequestCompletionBlock)block;
 
 // Facebook share preferences
-- (void)facebookSharePreferencesWithTarget:(id)target action:(SEL)selector; // didReceivePrefs:(ASIHTTPRequest*)req success:(BOOL)success
-- (void)setFacebookSharePreferences:(FacebookSharePreferences*)prefs target:(id)target action:(SEL)selector; // didSetPrefs:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)facebookSharePreferencesWithCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)setFacebookSharePreferences:(FacebookSharePreferences*)prefs withCompletionBlock:(YaRequestCompletionBlock)block;
 
-// Menu description
-- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector; // didReceiveMenu:(ASIHTTPRequest*)req
-- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector userData:(id)data; // didReceiveMenu:(ASIHTTPRequest*)req
-
-
-- (void)connectedUsersWithTarget:(id)target action:(SEL)selector; // users connected to the app ordered by distance from the sender
-- (void)connectedUsersWithLimit:(int)limit skip:(int)skip target:(id)target action:(SEL)selector;
+// users in the app
+- (void)connectedUsersWithCompletionBlock:(YaRequestCompletionBlock)block; // users connected to the app ordered by distance from the sender
+- (void)connectedUsersWithLimit:(int)limit skip:(int)skip completionBlock:(YaRequestCompletionBlock)block;
 
 // User Notifications
-- (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
+- (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)userNotificationsWithTarget:(id)target action:(SEL)selector limit:(NSInteger)limit offset:(NSInteger)offset;
 - (void)userNotificationWithId:(NSString*)notifId target:(id)target action:(SEL)selector;
@@ -316,30 +274,22 @@ taskStatus stringToStatus(NSString* str);
 - (void)servicesWithTarget:(id)target action:(SEL)action;
 
 // gifts
-- (void)giftsWithTarget:(id)target action:(SEL)action;
+- (void)giftsWithCompletionBlock:(YaRequestCompletionBlock)block;
 
 // promo code
-- (void)activatePromoCode:(NSString*)code withTarget:(id)target action:(SEL)action;
+- (void)activatePromoCode:(NSString*)code withCompletionBlock:(YaRequestCompletionBlock)block;
 
 // streamer authentication
-- (void)streamingAuthenticationTokenWithTarget:(id)target action:(SEL)action userData:(id)userData;
+- (void)streamingAuthenticationTokenWithCompletionBlock:(YaRequestCompletionBlock)block;
 
 // invite friends
-- (void)inviteContacts:(NSArray*)contacts target:(id)target action:(SEL)action;
-- (void)inviteFacebookFriends:(NSArray*)friends target:(id)target action:(SEL)action;
-- (void)inviteTwitterFriendsWithTarget:(id)target action:(SEL)action;
+- (void)inviteContacts:(NSArray*)contacts withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)inviteFacebookFriends:(NSArray*)friends withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)inviteTwitterFriendsWithTarget:(YaRequestCompletionBlock)block;
 
 
 - (void)testV2;
 
-- (void)citySuggestionsWithCityName:(NSString*)city target:(id)target action:(SEL)selector;
-
-
-
-//
-// Server API v2
-//
-
-- (void)leaderboardForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
+- (void)citySuggestionsWithCityName:(NSString*)city andCompletionBlock:(YaRequestCompletionBlock)block;
 
 @end

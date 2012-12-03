@@ -437,7 +437,7 @@ static YasoundSessionManager* _main = nil;
         
         [self associateClean];
 
-        [_target performSelector:_action withObject:nil withObject:nil];
+        [_target performSelector:_action withObject:nil];
         return;
     }
     
@@ -449,7 +449,7 @@ static YasoundSessionManager* _main = nil;
         else
         {
             [self associateClean];
-            [_target performSelector:_action withObject:nil withObject:nil];
+            [_target performSelector:_action withObject:nil];
         }
     }
     else if (self.associatingTwitter)
@@ -459,7 +459,7 @@ static YasoundSessionManager* _main = nil;
         else
         {
             [self associateClean];
-            [_target performSelector:_action withObject:nil withObject:nil];
+            [_target performSelector:_action withObject:nil];
         }
     }
     
@@ -601,7 +601,10 @@ static YasoundSessionManager* _main = nil;
         NSString* expirationDate = [[UserSettings main] objectForKey:USKEYfacebookExpirationDateKey];
         
         // request to yasound server
-        [[YasoundDataProvider main] associateAccountFacebook:username type:LOGIN_TYPE_FACEBOOK uid:uid token:token expirationDate:expirationDate email:email target:self action:@selector(associatingSocialValidated:)];
+        [[YasoundDataProvider main] associateAccountFacebook:username type:LOGIN_TYPE_FACEBOOK uid:uid token:token expirationDate:expirationDate email:email withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self socialAssociationReturnedWithStatus:status response:response error:error];
+        }];
+        
     }
     
     
@@ -612,8 +615,11 @@ static YasoundSessionManager* _main = nil;
 
         NSString* tokenSecret = [dico valueForKey:DATA_FIELD_TOKEN_SECRET];
 
-        // request to yasound server
-        [[YasoundDataProvider main] associateAccountTwitter:username  type:LOGIN_TYPE_TWITTER uid:uid token:token tokenSecret:tokenSecret email:email target:self action:@selector(associatingSocialValidated:)];
+        // request to yasound server        
+        [[YasoundDataProvider main] associateAccountTwitter:username type:LOGIN_TYPE_TWITTER uid:uid token:token tokenSecret:tokenSecret email:email withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self socialAssociationReturnedWithStatus:status response:response error:error];
+        }];
+        
     }
     
     //
@@ -663,23 +669,6 @@ static YasoundSessionManager* _main = nil;
     if ((_postTarget != nil) && (_postAction != nil))
         [_postTarget performSelector:_postAction withObject:[NSNumber numberWithBool:YES]];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -736,7 +725,15 @@ static YasoundSessionManager* _main = nil;
     self.associatingYasound = YES;
     
     // tell the server
-    [[YasoundDataProvider main] associateAccountYasound:email password:pword target:self action:@selector(associateYasoundRequestDidReturn:)];
+    [[YasoundDataProvider main] associateAccountYasound:email password:pword withCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = (error != nil) && (status == 20);
+        if (!success)
+            DLog(@"yasound association failed");
+        
+        [[YasoundDataProvider main] reloadUserWithCompletionBlock:^(User* u){
+            [self userReloaded:u];
+        }];
+    }];
 
 }
 
@@ -793,7 +790,25 @@ static YasoundSessionManager* _main = nil;
     else if ([accountTypeIdentifier isEqualToString:LOGIN_TYPE_YASOUND])
         self.associatingYasound = YES;
     
-    [[YasoundDataProvider main] dissociateAccount:accountTypeIdentifier  target:self action:@selector(dissociateRequestDidReturn:)];
+    [[YasoundDataProvider main] dissociateAccount:accountTypeIdentifier withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (self.associatingFacebook)
+        {
+            [[FacebookSessionManager facebook] invalidConnexion];
+        }
+        else if (self.associatingTwitter)
+        {
+            [[TwitterSessionManager twitter] invalidConnexion];
+        }
+        else if (self.associatingYasound)
+        {
+        }
+        
+        // reload the current user to update the associated accounts info
+        [[YasoundDataProvider main] reloadUserWithCompletionBlock:^(User* u){
+            [self userReloaded:u];
+        }];
+        
+    }];
 }
 
 
@@ -803,60 +818,12 @@ static YasoundSessionManager* _main = nil;
 
 #pragma mark - YasoundDataProvider actions
 
-
-- (void)dissociateRequestDidReturn:(NSDictionary*)info
+- (void)userReloaded:(User*)u
 {
-    DLog(@"dissociateRequestDidReturn :%@", info);
-    
-    
-    if (self.associatingFacebook)
-    {
-        [[FacebookSessionManager facebook] invalidConnexion];
-    }
-    else if (self.associatingTwitter)
-    {
-        [[TwitterSessionManager twitter] invalidConnexion];
-    }
-    else if (self.associatingYasound)
-    {
-    }
-    
-    DLog(@"call reloadUserWithUserData");
-    // reload the current user to update the associated accounts info
-    [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];
-}
-
-
-
-
-
-
-- (void) associateYasoundRequestDidReturn:(NSDictionary*)info
-{
-    DLog(@"associateYasoundRequestDidReturnd :%@", info);
-    
-    BOOL succeeded = NO;
-    
-    NSNumber* nb = [info objectForKey:@"succeeded"];
-    succeeded = [nb boolValue];
-    
-    DLog(@"call reloadUserWithUserData");
-    // reload the current user to update the associated accounts info
-    [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];
-}
-
-
-
-- (void)onUserReloaded:(User*)user info:(NSDictionary*)info
-{
-    NSDictionary* userInfo = [info objectForKey:@"userData"];
-    
-    [self writeUserIdentity:user];
-    
+    [self writeUserIdentity:u];
     // callback
-    [_target performSelector:_action withObject:user withObject:info];    
+    [_target performSelector:_action withObject:u];
 }
-
 
 
 - (void)exportUserData:(User*)user
@@ -1073,15 +1040,9 @@ static YasoundSessionManager* _main = nil;
 
 #pragma mark - YasoundDataProvider actions
 
-- (void) associatingSocialValidated:(NSDictionary*)info
+- (void)socialAssociationReturnedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
 {
-    DLog(@"associatingSocialValidated returned : %@", info);
-    
-    BOOL succeeded = NO;
-    
-    NSNumber* nb = [info objectForKey:@"succeeded"];
-    succeeded = [nb boolValue];
-    
+    BOOL succeeded = (error == nil) && (status == 200);
     
     if (self.associatingFacebook)
     {
@@ -1093,29 +1054,13 @@ static YasoundSessionManager* _main = nil;
         if (!succeeded)
             [[TwitterSessionManager twitter] invalidConnexion];
     }
-    
-    [self associateClean];  
-    
-    DLog(@"call reloadUserWithUserData");
-    // reload the current user to update the associated accounts info
-    [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];  
-}
-
-
-         
- - (void) dissociatingSocialValidated:(NSDictionary*)info
-{
-    DLog(@"dissociatingSocialValidated returned : %@", info);
-    
     [self associateClean];
     
-    DLog(@"call reloadUserWithUserData");
     // reload the current user to update the associated accounts info
-    [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];
+    [[YasoundDataProvider main] reloadUserWithCompletionBlock:^(User* u){
+        [self userReloaded:u];
+    }];
 }
-        
-                 
-
 
 
 #pragma mark - Account Manager routines

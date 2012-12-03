@@ -11,6 +11,7 @@
 #import "DateAdditions.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
+#import "NSString+JsonLoading.h"
 
 
 #define SECTION_STATS 0
@@ -80,9 +81,9 @@
 {
     [super viewDidLoad];
 
-    [[YasoundDataProvider main] monthListeningStatsForRadio:self.radio withTarget:self action:@selector(receivedMonthStats:withInfo:)];
-    [[YasoundDataProvider main] leaderboardForRadio:self.radio withTarget:self action:@selector(receivedLeaderBoard:success:)];
-    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receivedRadio:withInfo:)];
+    [self updateMonthListeningStats];
+    [self updateLeaderBoard];
+    [self updateRadio];
 }
 
 - (void)viewDidUnload
@@ -98,63 +99,117 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)receivedRadio:(Radio*)r withInfo:(NSDictionary*)info
+- (void)updateMonthListeningStats
 {
-  if (!r)
-    return;
-    
-    UITableViewCell* cell = [_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ROW_STATS_LISTENERS inSection:SECTION_STATS]];
-    NSNumber* listeners = r.nb_current_users;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", listeners];
+    [[YasoundDataProvider main] monthListeningStatsForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"month listening stats error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"month listening stats error: response status %d", status);
+            return;
+        }
+        Container* stats = [response jsonToContainer:[RadioListeningStat class]];
+        if (!stats)
+        {
+            DLog(@"month listening stats error: cannot parse response %@", response);
+            return;
+        }
+        if (stats.objects.count == 0)
+        {
+            DLog(@"month listening stats error: 0 stat in response %@", response);
+            return;
+        }
+        NSMutableArray* dates = [[NSMutableArray alloc] init];
+        NSMutableArray* connections = [[NSMutableArray alloc] init];
+        for (RadioListeningStat* stat in stats.objects)
+        {
+            [dates addObject:stat.date];
+            [connections addObject:stat.connections];
+        }
+        
+        NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        
+        int nbStatsRequired = RADIO_LISTENING_STAT_NB_DAYS;
+        
+        while (dates.count < nbStatsRequired)
+        {
+            NSDate* firstDate = [dates objectAtIndex:0];
+            NSDateComponents* offsetComponents = [[NSDateComponents alloc] init];
+            [offsetComponents setDay:-1]; // the day before
+            NSDate* d = [gregorian dateByAddingComponents:offsetComponents toDate:firstDate options:0];
+            [offsetComponents release];
+            
+            [dates insertObject:d atIndex:0];
+            [connections insertObject:[NSNumber numberWithInt:0] atIndex:0];
+        }
+        
+        [gregorian release];
+        
+        
+        _monthGraphView.dates = dates;
+        _monthGraphView.values = connections;
+        [_monthGraphView reloadData];
+    }];
 }
 
-
-- (void)receivedMonthStats:(NSArray*)stats withInfo:(NSDictionary*)info
+- (void)updateLeaderBoard
 {
-  if (!stats || stats.count == 0)
-    return;
-  
-  NSMutableArray* dates = [[NSMutableArray alloc] init];
-  NSMutableArray* connections = [[NSMutableArray alloc] init];
-  for (RadioListeningStat* stat in stats) 
-  {
-    [dates addObject:stat.date];
-    [connections addObject:stat.connections];
-  }
-  
-  NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-  
-  int nbStatsRequired = RADIO_LISTENING_STAT_NB_DAYS;
-  
-  while (dates.count < nbStatsRequired) 
-  {
-    NSDate* firstDate = [dates objectAtIndex:0];
-    NSDateComponents* offsetComponents = [[NSDateComponents alloc] init];
-    [offsetComponents setDay:-1]; // the day before
-    NSDate* d = [gregorian dateByAddingComponents:offsetComponents toDate:firstDate options:0];
-    [offsetComponents release];
-    
-    [dates insertObject:d atIndex:0];
-    [connections insertObject:[NSNumber numberWithInt:0] atIndex:0];
-  }
-  
-  [gregorian release];
-  
-  
-  _monthGraphView.dates = dates;
-  _monthGraphView.values = connections;
-  [_monthGraphView reloadData];
+    [[YasoundDataProvider main] leaderboardForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"leaderboard error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"leaderboard error: response status %d", status);
+            return;
+        }
+        Container* leaderboardContainer = [response jsonToContainer:[LeaderBoardEntry class]];
+        if (!leaderboardContainer)
+        {
+            DLog(@"leaderboard error: cannot parse response %@", response);
+            return;
+        }
+        if (leaderboardContainer.objects.count == 0)
+        {
+            DLog(@"leaderboard error: 0 leaderboard entry in response %@", response);
+            return;
+        }
+        self.leaderboard = leaderboardContainer.objects;
+        [_tableView reloadData];
+    }];
 }
 
-
-- (void)receivedLeaderBoard:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)updateRadio
 {
-    Container* leaderboardContainer = [req responseObjectsWithClass:[LeaderBoardEntry class]];
-    if (!leaderboardContainer || leaderboardContainer.objects == nil || leaderboardContainer.objects.count == 0)
-        return;
-    
-    self.leaderboard = leaderboardContainer.objects;
-    [_tableView reloadData];
+    [[YasoundDataProvider main] radioWithId:self.radio.id withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"radio with id error: %d - %@", error.code, error. domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"radio with id error: response status %d", status);
+            return;
+        }
+        Radio* newRadio = (Radio*)[response jsonToModel:[Radio class]];
+        if (!newRadio)
+        {
+            DLog(@"radio with id error: cannot parse response: %@", response);
+            return;
+        }
+        self.radio = newRadio;
+        UITableViewCell* cell = [_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ROW_STATS_LISTENERS inSection:SECTION_STATS]];
+        NSNumber* listeners = self.radio.nb_current_users;
+        NSString* str = [NSString stringWithFormat:@"%@", listeners];
+        cell.detailTextLabel.text = str;
+    }];
 }
 
 
@@ -302,7 +357,7 @@
             cell.detailTextLabel.backgroundColor = [UIColor clearColor];
         }
 
-        NSNumber* listeners = [YasoundDataProvider main].radio.nb_current_users;
+        NSNumber* listeners = self.radio.nb_current_users;
         cell.textLabel.text = NSLocalizedString(@"StatsView_listeners_label", nil);
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", listeners];
 
