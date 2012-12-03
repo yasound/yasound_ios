@@ -214,11 +214,6 @@ taskStatus stringToStatus(NSString* str);
 - (void)updateSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
 - (void)deleteSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector userData:(id)data;    // didDeleteSong:(Song*)song info:(NSDictionary*)info
-                                                                                            // info dictionary contains: 
-                                                                                            // - data for key @"userData"
-                                                                                            // - a NSNumber (boolean) for key @"success"
-
 - (void)deleteAllSongsFromRadio:(Radio*)radio target:(id)target action:(SEL)action;
 - (void)deleteArtist:(NSString*)artist fromRadio:(Radio*)radio target:(id)target action:(SEL)action;
 - (void)deleteAlbum:(NSString*)album fromRadio:(Radio*)radio target:(id)target action:(SEL)action;

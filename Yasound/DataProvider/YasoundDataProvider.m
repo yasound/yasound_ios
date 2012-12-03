@@ -1761,59 +1761,11 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector userData:(id)data
-{
-    if (!song)
-        return;
-    
-    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
-    [dict setValue:target forKey:@"clientTarget"];
-    [dict setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
-    [dict setValue:song forKey:@"song"];
-    [dict setValue:data forKey:@"clientData"];
-    
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/delete_song/%@", song.id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"DELETE";
-    conf.callbackTarget = self;
-    conf.callbackAction = @selector(didDeleteSong:);
-    conf.userData = dict;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
-}
-
-- (void)didDeleteSong:(ASIHTTPRequest*)req
-{
-    int resCode = req.responseStatusCode;
-    NSDictionary* response = [req responseDict];
-    BOOL success = resCode == 200 && response != nil;
-    
-    NSDictionary* dict = (NSDictionary*)[req userData];
-    id target = [dict valueForKey:@"clientTarget"];
-    SEL action = NSSelectorFromString([dict valueForKey:@"clientSelector"]);
-    id data = [dict valueForKey:@"clientData"];
-    Song* song = (Song*)[dict valueForKey:@"song"];
-    
-    if (target && action)
-    {
-        NSMutableDictionary* info = [NSMutableDictionary dictionary];
-        [info setValue:data forKey:@"userData"];
-        [info setValue:[NSNumber numberWithBool:success] forKey:@"success"];
-        if ([target respondsToSelector:action])
-            [target performSelector:action withObject:song withObject:info];
-    }
-}
-
 
 - (void)deleteAllSongsFromRadio:(Radio*)radio target:(id)target action:(SEL)action
 {
     if (!radio)
         return;
-    
-    Auth* auth = self.apiKeyAuth;
     
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/programming/", radio.id];
