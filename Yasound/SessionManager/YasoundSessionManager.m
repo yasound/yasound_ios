@@ -846,7 +846,6 @@ static YasoundSessionManager* _main = nil;
 }
 
 
-
 - (void)onUserReloaded:(User*)user info:(NSDictionary*)info
 {
     NSDictionary* userInfo = [info objectForKey:@"userData"];

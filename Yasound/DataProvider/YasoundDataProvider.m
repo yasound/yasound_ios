@@ -236,12 +236,6 @@ static YasoundDataProvider* _main = nil;
   return self;
 }
 
-- (int)cancelRequestsForTarget:(id)target
-{
-    int count = [_communicator cancelRequestsForTarget:target];
-    return count;
-}
-
 - (int)cancelRequestsForKey:(NSString*)key
 {
     int count = [_communicator cancelRequestsForKey:key];
@@ -334,6 +328,37 @@ static YasoundDataProvider* _main = nil;
         if ([target respondsToSelector:selector])
             [target performSelector:selector withObject:_user withObject:dict];
     }
+}
+
+- (void)reloadUserWithCompletionBlock:(void (^) (User*))block
+{
+    if (self.user == nil || self.user.id == nil)
+    {
+        if (block)
+            block(nil);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"/api/v1/user/%@/", self.user.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:^(int status, NSString* response, NSError* error){
+        User* u = nil;
+        if (error)
+            u = nil;
+        else if (status != 200)
+            u = nil;
+        else
+            u = (User*)[response jsonToModel:[User class]];
+        
+        _user = u;
+        if (block)
+            block(u);
+    }];
 }
 
 

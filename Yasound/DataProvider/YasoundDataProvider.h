@@ -87,11 +87,11 @@ taskStatus stringToStatus(NSString* str);
 
 
 
-- (int)cancelRequestsForTarget:(id)target;
 - (int)cancelRequestsForKey:(NSString *)key;
 
 - (void)resetUser;
 - (void)reloadUserWithUserData:(id)data withTarget:(id)target action:(SEL)selector;
+- (void)reloadUserWithCompletionBlock:(void (^) (User*))block;
 
 - (void)sendGetRequestWithURL:(NSString*)url;
 - (void)sendPostRequestWithURL:(NSString*)url;

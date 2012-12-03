@@ -603,7 +603,12 @@ enum SectionBio
     
 
     // reload user
-    [[YasoundDataProvider main] reloadUserWithUserData:nil withTarget:self action:@selector(didReloadUser:info:)];
+    [[YasoundDataProvider main] reloadUserWithCompletionBlock:^(User* u){
+        self.user = u;
+        [ActivityAlertView close];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROFIL_UPDATED object:nil];
+        [APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
+    }];
 }
 
 - (void)didReloadUser:(User*)u info:(id)info

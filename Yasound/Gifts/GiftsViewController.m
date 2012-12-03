@@ -61,17 +61,14 @@
     if (registered)
     {
         // reload user to have permissions up to date
-        [[YasoundDataProvider main] reloadUserWithUserData:nil withTarget:self action:@selector(onUserReloaded:info:)];
+        [[YasoundDataProvider main] reloadUserWithCompletionBlock:^(User* u){
+            [self resetWithUserRegistered:YES];
+        }];
     }
     else
     {
         [self resetWithUserRegistered:NO];
     }
-}
-
-- (void) onUserReloaded:(User*)u info:(NSDictionary*)info
-{
-    [self resetWithUserRegistered:YES];
 }
 
 - (void)resetWithUserRegistered:(BOOL)registered
@@ -263,7 +260,7 @@
         if ([ok boolValue])
         {
             [self reloadHdExpirationDate];
-            [[YasoundDataProvider main] reloadUserWithUserData:nil withTarget:nil action:nil]; // reload user to have permissions up to date
+            [[YasoundDataProvider main] reloadUserWithCompletionBlock:nil];
         }
         else
         {
