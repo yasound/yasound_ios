@@ -299,37 +299,6 @@ static YasoundDataProvider* _main = nil;
     _password = nil;
 }
 
-- (void)reloadUserWithUserData:(id)data withTarget:(id)target action:(SEL)selector
-{
-    if (!self.user)
-        return;
-    NSMutableDictionary* userData = [NSMutableDictionary dictionary];
-    [userData setValue:target forKey:@"clientTarget"];
-    [userData setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
-    [userData setValue:data forKey:@"clientData"];
-    NSNumber* userId = self.user.id;
-    Auth* auth = self.apiKeyAuth;
-    [_communicator getObjectWithClass:[User class] andID:userId notifyTarget:self byCalling:@selector(didReloadUser:withInfo:) withUserData:userData withAuth:auth];
-}
-
-- (void)didReloadUser:(User*)user withInfo:(NSDictionary*)info
-{
-    NSDictionary* userData = [info valueForKey:@"userData"];
-    id target = [userData valueForKey:@"clientTarget"];
-    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-    id clientData = [userData valueForKey:@"clientData"];
-    
-    _user = user;
-    
-    if (target && selector)
-    {
-        NSMutableDictionary* dict = [NSMutableDictionary dictionary];
-        [dict setValue:clientData forKey:@"userData"];
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:_user withObject:dict];
-    }
-}
-
 - (void)reloadUserWithCompletionBlock:(void (^) (User*))block
 {
     if (self.user == nil || self.user.id == nil)
@@ -734,184 +703,63 @@ static YasoundDataProvider* _main = nil;
 
 
 
-#pragma mark - Yasound Account Association
+#pragma mark - Accounts Association
 
-
-
-- (void)associateAccountYasound:(NSString*)email password:(NSString*)pword target:(id)target action:(SEL)selector
+- (void)associateAccountYasound:(NSString*)email password:(NSString*)pword withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    Auth* auth = self.apiKeyAuth;
-
-    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/account/association";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObjectsAndKeys:@"yasound", @"account_type", email, @"email", pword, @"password", nil];
     
-    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveYasoundAssociation:info:) withUserData:data withAuth:auth];
-
-    [req addPostValue:@"yasound" forKey:@"account_type"];
-    [req addPostValue:email forKey:@"email"];
-    [req addPostValue:pword forKey:@"password"];
-    
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-
-- (void)receiveYasoundAssociation:(NSString*)response info:(NSDictionary*)info
+- (void)associateAccountFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token  expirationDate:(NSString*)expirationDate email:(NSString*)email withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    DLog(@"YasoundDataProvider receiveYasoundAssociation : info %@", info);
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/account/association";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObjectsAndKeys:@"facebook", @"account_type", username, @"social_username", uid, @"uid", token, @"token", expirationDate, @"expiration_date", email, @"email", nil];
     
-    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
-    
-    if (response != nil)
-        [finalInfo setObject:response forKey:@"response"];
-    
-    NSDictionary* userData = [info valueForKey:@"userData"];
-    id target = [userData valueForKey:@"clientTarget"];
-    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-    NSDictionary* clientData = [userData valueForKey:@"clientData"];
-    if (clientData)
-        [finalInfo setValue:clientData forKey:@"userData"];
-    
-    if (target && selector)
-    {
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:finalInfo];
-    }
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)receiveFacebookAssociation:(NSString*)response info:(NSDictionary*)info
+- (void)associateAccountTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    DLog(@"YasoundDataProvider receiveFacebookAssociation : info %@  %@", info, response);
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/account/association";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObjectsAndKeys:@"twitter", @"account_type", username, @"social_username", uid, @"uid", token, @"token", tokenSecret, @"token_secret", email, @"email", nil];
     
-    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
-    
-    if (response != nil)
-        [finalInfo setObject:response forKey:@"response"];
-    
-    NSDictionary* userData = [info valueForKey:@"userData"];
-    id target = [userData valueForKey:@"clientTarget"];
-    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-    NSDictionary* clientData = [userData valueForKey:@"clientData"];
-    if (clientData)
-        [finalInfo setValue:clientData forKey:@"userData"];
-    
-    if (target && selector)
-    {
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:finalInfo];
-    }
-}
-
-- (void)receiveTwitterAssociation:(NSString*)response info:(NSDictionary*)info
-{
-    DLog(@"YasoundDataProvider receiveTwitterAssociation : info %@", info);
-    
-    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
-    
-    if (response != nil)
-        [finalInfo setObject:response forKey:@"response"];
-    
-    NSDictionary* userData = [info valueForKey:@"userData"];
-    id target = [userData valueForKey:@"clientTarget"];
-    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-    NSDictionary* clientData = [userData valueForKey:@"clientData"];
-    if (clientData)
-        [finalInfo setValue:clientData forKey:@"userData"];
-    
-    if (target && selector)
-    {
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:finalInfo];
-    }
-}
-
-- (void)receiveDissociation:(id)obj info:(NSDictionary*)info
-{
-    DLog(@"YasoundDataProvider receiveDissociation : info %@", info);
-    
-    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
-    
-    NSDictionary* userData = [info valueForKey:@"userData"];
-    id target = [userData valueForKey:@"clientTarget"];
-    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-    NSDictionary* clientData = [userData valueForKey:@"clientData"];
-    if (clientData)
-        [finalInfo setValue:clientData forKey:@"userData"];
-    
-    if (target && selector)
-    {
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:finalInfo];
-    }
-}
-
-
-
-#pragma mark - Facebook Account Association
-
-
-- (void)associateAccountFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token  expirationDate:(NSString*)expirationDate email:(NSString*)email target:(id)target action:(SEL)selector
-{
-    Auth* auth = self.apiKeyAuth;
-    
-    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
-    
-    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveFacebookAssociation:info:) withUserData:data withAuth:auth];
-    
-    [req addPostValue:username forKey:@"social_username"];
-    [req addPostValue:@"facebook" forKey:@"account_type"];
-    [req addPostValue:uid forKey:@"uid"];
-    [req addPostValue:token forKey:@"token"];
-    [req addPostValue:expirationDate forKey:@"expiration_date"];
-    [req addPostValue:email forKey:@"email"];
-    
-    [req startAsynchronous];
-}
-
-
-
-
-
-
-#pragma mark - Twitter Account Association
-
-
-
-- (void)associateAccountTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector
-{
-    Auth* auth = self.apiKeyAuth;
-    
-    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
-    
-    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveTwitterAssociation:info:) withUserData:data withAuth:auth];
-    
-    [req addPostValue:username forKey:@"social_username"];
-    [req addPostValue:@"twitter" forKey:@"account_type"];
-    [req addPostValue:uid forKey:@"uid"];
-    [req addPostValue:token forKey:@"token"];
-    [req addPostValue:tokenSecret forKey:@"token_secret"];
-    [req addPostValue:email forKey:@"email"];
-    
-    //LBDEBUG
-    //DLog(@"associateAccountTwitter '%@'", req.url);
-    
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 
 #pragma mark - Accounts Dissociation
 
-- (void)dissociateAccount:(NSString*)accountTypeIdentifier  target:(id)target action:(SEL)selector
+- (void)dissociateAccount:(NSString*)accountTypeIdentifier withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    Auth* auth = self.apiKeyAuth;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/account/dissociation";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObject:accountTypeIdentifier forKey:@"account_type"];
     
-    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
-    
-    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/dissociation" absolute:NO notifyTarget:self byCalling:@selector(receiveDissociation:info:) withUserData:data withAuth:auth];
-    
-    [req addPostValue:accountTypeIdentifier forKey:@"account_type"];
-    
-    [req startAsynchronous];
-
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
+
 
 
 

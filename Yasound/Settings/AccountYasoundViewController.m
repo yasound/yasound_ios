@@ -161,7 +161,7 @@
     // logout
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_YASOUND])
     {
-        [[YasoundSessionManager main] dissociateAccount:LOGIN_TYPE_YASOUND target:self action:@selector(dissociateReturned:info:)];
+        [[YasoundSessionManager main] dissociateAccount:LOGIN_TYPE_YASOUND target:self action:@selector(dissociateReturned:)];
     }
     
     // login
@@ -188,7 +188,7 @@
             return;            
         }
         
-        [[YasoundSessionManager main] associateAccountYasound:email password:pword target:self action:@selector(associateReturned:info:) automatic:NO];
+        [[YasoundSessionManager main] associateAccountYasound:email password:pword target:self action:@selector(associateReturned:) automatic:NO];
         
         // show a connection alert
         [self.view addSubview:[ConnectionView startWithFrame:self.view.frame target:self timeout:@selector(onConnectionTimeout)]];
@@ -202,46 +202,23 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CONNECTION_TIMEOUT object:nil];
 }
 
-
-
-
-- (void)associateReturned:(User*)user info:(NSDictionary*)info
+- (void)associateReturned:(User*)user
 {
-    DLog(@"associateReturned :%@", info);
-
     // close the connection alert
     [ConnectionView stop];
     
-    BOOL succeeded = NO;
-    
-    NSNumber* nb = [info objectForKey:@"succeeded"];
-
-    if (nb == nil)
-    {
-        NSDictionary* userData = [info objectForKey:@"userData"];
-        nb = [userData objectForKey:@"succeeded"];
-    }
-    
-    succeeded = [nb boolValue];
-
-    if (!succeeded)
+    BOOL success = (user != nil);
+    if (!success)
     {
         NSString* title =  NSLocalizedString(@"AccountsView_alert_title", nil);
         title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Yasound"];
-        
-        NSDictionary* userData = [info objectForKey:@"userData"];
-        NSInteger statusCode = [[userData objectForKey:@"responseStatusCode"] intValue];
-        
-        NSString* message = nil;
-        if (statusCode == 400)
-            message = [info objectForKey:@"response"];
-        else
-            message = NSLocalizedString(@"AccountsView_alert_user_incorrect", nil);
+
+        NSString* message = NSLocalizedString(@"AccountsView_alert_user_incorrect", nil);
         
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
-        [av release];  
-        return;    
+        [av release];
+        return;
     }
     
     
@@ -254,38 +231,22 @@
     
 }
 
-
-
-- (void)dissociateReturned:(User*)user info:(NSDictionary*)info
+- (void)dissociateReturned:(User*)user
 {
-    DLog(@"dissociateReturned :%@", info);
-    
     // close the connection alert
     [ConnectionView stop];
     
-    BOOL succeeded = NO;
-    
-    NSNumber* nb = [info objectForKey:@"succeeded"];
-    
-    if (nb == nil)
-    {
-        NSDictionary* userData = [info objectForKey:@"userData"];
-        nb = [userData objectForKey:@"succeeded"];
-    }
-    
-    succeeded = [nb boolValue];
-    
-    if (!succeeded)
+    BOOL success = (user != nil);
+    if (!success)
     {
         NSString* title =  NSLocalizedString(@"AccountsView_alert_title", nil);
         title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Yasound"];
         
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:NSLocalizedString(@"AccountsView_alert_logout_error", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
-        [av release];  
-        return;    
+        [av release];
+        return;
     }
-    
     
     // success
     NSString* title =  NSLocalizedString(@"AccountsView_alert_logout_success", nil);
@@ -295,9 +256,6 @@
     [self update];
     
 }
-
-
-
 
 
 #pragma mark - TopBarModalDelegate
