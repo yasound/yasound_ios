@@ -202,7 +202,7 @@ taskStatus stringToStatus(NSString* str);
 
 
 // Playlist
-- (void)playlistsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)playlistsForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)songsForPlaylist:(NSInteger)playlistId target:(id)target action:(SEL)selector;
 

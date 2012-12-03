@@ -1648,12 +1648,25 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-// Playlists
-- (void)playlistsForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+#pragma mark - playlists
+
+- (void)playlistsForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/all_playlist/", radio.id];
-  Auth* auth = self.apiKeyAuth;
-  [_communicator getObjectsWithClass:[Playlist class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    if (!radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/all_playlist/", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 - (void)songsForPlaylist:(NSInteger)playlistId target:(id)target action:(SEL)selector

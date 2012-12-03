@@ -115,11 +115,74 @@
     [[TimeProfile main] begin:@"Playlists_download"];
     
     
-    Radio* radio = [YasoundDataProvider main].radio;
-    [[YasoundDataProvider main] playlistsForRadio:radio
-                                           target:self
-                                           action:@selector(receivePlaylists:withInfo:)
-     ];
+    Radio* r = [YasoundDataProvider main].radio;
+    [[YasoundDataProvider main] playlistsForRadio:r withCompletionBlock:^(int status, NSString* response, NSError* error){
+        NSArray* playlists = nil;
+        if (error)
+        {
+            DLog(@"playlists for radio error: %d - %@", error.code, error.domain);
+            playlists = nil;
+        }
+        else if (status != 200)
+        {
+            DLog(@"playlists for radio error: resposne status %d", status);
+            playlists = nil;
+        }
+        else
+        {
+            Container* playlistContainer = [response jsonToContainer:[Playlist class]];
+            if (!playlistContainer || !playlistContainer.objects)
+                playlists = nil;
+            else
+            {
+                playlists = playlistContainer.objects;
+            }
+        }
+        [[TimeProfile main] end:@"Playlists_download"];
+        [[TimeProfile main] logInterval:@"Playlists_download" inMilliseconds:NO];
+        
+        [[TimeProfile main] begin:@"Playlists_buildPlaylists"];
+        
+        // build playlist
+        [self buildPlaylistData:_playlists withRemotePlaylists:playlists];
+        
+        [[TimeProfile main] end:@"Playlists_buildPlaylists"];
+        [[TimeProfile main] logInterval:@"Playlists_buildPlaylists" inMilliseconds:NO];
+        
+        [[TimeProfile main] begin:@"Playlists_catalogSongs"];
+        
+        // build global songs catalog
+        MPMediaQuery* query = [MPMediaQuery songsQuery];
+        _songs = [query items];
+        [_songs retain];
+        
+        [[TimeProfile main] end:@"Playlists_catalogSongs"];
+        [[TimeProfile main] logInterval:@"Playlists_catalogSongs" inMilliseconds:NO];
+        
+        
+        // refresh
+        [self refreshView];
+        
+        [ActivityAlertView close];
+        
+        if (_songs.count == 0)
+        {
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:YES error:nil];
+            UIImageView* view = [sheet makeImage];
+            [_tableView addSubview:view];
+            [view release];
+            
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.local", nil) message:NSLocalizedString(@"Programming.empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];
+            return;
+        }
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.create", nil) message:NSLocalizedString(@"MyRadios.create.howto", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+
+    }];
     
     _selectedPlaylists = [[NSMutableArray alloc] init];
     [_selectedPlaylists retain];
@@ -231,54 +294,54 @@
     }
 }
 
-- (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
-{
-    [[TimeProfile main] end:@"Playlists_download"];
-    [[TimeProfile main] logInterval:@"Playlists_download" inMilliseconds:NO];
-    
-    [[TimeProfile main] begin:@"Playlists_buildPlaylists"];
-
-    // build playlist
-    [self buildPlaylistData:_playlists withRemotePlaylists:playlists];
-
-     [[TimeProfile main] end:@"Playlists_buildPlaylists"];
-     [[TimeProfile main] logInterval:@"Playlists_buildPlaylists" inMilliseconds:NO];
-
-     [[TimeProfile main] begin:@"Playlists_catalogSongs"];
-
-    // build global songs catalog
-    MPMediaQuery* query = [MPMediaQuery songsQuery];
-    _songs = [query items];
-    [_songs retain];
-     
-     [[TimeProfile main] end:@"Playlists_catalogSongs"];
-     [[TimeProfile main] logInterval:@"Playlists_catalogSongs" inMilliseconds:NO];
-
-    
-    // refresh
-    [self refreshView];
-
-    [ActivityAlertView close];
-    
-    if (_songs.count == 0)
-    {
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:YES error:nil];
-        UIImageView* view = [sheet makeImage];
-        [_tableView addSubview:view];
-        [view release];
-        
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.local", nil) message:NSLocalizedString(@"Programming.empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];
-        return;
-    }
-    
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.create", nil) message:NSLocalizedString(@"MyRadios.create.howto", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-    [alert release];
-    
-    
-}
+//- (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
+//{
+//    [[TimeProfile main] end:@"Playlists_download"];
+//    [[TimeProfile main] logInterval:@"Playlists_download" inMilliseconds:NO];
+//    
+//    [[TimeProfile main] begin:@"Playlists_buildPlaylists"];
+//
+//    // build playlist
+//    [self buildPlaylistData:_playlists withRemotePlaylists:playlists];
+//
+//     [[TimeProfile main] end:@"Playlists_buildPlaylists"];
+//     [[TimeProfile main] logInterval:@"Playlists_buildPlaylists" inMilliseconds:NO];
+//
+//     [[TimeProfile main] begin:@"Playlists_catalogSongs"];
+//
+//    // build global songs catalog
+//    MPMediaQuery* query = [MPMediaQuery songsQuery];
+//    _songs = [query items];
+//    [_songs retain];
+//     
+//     [[TimeProfile main] end:@"Playlists_catalogSongs"];
+//     [[TimeProfile main] logInterval:@"Playlists_catalogSongs" inMilliseconds:NO];
+//
+//    
+//    // refresh
+//    [self refreshView];
+//
+//    [ActivityAlertView close];
+//    
+//    if (_songs.count == 0)
+//    {
+//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:YES error:nil];
+//        UIImageView* view = [sheet makeImage];
+//        [_tableView addSubview:view];
+//        [view release];
+//        
+//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.local", nil) message:NSLocalizedString(@"Programming.empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [av show];
+//        [av release];
+//        return;
+//    }
+//    
+//    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.create", nil) message:NSLocalizedString(@"MyRadios.create.howto", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [alert show];
+//    [alert release];
+//    
+//    
+//}
 
                                                                                       
 
@@ -813,8 +876,51 @@
         
         self.radio = newRadio;
         
-        // now, ask for registered playlists, we want to check how many songs have been synchrpnized
-        [[YasoundDataProvider main] playlistsForRadio:self.radio target:self action:@selector(receivePlaylistsForChecking:withInfo:)];
+        // now, ask for registered playlists, we want to check how many songs have been synchrpnized        
+        [[YasoundDataProvider main] playlistsForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+            NSArray* playlists = nil;
+            if (error)
+            {
+                DLog(@"playlists for radio error: %d - %@", error.code, error.domain);
+                playlists = nil;
+            }
+            else if (status != 200)
+            {
+                DLog(@"playlists for radio error: resposne status %d", status);
+                playlists = nil;
+            }
+            else
+            {
+                Container* playlistContainer = [response jsonToContainer:[Playlist class]];
+                if (!playlistContainer || !playlistContainer.objects)
+                    playlists = nil;
+                else
+                {
+                    playlists = playlistContainer.objects;
+                }
+            }
+            
+            if (playlists)
+            {
+                self.nbPlaylistsForChecking = playlists.count;
+                self.nbParsedPlaylistsForChecking = 0;
+                self.nbMatchedSongs = 0;
+                
+                
+                for (Playlist* playlist in playlists)
+                {
+                    [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)];
+                }
+            }
+            else
+            {
+                self.nbPlaylistsForChecking = 0;
+                self.nbParsedPlaylistsForChecking = 0;
+                self.nbMatchedSongs = 0;
+                
+                [self matchedSongsReceveived:nil info:nil];
+            }
+        }];
     }];
 }
 

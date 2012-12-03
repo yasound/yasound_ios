@@ -782,23 +782,54 @@
         self.radio = newRadio;
         
         // now, ask for registered playlists, we want to check how many songs have been synchrpnized
-        [[YasoundDataProvider main] playlistsForRadio:newRadio target:self action:@selector(receivePlaylistsForChecking:withInfo:)];
+        [[YasoundDataProvider main] playlistsForRadio:newRadio withCompletionBlock:^(int status, NSString* response, NSError* error){
+            NSArray* playlists = nil;
+            if (error)
+            {
+                DLog(@"playlists for radio error: %d - %@", error.code, error.domain);
+                playlists = nil;
+            }
+            else if (status != 200)
+            {
+                DLog(@"playlists for radio error: resposne status %d", status);
+                playlists = nil;
+            }
+            else
+            {
+                Container* playlistContainer = [response jsonToContainer:[Playlist class]];
+                if (!playlistContainer || !playlistContainer.objects)
+                    playlists = nil;
+                else
+                {
+                    playlists = playlistContainer.objects;
+                }
+            }
+            
+            if (playlists)
+            {
+                self.nbPlaylistsForChecking = playlists.count;
+                self.nbParsedPlaylistsForChecking = 0;
+                self.nbMatchedSongs = 0;
+                
+                
+                for (Playlist* playlist in playlists)
+                {
+                    [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)];
+                }
+            }
+            else
+            {
+                self.nbPlaylistsForChecking = 0;
+                self.nbParsedPlaylistsForChecking = 0;
+                self.nbMatchedSongs = 0;
+                [self matchedSongsReceveived:nil info:nil];
+            }
+            
+        }];
+        
     }];
 }    
-    
-- (void)receivePlaylistsForChecking:(NSArray*)playlists withInfo:(NSDictionary*)info
-{
-    self.nbPlaylistsForChecking = playlists.count;
-    self.nbParsedPlaylistsForChecking = 0;
-    self.nbMatchedSongs = 0;
-    
-    
-    for (Playlist* playlist in playlists) 
-    {
-        [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)]; 
-    }
-}
-    
+
     
 - (void)matchedSongsReceveived:(NSArray*)songs info:(NSDictionary*)info
 {
