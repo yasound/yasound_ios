@@ -722,8 +722,19 @@
     DLog(@"Playlists data package has been built.");
     
     
-        DLog(@"For radio %@", self.radio.name);
-        [[YasoundDataProvider main] updatePlaylists:data forRadio:self.radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
+        DLog(@"For radio %@", self.radio.name);    
+    [[YasoundDataProvider main] updatePlaylists:data forRadio:self.radio withCompletionBlock:^(taskID task){
+        if (task == nil)
+        {
+            [ActivityAlertView close];
+            
+            UIAlertView* av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:NSLocalizedString(@"PlaylistsView_submit_error_creating_radio", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];            
+            return;
+        }
+        self.taskTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkPlaylistTask:) userInfo:task repeats:YES];
+    }];
 }
     
 
@@ -738,34 +749,6 @@
         [self getOut];
         return;
     }
-}
-
-    
-    
-    
-
-
-- (void)receiveUpdatePLaylistsResponse:(taskID)task_id error:(NSError*)error
-{
-  if (error)
-  {
-      DLog(@"update playlists error %d", error.code);
-      DLog(@"error %@", error);
-      
-      [ActivityAlertView close];
-      
-      UIAlertView* av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:NSLocalizedString(@"PlaylistsView_submit_error_creating_radio", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-      [av show];
-      [av release];  
-
-      
-      return;
-  }
-    
-    DLog(@"playlists updated  task: %@", task_id);
-    
-    self.taskTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkPlaylistTask:) userInfo:task_id repeats:YES];
-    
 }
 
 

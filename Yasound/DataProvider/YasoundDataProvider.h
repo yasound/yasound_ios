@@ -189,7 +189,7 @@ taskStatus stringToStatus(NSString* str);
 - (NSURL*)urlForPicture:(NSString*)picturePath;
 - (NSURL*)urlForSongCover:(Song*)song;
 
-- (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio withCompletionBlock:(void (^) (taskID))block;
 
 - (void)radioRecommendationsWithArtistList:(NSData*)data genre:(NSString*)genre target:(id)target action:(SEL)selector userData:(id)userData; // artist list is built with PlaylistMoulinor buildArtistDataBinary: compressed: target: action:
 // returns concatenation of 'selection' and 'similar radios'

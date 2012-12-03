@@ -1507,46 +1507,50 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio withCompletionBlock:(void (^) (taskID))block
 {
-  if (radio == nil)
-    return;
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/playlists_update", radioID];
-  NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", nil];
-  [_communicator postData:data withKey:@"playlists_data" toURL:relativeUrl absolute:NO notifyTarget:self byCalling:@selector(receiveUpdatePlaylistsResponse:withInfo:) withUserData:userData withAuth:auth];
-  
-}
-
-- (void)receiveUpdatePlaylistsResponse:(NSString*)response withInfo:(NSDictionary*)info
-{
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"target"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"selector"]);
-  NSError* error = [info valueForKey:@"error"];
-  
-  if (error)
-  {
-    if (target && selector)
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:nil withObject:error];
-    return;
-  }
-  
-  taskID task_id = response;
-  if (!task_id)
-  {
-    error = [NSError errorWithDomain:@"can't retrieve task ID from request response" code:1 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:response, @"response", nil]];
-    if (target && selector)
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:nil withObject:error];
-    return;
-  }
-  
-  if (target && selector)
-      if ([target respondsToSelector:selector])
-          [target performSelector:selector withObject:task_id withObject:nil];
+    if (!radio || !radio.id)
+    {
+        if (block)
+            block(nil);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/playlists_update", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.fileData = [NSDictionary dictionaryWithObject:data forKey:@"playlists_data"];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:^(int status, NSString* response, NSError* error){
+        BOOL success = YES;
+        if (error)
+        {
+            DLog(@"update playlists error: %d - %@", error.code, error.domain);
+            success = NO;
+        }
+        else if (status != 200)
+        {
+            DLog(@"update playlist error: response status %d", status);
+            success = NO;
+        }
+        else if (response == nil)
+        {
+            DLog(@"update playlist error: response nil");
+            success = NO;
+        }
+        if (!success)
+        {
+            if (block)
+                block(nil);
+            return;
+        }
+        taskID task_id = response;
+        if (block)
+            block(task_id);
+    }];
 }
 
 - (void)taskStatus:(taskID)task_id withCompletionBlock:(YaRequestCompletionBlock)block
