@@ -1722,29 +1722,6 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[Song class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
-- (void)updateSong:(Song*)song target:(id)target action:(SEL)selector
-{
-    if (!song)
-        return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
-    
-
-    //LBDEBUG
-//    DLog(@"edit url '%@'", url);
-//    if ([url isEqualToString:@"api/v1/edit_song/0"])
-//    {
-//        DLog(@"OK");
-//        DLog(@"song.id  0x%p", song.id);
-//        DLog(@"%d", [song.id integerValue]);
-//        assert(0);
-//    }
-    //////////////
-        
-  [_communicator updateObject:song withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
-
 - (void)updateSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (!song || !song.id)
@@ -1760,6 +1737,25 @@ static YasoundDataProvider* _main = nil;
     config.method = @"PUT";
     config.auth = self.apiKeyAuth;
     config.payload = [[song JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+- (void)deleteSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    if (!song || !song.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/delete_song/%@", song.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"DELETE";
+    config.auth = self.apiKeyAuth;
     
     YaRequest* req = [YaRequest requestWithConfig:config];
     [req start:block];

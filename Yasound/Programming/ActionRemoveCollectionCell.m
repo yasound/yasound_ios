@@ -332,7 +332,23 @@
     {
         for (Song* song in self.songsToRemove) {
             
-            [[YasoundDataProvider main] deleteSong:song target:self action:@selector(onSongDeleted:info:) userData:nil];
+            [[YasoundDataProvider main] deleteSong:song withCompletionBlock:^(int status, NSString* response, NSError* error){
+                BOOL success = YES;
+                if (error)
+                {
+                    DLog(@"delete song error: %d - %@", error.code, error.domain);
+                    success = NO;
+                }
+                else if (status != 200)
+                {
+                    DLog(@"delete song error: response status %d", status);
+                    success = NO;
+                }
+                if (!success)
+                    return;
+                [[SongRadioCatalog main] updateSongRemovedFromProgramming:song];
+                [[SongLocalCatalog main] updateSongRemovedFromProgramming:song];
+            }];
             
             // refresh gui
             [self updateArtist:self.collection subtitle:self.detailedLabel.text];
@@ -342,34 +358,6 @@
     }
 
 }
-
-
-
-
-
-// server's callback
-- (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
-{
-    DLog(@"onSongDeleted for Song %@", song.name);
-    DLog(@"info %@", info);
-    
-    BOOL success = NO;
-    NSNumber* nbsuccess = [info objectForKey:@"success"];
-    if (nbsuccess != nil)
-        success = [nbsuccess boolValue];
-    
-    DLog(@"success %d", success);
-    
-    if (!success) {
-        return;
-    }
-    
-    [[SongRadioCatalog main] updateSongRemovedFromProgramming:song];
-    [[SongLocalCatalog main] updateSongRemovedFromProgramming:song];
-}
-
-
-
 
 
 @end

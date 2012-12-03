@@ -201,13 +201,27 @@
 
 
 
-
+//#FIXME: useles ? never called?
 - (void)onSongDeleteRequested:(UITableViewCell*)cell song:(Song*)song
 {
     DLog(@"onSongDeleteRequested for Song %@", song.name);
     
-    // request to server
-    [[YasoundDataProvider main] deleteSong:song target:self action:@selector(onSongDeleted:info:) userData:cell];
+    // request to server    
+    [[YasoundDataProvider main] deleteSong:song withCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = YES;
+        if (error)
+        {
+            DLog(@"delete song error: %d - %@", error.code, error.domain);
+            success = NO;
+        }
+        else if (status != 200)
+        {
+            DLog(@"delete song error: response status %d", status);
+            success = NO;
+        }
+        
+        // ???
+    }];
     
 }
 
