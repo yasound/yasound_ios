@@ -138,16 +138,25 @@
     
     if (self.user)
     {
-        [self userReceived:self.user info:nil];
+        [self userReceived:self.user];
         return;
     }
     
     if ([YasoundSessionManager main].registered)
-        [[YasoundDataProvider main] userWithId:self.userId target:self action:@selector(userReceived:info:)];
+    {
+        [[YasoundDataProvider main] userWithId:self.userId withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self userReceivedWithStatus:status response:response error:error];
+        }];
+        
+    }
     else
-        [[YasoundDataProvider main] userWithUsername:self.modelUsername target:self action:@selector(publicUserReceived:success:)];
-
-    
+    {
+        [[YasoundDataProvider main] userWithUsername:self.modelUsername withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self publicUserReceivedWithStatus:status response:response error:error];
+        }];
+        
+    }
+   
 }
 
 
@@ -157,37 +166,38 @@
     [super viewDidAppear:animated];
 }
 
-
-- (void)publicUserReceived:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)userReceivedWithStatus:(int)status response:(NSString*)response error: (NSError*)error
 {
-    if (!success)
+    BOOL success = YES;
+    User* u = nil;
+    if (error)
     {
-        DLog(@"ProfilViewController::publicUserReceived error : userWithUsername failed using '%@'", self.user.username);
-
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error.generic.title", nil) message:NSLocalizedString(@"Error.generic.message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-        return;
+        DLog(@"get user error: %d - %@", error.code, error.domain);
+        success = NO;
     }
-    
-    self.user = [req responseObjectWithClass:[User class]];
-    
-    [self update];
-
+    else if (status != 200)
+    {
+        DLog(@"get user radio error: response status %d", status);
+        success = NO;
+    }
+    else
+    {
+        u = (User*)[response jsonToModel:[User class]];
+        if (!u)
+        {
+            DLog(@"get user radio error: cannot parse response %@", response);
+            success = NO;
+        }
+    }
+    [self userReceived:u];
 }
 
-
-
-- (void)userReceived:(User*)user info:(NSDictionary*)info
+- (void)userReceived:(User*)u
 {
-    DLog(@"userReceived from id '%@' : %p", self.userId, user);
-    DLog(@"info : %@", info);
-    self.user = user;
-    
+    self.user = u;
     if (self.user == nil)
     {
         DLog(@"ProfilViewController::userReceived error : userWithId failed using '%@'",  self.userId);
-
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error.generic.title", nil) message:NSLocalizedString(@"Error.generic.message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles:nil];
         [alert show];
         [alert release];
@@ -197,6 +207,43 @@
     [self update];
 }
 
+- (void)publicUserReceivedWithStatus:(int)status response:(NSString*)response error: (NSError*)error
+{
+    BOOL success = YES;
+    User* u = nil;
+    if (error)
+    {
+        DLog(@"get user error: %d - %@", error.code, error.domain);
+        success = NO;
+    }
+    else if (status != 200)
+    {
+        DLog(@"get user radio error: response status %d", status);
+        success = NO;
+    }
+    else
+    {
+        u = (User*)[response jsonToModel:[User class]];
+        if (!u)
+        {
+            DLog(@"get user radio error: cannot parse response %@", response);
+            success = NO;
+        }
+    }
+    if (!success)
+    {
+        DLog(@"ProfilViewController::publicUserReceived error : userWithUsername failed using '%@'", self.user.username);
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error.generic.title", nil) message:NSLocalizedString(@"Error.generic.message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        return;
+    }
+    
+    self.user = u;
+    
+    [self update];
+}
 
 - (void)update
 {
@@ -249,7 +296,6 @@
         }];
         
         // is he one of my friends? (<=> I need to know to enable and set the follow/unfollow button properly)
-//        [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(myFriendsReceived:success:)];
         [[YasoundDataCache main] requestFriendsWithCompletionBlock:^(NSArray* myfriends){
             [self myFriendsReceived:myfriends];
         }];
@@ -371,31 +417,6 @@
 }
 
 
-//- (void)myFriendsReceived:(NSArray*)myFriends success:(BOOL)success
-//{
-//    DLog(@"%d friends", myFriends.count);
-//    
-//    for (User* user in myFriends)
-//    {
-//        DLog(@"my friend : %@", user.username);
-//        
-//        if ([user.id isEqualToNumber:self.user.id])
-//        {
-//            // it's one of my friend.
-//            // follow button becomes unfollow
-//            self.followed = YES;
-//            [self enableFollow:YES];
-//            [self setFollowButtonToUnfollow];
-//            return;
-//        }
-//    }
-//    
-//    // follow
-//    self.followed = NO;
-//    [self enableFollow:YES];
-//    [self setFollowButtonToFollow];
-//}
-
 - (void)friendsReceivedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
 {
     if (error)
@@ -470,7 +491,6 @@
     [[YasoundDataCache main] clearFriends];
     
     // refresh
-//    [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(myFriendsReceived:success:)];
     [[YasoundDataCache main] requestFriendsWithCompletionBlock:^(NSArray* myfriends){
         [self myFriendsReceived:myfriends];
     }];
@@ -505,7 +525,11 @@
 
     //refresh
     if ([YasoundSessionManager main].registered)
-        [[YasoundDataProvider main] userWithId:self.user.id target:self action:@selector(userReceived:info:)];
+    {        
+        [[YasoundDataProvider main] userWithId:self.userId withCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self userReceivedWithStatus:status response:response error:error];
+        }];
+    }
 
 }
 

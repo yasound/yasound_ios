@@ -1406,34 +1406,42 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)userWithId:(NSNumber*)userId target:(id)target action:(SEL)selector
+- (void)userWithId:(NSNumber*)userId withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    if (!userId)
+    if (userId == nil)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return;
+    }
     
-    Auth* auth = self.apiKeyAuth;
-    [_communicator getObjectWithClass:[User class] andID:userId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/user/%@/", userId];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)userWithUsername:(NSString*)username target:(id)target action:(SEL)selector
+- (void)userWithUsername:(NSString*)username withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    if (!username)
+    if (username == nil)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return;
+    }
     
-    Auth* auth = self.apiKeyAuth;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/public_user/%@", username];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/public_user/%@", username];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    conf.userData = nil;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 #pragma mark - follow user

@@ -171,8 +171,8 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)currentSongForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)userWithId:(NSNumber*)userId target:(id)target action:(SEL)selector;
-- (void)userWithUsername:(NSString*)username target:(id)target action:(SEL)selector;
+- (void)userWithId:(NSNumber*)userId withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)userWithUsername:(NSString*)username withCompletionBlock:(YaRequestCompletionBlock)block;
 
 // Connection to the wall
 - (void)enterRadioWall:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
