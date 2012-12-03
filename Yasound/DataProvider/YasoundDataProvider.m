@@ -299,6 +299,11 @@ static YasoundDataProvider* _main = nil;
     _password = nil;
 }
 
+- (void)userLogged
+{
+    [self sendAPNsDeviceTokenWhenLogged];
+}
+
 - (void)reloadUserWithCompletionBlock:(void (^) (User*))block
 {
     if (self.user == nil || self.user.id == nil)
@@ -331,28 +336,43 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-//
-// APNs device token
-//
+#pragma mark - APNs device token
+
 - (BOOL)sendAPNsDeviceToken:(NSString*)deviceToken isSandbox:(BOOL)sandbox
 {
-  if (!self.user || !deviceToken)
-    return NO;
-  
-  APNsDeviceToken* token = [[APNsDeviceToken alloc] init];
-  token.device_token = deviceToken;
-  if (sandbox)
-    [token setSandbox];
-  else
-    [token setProduction];
-  
-  NSString* uuid = [[UIDevice currentDevice] uniqueDeviceIdentifier];
-  token.uuid = uuid;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSString* relativeURL = @"/api/v1/ios_push_notif_token";
-  [_communicator postNewObject:token withURL:relativeURL absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
-  return YES;
+    if (!self.user || !deviceToken)
+        return NO;
+    
+    APNsDeviceToken* token = [[APNsDeviceToken alloc] init];
+    token.device_token = deviceToken;
+    if (sandbox)
+        [token setSandbox];
+    else
+        [token setProduction];
+    
+    NSString* uuid = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+    token.uuid = uuid;
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/ios_push_notif_token";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[token JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"send APNs device token error: %d - %@", error.code, error.domain);
+        }
+        else if (status != 200)
+        {
+            DLog(@"send APNs device token error: response status %d", status);
+        }
+    }];
+
+    return YES;
 }
 
 - (void)sendAPNsDeviceTokenWhenLogged
@@ -605,8 +625,8 @@ static YasoundDataProvider* _main = nil;
     if ([target respondsToSelector:selector])
       [target performSelector:selector withObject:_user withObject:finalInfo];
 
-    // send Apple Push Notification service device token
-    [self sendAPNsDeviceTokenWhenLogged];
+    
+    [self userLogged];
 }
 
 
@@ -675,7 +695,7 @@ static YasoundDataProvider* _main = nil;
 //  [self userRadioWithTarget:self action:@selector(didReceiveLoggedUserRadio:withInfo:) andData:data];
   
   // send Apple Push Notification service device token
-  [self sendAPNsDeviceTokenWhenLogged];
+  [self userLogged];
     
 }
 
