@@ -1040,10 +1040,26 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector
+#pragma mark - update radio
+
+- (void)updateRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  Auth* auth = self.apiKeyAuth;
-  [_communicator updateObject:radio notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    if (!radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"/api/v1/radio/%@/", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"PUT";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[radio JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 
@@ -1068,17 +1084,28 @@ static YasoundDataProvider* _main = nil;
   return newImg;
 }
 
-
-- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  DLog(@"img %f, %f", img.size.width, img.size.height);
-  UIImage* resizedImg = [self resizeImage:img];
-  DLog(@"resized img %f, %f", resizedImg.size.width, resizedImg.size.height);
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/picture", radio.id];
-  [_communicator postData:UIImagePNGRepresentation(resizedImg) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    if (!radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    DLog(@"img %f, %f", img.size.width, img.size.height);
+    UIImage* resizedImg = [self resizeImage:img];
+    DLog(@"resized img %f, %f", resizedImg.size.width, resizedImg.size.height);
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/picture", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.fileData = [NSDictionary dictionaryWithObject:UIImagePNGRepresentation(resizedImg) forKey:@"picture"];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
-
 
 
 - (BOOL)updateUser:(User*)user target:(id)target action:(SEL)selector

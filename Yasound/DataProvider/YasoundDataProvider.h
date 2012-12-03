@@ -141,8 +141,8 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)updateRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (BOOL)updateUser:(User*)user target:(id)target action:(SEL)selector; // - (void)didUpdateUser:(ASIHTTPRequest*)req success:(BOOL)success
 - (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector;

@@ -17,6 +17,7 @@
 
 @property (retain, nonatomic) NSDictionary* params;
 @property (retain, nonatomic) NSData* payload;
+@property (retain, nonatomic) NSDictionary* fileData; // in POST requests
 
 @property (retain, nonatomic) Auth* auth;
 

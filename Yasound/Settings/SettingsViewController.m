@@ -551,61 +551,63 @@
     [ActivityAlertView showWithTitle:NSLocalizedString(@"Settings.submit", nil)];
 
     // empty the cache for radios (to let the change on name / genre appear)
-    [[YasoundDataCache main] clearRadiosAll];
-
-    DLog(@"send update request for radio '%@'", self.radio.name);
-    
-    DLog(@"settings clicked for radio : %@", [self.radio toString]);
-
-    
-    [[YasoundDataProvider main] updateRadio:self.radio target:self action:@selector(onRadioUpdated:info:)];
+    [[YasoundDataCache main] clearRadiosAll];    
+    [[YasoundDataProvider main] updateRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = YES;
+        if (error)
+        {
+            DLog(@"update radio error: %d - %@", error.code, error.domain);
+            success = NO;
+        }
+        else if (status != 204)
+        {
+            DLog(@"update radio error: response status %d", status);
+            success = NO;
+        }
+        
+        if (!success)
+        {
+            [ActivityAlertView close];
+            
+            // backup
+            self.radio = self.radioBackup;
+            [self update];
+            [_tableView reloadData];
+            
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Settings.update.failed.title", nil) message:NSLocalizedString(@"Settings.update.failed.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            return;
+        }
+        
+        //LBDEBUG : TODO :l voir le bug de changement de photo
+        if (_settingsImageChanged)
+        {
+            [self updatePicture];
+        }
+        else
+            [self pictureOk];
+    }];
 }
 
-- (void)onRadioUpdated:(Radio*)radio info:(NSDictionary*)info
+- (void)updatePicture
 {
-    DLog(@"onRadioUpdated '%@', info %@", radio.name, info);
-    
-    NSNumber* nb = [info objectForKey:@"succeeded"];
-    BOOL success = [nb boolValue];
-    
-    if (!success)
-    {
-        [ActivityAlertView close];
-        DLog(@"radio update failed.");
-        
-        // backup
-        self.radio = self.radioBackup;
-        [self update];
-        [_tableView reloadData];
-        
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Settings.update.failed.title", nil) message:NSLocalizedString(@"Settings.update.failed.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-        
-        return;
-    }
-    
-    self.radio = radio;
-    
-    
-    //LBDEBUG : TODO :l voir le bug de changement de photo
-    if (_settingsImageChanged)
-    {
-        NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
-        DLog(@"receivedUserRadioAfterPictureUpdate BEFORE pictureUrl %@", imageURL);
-        
-        [[YasoundDataProvider main] setPicture:_settingsImageImage.image forRadio:self.radio target:self action:@selector(onRadioImageUpdate:info:)];
-    }
-    else
-        [self onRadioImageUpdate:nil info:nil];
-
+    [[YasoundDataProvider main] setPicture:_settingsImageImage.image forRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"set radio picture error: %d - %@", error.code, error.domain);
+        }
+        else if (status != 200)
+        {
+            DLog(@"set radio picture error: response status %d", status);
+        }
+        [self pictureOk];
+    }];
 }
 
-- (void)onRadioImageUpdate:(NSString*)msg info:(NSDictionary*)info
+- (void)pictureOk
 {
-    DLog(@"onRadioImageUpdate info %@", info);
-    
-  // be sure to get updated radio (with correct picture)
+    // be sure to get updated radio (with correct picture)
     [[YasoundDataProvider main] radioWithId:self.radio.id withCompletionBlock:^(int status, NSString* response, NSError* error){
         if (error)
         {

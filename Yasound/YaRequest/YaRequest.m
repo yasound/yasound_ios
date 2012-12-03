@@ -214,7 +214,7 @@ static NSString* sBaseURL = nil;
     NSURL* url = [self urlWithURL:_config.url absolute:_config.urlIsAbsolute addTrailingSlash:YES params:appParams];
     
     // create internal request object
-    BOOL isFormDataRequest = [_config.method isEqualToString:@"POST"] && _config.params != nil;
+    BOOL isFormDataRequest = [_config.method isEqualToString:@"POST"] && (_config.params != nil || _config.fileData != nil);
     if (isFormDataRequest == NO)
     {
         _request = [ASIHTTPRequest requestWithURL:url];
@@ -230,12 +230,25 @@ static NSString* sBaseURL = nil;
             id value = [_config.params valueForKey:key];
             [formDataRequest addPostValue:value forKey:key];
         }
+        
+        // file data
+        if (_config.fileData)
+        {
+            for (NSString* key in _config.fileData)
+            {
+                NSData* data = [_config.fileData valueForKey:key];
+                [formDataRequest addData:data forKey:key];
+            }
+        }
+        
         _request = formDataRequest;
     }
     
     // payload
     if (_config.payload)
         [_request appendPostData:_config.payload];
+    
+    
     
     // authentication
     [self applyAuth:_config.auth];

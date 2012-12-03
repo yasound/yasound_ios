@@ -20,6 +20,7 @@
         self.method = @"GET";
         self.params = nil;
         self.payload = nil;
+        self.fileData = nil;
         self.auth = nil;
         self.groupKey = nil;
         self.external = NO;
