@@ -1745,6 +1745,26 @@ static YasoundDataProvider* _main = nil;
   [_communicator updateObject:song withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
+- (void)updateSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    if (!song || !song.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"PUT";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[song JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
 - (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector userData:(id)data
 {
     if (!song)

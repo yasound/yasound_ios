@@ -573,8 +573,18 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_UPDATED object:nil];
 
+    [[YasoundDataProvider main] updateSong:song withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"song update error: %d - %@", error.code, error.domain);
+        }
+        else if (status != 204)
+        {
+            DLog(@"song update error: response status %d", status);
+        }
+        [self songUpdated];
+    }];
     
-    [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(onSongUpdated:info:)];
 }
 
 
@@ -584,13 +594,21 @@
   SongFrequencyType freq = highFreq ? eSongFrequencyTypeHigh : eSongFrequencyTypeNormal;
   [self.song setFrequencyType:freq];
   
-  [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(onSongUpdated:info:)];
+    [[YasoundDataProvider main] updateSong:self.song withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"song update error: %d - %@", error.code, error.domain);
+        }
+        else if (status != 204)
+        {
+            DLog(@"song update error: response status %d", status);
+        }
+        [self songUpdated];
+    }];
 }
 
-
-- (void)onSongUpdated:(Song*)song info:(NSDictionary*)info
+- (void)songUpdated
 {
-    self.song = song;
     [_tableView reloadData];
 }
 

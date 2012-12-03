@@ -212,6 +212,9 @@ taskStatus stringToStatus(NSString* str);
 - (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector;  // didReceiveMatchedSongs:(NSArray*)matched_songs info:(NSDictionary*)info
 
 - (void)updateSong:(Song*)song target:(id)target action:(SEL)selector; // didUpdateSong:(Song*)song info:(NSDictionary*)info
+
+- (void)updateSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
+
 - (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector userData:(id)data;    // didDeleteSong:(Song*)song info:(NSDictionary*)info
                                                                                             // info dictionary contains: 
                                                                                             // - data for key @"userData"
