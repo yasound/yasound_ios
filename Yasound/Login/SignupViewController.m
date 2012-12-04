@@ -220,40 +220,25 @@
         DLog(@"Signup email %@   pword %@   username %@", email, pword, username);
     
         //signup
-        [[YasoundDataProvider main] signup:email password:pword username:username target:self action:@selector(requestDidReturn:info:)];
+        [[YasoundDataProvider main] signup:email password:pword username:username withCompletionBlock:^(User* newUser, NSError* error){
+            [ActivityAlertView close];
+            
+            if (newUser == nil)
+            {
+                UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_message_error", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [av show];
+                [av release];
+                return;
+            }
+            
+            // store info for automatic login, for the next sessions
+            [[YasoundSessionManager main] registerForYasound:email withPword:pword];
+            
+            [self enterTheAppAfterProperLogin];
+        }];
         
     }
 }
-
-                         
-
-
-    
-
-- (void) requestDidReturn:(User*)user info:(NSDictionary*)info
-{
-    [ActivityAlertView close];
-    
-    DLog(@"login returned : %@ %@", user, info);
-    
-    if (user == nil)
-    {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_message_error", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];  
-        return;
-    }
-    
-    // store info for automatic login, for the next sessions
-    [[YasoundSessionManager main] registerForYasound:_email withPword:_pword];
-    
-    [self enterTheAppAfterProperLogin];
-
-    
-}
-
-
-
 
 - (void)enterTheAppAfterProperLogin
 {

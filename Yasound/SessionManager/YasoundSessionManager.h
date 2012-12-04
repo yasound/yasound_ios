@@ -53,9 +53,9 @@
 
 // return NO if no login information have been regitered yes => launch login dialog in this case
 // return YES if login information have been registered => use them to log in automatically, and callback the given action when login process ends.
-- (BOOL)loginForYasoundWithTarget:(id)target action:(SEL)action;
-- (BOOL)loginForFacebookWithTarget:(id)target action:(SEL)action;
-- (BOOL)loginForTwitterWithTarget:(id)target action:(SEL)action;
+- (void)loginForYasoundWithTarget:(id)target action:(SEL)action;
+- (void)loginForFacebookWithTarget:(id)target action:(SEL)action;
+- (void)loginForTwitterWithTarget:(id)target action:(SEL)action;
 - (void)logoutWithTarget:(id)target action:(SEL)action;
 
 // register login information
@@ -69,7 +69,7 @@
 + (NSString*)expirationDateToString:(NSDate*)date;
 + (NSDate*)stringToExpirationDate:(NSString*)string;
 
-
+- (void)associateAccountsAutomatic;
 
 - (void)associateAccountYasound:(NSString*)email password:(NSString*)pword target:(id)target action:(SEL)selector automatic:(BOOL)automatic;
 - (void)associateAccountFacebook:(id)target action:(SEL)selector automatic:(BOOL)automatic;

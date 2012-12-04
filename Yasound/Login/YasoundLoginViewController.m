@@ -161,7 +161,34 @@
 
     
     // login request to server
-    [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
+    [[YasoundDataProvider main] login:email password:pword withCompletionBlock:^(User* u, NSError* error){
+        // close the connection alert
+        [ConnectionView stop];
+        
+        [[YasoundSessionManager main] writeUserIdentity:u];        
+        DLog(@"login returned : %@ %@", u, error);
+        
+        if (u == nil)
+        {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_message_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];
+            return;
+        }
+        
+        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+        NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
+        NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
+        
+        // store info for automatic login, for the next sessions
+        [[YasoundSessionManager main] registerForYasound:email withPword:pword];
+        
+        // login the other associated accounts as well
+        [[YasoundSessionManager main] associateAccountsAutomatic];
+        
+        
+        [self enterTheAppAfterProperLogin];
+    }];
 }
 
 
@@ -173,43 +200,43 @@
 }
 
 
-- (void) requestDidReturn:(User*)user info:(NSDictionary*)info
-{
-//    [ActivityAlertView close];
-
-    // close the connection alert
-    [ConnectionView stop];
-
-    [[YasoundSessionManager main] writeUserIdentity:user];
-    
-    
-    DLog(@"login returned : %@ %@", user, info);
-    
-    
-    if (user == nil)
-    {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_message_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];  
-
-        return;
-    }
-
-    
-    NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
-    NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
-    NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
-
-    // store info for automatic login, for the next sessions
-    [[YasoundSessionManager main] registerForYasound:email withPword:pword];
-    
-    // login the other associated accounts as well
-    [[YasoundSessionManager main] associateAccountsAutomatic];
-    
-    
-    [self enterTheAppAfterProperLogin];
-
-}
+//- (void) requestDidReturn:(User*)user info:(NSDictionary*)info
+//{
+////    [ActivityAlertView close];
+//
+//    // close the connection alert
+//    [ConnectionView stop];
+//
+//    [[YasoundSessionManager main] writeUserIdentity:user];
+//    
+//    
+//    DLog(@"login returned : %@ %@", user, info);
+//    
+//    
+//    if (user == nil)
+//    {
+//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_message_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [av show];
+//        [av release];  
+//
+//        return;
+//    }
+//
+//    
+//    NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+//    NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
+//    NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
+//
+//    // store info for automatic login, for the next sessions
+//    [[YasoundSessionManager main] registerForYasound:email withPword:pword];
+//    
+//    // login the other associated accounts as well
+//    [[YasoundSessionManager main] associateAccountsAutomatic];
+//    
+//    
+//    [self enterTheAppAfterProperLogin];
+//
+//}
 
 
 

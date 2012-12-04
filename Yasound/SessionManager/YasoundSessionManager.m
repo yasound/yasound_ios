@@ -151,7 +151,7 @@ static YasoundSessionManager* _main = nil;
 
 
 
-- (BOOL)loginForYasoundWithTarget:(id)target action:(SEL)action
+- (void)loginForYasoundWithTarget:(id)target action:(SEL)action
 {
     _target = target;
     _action = action;
@@ -162,10 +162,24 @@ static YasoundSessionManager* _main = nil;
     NSString* pword = [SFHFKeychainUtils getPasswordForUsername:email andServiceName:@"YasoundSessionManager" error:nil];
 
     // login request to server
-    [[YasoundDataProvider main] login:email password:pword target:self action:@selector(loginForYasoundRequestDidReturn:info:)];
+    [[YasoundDataProvider main] login:email password:pword withCompletionBlock:^(User* u, NSError* error){
+        DLog(@"YasoundSessionManager login returned : %@ %@", u, error);
+        if (u == nil)
+        {
+            [self loginError];
+            return;
+        }
+        
+        DLog(@"YasoundSessionManager yasound login successful!");
+        
+        // callback
+        assert(_target);
+        [_target performSelector:_action withObject:u withObject:nil];
+    }];
+    
 }
 
-- (BOOL)loginForFacebookWithTarget:(id)target action:(SEL)action
+- (void)loginForFacebookWithTarget:(id)target action:(SEL)action
 {
     _target = target;
     _action = action;
@@ -179,7 +193,7 @@ static YasoundSessionManager* _main = nil;
 
 
 
-- (BOOL)loginForTwitterWithTarget:(id)target action:(SEL)action
+- (void)loginForTwitterWithTarget:(id)target action:(SEL)action
 {
     _target = target;
     _action = action;
@@ -195,23 +209,23 @@ static YasoundSessionManager* _main = nil;
 
 
 
-- (void) loginForYasoundRequestDidReturn:(User*)user info:(NSDictionary*)info
-{
-    DLog(@"YasoundSessionManager login returned : %@ %@", user, info);
-    
-    if (user == nil)
-    {
-        [self loginError];
-        return;
-    }
-    
-    DLog(@"YasoundSessionManager yasound login successful!");
-    
-    // callback
-    assert(_target);
-    [_target performSelector:_action withObject:user withObject:info];
-    
-}
+//- (void) loginForYasoundRequestDidReturn:(User*)user info:(NSDictionary*)info
+//{
+//    DLog(@"YasoundSessionManager login returned : %@ %@", user, info);
+//    
+//    if (user == nil)
+//    {
+//        [self loginError];
+//        return;
+//    }
+//    
+//    DLog(@"YasoundSessionManager yasound login successful!");
+//    
+//    // callback
+//    assert(_target);
+//    [_target performSelector:_action withObject:user withObject:info];
+//    
+//}
 
 
 

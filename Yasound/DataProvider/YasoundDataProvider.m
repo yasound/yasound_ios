@@ -425,40 +425,6 @@ static YasoundDataProvider* _main = nil;
     }];
 }
 
-//- (void)didReceiveUserRadios:(NSArray*)radios withInfo:(NSDictionary*)info
-//{
-//  NSMutableDictionary* finalInfo = [NSMutableDictionary dictionaryWithDictionary:info];
-//  
-//  Radio* r = nil;
-//  if (!radios || [radios count] == 0)
-//  {
-//      NSString* str = [NSString stringWithFormat:@"no radio for user '%@'", _user.username];
-//      DLog(@"didReceiveUserRadios : %@", str);
-//      
-//    NSError* err = [NSError errorWithDomain:str code:1 userInfo:nil];
-//    [finalInfo setValue:err forKey:@"error"];
-//  }
-//  else
-//  {
-//    r = [radios objectAtIndex:0];
-//  }
-//  
-//  if (r)
-//  {
-//    _radio = r;
-//  }
-//  
-//  NSDictionary* userData = [info valueForKey:@"userData"];
-//  id target = [userData valueForKey:@"clientTarget"];
-//  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-//    
-//  if (target && selector)
-//  {
-//      if ([target respondsToSelector:selector])
-//          [target performSelector:selector withObject:_radio withObject:finalInfo];
-//  }
-//}
-
 
 
 - (void)reloadUserRadio
@@ -466,170 +432,110 @@ static YasoundDataProvider* _main = nil;
     [self userRadioWithTargetWithCompletionBlock:nil];
 }
 
-//- (void)reloadedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
-//{
-//  if (!r)
-//    return;
-//  
-//  _radio = r;
-//}
 
-//
-//
-// SIGN UP
-//
-//
+
+
+#pragma mark - signup
 // sign up process = signup request + login request
-//
 
-- (void)signup:(NSString*)email password:(NSString*)pwd username:(NSString*)username target:(id)target action:(SEL)selector
+- (void)signup:(NSString*)email password:(NSString*)pwd username:(NSString*)username withCompletionBlock:(void (^) (User*, NSError*))block
 {
-  [self resetUser];
-  
-  User* u = [[User alloc] init];
-  u.username = username;
-  u.name = username;
-  u.email = email;
-  u.password = pwd;
-  
-  NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", u.email, @"email", u.password, @"password", nil];
-  
-  [_communicator postNewObject:u withURL:@"api/v1/signup" absolute:NO notifyTarget:self byCalling:@selector(didReceiveSignup:withInfo:) withUserData:userData withAuth:nil returnNewObject:NO withAuthForGET:NO];
+    [self resetUser];
+    
+    User* u = [[User alloc] init];
+    u.username = username;
+    u.name = username;
+    u.email = email;
+    u.password = pwd;
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/signup";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.payload = [[u JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:^(int status, NSString* response, NSError* error){
+        BOOL success = YES;
+        if (error)
+        {
+            DLog(@"signup error: %d - %@", error.code, error.domain);
+            success = NO;
+        }
+        else if (status != 201)
+        {
+            DLog(@"signup error: response status %d", status);
+            success = NO;
+        }
+     
+        if (!success)
+        {
+            if (block)
+                block(nil, error);
+            return;
+        }
+        
+        // login
+        [self login:u.email password:u.password withCompletionBlock:block];
+    }];
 }
-
-- (void)didReceiveSignup:(NSString*)location withInfo:(NSDictionary*)info
-{
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  if (!userData)
-    return;
-  
-  id target = [userData valueForKey:@"clientTarget"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-  NSString* email = [userData valueForKey:@"email"];
-  NSString* pwd = [userData valueForKey:@"password"];
-  
-  NSError* error = [info valueForKey:@"error"];
-  if (!location && !error)
-    error = [NSError errorWithDomain:@"can't create user" code:1 userInfo:nil];
-  if (error)
-  {
-    DLog(@"signup error: %@", error.domain);    
-    if (target && selector)
-    {
-      NSDictionary* finalInfo = [NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil];
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:nil withObject:finalInfo];
-    }
-  }
-  NSDictionary* loginUserData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
-  
-  [self login:email password:pwd target:self action:@selector(didReceiveNewUserLogin:withInfo:) userData:loginUserData];
-}
-
-- (void)didReceiveNewUserLogin:(User*)u withInfo:(NSDictionary*)info
-{
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  if (!userData)
-    return;
-  
-  NSDictionary* finalInfo = [[NSMutableDictionary alloc] init];
-  
-  id target = [userData valueForKey:@"clientTarget"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-  NSError* error = [info valueForKey:@"error"];
-  if (error)
-  {
-    DLog(@"login error: %@", error.domain);    
-    [finalInfo setValue:error forKey:@"error"];
-  }
-  
-  if (u && u.api_key)
-  {
-    _user = u;
-    _apiKey = u.api_key;
-  }
-  else
-  {
-    error = [NSError errorWithDomain:@"user invalid" code:2 userInfo:nil];
-    [finalInfo setValue:error forKey:@"error"];
-  }
-  
-  if (target && selector)
-  {
-      if ([target respondsToSelector:selector])
-          [target performSelector:selector withObject:_user withObject:finalInfo];
-  }
-  
-}
-
-
 
 
 #pragma mark - Login Yasound
 
 
-- (void)login:(NSString*)email password:(NSString*)pwd target:(id)target action:(SEL)selector userData:(NSDictionary*)userData
+- (void)login:(NSString*)email password:(NSString*)pwd withCompletionBlock:(void (^) (User*, NSError*))block
 {
-  [self resetUser];
-  _password = pwd;
-  Auth* a = [[AuthPassword alloc] initWithUsername:email andPassword:_password];
-  
-  NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", userData, @"clientData", nil];
-  [_communicator getObjectsWithClass:[User class] withURL:@"api/v1/login" absolute:NO notifyTarget:self byCalling:@selector(receiveLogin:withInfo:) withUserData:data withAuth:a];
-}
+    [self resetUser];
+    _password = pwd;
 
-- (void)login:(NSString*)username password:(NSString*)pwd target:(id)target action:(SEL)selector
-{
-  [self login:username password:pwd target:target action:selector userData:nil];
-}
-
-//
-// receive logged user (via yasound identification protocol)
-//
-- (void)receiveLogin:(NSArray*)users withInfo:(NSDictionary*)info
-{
-    NSMutableDictionary* finalInfo = [NSMutableDictionary dictionaryWithDictionary:info];
-
-    NSDictionary* userData = [info valueForKey:@"userData"];
-    id target = [userData valueForKey:@"clientTarget"];
-    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-    NSDictionary* clientData = [userData valueForKey:@"clientData"];
-
-
-    User* u = nil;
-    if (!users || [users count] == 0)
-    {
-        NSError* err = [NSError errorWithDomain:@"no logged user" code:1 userInfo:nil];
-        [finalInfo setValue:err forKey:@"error"];
-        [finalInfo setObject:[NSNumber numberWithBool:NO] forKey:@"succeeded"];
-        
-        // return if error
-        if ((target != nil) && (selector != nil))
-            if ([target respondsToSelector:selector])
-                [target performSelector:selector withObject:nil withObject:finalInfo];
-        
-        return;
-    }
-
-
-    [finalInfo setObject:[NSNumber numberWithBool:YES] forKey:@"succeeded"];
-
-    u = [users objectAtIndex:0];
-
-    if (u && u.api_key)
-    {
-    _user = u;
-    _apiKey = u.api_key;
-    }
-
-    if ([target respondsToSelector:selector])
-      [target performSelector:selector withObject:_user withObject:finalInfo];
-
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/login";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = [[AuthPassword alloc] initWithUsername:email andPassword:_password];
     
-    [self userLogged];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:^(int status, NSString* response, NSError* error){
+        User* u = nil;
+        if (error)
+        {
+            DLog(@"login error: %d - %@", error.code, error.domain);
+            u = nil;
+        }
+        else if (status != 200)
+        {
+            DLog(@"login error: response status %d", status);
+            u = nil;
+        }
+        else
+        {
+            Container* userContainer = [response jsonToContainer:[User class]];
+            if (!userContainer || !userContainer.objects || userContainer.objects.count == 0)
+            {
+                DLog(@"login error: cannot parse response %@", response);
+                u = nil;
+            }
+            else
+            {
+                u = [userContainer.objects objectAtIndex:0];
+            }
+        }
+        
+        if (u && u.api_key)
+        {
+            _user = u;
+            _apiKey = u.api_key;
+        }
+        
+        if (block)
+            block(u, error);
+        
+        if (u)
+            [self userLogged];
+    }];
+
 }
-
-
 
 
 #pragma mark - Login Facebook and Twitter
