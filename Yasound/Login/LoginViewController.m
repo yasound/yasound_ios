@@ -176,7 +176,7 @@
 
 
 
-- (void)socialLoginReturned:(User*)user info:(NSDictionary*)info
+- (void)socialLoginReturned:(User*)u info:(NSDictionary*)info
 {
     // close the connection alert
     [ConnectionView stop];
@@ -184,19 +184,15 @@
     [self hideButtons:NO];
     
     
-    if (user != nil)
+    if (u != nil)
     {
-        [[YasoundSessionManager main] writeUserIdentity:user];
+        [[YasoundSessionManager main] writeUserIdentity:u];
         
         // login the other associated accounts as well
         [[YasoundSessionManager main] associateAccountsAutomatic];
         
-        
-        self.user = user;
-        
+        self.user = u;
         [self enterTheAppAfterProperLogin];
-
-
     }
     else
     {
@@ -233,8 +229,6 @@
         
         // and logout properly
         [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
-        
-        
     }
 }
 

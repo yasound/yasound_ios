@@ -101,8 +101,8 @@ taskStatus stringToStatus(NSString* str);
 - (void)signup:(NSString*)email password:(NSString*)pwd username:(NSString*)username target:(id)target action:(SEL)selector;
 - (void)login:(NSString*)email password:(NSString*)pwd target:(id)target action:(SEL)selector;
 
-- (void)loginFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token expirationDate:(NSString*)expirationDate email:(NSString*)email target:(id)target action:(SEL)selector;
-- (void)loginTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector;
+- (void)loginFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token expirationDate:(NSString*)expirationDate email:(NSString*)email withCompletionBlock:(void (^) (User*, NSError*))block;
+- (void)loginTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email withCompletionBlock:(void (^) (User*, NSError*))block;
 
 #pragma mark - Account association/dissociation
 

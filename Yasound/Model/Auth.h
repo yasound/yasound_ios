@@ -51,10 +51,9 @@
   NSString* _email;
 }
 
-- (id)initWithUsername:(NSString *)name accountType:(NSString*)type uid:(NSString*)uid token:(NSString*)token andEmail:(NSString*)email;
+//- (id)initWithUsername:(NSString *)name accountType:(NSString*)type uid:(NSString*)uid token:(NSString*)token andEmail:(NSString*)email;
+- (id)initWithUsername:(NSString *)name  accountType:(NSString*)type uid:(NSString*)uid token:(NSString*)token expirationDate:(NSString*)expirationDate andEmail:(NSString*)email;
 - (id)initWithUsername:(NSString *)name accountType:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret andEmail:(NSString*)email;
-
-- (void)fillAccountType:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret andEmail:(NSString*)email;
 
 - (NSArray*)urlParams;
 - (NSDictionary*)urlParamsDict;

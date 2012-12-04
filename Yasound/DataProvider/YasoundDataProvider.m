@@ -634,91 +634,66 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - Login Facebook and Twitter
 
-- (void)loginSocialWithAuth:(AuthSocial*)auth target:(id)target action:(SEL)selector
+- (void)loginSocialWithAuth:(AuthSocial*)auth withCompletionBlock:(void (^) (User*, NSError*))block
 {
-  NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
-  [_communicator getObjectsWithClass:[User class] withURL:@"api/v1/login_social/" absolute:NO notifyTarget:self byCalling:@selector(didReceiveLoginSocial:withInfo:) withUserData:data withAuth:auth];
-}
-
-//
-// facebook
-//
-- (void)loginFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token  expirationDate:(NSString*)expirationDate email:(NSString*)email target:(id)target action:(SEL)selector
-{
-  AuthSocial* auth = [[AuthSocial alloc] initWithUsername:username accountType:type uid:uid token:token  expirationDate:expirationDate andEmail:email];
-  [self loginSocialWithAuth:auth target:target action:selector];
-}
-
-//
-// twitter
-//
-- (void)loginTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector
-{
-  AuthSocial* auth = [[AuthSocial alloc] initWithUsername:username accountType:type uid:uid token:token tokenSecret:tokenSecret andEmail:email];
-  [self loginSocialWithAuth:auth target:target action:selector];
-}
-
-
-//
-// receive logged user (via social identification protocol)
-//
-- (void)didReceiveLoginSocial:(NSArray*)users withInfo:(NSDictionary*)info
-{
-  NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] init];
-  
-  User* u = nil;
-  if (!users || [users count] == 0)
-  {
-    NSError* err = [NSError errorWithDomain:@"no logged user" code:1 userInfo:nil];
-    [finalInfo setValue:err forKey:@"error"];
-  }
-  else
-  {
-    u = [users objectAtIndex:0];
-  }
-  
-  if (u && u.api_key)
-  {
-    _user = u;
-    _apiKey = u.api_key;
-  }
-  
-  
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"clientTarget"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-
-  if ([target respondsToSelector:selector])
-    [target performSelector:selector withObject:_user withObject:finalInfo];
-  
-
-//  [self userRadioWithTarget:self action:@selector(didReceiveLoggedUserRadio:withInfo:) andData:data];
-  
-  // send Apple Push Notification service device token
-  [self userLogged];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/login_social/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = auth;
     
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:^(int status, NSString* response, NSError* error){
+        User* u = nil;
+        if (error)
+        {
+            DLog(@"login social error: %d - %@", error.code, error.domain);
+            u = nil;
+        }
+        else if (status != 200)
+        {
+            DLog(@"login social error: response status %d", status);
+            u = nil;
+        }
+        else
+        {
+            Container* userContainer = [response jsonToContainer:[User class]];
+            if (!userContainer || !userContainer.objects || userContainer.objects.count == 0)
+            {
+                DLog(@"login social error: cannot parse response %@", response);
+                u = nil;
+            }
+            else
+            {
+                u = [userContainer.objects objectAtIndex:0];
+            }
+        }
+        
+        if (u && u.api_key)
+        {
+            _user = u;
+            _apiKey = u.api_key;
+        }
+        
+        if (block)
+            block(u, error);
+        
+        if (u)
+            [self userLogged];
+    }];
 }
 
-//- (void)didReceiveLoggedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
-//{
-//  NSMutableDictionary* finalInfo = [NSMutableDictionary dictionary];
-//  
-//  NSDictionary* userData = [info valueForKey:@"userData"];
-//  id target = [userData valueForKey:@"finalTarget"];
-//  SEL selector = NSSelectorFromString([userData valueForKey:@"finalSelector"]);
-//  NSDictionary* clientData = [userData valueForKey:@"clientData"];
-//  
-//  if (clientData)
-//    [finalInfo setValue:clientData forKey:@"userData"];
-//  
-//  if (target && selector)
-//  {
-//      if ([target respondsToSelector:selector])
-//          [target performSelector:selector withObject:_user withObject:finalInfo];
-//  }  
-//}
+- (void)loginFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token expirationDate:(NSString*)expirationDate email:(NSString*)email withCompletionBlock:(void (^) (User*, NSError*))block
+{
+    AuthSocial* auth = [[AuthSocial alloc] initWithUsername:username accountType:type uid:uid token:token expirationDate:expirationDate andEmail:email];
+    [self loginSocialWithAuth:auth withCompletionBlock:block];
+}
 
-
+- (void)loginTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email withCompletionBlock:(void (^) (User*, NSError*))block
+{
+    AuthSocial* auth = [[AuthSocial alloc] initWithUsername:username accountType:type uid:uid token:token tokenSecret:tokenSecret andEmail:email];
+    [self loginSocialWithAuth:auth withCompletionBlock:block];
+}
 
 
 

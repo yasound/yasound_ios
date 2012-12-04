@@ -228,22 +228,18 @@ static YasoundSessionManager* _main = nil;
 
 #pragma mark - YasoundDataProvider actions
 
-- (void) loginSocialValidated:(User*)user info:(NSDictionary*)info
+- (void)loginSocialValidated:(User*)user error:(NSError*)error
 {
-    if (_error)
+    if (error)
     {
-        DLog(@"loginSocialValidated returned but canceled because error");
+        DLog(@"loginSocialValidated error: %d - %@", error.code, error.domain);
         [self loginError];
         return;
     }
-
-    DLog(@"loginSocialValidated returned : %@ %@", user, info);
-    
     if (user == nil)
     {
-        assert(_target);
+        DLog(@"loginSocialValidated failed: user nil");
         [self loginError];
-
         return;
     }
     
@@ -255,11 +251,11 @@ static YasoundSessionManager* _main = nil;
     {
         [self registerForTwitter];
     }
-
+    
     
     // callback
     assert(_target);
-    [_target performSelector:_action withObject:user withObject:info];
+    [_target performSelector:_action withObject:user withObject:nil];
     _target = nil;
 }
 
@@ -631,7 +627,10 @@ static YasoundSessionManager* _main = nil;
         
         NSString* expirationDate = [[UserSettings main] objectForKey:USKEYfacebookExpirationDateKey];
         
-        [[YasoundDataProvider main] loginFacebook:username type:@"facebook" uid:uid token:token expirationDate:expirationDate email:email target:self action:@selector(loginSocialValidated:info:)];
+        [[YasoundDataProvider main] loginFacebook:username type:@"facebook" uid:uid token:token expirationDate:expirationDate email:email withCompletionBlock:^(User* u, NSError* error){
+            [self loginSocialValidated:u error:error];
+        }];
+        
     }
     
     
@@ -657,7 +656,9 @@ static YasoundSessionManager* _main = nil;
         }
         
         // ok, request login to server
-        [[YasoundDataProvider main] loginTwitter:username type:@"twitter" uid:uid token:token tokenSecret:tokenSecret email:email target:self action:@selector(loginSocialValidated:info:)];
+        [[YasoundDataProvider main] loginTwitter:username type:@"twitter" uid:uid token:token tokenSecret:tokenSecret email:email withCompletionBlock:^(User* u, NSError* error){
+            [self loginSocialValidated:u error:error];
+        }];
     }
 }
 

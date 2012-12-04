@@ -346,7 +346,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CONNECTION_TIMEOUT object:nil];
 }
 
-
 - (void)loginReturned:(User*)user info:(NSDictionary*)info
 {
     // show connection alert
