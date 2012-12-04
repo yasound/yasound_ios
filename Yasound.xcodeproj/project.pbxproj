@@ -918,6 +918,132 @@
 		40FE9F4F15FE16FD00CE615B /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3615FE16FD00CE615B /* FPTouchView.m */; };
 		40FE9F5015FE16FD00CE615B /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3615FE16FD00CE615B /* FPTouchView.m */; };
 		40FE9F5115FE16FD00CE615B /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3615FE16FD00CE615B /* FPTouchView.m */; };
+		6E194EC7166DF6B9009EECEC /* M3UParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E6E166DF6B8009EECEC /* M3UParser.m */; };
+		6E194EC8166DF6B9009EECEC /* M3UParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E6E166DF6B8009EECEC /* M3UParser.m */; };
+		6E194EC9166DF6B9009EECEC /* M3UParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E6E166DF6B8009EECEC /* M3UParser.m */; };
+		6E194ECA166DF6B9009EECEC /* M3UParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E6E166DF6B8009EECEC /* M3UParser.m */; };
+		6E194ECB166DF6B9009EECEC /* M3UParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E6E166DF6B8009EECEC /* M3UParser.m */; };
+		6E194ECC166DF6B9009EECEC /* M3UParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E6E166DF6B8009EECEC /* M3UParser.m */; };
+		6E194ECD166DF6B9009EECEC /* M3UParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E6E166DF6B8009EECEC /* M3UParser.m */; };
+		6E194ECE166DF6B9009EECEC /* M3UParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E6E166DF6B8009EECEC /* M3UParser.m */; };
+		6E194ECF166DF6B9009EECEC /* M3UParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E6E166DF6B8009EECEC /* M3UParser.m */; };
+		6E194ED0166DF6B9009EECEC /* PLSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E71166DF6B8009EECEC /* PLSParser.m */; };
+		6E194ED1166DF6B9009EECEC /* PLSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E71166DF6B8009EECEC /* PLSParser.m */; };
+		6E194ED2166DF6B9009EECEC /* PLSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E71166DF6B8009EECEC /* PLSParser.m */; };
+		6E194ED3166DF6B9009EECEC /* PLSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E71166DF6B8009EECEC /* PLSParser.m */; };
+		6E194ED4166DF6B9009EECEC /* PLSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E71166DF6B8009EECEC /* PLSParser.m */; };
+		6E194ED5166DF6B9009EECEC /* PLSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E71166DF6B8009EECEC /* PLSParser.m */; };
+		6E194ED6166DF6B9009EECEC /* PLSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E71166DF6B8009EECEC /* PLSParser.m */; };
+		6E194ED7166DF6B9009EECEC /* PLSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E71166DF6B8009EECEC /* PLSParser.m */; };
+		6E194ED8166DF6B9009EECEC /* PLSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E71166DF6B8009EECEC /* PLSParser.m */; };
+		6E194ED9166DF6B9009EECEC /* XSPFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E73166DF6B8009EECEC /* XSPFParser.m */; };
+		6E194EDA166DF6B9009EECEC /* XSPFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E73166DF6B8009EECEC /* XSPFParser.m */; };
+		6E194EDB166DF6B9009EECEC /* XSPFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E73166DF6B8009EECEC /* XSPFParser.m */; };
+		6E194EDC166DF6B9009EECEC /* XSPFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E73166DF6B8009EECEC /* XSPFParser.m */; };
+		6E194EDD166DF6B9009EECEC /* XSPFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E73166DF6B8009EECEC /* XSPFParser.m */; };
+		6E194EDE166DF6B9009EECEC /* XSPFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E73166DF6B8009EECEC /* XSPFParser.m */; };
+		6E194EDF166DF6B9009EECEC /* XSPFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E73166DF6B8009EECEC /* XSPFParser.m */; };
+		6E194EE0166DF6B9009EECEC /* XSPFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E73166DF6B8009EECEC /* XSPFParser.m */; };
+		6E194EE1166DF6B9009EECEC /* XSPFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E73166DF6B8009EECEC /* XSPFParser.m */; };
+		6E194EE2166DF6B9009EECEC /* AudioPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E76166DF6B8009EECEC /* AudioPacket.m */; };
+		6E194EE3166DF6B9009EECEC /* AudioPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E76166DF6B8009EECEC /* AudioPacket.m */; };
+		6E194EE4166DF6B9009EECEC /* AudioPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E76166DF6B8009EECEC /* AudioPacket.m */; };
+		6E194EE5166DF6B9009EECEC /* AudioPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E76166DF6B8009EECEC /* AudioPacket.m */; };
+		6E194EE6166DF6B9009EECEC /* AudioPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E76166DF6B8009EECEC /* AudioPacket.m */; };
+		6E194EE7166DF6B9009EECEC /* AudioPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E76166DF6B8009EECEC /* AudioPacket.m */; };
+		6E194EE8166DF6B9009EECEC /* AudioPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E76166DF6B8009EECEC /* AudioPacket.m */; };
+		6E194EE9166DF6B9009EECEC /* AudioPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E76166DF6B8009EECEC /* AudioPacket.m */; };
+		6E194EEA166DF6B9009EECEC /* AudioPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E76166DF6B8009EECEC /* AudioPacket.m */; };
+		6E194EEB166DF6B9009EECEC /* AudioQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E78166DF6B8009EECEC /* AudioQueue.m */; };
+		6E194EEC166DF6B9009EECEC /* AudioQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E78166DF6B8009EECEC /* AudioQueue.m */; };
+		6E194EED166DF6B9009EECEC /* AudioQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E78166DF6B8009EECEC /* AudioQueue.m */; };
+		6E194EEE166DF6B9009EECEC /* AudioQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E78166DF6B8009EECEC /* AudioQueue.m */; };
+		6E194EEF166DF6B9009EECEC /* AudioQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E78166DF6B8009EECEC /* AudioQueue.m */; };
+		6E194EF0166DF6B9009EECEC /* AudioQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E78166DF6B8009EECEC /* AudioQueue.m */; };
+		6E194EF1166DF6B9009EECEC /* AudioQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E78166DF6B8009EECEC /* AudioQueue.m */; };
+		6E194EF2166DF6B9009EECEC /* AudioQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E78166DF6B8009EECEC /* AudioQueue.m */; };
+		6E194EF3166DF6B9009EECEC /* AudioQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E78166DF6B8009EECEC /* AudioQueue.m */; };
+		6E194EF4166DF6B9009EECEC /* HTTPRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7A166DF6B8009EECEC /* HTTPRadio.m */; };
+		6E194EF5166DF6B9009EECEC /* HTTPRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7A166DF6B8009EECEC /* HTTPRadio.m */; };
+		6E194EF6166DF6B9009EECEC /* HTTPRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7A166DF6B8009EECEC /* HTTPRadio.m */; };
+		6E194EF7166DF6B9009EECEC /* HTTPRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7A166DF6B8009EECEC /* HTTPRadio.m */; };
+		6E194EF8166DF6B9009EECEC /* HTTPRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7A166DF6B8009EECEC /* HTTPRadio.m */; };
+		6E194EF9166DF6B9009EECEC /* HTTPRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7A166DF6B8009EECEC /* HTTPRadio.m */; };
+		6E194EFA166DF6B9009EECEC /* HTTPRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7A166DF6B8009EECEC /* HTTPRadio.m */; };
+		6E194EFB166DF6B9009EECEC /* HTTPRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7A166DF6B8009EECEC /* HTTPRadio.m */; };
+		6E194EFC166DF6B9009EECEC /* HTTPRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7A166DF6B8009EECEC /* HTTPRadio.m */; };
+		6E194EFD166DF6B9009EECEC /* MMSRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7C166DF6B8009EECEC /* MMSRadio.m */; };
+		6E194EFE166DF6B9009EECEC /* MMSRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7C166DF6B8009EECEC /* MMSRadio.m */; };
+		6E194EFF166DF6B9009EECEC /* MMSRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7C166DF6B8009EECEC /* MMSRadio.m */; };
+		6E194F00166DF6B9009EECEC /* MMSRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7C166DF6B8009EECEC /* MMSRadio.m */; };
+		6E194F01166DF6B9009EECEC /* MMSRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7C166DF6B8009EECEC /* MMSRadio.m */; };
+		6E194F02166DF6B9009EECEC /* MMSRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7C166DF6B8009EECEC /* MMSRadio.m */; };
+		6E194F03166DF6B9009EECEC /* MMSRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7C166DF6B8009EECEC /* MMSRadio.m */; };
+		6E194F04166DF6B9009EECEC /* MMSRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7C166DF6B8009EECEC /* MMSRadio.m */; };
+		6E194F05166DF6B9009EECEC /* MMSRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7C166DF6B8009EECEC /* MMSRadio.m */; };
+		6E194F06166DF6B9009EECEC /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7E166DF6B8009EECEC /* Radio.m */; };
+		6E194F07166DF6B9009EECEC /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7E166DF6B8009EECEC /* Radio.m */; };
+		6E194F08166DF6B9009EECEC /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7E166DF6B8009EECEC /* Radio.m */; };
+		6E194F09166DF6B9009EECEC /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7E166DF6B8009EECEC /* Radio.m */; };
+		6E194F0A166DF6B9009EECEC /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7E166DF6B8009EECEC /* Radio.m */; };
+		6E194F0B166DF6B9009EECEC /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7E166DF6B8009EECEC /* Radio.m */; };
+		6E194F0C166DF6B9009EECEC /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7E166DF6B8009EECEC /* Radio.m */; };
+		6E194F0D166DF6B9009EECEC /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7E166DF6B8009EECEC /* Radio.m */; };
+		6E194F0E166DF6B9009EECEC /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E7E166DF6B8009EECEC /* Radio.m */; };
+		6E194F0F166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E81166DF6B8009EECEC /* NSHTTPURLResponse+RadioKit.m */; };
+		6E194F10166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E81166DF6B8009EECEC /* NSHTTPURLResponse+RadioKit.m */; };
+		6E194F11166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E81166DF6B8009EECEC /* NSHTTPURLResponse+RadioKit.m */; };
+		6E194F12166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E81166DF6B8009EECEC /* NSHTTPURLResponse+RadioKit.m */; };
+		6E194F13166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E81166DF6B8009EECEC /* NSHTTPURLResponse+RadioKit.m */; };
+		6E194F14166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E81166DF6B8009EECEC /* NSHTTPURLResponse+RadioKit.m */; };
+		6E194F15166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E81166DF6B8009EECEC /* NSHTTPURLResponse+RadioKit.m */; };
+		6E194F16166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E81166DF6B8009EECEC /* NSHTTPURLResponse+RadioKit.m */; };
+		6E194F17166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E81166DF6B8009EECEC /* NSHTTPURLResponse+RadioKit.m */; };
+		6E194F18166DF6B9009EECEC /* XMLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E83166DF6B8009EECEC /* XMLUtilities.m */; };
+		6E194F19166DF6B9009EECEC /* XMLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E83166DF6B8009EECEC /* XMLUtilities.m */; };
+		6E194F1A166DF6B9009EECEC /* XMLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E83166DF6B8009EECEC /* XMLUtilities.m */; };
+		6E194F1B166DF6B9009EECEC /* XMLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E83166DF6B8009EECEC /* XMLUtilities.m */; };
+		6E194F1C166DF6B9009EECEC /* XMLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E83166DF6B8009EECEC /* XMLUtilities.m */; };
+		6E194F1D166DF6B9009EECEC /* XMLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E83166DF6B8009EECEC /* XMLUtilities.m */; };
+		6E194F1E166DF6B9009EECEC /* XMLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E83166DF6B8009EECEC /* XMLUtilities.m */; };
+		6E194F1F166DF6B9009EECEC /* XMLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E83166DF6B8009EECEC /* XMLUtilities.m */; };
+		6E194F20166DF6B9009EECEC /* XMLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E194E83166DF6B8009EECEC /* XMLUtilities.m */; };
+		6E194F21166DF6B9009EECEC /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC0166DF6B9009EECEC /* libavcodec.a */; };
+		6E194F22166DF6B9009EECEC /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC0166DF6B9009EECEC /* libavcodec.a */; };
+		6E194F23166DF6B9009EECEC /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC0166DF6B9009EECEC /* libavcodec.a */; };
+		6E194F24166DF6B9009EECEC /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC0166DF6B9009EECEC /* libavcodec.a */; };
+		6E194F25166DF6B9009EECEC /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC0166DF6B9009EECEC /* libavcodec.a */; };
+		6E194F26166DF6B9009EECEC /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC0166DF6B9009EECEC /* libavcodec.a */; };
+		6E194F27166DF6B9009EECEC /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC0166DF6B9009EECEC /* libavcodec.a */; };
+		6E194F28166DF6B9009EECEC /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC0166DF6B9009EECEC /* libavcodec.a */; };
+		6E194F29166DF6B9009EECEC /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC0166DF6B9009EECEC /* libavcodec.a */; };
+		6E194F2A166DF6B9009EECEC /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC1166DF6B9009EECEC /* libavformat.a */; };
+		6E194F2B166DF6B9009EECEC /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC1166DF6B9009EECEC /* libavformat.a */; };
+		6E194F2C166DF6B9009EECEC /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC1166DF6B9009EECEC /* libavformat.a */; };
+		6E194F2D166DF6B9009EECEC /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC1166DF6B9009EECEC /* libavformat.a */; };
+		6E194F2E166DF6B9009EECEC /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC1166DF6B9009EECEC /* libavformat.a */; };
+		6E194F2F166DF6B9009EECEC /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC1166DF6B9009EECEC /* libavformat.a */; };
+		6E194F30166DF6B9009EECEC /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC1166DF6B9009EECEC /* libavformat.a */; };
+		6E194F31166DF6B9009EECEC /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC1166DF6B9009EECEC /* libavformat.a */; };
+		6E194F32166DF6B9009EECEC /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC1166DF6B9009EECEC /* libavformat.a */; };
+		6E194F33166DF6B9009EECEC /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC2166DF6B9009EECEC /* libavutil.a */; };
+		6E194F34166DF6B9009EECEC /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC2166DF6B9009EECEC /* libavutil.a */; };
+		6E194F35166DF6B9009EECEC /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC2166DF6B9009EECEC /* libavutil.a */; };
+		6E194F36166DF6B9009EECEC /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC2166DF6B9009EECEC /* libavutil.a */; };
+		6E194F37166DF6B9009EECEC /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC2166DF6B9009EECEC /* libavutil.a */; };
+		6E194F38166DF6B9009EECEC /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC2166DF6B9009EECEC /* libavutil.a */; };
+		6E194F39166DF6B9009EECEC /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC2166DF6B9009EECEC /* libavutil.a */; };
+		6E194F3A166DF6B9009EECEC /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC2166DF6B9009EECEC /* libavutil.a */; };
+		6E194F3B166DF6B9009EECEC /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC2166DF6B9009EECEC /* libavutil.a */; };
+		6E194F3C166DF6B9009EECEC /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC3166DF6B9009EECEC /* libswresample.a */; };
+		6E194F3D166DF6B9009EECEC /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC3166DF6B9009EECEC /* libswresample.a */; };
+		6E194F3E166DF6B9009EECEC /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC3166DF6B9009EECEC /* libswresample.a */; };
+		6E194F3F166DF6B9009EECEC /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC3166DF6B9009EECEC /* libswresample.a */; };
+		6E194F40166DF6B9009EECEC /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC3166DF6B9009EECEC /* libswresample.a */; };
+		6E194F41166DF6B9009EECEC /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC3166DF6B9009EECEC /* libswresample.a */; };
+		6E194F42166DF6B9009EECEC /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC3166DF6B9009EECEC /* libswresample.a */; };
+		6E194F43166DF6B9009EECEC /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC3166DF6B9009EECEC /* libswresample.a */; };
+		6E194F44166DF6B9009EECEC /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E194EC3166DF6B9009EECEC /* libswresample.a */; };
 		B138AA6814E2BAFC0069E08A /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B138AA6714E2BAFC0069E08A /* SongUploader.m */; };
 		B172043F14C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		B172044014C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
@@ -7069,48 +7195,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		40B4094D152EFC630050D334 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
-		40B4094F152EFC630050D334 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = OAuthLib;
-		};
-		40D53B521554280F001EB0C5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
-		40D53B541554280F001EB0C5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = OAuthLib;
-		};
-		BC3FA65F14E93B660055AB4A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
-		BC3FA66114E93B660055AB4A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = OAuthLib;
-		};
 		BC40CBBB14CF635D00DF0950 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
@@ -7118,95 +7202,11 @@
 			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = "facebook-ios-sdk";
 		};
-		BC40CBBD14CF639A00DF0950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
 		BC40CBCC14CF649400DF0950 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = OAuthLib;
-		};
-		BC40CC5A14CF64C500DF0950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
-		BC40CC5C14CF64C800DF0950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = OAuthLib;
-		};
-		BC40CC5E14CF64CD00DF0950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
-		BC40CC6014CF64D000DF0950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = OAuthLib;
-		};
-		BC40CC6214CF64D500DF0950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
-		BC40CC6414CF64D500DF0950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = OAuthLib;
-		};
-		BC40CC6614CF64D800DF0950 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = OAuthLib;
-		};
-		BC56F46F152486AF005D1B40 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
-		BC56F471152486AF005D1B40 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = OAuthLib;
-		};
-		BCC7518B15E689EF00CF7F7C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
-		BCC7518D15E689EF00CF7F7C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = OAuthLib;
 		};
 /* End PBXContainerItemProxy section */
@@ -7340,6 +7340,83 @@
 		40FE9F3415FE16FD00CE615B /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
 		40FE9F3515FE16FD00CE615B /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
 		40FE9F3615FE16FD00CE615B /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
+		6E194E6D166DF6B8009EECEC /* M3UParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M3UParser.h; sourceTree = "<group>"; };
+		6E194E6E166DF6B8009EECEC /* M3UParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M3UParser.m; sourceTree = "<group>"; };
+		6E194E6F166DF6B8009EECEC /* PlaylistParserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistParserProtocol.h; sourceTree = "<group>"; };
+		6E194E70166DF6B8009EECEC /* PLSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLSParser.h; sourceTree = "<group>"; };
+		6E194E71166DF6B8009EECEC /* PLSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLSParser.m; sourceTree = "<group>"; };
+		6E194E72166DF6B8009EECEC /* XSPFParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XSPFParser.h; sourceTree = "<group>"; };
+		6E194E73166DF6B8009EECEC /* XSPFParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XSPFParser.m; sourceTree = "<group>"; };
+		6E194E75166DF6B8009EECEC /* AudioPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPacket.h; sourceTree = "<group>"; };
+		6E194E76166DF6B8009EECEC /* AudioPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPacket.m; sourceTree = "<group>"; };
+		6E194E77166DF6B8009EECEC /* AudioQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioQueue.h; sourceTree = "<group>"; };
+		6E194E78166DF6B8009EECEC /* AudioQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioQueue.m; sourceTree = "<group>"; };
+		6E194E79166DF6B8009EECEC /* HTTPRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRadio.h; sourceTree = "<group>"; };
+		6E194E7A166DF6B8009EECEC /* HTTPRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRadio.m; sourceTree = "<group>"; };
+		6E194E7B166DF6B8009EECEC /* MMSRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSRadio.h; sourceTree = "<group>"; };
+		6E194E7C166DF6B8009EECEC /* MMSRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSRadio.m; sourceTree = "<group>"; };
+		6E194E7D166DF6B8009EECEC /* Radio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Radio.h; sourceTree = "<group>"; };
+		6E194E7E166DF6B8009EECEC /* Radio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Radio.m; sourceTree = "<group>"; };
+		6E194E80166DF6B8009EECEC /* NSHTTPURLResponse+RadioKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSHTTPURLResponse+RadioKit.h"; sourceTree = "<group>"; };
+		6E194E81166DF6B8009EECEC /* NSHTTPURLResponse+RadioKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPURLResponse+RadioKit.m"; sourceTree = "<group>"; };
+		6E194E82166DF6B8009EECEC /* XMLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLUtilities.h; sourceTree = "<group>"; };
+		6E194E83166DF6B8009EECEC /* XMLUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLUtilities.m; sourceTree = "<group>"; };
+		6E194E88166DF6B8009EECEC /* avcodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avcodec.h; sourceTree = "<group>"; };
+		6E194E89166DF6B8009EECEC /* avfft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avfft.h; sourceTree = "<group>"; };
+		6E194E8A166DF6B8009EECEC /* dxva2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dxva2.h; sourceTree = "<group>"; };
+		6E194E8B166DF6B8009EECEC /* vaapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vaapi.h; sourceTree = "<group>"; };
+		6E194E8C166DF6B8009EECEC /* vda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vda.h; sourceTree = "<group>"; };
+		6E194E8D166DF6B8009EECEC /* vdpau.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vdpau.h; sourceTree = "<group>"; };
+		6E194E8E166DF6B8009EECEC /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		6E194E8F166DF6B8009EECEC /* xvmc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xvmc.h; sourceTree = "<group>"; };
+		6E194E91166DF6B8009EECEC /* avformat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avformat.h; sourceTree = "<group>"; };
+		6E194E92166DF6B8009EECEC /* avio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avio.h; sourceTree = "<group>"; };
+		6E194E93166DF6B8009EECEC /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		6E194E95166DF6B8009EECEC /* adler32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = adler32.h; sourceTree = "<group>"; };
+		6E194E96166DF6B8009EECEC /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
+		6E194E97166DF6B8009EECEC /* attributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attributes.h; sourceTree = "<group>"; };
+		6E194E98166DF6B8009EECEC /* audio_fifo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_fifo.h; sourceTree = "<group>"; };
+		6E194E99166DF6B8009EECEC /* audioconvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audioconvert.h; sourceTree = "<group>"; };
+		6E194E9A166DF6B8009EECEC /* avassert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avassert.h; sourceTree = "<group>"; };
+		6E194E9B166DF6B8009EECEC /* avconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avconfig.h; sourceTree = "<group>"; };
+		6E194E9C166DF6B8009EECEC /* avstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avstring.h; sourceTree = "<group>"; };
+		6E194E9D166DF6B8009EECEC /* avutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avutil.h; sourceTree = "<group>"; };
+		6E194E9E166DF6B8009EECEC /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		6E194E9F166DF6B8009EECEC /* bprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bprint.h; sourceTree = "<group>"; };
+		6E194EA0166DF6B8009EECEC /* bswap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bswap.h; sourceTree = "<group>"; };
+		6E194EA1166DF6B8009EECEC /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		6E194EA2166DF6B8009EECEC /* cpu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpu.h; sourceTree = "<group>"; };
+		6E194EA3166DF6B9009EECEC /* crc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crc.h; sourceTree = "<group>"; };
+		6E194EA4166DF6B9009EECEC /* dict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dict.h; sourceTree = "<group>"; };
+		6E194EA5166DF6B9009EECEC /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = error.h; sourceTree = "<group>"; };
+		6E194EA6166DF6B9009EECEC /* eval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eval.h; sourceTree = "<group>"; };
+		6E194EA7166DF6B9009EECEC /* fifo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fifo.h; sourceTree = "<group>"; };
+		6E194EA8166DF6B9009EECEC /* file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file.h; sourceTree = "<group>"; };
+		6E194EA9166DF6B9009EECEC /* imgutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imgutils.h; sourceTree = "<group>"; };
+		6E194EAA166DF6B9009EECEC /* intfloat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = intfloat.h; sourceTree = "<group>"; };
+		6E194EAB166DF6B9009EECEC /* intfloat_readwrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = intfloat_readwrite.h; sourceTree = "<group>"; };
+		6E194EAC166DF6B9009EECEC /* intreadwrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = intreadwrite.h; sourceTree = "<group>"; };
+		6E194EAD166DF6B9009EECEC /* lfg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfg.h; sourceTree = "<group>"; };
+		6E194EAE166DF6B9009EECEC /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
+		6E194EAF166DF6B9009EECEC /* lzo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzo.h; sourceTree = "<group>"; };
+		6E194EB0166DF6B9009EECEC /* mathematics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mathematics.h; sourceTree = "<group>"; };
+		6E194EB1166DF6B9009EECEC /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		6E194EB2166DF6B9009EECEC /* mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mem.h; sourceTree = "<group>"; };
+		6E194EB3166DF6B9009EECEC /* opt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opt.h; sourceTree = "<group>"; };
+		6E194EB4166DF6B9009EECEC /* parseutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parseutils.h; sourceTree = "<group>"; };
+		6E194EB5166DF6B9009EECEC /* pixdesc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pixdesc.h; sourceTree = "<group>"; };
+		6E194EB6166DF6B9009EECEC /* pixfmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pixfmt.h; sourceTree = "<group>"; };
+		6E194EB7166DF6B9009EECEC /* random_seed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = random_seed.h; sourceTree = "<group>"; };
+		6E194EB8166DF6B9009EECEC /* rational.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rational.h; sourceTree = "<group>"; };
+		6E194EB9166DF6B9009EECEC /* samplefmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = samplefmt.h; sourceTree = "<group>"; };
+		6E194EBA166DF6B9009EECEC /* sha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha.h; sourceTree = "<group>"; };
+		6E194EBB166DF6B9009EECEC /* timecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timecode.h; sourceTree = "<group>"; };
+		6E194EBC166DF6B9009EECEC /* timestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timestamp.h; sourceTree = "<group>"; };
+		6E194EBE166DF6B9009EECEC /* swresample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swresample.h; sourceTree = "<group>"; };
+		6E194EC0166DF6B9009EECEC /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavcodec.a; sourceTree = "<group>"; };
+		6E194EC1166DF6B9009EECEC /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavformat.a; sourceTree = "<group>"; };
+		6E194EC2166DF6B9009EECEC /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavutil.a; sourceTree = "<group>"; };
+		6E194EC3166DF6B9009EECEC /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
 		B138AA6614E2BAFC0069E08A /* SongUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongUploader.h; sourceTree = "<group>"; };
 		B138AA6714E2BAFC0069E08A /* SongUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongUploader.m; sourceTree = "<group>"; };
 		B172043D14C54446007F3FB0 /* BuyLinkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyLinkManager.h; sourceTree = "<group>"; };
@@ -8325,6 +8402,10 @@
 				E561068915874EC400FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD1521B160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				4031983B1610951A00DD54F0 /* AddressBook.framework in Frameworks */,
+				6E194F28166DF6B9009EECEC /* libavcodec.a in Frameworks */,
+				6E194F31166DF6B9009EECEC /* libavformat.a in Frameworks */,
+				6E194F3A166DF6B9009EECEC /* libavutil.a in Frameworks */,
+				6E194F43166DF6B9009EECEC /* libswresample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8357,6 +8438,10 @@
 				E561068415874E7B00FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD1521C160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				4031983C1610951B00DD54F0 /* AddressBook.framework in Frameworks */,
+				6E194F29166DF6B9009EECEC /* libavcodec.a in Frameworks */,
+				6E194F32166DF6B9009EECEC /* libavformat.a in Frameworks */,
+				6E194F3B166DF6B9009EECEC /* libavutil.a in Frameworks */,
+				6E194F44166DF6B9009EECEC /* libswresample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8389,6 +8474,10 @@
 				E561068815874EC300FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD1521A160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				4031983A1610951900DD54F0 /* AddressBook.framework in Frameworks */,
+				6E194F27166DF6B9009EECEC /* libavcodec.a in Frameworks */,
+				6E194F30166DF6B9009EECEC /* libavformat.a in Frameworks */,
+				6E194F39166DF6B9009EECEC /* libavutil.a in Frameworks */,
+				6E194F42166DF6B9009EECEC /* libswresample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8421,6 +8510,10 @@
 				E561068715874EC100FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD15217160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				403198371610951800DD54F0 /* AddressBook.framework in Frameworks */,
+				6E194F24166DF6B9009EECEC /* libavcodec.a in Frameworks */,
+				6E194F2D166DF6B9009EECEC /* libavformat.a in Frameworks */,
+				6E194F36166DF6B9009EECEC /* libavutil.a in Frameworks */,
+				6E194F3F166DF6B9009EECEC /* libswresample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8453,6 +8546,10 @@
 				BC40CC1314CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				E561068615874EC100FB8264 /* Crashlytics.framework in Frameworks */,
 				BCD15215160C6976009E3604 /* libTestFlight.a in Frameworks */,
+				6E194F22166DF6B9009EECEC /* libavcodec.a in Frameworks */,
+				6E194F2B166DF6B9009EECEC /* libavformat.a in Frameworks */,
+				6E194F34166DF6B9009EECEC /* libavutil.a in Frameworks */,
+				6E194F3D166DF6B9009EECEC /* libswresample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8485,6 +8582,10 @@
 				E51907401582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD15219160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				403198381610951800DD54F0 /* AddressBook.framework in Frameworks */,
+				6E194F26166DF6B9009EECEC /* libavcodec.a in Frameworks */,
+				6E194F2F166DF6B9009EECEC /* libavformat.a in Frameworks */,
+				6E194F38166DF6B9009EECEC /* libavutil.a in Frameworks */,
+				6E194F41166DF6B9009EECEC /* libswresample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8517,6 +8618,10 @@
 				BCC7527515E689EF00CF7F7C /* Crashlytics.framework in Frameworks */,
 				BCD15216160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				403198361610951700DD54F0 /* AddressBook.framework in Frameworks */,
+				6E194F23166DF6B9009EECEC /* libavcodec.a in Frameworks */,
+				6E194F2C166DF6B9009EECEC /* libavformat.a in Frameworks */,
+				6E194F35166DF6B9009EECEC /* libavutil.a in Frameworks */,
+				6E194F3E166DF6B9009EECEC /* libswresample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8549,6 +8654,10 @@
 				E519073C1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD15214160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				403198351610951600DD54F0 /* AddressBook.framework in Frameworks */,
+				6E194F21166DF6B9009EECEC /* libavcodec.a in Frameworks */,
+				6E194F2A166DF6B9009EECEC /* libavformat.a in Frameworks */,
+				6E194F33166DF6B9009EECEC /* libavutil.a in Frameworks */,
+				6E194F3C166DF6B9009EECEC /* libswresample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8581,6 +8690,10 @@
 				E519073F1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 				BCD15218160C6976009E3604 /* libTestFlight.a in Frameworks */,
 				403198391610951900DD54F0 /* AddressBook.framework in Frameworks */,
+				6E194F25166DF6B9009EECEC /* libavcodec.a in Frameworks */,
+				6E194F2E166DF6B9009EECEC /* libavformat.a in Frameworks */,
+				6E194F37166DF6B9009EECEC /* libavutil.a in Frameworks */,
+				6E194F40166DF6B9009EECEC /* libswresample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8745,6 +8858,187 @@
 			name = FPPopover;
 			path = ThirdParties/FPPopover;
 			sourceTree = SOURCE_ROOT;
+		};
+		6E194E6A166DF6B8009EECEC /* RadioTunes */ = {
+			isa = PBXGroup;
+			children = (
+				6E194E6B166DF6B8009EECEC /* Core */,
+				6E194E84166DF6B8009EECEC /* External */,
+			);
+			name = RadioTunes;
+			path = ThirdParties/RadioTunes;
+			sourceTree = "<group>";
+		};
+		6E194E6B166DF6B8009EECEC /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				6E194E6C166DF6B8009EECEC /* Parsers */,
+				6E194E74166DF6B8009EECEC /* Radio */,
+				6E194E7F166DF6B8009EECEC /* Utilities */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		6E194E6C166DF6B8009EECEC /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				6E194E6D166DF6B8009EECEC /* M3UParser.h */,
+				6E194E6E166DF6B8009EECEC /* M3UParser.m */,
+				6E194E6F166DF6B8009EECEC /* PlaylistParserProtocol.h */,
+				6E194E70166DF6B8009EECEC /* PLSParser.h */,
+				6E194E71166DF6B8009EECEC /* PLSParser.m */,
+				6E194E72166DF6B8009EECEC /* XSPFParser.h */,
+				6E194E73166DF6B8009EECEC /* XSPFParser.m */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		6E194E74166DF6B8009EECEC /* Radio */ = {
+			isa = PBXGroup;
+			children = (
+				6E194E75166DF6B8009EECEC /* AudioPacket.h */,
+				6E194E76166DF6B8009EECEC /* AudioPacket.m */,
+				6E194E77166DF6B8009EECEC /* AudioQueue.h */,
+				6E194E78166DF6B8009EECEC /* AudioQueue.m */,
+				6E194E79166DF6B8009EECEC /* HTTPRadio.h */,
+				6E194E7A166DF6B8009EECEC /* HTTPRadio.m */,
+				6E194E7B166DF6B8009EECEC /* MMSRadio.h */,
+				6E194E7C166DF6B8009EECEC /* MMSRadio.m */,
+				6E194E7D166DF6B8009EECEC /* Radio.h */,
+				6E194E7E166DF6B8009EECEC /* Radio.m */,
+			);
+			path = Radio;
+			sourceTree = "<group>";
+		};
+		6E194E7F166DF6B8009EECEC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6E194E80166DF6B8009EECEC /* NSHTTPURLResponse+RadioKit.h */,
+				6E194E81166DF6B8009EECEC /* NSHTTPURLResponse+RadioKit.m */,
+				6E194E82166DF6B8009EECEC /* XMLUtilities.h */,
+				6E194E83166DF6B8009EECEC /* XMLUtilities.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		6E194E84166DF6B8009EECEC /* External */ = {
+			isa = PBXGroup;
+			children = (
+				6E194E85166DF6B8009EECEC /* ffmpeg */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		6E194E85166DF6B8009EECEC /* ffmpeg */ = {
+			isa = PBXGroup;
+			children = (
+				6E194E86166DF6B8009EECEC /* include */,
+				6E194EBF166DF6B9009EECEC /* lib */,
+			);
+			path = ffmpeg;
+			sourceTree = "<group>";
+		};
+		6E194E86166DF6B8009EECEC /* include */ = {
+			isa = PBXGroup;
+			children = (
+				6E194E87166DF6B8009EECEC /* libavcodec */,
+				6E194E90166DF6B8009EECEC /* libavformat */,
+				6E194E94166DF6B8009EECEC /* libavutil */,
+				6E194EBD166DF6B9009EECEC /* libswresample */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		6E194E87166DF6B8009EECEC /* libavcodec */ = {
+			isa = PBXGroup;
+			children = (
+				6E194E88166DF6B8009EECEC /* avcodec.h */,
+				6E194E89166DF6B8009EECEC /* avfft.h */,
+				6E194E8A166DF6B8009EECEC /* dxva2.h */,
+				6E194E8B166DF6B8009EECEC /* vaapi.h */,
+				6E194E8C166DF6B8009EECEC /* vda.h */,
+				6E194E8D166DF6B8009EECEC /* vdpau.h */,
+				6E194E8E166DF6B8009EECEC /* version.h */,
+				6E194E8F166DF6B8009EECEC /* xvmc.h */,
+			);
+			path = libavcodec;
+			sourceTree = "<group>";
+		};
+		6E194E90166DF6B8009EECEC /* libavformat */ = {
+			isa = PBXGroup;
+			children = (
+				6E194E91166DF6B8009EECEC /* avformat.h */,
+				6E194E92166DF6B8009EECEC /* avio.h */,
+				6E194E93166DF6B8009EECEC /* version.h */,
+			);
+			path = libavformat;
+			sourceTree = "<group>";
+		};
+		6E194E94166DF6B8009EECEC /* libavutil */ = {
+			isa = PBXGroup;
+			children = (
+				6E194E95166DF6B8009EECEC /* adler32.h */,
+				6E194E96166DF6B8009EECEC /* aes.h */,
+				6E194E97166DF6B8009EECEC /* attributes.h */,
+				6E194E98166DF6B8009EECEC /* audio_fifo.h */,
+				6E194E99166DF6B8009EECEC /* audioconvert.h */,
+				6E194E9A166DF6B8009EECEC /* avassert.h */,
+				6E194E9B166DF6B8009EECEC /* avconfig.h */,
+				6E194E9C166DF6B8009EECEC /* avstring.h */,
+				6E194E9D166DF6B8009EECEC /* avutil.h */,
+				6E194E9E166DF6B8009EECEC /* base64.h */,
+				6E194E9F166DF6B8009EECEC /* bprint.h */,
+				6E194EA0166DF6B8009EECEC /* bswap.h */,
+				6E194EA1166DF6B8009EECEC /* common.h */,
+				6E194EA2166DF6B8009EECEC /* cpu.h */,
+				6E194EA3166DF6B9009EECEC /* crc.h */,
+				6E194EA4166DF6B9009EECEC /* dict.h */,
+				6E194EA5166DF6B9009EECEC /* error.h */,
+				6E194EA6166DF6B9009EECEC /* eval.h */,
+				6E194EA7166DF6B9009EECEC /* fifo.h */,
+				6E194EA8166DF6B9009EECEC /* file.h */,
+				6E194EA9166DF6B9009EECEC /* imgutils.h */,
+				6E194EAA166DF6B9009EECEC /* intfloat.h */,
+				6E194EAB166DF6B9009EECEC /* intfloat_readwrite.h */,
+				6E194EAC166DF6B9009EECEC /* intreadwrite.h */,
+				6E194EAD166DF6B9009EECEC /* lfg.h */,
+				6E194EAE166DF6B9009EECEC /* log.h */,
+				6E194EAF166DF6B9009EECEC /* lzo.h */,
+				6E194EB0166DF6B9009EECEC /* mathematics.h */,
+				6E194EB1166DF6B9009EECEC /* md5.h */,
+				6E194EB2166DF6B9009EECEC /* mem.h */,
+				6E194EB3166DF6B9009EECEC /* opt.h */,
+				6E194EB4166DF6B9009EECEC /* parseutils.h */,
+				6E194EB5166DF6B9009EECEC /* pixdesc.h */,
+				6E194EB6166DF6B9009EECEC /* pixfmt.h */,
+				6E194EB7166DF6B9009EECEC /* random_seed.h */,
+				6E194EB8166DF6B9009EECEC /* rational.h */,
+				6E194EB9166DF6B9009EECEC /* samplefmt.h */,
+				6E194EBA166DF6B9009EECEC /* sha.h */,
+				6E194EBB166DF6B9009EECEC /* timecode.h */,
+				6E194EBC166DF6B9009EECEC /* timestamp.h */,
+			);
+			path = libavutil;
+			sourceTree = "<group>";
+		};
+		6E194EBD166DF6B9009EECEC /* libswresample */ = {
+			isa = PBXGroup;
+			children = (
+				6E194EBE166DF6B9009EECEC /* swresample.h */,
+			);
+			path = libswresample;
+			sourceTree = "<group>";
+		};
+		6E194EBF166DF6B9009EECEC /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				6E194EC0166DF6B9009EECEC /* libavcodec.a */,
+				6E194EC1166DF6B9009EECEC /* libavformat.a */,
+				6E194EC2166DF6B9009EECEC /* libavutil.a */,
+				6E194EC3166DF6B9009EECEC /* libswresample.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
 		};
 		B172043C14C54446007F3FB0 /* BuyLink */ = {
 			isa = PBXGroup;
@@ -9692,6 +9986,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				6E194E6A166DF6B8009EECEC /* RadioTunes */,
 				BC325FD8161038B300BA38C9 /* UIDevice+Resolutions */,
 				BCD1520F160C6976009E3604 /* TestFlightSDK1 */,
 				BC209EE515EBABFF00A0E7DB /* Base64 */,
@@ -10651,8 +10946,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				40B4094C152EFC630050D334 /* PBXTargetDependency */,
-				40B4094E152EFC630050D334 /* PBXTargetDependency */,
 			);
 			name = "YasoundD LOCAL SERVER";
 			productName = Yasound;
@@ -10671,8 +10964,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				40D53B511554280F001EB0C5 /* PBXTargetDependency */,
-				40D53B531554280F001EB0C5 /* PBXTargetDependency */,
 			);
 			name = "Yasound TECHTOUR";
 			productName = Yasound;
@@ -10690,8 +10981,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BC3FA65E14E93B660055AB4A /* PBXTargetDependency */,
-				BC3FA66014E93B660055AB4A /* PBXTargetDependency */,
 			);
 			name = "YasoundD MUTE";
 			productName = Yasound;
@@ -10709,8 +10998,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BC56F46E152486AF005D1B40 /* PBXTargetDependency */,
-				BC56F470152486AF005D1B40 /* PBXTargetDependency */,
 			);
 			name = "YasoundD DEV SERVER";
 			productName = Yasound;
@@ -10728,8 +11015,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BC40CC6314CF64D500DF0950 /* PBXTargetDependency */,
-				BC40CC6514CF64D500DF0950 /* PBXTargetDependency */,
 			);
 			name = YasoundD;
 			productName = Yasound;
@@ -10748,8 +11033,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BC40CC5D14CF64C800DF0950 /* PBXTargetDependency */,
-				BC40CC5B14CF64C500DF0950 /* PBXTargetDependency */,
 			);
 			name = "Yasound App Store";
 			productName = Yasound;
@@ -10767,8 +11050,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BCC7518A15E689EF00CF7F7C /* PBXTargetDependency */,
-				BCC7518C15E689EF00CF7F7C /* PBXTargetDependency */,
 			);
 			name = YasoundtestD;
 			productName = Yasound;
@@ -10787,8 +11068,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BC40CC6714CF64D800DF0950 /* PBXTargetDependency */,
-				BC40CBBE14CF639A00DF0950 /* PBXTargetDependency */,
 			);
 			name = Yasound;
 			productName = Yasound;
@@ -10807,8 +11086,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BC40CC6114CF64D000DF0950 /* PBXTargetDependency */,
-				BC40CC5F14CF64CD00DF0950 /* PBXTargetDependency */,
 			);
 			name = "Yasound adhoc";
 			productName = Yasound;
@@ -10831,6 +11108,8 @@
 			knownRegions = (
 				en,
 				fr,
+				he,
+				English,
 			);
 			mainGroup = E5A9A39E1454DC0500EA374C;
 			productRefGroup = E5A9A3AA1454DC0500EA374C /* Products */;
@@ -15847,6 +16126,16 @@
 				4083FE7E1663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE891663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE941663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
+				6E194ECE166DF6B9009EECEC /* M3UParser.m in Sources */,
+				6E194ED7166DF6B9009EECEC /* PLSParser.m in Sources */,
+				6E194EE0166DF6B9009EECEC /* XSPFParser.m in Sources */,
+				6E194EE9166DF6B9009EECEC /* AudioPacket.m in Sources */,
+				6E194EF2166DF6B9009EECEC /* AudioQueue.m in Sources */,
+				6E194EFB166DF6B9009EECEC /* HTTPRadio.m in Sources */,
+				6E194F04166DF6B9009EECEC /* MMSRadio.m in Sources */,
+				6E194F0D166DF6B9009EECEC /* Radio.m in Sources */,
+				6E194F16166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
+				6E194F1F166DF6B9009EECEC /* XMLUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16103,6 +16392,16 @@
 				4083FE7F1663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE8A1663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE951663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
+				6E194ECF166DF6B9009EECEC /* M3UParser.m in Sources */,
+				6E194ED8166DF6B9009EECEC /* PLSParser.m in Sources */,
+				6E194EE1166DF6B9009EECEC /* XSPFParser.m in Sources */,
+				6E194EEA166DF6B9009EECEC /* AudioPacket.m in Sources */,
+				6E194EF3166DF6B9009EECEC /* AudioQueue.m in Sources */,
+				6E194EFC166DF6B9009EECEC /* HTTPRadio.m in Sources */,
+				6E194F05166DF6B9009EECEC /* MMSRadio.m in Sources */,
+				6E194F0E166DF6B9009EECEC /* Radio.m in Sources */,
+				6E194F17166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
+				6E194F20166DF6B9009EECEC /* XMLUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16355,6 +16654,16 @@
 				4083FE7D1663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE881663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE931663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
+				6E194ECD166DF6B9009EECEC /* M3UParser.m in Sources */,
+				6E194ED6166DF6B9009EECEC /* PLSParser.m in Sources */,
+				6E194EDF166DF6B9009EECEC /* XSPFParser.m in Sources */,
+				6E194EE8166DF6B9009EECEC /* AudioPacket.m in Sources */,
+				6E194EF1166DF6B9009EECEC /* AudioQueue.m in Sources */,
+				6E194EFA166DF6B9009EECEC /* HTTPRadio.m in Sources */,
+				6E194F03166DF6B9009EECEC /* MMSRadio.m in Sources */,
+				6E194F0C166DF6B9009EECEC /* Radio.m in Sources */,
+				6E194F15166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
+				6E194F1E166DF6B9009EECEC /* XMLUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16611,6 +16920,16 @@
 				4083FE7A1663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE851663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE901663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
+				6E194ECA166DF6B9009EECEC /* M3UParser.m in Sources */,
+				6E194ED3166DF6B9009EECEC /* PLSParser.m in Sources */,
+				6E194EDC166DF6B9009EECEC /* XSPFParser.m in Sources */,
+				6E194EE5166DF6B9009EECEC /* AudioPacket.m in Sources */,
+				6E194EEE166DF6B9009EECEC /* AudioQueue.m in Sources */,
+				6E194EF7166DF6B9009EECEC /* HTTPRadio.m in Sources */,
+				6E194F00166DF6B9009EECEC /* MMSRadio.m in Sources */,
+				6E194F09166DF6B9009EECEC /* Radio.m in Sources */,
+				6E194F12166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
+				6E194F1B166DF6B9009EECEC /* XMLUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16867,6 +17186,16 @@
 				4083FE781663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE831663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE8E1663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
+				6E194EC8166DF6B9009EECEC /* M3UParser.m in Sources */,
+				6E194ED1166DF6B9009EECEC /* PLSParser.m in Sources */,
+				6E194EDA166DF6B9009EECEC /* XSPFParser.m in Sources */,
+				6E194EE3166DF6B9009EECEC /* AudioPacket.m in Sources */,
+				6E194EEC166DF6B9009EECEC /* AudioQueue.m in Sources */,
+				6E194EF5166DF6B9009EECEC /* HTTPRadio.m in Sources */,
+				6E194EFE166DF6B9009EECEC /* MMSRadio.m in Sources */,
+				6E194F07166DF6B9009EECEC /* Radio.m in Sources */,
+				6E194F10166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
+				6E194F19166DF6B9009EECEC /* XMLUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17124,6 +17453,16 @@
 				4083FE7C1663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE871663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE921663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
+				6E194ECC166DF6B9009EECEC /* M3UParser.m in Sources */,
+				6E194ED5166DF6B9009EECEC /* PLSParser.m in Sources */,
+				6E194EDE166DF6B9009EECEC /* XSPFParser.m in Sources */,
+				6E194EE7166DF6B9009EECEC /* AudioPacket.m in Sources */,
+				6E194EF0166DF6B9009EECEC /* AudioQueue.m in Sources */,
+				6E194EF9166DF6B9009EECEC /* HTTPRadio.m in Sources */,
+				6E194F02166DF6B9009EECEC /* MMSRadio.m in Sources */,
+				6E194F0B166DF6B9009EECEC /* Radio.m in Sources */,
+				6E194F14166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
+				6E194F1D166DF6B9009EECEC /* XMLUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17380,6 +17719,16 @@
 				4083FE791663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE841663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE8F1663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
+				6E194EC9166DF6B9009EECEC /* M3UParser.m in Sources */,
+				6E194ED2166DF6B9009EECEC /* PLSParser.m in Sources */,
+				6E194EDB166DF6B9009EECEC /* XSPFParser.m in Sources */,
+				6E194EE4166DF6B9009EECEC /* AudioPacket.m in Sources */,
+				6E194EED166DF6B9009EECEC /* AudioQueue.m in Sources */,
+				6E194EF6166DF6B9009EECEC /* HTTPRadio.m in Sources */,
+				6E194EFF166DF6B9009EECEC /* MMSRadio.m in Sources */,
+				6E194F08166DF6B9009EECEC /* Radio.m in Sources */,
+				6E194F11166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
+				6E194F1A166DF6B9009EECEC /* XMLUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17636,6 +17985,16 @@
 				4083FE771663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE821663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE8D1663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
+				6E194EC7166DF6B9009EECEC /* M3UParser.m in Sources */,
+				6E194ED0166DF6B9009EECEC /* PLSParser.m in Sources */,
+				6E194ED9166DF6B9009EECEC /* XSPFParser.m in Sources */,
+				6E194EE2166DF6B9009EECEC /* AudioPacket.m in Sources */,
+				6E194EEB166DF6B9009EECEC /* AudioQueue.m in Sources */,
+				6E194EF4166DF6B9009EECEC /* HTTPRadio.m in Sources */,
+				6E194EFD166DF6B9009EECEC /* MMSRadio.m in Sources */,
+				6E194F06166DF6B9009EECEC /* Radio.m in Sources */,
+				6E194F0F166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
+				6E194F18166DF6B9009EECEC /* XMLUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17893,103 +18252,20 @@
 				4083FE7B1663B74C0016BA9B /* YaRequest.m in Sources */,
 				4083FE861663B7CA0016BA9B /* YaRequestConfig.m in Sources */,
 				4083FE911663C1550016BA9B /* NSString+JsonLoading.m in Sources */,
+				6E194ECB166DF6B9009EECEC /* M3UParser.m in Sources */,
+				6E194ED4166DF6B9009EECEC /* PLSParser.m in Sources */,
+				6E194EDD166DF6B9009EECEC /* XSPFParser.m in Sources */,
+				6E194EE6166DF6B9009EECEC /* AudioPacket.m in Sources */,
+				6E194EEF166DF6B9009EECEC /* AudioQueue.m in Sources */,
+				6E194EF8166DF6B9009EECEC /* HTTPRadio.m in Sources */,
+				6E194F01166DF6B9009EECEC /* MMSRadio.m in Sources */,
+				6E194F0A166DF6B9009EECEC /* Radio.m in Sources */,
+				6E194F13166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
+				6E194F1C166DF6B9009EECEC /* XMLUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		40B4094C152EFC630050D334 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = 40B4094D152EFC630050D334 /* PBXContainerItemProxy */;
-		};
-		40B4094E152EFC630050D334 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthLib;
-			targetProxy = 40B4094F152EFC630050D334 /* PBXContainerItemProxy */;
-		};
-		40D53B511554280F001EB0C5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = 40D53B521554280F001EB0C5 /* PBXContainerItemProxy */;
-		};
-		40D53B531554280F001EB0C5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthLib;
-			targetProxy = 40D53B541554280F001EB0C5 /* PBXContainerItemProxy */;
-		};
-		BC3FA65E14E93B660055AB4A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = BC3FA65F14E93B660055AB4A /* PBXContainerItemProxy */;
-		};
-		BC3FA66014E93B660055AB4A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthLib;
-			targetProxy = BC3FA66114E93B660055AB4A /* PBXContainerItemProxy */;
-		};
-		BC40CBBE14CF639A00DF0950 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = BC40CBBD14CF639A00DF0950 /* PBXContainerItemProxy */;
-		};
-		BC40CC5B14CF64C500DF0950 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = BC40CC5A14CF64C500DF0950 /* PBXContainerItemProxy */;
-		};
-		BC40CC5D14CF64C800DF0950 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthLib;
-			targetProxy = BC40CC5C14CF64C800DF0950 /* PBXContainerItemProxy */;
-		};
-		BC40CC5F14CF64CD00DF0950 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = BC40CC5E14CF64CD00DF0950 /* PBXContainerItemProxy */;
-		};
-		BC40CC6114CF64D000DF0950 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthLib;
-			targetProxy = BC40CC6014CF64D000DF0950 /* PBXContainerItemProxy */;
-		};
-		BC40CC6314CF64D500DF0950 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = BC40CC6214CF64D500DF0950 /* PBXContainerItemProxy */;
-		};
-		BC40CC6514CF64D500DF0950 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthLib;
-			targetProxy = BC40CC6414CF64D500DF0950 /* PBXContainerItemProxy */;
-		};
-		BC40CC6714CF64D800DF0950 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthLib;
-			targetProxy = BC40CC6614CF64D800DF0950 /* PBXContainerItemProxy */;
-		};
-		BC56F46E152486AF005D1B40 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = BC56F46F152486AF005D1B40 /* PBXContainerItemProxy */;
-		};
-		BC56F470152486AF005D1B40 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthLib;
-			targetProxy = BC56F471152486AF005D1B40 /* PBXContainerItemProxy */;
-		};
-		BCC7518A15E689EF00CF7F7C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = BCC7518B15E689EF00CF7F7C /* PBXContainerItemProxy */;
-		};
-		BCC7518C15E689EF00CF7F7C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthLib;
-			targetProxy = BCC7518D15E689EF00CF7F7C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BC524EF214EEC250001B4FC5 /* btnBuyDown.png */ = {
@@ -18217,6 +18493,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -18226,6 +18503,14 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -18233,6 +18518,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
@@ -18246,12 +18535,21 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "USE_YASOUND_LOCAL_SERVER=1";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -18259,6 +18557,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
@@ -18273,6 +18575,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -18284,6 +18587,14 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info-techtour.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -18291,6 +18602,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Yasound TechTour";
@@ -18306,6 +18621,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -18313,6 +18629,14 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "SIMULATE_TECHTOUR=1";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info-techtour.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -18320,6 +18644,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Yasound TechTour";
@@ -18334,6 +18662,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -18343,6 +18672,14 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -18350,6 +18687,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
@@ -18362,12 +18703,21 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "MUTE_RADIO=1";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -18375,6 +18725,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
@@ -18388,6 +18742,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -18397,6 +18752,14 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info-DevServer.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -18404,6 +18767,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD DEV SERVER";
@@ -18419,12 +18786,21 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "USE_DEV_SERVER=1";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info-DevServer.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -18432,6 +18808,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD DEV SERVER";
@@ -18448,6 +18828,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -18464,6 +18845,7 @@
 					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					./LibTools,
 					"$(SDKROOT)/usr/include/libxml2",
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
 				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -18472,6 +18854,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Radio Yasound D";
@@ -18489,6 +18875,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -18502,6 +18889,7 @@
 					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					./LibTools,
 					"$(SDKROOT)/usr/include/libxml2",
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
 				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -18510,6 +18898,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Radio Yasound D";
@@ -18526,6 +18918,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -18536,6 +18929,14 @@
 					TESTFLIGHT_SDK,
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
@@ -18543,6 +18944,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "C35803D7-2D97-4F78-99CB-665037FC8336";
@@ -18559,6 +18964,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -18568,6 +18974,14 @@
 					"NDEBUG=1",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
@@ -18575,6 +18989,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "C35803D7-2D97-4F78-99CB-665037FC8336";
@@ -18591,6 +19009,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -18601,6 +19020,14 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/YasoundtestD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -18608,6 +19035,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = YasoundtestD;
@@ -18621,6 +19052,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -18628,6 +19060,14 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/YasoundtestD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -18635,6 +19075,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = YasoundtestD;
@@ -18727,11 +19171,20 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -18739,6 +19192,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "Yasound Radio";
 				WARNING_CFLAGS = "$(inherited)";
@@ -18753,11 +19210,20 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -18765,6 +19231,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "Yasound Radio";
 				WARNING_CFLAGS = "$(inherited)";
@@ -18779,6 +19249,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -18789,6 +19260,14 @@
 					"$(inherited)",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
@@ -18796,6 +19275,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "97D2B527-58D4-420D-911E-9D903C238924";
@@ -18810,6 +19293,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ThirdParties/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -18821,6 +19305,14 @@
 					"$(inherited)",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"./ThirdParties/facebook-ios-sdk/src",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer\"",
+					"\"../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					./LibTools,
+					"\"./ThirdParties/RadioTunes/External/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
@@ -18828,6 +19320,10 @@
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK1\"",
+					"\"$(SRCROOT)/ThirdParties/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParties/RadioTunes/External/ffmpeg/lib\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.gotlieb/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone.other/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "Radio Yasound";
 				PROVISIONING_PROFILE = "97D2B527-58D4-420D-911E-9D903C238924";
