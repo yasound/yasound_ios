@@ -11,11 +11,12 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "YaRadio.h"
+#import "Radio.h"
 
 #define NOTIF_AUDIOSTREAM_PLAY @"NOTIF_AudioStream_play"
 #define NOTIF_AUDIOSTREAM_STOP @"NOTIF_AudioStream_stop"
 
-@interface AudioStreamManager : NSObject
+@interface AudioStreamManager : NSObject<RadioDelegate>
 {
     NSInteger _streamErrorCount;
     NSTimer* _streamErrorTimer;
