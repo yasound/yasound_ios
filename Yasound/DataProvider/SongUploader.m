@@ -38,6 +38,7 @@ static SongUploader* _main = nil;
   {
       _tempSongFile = nil;
       _request = nil;
+      _yarequest = nil;
   }
   return self;
 }
@@ -45,6 +46,8 @@ static SongUploader* _main = nil;
 
 - (void) dealloc
 {
+    if (_yarequest)
+        [self clearRequest];
   if (_tempSongFile) 
     [_tempSongFile release];
 
@@ -124,25 +127,21 @@ static SongUploader* _main = nil;
 
 #pragma mark - public functions
 
-- (BOOL)uploadSong:(NSString*)title forRadioId:(NSNumber*)radio_id album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
+- (BOOL)uploadSong:(NSString*)title forRadioId:(NSNumber*)radio_id album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId completionBLock:(YaRequestCompletionBlock)completionBlock progressBlock:(YaRequestProgressBlock)progressBlock
 {
-  MPMediaItem *item = [self findSong:title album:album artist:artist];
-  if (!item) 
-    return FALSE;
-
+    MPMediaItem *item = [self findSong:title album:album artist:artist];
+    if (!item)
+        return FALSE;
     
-  _target = target;
-  _selector = selector;
-
-  NSURL *assetURL = [item valueForProperty:MPMediaItemPropertyAssetURL];
-  if (assetURL == nil) 
-  {
-    DLog(@"assertURL is nil for %@", item);
-    return FALSE;
-  }
-  
-  NSString* ext = [TSLibraryImport extensionForAssetURL:assetURL];
-  
+    NSURL *assetURL = [item valueForProperty:MPMediaItemPropertyAssetURL];
+    if (assetURL == nil)
+    {
+        DLog(@"assertURL is nil for %@", item);
+        return FALSE;
+    }
+    
+    NSString* ext = [TSLibraryImport extensionForAssetURL:assetURL];
+    
     // store the tmp file in Cache directory
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString* cacheDirectory = [paths objectAtIndex:0];
@@ -154,58 +153,75 @@ static SongUploader* _main = nil;
     fullPath = [fullPath stringByAppendingPathExtension:ext];
     
     
-  NSFileManager *fileMgr = [NSFileManager defaultManager];
-  NSError *error;
-  [fileMgr removeItemAtPath:fullPath error:&error];
-  
-  //DLog(@"SongUploader %@", fullPath);
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    NSError *error;
+    [fileMgr removeItemAtPath:fullPath error:&error];
     
     if (_tempSongFile)
         [_tempSongFile release];
-    _tempSongFile = [[NSString alloc] initWithFormat:fullPath];    
+    _tempSongFile = [[NSString alloc] initWithFormat:fullPath];
     
-    NSURL* outURL = [NSURL fileURLWithPath:fullPath];  
+    NSURL* outURL = [NSURL fileURLWithPath:fullPath];
     
-  TSLibraryImport* import = [[TSLibraryImport alloc] init];
-  [import importAsset:assetURL toURL:outURL completionBlock:^(TSLibraryImport* import) 
-    {
-        
-    if (import.status != AVAssetExportSessionStatusCompleted) 
-    {
-      // something went wrong with the import
-      DLog(@"Error importing: %@", import.error);
-      [import release];
-      import = nil;
-        
-        // client callback
-        NSMutableDictionary* info = [NSMutableDictionary dictionary];
-        [info setObject:[NSNumber numberWithBool:NO] forKey:@"succeeded"];
-        [info setObject:[NSString stringWithString:@"SongUpload_failedIncorrectFile"] forKey:@"detailedInfo"];
-        [self onUploadDidFinish:nil withInfos:info];
-
-      return;
-    }
-    
-    // import completed
-    [import release];
-    import = nil;  
-
-
-        // LBDEBUG : is this data properly released? just make sure...
-        
-    NSData *data = [NSData dataWithContentsOfFile: fullPath];
-    _request = [[YasoundDataProvider main] uploadSong:data  forRadioId:radio_id
-                                     title:title
-                                     album:album
-                                    artist:artist 
-                                    songId:songId target:self action:@selector(onUploadDidFinish:withInfos:) progressDelegate:progressDelegate];
-        
-  }];
-  return TRUE;
+    TSLibraryImport* import = [[TSLibraryImport alloc] init];
+    [import importAsset:assetURL toURL:outURL completionBlock:^(TSLibraryImport* import)
+     {
+         
+         if (import.status != AVAssetExportSessionStatusCompleted)
+         {
+             // something went wrong with the import
+             DLog(@"Error importing: %@", import.error);
+             [import release];
+             import = nil;
+             
+             // client callback
+             NSMutableDictionary* info = [NSMutableDictionary dictionary];
+             [info setObject:[NSNumber numberWithBool:NO] forKey:@"succeeded"];
+             [info setObject:[NSString stringWithString:@"SongUpload_failedIncorrectFile"] forKey:@"detailedInfo"];
+             
+             if (completionBlock)
+                 completionBlock(0, nil, [NSError errorWithDomain:@"cannot import song" code:1 userInfo:nil]);
+             return;
+         }
+         
+         // import completed
+         [import release];
+         import = nil;
+         
+         
+         // LBDEBUG : is this data properly released? just make sure...
+         
+         NSData *data = [NSData dataWithContentsOfFile: fullPath];
+         YaRequestCompletionBlock internalCompletionBlock = ^(int status, NSString* response, NSError* error){
+             if (_yarequest)
+                 [self clearRequest];
+             if (completionBlock)
+                 completionBlock(status, response, error);
+         };
+         
+         _yarequest = [[YasoundDataProvider main] uploadSong:data forRadioId:radio_id
+                                                       title:title
+                                                       album:album
+                                                      artist:artist
+                                                      songId:songId
+                                         withCompletionBlock:internalCompletionBlock
+                                            andProgressBlock:progressBlock];
+         [_yarequest retain];
+         
+     }];
+    return TRUE;
 }
 
+- (void)cancelRequest
+{
+    [_yarequest cancel];
+}
 
-
+- (void)clearRequest
+{
+    [_yarequest release];
+    _yarequest = nil;
+}
 
 - (BOOL)canUploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist
 {
@@ -220,9 +236,7 @@ static SongUploader* _main = nil;
     return TRUE;
 }
 
-
-
-- (BOOL)uploadSong:(SongUploading*)song target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
+- (BOOL)uploadSong:(SongUploading*)song forRadioId:(NSNumber*)radio_id completionBlock:(YaRequestCompletionBlock)completionBlock progressBlock:(YaRequestProgressBlock)progressBlock
 {
     if (![song isKindOfClass:[SongUploading class]])
     {
@@ -230,8 +244,9 @@ static SongUploader* _main = nil;
         return NO;
     }
     
-    return [self uploadSong:song.songLocal.name_client forRadioId:song.radio_id album:song.songLocal.album_client artist:song.songLocal.artist_client songId:song.songLocal.id target:target action:selector progressDelegate:progressDelegate];
+    return [self uploadSong:song.songLocal.name_client forRadioId:song.radio_id album:song.songLocal.album_client artist:song.songLocal.artist_client songId:song.songLocal.id completionBLock:completionBlock progressBlock:progressBlock];
 }
+
 
 - (BOOL)canUploadSong:(Song*)song
 {
@@ -243,10 +258,10 @@ static SongUploader* _main = nil;
 - (void)cancelSongUpload
 {
     // request may be nil, if the upload has been canceled because the file is incorrect for instance
-    if (_request != nil)
+    if (_yarequest != nil)
     {
-        [_request clearDelegatesAndCancel];
-        [_request release];
+        [self cancelRequest];
+        [self clearRequest];
     }
 }
 

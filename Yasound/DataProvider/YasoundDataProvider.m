@@ -1543,12 +1543,26 @@ static YasoundDataProvider* _main = nil;
     
 }
 
+- (void)songsForPlaylist:(NSInteger)playlistId withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/song/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", playlistId] forKey:@"playlist"];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
 
-- (ASIFormDataRequest*)uploadSong:(NSData*)song forRadioId:(YaRadio*)radio_id title:(NSString*)title album:(NSString*)album artist:(NSString*)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
+- (YaRequest*)uploadSong:(NSData*)song forRadioId:(NSNumber*)radio_id title:(NSString*)title album:(NSString*)album artist:(NSString*)artist songId:(NSNumber*)songId withCompletionBlock:(YaRequestCompletionBlock)block andProgressBlock:(YaRequestProgressBlock)progressBlock
 {
     if ((song == nil) || (radio_id == nil))
     {
         assert(0);
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return nil;
     }
     
@@ -1556,22 +1570,31 @@ static YasoundDataProvider* _main = nil;
     if (![radio_id isKindOfClass:[NSNumber class]])
     {
         assert(0);
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return nil;
     }
     
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = [NSString stringWithFormat:@"api/v1/upload_song/%@/", songId];
-    
-  
-  NSMutableDictionary* jsonObject = [NSMutableDictionary dictionary];
+    NSMutableDictionary* jsonObject = [NSMutableDictionary dictionary];
     [jsonObject setObject:radio_id forKey:@"radio_id"];
     [jsonObject setObject:title forKey:@"title"];
-  [jsonObject setObject:album forKey:@"album"];
-  [jsonObject setObject:artist forKey:@"artist"];   
-  NSString* jsonString = jsonObject.JSONRepresentation;
+    [jsonObject setObject:album forKey:@"album"];
+    [jsonObject setObject:artist forKey:@"artist"];
+    NSString* jsonString = jsonObject.JSONRepresentation;
+
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/upload_song/%@/", songId];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObject:jsonString forKey:@"data"];
+    config.fileData = [NSDictionary dictionaryWithObject:song forKey:@"song"];
     
-  return [_communicator postData:song withKey:@"song" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth withProgress:progressDelegate withAdditionalJsonData:jsonString];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block progressBlock:progressBlock];
+    return req;
 }
+
 
 - (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector
 {

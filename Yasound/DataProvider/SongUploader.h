@@ -16,6 +16,7 @@
 {
   NSString* _tempSongFile;
     ASIFormDataRequest* _request;
+    YaRequest* _yarequest;
   id _target;
   SEL _selector;
 }
@@ -25,10 +26,18 @@
 
 
 
-- (BOOL)uploadSong:(NSString*)title forRadioId:(NSNumber*)radio_id album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
+//- (BOOL)uploadSong:(NSString*)title forRadioId:(NSNumber*)radio_id album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
+
+
+
+
 - (BOOL)canUploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist;
 
-- (BOOL)uploadSong:(SongUploading*)song forRadioId:(NSNumber*)radio_id target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
+//- (BOOL)uploadSong:(SongUploading*)song forRadioId:(NSNumber*)radio_id target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
+
+- (BOOL)uploadSong:(SongUploading*)song forRadioId:(NSNumber*)radio_id completionBlock:(YaRequestCompletionBlock)completionBlock progressBlock:(YaRequestProgressBlock)progressBlock;
+
+
 - (BOOL)canUploadSong:(Song*)song;
 
 

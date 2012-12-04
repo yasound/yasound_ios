@@ -64,7 +64,7 @@
 - (void)songUploadDidStart:(SongUploading*)song;
 - (void)songUploadDidInterrupt:(SongUploading*)song;
 - (void)songUploadProgress:(SongUploading*)song progress:(CGFloat)progress bytes:(NSUInteger)bytes;
-- (void)songUploadDidFinish:(SongUploading*)song info:(NSDictionary*)info;
+- (void)songUploadDidFinish:(SongUploading*)song success:(BOOL)success;
 
 @end
 

@@ -198,10 +198,9 @@ taskStatus stringToStatus(NSString* str);
 
 // Playlist
 - (void)playlistsForRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)songsForPlaylist:(NSInteger)playlistId withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)songsForPlaylist:(NSInteger)playlistId target:(id)target action:(SEL)selector;
-
-- (ASIFormDataRequest*)uploadSong:(NSData*)song forRadioId:(YaRadio*)radio_id title:(NSString*)title album:(NSString*)album artist:(NSString*)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
+- (YaRequest*)uploadSong:(NSData*)song forRadioId:(NSNumber*)radio_id title:(NSString*)title album:(NSString*)album artist:(NSString*)artist songId:(NSNumber*)songId withCompletionBlock:(YaRequestCompletionBlock)block andProgressBlock:(YaRequestProgressBlock)progressBlock;
 
 // Get matched songs for a playlist. Returns a NSArray of Song objects
 - (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector;  // didReceiveMatchedSongs:(NSArray*)matched_songs info:(NSDictionary*)info

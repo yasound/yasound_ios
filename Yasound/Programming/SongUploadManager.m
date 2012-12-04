@@ -54,7 +54,47 @@
     self.status = SongUploadItemStatusUploading;
     
     _uploader = [[SongUploader alloc] init];
-    BOOL res = [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinished:) progressDelegate:self];
+    
+    YaRequestCompletionBlock completionBlock = ^(int requestStatus, NSString* response, NSError* error){
+        DLog(@"song upload manager completion block %d - %@ - %@", requestStatus, response, error);
+        
+        BOOL success = (error == nil) && (requestStatus == 200);
+        if (success)
+        {
+            self.status = SongUploadItemStatusCompleted;
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDSUCCEED object:self];
+        }
+        else
+        {
+            self.status = SongUploadItemStatusFailed;
+            self.nbFails++;
+            
+            // ne pas faire ça tout de suite
+            // attendre de voir comment on gère la reprise 'dun upload e´choué
+            // [self.song setUploading:NO];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDFAIL object:self];
+        }
+        
+        if (self.delegate != nil)
+            [self.delegate songUploadDidFinish:self.song success:success];
+        
+        // send notif to ask the manager to continue with the upload list
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDFINISH object:self];
+    };
+    
+    YaRequestProgressBlock progressBlock = ^(unsigned long long size, unsigned long long total){
+        DLog(@"song upload manager progress block %lld - %lld", size, total);
+        
+        self.currentSize += size;
+        self.currentProgress = (float)self.currentSize / (float)total;
+        
+        
+        if (self.delegate != nil)
+            [self.delegate songUploadProgress:self.song progress:self.currentProgress bytes:self.currentSize];
+    };
+    
+    BOOL res = [_uploader uploadSong:self.song forRadioId:self.song.radio_id completionBlock:completionBlock progressBlock:progressBlock];
     if (!res)
     {
         self.status = SongUploadItemStatusFailed;
@@ -62,7 +102,6 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDFAIL object:self];
         return;
     }
-        
 
     self.currentProgress = 0;
     self.currentSize = 0;
@@ -106,59 +145,6 @@
         [self.delegate songUploadDidInterrupt:self.song];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDINTERRUPT object:self];
-}
-
-
-
-- (void)uploadDidFinished:(NSDictionary*)info
-{
-    NSNumber* succeeded = [info objectForKey:@"succeeded"];
-    assert(succeeded != nil);
-    self.detailedInfo = [info objectForKey:@"detailedInfo"];
-    
-
-    if ([succeeded boolValue])
-    {
-        self.status = SongUploadItemStatusCompleted;
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDSUCCEED object:self];
-    }
-    else
-    {
- 
-        self.status = SongUploadItemStatusFailed;
-        self.nbFails++;
-        
-        // ne pas faire ça tout de suite
-        // attendre de voir comment on gère la reprise 'dun upload e´choué
-        // [self.song setUploading:NO];
-
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDFAIL object:self];
-    }
-    
-    if (self.delegate != nil)
-        [self.delegate songUploadDidFinish:self.song info:info];
-    
-    // send notif to ask the manager to continue with the upload list
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDFINISH object:self];
-    
-    // send notif to warn the list handlers to update, depending on the request's result
-}
-
-
-#pragma mark - Progress Delegate
-
-- (void)setProgress:(float)newProgress
-{
-    self.currentProgress = newProgress;
-    
-    if (self.delegate != nil)
-        [self.delegate songUploadProgress:self.song progress:newProgress bytes:self.currentSize];
-}
-
-
-- (void)request:(ASIHTTPRequest *)request didSendBytes:(long long)bytes
-{
-    self.currentSize += bytes;
 }
 
 @end

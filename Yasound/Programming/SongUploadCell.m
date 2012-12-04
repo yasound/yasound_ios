@@ -317,14 +317,8 @@
 }
 
 
-- (void)songUploadDidFinish:(SongUploading*)song info:(NSDictionary*)info
+- (void)songUploadDidFinish:(SongUploading*)song success:(BOOL)success
 {
-    DLog(@"songUploadDidFinish : info %@", info);
-
-    BOOL succeeded = NO;
-    succeeded = [[info objectForKey:@"succeeded"] boolValue];
-        
-    
     // update the GUI, using the same item
     [self update:self.item];
 

@@ -58,7 +58,29 @@
 
 - (void)refreshView
 {
-    [[YasoundDataProvider main] songsForPlaylist:_playlistId target:self action:@selector(receiveSongs:withInfo:)];
+    [[YasoundDataProvider main] songsForPlaylist:_playlistId withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"songs for playlist %d error: %d - %@", _playlistId, error.code, error.domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"songs for playlist %d error: response status %d", _playlistId, status);
+            return;
+        }
+        Container* songContainer = [response jsonToContainer:[Song class]];
+        if (!songContainer || !songContainer.objects)
+        {
+            DLog(@"songs for playlist %d error: cannot parse response %@", _playlistId, response);
+            return;
+        }
+        NSArray* songs = songContainer.objects;
+        [self buildSongsData:songs];
+        [_tableView reloadData];
+        [ActivityAlertView close];
+    }];
+    
 }
 
 
@@ -80,23 +102,31 @@
 
 -(void)uploadSong:(Song *)song 
 {
-    _hud = [[MBProgressHUD alloc] initWithView:self.view];
-	[self.navigationController.view addSubview:_hud];
-	
-    // Set determinate mode
-    _hud.mode = MBProgressHUDModeDeterminate;
+    //Mat
+    //#FIXME: Is this class still used
+    // It cannot work...
+    // WTF: uploadSong delegate param is MBProgressHUD object !!!
+    assert(0);
+    //
     
-    _hud.labelText = NSLocalizedString(@"SongsView_upload_progress", nil);
-
-    [_hud show:YES];
     
-    [[SongUploader main] uploadSong:song.name forRadioId:self.radio.id
-                              album:song.album 
-                             artist:song.artist
-                             songId:song.id
-                             target:self 
-                             action:@selector(uploadSongFinished)
-                   progressDelegate:_hud];
+//    _hud = [[MBProgressHUD alloc] initWithView:self.view];
+//	[self.navigationController.view addSubview:_hud];
+//	
+//    // Set determinate mode
+//    _hud.mode = MBProgressHUDModeDeterminate;
+//    
+//    _hud.labelText = NSLocalizedString(@"SongsView_upload_progress", nil);
+//
+//    [_hud show:YES];
+//    
+//    [[SongUploader main] uploadSong:song.name forRadioId:self.radio.id
+//                              album:song.album 
+//                             artist:song.artist
+//                             songId:song.id
+//                             target:self 
+//                             action:@selector(uploadSongFinished)
+//                   progressDelegate:_hud];
 }
 
 #pragma mark - TableView Source and Delegate
@@ -190,15 +220,6 @@
 - (IBAction)onBack:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-#pragma mark - YasoundDataProvider callbacks
-
-- (void)receiveSongs:(NSArray*)songs withInfo:(NSDictionary*)info
-{
-    [self buildSongsData:songs];
-    [_tableView reloadData];
-    [ActivityAlertView close];
 }
 
 #pragma mark - ActionSheet Delegate
