@@ -14,7 +14,7 @@
 #import "Service.h"
 #import "TopBar.h"
 #import "PlaylistMoulinor.h"
-#import "Base64.h"
+#import "YaBase64.h"
 
 
 
@@ -374,7 +374,7 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
     DLog(@"complete Transaction : %@   for productIdentifier : %@", transaction.description, sku);
 
-    NSString* encodedReceipt = [Base64 encodeBase64WithData:transaction.transactionReceipt];
+    NSString* encodedReceipt = [YaBase64 encodeBase64WithData:transaction.transactionReceipt];
 
     
     [[YasoundDataProvider main] subscriptionComplete:sku withBase64Receipt:encodedReceipt target:self action:@selector(onTransactionRecorded:info:)];

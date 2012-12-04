@@ -5,7 +5,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Base64 : NSObject
+@interface YaBase64 : NSObject
 
 
 

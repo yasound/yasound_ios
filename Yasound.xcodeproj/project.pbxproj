@@ -1285,15 +1285,15 @@
 		BC1DD53C15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */; };
 		BC1DD53D15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */; };
 		BC1DD53E15FFC3AE008051C9 /* ActionRemoveSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */; };
-		BC209EE815EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
-		BC209EE915EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
-		BC209EEA15EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
-		BC209EEB15EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
-		BC209EEC15EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
-		BC209EED15EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
-		BC209EEE15EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
-		BC209EEF15EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
-		BC209EF015EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
+		BC209EE815EBABFF00A0E7DB /* YaBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* YaBase64.m */; };
+		BC209EE915EBABFF00A0E7DB /* YaBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* YaBase64.m */; };
+		BC209EEA15EBABFF00A0E7DB /* YaBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* YaBase64.m */; };
+		BC209EEB15EBABFF00A0E7DB /* YaBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* YaBase64.m */; };
+		BC209EEC15EBABFF00A0E7DB /* YaBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* YaBase64.m */; };
+		BC209EED15EBABFF00A0E7DB /* YaBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* YaBase64.m */; };
+		BC209EEE15EBABFF00A0E7DB /* YaBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* YaBase64.m */; };
+		BC209EEF15EBABFF00A0E7DB /* YaBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* YaBase64.m */; };
+		BC209EF015EBABFF00A0E7DB /* YaBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* YaBase64.m */; };
 		BC2215C4161DE5C300390453 /* commonClientShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2215C2161DE5C300390453 /* commonClientShadow.png */; };
 		BC2215C5161DE5C300390453 /* commonClientShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2215C2161DE5C300390453 /* commonClientShadow.png */; };
 		BC2215C6161DE5C300390453 /* commonClientShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2215C2161DE5C300390453 /* commonClientShadow.png */; };
@@ -7419,8 +7419,8 @@
 		BC1DD51815FFC3A4008051C9 /* ActionRemoveCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionRemoveCollectionCell.m; path = Programming/ActionRemoveCollectionCell.m; sourceTree = "<group>"; };
 		BC1DD51915FFC3A7008051C9 /* ActionRemoveSongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionRemoveSongCell.h; path = Programming/ActionRemoveSongCell.h; sourceTree = "<group>"; };
 		BC1DD51A15FFC3AA008051C9 /* ActionRemoveSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionRemoveSongCell.m; path = Programming/ActionRemoveSongCell.m; sourceTree = "<group>"; };
-		BC209EE615EBABFF00A0E7DB /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
-		BC209EE715EBABFF00A0E7DB /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		BC209EE615EBABFF00A0E7DB /* YaBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YaBase64.h; sourceTree = "<group>"; };
+		BC209EE715EBABFF00A0E7DB /* YaBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YaBase64.m; sourceTree = "<group>"; };
 		BC2215C2161DE5C300390453 /* commonClientShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = commonClientShadow.png; path = resources/Common/commonClientShadow.png; sourceTree = SOURCE_ROOT; };
 		BC2215C3161DE5C300390453 /* commonClientShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "commonClientShadow@2x.png"; path = "resources/Common/commonClientShadow@2x.png"; sourceTree = SOURCE_ROOT; };
 		BC2215F0161DF9B500390453 /* WebVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebVideoViewController.h; path = Gifts/WebVideoViewController.h; sourceTree = "<group>"; };
@@ -8909,8 +8909,8 @@
 		BC209EE515EBABFF00A0E7DB /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
-				BC209EE615EBABFF00A0E7DB /* Base64.h */,
-				BC209EE715EBABFF00A0E7DB /* Base64.m */,
+				BC209EE615EBABFF00A0E7DB /* YaBase64.h */,
+				BC209EE715EBABFF00A0E7DB /* YaBase64.m */,
 			);
 			name = Base64;
 			path = ThirdParties/Base64;
@@ -15793,7 +15793,7 @@
 				BCC754AD15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4515E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35C15E856400048E3F7 /* FakeSlidingController.m in Sources */,
-				BC209EEF15EBABFF00A0E7DB /* Base64.m in Sources */,
+				BC209EEF15EBABFF00A0E7DB /* YaBase64.m in Sources */,
 				BC41922515EBC0D900C95C0E /* Service.m in Sources */,
 				BC48938615EFCD990061C24D /* RadioSearchViewController.m in Sources */,
 				BC384A6B15F0B9FB0086A9A1 /* ProfilScrollview.m in Sources */,
@@ -16049,7 +16049,7 @@
 				BCC754AE15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4615E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35D15E856400048E3F7 /* FakeSlidingController.m in Sources */,
-				BC209EF015EBABFF00A0E7DB /* Base64.m in Sources */,
+				BC209EF015EBABFF00A0E7DB /* YaBase64.m in Sources */,
 				BC41922615EBC0D900C95C0E /* Service.m in Sources */,
 				BC48938715EFCD990061C24D /* RadioSearchViewController.m in Sources */,
 				BC384A6C15F0B9FB0086A9A1 /* ProfilScrollview.m in Sources */,
@@ -16301,7 +16301,7 @@
 				BCC754AC15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4415E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35B15E856400048E3F7 /* FakeSlidingController.m in Sources */,
-				BC209EEE15EBABFF00A0E7DB /* Base64.m in Sources */,
+				BC209EEE15EBABFF00A0E7DB /* YaBase64.m in Sources */,
 				BC41922415EBC0D900C95C0E /* Service.m in Sources */,
 				BC48938515EFCD990061C24D /* RadioSearchViewController.m in Sources */,
 				BC384A6A15F0B9FB0086A9A1 /* ProfilScrollview.m in Sources */,
@@ -16557,7 +16557,7 @@
 				BCC754A915E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4115E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35815E856400048E3F7 /* FakeSlidingController.m in Sources */,
-				BC209EEB15EBABFF00A0E7DB /* Base64.m in Sources */,
+				BC209EEB15EBABFF00A0E7DB /* YaBase64.m in Sources */,
 				BC41922115EBC0D900C95C0E /* Service.m in Sources */,
 				BC48938215EFCD990061C24D /* RadioSearchViewController.m in Sources */,
 				BC384A6715F0B9FB0086A9A1 /* ProfilScrollview.m in Sources */,
@@ -16813,7 +16813,7 @@
 				BCC754A715E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B3F15E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35615E856400048E3F7 /* FakeSlidingController.m in Sources */,
-				BC209EE915EBABFF00A0E7DB /* Base64.m in Sources */,
+				BC209EE915EBABFF00A0E7DB /* YaBase64.m in Sources */,
 				BC41921F15EBC0D900C95C0E /* Service.m in Sources */,
 				BC48938015EFCD990061C24D /* RadioSearchViewController.m in Sources */,
 				BC384A6515F0B9FB0086A9A1 /* ProfilScrollview.m in Sources */,
@@ -17070,7 +17070,7 @@
 				BCC754AB15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4315E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35A15E856400048E3F7 /* FakeSlidingController.m in Sources */,
-				BC209EED15EBABFF00A0E7DB /* Base64.m in Sources */,
+				BC209EED15EBABFF00A0E7DB /* YaBase64.m in Sources */,
 				BC41922315EBC0D900C95C0E /* Service.m in Sources */,
 				BC48938415EFCD990061C24D /* RadioSearchViewController.m in Sources */,
 				BC384A6915F0B9FB0086A9A1 /* ProfilScrollview.m in Sources */,
@@ -17326,7 +17326,7 @@
 				BCC754A815E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4015E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35715E856400048E3F7 /* FakeSlidingController.m in Sources */,
-				BC209EEA15EBABFF00A0E7DB /* Base64.m in Sources */,
+				BC209EEA15EBABFF00A0E7DB /* YaBase64.m in Sources */,
 				BC41922015EBC0D900C95C0E /* Service.m in Sources */,
 				BC48938115EFCD990061C24D /* RadioSearchViewController.m in Sources */,
 				BC384A6615F0B9FB0086A9A1 /* ProfilScrollview.m in Sources */,
@@ -17582,7 +17582,7 @@
 				BCC754A615E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B3E15E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35515E856400048E3F7 /* FakeSlidingController.m in Sources */,
-				BC209EE815EBABFF00A0E7DB /* Base64.m in Sources */,
+				BC209EE815EBABFF00A0E7DB /* YaBase64.m in Sources */,
 				BC41921E15EBC0D900C95C0E /* Service.m in Sources */,
 				BC48937F15EFCD990061C24D /* RadioSearchViewController.m in Sources */,
 				BC384A6415F0B9FB0086A9A1 /* ProfilScrollview.m in Sources */,
@@ -17839,7 +17839,7 @@
 				BCC754AA15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4215E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35915E856400048E3F7 /* FakeSlidingController.m in Sources */,
-				BC209EEC15EBABFF00A0E7DB /* Base64.m in Sources */,
+				BC209EEC15EBABFF00A0E7DB /* YaBase64.m in Sources */,
 				BC41922215EBC0D900C95C0E /* Service.m in Sources */,
 				BC48938315EFCD990061C24D /* RadioSearchViewController.m in Sources */,
 				BC384A6815F0B9FB0086A9A1 /* ProfilScrollview.m in Sources */,
