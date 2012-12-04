@@ -137,75 +137,65 @@ static YasoundDataCache* _main = nil;
 
 - (void)requestRadiosUpdate:(NSURL*)url withGenre:(NSString*)genre target:(id)target action:(SEL)action
 {
-    YasoundDataCachePendingOp* op = [[YasoundDataCachePendingOp alloc] init];
-    [op retain];
-    op.object = url;
-    op.info = genre;
-    op.target = target;
-    op.action = action;
-
-    [[YasoundDataProvider main] radiosWithUrl:[url absoluteString] withGenre:genre withTarget:self action:@selector(radioReceived:success:) userData:op];
+    [[YasoundDataProvider main] radiosWithUrl:[url absoluteString] withGenre:genre withCompletionBlock:^(int status, NSString* response, NSError* error){
+        Container* radioContainer = nil;
+        if (error)
+        {
+            DLog(@"radio with url %@ error: %d - %@", url, error.code, error.domain);
+            radioContainer = nil;
+        }
+        else if (status != 200)
+        {
+            DLog(@"radio with url %@ error: response status %d", url, status);
+            radioContainer = nil;
+        }
+        else
+        {
+            radioContainer = [response jsonToContainer:[YaRadio class]];
+            if (!radioContainer || !radioContainer.objects)
+            {
+                DLog(@"radio with url %@ error: cannot parse response %@", url, response);
+                radioContainer = nil;
+            }
+        }
+        if (!radioContainer)
+        {
+            [target performSelector:action withObject:nil withObject:NO];
+            return;
+        }
+        
+        // expiration date for the newly received data
+        NSDate* date = [NSDate date];
+        NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_RADIOS];
+        
+        // get/create dico for request
+        NSMutableDictionary* requestCache = [_cacheRadios objectForKey:[url absoluteString]];
+        if (requestCache == nil)
+        {
+            requestCache = [[NSMutableDictionary alloc] init];
+            [_cacheRadios setObject:requestCache forKey:[url absoluteString]];
+        }
+        
+        // get/create dico for request/genre
+        NSString* _genre = (genre == nil)? GENRE_NIL : genre;
+        
+        NSMutableDictionary* requestCacheForGenre = [requestCache objectForKey:_genre];
+        if (requestCacheForGenre == nil)
+        {
+            requestCacheForGenre = [[NSMutableDictionary alloc] init];
+            [requestCache setObject:requestCacheForGenre forKey:_genre];
+        }
+        
+        // cache data
+        [requestCacheForGenre setObject:timeout forKey:@"timeout"];
+        [requestCacheForGenre setObject:radioContainer forKey:@"data"];
+        
+        // return results to pending client
+        [target performSelector:action withObject:radioContainer withObject:YES];
+    }];
+    
     return;
 }
-
-- (void)radioReceived:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    YasoundDataCachePendingOp* op = [req userData];;
-    assert(op != nil);
-    
-    id target = op.target;
-    SEL action = op.action;
-    
-    Container* radioContainer = [req responseObjectsWithClass:[YaRadio class]];
-    
-    if (radioContainer == nil)
-    {
-        DLog(@"YasoundDataCache requestRadios : the server returned nil!");
-        [target performSelector:action withObject:nil withObject:NO];
-        return;
-    }
-    
-    // expiration date for the newly received data
-    NSDate* date = [NSDate date];
-    NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_RADIOS];
-    
-    NSURL* url = op.object;
-    
-    // get/create dico for request
-    NSMutableDictionary* requestCache = [_cacheRadios objectForKey:[url absoluteString]];
-    if (requestCache == nil)
-    {
-        requestCache = [[NSMutableDictionary alloc] init];
-        [_cacheRadios setObject:requestCache forKey:[url absoluteString]];
-    }
-    
-    // get/create dico for request/genre
-    NSString* _genre = (op.info == nil)? GENRE_NIL : op.info;
-    
-    NSMutableDictionary* requestCacheForGenre = [requestCache objectForKey:_genre];
-    if (requestCacheForGenre == nil)
-    {
-        requestCacheForGenre = [[NSMutableDictionary alloc] init];
-        [requestCache setObject:requestCacheForGenre forKey:_genre];
-    }
-    
-    // cache data
-    [requestCacheForGenre setObject:timeout forKey:@"timeout"];
-    
-    [requestCacheForGenre setObject:radioContainer forKey:@"data"];
-    
-    // pending operation cleaning
-    [op release];
-    
-    // return results to pending client
-    //DLog(@"YasoundDataCache requestRadios : return server's updated data");
-    [target performSelector:action withObject:radioContainer withObject:YES];
-    
-}
-
-
-
-
 
 
 //
@@ -260,8 +250,66 @@ static YasoundDataCache* _main = nil;
     NSData* data = [info valueForKey:@"result"];
     YasoundDataCachePendingOp* op = [info valueForKey:@"userInfo"];
     NSString* genre = op.info;
+    id target = op.target;
+    SEL action = op.action;
+    NSURL* url = op.object;
     
-    [[YasoundDataProvider main] radioRecommendationsWithArtistList:data genre:genre target:self action:@selector(radioReceived:success:) userData:op];
+    [[YasoundDataProvider main] radioRecommendationsWithArtistList:data genre:genre withCompletionBlock:^(int status, NSString* response, NSError* error){
+        Container* radioContainer = nil;
+        if (error)
+        {
+            DLog(@"recommended radios error: %d - %@", error.code, error.domain);
+            radioContainer = nil;
+        }
+        else if (status != 200)
+        {
+            DLog(@"recommended radios: response status %d", status);
+            radioContainer = nil;
+        }
+        else
+        {
+            radioContainer = [response jsonToContainer:[YaRadio class]];
+            if (!radioContainer || !radioContainer.objects)
+            {
+                DLog(@"recommended radios: cannot parse response %@", response);
+                radioContainer = nil;
+            }
+        }
+        if (!radioContainer)
+        {
+            [target performSelector:action withObject:nil withObject:NO];
+            return;
+        }
+        
+        // expiration date for the newly received data
+        NSDate* date = [NSDate date];
+        NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_RADIOS];
+        
+        // get/create dico for request
+        NSMutableDictionary* requestCache = [_cacheRadios objectForKey:[url absoluteString]];
+        if (requestCache == nil)
+        {
+            requestCache = [[NSMutableDictionary alloc] init];
+            [_cacheRadios setObject:requestCache forKey:[url absoluteString]];
+        }
+        
+        // get/create dico for request/genre
+        NSString* _genre = (genre == nil)? GENRE_NIL : genre;
+        
+        NSMutableDictionary* requestCacheForGenre = [requestCache objectForKey:_genre];
+        if (requestCacheForGenre == nil)
+        {
+            requestCacheForGenre = [[NSMutableDictionary alloc] init];
+            [requestCache setObject:requestCacheForGenre forKey:_genre];
+        }
+        
+        // cache data
+        [requestCacheForGenre setObject:timeout forKey:@"timeout"];
+        [requestCacheForGenre setObject:radioContainer forKey:@"data"];
+        
+        // return results to pending client
+        [target performSelector:action withObject:radioContainer withObject:YES];
+    }];
 }
 
 

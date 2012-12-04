@@ -716,34 +716,20 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-//
-// radios lists
-//
-
-
-- (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
+- (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = url;
-    conf.key = @"radios";
-    conf.urlIsAbsolute = NO;
-    conf.method = @"GET";
-    conf.auth = self.apiKeyAuth;
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    if (userData)
-        conf.userData = userData;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = url;
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.groupKey = @"radios";
+    
     if (genre)
-    {
-        NSArray* params = [NSArray arrayWithObject:[NSString stringWithFormat:@"genre=%@", genre]];
-        conf.params = params;
-    }
+        config.params = [NSDictionary dictionaryWithObject:genre forKey:@"genre"];
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    
-    DLog(@"radiosWithUrl '%@'", req.url);
-    
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 - (void)favoriteRadiosForUser:(User*)u withCompletionBlock:(YaRequestCompletionBlock)block
@@ -1447,28 +1433,22 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)radioRecommendationsWithArtistList:(NSData*)data genre:(NSString*)genre target:(id)target action:(SEL)selector userData:(id)userData
+- (void)radioRecommendationsWithArtistList:(NSData*)data genre:(NSString*)genre withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/radio_recommendations/"];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    conf.userData = userData;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/radio_recommendations/";
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
     
-    if (genre != nil)
-    {
-        NSArray* params = [NSArray arrayWithObject:[NSString stringWithFormat:@"genre=%@", genre]];
-        conf.params = params;
-    }
+    if (genre)
+        config.params = [NSDictionary dictionaryWithObject:genre forKey:@"genre"];
     
-    ASIFormDataRequest* req = [_communicator buildFormDataRequestWithConfig:conf];
-    [req addData:data forKey:@"artists_data"];
-    [req startAsynchronous];
+    config.fileData = [NSDictionary dictionaryWithObject:data forKey:@"artists_data"];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
-
 
 #pragma mark - users in the app
 

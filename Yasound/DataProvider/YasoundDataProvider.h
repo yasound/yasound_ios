@@ -133,11 +133,7 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)radioWithId:(NSNumber*)radioId withCompletionBlock:(YaRequestCompletionBlock)block;
 
-
-
-
-- (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-
+- (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withCompletionBlock:(YaRequestCompletionBlock)block;
 - (void)searchRadios:(NSString*)search withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)radioHasBeenShared:(YaRadio*)radio with:(NSString*)shareType withCompletionBlock:(YaRequestCompletionBlock)block;
@@ -190,7 +186,7 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)updatePlaylists:(NSData*)data forRadio:(YaRadio*)radio withCompletionBlock:(void (^) (taskID))block;
 
-- (void)radioRecommendationsWithArtistList:(NSData*)data genre:(NSString*)genre target:(id)target action:(SEL)selector userData:(id)userData; // artist list is built with PlaylistMoulinor buildArtistDataBinary: compressed: target: action:
+- (void)radioRecommendationsWithArtistList:(NSData*)data genre:(NSString*)genre withCompletionBlock:(YaRequestCompletionBlock)block; // artist list is built with PlaylistMoulinor buildArtistDataBinary: compressed: target: action:
 // returns concatenation of 'selection' and 'similar radios'
 
 - (void)taskStatus:(taskID)task_id withCompletionBlock:(YaRequestCompletionBlock)block;
