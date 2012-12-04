@@ -256,7 +256,7 @@
 
 #pragma mark - YasoundDataProvider
 
-- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
+- (void)onGetRadio:(YaRadio*)radio info:(NSDictionary*)info
 {
     //    assert(radio);
     

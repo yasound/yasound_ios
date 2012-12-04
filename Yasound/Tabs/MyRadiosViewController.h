@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TopBar.h"
-#import "Radio.h"
+#import "YaRadio.h"
 
 @interface MyRadiosViewController : YaViewController<TopBarDelegate, UITableViewDelegate>
 {

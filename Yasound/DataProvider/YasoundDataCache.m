@@ -156,7 +156,7 @@ static YasoundDataCache* _main = nil;
     id target = op.target;
     SEL action = op.action;
     
-    Container* radioContainer = [req responseObjectsWithClass:[Radio class]];
+    Container* radioContainer = [req responseObjectsWithClass:[YaRadio class]];
     
     if (radioContainer == nil)
     {
@@ -301,7 +301,7 @@ static YasoundDataCache* _main = nil;
 // return local data from cache, using a request key, and a specific genre
 //
 
-- (Song*)cachedSongForRadio:(Radio*)radio
+- (Song*)cachedSongForRadio:(YaRadio*)radio
 {
     if (!radio || !radio.id)
         return nil;
@@ -326,7 +326,7 @@ static YasoundDataCache* _main = nil;
 // return local cache , if it's available, using the radio ID
 // request for an update to server if local cache is not available or expired
 //
-- (void)requestCurrentSongForRadio:(Radio*)radio withCompletionBlock:(YasoundDataCacheResultBlock)block
+- (void)requestCurrentSongForRadio:(YaRadio*)radio withCompletionBlock:(YasoundDataCacheResultBlock)block
 {
     Song* data = [self cachedSongForRadio:radio];
     if (data)

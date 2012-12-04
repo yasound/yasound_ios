@@ -26,7 +26,7 @@
 #define COVER_SIZE 30
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(YasoundSong*)s forRadio:(Radio*)r
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(YasoundSong*)s forRadio:(YaRadio*)r
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     

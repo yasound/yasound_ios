@@ -10,7 +10,7 @@
 #import "YaViewController.h"
 #import "ChartView.h"
 #import "RadioListeningStat.h"
-#import "Radio.h"
+#import "YaRadio.h"
 
 @interface StatsViewController : YaViewController
 {
@@ -37,10 +37,10 @@
   ChartView* _monthGraphView;
 }
 
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YaRadio* radio;
 @property (nonatomic, retain) NSArray* leaderboard;
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio;
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(YaRadio*)radio;
 
 
 - (IBAction)onBack:(id)sender;

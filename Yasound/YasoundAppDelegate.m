@@ -430,7 +430,7 @@ void SignalHandler(int sig) {
 
 - (void)goToMyRadioStatsFromViewController:(UIViewController*)sourceController
 {
-  Radio* r = [YasoundDataProvider main].radio;
+  YaRadio* r = [YasoundDataProvider main].radio;
   
   UIViewController* controller = nil;
   if ([r.ready boolValue])
@@ -447,7 +447,7 @@ void SignalHandler(int sig) {
 
 - (void)goToMyRadioPlaylistsFromViewController:(UIViewController*)sourceController
 {
-  Radio* r = [YasoundDataProvider main].radio;
+  YaRadio* r = [YasoundDataProvider main].radio;
   
   UIViewController* controller = nil;
   if ([r.ready boolValue])

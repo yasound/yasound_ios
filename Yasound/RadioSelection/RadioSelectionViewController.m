@@ -597,7 +597,7 @@
 
 #pragma mark - RadioListDelegate
 
-- (void)radioListDidSelect:(Radio*)radio
+- (void)radioListDidSelect:(YaRadio*)radio
 {
     if (self.locked)
         return;

@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Radio.h"
+#import "YaRadio.h"
 #import "WebImageView.h"
 #import "WallEvent.h"
 
 @protocol MyRadiosTableViewCellDelegate <NSObject>
-- (void)myRadioRequestedPlay:(Radio*)radio;
-- (void)myRadioRequestedStats:(Radio*)radio;
-- (void)myRadioRequestedProgramming:(Radio*)radio;
-- (void)myRadioRequestedBroadcast:(Radio*)radio;
-- (void)myRadioRequestedSettings:(Radio*)radio;
+- (void)myRadioRequestedPlay:(YaRadio*)radio;
+- (void)myRadioRequestedStats:(YaRadio*)radio;
+- (void)myRadioRequestedProgramming:(YaRadio*)radio;
+- (void)myRadioRequestedBroadcast:(YaRadio*)radio;
+- (void)myRadioRequestedSettings:(YaRadio*)radio;
 @end
 
 
@@ -26,7 +26,7 @@
 }
 
 @property (nonatomic, retain) id<MyRadiosTableViewCellDelegate> delegate;
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YaRadio* radio;
 
 @property (nonatomic) CGFloat offset;
 @property (nonatomic, retain) IBOutlet UIView* container;
@@ -45,7 +45,7 @@
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)reuseIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
 
-- (void)updateWithRadio:(Radio*)radio target:(id)target editing:(BOOL)editing;
+- (void)updateWithRadio:(YaRadio*)radio target:(id)target editing:(BOOL)editing;
 
 - (IBAction)onRadioClicked:(id)sender;
 - (IBAction)onStatsClicked:(id)sender;

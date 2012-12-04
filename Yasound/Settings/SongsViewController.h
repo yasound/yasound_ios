@@ -10,7 +10,7 @@
 #import "Playlist.h"
 #import "Song.h"
 #import "MBProgressHUD.h"
-#import "Radio.h"
+#import "YaRadio.h"
 
 @interface SongsViewController : YaViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 {
@@ -23,7 +23,7 @@
     MBProgressHUD* _hud;
 }
 
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YaRadio* radio;
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil playlistId:(NSInteger)playlistId forRadio:radio;
 -(IBAction)onBack:(id)sender;

@@ -8,7 +8,7 @@
 
 #import "Model.h"
 
-@class Radio;
+@class YaRadio;
 
 typedef enum  
 {
@@ -45,8 +45,8 @@ UserMood stringToUsermood(NSString* str);
 @property (retain, nonatomic) NSString* api_key;
 @property (retain, nonatomic) NSString* email;
 @property (retain, nonatomic) NSString* picture;
-@property (retain, nonatomic) Radio* current_radio;
-@property (retain, nonatomic) Radio* own_radio;
+@property (retain, nonatomic) YaRadio* current_radio;
+@property (retain, nonatomic) YaRadio* own_radio;
 
 @property (retain, nonatomic) NSString* gender;
 @property (retain, nonatomic) NSNumber* age;

@@ -10,7 +10,7 @@
 #import "User.h"
 
 
-@interface Radio : Model {
+@interface YaRadio : Model {
     
     NSInteger _assignedTopRank;
 }

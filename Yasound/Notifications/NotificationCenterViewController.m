@@ -320,7 +320,7 @@
             DLog(@"radio with id error: response status %d", status);
             return;
         }
-        Radio* newRadio = (Radio*)[response jsonToModel:[Radio class]];
+        YaRadio* newRadio = (YaRadio*)[response jsonToModel:[YaRadio class]];
         if (!newRadio)
         {
             DLog(@"radio with id error: cannot parse response: %@", response);

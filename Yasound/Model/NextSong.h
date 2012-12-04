@@ -7,12 +7,12 @@
 //
 
 #import "Model.h"
-#import "Radio.h"
+#import "YaRadio.h"
 #import "Song.h"
 
 @interface NextSong : Model
 
-@property (retain) Radio* radio;
+@property (retain) YaRadio* radio;
 @property (retain) Song* song;
 @property (retain) NSNumber* order;
 

@@ -7,7 +7,7 @@
 //
 
 #import "User.h"
-#import "Radio.h"
+#import "YaRadio.h"
 
 @implementation User
 

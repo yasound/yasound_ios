@@ -255,7 +255,7 @@
         [[YasoundSessionManager main] addAccount:self.user];
         
         // ask for radio contents to the provider, in order to launch the radio configuration
-        [[YasoundDataProvider main] userRadioWithTargetWithCompletionBlock:^(Radio* userRadio){
+        [[YasoundDataProvider main] userRadioWithTargetWithCompletionBlock:^(YaRadio* userRadio){
             // account just being create, go to configuration screen
             [[UserSettings main] setBool:YES forKey:USKEYskipRadioCreation];
             

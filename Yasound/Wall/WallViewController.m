@@ -104,7 +104,7 @@
 
 
 
-- (id)initWithRadio:(Radio*)radio
+- (id)initWithRadio:(YaRadio*)radio
 {
     self = [super init];
     if (self)

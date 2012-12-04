@@ -39,7 +39,7 @@
 @synthesize radio;
 
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(YaRadio*)radio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
@@ -198,7 +198,7 @@
             DLog(@"radio with id error: response status %d", status);
             return;
         }
-        Radio* newRadio = (Radio*)[response jsonToModel:[Radio class]];
+        YaRadio* newRadio = (YaRadio*)[response jsonToModel:[YaRadio class]];
         if (!newRadio)
         {
             DLog(@"radio with id error: cannot parse response: %@", response);

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Radio.h"
+#import "YaRadio.h"
 #import "YasoundDataCacheImage.h"
 #import "YasoundDataProvider.h"
 
@@ -75,7 +75,7 @@ typedef void (^YasoundDataCacheResultBlock)(id);
 // return local cache , if it's available, using the radio ID
 // request for an update to server if local cache is not available or expired
 //
-- (void)requestCurrentSongForRadio:(Radio*)radio withCompletionBlock:(YasoundDataCacheResultBlock)block;
+- (void)requestCurrentSongForRadio:(YaRadio*)radio withCompletionBlock:(YasoundDataCacheResultBlock)block;
 
 - (void)requestFriendsWithCompletionBlock:(YasoundDataCacheResultBlock)block;
 

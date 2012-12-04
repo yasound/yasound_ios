@@ -6,9 +6,9 @@
 //  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
-#import "Radio.h"
+#import "YaRadio.h"
 
-@implementation Radio
+@implementation YaRadio
 
 @synthesize name;
 @synthesize creator;

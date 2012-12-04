@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SongLocal.h"
-#import "Radio.h"
+#import "YaRadio.h"
 #import "SongCatalog.h"
 
 @interface ActionAddCollectionCell : UITableViewCell
@@ -32,7 +32,7 @@ typedef enum {
 
 @property (nonatomic) SongAddMode mode;
 
-@property (nonatomic, assign) Radio* radio;
+@property (nonatomic, assign) YaRadio* radio;
 @property (nonatomic, assign) SongCatalog* catalog;
 @property (nonatomic, retain) NSString* collection;
 
@@ -48,10 +48,10 @@ typedef enum {
 @property (nonatomic) NSInteger nbSongsCantUpload;
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier genre:(NSString*)genre subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog;
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier playlist:(NSString*)playlist subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog;
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier artist:(NSString*)artist subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog;
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier album:(NSString*)album subtitle:(NSString*)subtitle forRadio:(Radio*)radio usingCatalog:(SongCatalog*)catalog;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier genre:(NSString*)genre subtitle:(NSString*)subtitle forRadio:(YaRadio*)radio usingCatalog:(SongCatalog*)catalog;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier playlist:(NSString*)playlist subtitle:(NSString*)subtitle forRadio:(YaRadio*)radio usingCatalog:(SongCatalog*)catalog;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier artist:(NSString*)artist subtitle:(NSString*)subtitle forRadio:(YaRadio*)radio usingCatalog:(SongCatalog*)catalog;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier album:(NSString*)album subtitle:(NSString*)subtitle forRadio:(YaRadio*)radio usingCatalog:(SongCatalog*)catalog;
 
 - (void)updateGenre:(NSString*)genre subtitle:(NSString*)subtitle;
 - (void)updatePlaylist:(NSString*)playlist subtitle:(NSString*)subtitle;

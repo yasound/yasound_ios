@@ -7,21 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Radio.h"
+#import "YaRadio.h"
 #import "ProgrammingCatalogViewController.h"
 #import "ProgrammingViewController.h"
 #import "ProgrammingCollectionViewController.h"
 
 @interface ProgrammingLocalViewController : ProgrammingCatalogViewController
 
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YaRadio* radio;
 @property (nonatomic) NSInteger selectedSegmentIndex;
 @property (nonatomic, retain) NSString* title;
 
 @property (nonatomic, retain) ProgrammingCollectionViewController* collectionVC;
 
 
-- (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio withSegmentIndex:(NSInteger)segmentIndex;
+- (id)initWithStyle:(UITableViewStyle)style forRadio:(YaRadio*)radio withSegmentIndex:(NSInteger)segmentIndex;
 
 - (void)setSegment:(NSInteger)index;
 

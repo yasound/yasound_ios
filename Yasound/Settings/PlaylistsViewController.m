@@ -115,7 +115,7 @@
     [[TimeProfile main] begin:@"Playlists_download"];
     
     
-    Radio* r = [YasoundDataProvider main].radio;
+    YaRadio* r = [YasoundDataProvider main].radio;
     [[YasoundDataProvider main] playlistsForRadio:r withCompletionBlock:^(int status, NSString* response, NSError* error){
         NSArray* playlists = nil;
         if (error)
@@ -716,7 +716,7 @@
     
     [[YasoundDataProvider main] createRadioWithCompletionBlock:^(int status, NSString* response, NSError* error){
         BOOL success = YES;
-        Radio* newRadio = nil;
+        YaRadio* newRadio = nil;
         if (error)
         {
             DLog(@"create radio error: %d - %@", error.code, error.domain);
@@ -729,7 +729,7 @@
         }
         else
         {
-            newRadio = (Radio*)[response jsonToModel:[Radio class]];
+            newRadio = (YaRadio*)[response jsonToModel:[YaRadio class]];
             if (!newRadio)
             {
                 DLog(@"create radio error: cannot parse response %@", response);
@@ -867,7 +867,7 @@
             DLog(@"radio with id error: response status %d", status);
             return;
         }
-        Radio* newRadio = (Radio*)[response jsonToModel:[Radio class]];
+        YaRadio* newRadio = (YaRadio*)[response jsonToModel:[YaRadio class]];
         if (!newRadio)
         {
             DLog(@"radio with id error: cannot parse response: %@", response);

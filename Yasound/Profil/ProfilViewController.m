@@ -313,7 +313,7 @@
             DLog(@"radios for user error: response status %d", status);
             return;
         }
-        Container* radioContainer = [response jsonToContainer:[Radio class]];
+        Container* radioContainer = [response jsonToContainer:[YaRadio class]];
         if (!radioContainer || !radioContainer.objects)
         {
             DLog(@"radios for user error: cannot parse response %@", response);
@@ -334,7 +334,7 @@
             DLog(@"favorite radios for user error: response status %d", status);
             return;
         }
-        Container* radioContainer = [response jsonToContainer:[Radio class]];
+        Container* radioContainer = [response jsonToContainer:[YaRadio class]];
         if (!radioContainer || !radioContainer.objects)
         {
             DLog(@"favorite radios for user error: cannot parse response %@", response);

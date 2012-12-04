@@ -411,7 +411,7 @@
 		40B40966152EFC630050D334 /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		40B40967152EFC630050D334 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		40B40968152EFC630050D334 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
-		40B40969152EFC630050D334 /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* Radio.m */; };
+		40B40969152EFC630050D334 /* YaRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* YaRadio.m */; };
 		40B4096A152EFC630050D334 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FD14A107DF00873381 /* Track.m */; };
 		40B4096B152EFC630050D334 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FF14A107DF00873381 /* User.m */; };
 		40B4096C152EFC630050D334 /* WallEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BC49890114A107DF00873381 /* WallEvent.m */; };
@@ -657,7 +657,7 @@
 		40D53B6B1554280F001EB0C5 /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		40D53B6C1554280F001EB0C5 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		40D53B6D1554280F001EB0C5 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
-		40D53B6E1554280F001EB0C5 /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* Radio.m */; };
+		40D53B6E1554280F001EB0C5 /* YaRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* YaRadio.m */; };
 		40D53B6F1554280F001EB0C5 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FD14A107DF00873381 /* Track.m */; };
 		40D53B701554280F001EB0C5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FF14A107DF00873381 /* User.m */; };
 		40D53B711554280F001EB0C5 /* WallEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BC49890114A107DF00873381 /* WallEvent.m */; };
@@ -1759,7 +1759,7 @@
 		BC3FA67A14E93B660055AB4A /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		BC3FA67B14E93B660055AB4A /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC3FA67C14E93B660055AB4A /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
-		BC3FA67D14E93B660055AB4A /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* Radio.m */; };
+		BC3FA67D14E93B660055AB4A /* YaRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* YaRadio.m */; };
 		BC3FA67E14E93B660055AB4A /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FD14A107DF00873381 /* Track.m */; };
 		BC3FA67F14E93B660055AB4A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FF14A107DF00873381 /* User.m */; };
 		BC3FA68014E93B660055AB4A /* WallEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BC49890114A107DF00873381 /* WallEvent.m */; };
@@ -2398,9 +2398,9 @@
 		BC49890A14A107DF00873381 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
 		BC49890B14A107DF00873381 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
 		BC49890C14A107DF00873381 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
-		BC49890D14A107DF00873381 /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* Radio.m */; };
-		BC49890E14A107DF00873381 /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* Radio.m */; };
-		BC49890F14A107DF00873381 /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* Radio.m */; };
+		BC49890D14A107DF00873381 /* YaRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* YaRadio.m */; };
+		BC49890E14A107DF00873381 /* YaRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* YaRadio.m */; };
+		BC49890F14A107DF00873381 /* YaRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* YaRadio.m */; };
 		BC49891614A107DF00873381 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FD14A107DF00873381 /* Track.m */; };
 		BC49891714A107DF00873381 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FD14A107DF00873381 /* Track.m */; };
 		BC49891814A107DF00873381 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FD14A107DF00873381 /* Track.m */; };
@@ -2520,7 +2520,7 @@
 		BC56F488152486AF005D1B40 /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		BC56F489152486AF005D1B40 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC56F48A152486AF005D1B40 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
-		BC56F48B152486AF005D1B40 /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* Radio.m */; };
+		BC56F48B152486AF005D1B40 /* YaRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* YaRadio.m */; };
 		BC56F48C152486AF005D1B40 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FD14A107DF00873381 /* Track.m */; };
 		BC56F48D152486AF005D1B40 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FF14A107DF00873381 /* User.m */; };
 		BC56F48E152486AF005D1B40 /* WallEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BC49890114A107DF00873381 /* WallEvent.m */; };
@@ -3228,7 +3228,7 @@
 		BC93CCE114CF3F7A007C723F /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		BC93CCE214CF3F7A007C723F /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC93CCE314CF3F7A007C723F /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
-		BC93CCE414CF3F7A007C723F /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* Radio.m */; };
+		BC93CCE414CF3F7A007C723F /* YaRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* YaRadio.m */; };
 		BC93CCE714CF3F7A007C723F /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FD14A107DF00873381 /* Track.m */; };
 		BC93CCE814CF3F7A007C723F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FF14A107DF00873381 /* User.m */; };
 		BC93CCE914CF3F7A007C723F /* WallEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BC49890114A107DF00873381 /* WallEvent.m */; };
@@ -3769,7 +3769,7 @@
 		BCC751A015E689EF00CF7F7C /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		BCC751A115E689EF00CF7F7C /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BCC751A215E689EF00CF7F7C /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
-		BCC751A315E689EF00CF7F7C /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* Radio.m */; };
+		BCC751A315E689EF00CF7F7C /* YaRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* YaRadio.m */; };
 		BCC751A415E689EF00CF7F7C /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FD14A107DF00873381 /* Track.m */; };
 		BCC751A515E689EF00CF7F7C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FF14A107DF00873381 /* User.m */; };
 		BCC751A615E689EF00CF7F7C /* WallEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BC49890114A107DF00873381 /* WallEvent.m */; };
@@ -7619,8 +7619,8 @@
 		BC4988F114A107DF00873381 /* ApiKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKey.m; sourceTree = "<group>"; };
 		BC4988F414A107DF00873381 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
 		BC4988F514A107DF00873381 /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
-		BC4988F614A107DF00873381 /* Radio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Radio.h; sourceTree = "<group>"; };
-		BC4988F714A107DF00873381 /* Radio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Radio.m; sourceTree = "<group>"; };
+		BC4988F614A107DF00873381 /* YaRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YaRadio.h; sourceTree = "<group>"; };
+		BC4988F714A107DF00873381 /* YaRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YaRadio.m; sourceTree = "<group>"; };
 		BC4988FC14A107DF00873381 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
 		BC4988FD14A107DF00873381 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		BC4988FE14A107DF00873381 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -8856,8 +8856,8 @@
 				BC4988F114A107DF00873381 /* ApiKey.m */,
 				BC4988F414A107DF00873381 /* Playlist.h */,
 				BC4988F514A107DF00873381 /* Playlist.m */,
-				BC4988F614A107DF00873381 /* Radio.h */,
-				BC4988F714A107DF00873381 /* Radio.m */,
+				BC4988F614A107DF00873381 /* YaRadio.h */,
+				BC4988F714A107DF00873381 /* YaRadio.m */,
 				BC4988FC14A107DF00873381 /* Track.h */,
 				BC4988FD14A107DF00873381 /* Track.m */,
 				BC4988FE14A107DF00873381 /* User.h */,
@@ -15618,7 +15618,7 @@
 				40B40966152EFC630050D334 /* PlaylistMoulinor.m in Sources */,
 				40B40967152EFC630050D334 /* ApiKey.m in Sources */,
 				40B40968152EFC630050D334 /* Playlist.m in Sources */,
-				40B40969152EFC630050D334 /* Radio.m in Sources */,
+				40B40969152EFC630050D334 /* YaRadio.m in Sources */,
 				40B4096A152EFC630050D334 /* Track.m in Sources */,
 				40B4096B152EFC630050D334 /* User.m in Sources */,
 				40B4096C152EFC630050D334 /* WallEvent.m in Sources */,
@@ -15874,7 +15874,7 @@
 				40D53B6B1554280F001EB0C5 /* PlaylistMoulinor.m in Sources */,
 				40D53B6C1554280F001EB0C5 /* ApiKey.m in Sources */,
 				40D53B6D1554280F001EB0C5 /* Playlist.m in Sources */,
-				40D53B6E1554280F001EB0C5 /* Radio.m in Sources */,
+				40D53B6E1554280F001EB0C5 /* YaRadio.m in Sources */,
 				40D53B6F1554280F001EB0C5 /* Track.m in Sources */,
 				40D53B701554280F001EB0C5 /* User.m in Sources */,
 				40D53B711554280F001EB0C5 /* WallEvent.m in Sources */,
@@ -16130,7 +16130,7 @@
 				BC3FA67A14E93B660055AB4A /* PlaylistMoulinor.m in Sources */,
 				BC3FA67B14E93B660055AB4A /* ApiKey.m in Sources */,
 				BC3FA67C14E93B660055AB4A /* Playlist.m in Sources */,
-				BC3FA67D14E93B660055AB4A /* Radio.m in Sources */,
+				BC3FA67D14E93B660055AB4A /* YaRadio.m in Sources */,
 				BC3FA67E14E93B660055AB4A /* Track.m in Sources */,
 				BC3FA67F14E93B660055AB4A /* User.m in Sources */,
 				BC3FA68014E93B660055AB4A /* WallEvent.m in Sources */,
@@ -16382,7 +16382,7 @@
 				BC56F488152486AF005D1B40 /* PlaylistMoulinor.m in Sources */,
 				BC56F489152486AF005D1B40 /* ApiKey.m in Sources */,
 				BC56F48A152486AF005D1B40 /* Playlist.m in Sources */,
-				BC56F48B152486AF005D1B40 /* Radio.m in Sources */,
+				BC56F48B152486AF005D1B40 /* YaRadio.m in Sources */,
 				BC56F48C152486AF005D1B40 /* Track.m in Sources */,
 				BC56F48D152486AF005D1B40 /* User.m in Sources */,
 				BC56F48E152486AF005D1B40 /* WallEvent.m in Sources */,
@@ -16638,7 +16638,7 @@
 				BCA2CCD4149A80270000637E /* PlaylistMoulinor.m in Sources */,
 				BC49890514A107DF00873381 /* ApiKey.m in Sources */,
 				BC49890B14A107DF00873381 /* Playlist.m in Sources */,
-				BC49890E14A107DF00873381 /* Radio.m in Sources */,
+				BC49890E14A107DF00873381 /* YaRadio.m in Sources */,
 				BC49891714A107DF00873381 /* Track.m in Sources */,
 				BC49891A14A107DF00873381 /* User.m in Sources */,
 				BC49891D14A107DF00873381 /* WallEvent.m in Sources */,
@@ -16895,7 +16895,7 @@
 				BC93CCE114CF3F7A007C723F /* PlaylistMoulinor.m in Sources */,
 				BC93CCE214CF3F7A007C723F /* ApiKey.m in Sources */,
 				BC93CCE314CF3F7A007C723F /* Playlist.m in Sources */,
-				BC93CCE414CF3F7A007C723F /* Radio.m in Sources */,
+				BC93CCE414CF3F7A007C723F /* YaRadio.m in Sources */,
 				BC93CCE714CF3F7A007C723F /* Track.m in Sources */,
 				BC93CCE814CF3F7A007C723F /* User.m in Sources */,
 				BC93CCE914CF3F7A007C723F /* WallEvent.m in Sources */,
@@ -17151,7 +17151,7 @@
 				BCC751A015E689EF00CF7F7C /* PlaylistMoulinor.m in Sources */,
 				BCC751A115E689EF00CF7F7C /* ApiKey.m in Sources */,
 				BCC751A215E689EF00CF7F7C /* Playlist.m in Sources */,
-				BCC751A315E689EF00CF7F7C /* Radio.m in Sources */,
+				BCC751A315E689EF00CF7F7C /* YaRadio.m in Sources */,
 				BCC751A415E689EF00CF7F7C /* Track.m in Sources */,
 				BCC751A515E689EF00CF7F7C /* User.m in Sources */,
 				BCC751A615E689EF00CF7F7C /* WallEvent.m in Sources */,
@@ -17407,7 +17407,7 @@
 				BCA2CCD3149A80270000637E /* PlaylistMoulinor.m in Sources */,
 				BC49890414A107DF00873381 /* ApiKey.m in Sources */,
 				BC49890A14A107DF00873381 /* Playlist.m in Sources */,
-				BC49890D14A107DF00873381 /* Radio.m in Sources */,
+				BC49890D14A107DF00873381 /* YaRadio.m in Sources */,
 				BC49891614A107DF00873381 /* Track.m in Sources */,
 				BC49891914A107DF00873381 /* User.m in Sources */,
 				BC49891C14A107DF00873381 /* WallEvent.m in Sources */,
@@ -17664,7 +17664,7 @@
 				BCA2CCD5149A80270000637E /* PlaylistMoulinor.m in Sources */,
 				BC49890614A107DF00873381 /* ApiKey.m in Sources */,
 				BC49890C14A107DF00873381 /* Playlist.m in Sources */,
-				BC49890F14A107DF00873381 /* Radio.m in Sources */,
+				BC49890F14A107DF00873381 /* YaRadio.m in Sources */,
 				BC49891814A107DF00873381 /* Track.m in Sources */,
 				BC49891B14A107DF00873381 /* User.m in Sources */,
 				BC49891E14A107DF00873381 /* WallEvent.m in Sources */,

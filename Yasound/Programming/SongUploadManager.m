@@ -342,7 +342,7 @@ static SongUploadManager* _main;
 }
 
 
-- (SongUploading*)getUploadingSong:(NSString*)songKey forRadio:(Radio*)radio
+- (SongUploading*)getUploadingSong:(NSString*)songKey forRadio:(YaRadio*)radio
 {
     for (SongUploadItem* item in self.items)
     {

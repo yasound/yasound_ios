@@ -92,7 +92,7 @@ static SongRadioCatalog* _main = nil;
 
 
 
-- (void)initForRadio:(Radio*)radio target:(id)aTarget action:(SEL)anAction {
+- (void)initForRadio:(YaRadio*)radio target:(id)aTarget action:(SEL)anAction {
     
     self.radio = radio;
     self.target = aTarget;

@@ -403,7 +403,7 @@
     if (radioId == nil)
     {
         //LBDEBUG TODO ICI : own_radio pas bon
-        Radio* myRadio = self.user.own_radio;
+        YaRadio* myRadio = self.user.own_radio;
         if (myRadio && myRadio.ready)
             [self launchRadio:myRadio.id];
         else
@@ -486,7 +486,7 @@
 {
     [self gotoRadioSelectionAnimated:NO];
     
-    Radio* radio = notification.object;
+    YaRadio* radio = notification.object;
     
     ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:radio];
     [self.navigationController pushViewController:view animated:YES];
@@ -578,7 +578,7 @@
 {
     if (radioId != nil)
     {
-        Radio* newRadio = nil;
+        YaRadio* newRadio = nil;
         [[YasoundDataProvider main] radioWithId:radioId withCompletionBlock:^(int status, NSString* response, NSError* error){
             if (error)
             {
@@ -590,7 +590,7 @@
             }
             else
             {
-                Radio* newRadio = (Radio*)[response jsonToModel:[Radio class]];
+                YaRadio* newRadio = (YaRadio*)[response jsonToModel:[YaRadio class]];
                 if (!newRadio)
                 {
                     DLog(@"radio with id error: cannot parse response: %@", response);
@@ -603,13 +603,13 @@
     else
     {
         // ask for radio contents to the provider        
-        [[YasoundDataProvider main] userRadioWithTargetWithCompletionBlock:^(Radio* userRadio){
+        [[YasoundDataProvider main] userRadioWithTargetWithCompletionBlock:^(YaRadio* userRadio){
             [self gotoRadio:userRadio];
         }];
     }
 }
 
-- (void)gotoRadio:(Radio*)radio
+- (void)gotoRadio:(YaRadio*)radio
 {
     [ActivityAlertView close];
     if (radio == nil)
@@ -666,7 +666,7 @@
 
 - (void)onNotifPushRadio:(NSNotification*)notification
 {
-    Radio* r = notification.object;
+    YaRadio* r = notification.object;
     if (r == nil)
     {
         DLog(@"ERROR radio is nil in RootViewController:onNotifPushRadio");
@@ -682,7 +682,7 @@
 
 - (void)onNotifGotoRadio:(NSNotification*)notification
 {
-    Radio* r = notification.object;
+    YaRadio* r = notification.object;
     assert(r != nil);
 
     DLog(@"onNotifGotoRadio '%@' (ready %@)", r.name, r.ready);
@@ -802,7 +802,7 @@
 
 - (void)onNotifGotoMyRadio:(NSNotification *)notification
 {
-    Radio* r = [YasoundDataProvider main].radio;
+    YaRadio* r = [YasoundDataProvider main].radio;
     DLog(@"go to my radio '%@' (%@)", r.name, r.ready);
 
     if (![r.ready boolValue])
@@ -851,7 +851,7 @@
 
 - (void)onNotifGotoRadioProgramming:(NSNotification *)notification
 {
-    Radio* radio = notification.object;
+    YaRadio* radio = notification.object;
     ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:radio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
@@ -859,7 +859,7 @@
 
 - (void)onNotifGotoRadioStats:(NSNotification *)notification
 {
-    Radio* radio = notification.object;
+    YaRadio* radio = notification.object;
     StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil forRadio:radio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];

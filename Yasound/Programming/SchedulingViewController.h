@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Radio.h"
+#import "YaRadio.h"
 #import "TopBarBackAndTitle.h"
 
 @interface SchedulingViewController : YaViewController<UITableViewDataSource, UITableViewDelegate,TopBarBackAndTitleDelegate>
@@ -15,9 +15,9 @@
 @property (nonatomic, retain) IBOutlet TopBarBackAndTitle* topBar;
 @property (nonatomic, retain) IBOutlet UITableView* tableview;
 
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YaRadio* radio;
 @property (nonatomic, retain) NSArray* shows;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)radio;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(YaRadio*)radio;
 
 @end

@@ -8,17 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "WebImageView.h"
-#import "Radio.h"
+#import "YaRadio.h"
 
 
 
 @interface ProfilCellRadio : UIView
 
-@property (nonatomic, assign) Radio* radio;
+@property (nonatomic, assign) YaRadio* radio;
 @property (nonatomic, assign) WebImageView* image;
 @property (nonatomic, assign) UILabel* text;
 
-- (id)initWithRadio:(Radio*)radio;
+- (id)initWithRadio:(YaRadio*)radio;
 
 
 

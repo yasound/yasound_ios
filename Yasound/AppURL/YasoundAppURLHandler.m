@@ -242,7 +242,7 @@ static YasoundAppURLHandler* _main = nil;
             DLog(@"gotoRadioProgramming: radios for user error: response status %d", status);
             return;
         }
-        Container* radioContainer = [response jsonToContainer:[Radio class]];
+        Container* radioContainer = [response jsonToContainer:[YaRadio class]];
         if (!radioContainer || !radioContainer.objects)
         {
             DLog(@"gotoRadioProgramming: radios for user error: cannot parse response %@", response);
@@ -252,7 +252,7 @@ static YasoundAppURLHandler* _main = nil;
         NSArray* radios = radioContainer.objects;
         if (radios.count > 0)
         {
-            Radio* radio = [radios objectAtIndex:0];
+            YaRadio* radio = [radios objectAtIndex:0];
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO_PROGRAMMING object:radio];
         }
     }];
@@ -276,7 +276,7 @@ static YasoundAppURLHandler* _main = nil;
             DLog(@"gotoRadioStats: radios for user error: response status %d", status);
             return;
         }
-        Container* radioContainer = [response jsonToContainer:[Radio class]];
+        Container* radioContainer = [response jsonToContainer:[YaRadio class]];
         if (!radioContainer || !radioContainer.objects)
         {
             DLog(@"gotoRadioStats: radios for user error: cannot parse response %@", response);
@@ -286,7 +286,7 @@ static YasoundAppURLHandler* _main = nil;
         NSArray* radios = radioContainer.objects;
         if (radios.count > 0)
         {
-            Radio* radio = [radios objectAtIndex:0];
+            YaRadio* radio = [radios objectAtIndex:0];
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO_STATS object:radio];
         }
     }];

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Song.h"
-#import "Radio.h"
+#import "YaRadio.h"
 #import "WebImageView.h"
 
 
@@ -31,9 +31,9 @@
 }
 
 @property (nonatomic, retain) Song* song;
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YaRadio* radio;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong onRadio:(Radio*)aRadio showNowPlaying:(BOOL)showNowPlaying;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong onRadio:(YaRadio*)aRadio showNowPlaying:(BOOL)showNowPlaying;
 
 - (IBAction)onBack:(id)sender;
 

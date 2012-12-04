@@ -10,7 +10,7 @@
 #import "YaViewController.h"
 #import "SongsViewController.h"
 #import "TopBarSaveOrCancel.h"
-#import "Radio.h"
+#import "YaRadio.h"
 
 typedef enum {
     eDisplayModeNormal = 0,
@@ -45,7 +45,7 @@ typedef enum {
     UISwitch* _switchAllMyMusic;
 }
 
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YaRadio* radio;
 
 @property (nonatomic, retain) IBOutlet TopBarSaveOrCancel* topbar;
 

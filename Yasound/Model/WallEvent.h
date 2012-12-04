@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Model.h"
-#import "Radio.h"
+#import "YaRadio.h"
 #import "User.h"
 
 typedef enum 

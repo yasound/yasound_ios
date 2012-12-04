@@ -89,7 +89,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
         DLog(@"radios for user error: response status %d", status);
         success = NO;
     }
-    Container* radioContainer = [response jsonToContainer:[Radio class]];
+    Container* radioContainer = [response jsonToContainer:[YaRadio class]];
     if (!radioContainer || !radioContainer.objects)
     {
         DLog(@"radios for user error: cannot parse response %@", response);
@@ -102,7 +102,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     [self.editing removeAllObjects];
     
     self.radios = radioContainer.objects;
-    for (Radio* radio in self.radios)
+    for (YaRadio* radio in self.radios)
     {
         [self.editing setObject:[NSNumber numberWithBool:NO] forKey:radio.id];
     }
@@ -147,13 +147,13 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 - (void)onNotifMyRadioEdited:(NSNotification*)notification
 {
-    Radio* radio = notification.object;
+    YaRadio* radio = notification.object;
     [self.editing setObject:[NSNumber numberWithBool:YES] forKey:radio.id];
 }
 
 - (void)onNotifMyRadioUnedited:(NSNotification*)notification
 {
-    Radio* radio = notification.object;
+    YaRadio* radio = notification.object;
     [self.editing setObject:[NSNumber numberWithBool:NO] forKey:radio.id];
 }
 
@@ -207,7 +207,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     
     if (indexPath.section == 0)
     {
-        Radio* radio = [self.radios objectAtIndex:indexPath.row];
+        YaRadio* radio = [self.radios objectAtIndex:indexPath.row];
         
         MyRadiosTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) 
@@ -285,19 +285,19 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 #pragma mark - MyRadiosTableViewCellDelegate
 
-- (void)myRadioRequestedPlay:(Radio*)radio
+- (void)myRadioRequestedPlay:(YaRadio*)radio
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
 }
 
-- (void)myRadioRequestedStats:(Radio*)radio
+- (void)myRadioRequestedStats:(YaRadio*)radio
 {
     StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil forRadio:radio];
     [APPDELEGATE.navigationController pushViewController:view animated:YES];
     [view release];
 }
 
-- (void)myRadioRequestedSettings:(Radio*)radio
+- (void)myRadioRequestedSettings:(YaRadio*)radio
 {
     SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:radio createMode:NO];
     [APPDELEGATE.navigationController pushViewController:view animated:YES];
@@ -305,7 +305,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 }
 
 
-- (void)myRadioRequestedBroadcast:(Radio*)radio
+- (void)myRadioRequestedBroadcast:(YaRadio*)radio
 {
     [ActivityAlertView showWithTitle:nil];
     
@@ -347,7 +347,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 
 
-- (void)myRadioRequestedProgramming:(Radio*)radio
+- (void)myRadioRequestedProgramming:(YaRadio*)radio
 {
     ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:radio];
     [APPDELEGATE.navigationController pushViewController:view animated:YES];

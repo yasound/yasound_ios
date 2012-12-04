@@ -222,7 +222,7 @@ static YasoundDataProvider* _main = nil;
 
     
     NSMutableDictionary* resourceNames = [Model resourceNames];
-    [resourceNames setObject:@"radio" forKey:[Radio class]];
+    [resourceNames setObject:@"radio" forKey:[YaRadio class]];
     [resourceNames setObject:@"user" forKey:[User class]];
     [resourceNames setObject:@"wall_event" forKey:[WallEvent class]];
     //        [resourceNames setObject:@"metadata" forKey:[SongMetadata class]];
@@ -382,7 +382,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)userRadioWithTargetWithCompletionBlock:(void (^) (Radio*))block
+- (void)userRadioWithTargetWithCompletionBlock:(void (^) (YaRadio*))block
 {
     if (!_user)
     {
@@ -400,14 +400,14 @@ static YasoundDataProvider* _main = nil;
     
     YaRequest* req = [YaRequest requestWithConfig:config];
     [req start:^(int status, NSString* response, NSError* error){
-        Radio* radio = nil;
+        YaRadio* radio = nil;
         if (error)
             radio = nil;
         else if (status != 200)
             radio = nil;
         else
         {
-            Container* radioContainer = [response jsonToContainer:[Radio class]];
+            Container* radioContainer = [response jsonToContainer:[YaRadio class]];
             if (!radioContainer)
                 radio = nil;
             else if (radioContainer.objects.count == 0)
@@ -904,7 +904,7 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)deleteRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)deleteRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
     YaRequestConfig* config = [YaRequestConfig requestConfig];
     config.url = [NSString stringWithFormat:@"/api/v1/my_radios/%@/", radio.uuid];
@@ -935,7 +935,7 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - update radio
 
-- (void)updateRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)updateRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (!radio || !radio.id)
     {
@@ -977,7 +977,7 @@ static YasoundDataProvider* _main = nil;
   return newImg;
 }
 
-- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)setPicture:(UIImage*)img forRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (!radio || !radio.id)
     {
@@ -1130,7 +1130,7 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - Wall events
 
-- (NSString*)wallEventsRequestgroupKeyForRadio:(Radio*)radio
+- (NSString*)wallEventsRequestgroupKeyForRadio:(YaRadio*)radio
 {
     if (!radio || !radio.id)
         return nil;
@@ -1138,7 +1138,7 @@ static YasoundDataProvider* _main = nil;
     return key;
 }
 
-- (void)cancelWallEventsRequestsForRadio:(Radio*)radio
+- (void)cancelWallEventsRequestsForRadio:(YaRadio*)radio
 {
     NSString* key = [self wallEventsRequestgroupKeyForRadio:radio];
     if (!key)
@@ -1146,7 +1146,7 @@ static YasoundDataProvider* _main = nil;
     [YaRequest cancelWithKey:key];
 }
 
-- (void)wallEventsForRadio:(Radio*)radio olderThanEventWithID:(NSNumber*)lastEventID newerThanEventWithID:(NSNumber*)firstEventID pageSizeNumber:(NSNumber*)pageSize withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)wallEventsForRadio:(YaRadio*)radio olderThanEventWithID:(NSNumber*)lastEventID newerThanEventWithID:(NSNumber*)firstEventID pageSizeNumber:(NSNumber*)pageSize withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (!radio || !radio.id)
     {
@@ -1178,22 +1178,22 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)wallEventsForRadio:(YaRadio*)radio pageSize:(int)pageSize withCompletionBlock:(YaRequestCompletionBlock)block
 {
     [self wallEventsForRadio:radio olderThanEventWithID:nil newerThanEventWithID:nil pageSizeNumber:[NSNumber numberWithInt:pageSize] withCompletionBlock:block];
 }
 
-- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)wallEventsForRadio:(YaRadio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID withCompletionBlock:(YaRequestCompletionBlock)block
 {
     [self wallEventsForRadio:radio olderThanEventWithID:lastEventID newerThanEventWithID:nil pageSizeNumber:[NSNumber numberWithInt:pageSize] withCompletionBlock:block];
 }
 
-- (void)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)wallEventsForRadio:(YaRadio*)radio newerThanEventWithID:(NSNumber*)eventID withCompletionBlock:(YaRequestCompletionBlock)block
 {
     [self wallEventsForRadio:radio olderThanEventWithID:nil newerThanEventWithID:eventID pageSizeNumber:nil withCompletionBlock:block];
 }
 
-- (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio withCompletionBLock:(YaRequestCompletionBlock)block
+- (void)postWallMessage:(NSString*)message toRadio:(YaRadio*)radio withCompletionBLock:(YaRequestCompletionBlock)block
 {
     if (!message || !_user || !radio || !radio.id)
     {
@@ -1257,7 +1257,7 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - connection to the wall
 
-- (void)enterRadioWall:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)enterRadioWall:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (!_user || !radio || !radio.id)
     {
@@ -1276,7 +1276,7 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)leaveRadioWall:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)leaveRadioWall:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (!_user || !radio || !radio.id)
     {
@@ -1297,7 +1297,7 @@ static YasoundDataProvider* _main = nil;
 
 #pragma radio users
 
-- (void)favoriteUsersForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)favoriteUsersForRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (radio == nil || !radio.id)
     {
@@ -1317,7 +1317,7 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)currentUsersForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)currentUsersForRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (radio == nil || !radio.id)
     {
@@ -1337,7 +1337,7 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)currentSongForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)currentSongForRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (radio == nil || !radio.id)
     {
@@ -1420,7 +1420,7 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)setRadio:(YaRadio*)radio asFavorite:(BOOL)favorite withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (!radio || !radio.id)
     {
@@ -1447,7 +1447,7 @@ static YasoundDataProvider* _main = nil;
 
 }
 
-- (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)radioHasBeenShared:(YaRadio*)radio with:(NSString*)shareType withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (!radio || !radio.id)
     {
@@ -1507,7 +1507,7 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio withCompletionBlock:(void (^) (taskID))block
+- (void)updatePlaylists:(NSData*)data forRadio:(YaRadio*)radio withCompletionBlock:(void (^) (taskID))block
 {
     if (!radio || !radio.id)
     {
@@ -1622,7 +1622,7 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - Radio stats
 
-- (void)monthListeningStatsForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)monthListeningStatsForRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
     YaRequestConfig* config = [YaRequestConfig requestConfig];
     config.url = @"/api/v1/listening_stats/";
@@ -1635,7 +1635,7 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)leaderboardForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)leaderboardForRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
     YaRequestConfig* config = [YaRequestConfig requestConfig];
     config.url = [NSString stringWithFormat:@"api/v2/radio/%@/leaderboard", radio.uuid];
@@ -1650,7 +1650,7 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - playlists
 
-- (void)playlistsForRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)playlistsForRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (!radio || !radio.id)
     {
@@ -1683,7 +1683,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (ASIFormDataRequest*)uploadSong:(NSData*)song forRadioId:(Radio*)radio_id title:(NSString*)title album:(NSString*)album artist:(NSString*)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
+- (ASIFormDataRequest*)uploadSong:(NSData*)song forRadioId:(YaRadio*)radio_id title:(NSString*)title album:(NSString*)album artist:(NSString*)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
 {
     if ((song == nil) || (radio_id == nil))
     {
@@ -1762,7 +1762,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)deleteAllSongsFromRadio:(Radio*)radio target:(id)target action:(SEL)action
+- (void)deleteAllSongsFromRadio:(YaRadio*)radio target:(id)target action:(SEL)action
 {
     if (!radio)
         return;
@@ -1782,7 +1782,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)deleteArtist:(NSString*)artist fromRadio:(Radio*)radio target:(id)target action:(SEL)action
+- (void)deleteArtist:(NSString*)artist fromRadio:(YaRadio*)radio target:(id)target action:(SEL)action
 {
     if (!artist || !radio)
         return;
@@ -1812,7 +1812,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)deleteAlbum:(NSString*)album fromRadio:(Radio*)radio target:(id)target action:(SEL)action
+- (void)deleteAlbum:(NSString*)album fromRadio:(YaRadio*)radio target:(id)target action:(SEL)action
 {
     if (!album || !radio)
         return;
@@ -1880,7 +1880,7 @@ static YasoundDataProvider* _main = nil;
     
 }
 
-- (void)addSong:(YasoundSong*)yasoundSong inRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)addSong:(YasoundSong*)yasoundSong inRadio:(YaRadio*)radio target:(id)target action:(SEL)selector
 {
     if (!yasoundSong)
         return;
@@ -2006,7 +2006,7 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - User Notifications   
 
-- (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)broadcastMessage:(NSString*)message fromRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
     YaRequestConfig* config = [YaRequestConfig requestConfig];
     config.url = [NSString stringWithFormat:@"api/v1/radio/%@/broadcast_message/", radio.uuid];
@@ -2118,12 +2118,12 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - shows
 
-- (void)showsForRadio:(Radio*)r withTarget:(id)target action:(SEL)selector
+- (void)showsForRadio:(YaRadio*)r withTarget:(id)target action:(SEL)selector
 {
     [self showsForRadio:r limit:0 offset:0 withTarget:target action:selector];
 }
 
-- (void)showsForRadio:(Radio*)r limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector
+- (void)showsForRadio:(YaRadio*)r limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/shows/", r.uuid];
@@ -2193,12 +2193,12 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
-- (void)createShow:(Show*)show inRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
+- (void)createShow:(Show*)show inRadio:(YaRadio*)radio withTarget:(id)target action:(SEL)selector
 {
     [self createShow:show inRadio:radio withYasoundSongs:nil withTarget:target action:selector];
 }
 
-- (void)createShow:(Show*)show inRadio:(Radio*)radio withYasoundSongs:(NSArray*)yasoundSongs withTarget:(id)target action:(SEL)selector
+- (void)createShow:(Show*)show inRadio:(YaRadio*)radio withYasoundSongs:(NSArray*)yasoundSongs withTarget:(id)target action:(SEL)selector
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/create_show", radio.uuid];

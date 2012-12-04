@@ -60,7 +60,7 @@
 
 
 
-- (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio withSegmentIndex:(NSInteger)segmentIndex
+- (id)initWithStyle:(UITableViewStyle)style forRadio:(YaRadio*)radio withSegmentIndex:(NSInteger)segmentIndex
 {
     self = [super initWithStyle:style];
     if (self)

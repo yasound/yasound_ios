@@ -174,7 +174,7 @@ typedef enum
 
 - (void)onSearchRadioClicked:(NSNotification*)notif {
     
-    Radio* radio = notif.object;
+    YaRadio* radio = notif.object;
     assert(radio);
 
     [self.popover dismissPopoverAnimated:YES];
@@ -327,9 +327,9 @@ typedef enum
     NSInteger radioIndex = indexPath.row * 3;
     
     
-    Radio* radio1 = [radios objectAtIndex:radioIndex];
-    Radio* radio2 = nil;
-    Radio* radio3 = nil;
+    YaRadio* radio1 = [radios objectAtIndex:radioIndex];
+    YaRadio* radio2 = nil;
+    YaRadio* radio3 = nil;
     if (radioIndex+1 < radios.count)
         radio2 = [radios objectAtIndex:radioIndex+1];
     if (radioIndex+2 < radios.count)
@@ -353,7 +353,7 @@ typedef enum
 }
 
 
-- (void)onRadioClicked:(Radio*)radio
+- (void)onRadioClicked:(YaRadio*)radio
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
 }
@@ -414,7 +414,7 @@ typedef enum
             DLog(@"search radio error: response status %d", status);
             success = NO;
         }
-        Container* radioContainer = [response jsonToContainer:[Radio class]];
+        Container* radioContainer = [response jsonToContainer:[YaRadio class]];
         if (!radioContainer)
         {
             DLog(@"search radio error: cannot parse response %@", response);

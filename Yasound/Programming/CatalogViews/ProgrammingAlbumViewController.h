@@ -8,15 +8,15 @@
 
 #import "ProgrammingCatalogViewController.h"
 #import "SongCatalog.h"
-#import "Radio.h"
+#import "YaRadio.h"
 
 
 @interface ProgrammingAlbumViewController : ProgrammingCatalogViewController <UIActionSheetDelegate>
 
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YaRadio* radio;
 @property (nonatomic, assign) SongCatalog* catalog;
 
-- (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio;
+- (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(YaRadio*)radio;
 
 
 

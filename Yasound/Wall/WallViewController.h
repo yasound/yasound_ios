@@ -17,7 +17,7 @@
 #import "WallHeaderCell.h"
 #import "WallPostCell.h"
 
-@class Radio;
+@class YaRadio;
 @class AudioStreamer;
 @class WebImageView;
 
@@ -73,7 +73,7 @@
     BOOL _stopWall;
 }
 
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YaRadio* radio;
 @property (nonatomic) BOOL ownRadio;
 
 @property (nonatomic) BOOL keyboardShown;
@@ -102,7 +102,7 @@
 
 
 
-- (id)initWithRadio:(Radio*)radio;
+- (id)initWithRadio:(YaRadio*)radio;
 - (void)initRadioView;
 
 - (void)setStatusMessage:(NSString*)message;

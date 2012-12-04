@@ -18,7 +18,7 @@
 @synthesize radio;
 
 
-- (id)initWithRadio:(Radio*)radio {
+- (id)initWithRadio:(YaRadio*)radio {
     
     if (self = [super init]) {
         self.radio = radio;

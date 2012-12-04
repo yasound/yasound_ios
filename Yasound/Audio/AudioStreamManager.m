@@ -61,7 +61,7 @@ static AudioStreamer* _gAudioStreamer = nil;
 }
 
 
-- (void)startRadio:(Radio*)radio
+- (void)startRadio:(YaRadio*)radio
 {
     if (radio == nil)
         return;
@@ -76,7 +76,7 @@ static AudioStreamer* _gAudioStreamer = nil;
 }
 
 
-- (void)_startRadio:(Radio*)radio
+- (void)_startRadio:(YaRadio*)radio
 {
 #if MUTE_RADIO
     return;
@@ -306,7 +306,7 @@ static AudioStreamer* _gAudioStreamer = nil;
 {
     DLog(@"onAudioStreamMyReset");
     
-    Radio* radio = self.currentRadio;
+    YaRadio* radio = self.currentRadio;
     if (radio == nil)
         return;
     

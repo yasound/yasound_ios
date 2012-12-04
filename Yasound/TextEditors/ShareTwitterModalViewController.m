@@ -37,7 +37,7 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forSong:(Song*)aSong onRadio:(Radio*)aRadio target:(id)target action:(SEL)action
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forSong:(Song*)aSong onRadio:(YaRadio*)aRadio target:(id)target action:(SEL)action
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
@@ -77,7 +77,7 @@
     
 
     // shorten url
-    Radio* currentRadio = [AudioStreamManager main].currentRadio;
+    YaRadio* currentRadio = [AudioStreamManager main].currentRadio;
     self.fullLink = [[NSURL alloc] initWithString:currentRadio.web_url];
     
     MKBitlyHelper* bitlyHelper = [[MKBitlyHelper alloc] initWithLoginName:BITLY_LOGIN andAPIKey:BITLY_API_KEY];
@@ -91,7 +91,7 @@
 - (void)fillView
 {
     // format messages
-    Radio* currentRadio = [AudioStreamManager main].currentRadio;
+    YaRadio* currentRadio = [AudioStreamManager main].currentRadio;
 
     NSString* message = NSLocalizedString(@"ShareModalView_share_message", nil);
     NSString* fullMessage = [NSString stringWithFormat:message, self.song.name, self.song.artist, currentRadio.name];

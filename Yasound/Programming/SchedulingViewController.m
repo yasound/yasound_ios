@@ -18,7 +18,7 @@
 
 @implementation SchedulingViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)radio
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(YaRadio*)radio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
@@ -60,7 +60,7 @@
         return;
     }
     
-    Container* container = [req responseObjectsWithClass:[Radio class]];
+    Container* container = [req responseObjectsWithClass:[YaRadio class]];
     self.shows = container.objects;
     [self.tableview reloadData];    
 }

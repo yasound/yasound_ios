@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Radio.h"
+#import "YaRadio.h"
 
 @interface ProgrammingUploadViewController : UITableViewController
 
-@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) YaRadio* radio;
 
-- (id)initWithStyle:(UITableViewStyle)style  forRadio:(Radio*)radio;
+- (id)initWithStyle:(UITableViewStyle)style  forRadio:(YaRadio*)radio;
 - (void)setSegment:(NSInteger)index;
 
 @end
