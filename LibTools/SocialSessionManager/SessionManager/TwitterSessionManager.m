@@ -11,7 +11,7 @@
 #import "SA_OAuthTwitterEngine.h"
 #import <Accounts/Accounts.h>
 #import "TwitterAccountsViewController.h"
-#import "Version.h"
+#import "DeviceVersion.h"
 #import "ActivityAlertView.h"
 
 #define FORCE_OAUTH_LIB 1

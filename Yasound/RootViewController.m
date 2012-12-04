@@ -28,7 +28,7 @@
 #import "AccountTwitterViewController.h"
 #import "AccountFacebookViewController.h"
 #import "WebPageViewController.h"
-#import "Version.h"
+#import "DeviceVersion.h"
 #import "UIDevice+Resolutions.h"
 #import "InviteContactsViewController.h"
 #import "InviteFacebookFriendsViewController.h"

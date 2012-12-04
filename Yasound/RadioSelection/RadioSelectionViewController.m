@@ -19,7 +19,7 @@
 #import "ProfilViewController.h"
 #import "YasoundAppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
-#import "Version.h"
+#import "DeviceVersion.h"
 #import "MyRadiosViewController.h"
 #import "UIDevice+Resolutions.h"
 

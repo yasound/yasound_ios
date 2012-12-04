@@ -7709,7 +7709,7 @@
 		BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarSaveOrCancel.m; sourceTree = "<group>"; };
 		BC79F35315E856400048E3F7 /* FakeSlidingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeSlidingController.h; sourceTree = "<group>"; };
 		BC79F35415E856400048E3F7 /* FakeSlidingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeSlidingController.m; sourceTree = "<group>"; };
-		BC79F35F15E85B950048E3F7 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
+		BC79F35F15E85B950048E3F7 /* DeviceVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceVersion.h; sourceTree = "<group>"; };
 		BC7C07711541A82F004FC760 /* MKBitlyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBitlyHelper.h; sourceTree = "<group>"; };
 		BC7C07721541A82F004FC760 /* MKBitlyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBitlyHelper.m; sourceTree = "<group>"; };
 		BC828AD314B49E9500763558 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -9336,7 +9336,7 @@
 		BC79F35E15E85B950048E3F7 /* Version */ = {
 			isa = PBXGroup;
 			children = (
-				BC79F35F15E85B950048E3F7 /* Version.h */,
+				BC79F35F15E85B950048E3F7 /* DeviceVersion.h */,
 			);
 			name = Version;
 			path = LibTools/Version;

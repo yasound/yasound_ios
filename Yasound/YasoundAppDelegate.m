@@ -18,7 +18,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "UserSettings.h"
 #import "FakeSlidingController.h"
-#import "Version.h"
+#import "DeviceVersion.h"
 #import "YasoundAppURLHandler.h"
 
 
