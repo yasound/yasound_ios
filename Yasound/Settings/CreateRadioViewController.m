@@ -814,7 +814,35 @@
                 
                 for (Playlist* playlist in playlists)
                 {
-                    [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)];
+//                    [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)];
+                    
+                    [[YasoundDataProvider main] matchedSongsForPlaylist:playlist withCompletionBlock:^(int status, NSString* response, NSError* error){
+                        NSArray* receivedSongs = nil;
+                        if (error)
+                        {
+                            DLog(@"matched songs error: %d - %@", error.code, error.domain);
+                            receivedSongs = nil;
+                        }
+                        else if (status != 200)
+                        {
+                            DLog(@"matched songs error: response status %d", status);
+                            receivedSongs = nil;
+                        }
+                        else
+                        {
+                            Container* songContainer = [response jsonToContainer:[Song class]];
+                            if (!songContainer || !songContainer.objects)
+                            {
+                                DLog(@"matched songs error: cannot parse response %@", response);
+                                receivedSongs = nil;
+                            }
+                            else
+                            {
+                                receivedSongs = songContainer.objects;
+                            }
+                        }
+                        [self matchedSongsReceveived:receivedSongs];
+                    }];
                 }
             }
             else
@@ -822,16 +850,16 @@
                 self.nbPlaylistsForChecking = 0;
                 self.nbParsedPlaylistsForChecking = 0;
                 self.nbMatchedSongs = 0;
-                [self matchedSongsReceveived:nil info:nil];
+                [self matchedSongsReceveived:nil];
             }
             
         }];
         
     }];
-}    
+}
 
     
-- (void)matchedSongsReceveived:(NSArray*)songs info:(NSDictionary*)info
+- (void)matchedSongsReceveived:(NSArray*)songs
 {
     self.nbParsedPlaylistsForChecking++;
     

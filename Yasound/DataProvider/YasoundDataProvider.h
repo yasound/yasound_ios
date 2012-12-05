@@ -205,6 +205,8 @@ taskStatus stringToStatus(NSString* str);
 // Get matched songs for a playlist. Returns a NSArray of Song objects
 - (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector;  // didReceiveMatchedSongs:(NSArray*)matched_songs info:(NSDictionary*)info
 
+- (void)matchedSongsForPlaylist:(Playlist*)playlist withCompletionBlock:(YaRequestCompletionBlock)block;
+
 - (void)updateSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
 - (void)deleteSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
 

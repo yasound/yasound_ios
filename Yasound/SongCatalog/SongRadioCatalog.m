@@ -157,20 +157,42 @@ static SongRadioCatalog* _main = nil;
         
         for (Playlist* playlist in playlists)
         {
-            DLog(@"playlist %@ :", playlist.name);
-            [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)];
+            DLog(@"playlist %@ :", playlist.name);            
+            [[YasoundDataProvider main] matchedSongsForPlaylist:playlist withCompletionBlock:^(int status, NSString* response, NSError* error){
+                [self matchedSongsReceivedWithStatus:status response:response error:error];
+            }];
         }
     }];
 }
 
-
-- (void)matchedSongsReceveived:(NSArray*)songs info:(NSDictionary*)info
+- (void)matchedSongsReceivedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
 {
-    NSNumber* succeededNb = [info objectForKey:@"succeeded"];
-    assert(succeededNb != nil);
-    BOOL succeeded = [succeededNb boolValue];
+    NSArray* receivedSongs = nil;
+    if (error)
+    {
+        DLog(@"matched songs error: %d - %@", error.code, error.domain);
+        receivedSongs = nil;
+    }
+    else if (status != 200)
+    {
+        DLog(@"matched songs error: response status %d", status);
+        receivedSongs = nil;
+    }
+    else
+    {
+        Container* songContainer = [response jsonToContainer:[Song class]];
+        if (!songContainer || !songContainer.objects)
+        {
+            DLog(@"matched songs error: cannot parse response %@", response);
+            receivedSongs = nil;
+        }
+        else
+        {
+            receivedSongs = songContainer.objects;
+        }
+    }
     
-    if (!succeeded)
+    if (!receivedSongs)
     {
         NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
         [actionInfo setObject:[NSNumber numberWithInteger:0] forKey:@"count"];
@@ -178,21 +200,17 @@ static SongRadioCatalog* _main = nil;
         [actionInfo setObject:[NSNumber numberWithBool:NO]  forKey:@"success"];
         
         DLog(@"matchedSongsReceveived : REQUEST FAILED for playlist nb %d", _nbReceivedData);
-        DLog(@"info %@", info);
         
         if ([self.target respondsToSelector:self.action])
             [self.target performSelector:self.action withObject:actionInfo];
         return;
-        
     }
     
-    
-    DLog(@"received playlist : nb %d : %d songs",  _nbReceivedData, songs.count);
-    
+    DLog(@"received playlist : nb %d : %d songs",  _nbReceivedData, receivedSongs.count);
     _nbReceivedData++;
     
-    if (succeeded && (songs != nil) && (songs.count != 0))
-        [_data addObject:songs];
+    if (receivedSongs.count != 0)
+        [_data addObject:receivedSongs];
     
     if (_nbReceivedData != _nbPlaylists)
         return;
@@ -201,12 +219,9 @@ static SongRadioCatalog* _main = nil;
     for (NSInteger i = 0; i < _data.count; i++)
     {
         NSArray* songs = [_data objectAtIndex:i];
-        
         for (Song* song in songs)
         {
             DevLog(@"received song '%@ - %@  - %@'", song.name, song.artist, song.album);
-            
-            
             // create a key for the dictionary
             NSString* localKey = [SongCatalog catalogKeyOfSong:song.name_client artistKey:song.artist_client albumKey:song.album_client];
             
@@ -218,19 +233,16 @@ static SongRadioCatalog* _main = nil;
     // build catalog
     [[SongRadioCatalog main] build];
     
-    
     DLog(@"%d matched songs", self.matchedSongs.count);
     
     NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
     [actionInfo setObject:[NSNumber numberWithInteger:self.matchedSongs.count] forKey:@"count"];
     [actionInfo setObject:@""  forKey:@"error"];
     [actionInfo setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
-
+    
     if ([self.target respondsToSelector:self.action])
         [self.target performSelector:self.action withObject:actionInfo];
-    
 }
-
 
 
 

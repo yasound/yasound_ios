@@ -1606,6 +1606,25 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[Song class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
+- (void)matchedSongsForPlaylist:(Playlist*)playlist withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    if (!playlist || !playlist.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/playlist/%@/matched_song", playlist.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
 - (void)updateSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (!song || !song.id)

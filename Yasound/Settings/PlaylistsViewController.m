@@ -294,57 +294,6 @@
     }
 }
 
-//- (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
-//{
-//    [[TimeProfile main] end:@"Playlists_download"];
-//    [[TimeProfile main] logInterval:@"Playlists_download" inMilliseconds:NO];
-//    
-//    [[TimeProfile main] begin:@"Playlists_buildPlaylists"];
-//
-//    // build playlist
-//    [self buildPlaylistData:_playlists withRemotePlaylists:playlists];
-//
-//     [[TimeProfile main] end:@"Playlists_buildPlaylists"];
-//     [[TimeProfile main] logInterval:@"Playlists_buildPlaylists" inMilliseconds:NO];
-//
-//     [[TimeProfile main] begin:@"Playlists_catalogSongs"];
-//
-//    // build global songs catalog
-//    MPMediaQuery* query = [MPMediaQuery songsQuery];
-//    _songs = [query items];
-//    [_songs retain];
-//     
-//     [[TimeProfile main] end:@"Playlists_catalogSongs"];
-//     [[TimeProfile main] logInterval:@"Playlists_catalogSongs" inMilliseconds:NO];
-//
-//    
-//    // refresh
-//    [self refreshView];
-//
-//    [ActivityAlertView close];
-//    
-//    if (_songs.count == 0)
-//    {
-//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:YES error:nil];
-//        UIImageView* view = [sheet makeImage];
-//        [_tableView addSubview:view];
-//        [view release];
-//        
-//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.local", nil) message:NSLocalizedString(@"Programming.empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [av show];
-//        [av release];
-//        return;
-//    }
-//    
-//    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.create", nil) message:NSLocalizedString(@"MyRadios.create.howto", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//    [alert show];
-//    [alert release];
-//    
-//    
-//}
-
-                                                                                      
-
 
 
 
@@ -909,7 +858,33 @@
                 
                 for (Playlist* playlist in playlists)
                 {
-                    [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)];
+                    [[YasoundDataProvider main] matchedSongsForPlaylist:playlist withCompletionBlock:^(int status, NSString* response, NSError* error){
+                        NSArray* receivedSongs = nil;
+                        if (error)
+                        {
+                            DLog(@"matched songs error: %d - %@", error.code, error.domain);
+                            receivedSongs = nil;
+                        }
+                        else if (status != 200)
+                        {
+                            DLog(@"matched songs error: response status %d", status);
+                            receivedSongs = nil;
+                        }
+                        else
+                        {
+                            Container* songContainer = [response jsonToContainer:[Song class]];
+                            if (!songContainer || !songContainer.objects)
+                            {
+                                DLog(@"matched songs error: cannot parse response %@", response);
+                                receivedSongs = nil;
+                            }
+                            else
+                            {
+                                receivedSongs = songContainer.objects;
+                            }
+                        }
+                        [self matchedSongsReceveived:receivedSongs];
+                    }];
                 }
             }
             else
@@ -918,7 +893,7 @@
                 self.nbParsedPlaylistsForChecking = 0;
                 self.nbMatchedSongs = 0;
                 
-                [self matchedSongsReceveived:nil info:nil];
+                [self matchedSongsReceveived:nil];
             }
         }];
     }];
@@ -934,12 +909,38 @@
     
     for (Playlist* playlist in playlists) 
     {
-        [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)]; 
+        [[YasoundDataProvider main] matchedSongsForPlaylist:playlist withCompletionBlock:^(int status, NSString* response, NSError* error){
+            NSArray* receivedSongs = nil;
+            if (error)
+            {
+                DLog(@"matched songs error: %d - %@", error.code, error.domain);
+                receivedSongs = nil;
+            }
+            else if (status != 200)
+            {
+                DLog(@"matched songs error: response status %d", status);
+                receivedSongs = nil;
+            }
+            else
+            {
+                Container* songContainer = [response jsonToContainer:[Song class]];
+                if (!songContainer || !songContainer.objects)
+                {
+                    DLog(@"matched songs error: cannot parse response %@", response);
+                    receivedSongs = nil;
+                }
+                else
+                {
+                    receivedSongs = songContainer.objects;
+                }
+            }
+            [self matchedSongsReceveived:receivedSongs];
+        }];
     }
 }
-    
-    
-- (void)matchedSongsReceveived:(NSArray*)songs info:(NSDictionary*)info
+
+
+- (void)matchedSongsReceveived:(NSArray*)songs
 {
     self.nbParsedPlaylistsForChecking++;
     
