@@ -259,9 +259,11 @@ taskStatus stringToStatus(NSString* str);
 - (void)removeSong:(Song*)song fromShow:(Show*)show withTarget:(id)target action:(SEL)selector;     // takes Song as param !!
 
 // in-app purchase
-- (void)subscriptionsWithTarget:(id)target action:(SEL)action;
-- (void)subscriptionComplete:(NSString*)productId withBase64Receipt:(NSString*)appleReceipt target:(id)target action:(SEL)action;
 - (void)servicesWithTarget:(id)target action:(SEL)action;
+
+- (void)subscriptionsWithCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)subscriptionComplete:(NSString*)productId withBase64Receipt:(NSString*)appleReceipt withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)servicesWithCompletionBlock:(YaRequestCompletionBlock)block;
 
 // gifts
 - (void)giftsWithCompletionBlock:(YaRequestCompletionBlock)block;

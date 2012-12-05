@@ -2191,53 +2191,67 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - in-app purchase
 
-- (void)servicesWithTarget:(id)target action:(SEL)action
+//- (void)servicesWithTarget:(id)target action:(SEL)action
+//{
+//    RequestConfig* conf = [[RequestConfig alloc] init];
+//    conf.url = @"api/v1/premium/services/";
+//    conf.urlIsAbsolute = NO;
+//    conf.auth = self.apiKeyAuth;
+//    conf.method = @"GET";
+//    conf.callbackTarget = target;
+//    conf.callbackAction = action;
+//    
+//    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+//    
+//    //LBDEBUG
+//    //DLog(@"servicesWithTarget url '%@'", req.url);
+//    
+//    [req startAsynchronous];
+//}
+
+- (void)servicesWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/premium/services/";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/premium/services/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    
-    //LBDEBUG
-    //DLog(@"servicesWithTarget url '%@'", req.url);
-    
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-
-- (void)subscriptionsWithTarget:(id)target action:(SEL)action
+- (void)subscriptionsWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/premium/subscriptions/";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/premium/subscriptions/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-
-- (void)subscriptionComplete:(NSString*)productId withBase64Receipt:(NSString*)appleReceipt target:(id)target action:(SEL)action
+- (void)subscriptionComplete:(NSString*)productId withBase64Receipt:(NSString*)appleReceipt withCompletionBlock:(YaRequestCompletionBlock)block
 {
+    if (!productId)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
     
-    NSString* url = [NSString stringWithFormat:@"api/v1/premium/subscriptions/%@", productId];
-
-    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:url absolute:NO notifyTarget:target byCalling:action withUserData:nil withAuth:self.apiKeyAuth];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/premium/subscriptions/%@", productId];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObjectsAndKeys:appleReceipt, @"receipt", self.user.username, @"username", nil];
     
-    [req addPostValue:appleReceipt forKey:@"receipt"];
-    [req addPostValue:self.user.username forKey:@"username"];
-    
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
-
 
 
 #pragma mark - gifts

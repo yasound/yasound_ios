@@ -154,21 +154,20 @@
     if (![YasoundSessionManager main].registered)
         return;
     
-    // ask for services to get HD service expiration date
-    [[YasoundDataProvider main] servicesWithTarget:self action:@selector(onServicesReceived:success:)];
-}
-
-- (void)onServicesReceived:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    Container* container = [req responseObjectsWithClass:[Service class]];
-    for (Service* serv in container.objects)
-    {
-        if ([serv isHd])
+    // ask for services to get HD service expiration date    
+    [[YasoundDataProvider main] servicesWithCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = (error == nil) && (status == 200) && (response != nil);
+        Container* container = [response jsonToContainer:[Service class]];
+        for (Service* serv in container.objects)
         {
-            [self updateHdBarWithExpirationDate:serv.expiration_date];
-            break;
+            if ([serv isHd])
+            {
+                [self updateHdBarWithExpirationDate:serv.expiration_date];
+                break;
+            }
         }
-    }
+    }];
+    
 }
 
 - (void)updateHdBarWithExpirationDate:(NSDate*)expirationDate

@@ -75,7 +75,10 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     [ActivityAlertView showWithTitle:nil];
 
     // get list of acquired sevices
-    [[YasoundDataProvider main] servicesWithTarget:self action:@selector(onServicesReceived:success:)];
+    [[YasoundDataProvider main] servicesWithCompletionBlock:^(int status, NSString* response, NSError* error){
+        [self servicesReceivedWithStatus:status response:response error:error];
+    }];
+    
 }
     
 
@@ -104,9 +107,26 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     return s;
 }
 
-- (void)onServicesReceived:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)servicesReceivedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
 {
-    if (!success)
+    NSArray* receivedServices = nil;
+    if (error || status != 200 || response == nil)
+    {
+        receivedServices = nil;
+        DLog(@"receive service error");
+    }
+    else
+    {
+        Container* container = [response jsonToContainer:[Service class]];
+        if (container == nil)
+        {
+            DLog(@"receive services error: cannot parse response %@", response);
+            receivedServices = nil;
+        }
+        else
+            receivedServices = container.objects;
+    }
+    if (!receivedServices)
     {
         [ActivityAlertView close];
         
@@ -119,10 +139,12 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
         return;
     }
     
-    //DLog(@"Purchase onServicesReceived %@", req.responseString);
-    
-    Container* container = [req responseObjectsWithClass:[Service class]];
-    self.services = container.objects;
+    [self servicesReceived:receivedServices];
+}
+
+- (void)servicesReceived:(NSArray*)receivedServices
+{
+    self.services = receivedServices;
     
     if ((self.services == nil) || (self.services.count == 0))
     {
@@ -145,76 +167,67 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
         }
         
         self.cellProfilLabel.text = str;
-
+        
     }
-
+    
     // now gets the list of subscriptions
-    [[YasoundDataProvider main] subscriptionsWithTarget:self action:@selector(onSubscriptionsReceived:success:)];
+    [[YasoundDataProvider main] subscriptionsWithCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = (error == nil) && (status == 200) && (response != nil);
+        if (!success)
+        {
+            [ActivityAlertView close];
+            
+            DLog(@"onSubscriptionsReceived : failed!");
+            
+            
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.subscriptions.error.title", nil) message:NSLocalizedString(@"Purchase.subscriptions.error.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            
+            return;
+        }
+        Container* container = [response jsonToContainer:[Subscription class]];
+        self.subscriptions = container.objects;
+        
+        if ((self.subscriptions == nil) || (self.subscriptions.count == 0))
+        {
+            [ActivityAlertView close];
+            DLog(@"onSubscriptionsReceived : failed!");
+            
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.subscriptions.error.title", nil) message:NSLocalizedString(@"Purchase.subscriptions.error.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            
+            return;
+        }
+        
+        // fill the product identifiers list
+        for (Subscription* sub in self.subscriptions)
+        {
+            DLog(@"sub %@", [sub toString]);
+            
+            NSString* sku = sub.sku;
+            
+            //        //LBDEBUG
+            //        if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1m"])
+            //            sku = @"com.yasound.yasound.inappHD1m";
+            //        else if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1y"])
+            //            sku = @"com.yasound.yasound.inappHD1y";
+            //        else if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1ysp"])
+            //            sku = @"com.yasound.yasound.inappHD1ysp";
+            
+            [self.productIdentifierList addObject:sku];
+        }
+        
+        DLog(@"onSubscriptionsReceived : product ids : %@", self.productIdentifierList);
+        
+        
+        SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithArray:productIdentifierList]];
+        request.delegate = self;
+        [request start];
+        
+    }];
 }
-
-
-
-- (void)onSubscriptionsReceived:(ASIHTTPRequest*)req success:(BOOL)success
-{
-
-    if (!success)
-    {
-        [ActivityAlertView close];
-        
-        DLog(@"onSubscriptionsReceived : failed!");
-
-        
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.subscriptions.error.title", nil) message:NSLocalizedString(@"Purchase.subscriptions.error.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-        
-        return;
-    }
-    
-    
-    Container* container = [req responseObjectsWithClass:[Subscription class]];
-    self.subscriptions = container.objects;
-    
-    if ((self.subscriptions == nil) || (self.subscriptions.count == 0))
-    {
-        [ActivityAlertView close];
-        DLog(@"onSubscriptionsReceived : failed!");
-
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.subscriptions.error.title", nil) message:NSLocalizedString(@"Purchase.subscriptions.error.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-
-        return;
-    }
-
-    // fill the product identifiers list
-    for (Subscription* sub in self.subscriptions)
-    {
-        DLog(@"sub %@", [sub toString]);
-        
-        NSString* sku = sub.sku;
-        
-//        //LBDEBUG
-//        if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1m"])
-//            sku = @"com.yasound.yasound.inappHD1m";
-//        else if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1y"])
-//            sku = @"com.yasound.yasound.inappHD1y";
-//        else if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1ysp"])
-//            sku = @"com.yasound.yasound.inappHD1ysp";
-        
-        [self.productIdentifierList addObject:sku];
-    }
-    
-    DLog(@"onSubscriptionsReceived : product ids : %@", self.productIdentifierList);
-    
-    
-    SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithArray:productIdentifierList]];
-    request.delegate = self;
-    [request start];
-
-}
-
-
 
 -(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
@@ -376,9 +389,39 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
     NSString* encodedReceipt = [YaBase64 encodeBase64WithData:transaction.transactionReceipt];
 
-    
-    [[YasoundDataProvider main] subscriptionComplete:sku withBase64Receipt:encodedReceipt target:self action:@selector(onTransactionRecorded:info:)];
+    [[YasoundDataProvider main] subscriptionComplete:sku withBase64Receipt:encodedReceipt withCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = (error == nil) && (status == 200);
+        if (!success)
+        {
+            DLog(@"onTransactionRecorded FAILED!");
+            UIAlertView *successesAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.transaction.record.error.title", nil)
+                                                                     message:NSLocalizedString(@"Purchase.transaction.record.error.message", nil)
+                                                                    delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [successesAlert show];
+            [successesAlert release];
+            return;
+        }
         
+        DLog(@"onTransactionRecorded success!");
+        
+        UIAlertView *successesAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.transaction.completed.title", nil)
+                                                                 message:NSLocalizedString(@"Purchase.transaction.completed.message", nil)
+                                                                delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [successesAlert show];
+        [successesAlert release];
+        
+        
+        // refresh data and gui
+        self.productDetailsList    = [[NSMutableArray alloc] init];
+        self.productIdentifierList = [[NSMutableArray alloc] init];
+        self.subscriptions = nil;
+        self.services = nil;
+        
+        [[YasoundDataProvider main] servicesWithCompletionBlock:^(int status, NSString* response, NSError* error){
+            [self servicesReceivedWithStatus:status response:response error:error];
+        }];
+    }];
+    
     
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
     
@@ -454,8 +497,9 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     self.subscriptions = nil;
     self.services = nil;
     
-    [[YasoundDataProvider main] servicesWithTarget:self action:@selector(onServicesReceived:success:)];
-    
+    [[YasoundDataProvider main] servicesWithCompletionBlock:^(int status, NSString* response, NSError* error){
+        [self servicesReceivedWithStatus:status response:response error:error];
+    }];
 }
 
 
