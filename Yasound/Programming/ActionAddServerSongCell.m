@@ -142,39 +142,34 @@
 
 - (void)onButtonClicked:(id)sender
 {
-    [[YasoundDataProvider main] addSong:self.song inRadio:self.radio target:self action:@selector(addedSong:info:)];
+    [[YasoundDataProvider main] addSong:self.song inRadio:self.radio withCompletionBlock:^(Song* newSong, BOOL created, NSError* error){
+        BOOL success = (newSong != nil);
+        
+        [self.activityView stopAnimating];
+        self.activityView.hidden = YES;
+        if (!newSong)
+            return;
+        
+        [self setEnabled:NO];        
+        if (success && !created)
+        {
+            NSString* title = [NSString stringWithFormat:@"%@ - %@", self.song.artist_name, self.song.name];
+            NSString* message = NSLocalizedString(@"AddServerSong.AlreadyInProgramming.Message", nil);
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles: nil];
+            [alert show];
+            [alert release];
+            return;
+        }
+        
+        DLog(@"success %d  created %d", success, created);
+        
+        // update the song catalogs
+        [[SongRadioCatalog main] updateSongAddedToProgramming:newSong];
+    }];
+    
+    
     self.activityView.hidden = NO;
     [self.activityView startAnimating];
-}
-
-- (void)addedSong:(Song*)songUpdated info:(NSDictionary*)info
-{
-    [self.activityView stopAnimating];
-    self.activityView.hidden = YES;
-    if (!songUpdated)
-        return;
-    
-    [self setEnabled:NO];
-    
-    NSDictionary* status = [info valueForKey:@"status"];
-    BOOL success = [[status valueForKey:@"success"] boolValue];
-    BOOL created = [[status valueForKey:@"created"] boolValue];
-    
-    if (success && !created)
-    {
-        NSString* title = [NSString stringWithFormat:@"%@ - %@", self.song.artist_name, self.song.name];
-        NSString* message = NSLocalizedString(@"AddServerSong.AlreadyInProgramming.Message", nil);
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles: nil];
-        [alert show];
-        [alert release];
-        return;
-    }
-    
-    DLog(@"success %d  created %d", success, created);
-    
-    // update the song catalogs
-    [[SongRadioCatalog main] updateSongAddedToProgramming:songUpdated];
-
 }
 
 

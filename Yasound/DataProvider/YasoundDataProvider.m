@@ -1783,73 +1783,80 @@ static YasoundDataProvider* _main = nil;
     
 }
 
-- (void)addSong:(YasoundSong*)yasoundSong inRadio:(YaRadio*)radio target:(id)target action:(SEL)selector
+- (void)addSong:(YasoundSong*)yasoundSong inRadio:(YaRadio*)radio withCompletionBlock:(void (^) (Song*, BOOL, NSError*))block
 {
-    if (!yasoundSong)
-        return;
-    Auth* auth = self.apiKeyAuth;
-    int playlistIndex = 0;
-    NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/playlist/%d/add_song/%@", radio.id, playlistIndex, yasoundSong.id];
-    
-    NSMutableDictionary* userData = [NSMutableDictionary dictionary];
-    [userData setValue:target forKey:@"finalTarget"];
-    [userData setValue:NSStringFromSelector(selector) forKey:@"finalSelector"];
-    
-    [_communicator postToURL:url absolute:NO notifyTarget:self byCalling:@selector(didAddSong:info:) withUserData:userData withAuth:auth];
-}
-
-- (void)addSong:(YasoundSong*)yasoundSong target:(id)target action:(SEL)selector
-{
-    [self addSong:yasoundSong inRadio:_radio target:target action:selector];
-}
-
-- (void)didAddSong:(NSString*)res info:(NSDictionary*)info
-{
-  NSDictionary* dict = [res JSONValue];
-  NSNumber* songInstanceID = [dict valueForKey:@"song_instance_id"];
-  
-  NSMutableDictionary* status = [NSMutableDictionary dictionary];
-  [status setValue:[dict valueForKey:@"success"] forKey:@"success"];
-  [status setValue:[dict valueForKey:@"created"] forKey:@"created"];
-  
-  if (!songInstanceID)
-  {
-    NSDictionary* userData = [info valueForKey:@"userData"];
-    id target = [userData valueForKey:@"finalTarget"];
-    SEL selector = NSSelectorFromString([userData valueForKey:@"finalSelector"]);
-    
-    if (target && selector)
+    if (!yasoundSong || !yasoundSong.id || !radio || !radio.id)
     {
-      NSMutableDictionary* finalInfo = [NSMutableDictionary dictionary];
-      [finalInfo setValue:[info valueForKey:@"error"] forKey:@"error"];
-      [finalInfo setValue:status forKey:@"status"];
-        if ([target respondsToSelector:selector])
-            [target performSelector:selector withObject:nil withObject:finalInfo];
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
     }
-    return;
-  }
-  
-  NSMutableDictionary* userData = [NSMutableDictionary dictionaryWithDictionary:[info valueForKey:@"userData"]];
-  [userData setValue:status forKey:@"status"];
-  
-  Auth* auth = self.apiKeyAuth;
-  [_communicator getObjectWithClass:[Song class] andID:songInstanceID notifyTarget:self byCalling:@selector(didReceiveAddedSong:info:) withUserData:userData withAuth:auth];
+    int playlistIndex = 0;
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/playlist/%d/add_song/%@", radio.id, playlistIndex, yasoundSong.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:^(int status, NSString* response, NSError* error){
+        if (error || status != 200)
+        {
+            if (block)
+                block(nil, NO, error);
+            return;
+        }
+        NSDictionary* respDict = [response jsonToDictionary];
+        NSNumber* songInstanceID = [respDict valueForKey:@"song_instance_id"];
+        BOOL success = [[respDict valueForKey:@"success"] boolValue];
+        BOOL created = [[respDict valueForKey:@"created"] boolValue];
+        if (!success)
+        {
+            if (block)
+                block(nil, NO, nil);
+            return;
+        }
+        
+        [self songWithId:songInstanceID withCompletionBlock:^(int status, NSString* response, NSError* error){
+            if (error || status != 200)
+            {
+                if (block)
+                    block(nil, NO, error);
+                return;
+            }
+            Song* s = (Song*)[response jsonToModel:[Song class]];
+            if (!s)
+            {
+                if (block)
+                    block(nil, NO, nil);
+                return;
+            }
+            
+            if (block)
+                block(s, created, nil);
+        }];
+        
+    }];
 }
 
-- (void)didReceiveAddedSong:(Song*)addedSong info:(NSDictionary*)info
+- (void)songWithId:(NSNumber*)songId withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"finalTarget"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"finalSelector"]);
-  NSDictionary* status = [userData valueForKey:@"status"];
-  
-  if (target && selector)
-  {
-    NSMutableDictionary* finalInfo = [NSMutableDictionary dictionaryWithDictionary:info];
-    [finalInfo setValue:status forKey:@"status"];
-      if ([target respondsToSelector:selector])
-          [target performSelector:selector withObject:addedSong withObject:finalInfo];
-  }
+    if (!songId)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/song/%@/", songId];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 #pragma mark - notifications preferences

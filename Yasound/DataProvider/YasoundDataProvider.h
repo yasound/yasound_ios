@@ -202,9 +202,6 @@ taskStatus stringToStatus(NSString* str);
 
 - (YaRequest*)uploadSong:(NSData*)song forRadioId:(NSNumber*)radio_id title:(NSString*)title album:(NSString*)album artist:(NSString*)artist songId:(NSNumber*)songId withCompletionBlock:(YaRequestCompletionBlock)block andProgressBlock:(YaRequestProgressBlock)progressBlock;
 
-// Get matched songs for a playlist. Returns a NSArray of Song objects
-- (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector;  // didReceiveMatchedSongs:(NSArray*)matched_songs info:(NSDictionary*)info
-
 - (void)matchedSongsForPlaylist:(Playlist*)playlist withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)updateSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
@@ -220,9 +217,9 @@ taskStatus stringToStatus(NSString* str);
 // Get searched songs. Returns a NSArray of YasoundSong objects
 - (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector; // didReceiveSearchedSongs:(NSArray*)songs info:(NSDictionary*)info
 
-- (void)addSong:(YasoundSong*)yasoundSong inRadio:(YaRadio*)radio target:(id)target action:(SEL)selector;
-- (void)addSong:(YasoundSong*)yasoundSong target:(id)target action:(SEL)selector;  // didReceiveAddedSong:(Song*)addedSong info:(NSDictionary*)info and info contains a dictionary for key 'status' with 2 NSNumber* (boolean) 'success' (true if the request succeeded) and 'created' (true if a song has been added, false if this song was already in the playlist)
+- (void)addSong:(YasoundSong*)yasoundSong inRadio:(YaRadio*)radio withCompletionBlock:(void (^) (Song*, BOOL, NSError*))block;
 
+- (void)songWithId:(NSNumber*)songId withCompletionBlock:(YaRequestCompletionBlock)block;
 
 // APNs (Apple Push Notification service) preferences
 - (void)apnsPreferencesWithCompletionBlock:(YaRequestCompletionBlock)block;
