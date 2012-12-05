@@ -87,7 +87,7 @@ taskStatus stringToStatus(NSString* str);
 
 
 
-- (int)cancelRequestsForKey:(NSString *)key;
+- (void)cancelRequestsForKey:(NSString *)key;
 
 - (void)resetUser;
 - (void)reloadUserWithCompletionBlock:(void (^) (User*))block;

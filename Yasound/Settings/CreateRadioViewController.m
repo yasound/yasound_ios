@@ -813,9 +813,7 @@
                 
                 
                 for (Playlist* playlist in playlists)
-                {
-//                    [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)];
-                    
+                {                    
                     [[YasoundDataProvider main] matchedSongsForPlaylist:playlist withCompletionBlock:^(int status, NSString* response, NSError* error){
                         NSArray* receivedSongs = nil;
                         if (error)

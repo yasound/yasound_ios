@@ -213,9 +213,6 @@ static YasoundDataProvider* _main = nil;
       
       [YaRequest globalInit];
       [YaRequest setBaseURL:baseUrl];
-      
-    _communicator = [[Communicator alloc] initWithBaseURL:baseUrl];
-    _communicator.appCookie = self.appCookie;
     
       // DEFAULT TIMEOUT
       [ASIHTTPRequest setDefaultTimeOutSeconds:60];
@@ -236,10 +233,10 @@ static YasoundDataProvider* _main = nil;
   return self;
 }
 
-- (int)cancelRequestsForKey:(NSString*)key
+
+- (void)cancelRequestsForKey:(NSString*)key
 {
-    int count = [_communicator cancelRequestsForKey:key];
-    return count;
+    [YaRequest cancelWithKey:key];
 }
 
 - (Auth*)apiKeyAuth
@@ -269,11 +266,11 @@ static YasoundDataProvider* _main = nil;
 
 - (NSURL*)urlForPicture:(NSString*)picturePath
 {
-  if (!_communicator || !picturePath)
+  if (!picturePath)
     return nil;
   
   BOOL absolute = [picturePath hasPrefix:@"http"];
-  NSURL* url = [_communicator urlWithURL:picturePath absolute:absolute addTrailingSlash:NO params:nil];
+  NSURL* url = [YaRequest urlWithURL:picturePath absolute:absolute addTrailingSlash:NO params:nil];
     
   return url;
 }
@@ -287,7 +284,7 @@ static YasoundDataProvider* _main = nil;
   NSArray* params = a.urlParams;
   
   NSString* base = [NSString stringWithFormat:@"api/v1/song_instance/%@/cover/", song.id];
-  NSURL* url = [_communicator urlWithURL:base absolute:NO addTrailingSlash:NO params:params];
+  NSURL* url = [YaRequest urlWithURL:base absolute:NO addTrailingSlash:NO params:params];
   return url;
 }
 
@@ -899,42 +896,6 @@ static YasoundDataProvider* _main = nil;
     return YES;
 }
 
-//- (BOOL)updateUser:(User*)user target:(id)target action:(SEL)selector
-//{
-//    if (user == nil)
-//    {
-//        DLog(@"YasoundDataProvider:updateUser user is nil!");
-//        return NO;
-//    }
-//    
-//    //LBDEBUG
-//    if (![user.id isKindOfClass:[NSNumber class]])
-//    {
-//        [self updateUserIsNotNumber:user];
-//        assert(0);
-//        return NO;
-//    }
-//    
-//    
-//    RequestConfig* conf = [[RequestConfig alloc] init];
-//    conf.url = [NSString stringWithFormat:@"api/v1/user/%@/", user.id];
-//    conf.urlIsAbsolute = NO;
-//    conf.auth = self.apiKeyAuth;
-//    conf.method = @"PUT";
-//    conf.callbackTarget = target;
-//    conf.callbackAction = selector;
-//    
-//    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-//    
-//    NSString* stringData = [user JSONRepresentation];
-//    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
-//    [req addRequestHeader:@"Content-Type" value:@"application/json"];
-//    
-//    [req startAsynchronous];
-//    return YES;
-//}
-
-
 - (void)updateUserIsNotNumber:(User*)user {
     
     DLog(@"ERROR updateUserIsNotNumber");
@@ -961,16 +922,6 @@ static YasoundDataProvider* _main = nil;
     DLog(@"%@", user.name);
 }
 
-//////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////
-
-//- (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector
-//{
-//  UIImage* resizedImg = [self resizeImage:img];
-//  Auth* auth = self.apiKeyAuth;
-//  NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/picture", user.id];
-//  [_communicator postData:UIImagePNGRepresentation(resizedImg) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-//}
 
 - (void)setPicture:(UIImage*)img forUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block
 {
@@ -1530,19 +1481,6 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-- (void)songsForPlaylist:(NSInteger)playlistId target:(id)target action:(SEL)selector
-{
-  NSString* url = [NSString stringWithFormat:@"api/v1/song/"];
-  Auth* auth = self.apiKeyAuth;
-  NSMutableArray* params = [[NSMutableArray alloc] init];
-  [params addObject:[NSString stringWithFormat:@"playlist=%@", playlistId]];
-  
-  [_communicator getObjectsWithClass:[Song class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-    
-    [params release];
-    
-}
-
 - (void)songsForPlaylist:(NSInteger)playlistId withCompletionBlock:(YaRequestCompletionBlock)block
 {
     YaRequestConfig* config = [YaRequestConfig requestConfig];
@@ -1593,17 +1531,6 @@ static YasoundDataProvider* _main = nil;
     YaRequest* req = [YaRequest requestWithConfig:config];
     [req start:block progressBlock:progressBlock];
     return req;
-}
-
-
-- (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector
-{
-  if (!playlist)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = [NSString stringWithFormat:@"api/v1/playlist/%@/matched_song", playlist.id];
-  [_communicator getObjectsWithClass:[Song class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 - (void)matchedSongsForPlaylist:(Playlist*)playlist withCompletionBlock:(YaRequestCompletionBlock)block
@@ -2384,45 +2311,29 @@ static YasoundDataProvider* _main = nil;
 
 
 
-
-//................................................................................................................................
-//
-// DEPRECATED
-//
-
-
 - (void)sendGetRequestWithURL:(NSString*)url
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = url;
-    conf.urlIsAbsolute = NO;
-    conf.method = @"GET";
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = url;
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:nil];
 }
 
 - (void)sendPostRequestWithURL:(NSString*)url
-{
-  Auth* auth = self.apiKeyAuth;
-
-  //NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
-
-  ASIFormDataRequest* req = [_communicator buildPostRequestToURL:url absolute:NO notifyTarget:self byCalling:@selector(receiveYasoundAssociation:info:) withUserData:nil withAuth:auth];
-
-  [req startAsynchronous];
+{    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = url;
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:nil];
 }
-
-
-//
-// DEPRECATED
-//
-//................................................................................................................................
-
-
-
-
-
 
 
 

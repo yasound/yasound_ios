@@ -34,8 +34,6 @@
     
     [self.topBar showAddItemWithTarget:self action:@selector(onAdd:)];
     
-//    [[YasoundDataProvider main] showsForRadio:self.radio withTarget:self action:@selector(showsReceived:success:)];
-    
     [[YasoundDataProvider main] showsForRadio:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
         BOOL success = (error == nil) && (status == 200) && (response != nil);
         if (!success)

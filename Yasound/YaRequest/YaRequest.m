@@ -71,7 +71,7 @@ static NSString* sBaseURL = nil;
     [sRequests removeObjectForKey:key];
 }
 
-- (NSURL*)URLWithURL:(NSURL*)url andParams:(NSDictionary*)params
++ (NSURL*)URLWithURL:(NSURL*)url andParams:(NSDictionary*)params
 {
     if (!params || [params count] == 0)
         return url;
