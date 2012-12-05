@@ -207,9 +207,9 @@ taskStatus stringToStatus(NSString* str);
 - (void)updateSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
 - (void)deleteSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)deleteAllSongsFromRadio:(YaRadio*)radio target:(id)target action:(SEL)action;
-- (void)deleteArtist:(NSString*)artist fromRadio:(YaRadio*)radio target:(id)target action:(SEL)action;
-- (void)deleteAlbum:(NSString*)album fromRadio:(YaRadio*)radio target:(id)target action:(SEL)action;
+- (void)deleteAllSongsFromRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)deleteArtist:(NSString*)artist fromRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)deleteAlbum:(NSString*)album fromRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)rejectSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
 

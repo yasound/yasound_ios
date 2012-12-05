@@ -1664,86 +1664,76 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-
-- (void)deleteAllSongsFromRadio:(YaRadio*)radio target:(id)target action:(SEL)action
+- (void)deleteAllSongsFromRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    if (!radio)
+    if (!radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return;
+    }
     
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/programming/", radio.id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"DELETE";
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/programming/", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"DELETE";
+    config.auth = self.apiKeyAuth;
     
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
-    conf.userData = nil;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+
 }
 
-
-- (void)deleteArtist:(NSString*)artist fromRadio:(YaRadio*)radio target:(id)target action:(SEL)action
+- (void)deleteArtist:(NSString*)artist fromRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    if (!artist || !radio)
+    if (!artist || !radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return;
-    
-    Auth* auth = self.apiKeyAuth;
-    
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/programming/artists/", radio.id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
-    conf.userData = nil;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-
+    }
     ProgrammingObjectParameters* params = [[ProgrammingObjectParameters alloc] init];
     params.action = @"delete";
     params.name = artist;
     
     NSString* stringData = [params JSONRepresentation];
-    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
     
-    [req startAsynchronous];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/programming/artists/", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [stringData dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-
-- (void)deleteAlbum:(NSString*)album fromRadio:(YaRadio*)radio target:(id)target action:(SEL)action
+- (void)deleteAlbum:(NSString*)album fromRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    if (!album || !radio)
+    if (!album || !radio || !radio.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return;
-    
-    Auth* auth = self.apiKeyAuth;
-    
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/programming/albums/", radio.id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    
-    conf.callbackTarget = target;
-    conf.callbackAction = action;
-    conf.userData = nil;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    
+    }
     ProgrammingObjectParameters* params = [[ProgrammingObjectParameters alloc] init];
     params.action = @"delete";
     params.name = album;
     
     NSString* stringData = [params JSONRepresentation];
-    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
     
-    [req startAsynchronous];
-}
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/programming/albums/", radio.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [stringData dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 
+}
 
 
 - (void)rejectSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block
@@ -1790,7 +1780,7 @@ static YasoundDataProvider* _main = nil;
     if (!yasoundSong || !yasoundSong.id || !radio || !radio.id)
     {
         if (block)
-            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+            block(nil, NO, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return;
     }
     int playlistIndex = 0;
