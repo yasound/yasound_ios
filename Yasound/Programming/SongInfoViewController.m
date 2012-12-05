@@ -431,7 +431,24 @@
     {
         [ActivityAlertView showWithTitle:nil closeAfterTimeInterval:60];
         
-        [[YasoundDataProvider main] rejectSong:self.song target:self action:@selector(didRejectSong:succeeded:)];
+        [[YasoundDataProvider main] rejectSong:self.song withCompletionBlock:^(int status, NSString* response, NSError* error){
+            BOOL success = (error == nil) && (status == 200);
+            if (!success)
+            {
+                [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_reject_failed", nil) closeAfterTimeInterval:2];
+                [self.navigationController popViewControllerAnimated:YES];
+                return;
+            }
+            
+            [ActivityAlertView close];
+            [self.song removeSong:YES];
+            if (!_ownSong)
+            {
+                [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_delete_confirm_message", nil) closeAfterTimeInterval:2];
+                return;
+            }
+            [self requestUpload];
+        }];
         
         return;
     }
@@ -453,40 +470,6 @@
     }
 
 }    
-
-
-
-
-
-
-         
-- (void)didRejectSong:(ASIHTTPRequest*)req succeeded:(NSNumber*)success
-{
-    BOOL succeeded = NO;
-    if (success != nil)
-        succeeded = [success boolValue];
-    
-    if (!succeeded)
-    {
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_reject_failed", nil) closeAfterTimeInterval:2];
-        [self.navigationController popViewControllerAnimated:YES];
-        return;
-    }
-    
-    [ActivityAlertView close];
-    
-    [self.song removeSong:YES];
-    
-    if (!_ownSong)
-    {
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_delete_confirm_message", nil) closeAfterTimeInterval:2];
-        return;
-    }
-    
-    [self requestUpload];
-}
-
-
 
 - (void)requestUpload
 {

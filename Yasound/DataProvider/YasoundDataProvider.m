@@ -1746,28 +1746,25 @@ static YasoundDataProvider* _main = nil;
 
 
 
-
-
-
-
-- (void)rejectSong:(Song*)song target:(id)target action:(SEL)selector
+- (void)rejectSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block
 {
     if (!song || !song.id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
         return;
+    }
     
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/reject_song/%@", song.id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/reject_song/%@", song.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    //DLog(@"rejectSong '%@'", conf.url);
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
+
 
 - (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector
 {

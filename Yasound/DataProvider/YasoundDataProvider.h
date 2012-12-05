@@ -211,7 +211,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)deleteArtist:(NSString*)artist fromRadio:(YaRadio*)radio target:(id)target action:(SEL)action;
 - (void)deleteAlbum:(NSString*)album fromRadio:(YaRadio*)radio target:(id)target action:(SEL)action;
 
-- (void)rejectSong:(Song*)song target:(id)target action:(SEL)selector; // didRejectSong:(ASIHTTPRequest*)req succeeded:(NSNumber*)success
+- (void)rejectSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
 
 
 // Get searched songs. Returns a NSArray of YasoundSong objects
