@@ -32,10 +32,8 @@
 		4027242115A353F3002A870D /* CityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027241B15A353F3002A870D /* CityInfo.m */; };
 		4027242215A353F3002A870D /* CityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027241B15A353F3002A870D /* CityInfo.m */; };
 		4027242315A353F3002A870D /* CityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027241B15A353F3002A870D /* CityInfo.m */; };
-		40274B801491048900F26008 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		40274B811491048900F26008 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		40274B821491048900F26008 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
-		40274BC41491287900F26008 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		40274BC61491287D00F26008 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		40274BC71491288100F26008 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
 		4028E78D152D9DA80056B34B /* APNsDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E788152D9DA80056B34B /* APNsDeviceToken.m */; };
@@ -402,7 +400,6 @@
 		40B4095C152EFC630050D334 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		40B4095D152EFC630050D334 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		40B4095F152EFC630050D334 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
-		40B40960152EFC630050D334 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		40B40961152EFC630050D334 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		40B40962152EFC630050D334 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
 		40B40963152EFC630050D334 /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
@@ -605,20 +602,6 @@
 		40CBB1DF159C8E58005E898E /* TwitterSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */; };
 		40CBB1E0159C8E58005E898E /* TwitterSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */; };
 		40CBB1E1159C8E58005E898E /* TwitterSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */; };
-		40CC5A4D153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
-		40CC5A4E153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
-		40CC5A4F153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
-		40CC5A50153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
-		40CC5A51153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
-		40CC5A52153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
-		40CC5A53153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
-		40CC5A56153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
-		40CC5A57153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
-		40CC5A58153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
-		40CC5A59153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
-		40CC5A5A153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
-		40CC5A5B153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
-		40CC5A5C153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
 		40CFA9511608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CFA94F1608DF5200E8609E /* ProgrammingSearchYasoundViewController.m */; };
 		40CFA9521608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CFA94F1608DF5200E8609E /* ProgrammingSearchYasoundViewController.m */; };
 		40CFA9531608DF5300E8609E /* ProgrammingSearchYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CFA94F1608DF5200E8609E /* ProgrammingSearchYasoundViewController.m */; };
@@ -648,7 +631,6 @@
 		40D53B611554280F001EB0C5 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		40D53B621554280F001EB0C5 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		40D53B641554280F001EB0C5 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
-		40D53B651554280F001EB0C5 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		40D53B661554280F001EB0C5 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		40D53B671554280F001EB0C5 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
 		40D53B681554280F001EB0C5 /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
@@ -776,8 +758,6 @@
 		40D53BF71554280F001EB0C5 /* NotificationCenterTableViewcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A9152D9E6F0056B34B /* NotificationCenterTableViewcCell.m */; };
 		40D53BF81554280F001EB0C5 /* NotificationCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7AB152D9E6F0056B34B /* NotificationCenterViewController.m */; };
 		40D53BF91554280F001EB0C5 /* MessageWeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7C0152DC13F0056B34B /* MessageWeViewController.m */; };
-		40D53BFB1554280F001EB0C5 /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
-		40D53BFC1554280F001EB0C5 /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
 		40D53BFE1554280F001EB0C5 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
 		40D53BFF1554280F001EB0C5 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
 		40D53C051554280F001EB0C5 /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9601B6154997B90003AC7E /* WebPageViewController.m */; };
@@ -1876,7 +1856,6 @@
 		BC3FA67014E93B660055AB4A /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BC3FA67114E93B660055AB4A /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC3FA67314E93B660055AB4A /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
-		BC3FA67414E93B660055AB4A /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		BC3FA67514E93B660055AB4A /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		BC3FA67614E93B660055AB4A /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
 		BC3FA67714E93B660055AB4A /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
@@ -2637,7 +2616,6 @@
 		BC56F47E152486AF005D1B40 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BC56F47F152486AF005D1B40 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC56F481152486AF005D1B40 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
-		BC56F482152486AF005D1B40 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		BC56F483152486AF005D1B40 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		BC56F484152486AF005D1B40 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
 		BC56F485152486AF005D1B40 /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
@@ -3346,7 +3324,6 @@
 		BC93CCD814CF3F7A007C723F /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BC93CCD914CF3F7A007C723F /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC93CCDB14CF3F7A007C723F /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
-		BC93CCDC14CF3F7A007C723F /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		BC93CCDD14CF3F7A007C723F /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		BC93CCDE14CF3F7A007C723F /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
 		BC93CCDF14CF3F7A007C723F /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
@@ -3886,7 +3863,6 @@
 		BCC7519715E689EF00CF7F7C /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCC7519815E689EF00CF7F7C /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BCC7519915E689EF00CF7F7C /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
-		BCC7519A15E689EF00CF7F7C /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		BCC7519B15E689EF00CF7F7C /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		BCC7519C15E689EF00CF7F7C /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
 		BCC7519D15E689EF00CF7F7C /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
@@ -4014,8 +3990,6 @@
 		BCC7521B15E689EF00CF7F7C /* NotificationCenterTableViewcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A9152D9E6F0056B34B /* NotificationCenterTableViewcCell.m */; };
 		BCC7521C15E689EF00CF7F7C /* NotificationCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7AB152D9E6F0056B34B /* NotificationCenterViewController.m */; };
 		BCC7521D15E689EF00CF7F7C /* MessageWeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7C0152DC13F0056B34B /* MessageWeViewController.m */; };
-		BCC7521E15E689EF00CF7F7C /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
-		BCC7521F15E689EF00CF7F7C /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
 		BCC7522015E689EF00CF7F7C /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
 		BCC7522115E689EF00CF7F7C /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
 		BCC7522215E689EF00CF7F7C /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9601B6154997B90003AC7E /* WebPageViewController.m */; };
@@ -7172,7 +7146,6 @@
 		E5F3B86E1498B88D008DD607 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		E5F3B8701498B88D008DD607 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		E5F3B8751498B88D008DD607 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
-		E5F3B8771498B88D008DD607 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		E5F3B8781498B88D008DD607 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		E5F3B8791498B88D008DD607 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
 		E5F3B88A1498B88D008DD607 /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
@@ -7224,8 +7197,6 @@
 		40104FC414ED3CF900996326 /* LikeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeViewCell.m; sourceTree = "<group>"; };
 		4027241A15A353F3002A870D /* CityInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityInfo.h; sourceTree = "<group>"; };
 		4027241B15A353F3002A870D /* CityInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityInfo.m; sourceTree = "<group>"; };
-		40274B7A1491048900F26008 /* Communicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communicator.h; sourceTree = "<group>"; };
-		40274B7B1491048900F26008 /* Communicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communicator.m; sourceTree = "<group>"; };
 		40274B7C1491048900F26008 /* Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Container.h; sourceTree = "<group>"; };
 		40274B7D1491048900F26008 /* Container.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Container.m; sourceTree = "<group>"; };
 		40274B7E1491048900F26008 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
@@ -7303,10 +7274,6 @@
 		40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookSharePreferences.m; sourceTree = "<group>"; };
 		40CBB1D8159C8E58005E898E /* TwitterSharePreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterSharePreferences.h; sourceTree = "<group>"; };
 		40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterSharePreferences.m; sourceTree = "<group>"; };
-		40CC5A4B153D6EF7006C052E /* RequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestConfig.h; sourceTree = "<group>"; };
-		40CC5A4C153D6EF7006C052E /* RequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestConfig.m; sourceTree = "<group>"; };
-		40CC5A54153D9EEB006C052E /* ASIHTTPRequest+Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest+Model.h"; sourceTree = "<group>"; };
-		40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIHTTPRequest+Model.m"; sourceTree = "<group>"; };
 		40CFA94E1608DF5200E8609E /* ProgrammingSearchYasoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingSearchYasoundViewController.h; sourceTree = "<group>"; };
 		40CFA94F1608DF5200E8609E /* ProgrammingSearchYasoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingSearchYasoundViewController.m; sourceTree = "<group>"; };
 		40CFA9501608DF5200E8609E /* ProgrammingSearchYasoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgrammingSearchYasoundViewController.xib; sourceTree = "<group>"; };
@@ -8703,18 +8670,12 @@
 		40274B791491048900F26008 /* Communicator */ = {
 			isa = PBXGroup;
 			children = (
-				40274B7A1491048900F26008 /* Communicator.h */,
-				40274B7B1491048900F26008 /* Communicator.m */,
 				40274B7C1491048900F26008 /* Container.h */,
 				40274B7D1491048900F26008 /* Container.m */,
 				40274B7E1491048900F26008 /* Model.h */,
 				40274B7F1491048900F26008 /* Model.m */,
 				4009011A149A69F100C9E51A /* Auth.h */,
 				4009011B149A69F100C9E51A /* Auth.m */,
-				40CC5A4B153D6EF7006C052E /* RequestConfig.h */,
-				40CC5A4C153D6EF7006C052E /* RequestConfig.m */,
-				40CC5A54153D9EEB006C052E /* ASIHTTPRequest+Model.h */,
-				40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */,
 			);
 			name = Communicator;
 			path = LibTools/Communicator;
@@ -15888,7 +15849,6 @@
 				40B4095C152EFC630050D334 /* Theme.m in Sources */,
 				40B4095D152EFC630050D334 /* RadioViewCell.m in Sources */,
 				40B4095F152EFC630050D334 /* StyleSelectorViewController.m in Sources */,
-				40B40960152EFC630050D334 /* Communicator.m in Sources */,
 				40B40961152EFC630050D334 /* Container.m in Sources */,
 				40B40962152EFC630050D334 /* Model.m in Sources */,
 				40B40963152EFC630050D334 /* YasoundDataProvider.m in Sources */,
@@ -16016,8 +15976,6 @@
 				40B409FD152EFC630050D334 /* NotificationCenterTableViewcCell.m in Sources */,
 				40B409FE152EFC630050D334 /* NotificationCenterViewController.m in Sources */,
 				40B409FF152EFC630050D334 /* MessageWeViewController.m in Sources */,
-				40CC5A53153D6EF7006C052E /* RequestConfig.m in Sources */,
-				40CC5A5C153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				40DE99F715406B98001E63F4 /* LoadingCell.m in Sources */,
 				BC7C07791541A82F004FC760 /* MKBitlyHelper.m in Sources */,
 				BC9601BE154997B90003AC7E /* WebPageViewController.m in Sources */,
@@ -16154,7 +16112,6 @@
 				40D53B611554280F001EB0C5 /* Theme.m in Sources */,
 				40D53B621554280F001EB0C5 /* RadioViewCell.m in Sources */,
 				40D53B641554280F001EB0C5 /* StyleSelectorViewController.m in Sources */,
-				40D53B651554280F001EB0C5 /* Communicator.m in Sources */,
 				40D53B661554280F001EB0C5 /* Container.m in Sources */,
 				40D53B671554280F001EB0C5 /* Model.m in Sources */,
 				40D53B681554280F001EB0C5 /* YasoundDataProvider.m in Sources */,
@@ -16282,8 +16239,6 @@
 				40D53BF71554280F001EB0C5 /* NotificationCenterTableViewcCell.m in Sources */,
 				40D53BF81554280F001EB0C5 /* NotificationCenterViewController.m in Sources */,
 				40D53BF91554280F001EB0C5 /* MessageWeViewController.m in Sources */,
-				40D53BFB1554280F001EB0C5 /* RequestConfig.m in Sources */,
-				40D53BFC1554280F001EB0C5 /* ASIHTTPRequest+Model.m in Sources */,
 				40D53BFE1554280F001EB0C5 /* LoadingCell.m in Sources */,
 				40D53BFF1554280F001EB0C5 /* MKBitlyHelper.m in Sources */,
 				40D53C051554280F001EB0C5 /* WebPageViewController.m in Sources */,
@@ -16420,7 +16375,6 @@
 				BC3FA67014E93B660055AB4A /* Theme.m in Sources */,
 				BC3FA67114E93B660055AB4A /* RadioViewCell.m in Sources */,
 				BC3FA67314E93B660055AB4A /* StyleSelectorViewController.m in Sources */,
-				BC3FA67414E93B660055AB4A /* Communicator.m in Sources */,
 				BC3FA67514E93B660055AB4A /* Container.m in Sources */,
 				BC3FA67614E93B660055AB4A /* Model.m in Sources */,
 				BC3FA67714E93B660055AB4A /* YasoundDataProvider.m in Sources */,
@@ -16544,8 +16498,6 @@
 				4028E7B2152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B8152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C7152DC1400056B34B /* MessageWeViewController.m in Sources */,
-				40CC5A52153D6EF7006C052E /* RequestConfig.m in Sources */,
-				40CC5A5B153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				40DE99F615406B98001E63F4 /* LoadingCell.m in Sources */,
 				BC7C07781541A82F004FC760 /* MKBitlyHelper.m in Sources */,
 				BC9601BD154997B90003AC7E /* WebPageViewController.m in Sources */,
@@ -16682,7 +16634,6 @@
 				BC56F47E152486AF005D1B40 /* Theme.m in Sources */,
 				BC56F47F152486AF005D1B40 /* RadioViewCell.m in Sources */,
 				BC56F481152486AF005D1B40 /* StyleSelectorViewController.m in Sources */,
-				BC56F482152486AF005D1B40 /* Communicator.m in Sources */,
 				BC56F483152486AF005D1B40 /* Container.m in Sources */,
 				BC56F484152486AF005D1B40 /* Model.m in Sources */,
 				BC56F485152486AF005D1B40 /* YasoundDataProvider.m in Sources */,
@@ -16810,8 +16761,6 @@
 				4028E7AF152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B5152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C4152DC1400056B34B /* MessageWeViewController.m in Sources */,
-				40CC5A4F153D6EF7006C052E /* RequestConfig.m in Sources */,
-				40CC5A58153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				40DE99F315406B98001E63F4 /* LoadingCell.m in Sources */,
 				BC7C07751541A82F004FC760 /* MKBitlyHelper.m in Sources */,
 				BC9601BA154997B90003AC7E /* WebPageViewController.m in Sources */,
@@ -16948,7 +16897,6 @@
 				BCB41F4514863646008F3738 /* Theme.m in Sources */,
 				BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */,
 				BC93B4AE148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
-				40274BC41491287900F26008 /* Communicator.m in Sources */,
 				40274BC61491287D00F26008 /* Container.m in Sources */,
 				40274BC71491288100F26008 /* Model.m in Sources */,
 				40AAEC4C14921AE70031B39D /* YasoundDataProvider.m in Sources */,
@@ -17076,8 +17024,6 @@
 				4028E7AE152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B4152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C3152DC1400056B34B /* MessageWeViewController.m in Sources */,
-				40CC5A4E153D6EF7006C052E /* RequestConfig.m in Sources */,
-				40CC5A57153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				40DE99F215406B98001E63F4 /* LoadingCell.m in Sources */,
 				BC7C07741541A82F004FC760 /* MKBitlyHelper.m in Sources */,
 				BC9601B9154997B90003AC7E /* WebPageViewController.m in Sources */,
@@ -17216,7 +17162,6 @@
 				BC93CCD814CF3F7A007C723F /* Theme.m in Sources */,
 				BC93CCD914CF3F7A007C723F /* RadioViewCell.m in Sources */,
 				BC93CCDB14CF3F7A007C723F /* StyleSelectorViewController.m in Sources */,
-				BC93CCDC14CF3F7A007C723F /* Communicator.m in Sources */,
 				BC93CCDD14CF3F7A007C723F /* Container.m in Sources */,
 				BC93CCDE14CF3F7A007C723F /* Model.m in Sources */,
 				BC93CCDF14CF3F7A007C723F /* YasoundDataProvider.m in Sources */,
@@ -17343,8 +17288,6 @@
 				4028E7B1152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B7152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C6152DC1400056B34B /* MessageWeViewController.m in Sources */,
-				40CC5A51153D6EF7006C052E /* RequestConfig.m in Sources */,
-				40CC5A5A153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				40DE99F515406B98001E63F4 /* LoadingCell.m in Sources */,
 				BC7C07771541A82F004FC760 /* MKBitlyHelper.m in Sources */,
 				BC9601BC154997B90003AC7E /* WebPageViewController.m in Sources */,
@@ -17481,7 +17424,6 @@
 				BCC7519715E689EF00CF7F7C /* Theme.m in Sources */,
 				BCC7519815E689EF00CF7F7C /* RadioViewCell.m in Sources */,
 				BCC7519915E689EF00CF7F7C /* StyleSelectorViewController.m in Sources */,
-				BCC7519A15E689EF00CF7F7C /* Communicator.m in Sources */,
 				BCC7519B15E689EF00CF7F7C /* Container.m in Sources */,
 				BCC7519C15E689EF00CF7F7C /* Model.m in Sources */,
 				BCC7519D15E689EF00CF7F7C /* YasoundDataProvider.m in Sources */,
@@ -17609,8 +17551,6 @@
 				BCC7521B15E689EF00CF7F7C /* NotificationCenterTableViewcCell.m in Sources */,
 				BCC7521C15E689EF00CF7F7C /* NotificationCenterViewController.m in Sources */,
 				BCC7521D15E689EF00CF7F7C /* MessageWeViewController.m in Sources */,
-				BCC7521E15E689EF00CF7F7C /* RequestConfig.m in Sources */,
-				BCC7521F15E689EF00CF7F7C /* ASIHTTPRequest+Model.m in Sources */,
 				BCC7522015E689EF00CF7F7C /* LoadingCell.m in Sources */,
 				BCC7522115E689EF00CF7F7C /* MKBitlyHelper.m in Sources */,
 				BCC7522215E689EF00CF7F7C /* WebPageViewController.m in Sources */,
@@ -17747,7 +17687,6 @@
 				BCB41F4414863646008F3738 /* Theme.m in Sources */,
 				BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */,
 				BC93B4AD148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
-				40274B801491048900F26008 /* Communicator.m in Sources */,
 				40274B811491048900F26008 /* Container.m in Sources */,
 				40274B821491048900F26008 /* Model.m in Sources */,
 				40AAEC4B14921AE70031B39D /* YasoundDataProvider.m in Sources */,
@@ -17875,8 +17814,6 @@
 				4028E7AD152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B3152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C2152DC1400056B34B /* MessageWeViewController.m in Sources */,
-				40CC5A4D153D6EF7006C052E /* RequestConfig.m in Sources */,
-				40CC5A56153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				40DE99F115406B98001E63F4 /* LoadingCell.m in Sources */,
 				BC7C07731541A82F004FC760 /* MKBitlyHelper.m in Sources */,
 				BC9601B8154997B90003AC7E /* WebPageViewController.m in Sources */,
@@ -18015,7 +17952,6 @@
 				E5F3B86E1498B88D008DD607 /* Theme.m in Sources */,
 				E5F3B8701498B88D008DD607 /* RadioViewCell.m in Sources */,
 				E5F3B8751498B88D008DD607 /* StyleSelectorViewController.m in Sources */,
-				E5F3B8771498B88D008DD607 /* Communicator.m in Sources */,
 				E5F3B8781498B88D008DD607 /* Container.m in Sources */,
 				E5F3B8791498B88D008DD607 /* Model.m in Sources */,
 				E5F3B88A1498B88D008DD607 /* YasoundDataProvider.m in Sources */,
@@ -18142,8 +18078,6 @@
 				4028E7B0152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B6152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C5152DC1400056B34B /* MessageWeViewController.m in Sources */,
-				40CC5A50153D6EF7006C052E /* RequestConfig.m in Sources */,
-				40CC5A59153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				40DE99F415406B98001E63F4 /* LoadingCell.m in Sources */,
 				BC7C07761541A82F004FC760 /* MKBitlyHelper.m in Sources */,
 				BC9601BB154997B90003AC7E /* WebPageViewController.m in Sources */,
