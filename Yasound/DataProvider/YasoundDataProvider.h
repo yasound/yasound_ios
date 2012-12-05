@@ -231,16 +231,15 @@ taskStatus stringToStatus(NSString* str);
 - (void)connectedUsersWithCompletionBlock:(YaRequestCompletionBlock)block; // users connected to the app ordered by distance from the sender
 - (void)connectedUsersWithLimit:(int)limit skip:(int)skip completionBlock:(YaRequestCompletionBlock)block;
 
-// User Notifications
+
 - (void)broadcastMessage:(NSString*)message fromRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)userNotificationWithId:(NSString*)notifId target:(id)target action:(SEL)selector;
-- (void)updateUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector;
-- (void)deleteUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector;
-- (void)deleteAllUserNotificationsWithTarget:(id)target action:(SEL)selector;
-- (void)unreadNotificationCountWithTarget:(id)target action:(SEL)selector;
-
-- (void)userNotificationsWithlimit:(NSInteger)limit offset:(NSInteger)offset andCompletionBlock: (YaRequestCompletionBlock)block;
+// User Notifications
+- (void)userNotificationsWithLimit:(NSInteger)limit offset:(NSInteger)offset andCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)updateUserNotification:(UserNotification*)notif withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)deleteUserNotification:(UserNotification*)notif withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)deleteAllUserNotificationsWithCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)unreadNotificationCountWithCompletionBlock:(YaRequestCompletionBlock)block;
 
 // Shows
 - (void)showsForRadio:(YaRadio*)r withTarget:(id)target action:(SEL)selector;

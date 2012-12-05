@@ -1922,7 +1922,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)userNotificationsWithlimit:(NSInteger)limit offset:(NSInteger)offset andCompletionBlock: (YaRequestCompletionBlock)block
+- (void)userNotificationsWithLimit:(NSInteger)limit offset:(NSInteger)offset andCompletionBlock:(YaRequestCompletionBlock)block
 {
     YaRequestConfig* config = [YaRequestConfig requestConfig];
     config.url = @"api/v1/notifications/";
@@ -1935,82 +1935,67 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-
-
-
-
-- (void)userNotificationWithId:(NSString*)notifId target:(id)target action:(SEL)selector
+- (void)updateUserNotification:(UserNotification*)notif withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/notification/%@", notifId];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    if (!notif || !notif._id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/update_notification/%@", notif._id];
+    config.urlIsAbsolute = NO;
+    config.method = @"PUT";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[notif JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)updateUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector
+- (void)deleteUserNotification:(UserNotification*)notif withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/update_notification/%@", notif._id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"PUT";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    if (!notif || !notif._id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/delete_notification/%@", notif._id];
+    config.urlIsAbsolute = NO;
+    config.method = @"DELETE";
+    config.auth = self.apiKeyAuth;
     
-    NSString* stringData = [notif JSONRepresentation];
-    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)deleteUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector
+- (void)deleteAllUserNotificationsWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/delete_notification/%@", notif._id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"DELETE";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/delete_all_notifications/";
+    config.urlIsAbsolute = NO;
+    config.method = @"DELETE";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)deleteAllUserNotificationsWithTarget:(id)target action:(SEL)selector
+- (void)unreadNotificationCountWithCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/delete_all_notifications/";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"DELETE";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/notifications/unread_count";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
-}
-
-- (void)unreadNotificationCountWithTarget:(id)target action:(SEL)selector
-{
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/notifications/unread_count";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 

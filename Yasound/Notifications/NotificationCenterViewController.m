@@ -67,7 +67,7 @@
 
     [self.topBar showTrashItem];
       
-    [[YasoundDataProvider main] userNotificationsWithlimit:NOTIFICATIONS_LIMIT offset:0 andCompletionBlock:^(int status, NSString* response, NSError* error){
+    [[YasoundDataProvider main] userNotificationsWithLimit:NOTIFICATIONS_LIMIT offset:0 andCompletionBlock:^(int status, NSString* response, NSError* error){
         [self notificationsReceivedWithStatus:status response:response error:error];
     }];
     
@@ -82,7 +82,7 @@
     if (self.notifications != nil)
         limit = self.notifications.count;
     
-    [[YasoundDataProvider main] userNotificationsWithlimit:NOTIFICATIONS_LIMIT offset:0 andCompletionBlock:^(int status, NSString* response, NSError* error){
+    [[YasoundDataProvider main] userNotificationsWithLimit:NOTIFICATIONS_LIMIT offset:0 andCompletionBlock:^(int status, NSString* response, NSError* error){
         [self notificationsReceivedWithStatus:status response:response error:error];
     }];
 }
@@ -341,14 +341,6 @@
   [view release];
 }
 
-//- (void)receivedRadio:(Radio*)radio withInfo:(NSDictionary*)info
-//{
-//  if (!radio)
-//    return;
-//
-//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
-//}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
@@ -365,7 +357,17 @@
         // consider it as being read 
         NotificationCenterTableViewcCell* cell =  (NotificationCenterTableViewcCell*)[_tableView cellForRowAtIndexPath:indexPath];
         [cell updateWithNotification:notif];
-        [[YasoundDataProvider main] updateUserNotification:notif target:self action:@selector(updatedUserNotification:success:)];
+        
+        [[YasoundDataProvider main] updateUserNotification:notif withCompletionBlock:^(int status, NSString* response, NSError* error){
+            BOOL success = (error == nil) && (status == 200);
+            if (!success)
+            {
+                DLog(@"update notification FAILED");
+                return;
+            }
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
+        }];
         
     }
     
@@ -424,65 +426,30 @@
 }
 
 
-
-- (void)updatedUserNotification:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    if (!success)
-    {
-        DLog(@"update notification FAILED");
-        return;
-    }
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil]; 
-}
-
-
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if (editingStyle != UITableViewCellEditingStyleDelete)
     return;
   
     UserNotification* notif = [self.notifications objectAtIndex:indexPath.row];
-    [[YasoundDataProvider main] deleteUserNotification:notif target:self action:@selector(deletedNotification:success:)];
+
+    [[YasoundDataProvider main] deleteUserNotification:notif withCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = (error == nil) && (status == 200);
+        if (!success)
+        {
+            DLog(@"delete notification FAILED");
+            return;
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
+        [_tableView reloadData];
+    }];
 
     
     [self.notifications removeObjectAtIndex:indexPath.row];
     [self.notificationsDictionary removeObjectForKey:notif._id];
   
     [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationMiddle];
-}
-
-
-
-- (void)deletedNotification:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    if (!success)
-    {
-        DLog(@"delete notification FAILED");
-        return;
-    }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
-    [_tableView reloadData];
-}
-
-
-- (void)deletedAllNotifications:(ASIHTTPRequest*)req success:(BOOL)success  
-{
-    if (!success)
-    {
-        DLog(@"delete all notifications FAILED");
-        return;
-    }
-
-    DLog(@"delete all notifications OK");
-
-    [self.notifications removeAllObjects];
-    [self.notificationsDictionary removeAllObjects];
-    [_tableView reloadData];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];     
 }
 
 
@@ -497,7 +464,23 @@
 {
     if ((alertView == _alertTrash) && (buttonIndex == 1))
     {
-        [[YasoundDataProvider main] deleteAllUserNotificationsWithTarget:self action:@selector(deletedAllNotifications:success:)];
+        [[YasoundDataProvider main] deleteAllUserNotificationsWithCompletionBlock:^(int status, NSString* response, NSError* error){
+            BOOL success = (error == nil) && (status == 200);
+            if (!success)
+            {
+                DLog(@"delete all notifications FAILED");
+                return;
+            }
+            
+            DLog(@"delete all notifications OK");
+            
+            [self.notifications removeAllObjects];
+            [self.notificationsDictionary removeAllObjects];
+            [_tableView reloadData];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
+        }];
+        
         return;
     } else if ( (alertView == _alertGoToLogin)  && (buttonIndex == 1))
     {
@@ -518,7 +501,7 @@
     if (_waitingForPreviousEvents)
         return;
     
-    [[YasoundDataProvider main] userNotificationsWithlimit:NOTIFICATIONS_LIMIT offset:self.notifications.count andCompletionBlock:^(int status, NSString* response, NSError* error){
+    [[YasoundDataProvider main] userNotificationsWithLimit:NOTIFICATIONS_LIMIT offset:self.notifications.count andCompletionBlock:^(int status, NSString* response, NSError* error){
         [self nextNotificationsReceivedWithStatus:status response:response error:error];
     }];
     
