@@ -213,9 +213,7 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)rejectSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
 
-
-// Get searched songs. Returns a NSArray of YasoundSong objects
-- (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector; // didReceiveSearchedSongs:(NSArray*)songs info:(NSDictionary*)info
+- (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)addSong:(YasoundSong*)yasoundSong inRadio:(YaRadio*)radio withCompletionBlock:(void (^) (Song*, BOOL, NSError*))block;
 

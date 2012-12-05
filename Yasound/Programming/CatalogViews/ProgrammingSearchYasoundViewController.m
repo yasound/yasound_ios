@@ -140,47 +140,43 @@
     self.showRefreshIndicator = YES;
     
     _searchOffset = 0;
-    [[YasoundDataProvider main] searchSong:self.searchText count:25 offset:_searchOffset target:self action:@selector(receivedSongs:info:)];
+    
+    [[YasoundDataProvider main] searchSong:self.searchText count:25 offset:_searchOffset withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"search song error: %d - %@", error.code, error.domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"search song error: response status %d", status);
+            return;
+        }
+        Container* songContainer = [response jsonToContainer:[YasoundSong class]];
+        if (!songContainer || !songContainer.objects)
+        {
+            DLog(@"search song error: cannot parse response %@", response);
+            return;
+        }
+        NSArray* songs = songContainer.objects;
+        if (_searchResults)
+        {
+            [_searchResults release];
+            _searchResults = nil;
+        }
+        _searchResults = songs;
+        [self.searchDisplayController.searchResultsTableView reloadData];
+        
+        self.searchDisplayController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor clearColor];
+        
+        CGRect frame = self.searchDisplayController.searchResultsTableView.frame;
+        frame = CGRectMake(0, frame.size.height + self.searchDisplayController.searchBar.frame.size.height - REFRESH_INDICATOR_HEIGHT, frame.size.width, REFRESH_INDICATOR_HEIGHT);
+        self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:frame withStyle:UIActivityIndicatorViewStyleWhite];
+        [self.view addSubview:self.refreshIndicator];
+        [self.view sendSubviewToBack:self.refreshIndicator];
+    }];
 }
-
-- (void)receivedSongs:(NSArray*)songs info:(NSDictionary*)info
-{
-    if (!songs)
-        return;
-    
-    if (_searchResults)
-    {
-        [_searchResults release];
-        _searchResults = nil;
-    }
-    _searchResults = songs;
-    [self.searchDisplayController.searchResultsTableView reloadData];
-    
-    self.searchDisplayController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor clearColor];
-    
-    CGRect frame = self.searchDisplayController.searchResultsTableView.frame;
-    frame = CGRectMake(0, frame.size.height + self.searchDisplayController.searchBar.frame.size.height - REFRESH_INDICATOR_HEIGHT, frame.size.width, REFRESH_INDICATOR_HEIGHT);
-    self.refreshIndicator = [[RefreshIndicator alloc] initWithFrame:frame withStyle:UIActivityIndicatorViewStyleWhite];
-    [self.view addSubview:self.refreshIndicator];
-    [self.view sendSubviewToBack:self.refreshIndicator];
-    
-}
-
-
-
-- (void)appendSongs:(NSArray*)songs info:(NSDictionary*)info
-{
-    if (!songs)
-        return;
-    
-    [self.searchResults addObjectsFromArray:songs];
-    [self.searchDisplayController.searchResultsTableView reloadData];
-    
-    [self unfreeze];
-}
-
-
 
 - (BOOL)onBackClicked
 {
@@ -202,7 +198,31 @@
     [super refreshIndicatorRequest];
     
     _searchOffset += 25;
-    [[YasoundDataProvider main] searchSong:self.searchText count:25 offset:_searchOffset target:self action:@selector(appendSongs:info:)];
+    
+    [[YasoundDataProvider main] searchSong:self.searchText count:25 offset:_searchOffset withCompletionBlock:^(int status, NSString* response, NSError* error){
+        if (error)
+        {
+            DLog(@"search song error: %d - %@", error.code, error.domain);
+            return;
+        }
+        if (status != 200)
+        {
+            DLog(@"search song error: response status %d", status);
+            return;
+        }
+        Container* songContainer = [response jsonToContainer:[YasoundSong class]];
+        if (!songContainer || !songContainer.objects)
+        {
+            DLog(@"search song error: cannot parse response %@", response);
+            return;
+        }
+        NSArray* songs = songContainer.objects;
+        [self.searchResults addObjectsFromArray:songs];
+        [self.searchDisplayController.searchResultsTableView reloadData];
+        
+        [self unfreeze];
+    }];
+    
 }
 
 

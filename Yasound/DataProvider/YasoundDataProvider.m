@@ -1765,20 +1765,25 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
-
-- (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector
+- (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = @"api/v1/search_song";
-  NSMutableArray* params = [[NSMutableArray alloc] init];
-  [params addObject:[NSString stringWithFormat:@"search=%@", search]];
-  [params addObject:[NSString stringWithFormat:@"song_count=%d", count]];
-  [params addObject:[NSString stringWithFormat:@"song_offset=%d", offset]];
-  [_communicator getObjectsWithClass:[YasoundSong class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    if (!search)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/search_song";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObjectsAndKeys:search, @"search", [NSString stringWithFormat:@"%d", count], @"song_count", [NSString stringWithFormat:@"%d", offset], @"song_offset", nil];
     
-    [params release];
-    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
+
 
 - (void)addSong:(YasoundSong*)yasoundSong inRadio:(YaRadio*)radio withCompletionBlock:(void (^) (Song*, BOOL, NSError*))block
 {
