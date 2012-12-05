@@ -234,13 +234,13 @@ taskStatus stringToStatus(NSString* str);
 // User Notifications
 - (void)broadcastMessage:(NSString*)message fromRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)userNotificationsWithTarget:(id)target action:(SEL)selector limit:(NSInteger)limit offset:(NSInteger)offset;
 - (void)userNotificationWithId:(NSString*)notifId target:(id)target action:(SEL)selector;
 - (void)updateUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector;
 - (void)deleteUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector;
 - (void)deleteAllUserNotificationsWithTarget:(id)target action:(SEL)selector;
 - (void)unreadNotificationCountWithTarget:(id)target action:(SEL)selector;
 
+- (void)userNotificationsWithlimit:(NSInteger)limit offset:(NSInteger)offset andCompletionBlock: (YaRequestCompletionBlock)block;
 
 // Shows
 - (void)showsForRadio:(YaRadio*)r withTarget:(id)target action:(SEL)selector;

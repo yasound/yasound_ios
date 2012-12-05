@@ -66,8 +66,10 @@
     _waitingForPreviousEvents = NO;
 
     [self.topBar showTrashItem];
-  
-    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)  limit:NOTIFICATIONS_LIMIT offset:0];
+      
+    [[YasoundDataProvider main] userNotificationsWithlimit:NOTIFICATIONS_LIMIT offset:0 andCompletionBlock:^(int status, NSString* response, NSError* error){
+        [self notificationsReceivedWithStatus:status response:response error:error];
+    }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iOsNotificationReceived:) name:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
 }
@@ -80,7 +82,9 @@
     if (self.notifications != nil)
         limit = self.notifications.count;
     
-    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)  limit:limit offset:0];    
+    [[YasoundDataProvider main] userNotificationsWithlimit:NOTIFICATIONS_LIMIT offset:0 andCompletionBlock:^(int status, NSString* response, NSError* error){
+        [self notificationsReceivedWithStatus:status response:response error:error];
+    }];
 }
 
 - (void)viewDidUnload
@@ -106,25 +110,26 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-
-
-- (void)onNotificationsReceived:(ASIHTTPRequest*)req success:(BOOL)success
-{   
+- (void)notificationsReceivedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
+{
     [self removeWaitingEventRow];
-
-    if (!success)
+    if (error)
     {
-        DLog(@"get user notifications FAILED");
+        DLog(@"user notifications error: %d - %@", error.code, error.domain);
         return;
     }
-    
-    Container* container = [req responseObjectsWithClass:[UserNotification class]];
+    if (status != 200)
+    {
+        DLog(@"user notifications error: response status %d", status);
+        return;
+    }
+    Container* container = [response jsonToContainer:[UserNotification class]];
+    if (!container)
+    {
+        DLog(@"user notifications error: cannot parse response %@", response);
+        return;
+    }
     NSArray* newNotifications = container.objects;
-    
-    if (newNotifications == nil)
-        DLog(@"error receiving notifications");
-    DLog(@"%d notifications received", newNotifications.count);
-    
     if ((newNotifications == nil) || (self.notifications == nil))
     {
         // reload all
@@ -155,23 +160,28 @@
             [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationMiddle];
         }
     }
-    
 }
 
-
-- (void)onNotificationsAdded:(ASIHTTPRequest*)req success:(BOOL)success
-{   
+- (void)nextNotificationsReceivedWithStatus:(int)status response:(NSString*)response error:(NSError*)error
+{
     [self removeWaitingEventRow];
-    
-    if (!success)
+    if (error)
     {
-        DLog(@"get user notifications FAILED");
+        DLog(@"user notifications error: %d - %@", error.code, error.domain);
         return;
     }
-    
-    Container* container = [req responseObjectsWithClass:[UserNotification class]];
+    if (status != 200)
+    {
+        DLog(@"user notifications error: response status %d", status);
+        return;
+    }
+    Container* container = [response jsonToContainer:[UserNotification class]];
+    if (!container)
+    {
+        DLog(@"user notifications error: cannot parse response %@", response);
+        return;
+    }
     NSArray* newNotifications = container.objects;
-
     if (newNotifications == nil)
         return;
     
@@ -183,13 +193,7 @@
         [self.notificationsDictionary setObject:notif forKey:notif._id];
         [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.notifications.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationMiddle];
     }
-    
-    
 }
-
-
-
-
 
 
 - (void)showWaitingEventRow
@@ -514,7 +518,9 @@
     if (_waitingForPreviousEvents)
         return;
     
-    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsAdded:success:)  limit:NOTIFICATIONS_LIMIT offset:self.notifications.count];
+    [[YasoundDataProvider main] userNotificationsWithlimit:NOTIFICATIONS_LIMIT offset:self.notifications.count andCompletionBlock:^(int status, NSString* response, NSError* error){
+        [self nextNotificationsReceivedWithStatus:status response:response error:error];
+    }];
     
     [self showWaitingEventRow];
 }

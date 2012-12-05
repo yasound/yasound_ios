@@ -1922,21 +1922,17 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-
-- (void)userNotificationsWithTarget:(id)target action:(SEL)selector limit:(NSInteger)limit offset:(NSInteger)offset
+- (void)userNotificationsWithlimit:(NSInteger)limit offset:(NSInteger)offset andCompletionBlock: (YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/notifications/";
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    conf.params = [NSArray arrayWithObjects:[NSString stringWithFormat:@"limit=%d", limit], [NSString stringWithFormat:@"offset=%d", offset], nil];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"api/v1/notifications/";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    config.params = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", limit], @"limit", [NSString stringWithFormat:@"%d", offset], @"offset", nil];
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
 
