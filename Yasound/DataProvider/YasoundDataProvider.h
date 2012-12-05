@@ -242,25 +242,23 @@ taskStatus stringToStatus(NSString* str);
 - (void)unreadNotificationCountWithCompletionBlock:(YaRequestCompletionBlock)block;
 
 // Shows
-- (void)showsForRadio:(YaRadio*)r withTarget:(id)target action:(SEL)selector;
-- (void)showsForRadio:(YaRadio*)r limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector;
-
-- (void)showWithId:(NSString*)showId withTarget:(id)target action:(SEL)selector;
-- (void)updateShow:(Show*)show withTarget:(id)target action:(SEL)selector;
-- (void)deleteShow:(Show*)show withTarget:(id)target action:(SEL)selector;
-- (void)duplicateShow:(Show*)show withTarget:(id)target action:(SEL)selector;
-- (void)createShow:(Show*)show inRadio:(YaRadio*)radio withTarget:(id)target action:(SEL)selector;
-- (void)createShow:(Show*)show inRadio:(YaRadio*)radio withYasoundSongs:(NSArray*)yasoundSongs withTarget:(id)target action:(SEL)selector;
+- (void)showsForRadio:(YaRadio*)r withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)showsForRadio:(YaRadio*)r limit:(NSNumber*)limit offset:(NSNumber*)offset withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)showWithId:(NSString*)showId withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)updateShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)deleteShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)duplicateShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)createShow:(Show*)show inRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)createShow:(Show*)show inRadio:(YaRadio*)radio withYasoundSongs:(NSArray*)yasoundSongs withCompletionBlock:(YaRequestCompletionBlock)block;
 
 // Show Songs
-- (void)songsForShow:(Show*)show withTarget:(id)target action:(SEL)selector;
-- (void)songsForShow:(Show*)show limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector;
-- (void)addSong:(YasoundSong*)song inShow:(Show*)show withTarget:(id)target action:(SEL)selector;   // takes YasoundSong as param !!
-- (void)removeSong:(Song*)song fromShow:(Show*)show withTarget:(id)target action:(SEL)selector;     // takes Song as param !!
+- (void)addSong:(YasoundSong*)song inShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block;  // takes YasoundSong as param !!
+- (void)removeSong:(Song*)song fromShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block;  // takes Song as param !!
+
+- (void)songsForShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)songsForShow:(Show*)show limit:(NSNumber*)limit offset:(NSNumber*)offset withCompletionBlock:(YaRequestCompletionBlock)block;
 
 // in-app purchase
-- (void)servicesWithTarget:(id)target action:(SEL)action;
-
 - (void)subscriptionsWithCompletionBlock:(YaRequestCompletionBlock)block;
 - (void)subscriptionComplete:(NSString*)productId withBase64Receipt:(NSString*)appleReceipt withCompletionBlock:(YaRequestCompletionBlock)block;
 - (void)servicesWithCompletionBlock:(YaRequestCompletionBlock)block;

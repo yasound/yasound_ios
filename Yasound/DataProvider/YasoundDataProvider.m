@@ -2001,101 +2001,134 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - shows
 
-- (void)showsForRadio:(YaRadio*)r withTarget:(id)target action:(SEL)selector
+- (void)showsForRadio:(YaRadio*)r withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    [self showsForRadio:r limit:0 offset:0 withTarget:target action:selector];
+    [self showsForRadio:r limit:nil offset:nil withCompletionBlock:block];
 }
-
-- (void)showsForRadio:(YaRadio*)r limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector
+- (void)showsForRadio:(YaRadio*)r limit:(NSNumber*)limit offset:(NSNumber*)offset withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/shows/", r.uuid];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    if (limit != 0 && offset != 0)
+    if (!r || !r.uuid)
     {
-        NSMutableArray* params = [NSMutableArray array];
-        if (limit != 0)
-            [params addObject:[NSString stringWithFormat:@"limit=%d", limit]];
-        if (offset != 0)
-            [params addObject:[NSString stringWithFormat:@"offset=%d", offset]];
-        conf.params = params;
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
     }
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/shows/", r.uuid];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    if (limit != nil && offset != nil)
+    {
+        NSMutableDictionary* params = [NSMutableDictionary dictionary];
+        if (limit != nil)
+            [params setValue:[limit stringValue] forKey:@"limit"];
+        if (offset != nil)
+            [params setValue:[offset stringValue] forKey:@"offset"];
+        config.params = params;
+    }
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)showWithId:(NSString*)showId withTarget:(id)target action:(SEL)selector
+- (void)showWithId:(NSString*)showId withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/show/%@/", showId];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    if (!showId)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/show/%@/", showId];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)updateShow:(Show*)show withTarget:(id)target action:(SEL)selector
+- (void)updateShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/show/%@", show._id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"PUT";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    if (!show || !show._id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/show/%@", show._id];
+    config.urlIsAbsolute = NO;
+    config.method = @"PUT";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[show JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSString* stringData = [show JSONRepresentation];
-    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)deleteShow:(Show*)show withTarget:(id)target action:(SEL)selector
+- (void)deleteShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/show/%@", show._id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"DELETE";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    if (!show || !show._id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/show/%@", show._id];
+    config.urlIsAbsolute = NO;
+    config.method = @"DELETE";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[show JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)createShow:(Show*)show inRadio:(YaRadio*)radio withTarget:(id)target action:(SEL)selector
+- (void)duplicateShow:(Show*)show  withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    [self createShow:show inRadio:radio withYasoundSongs:nil withTarget:target action:selector];
+    if (!show || !show._id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/show/%@/duplicate", show._id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)createShow:(Show*)show inRadio:(YaRadio*)radio withYasoundSongs:(NSArray*)yasoundSongs withTarget:(id)target action:(SEL)selector
+- (void)createShow:(Show*)show inRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/create_show", radio.uuid];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [self createShow:show inRadio:radio withYasoundSongs:nil withCompletionBlock:block];
+}
+
+- (void)createShow:(Show*)show inRadio:(YaRadio*)radio withYasoundSongs:(NSArray*)yasoundSongs withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    if (!show || !show._id || !radio || !radio.uuid)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
     
     // be sure show._id is null
     show._id = nil;
-
+    
     NSMutableDictionary* data = [show proxyForJson];
     if (yasoundSongs)
     {
@@ -2107,107 +2140,93 @@ static YasoundDataProvider* _main = nil;
         [data setValue:yasoundSongIds forKey:@"song_ids"];
     }
     
-    NSString* stringData = [data JSONRepresentation];
-    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/create_show", radio.uuid];
+    config.urlIsAbsolute = NO;
+    config.method = @"POST";
+    config.auth = self.apiKeyAuth;
+    config.payload = [[data JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
     
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
-- (void)duplicateShow:(Show*)show withTarget:(id)target action:(SEL)selector
+- (void)songsForShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/show/%@/duplicate", show._id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    [self songsForShow:show limit:nil offset:nil withCompletionBlock:block];
 }
 
-
-- (void)songsForShow:(Show*)show withTarget:(id)target action:(SEL)selector
+- (void)songsForShow:(Show*)show limit:(NSNumber*)limit offset:(NSNumber*)offset withCompletionBlock:(YaRequestCompletionBlock)block
 {
-    [self songsForShow:show limit:0 offset:0 withTarget:target action:selector];
-}
-
-- (void)songsForShow:(Show*)show limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector
-{
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/show/%@/songs/", show._id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    if (limit != 0 && offset != 0)
+    if (!show || !show._id)
     {
-        NSMutableArray* params = [NSMutableArray array];
-        if (limit != 0)
-            [params addObject:[NSString stringWithFormat:@"limit=%d", limit]];
-        if (offset != 0)
-            [params addObject:[NSString stringWithFormat:@"offset=%d", offset]];
-        conf.params = params;
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
     }
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
-}
-
-- (void)addSong:(YasoundSong*)song inShow:(Show*)show withTarget:(id)target action:(SEL)selector
-{
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/show/%@/add_song/%@/", show._id, song.id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/show/%@/songs/", show._id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
-}
-
-- (void)removeSong:(Song*)song fromShow:(Show*)show withTarget:(id)target action:(SEL)selector
-{
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/show/%@/remove_song/%@/", show._id, song.id];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"GET";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
+    if (limit != nil && offset != nil)
+    {
+        NSMutableDictionary* params = [NSMutableDictionary dictionary];
+        if (limit != nil)
+            [params setValue:[limit stringValue] forKey:@"limit"];
+        if (offset != nil)
+            [params setValue:[offset stringValue] forKey:@"offset"];
+    }
     
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    [req startAsynchronous];
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
 }
 
+- (void)addSong:(YasoundSong*)song inShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    if (!song || !song.id || !show || !show._id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/show/%@/add_song/%@/", show._id, song.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+- (void)removeSong:(Song*)song fromShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    if (!song || !song.id || !show || !show._id)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"api/v1/show/%@/remove_song/%@/", show._id, song.id];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+
+}
 
 
 
 
 #pragma mark - in-app purchase
-
-//- (void)servicesWithTarget:(id)target action:(SEL)action
-//{
-//    RequestConfig* conf = [[RequestConfig alloc] init];
-//    conf.url = @"api/v1/premium/services/";
-//    conf.urlIsAbsolute = NO;
-//    conf.auth = self.apiKeyAuth;
-//    conf.method = @"GET";
-//    conf.callbackTarget = target;
-//    conf.callbackAction = action;
-//    
-//    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-//    
-//    //LBDEBUG
-//    //DLog(@"servicesWithTarget url '%@'", req.url);
-//    
-//    [req startAsynchronous];
-//}
 
 - (void)servicesWithCompletionBlock:(YaRequestCompletionBlock)block
 {
