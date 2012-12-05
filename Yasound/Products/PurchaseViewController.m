@@ -393,7 +393,6 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
         BOOL success = (error == nil) && (status == 200);
         if (!success)
         {
-            DLog(@"onTransactionRecorded FAILED!");
             UIAlertView *successesAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.transaction.record.error.title", nil)
                                                                      message:NSLocalizedString(@"Purchase.transaction.record.error.message", nil)
                                                                     delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
@@ -401,8 +400,6 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
             [successesAlert release];
             return;
         }
-        
-        DLog(@"onTransactionRecorded success!");
         
         UIAlertView *successesAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.transaction.completed.title", nil)
                                                                  message:NSLocalizedString(@"Purchase.transaction.completed.message", nil)
@@ -454,60 +451,6 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     }
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
-
-
-
-
-
-//- (void)onTransactionRecorded:(ASIHTTPRequest*)req success:(BOOL)success
-- (void)onTransactionRecorded:(NSString*)obj1 info:(NSDictionary*)info
-{
-    DLog(@"onTransactionRecorded obj1 class : '%@'!", [obj1 class]);
-    DLog(@"onTransactionRecorded info : '%@'!", info);
-    
-    BOOL success = NO;
-    NSNumber* succeeded = [info objectForKey:@"succeeded"];
-    if (succeeded)
-        success = [succeeded boolValue];
-    
-
-    if (!success)
-    {
-        DLog(@"onTransactionRecorded FAILED!");
-        UIAlertView *successesAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.transaction.record.error.title", nil)
-                                                                 message:NSLocalizedString(@"Purchase.transaction.record.error.message", nil)
-                                                                delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [successesAlert show];
-        [successesAlert release];
-        return;
-    }
-
-    DLog(@"onTransactionRecorded success!");
-
-    UIAlertView *successesAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.transaction.completed.title", nil)
-                                                             message:NSLocalizedString(@"Purchase.transaction.completed.message", nil)
-                                                            delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    [successesAlert show];
-    [successesAlert release];
-    
-    
-    // refresh data and gui
-    self.productDetailsList    = [[NSMutableArray alloc] init];
-    self.productIdentifierList = [[NSMutableArray alloc] init];
-    self.subscriptions = nil;
-    self.services = nil;
-    
-    [[YasoundDataProvider main] servicesWithCompletionBlock:^(int status, NSString* response, NSError* error){
-        [self servicesReceivedWithStatus:status response:response error:error];
-    }];
-}
-
-
-
-
-
-
-
 
 
 

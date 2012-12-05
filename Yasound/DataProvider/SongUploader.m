@@ -37,7 +37,6 @@ static SongUploader* _main = nil;
   if (self) 
   {
       _tempSongFile = nil;
-      _request = nil;
       _yarequest = nil;
   }
   return self;
@@ -102,27 +101,6 @@ static SongUploader* _main = nil;
   [query release];
   return NULL;
 }
-
-
-
-
-
-
-#pragma mark - YasoundDataProvider callbacks
-
-- (void)onUploadDidFinish:(NSString*)msg withInfos:(NSDictionary*)info
-{
-  NSError *error;
-  NSFileManager *fileMgr = [NSFileManager defaultManager];
-  [fileMgr removeItemAtPath:_tempSongFile error:&error];
-
-    [_target performSelector:_selector withObject:info];
-    
-    [_request clearDelegatesAndCancel];
-    [_request release];
-}
-
-
 
 
 #pragma mark - public functions

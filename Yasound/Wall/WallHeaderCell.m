@@ -134,13 +134,6 @@
 }
 
 
-- (void)favoriteUpdated:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    NSString* str = URL_RADIOS_FAVORITES;
-    [[YasoundDataCache main] requestRadiosWithUrl:[NSURL URLWithString:str] withGenre:nil target:self action:@selector(onFavoritesRadioReceived:)];
-}
-
-
 
 
 - (void)onFavoritesRadioReceived:(Container*)radioContainer

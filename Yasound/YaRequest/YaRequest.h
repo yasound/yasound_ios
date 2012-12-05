@@ -28,6 +28,7 @@ typedef void (^YaRequestProgressBlock)(unsigned long long size, unsigned long lo
 + (NSString*)baseURL;
 
 + (NSURL*)URLWithURL:(NSURL*)url andParams:(NSDictionary*)params;
++ (NSURL*)urlWithURL:(NSString*)path absolute:(BOOL)absolute addTrailingSlash:(BOOL)slash params:(NSDictionary*)params;
 
 + (YaRequest*)requestWithConfig:(YaRequestConfig*)config;
 - (id)initWithConfig:(YaRequestConfig*)config;

@@ -213,21 +213,6 @@ static YasoundDataProvider* _main = nil;
       
       [YaRequest globalInit];
       [YaRequest setBaseURL:baseUrl];
-    
-      // DEFAULT TIMEOUT
-      [ASIHTTPRequest setDefaultTimeOutSeconds:60];
-
-    
-    NSMutableDictionary* resourceNames = [Model resourceNames];
-    [resourceNames setObject:@"radio" forKey:[YaRadio class]];
-    [resourceNames setObject:@"user" forKey:[User class]];
-    [resourceNames setObject:@"wall_event" forKey:[WallEvent class]];
-    //        [resourceNames setObject:@"metadata" forKey:[SongMetadata class]];
-    [resourceNames setObject:@"song" forKey:[Song class]];
-    [resourceNames setObject:@"api_key" forKey:[ApiKey class]];
-    [resourceNames setObject:@"radio_user" forKey:[RadioUser class]];
-    [resourceNames setObject:@"song_user" forKey:[SongUser class]];
-    [resourceNames setObject:@"next_song" forKey:[NextSong class]];
   }
   
   return self;

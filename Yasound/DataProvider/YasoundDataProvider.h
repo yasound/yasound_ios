@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Communicator.h"
 #import "YaRadio.h"
 #import "WallEvent.h"
 #import "WallMessagePost.h"
@@ -22,7 +21,6 @@
 #import "YasoundSong.h"
 #import "APNsDeviceToken.h"
 #import "APNsPreferences.h"
-#import "ASIHTTPRequest+Model.h"
 #import "UserNotification.h"
 #import "UserSettings.h"
 #import "FacebookSharePreferences.h"
@@ -63,7 +61,6 @@ taskStatus stringToStatus(NSString* str);
 
 @interface YasoundDataProvider : NSObject
 {
-  Communicator* _communicator;
   User* _user;
   YaRadio* _radio;
   NSString* _apiKey;

@@ -15,7 +15,6 @@
 @interface SongUploader : NSObject 
 {
   NSString* _tempSongFile;
-    ASIFormDataRequest* _request;
     YaRequest* _yarequest;
   id _target;
   SEL _selector;

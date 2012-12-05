@@ -157,6 +157,8 @@
     // ask for services to get HD service expiration date    
     [[YasoundDataProvider main] servicesWithCompletionBlock:^(int status, NSString* response, NSError* error){
         BOOL success = (error == nil) && (status == 200) && (response != nil);
+        if (!success)
+            return;
         Container* container = [response jsonToContainer:[Service class]];
         for (Service* serv in container.objects)
         {

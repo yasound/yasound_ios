@@ -222,7 +222,7 @@ static Song* _gNowPlayingSong = nil;
         
     NSString* message = NSLocalizedString(@"ShareModalView_share_message", nil);
     NSString* fullMessage = [NSString stringWithFormat:message, _gNowPlayingSong.name, _gNowPlayingSong.artist, self.radio.name];
-    NSString* fullLink = [[NSURL alloc] initWithString:self.radio.web_url];
+    NSURL* fullLink = [[NSURL alloc] initWithString:self.radio.web_url];
     
     NSString* body = [NSString stringWithFormat:@"%@\n\n%@", fullMessage, [fullLink absoluteString]];
     

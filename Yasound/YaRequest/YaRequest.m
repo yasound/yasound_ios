@@ -116,11 +116,11 @@ static NSString* sBaseURL = nil;
 
 - (void)addUrlParams:(NSDictionary*)params
 {
-    NSURL* url = [self URLWithURL:_request.url andParams:params];
+    NSURL* url = [YaRequest URLWithURL:_request.url andParams:params];
     _request.url = url;
 }
 
--(NSURL*)urlWithURL:(NSString*)path absolute:(BOOL)absolute addTrailingSlash:(BOOL)slash params:(NSDictionary*)params
++ (NSURL*)urlWithURL:(NSString*)path absolute:(BOOL)absolute addTrailingSlash:(BOOL)slash params:(NSDictionary*)params
 {
     if (!path || ![path isKindOfClass:[NSString class]])
         return nil;
@@ -141,7 +141,7 @@ static NSString* sBaseURL = nil;
         url = [url URLByAppendingPathComponent:path];
     }
     
-    url = [self URLWithURL:url andParams:params];
+    url = [YaRequest URLWithURL:url andParams:params];
     return url;
 }
 
@@ -211,7 +211,7 @@ static NSString* sBaseURL = nil;
     NSString* appVersion    = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     NSDictionary* appParams = [NSDictionary dictionaryWithObjectsAndKeys:appId, @"app_id", appVersion, @"app_version", nil];
     
-    NSURL* url = [self urlWithURL:_config.url absolute:_config.urlIsAbsolute addTrailingSlash:YES params:appParams];
+    NSURL* url = [YaRequest urlWithURL:_config.url absolute:_config.urlIsAbsolute addTrailingSlash:YES params:appParams];
     
     // create internal request object
     BOOL isFormDataRequest = [_config.method isEqualToString:@"POST"] && (_config.params != nil || _config.fileData != nil);

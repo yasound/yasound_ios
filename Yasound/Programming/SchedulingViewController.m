@@ -62,24 +62,6 @@
 }
 
 
-
-
-//- (void)showsReceived:(ASIHTTPRequest*)req success:(BOOL)success
-//{
-//    if (!success)
-//    {
-//        DLog(@"SchedulingViewController::showsReceived failed");
-//        return;
-//    }
-//    
-//    Container* container = [req responseObjectsWithClass:[YaRadio class]];
-//    self.shows = container.objects;
-//    [self.tableview reloadData];    
-//}
-
-
-
-
 #pragma mark - Table view data source
 
 
