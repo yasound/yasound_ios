@@ -50,7 +50,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil listeners:(NSArray*)listeners;
 
-- (void)setRadios:(NSArray*)radios;
+//- (void)setRadios:(NSArray*)radios;
 - (void)setFriends:(NSArray*)friends;
 
 - (void)setRadios:(NSArray*)radios forUrl:(NSURL*)url;

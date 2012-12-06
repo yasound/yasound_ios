@@ -462,8 +462,11 @@
     
     if (![self.contentsController respondsToSelector:@selector(setFriends:)])
         return;
+    if (![self.contentsController isKindOfClass:[RadioListTableViewController class]])
+        return;
     
-    [self.contentsController setFriends:self.friends];
+    RadioListTableViewController* listViewController = (RadioListTableViewController*)self.contentsController;
+    [listViewController setFriends:self.friends];
 }
 
 
@@ -535,10 +538,13 @@
     
     NSArray* radios = radioContainer.objects;
     
-    if (![self.contentsController respondsToSelector:@selector(setRadios:)])
+    if (![self.contentsController respondsToSelector:@selector(setRadios:forUrl:)])
+        return;
+    if (![self.contentsController isKindOfClass:[RadioListTableViewController class]])
         return;
     
-    [self.contentsController setRadios:radios forUrl:self.url];
+    RadioListTableViewController* listViewController = (RadioListTableViewController*)self.contentsController;
+    [listViewController setRadios:radios forUrl:self.url];
 
     // store next page url
     self.nextPageUrl = radioContainer.meta.next;
@@ -566,13 +572,19 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_NEXTPAGE_CANCEL object:nil];
         return;
     }
+    if (![self.contentsController isKindOfClass:[RadioListTableViewController class]])
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_NEXTPAGE_CANCEL object:nil];
+        return;
+    }
     
+    RadioListTableViewController* listViewController = (RadioListTableViewController*)self.contentsController;
     
     if (!success)
     {
         DLog(@"can't get radios next page");
         
-        [self.contentsController appendRadios:nil];
+        [listViewController appendRadios:nil];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_NEXTPAGE_CANCEL object:nil];
         return;
@@ -583,7 +595,7 @@
     DLog(@"receiveRadiosNextPage  %d radios", radios.count);
 
     
-    [self.contentsController appendRadios:radios];
+    [listViewController appendRadios:radios];
     
     // store next page url
     self.nextPageUrl = radioContainer.meta.next;
