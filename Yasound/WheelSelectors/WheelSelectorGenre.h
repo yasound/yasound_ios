@@ -19,7 +19,7 @@ typedef enum {
 } WheelSelectorGenreStatus;
 
 
-@interface WheelSelectorGenre : WheelSelector
+@interface WheelSelectorGenre : WheelSelector <WheelSelectorDelegate>
 
 @property (nonatomic) WheelSelectorGenreStatus status;
 @property (nonatomic, retain) NSArray* genres;

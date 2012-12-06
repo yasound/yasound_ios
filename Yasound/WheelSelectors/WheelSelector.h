@@ -11,6 +11,7 @@
 @class WheelSelector;
 
 @protocol WheelSelectorDelegate <NSObject>
+@optional
 - (NSInteger)numberOfItemsInWheelSelector:(WheelSelector*)wheel;
 - (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex;
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex;

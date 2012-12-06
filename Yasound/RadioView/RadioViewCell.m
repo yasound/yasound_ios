@@ -167,7 +167,7 @@
 
 
 
-- (void)update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
+- (void)update:(WallEvent*)ev indexPath:(NSIndexPath*)path
 {
     assert([ev isTextHeightComputed]);
     assert([ev isCellHeightComputed]);
@@ -177,7 +177,7 @@
 
     
     self.wallEvent = ev;
-    self.indexPath = indexPath;
+    self.indexPath = path;
 
     self.gradient.frame = CGRectMake(0, CELL_HEIGHT - self.gradient.frame.size.height, self.gradient.frame.size.width, self.gradient.frame.size.height);
 
@@ -425,10 +425,10 @@ static const CGFloat kSpringRestingHeight = 4;
 - (void)onModerSpam:(id)sender
 {
     NSString* title = NSLocalizedString(@"RadioViewCell_moderation_spam_title", nil);
-    NSString* message = NSLocalizedString(@"RadioViewCell_moderation_spam_message", nil);
+    NSString* msg = NSLocalizedString(@"RadioViewCell_moderation_spam_message", nil);
     NSString* button = NSLocalizedString(@"RadioViewCell_moderation_spam_button", nil);
     
-    _alertSpam = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:button, nil];
+    _alertSpam = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:button, nil];
     [_alertSpam show];
     [_alertSpam release];  
 
@@ -444,10 +444,10 @@ static const CGFloat kSpringRestingHeight = 4;
 - (void)onModerTrash:(id)sender
 {
     NSString* title = NSLocalizedString(@"RadioViewCell_moderation_trash_title", nil);
-    NSString* message = NSLocalizedString(@"RadioViewCell_moderation_trash_message", nil);
+    NSString* msg = NSLocalizedString(@"RadioViewCell_moderation_trash_message", nil);
     NSString* button = NSLocalizedString(@"RadioViewCell_moderation_trash_button", nil);
     
-    _alertTrash = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:button, nil];
+    _alertTrash = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:button, nil];
     [_alertTrash show];
     [_alertTrash release];  
 }
@@ -480,8 +480,8 @@ static const CGFloat kSpringRestingHeight = 4;
     {
         [[YasoundDataProvider main] moderationReportAbuse:self.wallEvent.id];
         
-        NSString* message = NSLocalizedString(@"RadioViewCell_moderation_spam_confirm", nil);
-        [ActivityAlertView showWithTitle:message closeAfterTimeInterval:2];
+        NSString* msg = NSLocalizedString(@"RadioViewCell_moderation_spam_confirm", nil);
+        [ActivityAlertView showWithTitle:msg closeAfterTimeInterval:2];
 
         
         return;
