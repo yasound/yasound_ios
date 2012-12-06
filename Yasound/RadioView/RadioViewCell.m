@@ -60,7 +60,7 @@
     [super dealloc];
 }
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)path
 {
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
     if (self) 
@@ -69,7 +69,7 @@
         _interactiveZoneSize = (_ownRadio)? 2 * INTERACTIVE_ZONE_SIZE : 1 * INTERACTIVE_ZONE_SIZE;
         
         self.wallEvent = ev;
-        self.indexPath = indexPath;
+        self.indexPath = path;
         
         BundleStylesheet* sheet = nil;
         
@@ -95,11 +95,11 @@
         sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         CGRect cellFrame = self.bounds;
 
-        UIView* cellView = [[UIView alloc] initWithFrame:cellFrame];
-        self.cellView = cellView;
+        UIView* view = [[UIView alloc] initWithFrame:cellFrame];
+        self.cellView = view;
         self.cellView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [self addSubview:self.cellView];
-        [cellView release];
+        [view release];
 
         
         // avatar

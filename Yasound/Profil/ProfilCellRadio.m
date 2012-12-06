@@ -18,10 +18,10 @@
 @synthesize radio;
 
 
-- (id)initWithRadio:(YaRadio*)radio {
+- (id)initWithRadio:(YaRadio*)aRadio {
     
     if (self = [super init]) {
-        self.radio = radio;
+        self.radio = aRadio;
         
         [self loadView];
     }

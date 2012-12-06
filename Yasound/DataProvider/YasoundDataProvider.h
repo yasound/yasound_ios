@@ -248,6 +248,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)createShow:(Show*)show inRadio:(YaRadio*)radio withYasoundSongs:(NSArray*)yasoundSongs withCompletionBlock:(YaRequestCompletionBlock)block;
 
 
+
 // Show Songs
 - (void)addSong:(YasoundSong*)song inShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block;  // takes YasoundSong as param !!
 - (void)removeSong:(Song*)song fromShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block;  // takes Song as param !!

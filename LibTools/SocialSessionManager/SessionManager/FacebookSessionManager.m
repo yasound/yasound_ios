@@ -373,7 +373,8 @@ static FacebookSessionManager* _facebook = nil;
         
         friends = [friends stringByAppendingFormat:@"%@,", friend.id];
     }
-    friends = [friends substringToIndex:(friends.length - 1)];
+    if (friends.length > 0)
+        friends = [friends substringToIndex:(friends.length - 1)];
         
         
   NSDictionary* data = [NSDictionary dictionaryWithObject:uid forKey:@"from_user"];
