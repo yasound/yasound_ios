@@ -274,9 +274,6 @@ taskStatus stringToStatus(NSString* str);
 - (void)inviteFacebookFriends:(NSArray*)friends withCompletionBlock:(YaRequestCompletionBlock)block;
 - (void)inviteTwitterFriendsWithTarget:(YaRequestCompletionBlock)block;
 
-
-- (void)testV2;
-
 - (void)citySuggestionsWithCityName:(NSString*)city andCompletionBlock:(YaRequestCompletionBlock)block;
 
 @end

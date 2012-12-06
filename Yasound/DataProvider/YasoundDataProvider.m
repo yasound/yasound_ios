@@ -15,6 +15,7 @@
 #import "ProgrammingObjectParameters.h"
 #import "FacebookFriend.h"
 #import "Contact.h"
+#import "SBJsonStreamWriter.h"
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 
@@ -266,7 +267,7 @@ static YasoundDataProvider* _main = nil;
     return nil;
   
   AuthApiKey* a = (AuthApiKey*)self.apiKeyAuth;
-  NSArray* params = a.urlParams;
+  NSDictionary* params = a.urlParamsDict;
   
   NSString* base = [NSString stringWithFormat:@"api/v1/song_instance/%@/cover/", song.id];
   NSURL* url = [YaRequest urlWithURL:base absolute:NO addTrailingSlash:NO params:params];
@@ -2134,6 +2135,7 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 
 }
+
 
 
 
