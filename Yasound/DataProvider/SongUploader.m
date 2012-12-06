@@ -137,7 +137,7 @@ static SongUploader* _main = nil;
     
     if (_tempSongFile)
         [_tempSongFile release];
-    _tempSongFile = [[NSString alloc] initWithFormat:fullPath];
+    _tempSongFile = [[NSString alloc] initWithString:fullPath];
     
     NSURL* outURL = [NSURL fileURLWithPath:fullPath];
     
@@ -151,11 +151,6 @@ static SongUploader* _main = nil;
              DLog(@"Error importing: %@", import.error);
              [import release];
              import = nil;
-             
-             // client callback
-             NSMutableDictionary* info = [NSMutableDictionary dictionary];
-             [info setObject:[NSNumber numberWithBool:NO] forKey:@"succeeded"];
-             [info setObject:[NSString stringWithString:@"SongUpload_failedIncorrectFile"] forKey:@"detailedInfo"];
              
              if (completionBlock)
                  completionBlock(0, nil, [NSError errorWithDomain:@"cannot import song" code:1 userInfo:nil]);

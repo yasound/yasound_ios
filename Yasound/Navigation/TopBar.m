@@ -73,7 +73,6 @@
 - (void)update
 {
     BundleStylesheet* sheet = nil;
-    UIButton* btn = nil;
     
     // back button
     CustomSizedButtonView* customView = [[CustomSizedButtonView alloc] initWithThemeRef:@"back" title:NSLocalizedString(@"Navigation.back", nil)];

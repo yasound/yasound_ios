@@ -265,7 +265,6 @@
 
 - (void)loadContentsForItem:(NSInteger)itemIndex {
     
-    NSString* url = nil;
     BOOL showRefreshIndicator = NO;
     BOOL showGenreSelector = NO;
     BOOL showRank = NO;
@@ -384,7 +383,6 @@
     
    // [[YasoundDataProvider main] cancelRequestsForKey:@"radios"];
     
-    NSString* url = nil;
     BOOL showRefreshIndicator = NO;
     BOOL showGenreSelector = NO;
     

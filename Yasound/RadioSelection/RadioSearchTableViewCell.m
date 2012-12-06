@@ -30,14 +30,12 @@
 
 #define OFFSET 98
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios target:(id)target action:(SEL)action
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios target:(id)aTarget action:(SEL)anAction
 {
     if (self = [super initWithFrame:frame reuseIdentifier:cellIdentifier]) 
     {
-        BundleStylesheet* sheet;
-
-        self.target = target;
-        self.action = action;
+        self.target = aTarget;
+        self.action = anAction;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.radioObjects = [[NSMutableArray alloc] init];
 

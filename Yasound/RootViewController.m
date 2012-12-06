@@ -346,16 +346,16 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CONNECTION_TIMEOUT object:nil];
 }
 
-- (void)loginReturned:(User*)user info:(NSDictionary*)info
+- (void)loginReturned:(User*)aUser info:(NSDictionary*)info
 {
     // show connection alert
     [ConnectionView stop];
     
-    if (user != nil)
+    if (aUser != nil)
     {
-        [[YasoundSessionManager main] writeUserIdentity:user];
+        [[YasoundSessionManager main] writeUserIdentity:aUser];
         
-        self.user = user;
+        self.user = aUser;
         
         // login the other associated accounts as well
         [[YasoundSessionManager main] associateAccountsAutomatic];

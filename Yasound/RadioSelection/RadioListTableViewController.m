@@ -171,12 +171,12 @@
 
 
 
-- (void)setRadios:(NSArray*)radios forUrl:(NSURL*)url
+- (void)setRadios:(NSArray*)radiosArray forUrl:(NSURL*)url
 {
-    self.radios = [NSMutableArray arrayWithArray:radios];
+    self.radios = [NSMutableArray arrayWithArray:radiosArray];
     self.url = url;
     
-    self.radiosPreviousCount = radios.count;
+    self.radiosPreviousCount = self.radios.count;
     
     if (self.showGenreSelector) {
         [self tutorial];
@@ -346,20 +346,20 @@
 
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.friendsMode)
-        return [self userCellForRowAtIndexPath:indexPath tableView:tableView];
+        return [self userCellForRowAtIndexPath:indexPath tableView:aTableView];
     
-    return [self radioCellForRowAtIndexPath:indexPath tableView:tableView];
+    return [self radioCellForRowAtIndexPath:indexPath tableView:aTableView];
 }
 
 
-- (UITableViewCell*)radioCellForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView*)tableView
+- (UITableViewCell*)radioCellForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView*)aTableView
 {
     static NSString* cellRadioIdentifier = @"RadioListTableViewCell";
 
-    RadioListTableViewCell* cell = (RadioListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellRadioIdentifier];
+    RadioListTableViewCell* cell = (RadioListTableViewCell*)[aTableView dequeueReusableCellWithIdentifier:cellRadioIdentifier];
     
     NSInteger radioIndex = indexPath.row * 2;
     
@@ -378,11 +378,11 @@
     
     if (cell == nil)
     {
-        CGFloat delay = 0;
+        CGFloat currentDelay = 0;
         if (self.delayTokens > 0)
-            delay = self.delay;
+            currentDelay = self.delay;
         
-        cell = [[[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellRadioIdentifier radios:radiosForRow delay:delay target:self action:@selector(onRadioClicked:) showRank:_showRank] autorelease];
+        cell = [[[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellRadioIdentifier radios:radiosForRow delay:currentDelay target:self action:@selector(onRadioClicked:) showRank:_showRank] autorelease];
         
         self.delayTokens--;
         self.delay += 0.3;
@@ -400,14 +400,14 @@
 
 
 
-- (UITableViewCell*)userCellForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView*)tableView
+- (UITableViewCell*)userCellForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView*)aTableView
 {
     static NSString* cellUserIdentifier = @"UserListTableViewCell";
     static NSString* cellInviteIdentifier = @"InviteUserTableViewCell";
     
     if (indexPath.section == SECTION_INVITE_FRIENDS_INDEX)
     {
-        InviteFriendsTableViewCell* cell = (InviteFriendsTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellInviteIdentifier];
+        InviteFriendsTableViewCell* cell = (InviteFriendsTableViewCell*)[aTableView dequeueReusableCellWithIdentifier:cellInviteIdentifier];
         if (cell == nil)
         {
             cell = [[InviteFriendsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellInviteIdentifier];
@@ -415,7 +415,7 @@
         return cell;
     }
     
-    UserListTableViewCell* cell = (UserListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellUserIdentifier];
+    UserListTableViewCell* cell = (UserListTableViewCell*)[aTableView dequeueReusableCellWithIdentifier:cellUserIdentifier];
     
     NSInteger userIndex = indexPath.row * 3;
     
@@ -434,11 +434,11 @@
     
     if (cell == nil)
     {
-        CGFloat delay = 0;
+        CGFloat currentDelay = 0;
         if (self.delayTokens > 0)
-            delay = self.delay;
+            currentDelay = self.delay;
         
-        cell = [[UserListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellUserIdentifier users:usersForRow delay:delay target:self action:@selector(onUserClicked:)];
+        cell = [[UserListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellUserIdentifier users:usersForRow delay:currentDelay target:self action:@selector(onUserClicked:)];
         
         self.delayTokens--;
         self.delay += 0.3;

@@ -109,9 +109,9 @@ static YasoundSessionManager* _main = nil;
 
 
 
-- (void)setRegistered:(BOOL)registered
+- (void)setRegistered:(BOOL)newRegistered
 {
-    [_dico setObject:[NSNumber numberWithBool:registered] forKey:@"registered"];
+    [_dico setObject:[NSNumber numberWithBool:newRegistered] forKey:@"registered"];
 }
      
 
@@ -405,7 +405,7 @@ static YasoundSessionManager* _main = nil;
 #pragma mark - post Messages
 
 
-- (BOOL)postMessageForFacebook:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl link:(NSURL*)link target:(id)target action:(SEL)action
+- (void)postMessageForFacebook:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl link:(NSURL*)link target:(id)target action:(SEL)action
 {
     _postTarget = target;
     _postAction = action;
@@ -414,7 +414,7 @@ static YasoundSessionManager* _main = nil;
 
 
 
-- (BOOL)postMessageForTwitter:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl target:(id)target action:(SEL)action
+- (void)postMessageForTwitter:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl target:(id)target action:(SEL)action
 {
     _postTarget = target;
     _postAction = action;
@@ -422,7 +422,7 @@ static YasoundSessionManager* _main = nil;
 }
 
 
-- (BOOL)followTwitterUser:(NSString*)username
+- (void)followTwitterUser:(NSString*)username
 {
   [[TwitterSessionManager twitter] enableUpdatesFor:username];
 }

@@ -28,14 +28,14 @@
 
 #define COVER_SIZE 30
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier mediaItem:(SongUploadItem*)item
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier mediaItem:(SongUploadItem*)mediaItem
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) 
     {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        self.item = item;
+        self.item = mediaItem;
         self.item.delegate = self;
         self.progressView = nil;
         self.progressLabel = nil;

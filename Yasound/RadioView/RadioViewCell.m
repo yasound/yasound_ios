@@ -74,8 +74,6 @@
         BundleStylesheet* sheet = nil;
         
         sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.message" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        UIFont* messageFont = [sheet makeFont];
-        CGFloat messageWidth = sheet.frame.size.width;
 
         
         assert([ev isTextHeightComputed]);
@@ -222,9 +220,7 @@
 
 
 -(void)onPan:(UIPanGestureRecognizer *)gesture;
-{
-    UIView *piece = [gesture view];
-    
+{    
     [self initEditView];
     
     if ([gesture state] == UIGestureRecognizerStateBegan)

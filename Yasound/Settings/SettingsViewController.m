@@ -43,14 +43,14 @@
 @synthesize createMode;
 @synthesize topbar;
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(YaRadio*)radio createMode:(BOOL)createMode
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(YaRadio*)aRadio createMode:(BOOL)mode
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.radio = radio;
-        self.radioBackup = radio;
-        self.createMode = createMode;
+        self.radio = aRadio;
+        self.radioBackup = aRadio;
+        self.createMode = mode;
     }
     
     return self;

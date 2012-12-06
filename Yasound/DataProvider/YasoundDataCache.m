@@ -551,19 +551,6 @@ static YasoundDataCache* _main = nil;
     [_cacheFriends retain];
 }
 
-
-
-
-
-
-
-
-
-
-
-
-static UIImage* gDummyImage = nil;
-
 - (UIImage*)requestImage:(NSURL*)url target:(id)target action:(SEL)selector
 {
     NSString* key = [url absoluteString];

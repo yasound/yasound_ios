@@ -27,13 +27,13 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(YaRadio*)aRadio subscribers:(NSArray*)subscribers target:(id)target action:(SEL)action
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(YaRadio*)aRadio subscribers:(NSArray*)subscribersArray target:(id)target action:(SEL)action
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
         self.radio = aRadio;
-        self.subscribers = subscribers;
+        self.subscribers = subscribersArray;
         
         _target = target;
         _action = action;

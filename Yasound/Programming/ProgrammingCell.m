@@ -32,7 +32,7 @@ static NSMutableDictionary* gEditingSongs = nil;
 
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withSong:(Song*)aSong atRow:(NSInteger)row deletingTarget:(id)deletingTarget deletingAction:(SEL)deletingAction
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withSong:(Song*)aSong atRow:(NSInteger)rowIndex deletingTarget:(id)deletingTarget deletingAction:(SEL)deletingAction
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) 
@@ -67,7 +67,7 @@ static NSMutableDictionary* gEditingSongs = nil;
         self.sublabel = [sheet makeLabel];
         [self addSubview:self.sublabel];
 
-        [self updateWithSong:aSong atRow:row];
+        [self updateWithSong:aSong atRow:rowIndex];
         
         
         UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight)] autorelease];
@@ -141,10 +141,10 @@ static NSMutableDictionary* gEditingSongs = nil;
 
 
 
-- (void)updateWithSong:(Song*)aSong atRow:(NSInteger)row
+- (void)updateWithSong:(Song*)aSong atRow:(NSInteger)rowIndex
 {
     self.song = aSong;
-    self.row = row;
+    self.row = rowIndex;
     
     if (self.row == 0)
         self.label.text = song.name;
@@ -206,8 +206,6 @@ static NSMutableDictionary* gEditingSongs = nil;
     {
         [self.image setImage:customImage];
     }
-    
-    BOOL editing = NO;
 }
 
 
@@ -232,10 +230,10 @@ static NSMutableDictionary* gEditingSongs = nil;
     [gEditingSongs setObject:[NSNumber numberWithBool:YES] forKey:self.song.name];
     
     // create delete button
-    UIImage* image = [UIImage imageNamed:@"barRedItemMediumBkg.png"];
-    CGFloat size = image.size.width;
-    self.buttonDelete = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width, self.frame.size.height /2.f - image.size.height /2.f, size, image.size.height)];
-    [self.buttonDelete setImage:image forState:UIControlStateNormal];
+    UIImage* btnDeleteImg = [UIImage imageNamed:@"barRedItemMediumBkg.png"];
+    CGFloat size = btnDeleteImg.size.width;
+    self.buttonDelete = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width, self.frame.size.height /2.f - btnDeleteImg.size.height /2.f, size, btnDeleteImg.size.height)];
+    [self.buttonDelete setImage:btnDeleteImg forState:UIControlStateNormal];
     [self.buttonDelete setImage:[UIImage imageNamed:@"barRedItemMediumBkgHighlighted.png"] forState:UIControlStateHighlighted];
     [self.buttonDelete setImage:[UIImage imageNamed:@"barItemMediumBkgDisabled.png"] forState:UIControlStateDisabled];
     [self.buttonDelete addTarget:self action:@selector(onDeleteRequest:) forControlEvents:UIControlEventTouchUpInside];

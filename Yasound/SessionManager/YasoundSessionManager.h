@@ -82,7 +82,7 @@
 - (FacebookSessionManager*) getFacebookManager;
 - (TwitterSessionManager*) getTwitterManager;
 
-- (BOOL)postMessageForFacebook:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl  link:(NSURL*)link target:(id)target action:(SEL)action;
-- (BOOL)postMessageForTwitter:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl target:(id)target action:(SEL)action;
+- (void)postMessageForFacebook:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl  link:(NSURL*)link target:(id)target action:(SEL)action;
+- (void)postMessageForTwitter:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl target:(id)target action:(SEL)action;
 
 @end

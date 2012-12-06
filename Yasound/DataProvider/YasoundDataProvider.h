@@ -228,7 +228,6 @@ taskStatus stringToStatus(NSString* str);
 - (void)connectedUsersWithCompletionBlock:(YaRequestCompletionBlock)block; // users connected to the app ordered by distance from the sender
 - (void)connectedUsersWithLimit:(int)limit skip:(int)skip completionBlock:(YaRequestCompletionBlock)block;
 
-
 - (void)broadcastMessage:(NSString*)message fromRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 // User Notifications
@@ -247,6 +246,8 @@ taskStatus stringToStatus(NSString* str);
 - (void)duplicateShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block;
 - (void)createShow:(Show*)show inRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 - (void)createShow:(Show*)show inRadio:(YaRadio*)radio withYasoundSongs:(NSArray*)yasoundSongs withCompletionBlock:(YaRequestCompletionBlock)block;
+
+
 
 // Show Songs
 - (void)addSong:(YasoundSong*)song inShow:(Show*)show withCompletionBlock:(YaRequestCompletionBlock)block;  // takes YasoundSong as param !!

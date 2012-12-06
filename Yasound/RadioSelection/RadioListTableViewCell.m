@@ -37,14 +37,12 @@
 @synthesize action;
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios delay:(CGFloat)delay target:(id)target action:(SEL)action showRank:(BOOL)showRank
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios delay:(CGFloat)delay target:(id)aTarget action:(SEL)action showRank:(BOOL)showRank
 {
     if (self = [super initWithFrame:frame reuseIdentifier:cellIdentifier]) 
     {
-        NSError* error;
-        
         _showRank = showRank;
-        self.target = target;
+        self.target = aTarget;
         self.action = action;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.radioObjects = [[NSMutableArray alloc] init];

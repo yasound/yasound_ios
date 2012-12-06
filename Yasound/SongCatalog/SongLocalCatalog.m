@@ -111,7 +111,7 @@ static SongLocalCatalog* _main = nil;
         SongLocal* songLocal = [[SongLocal alloc] initWithMediaItem:item];
         
         // REMEMBER THAT HERE, songLocal is SongLocal*
-        BOOL res = [self addSong:songLocal forTable:LOCALCATALOG_TABLE songKey:songLocal.catalogKey artistKey:songLocal.artistKey albumKey:songLocal.albumKey];
+        [self addSong:songLocal forTable:LOCALCATALOG_TABLE songKey:songLocal.catalogKey artistKey:songLocal.artistKey albumKey:songLocal.albumKey];
         nbSongs++;
     }
     
@@ -509,8 +509,6 @@ static SongLocalCatalog* _main = nil;
     
     assert(song);
     assert([song isKindOfClass:[SongLocal class]]);
-
-    Song* matchedSong = [[SongRadioCatalog main].matchedSongs objectForKey:song.catalogKey];
 }
 
 

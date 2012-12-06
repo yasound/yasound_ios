@@ -15,12 +15,12 @@
 
 @synthesize radio;
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil playlistId:(NSInteger)playlistId forRadio:radio
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil playlistId:(NSInteger)playlistId forRadio:aRadio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.radio = radio;
+        self.radio = aRadio;
         
         // Custom initialization
         _playlistId = playlistId;

@@ -284,7 +284,7 @@
     for (NSDictionary *dico in _playlistsDesc) 
     {
         MPMediaPlaylist *mediaPlaylist = [dico objectForKey:@"mediaPlaylist"]; 
-        NSNumber* enabled = [dico objectForKey:@"enabled"];
+//        NSNumber* enabled = [dico objectForKey:@"enabled"];
         
         if (mediaPlaylist) 
             [_localPlaylistsDesc addObject:dico];

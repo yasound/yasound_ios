@@ -32,14 +32,12 @@
 
 #define USER_IMAGE_SIZE 65.f
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier users:(NSArray*)users delay:(CGFloat)delay target:(id)target action:(SEL)action
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier users:(NSArray*)users delay:(CGFloat)delay target:(id)aTarget action:(SEL)anAction
 {
     if (self = [super initWithFrame:frame reuseIdentifier:cellIdentifier]) 
-    {
-        BundleStylesheet* sheet;
-          
-        self.target = target;
-        self.action = action;
+    {          
+        self.target = aTarget;
+        self.action = anAction;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.objects = [[NSMutableArray alloc] init];
 

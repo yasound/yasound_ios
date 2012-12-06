@@ -51,21 +51,21 @@
 
 
 
-- (void)updateWithRadio:(YaRadio*)radio target:(id)target editing:(BOOL)editing
+- (void)updateWithRadio:(YaRadio*)aRadio target:(id)target editing:(BOOL)editing
 {
-    self.radio = radio;
+    self.radio = aRadio;
     self.delegate = target;
 
     
     [self.image releaseCache];
 
-    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
     [self.image setUrl:imageURL];
     
     // info
-    self.title.text = radio.name;
-    self.subscribers.text = [NSString stringWithFormat:@"%d", [radio.favorites integerValue]];
-    self.listeners.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
+    self.title.text = self.radio.name;
+    self.subscribers.text = [NSString stringWithFormat:@"%d", [self.radio.favorites integerValue]];
+    self.listeners.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
 
     // metrics
     int seconds = [self.radio.overall_listening_time intValue] / 60;

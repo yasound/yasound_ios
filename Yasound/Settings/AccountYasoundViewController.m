@@ -134,14 +134,7 @@
     }
     else
     {
-        [textField resignFirstResponder];    
-        
-        // activate "submit" button
-        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
-        NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
-        NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
-        NSString* pwordConfirm = [_pwordConfirm.text stringByTrimmingCharactersInSet:space];
-        
+        [textField resignFirstResponder];            
     }
     return YES;
 }

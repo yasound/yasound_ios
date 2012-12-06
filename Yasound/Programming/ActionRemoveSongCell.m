@@ -30,7 +30,7 @@
 #define COVER_SIZE 30
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(Song*)aSong forRadio:(YaRadio*)radio
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(Song*)aSong forRadio:(YaRadio*)aRadio
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
@@ -40,7 +40,7 @@
     if (self) 
     {
         self.song = aSong;
-        self.radio = radio;
+        self.radio = aRadio;
         
         self.selectionStyle = UITableViewCellSelectionStyleGray;
         

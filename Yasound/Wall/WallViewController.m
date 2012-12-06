@@ -910,7 +910,6 @@
 {
     NSInteger index = 0;
     
-    WallEvent* ev = [_wallEvents objectAtIndex:index];
     UITableViewRowAnimation anim = UITableViewRowAnimationTop;
     [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
 }

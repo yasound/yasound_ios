@@ -337,7 +337,6 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
     Subscription* sub = [self.subscriptions objectAtIndex:indexPath.row];
-    SKProduct* product = [self.productDetailsList objectAtIndex:indexPath.row];
     NSString* productId = [self.productIdentifierList objectAtIndex:indexPath.row];
 
     if (!sub.isEnabled)

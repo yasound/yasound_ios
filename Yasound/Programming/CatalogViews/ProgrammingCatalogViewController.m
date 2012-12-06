@@ -65,8 +65,8 @@
     
     DLog(@"success %d", success);
     
-    UITableViewCell* cell = [info objectForKey:@"userData"];
-    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+//    UITableViewCell* cell = [info objectForKey:@"userData"];
+//    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
     
     // refresh DataBase
     [[SongRadioCatalog main] updateSongRemovedFromProgramming:song];

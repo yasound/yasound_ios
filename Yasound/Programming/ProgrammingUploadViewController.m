@@ -24,12 +24,12 @@
 
 
 
-- (id)initWithStyle:(UITableViewStyle)style forRadio:(YaRadio*)radio
+- (id)initWithStyle:(UITableViewStyle)style forRadio:(YaRadio*)aRadio
 {
     self = [super initWithStyle:style];
     if (self)
     {
-        self.radio = radio;
+        self.radio = aRadio;
         
         self.tableView.delegate = self;
         self.tableView.dataSource = self;

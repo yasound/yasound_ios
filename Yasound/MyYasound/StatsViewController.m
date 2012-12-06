@@ -304,9 +304,6 @@
     
     NSInteger nbRows = [self.leaderboard count];
     
-    LeaderBoardEntry* entry = [self.leaderboard objectAtIndex:indexPath.row];
-    BOOL isUserRadio = [entry isUserRadio];
-
     if (nbRows == 1)
     {
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.willDisplayCell.rowSingle" retainStylesheet:YES overwriteStylesheet:NO error:nil];

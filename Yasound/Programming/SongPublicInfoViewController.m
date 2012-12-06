@@ -165,7 +165,6 @@
             }
             
             CGFloat size = COVER_SIZE;
-            CGFloat height = (COVER_SIZE + 2*BORDER);
              _imageView.frame = CGRectMake(cell.frame.size.width/2.f - size/2.f, 0 , size, size);
             
             [cell addSubview:_imageView];

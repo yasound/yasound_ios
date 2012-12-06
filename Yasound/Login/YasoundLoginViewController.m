@@ -127,12 +127,6 @@
         [UIView setAnimationDuration:0.33];
         self.container.frame = CGRectMake(0, 44, self.container.frame.size.width, self.container.frame.size.height);
         [UIView commitAnimations];
-        
-        
-        // activate "submit" button
-        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
-        NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
-        NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
     }
     return YES;
 }
@@ -198,45 +192,6 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CONNECTION_TIMEOUT object:nil];
 }
-
-
-//- (void) requestDidReturn:(User*)user info:(NSDictionary*)info
-//{
-////    [ActivityAlertView close];
-//
-//    // close the connection alert
-//    [ConnectionView stop];
-//
-//    [[YasoundSessionManager main] writeUserIdentity:user];
-//    
-//    
-//    DLog(@"login returned : %@ %@", user, info);
-//    
-//    
-//    if (user == nil)
-//    {
-//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_message_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [av show];
-//        [av release];  
-//
-//        return;
-//    }
-//
-//    
-//    NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
-//    NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
-//    NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
-//
-//    // store info for automatic login, for the next sessions
-//    [[YasoundSessionManager main] registerForYasound:email withPword:pword];
-//    
-//    // login the other associated accounts as well
-//    [[YasoundSessionManager main] associateAccountsAutomatic];
-//    
-//    
-//    [self enterTheAppAfterProperLogin];
-//
-//}
 
 
 

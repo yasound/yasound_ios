@@ -106,8 +106,6 @@
 
 - (IBAction)onCancelClicked:(id)sender
 {
-    UINavigationController* cont = [self.delegate genderNavController];
-
     [APPDELEGATE.navigationController dismissModalViewControllerAnimated:NO];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_EDIT_PROFIL object:[NSNumber numberWithBool:NO]];
 }

@@ -20,12 +20,12 @@
 @synthesize topbar;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user target:(id)target
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)aUser target:(id)target
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.user = user;
+        self.user = aUser;
         self.delegate = target;
         _changed = NO;
         

@@ -164,7 +164,6 @@
 
 - (void)onNotifSongRemoved:(NSNotification*)notif
 {    
-    UIViewController* sender = notif.object;
 }
 
 

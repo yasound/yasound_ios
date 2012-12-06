@@ -326,9 +326,7 @@
         }
         
         else if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_HIGHFREQ))
-        {
-            NSString* frequencyStr = nil;
-            
+        {            
             _switchFrequency = [[UISwitch alloc] init];
             _switchFrequency.frame = CGRectMake(cell.frame.size.width - _switchFrequency.frame.size.width - 2*BORDER, (cell.frame.size.height - _switchFrequency.frame.size.height) / 2.f, _switchFrequency.frame.size.width, _switchFrequency.frame.size.height);
             [cell addSubview:_switchFrequency];
