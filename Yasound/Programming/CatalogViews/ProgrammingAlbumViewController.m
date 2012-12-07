@@ -43,12 +43,12 @@
 }
 
 
-- (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(YaRadio*)radio
+- (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(YaRadio*)aRadio
 {
     self = [super initWithStyle:style];
     if (self)
     {
-        self.radio = radio;
+        self.radio = aRadio;
         self.catalog = catalog;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];

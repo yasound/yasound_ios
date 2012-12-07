@@ -9,6 +9,7 @@
 
 
 @protocol TopBarSaveOrCancelDelegate <NSObject>
+@optional
 - (BOOL)topBarSave;
 - (BOOL)topBarCancel;
 - (NSString*)titleForActionButton;

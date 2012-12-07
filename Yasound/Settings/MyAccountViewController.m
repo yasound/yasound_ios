@@ -202,7 +202,7 @@ enum SectionBio
         [cell addSubview:self.userImage];
 
         sheet = [[Theme theme] stylesheetForKey:@"MyAccount.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        UIImage* mask = [sheet makeImage];
+        UIImageView* mask = [sheet makeImage];
         [cell addSubview:mask];
     }
 
@@ -412,12 +412,12 @@ enum SectionBio
     
     NSDate* now = [NSDate date];
     NSDateComponents* ageComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:newDate toDate:now options:0];
-    NSInteger age = [ageComponents year];
-    self.user.age = [NSNumber numberWithInt:age];
+    NSInteger ageInteger = [ageComponents year];
+    self.user.age = [NSNumber numberWithInt:ageInteger];
 
     UITableViewCell* cell = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ROW_AGE inSection:SECTION_PROFIL]];
 
-    cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"MyAccount.age.value", nil), age];
+    cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"MyAccount.age.value", nil), ageInteger];
 }
 
 - (UINavigationController *)navController

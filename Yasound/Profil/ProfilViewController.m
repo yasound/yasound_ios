@@ -47,12 +47,12 @@
 @synthesize followed;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)aUser
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.user = user;
+        self.user = aUser;
         self.userId = nil;
         self.modelUsername = nil;
     }
@@ -60,14 +60,14 @@
 }
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)userId andModelUsername:(NSString*)modelUsername
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)aUserId andModelUsername:(NSString*)aModelUsername
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
         self.user = nil;
-        self.userId = userId;
-        self.modelUsername = modelUsername;
+        self.userId = aUserId;
+        self.modelUsername = aModelUsername;
     }
     return self;
 }
@@ -391,15 +391,15 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)myFriendsReceived:(NSArray*)friends
+- (void)myFriendsReceived:(NSArray*)myFriends
 {
-    DLog(@"%d friends", friends.count);
+    DLog(@"%d friends", myFriends.count);
     
-    for (User* user in friends)
+    for (User* u in myFriends)
     {
-        DLog(@"my friend : %@", user.username);
+        DLog(@"my friend : %@", u.username);
         
-        if ([user.id isEqualToNumber:self.user.id])
+        if ([u.id isEqualToNumber:self.user.id])
         {
             // it's one of my friend.
             // follow button becomes unfollow

@@ -104,12 +104,12 @@
 
 
 
-- (id)initWithRadio:(YaRadio*)radio
+- (id)initWithRadio:(YaRadio*)aRadio
 {
     self = [super init];
     if (self)
     {
-        self.radio = radio;
+        self.radio = aRadio;
         
         self.keyboardShown = NO;
         _stopWall = NO;

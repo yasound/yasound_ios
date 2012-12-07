@@ -24,6 +24,7 @@ typedef enum TopBarItemId
 } TopBarItemId;
 
 @protocol TopBarDelegate <NSObject>
+@optional
 - (BOOL)topBarItemClicked:(TopBarItemId)itemId;
 @end
 

@@ -39,13 +39,13 @@
 @synthesize radio;
 
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(YaRadio*)radio
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(YaRadio*)aRadio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
         
-        self.radio = radio;
+        self.radio = aRadio;
         _monthGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
         
         _monthGraphView.plotColor = RGB(200,200,200);

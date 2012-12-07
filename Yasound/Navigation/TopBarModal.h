@@ -9,6 +9,7 @@
 
 
 @protocol TopBarModalDelegate <NSObject>
+@optional
 - (BOOL)topBarSave;
 - (BOOL)topBarCancel;
 
