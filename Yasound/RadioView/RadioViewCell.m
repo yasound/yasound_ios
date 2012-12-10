@@ -187,7 +187,6 @@
     
     self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, COMPUTED_HEIGHT);
     
-    [self.avatar releaseCache];
     [self.avatar setUrl:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
     
     if ([self.wallEvent editing])

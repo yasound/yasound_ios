@@ -60,6 +60,9 @@
     if (aUrl == nil)
         return;
     
+    if (self.url)
+        [self releaseCache];
+    
     UIImage* image = [[YasoundDataCache main] requestImage:aUrl target:self action:@selector(onImageUpdated:)];
     
     [self setImage:image];

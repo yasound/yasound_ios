@@ -117,8 +117,6 @@
         ProfilCellRadio* view = [objects objectAtIndex:RADIO_OBJECT_VIEW];
         view.radio = radio;
         
-        [view.image releaseCache];
-
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Search.avatarDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         view.image.image = [sheet image];
         

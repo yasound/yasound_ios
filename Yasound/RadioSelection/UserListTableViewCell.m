@@ -159,7 +159,6 @@
         
         
         WebImageView* view = [objects objectAtIndex:OBJECT_IMAGE];
-        [view releaseCache];
         [view setUrl:imageURL];
 
         UILabel* label = [objects objectAtIndex:OBJECT_NAME];

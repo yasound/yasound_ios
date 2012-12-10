@@ -56,9 +56,6 @@
     self.radio = aRadio;
     self.delegate = target;
 
-    
-    [self.image releaseCache];
-
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
     [self.image setUrl:imageURL];
     

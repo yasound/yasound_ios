@@ -220,8 +220,6 @@
         WebImageView* view = [objects objectAtIndex:RADIO_OBJECT_IMAGE];
         assert(view);
         assert([view isKindOfClass:[WebImageView class]]);
-        [view releaseCache];
-
         
         // and update infos and images
         NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
@@ -233,7 +231,6 @@
         view = [objects objectAtIndex:RADIO_OBJECT_USER_IMAGE];
         assert(view);
         assert([view isKindOfClass:[WebImageView class]]);
-        [view releaseCache];
 
         imageURL = [[YasoundDataProvider main] urlForPicture:radio.creator.picture];
         [view setUrl:imageURL];
