@@ -18,6 +18,7 @@
 
 - (BOOL)gotoSelection;
 - (BOOL)gotoFavorites;
+- (BOOL)gotoTop;
 - (BOOL)gotoMyRadios;
 - (BOOL)gotoLogin;
 - (BOOL)gotoTwitterAssociation;
@@ -30,6 +31,8 @@
 - (BOOL)gotoInviteFacebookFriends;
 - (BOOL)gotoInviteTwitterFriends;
 - (BOOL)gotoInviteContacts;
+- (BOOL)gotoRadioWithUuid:(NSString*)uuid;
+- (BOOL)gotoUserProfileWithUsername:(NSString*)username;
 
 - (void)postNotification:(NSString*)notifName;
 
@@ -80,6 +83,12 @@ static YasoundAppURLHandler* _main = nil;
     else if (componentCount == 2 && [[components objectAtIndex:1] isEqualToString:@"favorites"]) // '/' + 'favorites'
     {
         BOOL res = [self gotoFavorites];
+        if (res)
+            return YES;
+    }
+    else if (componentCount == 2 && [[components objectAtIndex:1] isEqualToString:@"top"]) // '/' + 'top'
+    {
+        BOOL res = [self gotoTop];
         if (res)
             return YES;
     }
@@ -155,6 +164,20 @@ static YasoundAppURLHandler* _main = nil;
         if (res)
             return YES;
     }
+    else if (componentCount == 3 && [[components objectAtIndex:1] isEqualToString:@"radio"]) // '/' + 'radio/radio_uuid'
+    {
+        NSString* uuid = [components objectAtIndex:2];
+        BOOL res = [self gotoRadioWithUuid:uuid];
+        if (res)
+            return YES;
+    }
+    else if (componentCount == 3 && [[components objectAtIndex:1] isEqualToString:@"user"]) // '/' + 'user/username'
+    {
+        NSString* username = [components objectAtIndex:2];
+        BOOL res = [self gotoUserProfileWithUsername:username];
+        if (res)
+            return YES;
+    }
     
     
     
@@ -173,6 +196,14 @@ static YasoundAppURLHandler* _main = nil;
     if (![YasoundSessionManager main].registered)
         return NO;
     [self postNotification:NOTIF_GOTO_FAVORITES];
+    return YES;
+}
+
+- (BOOL)gotoTop
+{
+    if (![YasoundSessionManager main].registered)
+        return NO;
+    [self postNotification:NOTIF_GOTO_TOP];
     return YES;
 }
 
@@ -331,6 +362,40 @@ static YasoundAppURLHandler* _main = nil;
         return [self gotoLogin];
     
     [self postNotification:NOTIF_INVITE_CONTACTS];
+    return YES;
+}
+
+- (BOOL)gotoRadioWithUuid:(NSString*)uuid
+{
+    if (!uuid)
+        return NO;
+    [[YasoundDataProvider main] radioWithUuid:uuid withCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = (error == nil && status == 200);
+        if (!success)
+            return;
+        YaRadio* radio = (YaRadio*)[response jsonToModel:[YaRadio class]];
+        if (!radio)
+            return;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:radio];
+    }];
+    return YES;
+}
+
+- (BOOL)gotoUserProfileWithUsername:(NSString*)username
+{
+    if (!username)
+        return NO;
+    
+    [[YasoundDataProvider main] userWithUsername:username withCompletionBlock:^(int status, NSString* response, NSError* error){
+        BOOL success = (error == nil && status == 200);
+        if (!success)
+            return;
+        User* user = (User*)[response jsonToModel:[User class]];
+        if (!user)
+            return;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_USER_PROFILE object:user];
+    }];
+    
     return YES;
 }
 

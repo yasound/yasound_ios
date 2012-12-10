@@ -672,8 +672,32 @@ static YasoundDataProvider* _main = nil;
 
 - (void)radioWithId:(NSNumber*)radioId withCompletionBlock:(YaRequestCompletionBlock)block
 {
+    if (!radioId)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
     YaRequestConfig* config = [YaRequestConfig requestConfig];
     config.url = [NSString stringWithFormat:@"/api/v1/radio/%@/", radioId];
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
+- (void)radioWithUuid:(NSString*)radioUuid withCompletionBlock:(YaRequestCompletionBlock)block
+{
+    if (!radioUuid)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = [NSString stringWithFormat:@"/api/v1/public_radio/%@/", radioUuid];
     config.urlIsAbsolute = NO;
     config.method = @"GET";
     config.auth = self.apiKeyAuth;

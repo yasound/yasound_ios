@@ -178,11 +178,13 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoSelection:) name:NOTIF_GOTO_SELECTION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoFavorites:) name:NOTIF_GOTO_FAVORITES object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoTop:) name:NOTIF_GOTO_TOP object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadios:) name:NOTIF_GOTO_MYRADIOS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoGifts:) name:NOTIF_GOTO_GIFTS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoNotifications:) name:NOTIF_GOTO_NOTIFICATIONS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoProfil:) name:NOTIF_GOTO_PROFIL object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoEditProfile:) name:NOTIF_GOTO_EDIT_PROFIL object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoUserProfile:) name:NOTIF_GOTO_USER_PROFILE object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushRadio:) name:NOTIF_PUSH_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoRadio:) name:NOTIF_GOTO_RADIO object:nil];
@@ -733,12 +735,33 @@
     
     RadioSelectionViewController* view = nil;
     if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
-        view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController-4inch" bundle:nil withWheelIndex:WheelIdSelection];
+        view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController-4inch" bundle:nil withWheelIndex:WheelIdFavorites];
     }
     else  {
-        view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:WheelIdSelection];
+        view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:WheelIdFavorites];
     }
 
+    [self.navigationController pushViewController:view animated:animated];
+    [view release];
+}
+
+- (void)onNotifGotoTop:(NSNotification*)notification
+{
+    DLog(@"onNotifGotoTop");
+    
+    NSNumber* nbAnimated = notification.object;
+    BOOL animated = YES;
+    if (nbAnimated)
+        animated = [nbAnimated boolValue];
+    
+    RadioSelectionViewController* view = nil;
+    if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
+        view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController-4inch" bundle:nil withWheelIndex:WheelIdTop];
+    }
+    else  {
+        view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withWheelIndex:WheelIdTop];
+    }
+    
     [self.navigationController pushViewController:view animated:animated];
     [view release];
 }
@@ -788,6 +811,18 @@
     
     ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:[YasoundDataProvider main].user];
     [self.navigationController pushViewController:view animated:animated];
+    [view release];
+}
+
+- (void)onNotifGotoUserProfile:(NSNotification*)notification
+{
+    DLog(@"onNotifGotoUserProfile");
+    
+    User* u = notification.object;
+    assert(u != nil);
+    
+    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:u];
+    [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
 

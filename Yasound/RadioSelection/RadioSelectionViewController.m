@@ -63,6 +63,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifRefreshGui:) name:NOTIF_REFRESH_GUI object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGenreSelected:) name:NOTIF_GENRE_SELECTED object:nil];
         
+        [self.wheelSelector stickToItem:_wheelIndex silent:YES];
     }
     return self;
 }
@@ -236,7 +237,7 @@
 
 - (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
 {
-    return WheelIdSelection;
+    return _wheelIndex;
 }
 
 
