@@ -504,14 +504,15 @@
 
 - (void)albumAddClicked {
     
+    SongLocalCatalog* localCatalog = (SongLocalCatalog*)self.catalog;
     NSArray* songs;
     
     if (self.catalog.selectedGenre)
-        songs = [self.catalog songsForAlbum:self.collection fromArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
+        songs = [localCatalog songsForAlbum:self.collection fromArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedGenre];
     else if (self.catalog.selectedPlaylist)
-        songs = [self.catalog songsForAlbum:self.collection fromArtist:self.catalog.selectedArtist withGenre:self.catalog.selectedPlaylist];
+        songs = [localCatalog songsForAlbum:self.collection fromArtist:self.catalog.selectedArtist withPlaylist:self.catalog.selectedPlaylist];
     else
-        songs = [self.catalog songsForAlbum:self.collection fromArtist:self.catalog.selectedArtist];
+        songs = [localCatalog songsForAlbum:self.collection fromArtist:self.catalog.selectedArtist];
     
     self.nbSongsSelected = songs.count;
 

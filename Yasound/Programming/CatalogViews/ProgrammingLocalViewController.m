@@ -411,7 +411,7 @@
         
         if (cell == nil)
         {
-            cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier genre:collection subtitle:subtitle forRadio:self.radio usingCatalog:LOCALCATALOG_TABLE] autorelease];
+            cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier genre:collection subtitle:subtitle forRadio:self.radio usingCatalog:[SongLocalCatalog main]] autorelease];
         }
         else
             [cell updateGenre:collection subtitle:subtitle];
@@ -450,7 +450,7 @@
         
         if (cell == nil)
         {
-            cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier playlist:collection subtitle:subtitle forRadio:self.radio usingCatalog:LOCALCATALOG_TABLE] autorelease];
+            cell = [[[ActionAddCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier playlist:collection subtitle:subtitle forRadio:self.radio usingCatalog:[SongLocalCatalog main]] autorelease];
         }
         else
             [cell updatePlaylist:collection subtitle:subtitle];
