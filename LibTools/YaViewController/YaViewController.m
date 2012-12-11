@@ -88,7 +88,7 @@
             [[AudioStreamManager main] startRadio:[AudioStreamManager main].currentRadio];
         
         else if (event.subtype == UIEventSubtypeRemoteControlPause)
-            [[AudioStreamManager main] pauseRadio];
+            [[AudioStreamManager main] stopRadio];
         
         else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause)
             [[AudioStreamManager main] togglePlayPauseRadio];

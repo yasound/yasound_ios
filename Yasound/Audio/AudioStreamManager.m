@@ -265,11 +265,11 @@ static Radio* _gAudioStreamer = nil;
     RadioState state = [_gAudioStreamer radioState];
     if(state == kRadioStatePlaying)
     {
-        [self pauseRadio];
+        [self stopRadio];
     }
     else
     {
-        [self playRadio];
+        [self startRadio:self.currentRadio];
     }
 }
 
