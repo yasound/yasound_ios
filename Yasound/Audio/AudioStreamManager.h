@@ -33,6 +33,7 @@
 
 - (void)startRadio:(YaRadio*)radio;
 - (void)stopRadio;
+- (void)pauseRadio;
 
 - (void)playRadio;
 - (void)togglePlayPauseRadio;

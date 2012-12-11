@@ -254,28 +254,6 @@
 
 
 
-
-- (void)remoteControlReceivedWithEvent:(UIEvent *)event
-{
-    //if it is a remote control event handle it correctly
-    if (event.type == UIEventTypeRemoteControl)
-    {
-        if (event.subtype == UIEventSubtypeRemoteControlPlay)
-            [[AudioStreamManager main] startRadio:[AudioStreamManager main].currentRadio];
-
-        else if (event.subtype == UIEventSubtypeRemoteControlPause)
-            [[AudioStreamManager main] stopRadio];
-
-        else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause)
-            [[AudioStreamManager main] togglePlayPauseRadio];
-
-    }
-}
-
-
-
-
-
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear: animated];
