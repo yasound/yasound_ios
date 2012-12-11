@@ -45,11 +45,7 @@
         self.description = [sheet makeLabel];
         self.description.numberOfLines = 2;
         [self addSubview:self.description];
-        
-        sheet = [[Theme theme] stylesheetForKey:@"Gift.date" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        self.date = [sheet makeLabel];
-        [self addSubview:self.date];
-        
+                
         sheet = [[Theme theme] stylesheetForKey:@"Gift.disabled" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.disabledLabel = [sheet makeLabel];
         [self addSubview:self.disabledLabel];
