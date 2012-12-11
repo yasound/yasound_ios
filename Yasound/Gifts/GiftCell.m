@@ -16,7 +16,6 @@
 @synthesize mask;
 @synthesize label;
 @synthesize description;
-@synthesize date;
 @synthesize disabledLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -98,7 +97,6 @@
     self.label.text = self.gift.name;
     self.description.text = self.gift.description;
     self.image.url = [NSURL URLWithString:self.gift.picture_url];
-    self.date.text = dateString;
     self.disabledLabel.text = disabledString;
     
     if ([self.gift canBeWon])

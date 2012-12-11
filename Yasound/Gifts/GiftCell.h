@@ -21,7 +21,6 @@
 @property (nonatomic, retain) UIImageView* mask;
 @property (nonatomic, retain) UILabel* label;
 @property (nonatomic, retain) UILabel* description;
-@property (nonatomic, retain) UILabel* date;
 @property (nonatomic, retain) UILabel* disabledLabel;
 
 - (void)setGift:(Gift*)gift;
