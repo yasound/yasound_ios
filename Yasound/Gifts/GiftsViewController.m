@@ -17,7 +17,7 @@
 #import "Theme.h"
 #import "RootViewController.h"
 #import "PromoCodeCell.h"
-#import "AudioStreamer.h"
+#import "AudioStreamManager.h"
 
 #define SECTION_COUNT 2
 #define SECTION_GIFTS 1

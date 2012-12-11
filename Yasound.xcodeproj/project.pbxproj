@@ -390,7 +390,6 @@
 		40AAEC4B14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40AAEC4C14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40B40951152EFC630050D334 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
-		40B40952152EFC630050D334 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		40B40953152EFC630050D334 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		40B40954152EFC630050D334 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		40B40955152EFC630050D334 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
@@ -621,7 +620,6 @@
 		40CFA9611608DF5300E8609E /* ProgrammingSearchYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40CFA9501608DF5200E8609E /* ProgrammingSearchYasoundViewController.xib */; };
 		40CFA9621608DF5300E8609E /* ProgrammingSearchYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40CFA9501608DF5200E8609E /* ProgrammingSearchYasoundViewController.xib */; };
 		40D53B561554280F001EB0C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
-		40D53B571554280F001EB0C5 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		40D53B581554280F001EB0C5 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		40D53B591554280F001EB0C5 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		40D53B5A1554280F001EB0C5 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
@@ -1846,7 +1844,6 @@
 		BC3A5D7A15FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3A5D7215FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m */; };
 		BC3A5D7B15FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3A5D7215FE4F4A00E1DF65 /* ProgrammingCatalogViewController.m */; };
 		BC3FA66314E93B660055AB4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
-		BC3FA66414E93B660055AB4A /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BC3FA66714E93B660055AB4A /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BC3FA66814E93B660055AB4A /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		BC3FA66914E93B660055AB4A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
@@ -2606,7 +2603,6 @@
 		BC5509FA160385C00027AABF /* TopBarModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5509F2160385C00027AABF /* TopBarModal.m */; };
 		BC5509FB160385C00027AABF /* TopBarModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5509F2160385C00027AABF /* TopBarModal.m */; };
 		BC56F473152486AF005D1B40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
-		BC56F474152486AF005D1B40 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BC56F475152486AF005D1B40 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BC56F476152486AF005D1B40 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		BC56F477152486AF005D1B40 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
@@ -3114,7 +3110,6 @@
 		BC71F587147F97DB00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC71F589147F9CD900DAE4BD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
 		BC71F5BD147FEC6F00DAE4BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
-		BC71F5BE147FEC6F00DAE4BD /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BC71F5C1147FEC6F00DAE4BD /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BC71F5C6147FEC6F00DAE4BD /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		BC71F5C8147FEC6F00DAE4BD /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
@@ -3314,7 +3309,6 @@
 		BC93CCC714CF3F7A007C723F /* Auth.h in Sources */ = {isa = PBXBuildFile; fileRef = BCA6554714BCA8590043B2DA /* Auth.h */; };
 		BC93CCC814CF3F7A007C723F /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA6554814BCA8590043B2DA /* Auth.m */; };
 		BC93CCC914CF3F7A007C723F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
-		BC93CCCA14CF3F7A007C723F /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BC93CCCD14CF3F7A007C723F /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BC93CCCE14CF3F7A007C723F /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		BC93CCCF14CF3F7A007C723F /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
@@ -3853,7 +3847,6 @@
 		BCC7518715E686E600CF7F7C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC7518015E686C400CF7F7C /* StoreKit.framework */; };
 		BCC7518815E686ED00CF7F7C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC7518015E686C400CF7F7C /* StoreKit.framework */; };
 		BCC7518F15E689EF00CF7F7C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
-		BCC7519015E689EF00CF7F7C /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BCC7519115E689EF00CF7F7C /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BCC7519215E689EF00CF7F7C /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		BCC7519315E689EF00CF7F7C /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
@@ -7094,7 +7087,6 @@
 		BCFD4D481525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */; };
 		BCFD4D491525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */; };
 		BCFD4D4A1525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */; };
-		BCFECFFB1468439900BA20D9 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BCFECFFE1468439900BA20D9 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		E519073C1582250A0094C0DF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
@@ -7136,7 +7128,6 @@
 		E5E4976A1625873200F7C81E /* facebook_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E497621625873200F7C81E /* facebook_logo.png */; };
 		E5E4976B1625873200F7C81E /* facebook_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E497621625873200F7C81E /* facebook_logo.png */; };
 		E5F3B8551498B88D008DD607 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
-		E5F3B8561498B88D008DD607 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		E5F3B8591498B88D008DD607 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		E5F3B85B1498B88D008DD607 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		E5F3B85C1498B88D008DD607 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
@@ -8309,8 +8300,6 @@
 		BCFD4D3E1525FE7A006CBA19 /* AccountYasoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountYasoundViewController.h; path = Settings/AccountYasoundViewController.h; sourceTree = "<group>"; };
 		BCFD4D3F1525FE7A006CBA19 /* AccountYasoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountYasoundViewController.m; path = Settings/AccountYasoundViewController.m; sourceTree = "<group>"; };
 		BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountYasoundViewController.xib; path = Settings/AccountYasoundViewController.xib; sourceTree = "<group>"; };
-		BCFECFE41468439900BA20D9 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
-		BCFECFE51468439900BA20D9 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		BCFECFEB1468439900BA20D9 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		BCFECFEC1468439900BA20D9 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
 		BCFECFF91468439900BA20D9 /* YasoundAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundAppDelegate.h; sourceTree = "<group>"; };
@@ -10720,8 +10709,6 @@
 			children = (
 				BC03052D14C0724D00F39374 /* AudioStreamManager.h */,
 				BC03052E14C0724D00F39374 /* AudioStreamManager.m */,
-				BCFECFE41468439900BA20D9 /* AudioStreamer.h */,
-				BCFECFE51468439900BA20D9 /* AudioStreamer.m */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -15839,7 +15826,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				40B40951152EFC630050D334 /* main.m in Sources */,
-				40B40952152EFC630050D334 /* AudioStreamer.m in Sources */,
 				40B40953152EFC630050D334 /* Tile.m in Sources */,
 				40B40954152EFC630050D334 /* YasoundAppDelegate.m in Sources */,
 				40B40955152EFC630050D334 /* ActivityAlertView.m in Sources */,
@@ -16102,7 +16088,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				40D53B561554280F001EB0C5 /* main.m in Sources */,
-				40D53B571554280F001EB0C5 /* AudioStreamer.m in Sources */,
 				40D53B581554280F001EB0C5 /* Tile.m in Sources */,
 				40D53B591554280F001EB0C5 /* YasoundAppDelegate.m in Sources */,
 				40D53B5A1554280F001EB0C5 /* ActivityAlertView.m in Sources */,
@@ -16365,7 +16350,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC3FA66314E93B660055AB4A /* main.m in Sources */,
-				BC3FA66414E93B660055AB4A /* AudioStreamer.m in Sources */,
 				BC3FA66714E93B660055AB4A /* Tile.m in Sources */,
 				BC3FA66814E93B660055AB4A /* YasoundAppDelegate.m in Sources */,
 				BC3FA66914E93B660055AB4A /* ActivityAlertView.m in Sources */,
@@ -16624,7 +16608,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC56F473152486AF005D1B40 /* main.m in Sources */,
-				BC56F474152486AF005D1B40 /* AudioStreamer.m in Sources */,
 				BC56F475152486AF005D1B40 /* Tile.m in Sources */,
 				BC56F476152486AF005D1B40 /* YasoundAppDelegate.m in Sources */,
 				BC56F477152486AF005D1B40 /* ActivityAlertView.m in Sources */,
@@ -16887,7 +16870,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC71F5BD147FEC6F00DAE4BD /* main.m in Sources */,
-				BC71F5BE147FEC6F00DAE4BD /* AudioStreamer.m in Sources */,
 				BC71F5C1147FEC6F00DAE4BD /* Tile.m in Sources */,
 				BC71F5C6147FEC6F00DAE4BD /* YasoundAppDelegate.m in Sources */,
 				BC71F5C8147FEC6F00DAE4BD /* ActivityAlertView.m in Sources */,
@@ -17152,7 +17134,6 @@
 				BC93CCC714CF3F7A007C723F /* Auth.h in Sources */,
 				BC93CCC814CF3F7A007C723F /* Auth.m in Sources */,
 				BC93CCC914CF3F7A007C723F /* main.m in Sources */,
-				BC93CCCA14CF3F7A007C723F /* AudioStreamer.m in Sources */,
 				BC93CCCD14CF3F7A007C723F /* Tile.m in Sources */,
 				BC93CCCE14CF3F7A007C723F /* YasoundAppDelegate.m in Sources */,
 				BC93CCCF14CF3F7A007C723F /* ActivityAlertView.m in Sources */,
@@ -17414,7 +17395,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCC7518F15E689EF00CF7F7C /* main.m in Sources */,
-				BCC7519015E689EF00CF7F7C /* AudioStreamer.m in Sources */,
 				BCC7519115E689EF00CF7F7C /* Tile.m in Sources */,
 				BCC7519215E689EF00CF7F7C /* YasoundAppDelegate.m in Sources */,
 				BCC7519315E689EF00CF7F7C /* ActivityAlertView.m in Sources */,
@@ -17677,7 +17657,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5A9A3BA1454DC0500EA374C /* main.m in Sources */,
-				BCFECFFB1468439900BA20D9 /* AudioStreamer.m in Sources */,
 				BCFECFFE1468439900BA20D9 /* Tile.m in Sources */,
 				BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */,
 				BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */,
@@ -17942,7 +17921,6 @@
 				BCA6554914BCA8590043B2DA /* Auth.h in Sources */,
 				BCA6554A14BCA8590043B2DA /* Auth.m in Sources */,
 				E5F3B8551498B88D008DD607 /* main.m in Sources */,
-				E5F3B8561498B88D008DD607 /* AudioStreamer.m in Sources */,
 				E5F3B8591498B88D008DD607 /* Tile.m in Sources */,
 				E5F3B85B1498B88D008DD607 /* YasoundAppDelegate.m in Sources */,
 				E5F3B85C1498B88D008DD607 /* ActivityAlertView.m in Sources */,

@@ -19,7 +19,6 @@
 #import "Tutorial.h"
 #import "InteractiveView.h"
 #import "ActivityModelessSpinner.h"
-#import "AudioStreamer.h"
 #import "AudioStreamManager.h"
 #import "RootViewController.h"
 

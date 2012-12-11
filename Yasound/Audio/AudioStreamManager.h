@@ -15,6 +15,9 @@
 
 #define NOTIF_AUDIOSTREAM_PLAY @"NOTIF_AudioStream_play"
 #define NOTIF_AUDIOSTREAM_STOP @"NOTIF_AudioStream_stop"
+#define NOTIF_AUDIOSTREAM_RESET @"NOTIF_AudioStream_reset"
+#define NOTIF_AUDIOSTREAM_ERROR @"NOTIF_AudioStream_error"
+#define NOTIF_DISPLAY_AUDIOSTREAM_ERROR @"NOTIF_DISPLAY_AudioStream_error"
 
 @interface AudioStreamManager : NSObject<RadioDelegate>
 {
@@ -30,8 +33,6 @@
 
 - (void)startRadio:(YaRadio*)radio;
 - (void)stopRadio;
-
-- (void)tryAndRestartOnError;
 
 - (void)playRadio;
 - (void)togglePlayPauseRadio;

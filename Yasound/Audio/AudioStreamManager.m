@@ -3,19 +3,16 @@
 //  yasound
 //
 //  Created by LOIC BERTHELOT on 01/2012
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011-2012 YaSound. All rights reserved.
 //
 
 #import "AudioStreamManager.h"
-#import "AudioStreamer.h"
 #import "YasoundDataProvider.h"
 #import "YasoundSessionManager.h"
 #import "Radio.h"
 #import "HTTPRadio.h"
 #import "MMSRadio.h"
 
-
-//#define USE_FAKE_RADIO_URL 1
 
 @implementation AudioStreamManager
 
@@ -57,7 +54,7 @@ static Radio* _gAudioStreamer = nil;
         self.currentRadio = nil;
         _isPaused = NO;
         _reseting = NO;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif::) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamMyReset:) name:NOTIF_AUDIOSTREAM_RESET object:nil];
     }
     
@@ -85,11 +82,7 @@ static Radio* _gAudioStreamer = nil;
 #if MUTE_RADIO
     return;
 #endif
-    
-//#ifdef USE_DEV_SERVER
-//    return;
-//#endif
-    
+        
     if (radio == nil)
         return;
 
@@ -292,16 +285,9 @@ static Radio* _gAudioStreamer = nil;
 {
   if (flags & AVAudioSessionInterruptionFlags_ShouldResume)
   {
-    [self playAudio];    
+    [self playRadio];
   }
 }
-
-
-
-
-
-
-
 
 
 
@@ -361,6 +347,8 @@ static Radio* _gAudioStreamer = nil;
     } else if(state == kRadioStatePlaying) {
     } else if(state == kRadioStateStopped) {
     } else if(state == kRadioStateError) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_ERROR object:nil];
+        
         RadioError error = [_gAudioStreamer radioError];
         if(error == kRadioErrorAudioQueueBufferCreate) {
             NSLog(@"Audio buffers could not be created.");
