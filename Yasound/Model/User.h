@@ -56,6 +56,7 @@ UserMood stringToUsermood(NSString* str);
 @property (retain, nonatomic) NSString* url;
 
 @property (retain, nonatomic) NSNumber* connected;
+@property (retain, nonatomic) NSNumber* anonymous;
 
 
 //String gender
@@ -100,5 +101,7 @@ UserMood stringToUsermood(NSString* str);
 - (BOOL)permission:(NSString*)permId;
 
 - (BOOL)isConnected;
+
+- (BOOL)isAnonymous;
 
 @end

@@ -42,7 +42,7 @@
 @synthesize url;
 
 @synthesize permissions;
-
+@synthesize anonymous;
 
 - (NSString*)toString
 {
@@ -115,6 +115,15 @@
         return NO;
     
     BOOL res = [self.connected boolValue];
+    return res;
+}
+
+- (BOOL)isAnonymous {
+    
+    if (self.anonymous == nil)
+        return NO;
+    
+    BOOL res = [self.anonymous boolValue];
     return res;
 }
 
