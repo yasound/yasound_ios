@@ -271,6 +271,20 @@
     
     self.buttonBlueLabel.text = NSLocalizedString(@"Profil.message", nil);
 
+    // anonymous user
+    if ([self.user isAnonymous])
+    {
+        [self enableFollow:NO];
+        [self enableSendMessage:NO];
+        self.bio.text = @"";
+        
+        // remove loading images
+        self.viewMyRadios.items = nil;
+        self.viewFavorites.items = nil;
+        self.viewFriends.items = nil;
+        return; // no need to go further
+    }
+
     // not registered
     if (![YasoundSessionManager main].registered)
     {
