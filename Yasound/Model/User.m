@@ -54,6 +54,7 @@
 - (NSString*)formatedProfil
 {
     NSString* profil = [NSString stringWithString:@""];
+    BOOL addComma = NO;
     NSString* age = nil;
     if (self.age != nil)
     {
@@ -63,27 +64,40 @@
     
     NSString* sexe = nil;
     if (self.gender.length > 0)
+    {
         sexe = NSLocalizedString(self.gender, nil);
+    }
     NSString* city = nil;
     if (self.city.length > 0)
+    {
         city = self.city;
+    }
     
     profil = [NSString string];
     if (age != nil)
+    {
         profil = [profil stringByAppendingString:age];
-    
-    if ((sexe != nil) && (profil != nil))
-        profil = [profil stringByAppendingString:@", "];
+        addComma = YES;
+    }
     
     if (sexe != nil)
+    {
+        if (addComma)
+        {
+            profil = [profil stringByAppendingString:@", "];
+        }
         profil = [profil stringByAppendingString:sexe];
-    
-    if ((city != nil) && (profil != nil))
-        profil = [profil stringByAppendingString:@", "];
+        addComma = YES;
+    }
     
     if (city != nil)
+    {
+        if (addComma)
+        {
+            profil = [profil stringByAppendingString:@", "];
+        }
         profil = [profil stringByAppendingString:city];
-
+    }
     return profil;
 }
 

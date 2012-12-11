@@ -231,10 +231,6 @@
 #pragma mark - RadioListDelegate
 
 - (void)friendListDidSelect:(User*)aFriend {
-    if ([aFriend isAnonymous])
-    {
-        return;
-    }
     ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:aFriend];
     [APPDELEGATE.navigationController pushViewController:view animated:YES];
     [view release];
