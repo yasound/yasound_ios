@@ -869,6 +869,78 @@
 		40F4C79114BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40F4C79214BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40F4C79314BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
+		40FAE2171678E63300DCB7C1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2131678E63300DCB7C1 /* .gitignore */; };
+		40FAE2181678E63300DCB7C1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2131678E63300DCB7C1 /* .gitignore */; };
+		40FAE2191678E63300DCB7C1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2131678E63300DCB7C1 /* .gitignore */; };
+		40FAE21A1678E63300DCB7C1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2131678E63300DCB7C1 /* .gitignore */; };
+		40FAE21B1678E63300DCB7C1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2131678E63300DCB7C1 /* .gitignore */; };
+		40FAE21C1678E63300DCB7C1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2131678E63300DCB7C1 /* .gitignore */; };
+		40FAE21D1678E63300DCB7C1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2131678E63300DCB7C1 /* .gitignore */; };
+		40FAE21E1678E63300DCB7C1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2131678E63300DCB7C1 /* .gitignore */; };
+		40FAE21F1678E63300DCB7C1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2131678E63300DCB7C1 /* .gitignore */; };
+		40FAE2201678E63300DCB7C1 /* .gitmodules in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2141678E63300DCB7C1 /* .gitmodules */; };
+		40FAE2211678E63300DCB7C1 /* .gitmodules in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2141678E63300DCB7C1 /* .gitmodules */; };
+		40FAE2221678E63300DCB7C1 /* .gitmodules in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2141678E63300DCB7C1 /* .gitmodules */; };
+		40FAE2231678E63300DCB7C1 /* .gitmodules in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2141678E63300DCB7C1 /* .gitmodules */; };
+		40FAE2241678E63300DCB7C1 /* .gitmodules in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2141678E63300DCB7C1 /* .gitmodules */; };
+		40FAE2251678E63300DCB7C1 /* .gitmodules in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2141678E63300DCB7C1 /* .gitmodules */; };
+		40FAE2261678E63300DCB7C1 /* .gitmodules in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2141678E63300DCB7C1 /* .gitmodules */; };
+		40FAE2271678E63300DCB7C1 /* .gitmodules in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2141678E63300DCB7C1 /* .gitmodules */; };
+		40FAE2281678E63300DCB7C1 /* .gitmodules in Resources */ = {isa = PBXBuildFile; fileRef = 40FAE2141678E63300DCB7C1 /* .gitmodules */; };
+		40FAE2291678E63300DCB7C1 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2161678E63300DCB7C1 /* SocketIO.m */; };
+		40FAE22A1678E63300DCB7C1 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2161678E63300DCB7C1 /* SocketIO.m */; };
+		40FAE22B1678E63300DCB7C1 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2161678E63300DCB7C1 /* SocketIO.m */; };
+		40FAE22C1678E63300DCB7C1 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2161678E63300DCB7C1 /* SocketIO.m */; };
+		40FAE22D1678E63300DCB7C1 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2161678E63300DCB7C1 /* SocketIO.m */; };
+		40FAE22E1678E63300DCB7C1 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2161678E63300DCB7C1 /* SocketIO.m */; };
+		40FAE22F1678E63300DCB7C1 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2161678E63300DCB7C1 /* SocketIO.m */; };
+		40FAE2301678E63300DCB7C1 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2161678E63300DCB7C1 /* SocketIO.m */; };
+		40FAE2311678E63300DCB7C1 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2161678E63300DCB7C1 /* SocketIO.m */; };
+		40FAE23C1678E63D00DCB7C1 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2351678E63D00DCB7C1 /* AsyncSocket.m */; };
+		40FAE23D1678E63D00DCB7C1 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2351678E63D00DCB7C1 /* AsyncSocket.m */; };
+		40FAE23E1678E63D00DCB7C1 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2351678E63D00DCB7C1 /* AsyncSocket.m */; };
+		40FAE23F1678E63D00DCB7C1 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2351678E63D00DCB7C1 /* AsyncSocket.m */; };
+		40FAE2401678E63D00DCB7C1 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2351678E63D00DCB7C1 /* AsyncSocket.m */; };
+		40FAE2411678E63D00DCB7C1 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2351678E63D00DCB7C1 /* AsyncSocket.m */; };
+		40FAE2421678E63D00DCB7C1 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2351678E63D00DCB7C1 /* AsyncSocket.m */; };
+		40FAE2431678E63D00DCB7C1 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2351678E63D00DCB7C1 /* AsyncSocket.m */; };
+		40FAE2441678E63D00DCB7C1 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2351678E63D00DCB7C1 /* AsyncSocket.m */; };
+		40FAE2451678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2371678E63D00DCB7C1 /* AsyncUdpSocket.m */; };
+		40FAE2461678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2371678E63D00DCB7C1 /* AsyncUdpSocket.m */; };
+		40FAE2471678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2371678E63D00DCB7C1 /* AsyncUdpSocket.m */; };
+		40FAE2481678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2371678E63D00DCB7C1 /* AsyncUdpSocket.m */; };
+		40FAE2491678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2371678E63D00DCB7C1 /* AsyncUdpSocket.m */; };
+		40FAE24A1678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2371678E63D00DCB7C1 /* AsyncUdpSocket.m */; };
+		40FAE24B1678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2371678E63D00DCB7C1 /* AsyncUdpSocket.m */; };
+		40FAE24C1678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2371678E63D00DCB7C1 /* AsyncUdpSocket.m */; };
+		40FAE24D1678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2371678E63D00DCB7C1 /* AsyncUdpSocket.m */; };
+		40FAE24E1678E63D00DCB7C1 /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2391678E63D00DCB7C1 /* WebSocket.m */; };
+		40FAE24F1678E63D00DCB7C1 /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2391678E63D00DCB7C1 /* WebSocket.m */; };
+		40FAE2501678E63D00DCB7C1 /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2391678E63D00DCB7C1 /* WebSocket.m */; };
+		40FAE2511678E63D00DCB7C1 /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2391678E63D00DCB7C1 /* WebSocket.m */; };
+		40FAE2521678E63D00DCB7C1 /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2391678E63D00DCB7C1 /* WebSocket.m */; };
+		40FAE2531678E63D00DCB7C1 /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2391678E63D00DCB7C1 /* WebSocket.m */; };
+		40FAE2541678E63D00DCB7C1 /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2391678E63D00DCB7C1 /* WebSocket.m */; };
+		40FAE2551678E63D00DCB7C1 /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2391678E63D00DCB7C1 /* WebSocket.m */; };
+		40FAE2561678E63D00DCB7C1 /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2391678E63D00DCB7C1 /* WebSocket.m */; };
+		40FAE2571678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE23B1678E63D00DCB7C1 /* WebSocketAppDelegate.m */; };
+		40FAE2581678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE23B1678E63D00DCB7C1 /* WebSocketAppDelegate.m */; };
+		40FAE2591678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE23B1678E63D00DCB7C1 /* WebSocketAppDelegate.m */; };
+		40FAE25A1678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE23B1678E63D00DCB7C1 /* WebSocketAppDelegate.m */; };
+		40FAE25B1678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE23B1678E63D00DCB7C1 /* WebSocketAppDelegate.m */; };
+		40FAE25C1678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE23B1678E63D00DCB7C1 /* WebSocketAppDelegate.m */; };
+		40FAE25D1678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE23B1678E63D00DCB7C1 /* WebSocketAppDelegate.m */; };
+		40FAE25E1678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE23B1678E63D00DCB7C1 /* WebSocketAppDelegate.m */; };
+		40FAE25F1678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE23B1678E63D00DCB7C1 /* WebSocketAppDelegate.m */; };
+		40FAE2631678E64800DCB7C1 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2621678E64800DCB7C1 /* RegexKitLite.m */; };
+		40FAE2641678E64800DCB7C1 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2621678E64800DCB7C1 /* RegexKitLite.m */; };
+		40FAE2651678E64800DCB7C1 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2621678E64800DCB7C1 /* RegexKitLite.m */; };
+		40FAE2661678E64800DCB7C1 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2621678E64800DCB7C1 /* RegexKitLite.m */; };
+		40FAE2671678E64800DCB7C1 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2621678E64800DCB7C1 /* RegexKitLite.m */; };
+		40FAE2681678E64800DCB7C1 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2621678E64800DCB7C1 /* RegexKitLite.m */; };
+		40FAE2691678E64800DCB7C1 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2621678E64800DCB7C1 /* RegexKitLite.m */; };
+		40FAE26A1678E64800DCB7C1 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2621678E64800DCB7C1 /* RegexKitLite.m */; };
+		40FAE26B1678E64800DCB7C1 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FAE2621678E64800DCB7C1 /* RegexKitLite.m */; };
 		40FE9F3715FE16FD00CE615B /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3215FE16FD00CE615B /* FPPopoverController.m */; };
 		40FE9F3815FE16FD00CE615B /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3215FE16FD00CE615B /* FPPopoverController.m */; };
 		40FE9F3915FE16FD00CE615B /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE9F3215FE16FD00CE615B /* FPPopoverController.m */; };
@@ -7291,6 +7363,20 @@
 		40F4C78A14BDF40F00A163F9 /* SongUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongUser.m; sourceTree = "<group>"; };
 		40F4C78F14BEEF6F00A163F9 /* NextSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextSong.h; sourceTree = "<group>"; };
 		40F4C79014BEEF6F00A163F9 /* NextSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextSong.m; sourceTree = "<group>"; };
+		40FAE2131678E63300DCB7C1 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		40FAE2141678E63300DCB7C1 /* .gitmodules */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitmodules; sourceTree = "<group>"; };
+		40FAE2151678E63300DCB7C1 /* SocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIO.h; sourceTree = "<group>"; };
+		40FAE2161678E63300DCB7C1 /* SocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIO.m; sourceTree = "<group>"; };
+		40FAE2341678E63D00DCB7C1 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		40FAE2351678E63D00DCB7C1 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		40FAE2361678E63D00DCB7C1 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
+		40FAE2371678E63D00DCB7C1 /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
+		40FAE2381678E63D00DCB7C1 /* WebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocket.h; sourceTree = "<group>"; };
+		40FAE2391678E63D00DCB7C1 /* WebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocket.m; sourceTree = "<group>"; };
+		40FAE23A1678E63D00DCB7C1 /* WebSocketAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocketAppDelegate.h; sourceTree = "<group>"; };
+		40FAE23B1678E63D00DCB7C1 /* WebSocketAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocketAppDelegate.m; sourceTree = "<group>"; };
+		40FAE2611678E64800DCB7C1 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		40FAE2621678E64800DCB7C1 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		40FE9F2215FDF4B600CE615B /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		40FE9F3115FE16FD00CE615B /* FPPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverController.h; sourceTree = "<group>"; };
 		40FE9F3215FE16FD00CE615B /* FPPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverController.m; sourceTree = "<group>"; };
@@ -8795,6 +8881,52 @@
 			path = LibTools/ImageResize;
 			sourceTree = SOURCE_ROOT;
 		};
+		40FAE2121678E63300DCB7C1 /* socket.IO-objc-non-arc */ = {
+			isa = PBXGroup;
+			children = (
+				40FAE2131678E63300DCB7C1 /* .gitignore */,
+				40FAE2141678E63300DCB7C1 /* .gitmodules */,
+				40FAE2151678E63300DCB7C1 /* SocketIO.h */,
+				40FAE2161678E63300DCB7C1 /* SocketIO.m */,
+			);
+			name = "socket.IO-objc-non-arc";
+			path = "ThirdParties/socket.IO-objc-non-arc";
+			sourceTree = "<group>";
+		};
+		40FAE2321678E63D00DCB7C1 /* cocoa-websocket */ = {
+			isa = PBXGroup;
+			children = (
+				40FAE2331678E63D00DCB7C1 /* AsyncSocket */,
+				40FAE2381678E63D00DCB7C1 /* WebSocket.h */,
+				40FAE2391678E63D00DCB7C1 /* WebSocket.m */,
+				40FAE23A1678E63D00DCB7C1 /* WebSocketAppDelegate.h */,
+				40FAE23B1678E63D00DCB7C1 /* WebSocketAppDelegate.m */,
+			);
+			name = "cocoa-websocket";
+			path = "ThirdParties/cocoa-websocket";
+			sourceTree = "<group>";
+		};
+		40FAE2331678E63D00DCB7C1 /* AsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				40FAE2341678E63D00DCB7C1 /* AsyncSocket.h */,
+				40FAE2351678E63D00DCB7C1 /* AsyncSocket.m */,
+				40FAE2361678E63D00DCB7C1 /* AsyncUdpSocket.h */,
+				40FAE2371678E63D00DCB7C1 /* AsyncUdpSocket.m */,
+			);
+			path = AsyncSocket;
+			sourceTree = "<group>";
+		};
+		40FAE2601678E64800DCB7C1 /* RegexKitLite-4.0 */ = {
+			isa = PBXGroup;
+			children = (
+				40FAE2611678E64800DCB7C1 /* RegexKitLite.h */,
+				40FAE2621678E64800DCB7C1 /* RegexKitLite.m */,
+			);
+			name = "RegexKitLite-4.0";
+			path = "ThirdParties/RegexKitLite-4.0";
+			sourceTree = "<group>";
+		};
 		40FE9F3015FE16FD00CE615B /* FPPopover */ = {
 			isa = PBXGroup;
 			children = (
@@ -9936,6 +10068,9 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				40FAE2601678E64800DCB7C1 /* RegexKitLite-4.0 */,
+				40FAE2321678E63D00DCB7C1 /* cocoa-websocket */,
+				40FAE2121678E63300DCB7C1 /* socket.IO-objc-non-arc */,
 				6E194E6A166DF6B8009EECEC /* RadioTunes */,
 				BC325FD8161038B300BA38C9 /* UIDevice+Resolutions */,
 				BCD1520F160C6976009E3604 /* TestFlightSDK1 */,
@@ -11619,6 +11754,8 @@
 				BC6EACA21626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACAB1626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5316271038005C42DB /* WallListenersViewController.xib in Resources */,
+				40FAE21E1678E63300DCB7C1 /* .gitignore in Resources */,
+				40FAE2271678E63300DCB7C1 /* .gitmodules in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12138,6 +12275,8 @@
 				BC6EACA31626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACAC1626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5416271038005C42DB /* WallListenersViewController.xib in Resources */,
+				40FAE21F1678E63300DCB7C1 /* .gitignore in Resources */,
+				40FAE2281678E63300DCB7C1 /* .gitmodules in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12651,6 +12790,8 @@
 				BC6EACA11626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACAA1626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5216271038005C42DB /* WallListenersViewController.xib in Resources */,
+				40FAE21D1678E63300DCB7C1 /* .gitignore in Resources */,
+				40FAE2261678E63300DCB7C1 /* .gitmodules in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13169,6 +13310,8 @@
 				BC6EAC9E1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA71626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC4F16271038005C42DB /* WallListenersViewController.xib in Resources */,
+				40FAE21A1678E63300DCB7C1 /* .gitignore in Resources */,
+				40FAE2231678E63300DCB7C1 /* .gitmodules in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13687,6 +13830,8 @@
 				BC6EAC9C1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA51626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC4D16271038005C42DB /* WallListenersViewController.xib in Resources */,
+				40FAE2181678E63300DCB7C1 /* .gitignore in Resources */,
+				40FAE2211678E63300DCB7C1 /* .gitmodules in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14205,6 +14350,8 @@
 				BC6EACA01626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA91626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5116271038005C42DB /* WallListenersViewController.xib in Resources */,
+				40FAE21C1678E63300DCB7C1 /* .gitignore in Resources */,
+				40FAE2251678E63300DCB7C1 /* .gitmodules in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14724,6 +14871,8 @@
 				BC6EAC9D1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA61626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC4E16271038005C42DB /* WallListenersViewController.xib in Resources */,
+				40FAE2191678E63300DCB7C1 /* .gitignore in Resources */,
+				40FAE2221678E63300DCB7C1 /* .gitmodules in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15242,6 +15391,8 @@
 				BC6EAC9B1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA41626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC4C16271038005C42DB /* WallListenersViewController.xib in Resources */,
+				40FAE2171678E63300DCB7C1 /* .gitignore in Resources */,
+				40FAE2201678E63300DCB7C1 /* .gitmodules in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15760,6 +15911,8 @@
 				BC6EAC9F1626F17D0001F431 /* wallHeaderButtonPressed.png in Resources */,
 				BC6EACA81626F17D0001F431 /* wallHeaderButtonPressed@2x.png in Resources */,
 				BCE6FC5016271038005C42DB /* WallListenersViewController.xib in Resources */,
+				40FAE21B1678E63300DCB7C1 /* .gitignore in Resources */,
+				40FAE2241678E63300DCB7C1 /* .gitmodules in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16080,6 +16233,12 @@
 				6E194F0D166DF6B9009EECEC /* Radio.m in Sources */,
 				6E194F16166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
 				6E194F1F166DF6B9009EECEC /* XMLUtilities.m in Sources */,
+				40FAE2301678E63300DCB7C1 /* SocketIO.m in Sources */,
+				40FAE2431678E63D00DCB7C1 /* AsyncSocket.m in Sources */,
+				40FAE24C1678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
+				40FAE2551678E63D00DCB7C1 /* WebSocket.m in Sources */,
+				40FAE25E1678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */,
+				40FAE26A1678E64800DCB7C1 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16342,6 +16501,12 @@
 				6E194F0E166DF6B9009EECEC /* Radio.m in Sources */,
 				6E194F17166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
 				6E194F20166DF6B9009EECEC /* XMLUtilities.m in Sources */,
+				40FAE2311678E63300DCB7C1 /* SocketIO.m in Sources */,
+				40FAE2441678E63D00DCB7C1 /* AsyncSocket.m in Sources */,
+				40FAE24D1678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
+				40FAE2561678E63D00DCB7C1 /* WebSocket.m in Sources */,
+				40FAE25F1678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */,
+				40FAE26B1678E64800DCB7C1 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16600,6 +16765,12 @@
 				6E194F0C166DF6B9009EECEC /* Radio.m in Sources */,
 				6E194F15166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
 				6E194F1E166DF6B9009EECEC /* XMLUtilities.m in Sources */,
+				40FAE22F1678E63300DCB7C1 /* SocketIO.m in Sources */,
+				40FAE2421678E63D00DCB7C1 /* AsyncSocket.m in Sources */,
+				40FAE24B1678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
+				40FAE2541678E63D00DCB7C1 /* WebSocket.m in Sources */,
+				40FAE25D1678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */,
+				40FAE2691678E64800DCB7C1 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16862,6 +17033,12 @@
 				6E194F09166DF6B9009EECEC /* Radio.m in Sources */,
 				6E194F12166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
 				6E194F1B166DF6B9009EECEC /* XMLUtilities.m in Sources */,
+				40FAE22C1678E63300DCB7C1 /* SocketIO.m in Sources */,
+				40FAE23F1678E63D00DCB7C1 /* AsyncSocket.m in Sources */,
+				40FAE2481678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
+				40FAE2511678E63D00DCB7C1 /* WebSocket.m in Sources */,
+				40FAE25A1678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */,
+				40FAE2661678E64800DCB7C1 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17124,6 +17301,12 @@
 				6E194F07166DF6B9009EECEC /* Radio.m in Sources */,
 				6E194F10166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
 				6E194F19166DF6B9009EECEC /* XMLUtilities.m in Sources */,
+				40FAE22A1678E63300DCB7C1 /* SocketIO.m in Sources */,
+				40FAE23D1678E63D00DCB7C1 /* AsyncSocket.m in Sources */,
+				40FAE2461678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
+				40FAE24F1678E63D00DCB7C1 /* WebSocket.m in Sources */,
+				40FAE2581678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */,
+				40FAE2641678E64800DCB7C1 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17387,6 +17570,12 @@
 				6E194F0B166DF6B9009EECEC /* Radio.m in Sources */,
 				6E194F14166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
 				6E194F1D166DF6B9009EECEC /* XMLUtilities.m in Sources */,
+				40FAE22E1678E63300DCB7C1 /* SocketIO.m in Sources */,
+				40FAE2411678E63D00DCB7C1 /* AsyncSocket.m in Sources */,
+				40FAE24A1678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
+				40FAE2531678E63D00DCB7C1 /* WebSocket.m in Sources */,
+				40FAE25C1678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */,
+				40FAE2681678E64800DCB7C1 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17649,6 +17838,12 @@
 				6E194F08166DF6B9009EECEC /* Radio.m in Sources */,
 				6E194F11166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
 				6E194F1A166DF6B9009EECEC /* XMLUtilities.m in Sources */,
+				40FAE22B1678E63300DCB7C1 /* SocketIO.m in Sources */,
+				40FAE23E1678E63D00DCB7C1 /* AsyncSocket.m in Sources */,
+				40FAE2471678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
+				40FAE2501678E63D00DCB7C1 /* WebSocket.m in Sources */,
+				40FAE2591678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */,
+				40FAE2651678E64800DCB7C1 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17911,6 +18106,12 @@
 				6E194F06166DF6B9009EECEC /* Radio.m in Sources */,
 				6E194F0F166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
 				6E194F18166DF6B9009EECEC /* XMLUtilities.m in Sources */,
+				40FAE2291678E63300DCB7C1 /* SocketIO.m in Sources */,
+				40FAE23C1678E63D00DCB7C1 /* AsyncSocket.m in Sources */,
+				40FAE2451678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
+				40FAE24E1678E63D00DCB7C1 /* WebSocket.m in Sources */,
+				40FAE2571678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */,
+				40FAE2631678E64800DCB7C1 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -18174,6 +18375,12 @@
 				6E194F0A166DF6B9009EECEC /* Radio.m in Sources */,
 				6E194F13166DF6B9009EECEC /* NSHTTPURLResponse+RadioKit.m in Sources */,
 				6E194F1C166DF6B9009EECEC /* XMLUtilities.m in Sources */,
+				40FAE22D1678E63300DCB7C1 /* SocketIO.m in Sources */,
+				40FAE2401678E63D00DCB7C1 /* AsyncSocket.m in Sources */,
+				40FAE2491678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
+				40FAE2521678E63D00DCB7C1 /* WebSocket.m in Sources */,
+				40FAE25B1678E63D00DCB7C1 /* WebSocketAppDelegate.m in Sources */,
+				40FAE2671678E64800DCB7C1 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
