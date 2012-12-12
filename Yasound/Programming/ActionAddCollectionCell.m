@@ -48,14 +48,14 @@
 
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier genre:(NSString*)genre subtitle:(NSString*)subtitle forRadio:(YaRadio*)radio usingCatalog:(SongCatalog*)catalog {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier genre:(NSString*)genre subtitle:(NSString*)subtitle forRadio:(YaRadio*)aRadio usingCatalog:(SongCatalog*)catalog {
 
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self)
     {
         self.mode = eGenreAdd;
-        self.radio = radio;
+        self.radio = aRadio;
         self.catalog = catalog;
         self.collection = genre;
         
@@ -66,14 +66,14 @@
 }
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier playlist:(NSString*)playlist subtitle:(NSString*)subtitle forRadio:(YaRadio*)radio usingCatalog:(SongCatalog*)catalog {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier playlist:(NSString*)playlist subtitle:(NSString*)subtitle forRadio:(YaRadio*)aRadio usingCatalog:(SongCatalog*)catalog {
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self)
     {
         self.mode = ePlaylistAdd;
-        self.radio = radio;
+        self.radio = aRadio;
         self.catalog = catalog;
         self.collection = playlist;
         
@@ -83,14 +83,14 @@
     return self;
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier artist:(NSString*)artist subtitle:(NSString*)subtitle forRadio:(YaRadio*)radio usingCatalog:(SongCatalog*)catalog {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier artist:(NSString*)artist subtitle:(NSString*)subtitle forRadio:(YaRadio*)aRadio usingCatalog:(SongCatalog*)catalog {
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self)
     {
         self.mode = eArtistAdd;
-        self.radio = radio;
+        self.radio = aRadio;
         self.catalog = catalog;
         self.collection = artist;
         
@@ -100,14 +100,14 @@
     return self;
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier album:(NSString*)album subtitle:(NSString*)subtitle forRadio:(YaRadio*)radio usingCatalog:(SongCatalog*)catalog {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier album:(NSString*)album subtitle:(NSString*)subtitle forRadio:(YaRadio*)aRadio usingCatalog:(SongCatalog*)catalog {
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self)
     {
         self.mode = eAlbumAdd;
-        self.radio = radio;
+        self.radio = aRadio;
         self.catalog = catalog;
         self.collection = album;
         
@@ -316,14 +316,11 @@
             continue;
         }
 
-        
-        Song* matchedSong = [[SongRadioCatalog main].matchedSongs objectForKey:songKey];
-        
         // don't upload if the song is programmed already
-        BOOL isProgrammed = (matchedSong != nil);
+        BOOL isProgrammed = [song isProgrammed];
         
         //        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio];
-        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.catalogKey forRadio:self.radio];
+        BOOL isUploading = [[SongUploadManager main] getUploadingSong:song.catalogKey forRadio:self.radio] != nil;
         
         areAllDisabled &= (isProgrammed || isUploading);
     }
