@@ -54,7 +54,7 @@ static Radio* _gAudioStreamer = nil;
         self.currentRadio = nil;
         _isPaused = NO;
         _reseting = NO;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif::) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamMyReset:) name:NOTIF_AUDIOSTREAM_RESET object:nil];
     }
     
