@@ -274,6 +274,14 @@
 {
     [super viewWillDisappear: animated];
     
+    // close push server connection
+    if (_socketIO)
+    {
+        [_socketIO disconnect];
+        [_socketIO release];
+        _socketIO = nil;
+    }
+    
     [[YasoundDataProvider main] leaveRadioWall:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
         if (error)
         {
@@ -434,21 +442,26 @@
     
     if ([_updateLock tryLock])
     {
-        if (_wallEvents.count > 0)
+        if (_socketIO == nil) // if push server is available, new wall events and current song events are sent directly, no nedd to poll
         {
-            NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
-            [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID withCompletionBlock:^(int status, NSString* response, NSError* error){
-                [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
-            }];
-        }
-        else
-        {
-            [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 withCompletionBlock:^(int status, NSString* response, NSError* error){
-                [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
-            }];
+            if (_wallEvents.count > 0)
+            {
+                NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
+                [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID withCompletionBlock:^(int status, NSString* response, NSError* error){
+                    [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
+                }];
+            }
+            else
+            {
+                [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 withCompletionBlock:^(int status, NSString* response, NSError* error){
+                    [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
+                }];
+            }
+            
+            [self refreshCurrentSong];
         }
         
-        [self refreshCurrentSong];
+        // current users are not handled by the push server
         [self refreshCurrentUsers];
         
         [_updateLock unlock];
@@ -1369,13 +1382,14 @@
             DLog(@"post wall message error: %d - %@", error.code, error. domain);
             return;
         }
-        if (status != 200)
+        if (status != 201)
         {
             DLog(@"post wall message error: response status %d", status);
             return;
         }
         
-        [[ActivityModelessSpinner main] removeRef];        
+        [[ActivityModelessSpinner main] removeRef];
+        if (_socketIO == nil)
         [self updateCurrentWall];
     }];
 }
@@ -1699,8 +1713,6 @@
     }
     
     [_socketIO sendEvent:@"subscribe" withData:[NSDictionary dictionaryWithObject:self.radio.id forKey:@"radio_id"]];
-//    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:@"subscribe", @"name", self.radio.id, @"radio_id", nil];
-//    [_socketIO sendJSON:dict];
 }
 
 - (void) socketIODidDisconnect:(SocketIO*)socket
@@ -1711,82 +1723,128 @@
         DLog(@"wrong socketIO");
         return;
     }
+    
+    if (_socketIO)
+    {
+        [_socketIO release];
+        _socketIO = nil;
+    }
 }
 
 - (void) socketIO:(SocketIO*)socket didReceiveMessage:(SocketIOPacket*)packet
 {
-    DLog(@"socketIO: didReceiveMessage:");
-    if (socket != _socketIO)
-    {
-        DLog(@"wrong socketIO");
-        return;
-    }
-    
-    DLog(@"***** packet:");
-    DLog(@"type     : %@", packet.type);
-    DLog(@"pid      : %@", packet.pId);
-    DLog(@"ack      : %@", packet.ack);
-    DLog(@"name     : %@", packet.name);
-    DLog(@"data     : %@", packet.data);
-    DLog(@"endpoint : %@", packet.endpoint);
-    DLog(@"*****");
+    DLog(@"socketIO: didReceiveMessage");
 }
 
 - (void) socketIO:(SocketIO*)socket didReceiveJSON:(SocketIOPacket*)packet
 {
-    DLog(@"socketIO: didReceiveJSON:");
-    if (socket != _socketIO)
-    {
-        DLog(@"wrong socketIO");
-        return;
-    }
-    
-    DLog(@"***** packet:");
-    DLog(@"type     : %@", packet.type);
-    DLog(@"pid      : %@", packet.pId);
-    DLog(@"ack      : %@", packet.ack);
-    DLog(@"name     : %@", packet.name);
-    DLog(@"data     : %@", packet.data);
-    DLog(@"endpoint : %@", packet.endpoint);
-    DLog(@"*****");
+    DLog(@"socketIO: didReceiveJSON");
 }
 
 - (void) socketIO:(SocketIO*)socket didReceiveEvent:(SocketIOPacket*)packet
 {
-    DLog(@"socketIO: didReceiveEvent:");
+    DLog(@"socketIO: didReceiveEvent");
     if (socket != _socketIO)
     {
         DLog(@"wrong socketIO");
         return;
     }
     
-    DLog(@"***** packet:");
-    DLog(@"type     : %@", packet.type);
-    DLog(@"pid      : %@", packet.pId);
-    DLog(@"ack      : %@", packet.ack);
-    DLog(@"name     : %@", packet.name);
-    DLog(@"data     : %@", packet.data);
-    DLog(@"endpoint : %@", packet.endpoint);
-    DLog(@"*****");
+    if (!packet.data)
+        return;
+    
+    NSDictionary* packetDataDict = [packet.data JSONValue];
+    if (!packetDataDict)
+        return;
+    
+    NSString* eventName = [packetDataDict valueForKey:@"name"];
+    if ([eventName isEqualToString:@"radio_event"] == NO)
+        return;
+    
+    NSArray* args = [packetDataDict valueForKey:@"args"];
+    if (!args || [args isKindOfClass:[NSArray class]] == NO || args.count == 0)
+        return;
+    
+    NSDictionary* arg0 = [args objectAtIndex:0];
+    if (!arg0)
+        return;
+    
+    NSString* dataStr = [arg0 valueForKey:@"data"];
+    if (!dataStr)
+        return;
+    
+    NSDictionary* data = [dataStr JSONValue];
+    if (!data)
+        return;
+    
+    NSString* type = [data valueForKey:@"event_type"];
+    if (!type)
+        return;
+    
+    NSString* descStr = [data valueForKey:@"data"];
+    if (!descStr)
+        return;
+    
+    if ([type isEqualToString:@"wall_event"])
+    {
+        WallEvent* ev = (WallEvent*)[descStr jsonToModel:[WallEvent class]];
+        if (!ev.id)
+            return;
+        DLog(@"socket.io: new wall event (id = %@)", ev.id);
+        
+        if ([ev wallEventType] == eWallEventTypeMessage)
+        {
+            [self receivedCurrentMessageEvent:ev];
+            _countMessageEvent++;
+        }
+        else if ([ev wallEventType] == eWallEventTypeLike)
+            [self receivedCurrentLikeEvent:ev];
+        else if ([ev wallEventType] == eWallEventTypeSong)
+            [self receivedCurrentSongEvent:ev];
+    }
+    else if ([type isEqualToString:@"wall_event_deleted"])
+    {
+        WallEvent* ev = (WallEvent*)[descStr jsonToModel:[WallEvent class]];
+        if (!ev.id)
+            return;
+        DLog(@"socket.io: wall event deleted (id = %@)", ev.id);
+        
+        int index = 0;
+        BOOL toremove = NO;
+        for (WallEvent* e in _wallEvents)
+        {
+            if ([ev isEqual:e])
+            {
+                toremove = YES;
+                break;
+            }
+            index++;
+        }
+        
+        if (toremove)
+        {
+            [_wallEvents removeObjectAtIndex:index];
+            if ([ev isEqual:_lastWallEvent])
+                _lastWallEvent = [_wallEvents objectAtIndex:_wallEvents.count - 1];
+            if ([ev isEqual:_latestEvent])
+                _latestEvent = [_wallEvents objectAtIndex:_wallEvents.count - 1];
+            if ([ev wallEventType] == eWallEventTypeMessage)
+                _countMessageEvent--;
+        }
+    }
+    else if ([type isEqualToString:@"song"])
+    {
+        Song* song = (Song*)[descStr jsonToModel:[Song class]];
+        if (!song.id)
+            return;
+        
+        DLog(@"current song updated (id = %@ - name = %@)", song.id, song.name);
+        [self setNowPlaying:song];
+    }
 }
 
 - (void) socketIO:(SocketIO*)socket didSendMessage:(SocketIOPacket*)packet
 {
-    DLog(@"socketIO: didSendMessage:");
-    if (socket != _socketIO)
-    {
-        DLog(@"wrong socketIO");
-        return;
-    }
-    
-    DLog(@"***** packet:");
-    DLog(@"type     : %@", packet.type);
-    DLog(@"pid      : %@", packet.pId);
-    DLog(@"ack      : %@", packet.ack);
-    DLog(@"name     : %@", packet.name);
-    DLog(@"data     : %@", packet.data);
-    DLog(@"endpoint : %@", packet.endpoint);
-    DLog(@"*****");
 }
 
 - (void) socketIOHandshakeFailed:(SocketIO*)socket
@@ -1796,6 +1854,13 @@
     {
         DLog(@"wrong socketIO");
         return;
+    }
+    
+    if (_socketIO)
+    {
+        [_socketIO disconnect];
+        [_socketIO release];
+        _socketIO = nil;
     }
 }
 

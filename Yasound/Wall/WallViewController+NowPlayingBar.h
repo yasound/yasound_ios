@@ -8,12 +8,11 @@
 #import <UIKit/UIKit.h>
 #import "WallViewController.h"
 
-
+@class Song;
 
 @interface WallViewController (NowPlayingBar)
 
-
-- (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes;
+- (void)setNowPlaying:(Song*)song;
 - (void)setPause:(BOOL)set;
 
 

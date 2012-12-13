@@ -22,7 +22,7 @@
 @class AudioStreamer;
 @class WebImageView;
 
-@interface WallViewController : YaViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate, MFMailComposeViewControllerDelegate,TopBarDelegate, SocketIODelegate>
+@interface WallViewController : YaViewController<NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate, MFMailComposeViewControllerDelegate,TopBarDelegate, SocketIODelegate>
 {
     BOOL _updatingPrevious;
     UILabel* _updatingPreviousLabel;
@@ -106,7 +106,6 @@
 
 
 - (id)initWithRadio:(YaRadio*)radio;
-- (void)initRadioView;
 
 - (void)setStatusMessage:(NSString*)message;
 
