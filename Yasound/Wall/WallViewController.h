@@ -16,12 +16,13 @@
 #import "TopBar.h"
 #import "WallHeaderCell.h"
 #import "WallPostCell.h"
+#import "SocketIO.h"
 
 @class YaRadio;
 @class AudioStreamer;
 @class WebImageView;
 
-@interface WallViewController : YaViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate, MFMailComposeViewControllerDelegate,TopBarDelegate>
+@interface WallViewController : YaViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate, MFMailComposeViewControllerDelegate,TopBarDelegate, SocketIODelegate>
 {
     BOOL _updatingPrevious;
     UILabel* _updatingPreviousLabel;
@@ -71,6 +72,8 @@
     UIActionSheet* _sheetTools;
     
     BOOL _stopWall;
+    
+    SocketIO* _socketIO;
 }
 
 @property (nonatomic, retain) YaRadio* radio;

@@ -44,7 +44,6 @@
 #import "ProgrammingViewController.h"
 #import "MessageBroadcastModalViewController.h"
 
-
 //#define LOCAL 1 // use localhost as the server
 
 #define SERVER_DATA_REQUEST_TIMER 5.0f
@@ -146,6 +145,8 @@
         _cellEditing = nil;
         
         _updateLock = [[NSLock alloc] init];
+        
+        _socketIO = nil;
     }
     
     return self;
@@ -227,7 +228,6 @@
     
     // check for tutorial
     [[Tutorial main] show:TUTORIAL_KEY_RADIOVIEW everyTime:NO];
-
 }
 
 
@@ -250,6 +250,11 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REFRESH_GUI object:nil];
     
+    // connect to push server
+    NSString* pushHost = APPDELEGATE.serverURL;
+    DLog(@"push server host: %@", pushHost);
+    _socketIO = [[SocketIO alloc] initWithDelegate:self];
+    [_socketIO connectToHost:pushHost onPort:9000];
 }
 
 
@@ -1670,6 +1675,114 @@
     [self scrollViewDidScroll:self.tableview];
 }
 
+
+#pragma mark - SocketIODelegate
+
+- (void) socketIODidConnect:(SocketIO*)socket
+{
+    DLog(@"socketIODidConnect");
+    if (socket != _socketIO)
+    {
+        DLog(@"wrong socketIO");
+        return;
+    }
+}
+
+- (void) socketIODidDisconnect:(SocketIO*)socket
+{
+    DLog(@"socketIODidDisconnect");
+    if (socket != _socketIO)
+    {
+        DLog(@"wrong socketIO");
+        return;
+    }
+}
+
+- (void) socketIO:(SocketIO*)socket didReceiveMessage:(SocketIOPacket*)packet
+{
+    DLog(@"socketIO: didReceiveMessage:");
+    if (socket != _socketIO)
+    {
+        DLog(@"wrong socketIO");
+        return;
+    }
+    
+    DLog(@"*****\npacket:\n");
+    DLog(@"type     : %@", packet.type);
+    DLog(@"pid      : %@", packet.pId);
+    DLog(@"ack      : %@", packet.ack);
+    DLog(@"name     : %@", packet.name);
+    DLog(@"data     : %@", packet.data);
+    DLog(@"endpoint : %@", packet.endpoint);
+    DLog(@"*****\n");
+}
+
+- (void) socketIO:(SocketIO*)socket didReceiveJSON:(SocketIOPacket*)packet
+{
+    DLog(@"socketIO: didReceiveJSON:");
+    if (socket != _socketIO)
+    {
+        DLog(@"wrong socketIO");
+        return;
+    }
+    
+    DLog(@"*****\npacket:\n");
+    DLog(@"type     : %@", packet.type);
+    DLog(@"pid      : %@", packet.pId);
+    DLog(@"ack      : %@", packet.ack);
+    DLog(@"name     : %@", packet.name);
+    DLog(@"data     : %@", packet.data);
+    DLog(@"endpoint : %@", packet.endpoint);
+    DLog(@"*****\n");
+}
+
+- (void) socketIO:(SocketIO*)socket didReceiveEvent:(SocketIOPacket*)packet
+{
+    DLog(@"socketIO: didReceiveEvent:");
+    if (socket != _socketIO)
+    {
+        DLog(@"wrong socketIO");
+        return;
+    }
+    
+    DLog(@"*****\npacket:\n");
+    DLog(@"type     : %@", packet.type);
+    DLog(@"pid      : %@", packet.pId);
+    DLog(@"ack      : %@", packet.ack);
+    DLog(@"name     : %@", packet.name);
+    DLog(@"data     : %@", packet.data);
+    DLog(@"endpoint : %@", packet.endpoint);
+    DLog(@"*****\n");
+}
+
+- (void) socketIO:(SocketIO*)socket didSendMessage:(SocketIOPacket*)packet
+{
+    DLog(@"socketIO: didSendMessage:");
+    if (socket != _socketIO)
+    {
+        DLog(@"wrong socketIO");
+        return;
+    }
+    
+    DLog(@"*****\npacket:\n");
+    DLog(@"type     : %@", packet.type);
+    DLog(@"pid      : %@", packet.pId);
+    DLog(@"ack      : %@", packet.ack);
+    DLog(@"name     : %@", packet.name);
+    DLog(@"data     : %@", packet.data);
+    DLog(@"endpoint : %@", packet.endpoint);
+    DLog(@"*****\n");
+}
+
+- (void) socketIOHandshakeFailed:(SocketIO*)socket
+{
+    DLog(@"socketIOHandshakeFailed");
+    if (socket != _socketIO)
+    {
+        DLog(@"wrong socketIO");
+        return;
+    }
+}
 
 
 @end
