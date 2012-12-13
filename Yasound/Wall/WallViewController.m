@@ -251,10 +251,21 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REFRESH_GUI object:nil];
     
     // connect to push server
-    NSString* pushHost = APPDELEGATE.serverURL;
-    DLog(@"push server host: %@", pushHost);
+    NSString* pushHost;
+#if USE_YASOUND_LOCAL_SERVER
+    pushHost = @"localhost";
+#else
+    NSArray* components = [APPDELEGATE.serverURL componentsSeparatedByString:@"://"];
+    if (components.count == 2)
+    {
+        pushHost = [components objectAtIndex:1];
+        if ([pushHost hasSuffix:@"/"])
+            pushHost = [pushHost substringToIndex:pushHost.length - 1];
+    }
+#endif
+    DLog(@"socketIO host: %@", pushHost);
     _socketIO = [[SocketIO alloc] initWithDelegate:self];
-    [_socketIO connectToHost:pushHost onPort:9000];
+    [_socketIO connectToHost:pushHost onPort:9000 withParams:nil withNamespace:@"/radio"];
 }
 
 
@@ -1686,6 +1697,10 @@
         DLog(@"wrong socketIO");
         return;
     }
+    
+    [_socketIO sendEvent:@"subscribe" withData:[NSDictionary dictionaryWithObject:self.radio.id forKey:@"radio_id"]];
+//    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:@"subscribe", @"name", self.radio.id, @"radio_id", nil];
+//    [_socketIO sendJSON:dict];
 }
 
 - (void) socketIODidDisconnect:(SocketIO*)socket
@@ -1707,14 +1722,14 @@
         return;
     }
     
-    DLog(@"*****\npacket:\n");
+    DLog(@"***** packet:");
     DLog(@"type     : %@", packet.type);
     DLog(@"pid      : %@", packet.pId);
     DLog(@"ack      : %@", packet.ack);
     DLog(@"name     : %@", packet.name);
     DLog(@"data     : %@", packet.data);
     DLog(@"endpoint : %@", packet.endpoint);
-    DLog(@"*****\n");
+    DLog(@"*****");
 }
 
 - (void) socketIO:(SocketIO*)socket didReceiveJSON:(SocketIOPacket*)packet
@@ -1726,14 +1741,14 @@
         return;
     }
     
-    DLog(@"*****\npacket:\n");
+    DLog(@"***** packet:");
     DLog(@"type     : %@", packet.type);
     DLog(@"pid      : %@", packet.pId);
     DLog(@"ack      : %@", packet.ack);
     DLog(@"name     : %@", packet.name);
     DLog(@"data     : %@", packet.data);
     DLog(@"endpoint : %@", packet.endpoint);
-    DLog(@"*****\n");
+    DLog(@"*****");
 }
 
 - (void) socketIO:(SocketIO*)socket didReceiveEvent:(SocketIOPacket*)packet
@@ -1745,14 +1760,14 @@
         return;
     }
     
-    DLog(@"*****\npacket:\n");
+    DLog(@"***** packet:");
     DLog(@"type     : %@", packet.type);
     DLog(@"pid      : %@", packet.pId);
     DLog(@"ack      : %@", packet.ack);
     DLog(@"name     : %@", packet.name);
     DLog(@"data     : %@", packet.data);
     DLog(@"endpoint : %@", packet.endpoint);
-    DLog(@"*****\n");
+    DLog(@"*****");
 }
 
 - (void) socketIO:(SocketIO*)socket didSendMessage:(SocketIOPacket*)packet
@@ -1764,14 +1779,14 @@
         return;
     }
     
-    DLog(@"*****\npacket:\n");
+    DLog(@"***** packet:");
     DLog(@"type     : %@", packet.type);
     DLog(@"pid      : %@", packet.pId);
     DLog(@"ack      : %@", packet.ack);
     DLog(@"name     : %@", packet.name);
     DLog(@"data     : %@", packet.data);
     DLog(@"endpoint : %@", packet.endpoint);
-    DLog(@"*****\n");
+    DLog(@"*****");
 }
 
 - (void) socketIOHandshakeFailed:(SocketIO*)socket
