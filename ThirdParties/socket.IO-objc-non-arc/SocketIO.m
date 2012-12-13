@@ -155,7 +155,7 @@
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:eventName forKey:@"name"];
     if (data != nil) // do not require arguments
-        [dict setObject:data forKey:@"args"];
+        [dict setObject:[NSArray arrayWithObject:data] forKey:@"args"];
     
     SocketIOPacket *packet = [[SocketIOPacket alloc] initWithType:@"event"];
     packet.data = [dict JSONRepresentation];
