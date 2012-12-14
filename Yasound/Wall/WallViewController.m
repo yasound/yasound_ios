@@ -146,7 +146,6 @@
         
         _updateLock = [[NSLock alloc] init];
         
-//        _socketIO = nil;
         _pushServerOk = NO;
     }
     
@@ -251,23 +250,6 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REFRESH_GUI object:nil];
     
-    // connect to push server
-    NSString* pushHost;
-#if USE_YASOUND_LOCAL_SERVER
-    pushHost = @"localhost";
-#else
-    NSArray* components = [APPDELEGATE.serverURL componentsSeparatedByString:@"://"];
-    if (components.count == 2)
-    {
-        pushHost = [components objectAtIndex:1];
-        if ([pushHost hasSuffix:@"/"])
-            pushHost = [pushHost substringToIndex:pushHost.length - 1];
-    }
-#endif
-//    DLog(@"socketIO host: %@", pushHost);
-//    _socketIO = [[SocketIO alloc] initWithDelegate:self];
-//    [_socketIO connectToHost:pushHost onPort:9000 withParams:nil withNamespace:@"/radio"];
-    
     PushManager* manager = [PushManager main];
     [manager subscribeToRadio:self.radio.id delegate:self];
 }
@@ -280,12 +262,6 @@
     
     // close push server connection
     [[PushManager main] unsubscribeFromRadio:self.radio.id delegate:self];
-//    if (_socketIO)
-//    {
-//        [_socketIO disconnect];
-////        [_socketIO release];
-//        _socketIO = nil;
-//    }
     
     [[YasoundDataProvider main] leaveRadioWall:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
         if (error)
@@ -1705,169 +1681,6 @@
     [self scrollViewDidScroll:self.tableview];
 }
 
-
-//#pragma mark - SocketIODelegate
-//
-//- (void) socketIODidConnect:(SocketIO*)socket
-//{
-//    DLog(@"socketIODidConnect");
-//    if (socket != _socketIO)
-//    {
-//        DLog(@"wrong socketIO");
-//        return;
-//    }
-//    
-//    [_socketIO sendEvent:@"subscribe" withData:[NSDictionary dictionaryWithObject:self.radio.id forKey:@"radio_id"]];
-//}
-//
-//- (void) socketIODidDisconnect:(SocketIO*)socket
-//{
-//    DLog(@"socketIODidDisconnect");
-//    if (socket != _socketIO)
-//    {
-//        DLog(@"wrong socketIO");
-//        return;
-//    }
-//    
-//    if (_socketIO)
-//    {
-//        [_socketIO release];
-//        _socketIO = nil;
-//    }
-//}
-//
-//- (void) socketIO:(SocketIO*)socket didReceiveMessage:(SocketIOPacket*)packet
-//{
-//    DLog(@"socketIO: didReceiveMessage");
-//}
-//
-//- (void) socketIO:(SocketIO*)socket didReceiveJSON:(SocketIOPacket*)packet
-//{
-//    DLog(@"socketIO: didReceiveJSON");
-//}
-//
-//- (void) socketIO:(SocketIO*)socket didReceiveEvent:(SocketIOPacket*)packet
-//{
-//    DLog(@"socketIO: didReceiveEvent");
-//    if (socket != _socketIO)
-//    {
-//        DLog(@"wrong socketIO");
-//        return;
-//    }
-//    
-//    if (!packet.data)
-//        return;
-//    
-//    NSDictionary* packetDataDict = [packet.data JSONValue];
-//    if (!packetDataDict)
-//        return;
-//    
-//    NSString* eventName = [packetDataDict valueForKey:@"name"];
-//    if ([eventName isEqualToString:@"radio_event"] == NO)
-//        return;
-//    
-//    NSArray* args = [packetDataDict valueForKey:@"args"];
-//    if (!args || [args isKindOfClass:[NSArray class]] == NO || args.count == 0)
-//        return;
-//    
-//    NSDictionary* arg0 = [args objectAtIndex:0];
-//    if (!arg0)
-//        return;
-//    
-//    NSString* dataStr = [arg0 valueForKey:@"data"];
-//    if (!dataStr)
-//        return;
-//    
-//    NSDictionary* data = [dataStr JSONValue];
-//    if (!data)
-//        return;
-//    
-//    NSString* type = [data valueForKey:@"event_type"];
-//    if (!type)
-//        return;
-//    
-//    NSString* descStr = [data valueForKey:@"data"];
-//    if (!descStr)
-//        return;
-//    
-//    if ([type isEqualToString:@"wall_event"])
-//    {
-//        WallEvent* ev = (WallEvent*)[descStr jsonToModel:[WallEvent class]];
-//        if (!ev.id)
-//            return;
-//        DLog(@"socket.io: new wall event (id = %@)", ev.id);
-//        
-//        if ([ev wallEventType] == eWallEventTypeMessage)
-//        {
-//            [self receivedCurrentMessageEvent:ev];
-//            _countMessageEvent++;
-//        }
-//        else if ([ev wallEventType] == eWallEventTypeLike)
-//            [self receivedCurrentLikeEvent:ev];
-//        else if ([ev wallEventType] == eWallEventTypeSong)
-//            [self receivedCurrentSongEvent:ev];
-//    }
-//    else if ([type isEqualToString:@"wall_event_deleted"])
-//    {
-//        WallEvent* ev = (WallEvent*)[descStr jsonToModel:[WallEvent class]];
-//        if (!ev.id)
-//            return;
-//        DLog(@"socket.io: wall event deleted (id = %@)", ev.id);
-//        
-//        int index = 0;
-//        BOOL toremove = NO;
-//        for (WallEvent* e in _wallEvents)
-//        {
-//            if ([ev isEqual:e])
-//            {
-//                toremove = YES;
-//                break;
-//            }
-//            index++;
-//        }
-//        
-//        if (toremove)
-//        {
-//            [_wallEvents removeObjectAtIndex:index];
-//            if ([ev isEqual:_lastWallEvent])
-//                _lastWallEvent = [_wallEvents objectAtIndex:_wallEvents.count - 1];
-//            if ([ev isEqual:_latestEvent])
-//                _latestEvent = [_wallEvents objectAtIndex:_wallEvents.count - 1];
-//            if ([ev wallEventType] == eWallEventTypeMessage)
-//                _countMessageEvent--;
-//        }
-//    }
-//    else if ([type isEqualToString:@"song"])
-//    {
-//        Song* song = (Song*)[descStr jsonToModel:[Song class]];
-//        if (!song.id)
-//            return;
-//        
-//        DLog(@"current song updated (id = %@ - name = %@)", song.id, song.name);
-//        [self setNowPlaying:song];
-//    }
-//}
-//
-//- (void) socketIO:(SocketIO*)socket didSendMessage:(SocketIOPacket*)packet
-//{
-//}
-//
-//- (void) socketIOHandshakeFailed:(SocketIO*)socket
-//{
-//    DLog(@"socketIOHandshakeFailed");
-//    if (socket != _socketIO)
-//    {
-//        DLog(@"wrong socketIO");
-//        return;
-//    }
-//    
-//    if (_socketIO)
-//    {
-//        [_socketIO disconnect];
-//        [_socketIO release];
-//        _socketIO = nil;
-//    }
-//}
 
 #pragma mark - PushDelegate
 

@@ -16,7 +16,6 @@
 #import "TopBar.h"
 #import "WallHeaderCell.h"
 #import "WallPostCell.h"
-#import "SocketIO.h"
 #import "PushManager.h"
 
 @class YaRadio;
@@ -74,7 +73,6 @@
     
     BOOL _stopWall;
     
-//    SocketIO* _socketIO;
     BOOL _pushServerOk;
 }
 
