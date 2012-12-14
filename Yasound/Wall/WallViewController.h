@@ -17,12 +17,13 @@
 #import "WallHeaderCell.h"
 #import "WallPostCell.h"
 #import "SocketIO.h"
+#import "PushManager.h"
 
 @class YaRadio;
 @class AudioStreamer;
 @class WebImageView;
 
-@interface WallViewController : YaViewController<NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate, MFMailComposeViewControllerDelegate,TopBarDelegate, SocketIODelegate>
+@interface WallViewController : YaViewController<NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate, MFMailComposeViewControllerDelegate,TopBarDelegate, SocketIODelegate, PushDelegate>
 {
     BOOL _updatingPrevious;
     UILabel* _updatingPreviousLabel;
@@ -73,7 +74,8 @@
     
     BOOL _stopWall;
     
-    SocketIO* _socketIO;
+//    SocketIO* _socketIO;
+    BOOL _pushServerOk;
 }
 
 @property (nonatomic, retain) YaRadio* radio;

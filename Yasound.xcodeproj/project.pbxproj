@@ -585,6 +585,15 @@
 		40B40ADC152EFC630050D334 /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC4CA7C0152D26130051A085 /* NotificationViewController.xib */; };
 		40B40ADE152EFC630050D334 /* NotificationCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7AC152D9E6F0056B34B /* NotificationCenterViewController.xib */; };
 		40B40ADF152EFC630050D334 /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
+		40B4A09B167A4D8800E357D9 /* PushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A09A167A4D8800E357D9 /* PushManager.m */; };
+		40B4A09C167A4D8800E357D9 /* PushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A09A167A4D8800E357D9 /* PushManager.m */; };
+		40B4A09D167A4D8800E357D9 /* PushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A09A167A4D8800E357D9 /* PushManager.m */; };
+		40B4A09E167A4D8800E357D9 /* PushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A09A167A4D8800E357D9 /* PushManager.m */; };
+		40B4A09F167A4D8800E357D9 /* PushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A09A167A4D8800E357D9 /* PushManager.m */; };
+		40B4A0A0167A4D8800E357D9 /* PushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A09A167A4D8800E357D9 /* PushManager.m */; };
+		40B4A0A1167A4D8800E357D9 /* PushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A09A167A4D8800E357D9 /* PushManager.m */; };
+		40B4A0A2167A4D8800E357D9 /* PushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A09A167A4D8800E357D9 /* PushManager.m */; };
+		40B4A0A3167A4D8800E357D9 /* PushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A09A167A4D8800E357D9 /* PushManager.m */; };
 		40B96B821591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
 		40B96B831591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
 		40B96B841591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
@@ -7306,6 +7315,8 @@
 		40AAEC4914921AE70031B39D /* YasoundDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataProvider.h; sourceTree = "<group>"; };
 		40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataProvider.m; sourceTree = "<group>"; };
 		40B40AEB152EFC630050D334 /* YasoundD LOCAL SERVER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD LOCAL SERVER.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40B4A099167A4D8800E357D9 /* PushManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PushManager.h; path = Push/PushManager.h; sourceTree = "<group>"; };
+		40B4A09A167A4D8800E357D9 /* PushManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PushManager.m; path = Push/PushManager.m; sourceTree = "<group>"; };
 		40B96B801591CAEE004D21D3 /* FacebookSharePreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookSharePreferences.h; sourceTree = "<group>"; };
 		40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookSharePreferences.m; sourceTree = "<group>"; };
 		40CBB1D8159C8E58005E898E /* TwitterSharePreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterSharePreferences.h; sourceTree = "<group>"; };
@@ -8834,6 +8845,15 @@
 				B138AA6714E2BAFC0069E08A /* SongUploader.m */,
 			);
 			path = DataProvider;
+			sourceTree = "<group>";
+		};
+		40B4A098167A4D5E00E357D9 /* Push */ = {
+			isa = PBXGroup;
+			children = (
+				40B4A099167A4D8800E357D9 /* PushManager.h */,
+				40B4A09A167A4D8800E357D9 /* PushManager.m */,
+			);
+			name = Push;
 			sourceTree = "<group>";
 		};
 		40ED562D14E41CE100C0A0F4 /* ImageResize */ = {
@@ -10917,6 +10937,7 @@
 		E5A9A3B31454DC0500EA374C /* Yasound */ = {
 			isa = PBXGroup;
 			children = (
+				40B4A098167A4D5E00E357D9 /* Push */,
 				4083FE741663B7290016BA9B /* YaRequest */,
 				BC46382D1611EE77008CE52F /* WheelSelectors */,
 				4031983D1610954800DD54F0 /* Contacts */,
@@ -16185,6 +16206,7 @@
 				40FAE24C1678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
 				40FAE2551678E63D00DCB7C1 /* WebSocket.m in Sources */,
 				40FAE26A1678E64800DCB7C1 /* RegexKitLite.m in Sources */,
+				40B4A0A2167A4D8800E357D9 /* PushManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16452,6 +16474,7 @@
 				40FAE24D1678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
 				40FAE2561678E63D00DCB7C1 /* WebSocket.m in Sources */,
 				40FAE26B1678E64800DCB7C1 /* RegexKitLite.m in Sources */,
+				40B4A0A3167A4D8800E357D9 /* PushManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16715,6 +16738,7 @@
 				40FAE24B1678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
 				40FAE2541678E63D00DCB7C1 /* WebSocket.m in Sources */,
 				40FAE2691678E64800DCB7C1 /* RegexKitLite.m in Sources */,
+				40B4A0A1167A4D8800E357D9 /* PushManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16982,6 +17006,7 @@
 				40FAE2481678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
 				40FAE2511678E63D00DCB7C1 /* WebSocket.m in Sources */,
 				40FAE2661678E64800DCB7C1 /* RegexKitLite.m in Sources */,
+				40B4A09E167A4D8800E357D9 /* PushManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17249,6 +17274,7 @@
 				40FAE2461678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
 				40FAE24F1678E63D00DCB7C1 /* WebSocket.m in Sources */,
 				40FAE2641678E64800DCB7C1 /* RegexKitLite.m in Sources */,
+				40B4A09C167A4D8800E357D9 /* PushManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17517,6 +17543,7 @@
 				40FAE24A1678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
 				40FAE2531678E63D00DCB7C1 /* WebSocket.m in Sources */,
 				40FAE2681678E64800DCB7C1 /* RegexKitLite.m in Sources */,
+				40B4A0A0167A4D8800E357D9 /* PushManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17784,6 +17811,7 @@
 				40FAE2471678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
 				40FAE2501678E63D00DCB7C1 /* WebSocket.m in Sources */,
 				40FAE2651678E64800DCB7C1 /* RegexKitLite.m in Sources */,
+				40B4A09D167A4D8800E357D9 /* PushManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -18051,6 +18079,7 @@
 				40FAE2451678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
 				40FAE24E1678E63D00DCB7C1 /* WebSocket.m in Sources */,
 				40FAE2631678E64800DCB7C1 /* RegexKitLite.m in Sources */,
+				40B4A09B167A4D8800E357D9 /* PushManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -18319,6 +18348,7 @@
 				40FAE2491678E63D00DCB7C1 /* AsyncUdpSocket.m in Sources */,
 				40FAE2521678E63D00DCB7C1 /* WebSocket.m in Sources */,
 				40FAE2671678E64800DCB7C1 /* RegexKitLite.m in Sources */,
+				40B4A09F167A4D8800E357D9 /* PushManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
