@@ -26,7 +26,7 @@
 #import "SBJson.h"
 
 #define DEBUG_LOGS 1
-#define HANDSHAKE_URL @"http://%@:%d/socket.io/1/?t=%d%@"
+#define HANDSHAKE_URL @"%@://%@:%d/socket.io/1/?t=%d%@"
 #define SOCKET_URL @"ws://%@:%d/socket.io/1/websocket/%@"
 
 
@@ -75,22 +75,23 @@
     return self;
 }
 
-- (void) connectToHost:(NSString *)host onPort:(NSInteger)port
+- (void) connectToHost:(NSString *)host onPort:(NSInteger)port withScheme:(NSString*)scheme
 {
-    [self connectToHost:host onPort:port withParams:nil withNamespace:@""];
+    [self connectToHost:host onPort:port withScheme:scheme withParams:nil withNamespace:@""];
 }
 
-- (void) connectToHost:(NSString *)host onPort:(NSInteger)port withParams:(NSDictionary *)params
+- (void) connectToHost:(NSString *)host onPort:(NSInteger)port withScheme:(NSString*)scheme withParams:(NSDictionary *)params
 {
-    [self connectToHost:host onPort:port withParams:params withNamespace:@""];
+    [self connectToHost:host onPort:port withScheme:scheme withParams:params withNamespace:@""];
 }
 
-- (void) connectToHost:(NSString *)host onPort:(NSInteger)port withParams:(NSDictionary *)params withNamespace:(NSString *)endpoint
+- (void) connectToHost:(NSString *)host onPort:(NSInteger)port withScheme:(NSString*)scheme withParams:(NSDictionary *)params withNamespace:(NSString *)endpoint
 {
     if (!_isConnected && !_isConnecting) 
     {
         _isConnecting = YES;
         
+        _scheme = [scheme retain];
         _host = [host retain];
         _port = port;
         _endpoint = [endpoint copy];
@@ -102,7 +103,7 @@
         }];
         
         // do handshake via HTTP request
-        NSString *s = [NSString stringWithFormat:HANDSHAKE_URL, _host, _port, rand(), query];
+        NSString *s = [NSString stringWithFormat:HANDSHAKE_URL, _scheme, _host, _port, rand(), query];
         [self log:[NSString stringWithFormat:@"Connecting to socket with URL: %@",s]];
         NSURL *url = [NSURL URLWithString:s];
         [query release];
@@ -605,6 +606,7 @@
 
 - (void) dealloc
 {
+    [_scheme release];
     [_host release];
     [_sid release];
     [_endpoint release];

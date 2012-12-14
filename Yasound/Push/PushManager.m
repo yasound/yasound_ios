@@ -129,7 +129,15 @@ static PushManager* _main = nil;
 
 - (void)connectRadioSocket
 {
-    [_radioSocket connectToHost:[self host] onPort:9000 withParams:nil withNamespace:@"/radio"];
+    NSString* scheme;
+#if USE_YASOUND_LOCAL_SERVER
+    scheme = @"http";
+#elif USE_DEV_SERVER
+    scheme = @"http";
+#else
+    scheme = @"https";
+#endif
+    [_radioSocket connectToHost:[self host] onPort:9000 withScheme:scheme withParams:nil withNamespace:@"/radio"];
 }
 
 - (void)subscribeToRadio:(NSNumber*)radioId
