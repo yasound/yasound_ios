@@ -825,6 +825,72 @@
     [self insertLike];
 }
 
+- (void)receivedPushMessageEvent:(WallEvent*)ev
+{
+    if (!ev)
+        return;
+    
+    int index = 0;
+    for (WallEvent* e in _wallEvents)
+    {
+        if ([ev.start_date isLaterThan:e.start_date])
+            break;
+        if ([ev.start_date isEqualToDate:e.start_date] && [ev.id integerValue] > [e.id integerValue])
+            break;
+        index++;
+    }
+    
+    [_wallEvents insertObject:ev atIndex:index];
+    
+    [ev computeTextHeightUsingFont:_messageFont withConstraint:MESSAGE_WIDTH];
+    UITableViewRowAnimation anim = UITableViewRowAnimationTop;
+    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
+    
+    [self playSound];
+}
+
+- (void)receivedPushLikeEvent:(WallEvent*)ev
+{
+    if (!ev)
+        return;
+    
+    int index = 0;
+    for (WallEvent* e in _wallEvents)
+    {
+        if ([ev.start_date isLaterThan:e.start_date])
+            break;
+        if ([ev.start_date isEqualToDate:e.start_date] && [ev.id integerValue] > [e.id integerValue])
+            break;
+        index++;
+    }
+    
+    [_wallEvents insertObject:ev atIndex:index];
+    
+    UITableViewRowAnimation anim = UITableViewRowAnimationTop;
+    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
+}
+
+- (void)receivedPushSongEvent:(WallEvent*)ev
+{
+    if (!ev)
+        return;
+    
+    int index = 0;
+    for (WallEvent* e in _wallEvents)
+    {
+        if ([ev.start_date isLaterThan:e.start_date])
+            break;
+        if ([ev.start_date isEqualToDate:e.start_date] && [ev.id integerValue] > [e.id integerValue])
+            break;
+        index++;
+    }
+    
+    [_wallEvents insertObject:ev atIndex:index];
+    
+    UITableViewRowAnimation anim = UITableViewRowAnimationTop;
+    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
+}
+
 
 - (void)userJoined:(User*)u
 {
@@ -1735,13 +1801,13 @@
         
         if ([ev wallEventType] == eWallEventTypeMessage)
         {
-            [self receivedCurrentMessageEvent:ev];
+            [self receivedPushMessageEvent:ev];
             _countMessageEvent++;
         }
         else if ([ev wallEventType] == eWallEventTypeLike)
-            [self receivedCurrentLikeEvent:ev];
+            [self receivedPushLikeEvent:ev];
         else if ([ev wallEventType] == eWallEventTypeSong)
-            [self receivedCurrentSongEvent:ev];
+            [self receivedPushSongEvent:ev];
     }
     else if ([type isEqualToString:@"wall_event_deleted"])
     {

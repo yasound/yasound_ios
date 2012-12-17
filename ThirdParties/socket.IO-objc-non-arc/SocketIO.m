@@ -27,7 +27,7 @@
 
 #define DEBUG_LOGS 1
 #define HANDSHAKE_URL @"%@://%@:%d/socket.io/1/?t=%d%@"
-#define SOCKET_URL @"ws://%@:%d/socket.io/1/websocket/%@"
+#define SOCKET_URL @"%@://%@:%d/socket.io/1/websocket/%@"
 
 
 # pragma mark -
@@ -184,7 +184,8 @@
 
 - (void) openSocket
 {
-    NSString *url = [NSString stringWithFormat:SOCKET_URL, _host, _port, _sid];
+    NSString* scheme = [_scheme isEqualToString:@"https"] ? @"wss" : @"ws";
+    NSString *url = [NSString stringWithFormat:SOCKET_URL, scheme, _host, _port, _sid];
     
     [_webSocket release];
     _webSocket = nil;
