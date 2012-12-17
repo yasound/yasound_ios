@@ -11,10 +11,10 @@
 
 @protocol PushDelegate <NSObject>
 
-- (void)didConnectToPushServerForRadioId:(NSNumber*)radioId;
-- (void)didDisconnectFromPushServerForRadioId:(NSNumber*)radioId;
+- (void)didConnectToPushServerForRadioUuuid:(NSString*)radioUuid;
+- (void)didDisconnectFromPushServerForRadioUuid:(NSString*)radioUuid;
 
-- (void)didReceiveEventFromRadio:(NSNumber*)radioId data:(NSDictionary*)data;
+- (void)didReceiveEventFromRadio:(NSString*)radioUuid data:(NSDictionary*)data;
 
 @end
 
@@ -27,7 +27,7 @@
 
 + (PushManager*) main;
 
-- (void)subscribeToRadio:(NSNumber*)radioId delegate:(id<PushDelegate>)delegate;
-- (void)unsubscribeFromRadio:(NSNumber*)radioId delegate:(id<PushDelegate>)delegate;
+- (void)subscribeToRadio:(NSString*)radioUuid delegate:(id<PushDelegate>)delegate;
+- (void)unsubscribeFromRadio:(NSString*)radioUuid delegate:(id<PushDelegate>)delegate;
 
 @end

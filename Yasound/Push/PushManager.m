@@ -50,14 +50,13 @@ static PushManager* _main = nil;
     [super dealloc];
 }
 
-- (void)subscribeToRadio:(NSNumber*)radioId delegate:(id<PushDelegate>)delegate
+- (void)subscribeToRadio:(NSString*)radioUuid delegate:(id<PushDelegate>)delegate
 {
-    if (!radioId || !delegate)
+    if (!radioUuid || !delegate)
         return;
     
     BOOL needSubscribe = NO;
-    NSString* key = [radioId stringValue];
-    NSMutableArray* delegates = [_radioConnections valueForKey:key];
+    NSMutableArray* delegates = [_radioConnections valueForKey:radioUuid];
     if (delegates == nil)
     {
         delegates = [NSMutableArray arrayWithObject:delegate];
@@ -73,17 +72,17 @@ static PushManager* _main = nil;
         }
         needSubscribe = NO;
     }
-    [_radioConnections setValue:delegates forKey:key];
+    [_radioConnections setValue:delegates forKey:radioUuid];
     
     
     if (_radioSocket.isConnected)
     {
         if (needSubscribe)
-            [self subscribeToRadio:radioId];
+            [self subscribeToRadio:radioUuid];
         
         // socket is already connected
-        if ([delegate respondsToSelector:@selector(didConnectToPushServerForRadioId:)])
-            [delegate performSelector:@selector(didConnectToPushServerForRadioId:) withObject:radioId];
+        if ([delegate respondsToSelector:@selector(didConnectToPushServerForRadioUuid:)])
+            [delegate performSelector:@selector(didConnectToPushServerForRadioUuid:) withObject:radioUuid];
     }
     else if (!_radioSocket.isConnecting)
     {
@@ -92,20 +91,19 @@ static PushManager* _main = nil;
     }
 }
 
-- (void)unsubscribeFromRadio:(NSNumber*)radioId delegate:(id<PushDelegate>)delegate
+- (void)unsubscribeFromRadio:(NSString*)radioUuid delegate:(id<PushDelegate>)delegate
 {
-    if (!radioId || !delegate)
+    if (!radioUuid || !delegate)
         return;
     
-    NSString* key = [radioId stringValue];
-    NSMutableArray* delegates = [_radioConnections valueForKey:key];
+    NSMutableArray* delegates = [_radioConnections valueForKey:radioUuid];
     [delegates removeObject:delegate];
-    [_radioConnections setValue:delegates forKey:key];
+    [_radioConnections setValue:delegates forKey:radioUuid];
     
     if (delegates.count == 0)
     {
-        [_radioConnections removeObjectForKey:key];
-        [self unsubscribeFromRadio:radioId];
+        [_radioConnections removeObjectForKey:radioUuid];
+        [self unsubscribeFromRadio:radioUuid];
     }
     
 }
@@ -140,28 +138,28 @@ static PushManager* _main = nil;
     [_radioSocket connectToHost:[self host] onPort:9000 withScheme:scheme withParams:nil withNamespace:@"/radio"];
 }
 
-- (void)subscribeToRadio:(NSNumber*)radioId
+- (void)subscribeToRadio:(NSString*)radioUuid
 {
-    [_radioSocket sendEvent:@"subscribe" withData:[NSDictionary dictionaryWithObject:radioId forKey:@"radio_id"]];
+    [_radioSocket sendEvent:@"subscribe" withData:[NSDictionary dictionaryWithObject:radioUuid forKey:@"radio_uuid"]];
 }
 
-- (void)unsubscribeFromRadio:(NSNumber*)radioId
+- (void)unsubscribeFromRadio:(NSString*)radioUuid
 {
-    [_radioSocket sendEvent:@"unsubscribe" withData:[NSDictionary dictionaryWithObject:radioId forKey:@"radio_id"]];
+    [_radioSocket sendEvent:@"unsubscribe" withData:[NSDictionary dictionaryWithObject:radioUuid forKey:@"radio_uuid"]];
 }
 
 - (void)radioSocketConnected
 {
     for (NSString* key in _radioConnections)
     {
-        NSNumber* radioId = [NSNumber numberWithInt:[key intValue]];
-        [self subscribeToRadio:radioId];
+        NSString* radioUuid = key;
+        [self subscribeToRadio:radioUuid];
         
         NSMutableArray* delegates = [_radioConnections valueForKey:key];
         for (id<PushDelegate> delegate in delegates)
         {
-            if ([delegate respondsToSelector:@selector(didConnectToPushServerForRadioId:)])
-                [delegate performSelector:@selector(didConnectToPushServerForRadioId:) withObject:radioId];
+            if ([delegate respondsToSelector:@selector(didConnectToPushServerForRadioUuid:)])
+                [delegate performSelector:@selector(didConnectToPushServerForRadioUuid:) withObject:radioUuid];
         }
     }
 }
@@ -170,13 +168,12 @@ static PushManager* _main = nil;
 {
     for (NSString* key in _radioConnections)
     {
-        NSNumber* radioId = [NSNumber numberWithInt:[key intValue]];
-        
+        NSString* radioUuid = key;
         NSMutableArray* delegates = [_radioConnections valueForKey:key];
         for (id<PushDelegate> delegate in delegates)
         {
-            if ([delegate respondsToSelector:@selector(didDisconnectFromPushServerForRadioId:)])
-                [delegate performSelector:@selector(didDisconnectFromPushServerForRadioId:) withObject:radioId];
+            if ([delegate respondsToSelector:@selector(didDisconnectFromPushServerForRadioUuid:)])
+                [delegate performSelector:@selector(didDisconnectFromPushServerForRadioUuid:) withObject:radioUuid];
         }
     }
 }
@@ -203,18 +200,22 @@ static PushManager* _main = nil;
     if (!data)
         return;
     
-    NSString* descStr = [data valueForKey:@"data"];
-    if (!descStr)
-        return;
-
-    NSNumber* radioId = [[descStr JSONValue] valueForKey:@"radio_id"];
-    if (!radioId)
+//    NSString* descStr = [data valueForKey:@"data"];
+//    if (!descStr)
+//        return;
+//
+//    NSNumber* radioId = [[descStr JSONValue] valueForKey:@"radio_id"];
+//    if (!radioId)
+//        return;
+    
+    NSString* radioUuid = [data valueForKey:@"radio_uuid"]; // #FIXME: todo
+    if (!radioUuid)
         return;
     
-    for (id<PushDelegate> delegate in [_radioConnections valueForKey:[radioId stringValue]])
+    for (id<PushDelegate> delegate in [_radioConnections valueForKey:radioUuid])
     {
         if ([delegate respondsToSelector:@selector(didReceiveEventFromRadio:data:)])
-            [delegate performSelector:@selector(didReceiveEventFromRadio:data:) withObject:radioId withObject:data];
+            [delegate performSelector:@selector(didReceiveEventFromRadio:data:) withObject:radioUuid withObject:data];
     }
 }
 

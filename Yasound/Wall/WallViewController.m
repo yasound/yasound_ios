@@ -251,7 +251,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REFRESH_GUI object:nil];
     
     PushManager* manager = [PushManager main];
-    [manager subscribeToRadio:self.radio.id delegate:self];
+    [manager subscribeToRadio:self.radio.uuid delegate:self];
 }
 
 
@@ -261,7 +261,7 @@
     [super viewWillDisappear: animated];
     
     // close push server connection
-    [[PushManager main] unsubscribeFromRadio:self.radio.id delegate:self];
+    [[PushManager main] unsubscribeFromRadio:self.radio.uuid delegate:self];
     
     [[YasoundDataProvider main] leaveRadioWall:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
         if (error)
@@ -1750,39 +1750,39 @@
 
 #pragma mark - PushDelegate
 
-- (void)didConnectToPushServerForRadioId:(NSNumber*)radioId
+- (void)didConnectToPushServerForRadioUuid:(NSString*)radioUuid
 {
-    if ([radioId isEqualToNumber:self.radio.id] == NO)
+    if ([radioUuid isEqualToString:self.radio.uuid] == NO)
     {
-        DLog(@"push server connect: wrong radio (%@ != %@)", radioId, self.radio.id);
+        DLog(@"push server connect: wrong radio (%@ != %@)", radioUuid, self.radio.uuid);
         return;
     }
     
-    DLog(@"push server ready for radio %@", radioId);
+    DLog(@"push server ready for radio %@", radioUuid);
     _pushServerOk = YES;
 }
 
-- (void)didDisconnectFromPushServerForRadioId:(NSNumber*)radioId
+- (void)didDisconnectFromPushServerForRadioUuid:(NSString*)radioUuid
 {
-    if ([radioId isEqualToNumber:self.radio.id] == NO)
+    if ([radioUuid isEqualToString:self.radio.uuid] == NO)
     {
-        DLog(@"push server disconnect: wrong radio (%@ != %@)", radioId, self.radio.id);
+        DLog(@"push server disconnect: wrong radio (%@ != %@)", radioUuid, self.radio.uuid);
         return;
     }
     
-    DLog(@"push server disconnected for radio %@", radioId);
+    DLog(@"push server disconnected for radio %@", radioUuid);
     _pushServerOk = NO;
 }
 
-- (void)didReceiveEventFromRadio:(NSNumber*)radioId data:(NSDictionary*)data
+- (void)didReceiveEventFromRadio:(NSString*)radioUuid data:(NSDictionary*)data
 {
-    if ([radioId isEqualToNumber:self.radio.id] == NO)
+    if ([radioUuid isEqualToString:self.radio.uuid] == NO)
     {
-        DLog(@"push server event received: wrong radio (%@ != %@)", radioId, self.radio.id);
+        DLog(@"push server event received: wrong radio (%@ != %@)", radioUuid, self.radio.uuid);
         return;
     }
     
-    DLog(@"radio %@ did receive event %@", radioId, data);
+    DLog(@"radio %@ did receive event %@", radioUuid, data);
     
     NSString* type = [data valueForKey:@"event_type"];
     if (!type)
@@ -1851,7 +1851,6 @@
         DLog(@"current song updated (id = %@ - name = %@)", song.id, song.name);
         [self setNowPlaying:song];
     }
-
 }
 
 
