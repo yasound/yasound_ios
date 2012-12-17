@@ -148,7 +148,7 @@ taskStatus stringToStatus(NSString* str);
 - (BOOL)updateUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block;
 - (void)setPicture:(UIImage*)img forUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block;
 
-- (void)setMood:(UserMood)mood forSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)setMood:(UserMood)mood forSong:(Song*)song andRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block;
 
 // follow user
 - (void)followUser:(User*)user withCompletionBlock:(YaRequestCompletionBlock)block;

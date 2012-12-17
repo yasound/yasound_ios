@@ -1306,41 +1306,46 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)setMood:(UserMood)mood forSong:(Song*)song withCompletionBlock:(YaRequestCompletionBlock)block
+- (void)setMood:(UserMood)mood forSong:(Song*)song andRadio:(YaRadio*)radio withCompletionBlock:(YaRequestCompletionBlock)block
 {
-  if (!song || !song.id)
-  {
-      if (block)
-          block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
-      return;
-  }
-  
-  NSString* moodStr;
-  switch (mood) 
-  {
-    case eMoodLike:
-      moodStr = @"liker";
-      break;
-      
-    case eMoodNeutral:
-      moodStr = @"neutral";
-      break;
-      
-    case eMoodDislike:
-      moodStr = @"disliker";
-      break;
-      
-    case eMoodInvalid:
-    default:
-      return;
-  }
+    if (!song || !radio)
+    {
+        if (block)
+            block(0, nil, [NSError errorWithDomain:@"cannot create request: bad paramameters" code:0 userInfo:nil]);
+        return;
+    }
     
+    NSString* moodStr;
+    switch (mood) 
+    {
+      case eMoodLike:
+        moodStr = @"liker";
+        break;
+        
+      case eMoodNeutral:
+        moodStr = @"neutral";
+        break;
+        
+      case eMoodDislike:
+        moodStr = @"disliker";
+        break;
+        
+      case eMoodInvalid:
+      default:
+        return;
+    }
+      
     YaRequestConfig* config = [YaRequestConfig requestConfig];
-    config.url = [NSString stringWithFormat:@"api/v1/song/%@/%@", song.id, moodStr];
+    config.url = [NSString stringWithFormat:@"api/v1/radio/%@/likes/", radio.uuid];
     config.urlIsAbsolute = NO;
     config.method = @"POST";
     config.auth = self.apiKeyAuth;
-    
+  
+    NSMutableDictionary* jsonObject = [NSMutableDictionary dictionary];
+    [jsonObject setObject:moodStr forKey:@"mood"];
+    [jsonObject setObject:song.last_play_time forKey:@"last_play_time"];
+    NSString* jsonString = jsonObject.JSONRepresentation;
+    config.payload = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     YaRequest* req = [YaRequest requestWithConfig:config];
     [req start:block];
 }
