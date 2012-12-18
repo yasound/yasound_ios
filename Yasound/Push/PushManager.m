@@ -200,15 +200,7 @@ static PushManager* _main = nil;
     if (!data)
         return;
     
-//    NSString* descStr = [data valueForKey:@"data"];
-//    if (!descStr)
-//        return;
-//
-//    NSNumber* radioId = [[descStr JSONValue] valueForKey:@"radio_id"];
-//    if (!radioId)
-//        return;
-    
-    NSString* radioUuid = [data valueForKey:@"radio_uuid"]; // #FIXME: todo
+    NSString* radioUuid = [data valueForKey:@"radio_uuid"];
     if (!radioUuid)
         return;
     
