@@ -74,6 +74,11 @@ NSMutableDictionary* _resourceNames = nil;
   return self;
 }
 
+- (BOOL)isEqual:(Model*)object
+{
+    return [self.id integerValue] == [object.id integerValue];
+}
+
 @end
 
 

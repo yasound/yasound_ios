@@ -44,7 +44,6 @@
 #import "ProgrammingViewController.h"
 #import "MessageBroadcastModalViewController.h"
 
-
 //#define LOCAL 1 // use localhost as the server
 
 #define SERVER_DATA_REQUEST_TIMER 5.0f
@@ -146,6 +145,8 @@
         _cellEditing = nil;
         
         _updateLock = [[NSLock alloc] init];
+        
+        _pushServerOk = NO;
     }
     
     return self;
@@ -227,7 +228,6 @@
     
     // check for tutorial
     [[Tutorial main] show:TUTORIAL_KEY_RADIOVIEW everyTime:NO];
-
 }
 
 
@@ -250,6 +250,8 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REFRESH_GUI object:nil];
     
+    PushManager* manager = [PushManager main];
+    [manager subscribeToRadio:self.radio.uuid delegate:self];
 }
 
 
@@ -257,6 +259,9 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear: animated];
+    
+    // close push server connection
+    [[PushManager main] unsubscribeFromRadio:self.radio.uuid delegate:self];
     
     [[YasoundDataProvider main] leaveRadioWall:self.radio withCompletionBlock:^(int status, NSString* response, NSError* error){
         if (error)
@@ -418,21 +423,26 @@
     
     if ([_updateLock tryLock])
     {
-        if (_wallEvents.count > 0)
+        if (_pushServerOk == NO) // if push server is available, new wall events and current song events are sent directly, no nedd to poll
         {
-            NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
-            [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID withCompletionBlock:^(int status, NSString* response, NSError* error){
-                [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
-            }];
-        }
-        else
-        {
-            [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 withCompletionBlock:^(int status, NSString* response, NSError* error){
-                [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
-            }];
+            if (_wallEvents.count > 0)
+            {
+                NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
+                [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID withCompletionBlock:^(int status, NSString* response, NSError* error){
+                    [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
+                }];
+            }
+            else
+            {
+                [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 withCompletionBlock:^(int status, NSString* response, NSError* error){
+                    [self currentWallEventsRequestReturnedWithStatus:status response:response error:error];
+                }];
+            }
+            
+            [self refreshCurrentSong];
         }
         
-        [self refreshCurrentSong];
+        // current users are not handled by the push server
         [self refreshCurrentUsers];
         
         [_updateLock unlock];
@@ -813,6 +823,72 @@
     
     [_wallEvents insertObject:ev atIndex:0];
     [self insertLike];
+}
+
+- (void)receivedPushMessageEvent:(WallEvent*)ev
+{
+    if (!ev)
+        return;
+    
+    int index = 0;
+    for (WallEvent* e in _wallEvents)
+    {
+        if ([ev.start_date isLaterThan:e.start_date])
+            break;
+        if ([ev.start_date isEqualToDate:e.start_date] && [ev.id integerValue] > [e.id integerValue])
+            break;
+        index++;
+    }
+    
+    [_wallEvents insertObject:ev atIndex:index];
+    
+    [ev computeTextHeightUsingFont:_messageFont withConstraint:MESSAGE_WIDTH];
+    UITableViewRowAnimation anim = UITableViewRowAnimationTop;
+    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
+    
+    [self playSound];
+}
+
+- (void)receivedPushLikeEvent:(WallEvent*)ev
+{
+    if (!ev)
+        return;
+    
+    int index = 0;
+    for (WallEvent* e in _wallEvents)
+    {
+        if ([ev.start_date isLaterThan:e.start_date])
+            break;
+        if ([ev.start_date isEqualToDate:e.start_date] && [ev.id integerValue] > [e.id integerValue])
+            break;
+        index++;
+    }
+    
+    [_wallEvents insertObject:ev atIndex:index];
+    
+    UITableViewRowAnimation anim = UITableViewRowAnimationTop;
+    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
+}
+
+- (void)receivedPushSongEvent:(WallEvent*)ev
+{
+    if (!ev)
+        return;
+    
+    int index = 0;
+    for (WallEvent* e in _wallEvents)
+    {
+        if ([ev.start_date isLaterThan:e.start_date])
+            break;
+        if ([ev.start_date isEqualToDate:e.start_date] && [ev.id integerValue] > [e.id integerValue])
+            break;
+        index++;
+    }
+    
+    [_wallEvents insertObject:ev atIndex:index];
+    
+    UITableViewRowAnimation anim = UITableViewRowAnimationTop;
+    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
 }
 
 
@@ -1353,14 +1429,15 @@
             DLog(@"post wall message error: %d - %@", error.code, error. domain);
             return;
         }
-        if (status != 200)
+        if (status != 201)
         {
             DLog(@"post wall message error: response status %d", status);
             return;
         }
         
-        [[ActivityModelessSpinner main] removeRef];        
-        [self updateCurrentWall];
+        [[ActivityModelessSpinner main] removeRef];
+        if (_pushServerOk == NO)
+            [self updateCurrentWall];
     }];
 }
 
@@ -1670,6 +1747,111 @@
     [self scrollViewDidScroll:self.tableview];
 }
 
+
+#pragma mark - PushDelegate
+
+- (void)didConnectToPushServerForRadioUuid:(NSString*)radioUuid
+{
+    if ([radioUuid isEqualToString:self.radio.uuid] == NO)
+    {
+        DLog(@"push server connect: wrong radio (%@ != %@)", radioUuid, self.radio.uuid);
+        return;
+    }
+    
+    DLog(@"push server ready for radio %@", radioUuid);
+    _pushServerOk = YES;
+}
+
+- (void)didDisconnectFromPushServerForRadioUuid:(NSString*)radioUuid
+{
+    if ([radioUuid isEqualToString:self.radio.uuid] == NO)
+    {
+        DLog(@"push server disconnect: wrong radio (%@ != %@)", radioUuid, self.radio.uuid);
+        return;
+    }
+    
+    DLog(@"push server disconnected for radio %@", radioUuid);
+    _pushServerOk = NO;
+}
+
+- (void)didReceiveEventFromRadio:(NSString*)radioUuid data:(NSDictionary*)data
+{
+    if ([radioUuid isEqualToString:self.radio.uuid] == NO)
+    {
+        DLog(@"push server event received: wrong radio (%@ != %@)", radioUuid, self.radio.uuid);
+        return;
+    }
+    
+    DLog(@"radio %@ did receive event %@", radioUuid, data);
+    
+    NSString* type = [data valueForKey:@"event_type"];
+    if (!type)
+        return;
+    
+    NSString* descStr = [data valueForKey:@"data"];
+    if (!descStr)
+        return;
+    
+    if ([type isEqualToString:@"wall_event"])
+    {
+        WallEvent* ev = (WallEvent*)[descStr jsonToModel:[WallEvent class]];
+        if (!ev.id)
+            return;
+        DLog(@"socket.io: new wall event (id = %@)", ev.id);
+        
+        if ([ev wallEventType] == eWallEventTypeMessage)
+        {
+            [self receivedPushMessageEvent:ev];
+            _countMessageEvent++;
+        }
+        else if ([ev wallEventType] == eWallEventTypeLike)
+            [self receivedPushLikeEvent:ev];
+        else if ([ev wallEventType] == eWallEventTypeSong)
+            [self receivedPushSongEvent:ev];
+    }
+    else if ([type isEqualToString:@"wall_event_deleted"])
+    {
+        WallEvent* ev = (WallEvent*)[descStr jsonToModel:[WallEvent class]];
+        if (!ev.id)
+            return;
+        DLog(@"socket.io: wall event deleted (id = %@)", ev.id);
+        
+        int index = 0;
+        BOOL toremove = NO;
+        for (WallEvent* e in _wallEvents)
+        {
+            if ([ev isEqual:e])
+            {
+                toremove = YES;
+                break;
+            }
+            index++;
+        }
+        
+        if (toremove)
+        {
+            [_wallEvents removeObjectAtIndex:index];
+            if ([ev isEqual:_lastWallEvent])
+                _lastWallEvent = [_wallEvents objectAtIndex:_wallEvents.count - 1];
+            if ([ev isEqual:_latestEvent])
+                _latestEvent = [_wallEvents objectAtIndex:_wallEvents.count - 1];
+            if ([ev wallEventType] == eWallEventTypeMessage)
+                _countMessageEvent--;
+
+            NSIndexPath* indexPath = [NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS];
+            [self.tableview deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+        }
+    }
+    else if ([type isEqualToString:@"song"])
+    {
+        Song* song = (Song*)[descStr jsonToModel:[Song class]];
+        if (!song.id)
+            return;
+        
+        DLog(@"current song updated (id = %@ - name = %@)", song.id, song.name);
+        [self setNowPlaying:song];
+    }
+}
 
 
 @end

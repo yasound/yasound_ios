@@ -23,4 +23,6 @@
 
 + (NSMutableDictionary*)resourceNames;
 
+- (BOOL)isEqual:(Model*)object;
+
 @end
