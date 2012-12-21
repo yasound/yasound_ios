@@ -1770,7 +1770,7 @@
         return;
     }
     
-    DLog(@"push server disconnected for radio %@", radioUuid);
+    DLog(@"push server disconnected for ra dio %@", radioUuid);
     _pushServerOk = NO;
 }
 

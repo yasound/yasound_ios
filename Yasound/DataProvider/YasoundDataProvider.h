@@ -126,6 +126,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)favoriteRadiosForUser:(User*)u withCompletionBlock:(YaRequestCompletionBlock)block;
 
 - (void)radiosForUser:(User*)u withCompletionBlock:(YaRequestCompletionBlock)block;
+- (void)myradiosWithCompletionBlock:(YaRequestCompletionBlock)block;
 
 
 - (void)radioWithId:(NSNumber*)radioId withCompletionBlock:(YaRequestCompletionBlock)block;

@@ -761,6 +761,18 @@ static YasoundDataProvider* _main = nil;
     [req start:block];
 }
 
+- (void)myradiosWithCompletionBlock:(YaRequestCompletionBlock)block
+{
+    YaRequestConfig* config = [YaRequestConfig requestConfig];
+    config.url = @"/api/v1/my_radios";
+    config.urlIsAbsolute = NO;
+    config.method = @"GET";
+    config.auth = self.apiKeyAuth;
+    
+    YaRequest* req = [YaRequest requestWithConfig:config];
+    [req start:block];
+}
+
 - (void)radiosForUser:(User*)u withCompletionBlock:(YaRequestCompletionBlock)block
 {
     YaRequestConfig* config = [YaRequestConfig requestConfig];

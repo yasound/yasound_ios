@@ -71,7 +71,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifRefreshGui:) name:NOTIF_REFRESH_GUI object:nil];
     
-    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withCompletionBlock:^(int status, NSString* response, NSError* error){        
+    [[YasoundDataProvider main] myradiosWithCompletionBlock:^(int status, NSString* response, NSError* error){
         [self radiosRequestReturnedWithStatus:status response:response error:error];
     }];
 }
@@ -140,7 +140,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 - (void)onNotifMyRadioDeleted:(NSNotification*)notification
 {
     // refresh data
-    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withCompletionBlock:^(int status, NSString* response, NSError* error){
+    [[YasoundDataProvider main] myradiosWithCompletionBlock:^(int status, NSString* response, NSError* error){
         [self radiosRequestReturnedWithStatus:status response:response error:error];
     }];
 }
