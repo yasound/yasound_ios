@@ -1355,7 +1355,10 @@ static YasoundDataProvider* _main = nil;
   
     NSMutableDictionary* jsonObject = [NSMutableDictionary dictionary];
     [jsonObject setObject:moodStr forKey:@"mood"];
-    [jsonObject setObject:song.last_play_time forKey:@"last_play_time"];
+    if (song.last_play_time)
+    {
+        [jsonObject setObject:song.last_play_time forKey:@"last_play_time"];
+    }
     NSString* jsonString = jsonObject.JSONRepresentation;
     config.payload = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     YaRequest* req = [YaRequest requestWithConfig:config];
